@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kostenloses Online-Webinar — der einfache Einstieg in den Vermögensaufbau</title>
+<style>
+  :root{
+    --navy:#102444; --creme:#F5F1EA; --creme-2:#EBE5DA;
+    --gold:#BBA45F; --orange:#FF7A00;
+    --ink:#102444; --ink-2:#4B586B; --on-navy:#F5F1EA; --on-navy-2:#B9C2CF;
+    --r:10px; --wrap:720px;
+    --s1:8px; --s2:12px; --s3:16px; --s4:24px; --s5:32px; --s6:48px; --s7:64px; --s8:96px;
+    --shadow:0 6px 24px rgba(16,36,68,.10);
+  }
+  *{box-sizing:border-box} html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--creme);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:17px;line-height:1.6;font-weight:400;letter-spacing:-.01em;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+  section{padding:var(--s8) 0}
+  .navy{background:var(--navy);color:var(--on-navy)}
+  h1,h2{font-weight:700;letter-spacing:-.025em;line-height:1.08;margin:0}
+  h1{font-size:clamp(32px,6.4vw,58px)}
+  h2{font-size:clamp(26px,4.6vw,40px);line-height:1.12}
+  p{margin:0}
+  .eyebrow{font-size:14px;font-weight:600;letter-spacing:.02em;color:var(--ink-2);margin:0 0 var(--s3)}
+  .navy .eyebrow{color:var(--on-navy-2)}
+  .rule{width:44px;height:2px;background:var(--gold);border:0;margin:0 0 var(--s4)}
+  .lead{font-size:19px;color:var(--ink-2);margin:var(--s4) 0 0;max-width:56ch}
+  .navy .lead{color:var(--on-navy-2)}
+  .cta{display:inline-block;background:var(--orange);color:#201400;text-decoration:none;
+    font-weight:700;font-size:17px;padding:15px 28px;border-radius:var(--r);border:0;cursor:pointer;letter-spacing:-.01em}
+  .cta:focus-visible{outline:3px solid var(--orange);outline-offset:3px}
+  .ghost{display:inline-block;background:transparent;color:var(--ink);text-decoration:none;
+    font-weight:600;font-size:16px;padding:13px 24px;border-radius:var(--r);border:1.5px solid rgba(16,36,68,.28);cursor:pointer}
+  .navy .ghost{color:var(--on-navy);border-color:rgba(245,241,234,.35)}
+  .meta{font-size:14px;color:var(--ink-2);margin:var(--s3) 0 0}
+  .navy .meta{color:var(--on-navy-2)}
+  /* Datum-Karte (prominent) */
+  .datecard{margin-top:var(--s6);background:#fff;border:1px solid var(--creme-2);border-radius:16px;
+    padding:32px;box-shadow:var(--shadow);text-align:center}
+  .datelabel{font-size:14px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);margin:0}
+  .datebig{font-size:clamp(40px,9vw,72px);font-weight:800;letter-spacing:-.035em;line-height:1.02;color:var(--navy);margin:var(--s3) 0 var(--s2)}
+  .datetime{font-size:clamp(20px,3.4vw,26px);font-weight:700;color:var(--orange);letter-spacing:-.01em}
+  .datecard .cta{margin-top:var(--s5);width:100%;max-width:360px}
+  .hero{padding-top:var(--s8)}
+  .card{background:var(--creme);color:var(--ink);border-radius:14px;padding:28px;box-shadow:var(--shadow);margin-top:var(--s6)}
+  .field{margin:var(--s4) 0 0}
+  .field:first-child{margin-top:0}
+  .field label{display:flex;justify-content:space-between;font-size:15px;font-weight:500;margin-bottom:var(--s2)}
+  .field .val{font-weight:600}
+  input[type=range]{width:100%;accent-color:var(--orange);height:24px}
+  .result{margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--creme-2)}
+  .result .num{font-size:clamp(38px,9vw,56px);font-weight:700;letter-spacing:-.03em;line-height:1;color:var(--navy)}
+  .result .cap{font-size:16px;color:var(--ink-2);margin-top:var(--s2)}
+  .disc{font-size:13px;color:var(--ink-2);margin-top:var(--s4);line-height:1.55}
+  .list{margin:var(--s6) 0 0;padding:0;list-style:none;counter-reset:i}
+  .list li{counter-increment:i;display:flex;gap:var(--s4);padding:var(--s4) 0;border-top:1px solid rgba(16,36,68,.10);font-size:18px}
+  .list li:last-child{border-bottom:1px solid rgba(16,36,68,.10)}
+  .list li::before{content:counter(i);color:var(--gold);font-weight:600;font-variant-numeric:tabular-nums;min-width:1.4em}
+  .btnrow{display:flex;flex-wrap:wrap;gap:var(--s3);margin-top:var(--s5)}
+  footer{background:var(--creme);color:var(--ink-2);font-size:13px;line-height:1.7;padding:var(--s7) 0 var(--s8);border-top:1px solid var(--creme-2)}
+  footer a{color:var(--ink-2)}
+  .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+</style>
+</head>
+<body>
+
+<header class="section hero">
+  <div class="wrap reveal">
+    <p class="eyebrow">Kostenloses Online-Webinar</p>
+    <hr class="rule">
+    <h1>Der einfache Einstieg in den Vermögensaufbau.</h1>
+    <p class="lead">Ruhig erklärt, Schritt für Schritt – ohne Fachchinesisch, ohne Versprechen. Kein Vorwissen nötig, nur eine halbe Stunde Zeit.</p>
+    <div class="datecard">
+      <p class="datelabel">Nächstes Webinar</p>
+      <div class="datebig" id="nextDate">Sonntag, 19. Juli</div>
+      <div class="datetime">Live um 11:00 &amp; 20:00 Uhr</div>
+      <!-- TODO: href durch den Brevo-Double-Opt-in-Formular-Link ersetzen -->
+      <a class="cta" href="#" id="anmeldeBtn">Kostenlos anmelden</a>
+    </div>
+  </div>
+</header>
+
+<section class="navy">
+  <div class="wrap reveal">
+    <p class="eyebrow">Der Dranbleib-Rechner</p>
+    <h2>Nicht die Höhe entscheidet, sondern dass du dranbleibst.</h2>
+    <p class="lead">Schau, was allein durchs regelmäßige Beiseitelegen zusammenkommt.</p>
+    <div class="card">
+      <div class="field">
+        <label for="betrag">Monatlicher Betrag <span class="val"><span id="betragVal">50</span> €</span></label>
+        <input type="range" id="betrag" min="10" max="500" step="10" value="50">
+      </div>
+      <div class="field">
+        <label for="jahre">Zeitraum <span class="val"><span id="jahreVal">10</span> Jahre</span></label>
+        <input type="range" id="jahre" min="1" max="40" step="1" value="10">
+      </div>
+      <div class="result">
+        <div class="num" id="summe">6.000 €</div>
+        <div class="cap">So viel legst du in diesem Zeitraum beiseite.</div>
+      </div>
+      <p class="disc">Das ist nur die Summe deiner eigenen Einzahlungen — kein Renditeversprechen und keine Prognose. Wie du aus Regelmäßigkeit langfristig mehr machst, lernst du im kostenlosen Webinar.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap reveal">
+    <p class="eyebrow">Was dich erwartet</p>
+    <h2>Drei Dinge, die dir den Anfang leicht machen.</h2>
+    <ul class="list">
+      <li>Wie du überhaupt anfängst — ohne Vorwissen.</li>
+      <li>Warum Sparen allein nicht genügt.</li>
+      <li>Wie du dranbleibst, auch wenn es mal schwierig wird.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="navy" id="anmelden">
+  <div class="wrap reveal">
+    <p class="eyebrow">Kostenlos anmelden</p>
+    <h2>Sichere dir deinen Platz.</h2>
+    <p class="lead">Nächster Termin: <strong id="nextDate2">Sonntag, 19. Juli</strong>, 11:00 &amp; 20:00 Uhr. Kostenlos und unverbindlich.</p>
+    <div class="btnrow">
+      <!-- TODO: href durch den Brevo-Formular-Link ersetzen -->
+      <a class="cta" href="#" id="anmeldeBtn2">Zum Webinar anmelden</a>
+      <!-- TODO: mailto durch eure Kontakt-E-Mail ersetzen -->
+      <a class="ghost" href="mailto:info@rf-institut.de?subject=Frage%20zum%20Webinar" id="frageBtn">Eine Frage stellen</a>
+    </div>
+    <p class="meta">Anmeldung über ein sicheres Formular (Double-Opt-in). Abmeldung jederzeit möglich.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Keine Anlageberatung, keine Anlagevermittlung, keine Empfehlung konkreter Wertpapiere.</div>
+    <div style="margin-top:8px"><a href="impressum.html">Impressum</a> &middot; <a href="datenschutz.html">Datenschutz</a></div>
+  </div>
+</footer>
+
+<script>
+  // Auto-Datum: nächster Sonntag (am Sonntag selbst bis 20 Uhr = heute), aktualisiert sich von allein.
+  (function(){
+    var monate=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+    var now=new Date();
+    var d=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+    var day=d.getDay(); // 0 = Sonntag
+    var add = (day===0) ? (now.getHours()<20?0:7) : (7-day);
+    d.setDate(d.getDate()+add);
+    var txt='Sonntag, '+d.getDate()+'. '+monate[d.getMonth()];
+    var a=document.getElementById('nextDate'); if(a) a.textContent=txt;
+    var b=document.getElementById('nextDate2'); if(b) b.textContent=txt;
+  })();
+  // Rechner
+  var b=document.getElementById('betrag'), j=document.getElementById('jahre');
+  function fmt(n){return n.toLocaleString('de-DE');}
+  function upd(){
+    document.getElementById('betragVal').textContent=b.value;
+    document.getElementById('jahreVal').textContent=j.value;
+    document.getElementById('summe').textContent=fmt(parseInt(b.value,10)*12*parseInt(j.value,10))+' €';
+  }
+  b.addEventListener('input',upd); j.addEventListener('input',upd); upd();
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
+</script>
+</body>
+</html>
