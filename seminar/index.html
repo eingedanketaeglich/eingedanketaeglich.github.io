@@ -333,6 +333,8 @@ footer .recht{margin-top:var(--s2); font-size:16px}
       <input type="hidden" name="html_type" value="simple">
       <input type="hidden" name="UTM_CAMPAIGN" id="utmCampaign" value="">
       <input type="hidden" name="UTM_CONTENT" id="utmContent" value="">
+      <input type="hidden" name="NOTIFY_AN" value="info@rf-institut.de">
+      <input type="hidden" name="SEMINARFRAGEN" id="seminarfragen" value="" disabled>
 
 
       <!-- SCHRITT 1 — nur das Nötige -->
@@ -589,8 +591,9 @@ footer .recht{margin-top:var(--s2); font-size:16px}
   var PAARE=['p1','p2','p3','p4','p5'];
   var box=document.getElementById('meineFragen'), liste=document.getElementById('fragenListe');
   var zBox=document.getElementById('zustimmungBox'), zChk=document.getElementById('zustimmung'), feld=document.getElementById('ausgangslage');
-  var auswahl='';
-  function feldSetzen(){ feld.value=(zChk.checked?auswahl:''); feld.disabled=!zChk.checked; }   /* ohne Zustimmung wird das Feld gar nicht uebertragen */
+  var auswahl='', fragenText='', fFeld=document.getElementById('seminarfragen');
+  var KURZ={p1a:'Geld gerade knapp',p1b:'finanziell stabil',p2a:'will Struktur und bessere Entscheidungen',p2b:'hat ein bestimmtes Problem, sucht konkrete Hinweise',p3a:'denkt an Zukunft und Altersvorsorge',p3b:'will fuer die naechsten Entscheidungen startklar sein',p4a:'will selbststaendig auf Augenhoehe entscheiden',p4b:'wuenscht sich konkrete Empfehlungen',p5a:'langfristiger Vermoegensaufbau, Investment, Immobilien',p5b:'aktiver Boersenhandel, kuerzerer Horizont'};
+  function feldSetzen(){ feld.value=(zChk.checked?auswahl:''); feld.disabled=!zChk.checked; fFeld.value=(zChk.checked?fragenText:''); fFeld.disabled=!zChk.checked; }   /* ohne Zustimmung wird das Feld gar nicht uebertragen */
   feldSetzen();
   zChk.addEventListener('change',feldSetzen);
   function zeigeFragen(){
@@ -613,7 +616,7 @@ footer .recht{margin-top:var(--s2); font-size:16px}
     else{kopf.textContent='Diese vier Fragen passen zu deiner Auswahl.'; eyebrow.textContent='Danke für deine Angaben';}
     document.getElementById('autoStatus').textContent='';
     /* Auswahl bleibt auf der Seite; ins Formular nur mit Zustimmung */
-    auswahl=keys.join(','); zBox.hidden=(keys.length===0); if(keys.length===0){zChk.checked=false;} feldSetzen();
+    auswahl=keys.map(function(k){return KURZ[k];}).join(' · '); fragenText=texte.map(function(t,i){return (i+1)+') '+t;}).join('  '); zBox.hidden=(keys.length===0); if(keys.length===0){zChk.checked=false;} feldSetzen();
     abfrage.hidden=true; box.hidden=false;
     document.getElementById('mfKopf').focus({preventScroll:true});
     document.getElementById('lage').scrollIntoView({block:'start'});
