@@ -592,7 +592,9 @@ footer .recht{margin-top:var(--s2); font-size:16px}
   var box=document.getElementById('meineFragen'), liste=document.getElementById('fragenListe');
   var zBox=document.getElementById('zustimmungBox'), zChk=document.getElementById('zustimmung'), feld=document.getElementById('ausgangslage');
   var auswahl='', fragenText='', fFeld=document.getElementById('seminarfragen');
-  var KURZ={p1a:'Geld gerade knapp',p1b:'finanziell stabil',p2a:'will Struktur und bessere Entscheidungen',p2b:'hat ein bestimmtes Problem, sucht konkrete Hinweise',p3a:'denkt an Zukunft und Altersvorsorge',p3b:'will fuer die naechsten Entscheidungen startklar sein',p4a:'will selbststaendig auf Augenhoehe entscheiden',p4b:'wuenscht sich konkrete Empfehlungen',p5a:'langfristiger Vermoegensaufbau, Investment, Immobilien',p5b:'aktiver Boersenhandel, kuerzerer Horizont'};
+  /* Brevo-Formularfelder nehmen hoechstens 200 Zeichen an -> kurze Etiketten, hart gekappt */
+  var KURZ={p1a:'Geld knapp',p1b:'stabil',p2a:'will Struktur',p2b:'konkretes Problem',p3a:'Altersvorsorge',p3b:'naechste Entscheidungen',p4a:'selbst entscheiden',p4b:'will Empfehlungen',p5a:'langfristig, Immobilien',p5b:'Boersenhandel'};
+  var FKURZ={p1a:'Basis vor dem Vermoegensaufbau',p1b:'Naechste Schritte bei stabiler Basis',p2a:'Pruefschritte fuer Geldentscheidungen',p2b:'Geldproblem strukturieren',p3a:'Wann Sparen reicht',p3b:'Prueffragen vor grosser Entscheidung',p4a:'Verkaufsabsicht erkennen',p4b:'Empfehlungen selbst pruefen',p5a:'Vermoegensaufbau passend zum Leben',p5b:'Boersenhandel und Risiko','p4a-p5a':'Anlagewege selbst vergleichen','p4a-p5b':'Handel von Anlegen abgrenzen','p4b-p5a':'Empfehlungen zu Anlagen pruefen','p4b-p5b':'Aussagen zum Handel pruefen',std:'Wie anfangen ohne Vorwissen'};
   function feldSetzen(){ feld.value=(zChk.checked?auswahl:''); feld.disabled=!zChk.checked; fFeld.value=(zChk.checked?fragenText:''); fFeld.disabled=!zChk.checked; }   /* ohne Zustimmung wird das Feld gar nicht uebertragen */
   feldSetzen();
   zChk.addEventListener('change',feldSetzen);
@@ -616,7 +618,10 @@ footer .recht{margin-top:var(--s2); font-size:16px}
     else{kopf.textContent='Diese vier Fragen passen zu deiner Auswahl.'; eyebrow.textContent='Danke für deine Angaben';}
     document.getElementById('autoStatus').textContent='';
     /* Auswahl bleibt auf der Seite; ins Formular nur mit Zustimmung */
-    auswahl=keys.map(function(k){return KURZ[k];}).join(' · '); fragenText=texte.map(function(t,i){return (i+1)+') '+t;}).join('  '); zBox.hidden=(keys.length===0); if(keys.length===0){zChk.checked=false;} feldSetzen();
+    auswahl=keys.map(function(k){return KURZ[k];}).join('; ').slice(0,195);
+    var fk=(keys.length===5)?[wahl.p1,wahl.p2,wahl.p3,wahl.p4+'-'+wahl.p5]:keys.slice();
+    var ft=fk.map(function(k){return FKURZ[k];}); ['std','p3a','p5a','p4a'].forEach(function(k){ if(ft.length<4 && ft.indexOf(FKURZ[k])<0) ft.push(FKURZ[k]); });
+    fragenText=ft.map(function(t,i){return (i+1)+'. '+t;}).join(' | ').slice(0,195); zBox.hidden=(keys.length===0); if(keys.length===0){zChk.checked=false;} feldSetzen();
     abfrage.hidden=true; box.hidden=false;
     document.getElementById('mfKopf').focus({preventScroll:true});
     document.getElementById('lage').scrollIntoView({block:'start'});
