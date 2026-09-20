@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fast geschafft — R&amp;F Institut für Vermögensbildung</title>
+<meta name="robots" content="noindex">
+<style>
+@font-face{font-family:"Nunito";font-style:normal;font-weight:400 700;font-display:swap;
+  src:url("schriften/nunito-variable.woff2") format("woff2");}
+:root{--navy:#102444;--gold:#BBA45F;--gold-text:#7A6528;--orange:#FF7A00;--orange-tief:#C25A00;
+  --grund:#FCFAF6;--ink:#1C1917;--ink-2:#6B6259;--linie:#E3DCD1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--grund);color:var(--ink);
+  font-family:"Nunito","Avenir Next","Segoe UI Variable Text",Verdana,sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+  min-height:100vh;display:flex;flex-direction:column}
+.wrap{max-width:600px;margin:0 auto;padding:0 22px;width:100%}
+.brandbar{padding:20px 0;font-size:16px;font-weight:700}
+.brandbar .dot{color:var(--gold-text)}
+main{flex:1;display:flex;align-items:center;padding:40px 0 72px}
+.eyebrow{font-size:16px;font-weight:700;color:var(--gold-text);margin:0 0 var(--s2,12px)}
+h1{font-size:clamp(29px,6vw,42px);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin:0}
+.lead{font-size:19px;color:var(--ink-2);margin:24px 0 0}
+.schritte{margin:36px 0 0;padding:0;list-style:none;counter-reset:s}
+.schritte li{counter-increment:s;display:flex;gap:16px;padding:16px 0;border-top:1px solid var(--linie);font-size:18px;line-height:1.5}
+.schritte li:last-child{border-bottom:1px solid var(--linie)}
+.schritte li::before{content:counter(s);color:var(--gold-text);font-weight:700;min-width:1.5em;font-variant-numeric:tabular-nums}
+.schritte li.jetzt{font-weight:700}
+.schritte li.jetzt::before{color:var(--orange)}
+.hilfe{margin-top:36px;padding:18px 20px;background:#F5F1EA;border-radius:20px;font-size:17px;line-height:1.55}
+.hilfe b{display:block;margin-bottom:4px}
+.klein{font-size:16px;color:var(--ink-2)}
+footer{border-top:1px solid var(--linie);padding:24px 0 48px;font-size:16px;color:var(--ink-2)}
+footer a{color:var(--ink-2)}
+</style>
+</head>
+<body>
+<div class="brandbar"><div class="wrap">R&amp;F <span class="dot">·</span> Institut für Vermögensbildung</div></div>
+
+<main>
+  <div class="wrap">
+    <p class="eyebrow">Fast geschafft</p>
+    <h1>Ein Klick fehlt noch.</h1>
+    <p class="lead">Wir haben dir gerade eine Mail geschickt. Öffne sie und bestätige deine
+      Anmeldung — erst dann ist dein Platz sicher.</p>
+
+    <ol class="schritte">
+      <li>Anmeldung abgeschickt</li>
+      <li class="jetzt">Mail öffnen und auf „Anmeldung bestätigen“ klicken</li>
+      <li>Du bekommst den Zugang zum Seminar</li>
+    </ol>
+
+    <div class="hilfe">
+      <b>Keine Mail bekommen?</b>
+      Schau bitte im Spam-Ordner nach — dort landen Bestätigungsmails manchmal. Die Mail
+      trägt den Absendernamen „R&amp;F-Institut“
+      und trifft normalerweise innerhalb einer Minute ein.
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="impressum.html">Impressum</a> ·
+    <a href="datenschutz.html">Datenschutz</a> ·
+      <a href="teilnahmebedingungen.html">Teilnahmebedingungen</a>
+  </div>
+</footer>
+</body>
+</html>

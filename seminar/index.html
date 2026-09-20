@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kostenloses Seminar: Der mündige Anleger — R&amp;F Institut für Vermögensbildung</title>
+<meta name="description" content="Kostenloses Live-Seminar mit René Flé. 60 Minuten, danach Zeit für deine Fragen. Kostenlos, online, mehrere Termine zur Auswahl.">
+<style>
+/* ===================================================================
+   SCHRIFT — lokal, NICHT von Google laden (DSGVO: keine IP an Dritte)
+   Stufe 1: Die .woff2-Dateien fehlen noch. Sobald sie in ./schriften/
+   liegen, wirkt dieser Block ohne weitere Änderung.
+   Nunito steht unter der SIL Open Font License und darf mitgeliefert
+   werden. Bis dahin greift der gerundete Fallback-Stack.
+   Siehe luecken-und-entscheidungsblatt_v01.md, Punkt 6.
+   =================================================================== */
+@font-face{font-family:"Nunito";font-style:normal;font-weight:400 700;font-display:swap;
+  src:url("schriften/nunito-variable.woff2") format("woff2");}
+
+:root{
+  /* --- CI, gesetzt (DESIGN.md §4) --- */
+  --navy:#102444;
+  --orange:#FF7A00;
+  --gold:#BBA45F;        /* Linien + Text auf Navy: 6,32 auf #102444 */
+  --gold-text:#7A6528;   /* Text auf hellem Grund: 5,42 auf #FCFAF6 — WCAG AA */
+  --creme:#F5F1EA;
+
+  /* --- warme Ableitungen (DESIGN.md W1: jedes Grau trägt Warmstich) --- */
+  --grund:#FCFAF6;        /* warmes Creme statt reinem Weiß */
+  --ink:#1C1917;          /* Espressoschwarz statt kaltem Anthrazit */
+  --ink-2:#6B6259;        /* warmes Grau, Ton 30°, Sättigung 9 % */
+  --linie:#E3DCD1;
+  --navy-2:#1B3157;
+  --on-navy:#F7F4EE;
+  --on-navy-2:#C6C0B4;    /* warm, nicht bläulich */
+  --orange-tief:#C25A00;  /* Bodenkante der Knöpfe */
+
+  /* --- Rundung nach Bedeutung (DESIGN.md §4) --- */
+  --r-klein:6px;
+  --r-knopf:12px;
+  --r-flaeche:20px;
+
+  --wrap:680px;
+  --s1:8px; --s2:12px; --s3:16px; --s4:24px; --s5:32px; --s6:48px; --s7:64px; --s8:88px;
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%; scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+body{
+  margin:0; background:var(--grund); color:var(--ink);
+  font-family:"Nunito","Avenir Next","Segoe UI Variable Text",Verdana,sans-serif;
+  font-size:17px; line-height:1.62; font-weight:400;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wrap); margin:0 auto; padding:0 22px}
+section{padding:var(--s7) 0}
+.navy{background:var(--navy); color:var(--on-navy)}
+.navy .lead,.navy .klein{color:var(--on-navy-2)}
+.navy .eyebrow{color:var(--gold)}   /* auf Navy traegt das helle Gold: 6,32 */
+
+h1,h2{font-weight:700; letter-spacing:-.02em; line-height:1.12; margin:0; color:inherit}
+h1{font-size:clamp(31px,6.4vw,50px); line-height:1.08}
+h2{font-size:clamp(24px,4.4vw,34px)}
+h3{font-size:19px; font-weight:700; margin:0 0 var(--s1); letter-spacing:-.01em}
+p{margin:0}
+
+.eyebrow{font-size:16px; font-weight:700; color:var(--gold-text); margin:0 0 var(--s2); letter-spacing:.01em}
+.lead{font-size:19px; color:var(--ink-2); margin:var(--s4) 0 0; max-width:54ch}
+.klein{font-size:16px; color:var(--ink-2)}   /* nie unter 16 px — DESIGN.md §4 */
+
+/* --- Knopf mit Bodenkante: sinkt beim Drücken 2 px ein --- */
+.cta{
+  display:inline-block; background:var(--orange); color:#1A1000; text-decoration:none;
+  font-family:inherit; font-weight:700; font-size:18px; padding:15px 26px 13px;
+  border:0; border-bottom:4px solid var(--orange-tief); border-radius:var(--r-knopf);
+  cursor:pointer; transition:transform .16s cubic-bezier(.34,1.4,.64,1), border-bottom-width .16s;
+}
+.cta:hover{transform:translateY(-1px)}
+.cta:active{transform:translateY(2px); border-bottom-width:2px; padding-bottom:15px}
+.cta:focus-visible{outline:3px solid var(--navy); outline-offset:3px}
+@media (prefers-reduced-motion:reduce){.cta{transition:none}}
+
+.brandbar{padding:20px 0; font-size:16px; font-weight:700; color:var(--ink)}
+.brandbar .dot{color:var(--gold-text)}
+
+/* --- Hero --- */
+.hero{padding-top:var(--s5); padding-bottom:var(--s7)}
+.hero .cta{margin-top:var(--s5)}
+.termin-zeile{
+  margin-top:var(--s4); font-size:17px; color:var(--ink-2);
+  border-left:3px solid var(--gold); padding-left:14px; line-height:1.5;
+}
+.termin-zeile b{color:var(--ink); font-weight:700}
+
+/* --- Karten: genau eine Rundungsstufe, ein warmer Schatten --- */
+.karte{
+  background:var(--grund); color:var(--ink); border-radius:var(--r-flaeche);
+  padding:26px 24px; margin-top:var(--s5);
+  box-shadow:0 8px 28px rgba(60,40,15,.07);   /* warm getönt, nie schwarz */
+}
+
+/* --- Rechner --- */
+.feld{margin-top:var(--s4)}
+.feld:first-child{margin-top:0}
+.feld label{display:flex; justify-content:space-between; gap:12px; font-size:17px; font-weight:700; margin-bottom:var(--s2)}
+.feld .val{color:var(--navy); font-variant-numeric:tabular-nums}
+input[type=range]{width:100%; accent-color:var(--orange); height:26px}
+.ergebnis{margin-top:var(--s5); padding-top:var(--s4); border-top:1px solid var(--linie)}
+.ergebnis .zahl{font-size:clamp(34px,8vw,48px); font-weight:700; letter-spacing:-.03em; line-height:1.05; color:var(--navy); font-variant-numeric:tabular-nums}
+.ergebnis .cap{font-size:17px; color:var(--ink-2); margin-top:var(--s1)}
+.disc{font-size:16px; color:var(--ink-2); margin-top:var(--s4); line-height:1.55}
+
+/* --- schlichte Liste, KEINE drei gleichen Karten (DESIGN.md A2) --- */
+.liste{margin:var(--s5) 0 0; padding:0; list-style:none; counter-reset:i}
+.liste li{
+  counter-increment:i; display:flex; gap:18px; padding:var(--s4) 0;
+  border-top:1px solid var(--linie); font-size:18px; line-height:1.55;
+}
+.liste li:last-child{border-bottom:1px solid var(--linie)}
+.liste li::before{
+  content:counter(i); color:var(--gold-text); font-weight:700; font-size:17px;
+  font-variant-numeric:tabular-nums; min-width:1.5em; padding-top:2px;
+}
+.navy .liste li{border-color:rgba(247,244,238,.18)}
+.navy .liste li::before{color:var(--gold)}
+
+/* --- Für wen / für wen nicht --- */
+.fuerwen{display:grid; gap:var(--s4); margin-top:var(--s5)}
+@media (min-width:600px){.fuerwen{grid-template-columns:1fr 1fr; gap:var(--s5)}}
+.fuerwen div{border-top:2px solid var(--linie); padding-top:var(--s3)}
+.fuerwen div.ja{border-top-color:var(--orange)}
+
+/* --- Ablauf --- */
+.ablauf{margin:var(--s5) 0 0; padding:0; list-style:none}
+.ablauf li{padding:var(--s3) 0; border-bottom:1px solid var(--linie); display:flex; gap:16px; align-items:baseline; font-size:18px}
+.ablauf li span{color:var(--gold-text); font-weight:700; min-width:5.5em; font-size:16px}
+
+/* --- Formular --- */
+.form label.feldname{display:block; font-size:17px; font-weight:700; margin:var(--s4) 0 var(--s1)}
+.form label.feldname:first-of-type{margin-top:0}
+.form input[type=email],.form input[type=text]{
+  width:100%; font:inherit; font-size:17px; padding:14px 15px;
+  border:1.5px solid #D6CDBE; border-radius:var(--r-knopf); background:#fff; color:var(--ink);
+}
+.form input:focus-visible{outline:3px solid var(--orange); outline-offset:1px; border-color:var(--orange)}
+.termine{display:grid; gap:10px; margin-top:var(--s1)}
+.termin-wahl{
+  display:flex; gap:12px; align-items:flex-start; padding:14px 15px;
+  border:1.5px solid #D6CDBE; border-radius:var(--r-knopf); cursor:pointer; background:#fff;
+  font-size:17px; line-height:1.4;
+}
+.termin-wahl input{margin:3px 0 0; accent-color:var(--orange); width:20px; height:20px; flex:0 0 auto}
+.termin-wahl:hover{border-color:var(--orange)}
+.termin-wahl .wo{display:block; font-size:16px; color:var(--ink-2); margin-top:2px}
+.form .cta{width:100%; text-align:center; margin-top:var(--s5)}
+
+/* --- v06: Wert-Zeile im Hero (Hormozi: Aufwand und Risiko sichtbar klein) --- */
+.fakten{display:flex; flex-wrap:wrap; gap:6px 18px; margin:var(--s4) 0 0; padding:0; list-style:none; font-size:17px; font-weight:700; color:var(--ink)}
+.fakten li::before{content:"·"; color:var(--gold-text); margin-right:8px}
+.fakten li:first-child::before{content:""; margin:0}
+/* --- v06: Zwei-Schritt-Anmeldung (Brunson) --- */
+.schritt-kopf{font-size:16px; font-weight:700; color:var(--gold-text); margin:0 0 var(--s3)}
+.chips{display:grid; gap:10px; margin-top:var(--s3)}
+.chip{display:flex; gap:12px; align-items:flex-start; padding:14px 15px; border:1.5px solid #D6CDBE; border-radius:var(--r-knopf); background:#fff; cursor:pointer; font-size:17px; line-height:1.4}
+.chip input{margin:3px 0 0; accent-color:var(--orange); width:20px; height:20px; flex:0 0 auto}
+.chip:hover{border-color:var(--orange)}
+.chip:has(input:checked),.termin-wahl:has(input:checked){border-color:var(--orange); background:#FFF8F0}
+.ueberspringen{display:block; width:100%; margin-top:var(--s3); background:none; border:0; font:inherit; font-size:16px; color:var(--ink-2); text-decoration:underline; cursor:pointer; padding:10px}
+.ueberspringen:focus-visible{outline:3px solid var(--navy); outline-offset:2px}
+#fertig[hidden]{display:none}
+.zusatz summary{font-size:17px; font-weight:700; cursor:pointer; padding:14px 15px; border:1.5px solid #D6CDBE; border-radius:var(--r-knopf); background:#fff}
+.zusatz summary:focus-visible{outline:3px solid var(--navy); outline-offset:2px}
+
+/* --- v06b: Ausgangslage — fünf Entweder-oder-Paare --- */
+.paare{display:grid; gap:var(--s4); margin-top:var(--s5)}
+.paar{border:0; padding:0; margin:0; display:grid; gap:8px}
+.paar legend{font-size:16px; font-weight:700; color:var(--gold-text); padding:0; margin-bottom:8px}
+@media (min-width:600px){.paar{grid-template-columns:1fr 1fr} .paar legend{grid-column:1/-1}}
+.paar .chip{height:100%}
+#meineFragen[hidden],#abfrage[hidden],#weiterFragen[hidden],#hinweisEmpf[hidden],#zustimmungBox[hidden],.termin-wahl[hidden]{display:none}
+.allgemein{background:none; border:0; font:inherit; font-size:16px; color:var(--ink-2); text-decoration:underline; cursor:pointer; padding:10px 0; margin-top:var(--s3)}
+.allgemein:focus-visible{outline:3px solid var(--navy); outline-offset:2px}
+
+/* --- Mockup-Markierung: in Stufe 1 sichtbar, vor dem Livegang raus --- */
+.mockup{
+  border:2px dashed #C25A00; border-radius:var(--r-klein); padding:14px 15px;
+  margin-top:var(--s4); background:#FFF6EC; font-size:16px; line-height:1.5; color:#5C3410;
+}
+.mockup b{display:block; margin-bottom:6px; font-size:16px; letter-spacing:.04em; text-transform:uppercase}
+
+/* --- FAQ --- */
+.faq{margin-top:var(--s5)}
+.faq details{border-top:1px solid var(--linie); padding:var(--s3) 0}
+.faq details:last-of-type{border-bottom:1px solid var(--linie)}
+.faq summary{font-size:18px; font-weight:700; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:16px; align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+"; color:var(--gold-text); font-size:24px; font-weight:700; line-height:1; flex:0 0 auto}
+.faq details[open] summary::after{content:"–"}
+.faq p{margin-top:var(--s2); color:var(--ink-2); font-size:17px}
+
+/* --- Videoblock --- */
+.videoblock{margin-top:var(--s5)}
+.videorahmen{
+  position:relative; border-radius:var(--r-flaeche); overflow:hidden;
+  background:#0C1B33; width:100%; aspect-ratio:16/9;
+  display:flex; align-items:center; justify-content:center;
+}
+/* min-height NICHT zusammen mit aspect-ratio: der Browser leitet sonst die Breite
+   aus der Hoehe ab (210 x 16/9 = 373px) und sprengt das Raster. */
+@supports not (aspect-ratio: 16/9){ .videorahmen{height:0; padding-bottom:56.25%} }
+.videorahmen video{width:100%; height:100%; object-fit:cover; display:block}
+.video-platzhalter{
+  text-align:center; padding:26px 20px; color:var(--on-navy);
+  border:2px dashed var(--gold); border-radius:var(--r-flaeche);
+  width:100%; min-height:100%; max-width:100%;
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+}
+.video-platzhalter .marke{font-size:16px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--gold)}
+.video-platzhalter .was{font-size:18px; font-weight:700; line-height:1.35; max-width:30ch}
+.video-platzhalter .wie{font-size:16px; color:var(--on-navy-2); max-width:38ch; line-height:1.5}
+.videountertitel{font-size:16px; color:var(--ink-2); margin-top:var(--s2)}
+.navy .videountertitel{color:var(--on-navy-2)}
+
+/* --- Über René: das menschliche Element (DESIGN.md W8) --- */
+.stimme{
+  margin-top:var(--s5); padding-left:18px; border-left:3px solid var(--gold);
+  font-size:19px; line-height:1.6; color:var(--ink);
+}
+.navy .stimme, .navy .stimme p{color:var(--on-navy)}   /* auf Navy: helle Schrift */
+.stimme .wer{display:block; margin-top:var(--s3); font-size:16px; color:var(--ink-2); font-weight:700}
+.navy .stimme .wer{color:var(--on-navy-2)}   /* auf Navy: warmes Hellgrau statt dunklem */
+
+footer{background:var(--creme); color:var(--ink-2); font-size:16px; line-height:1.7; padding:var(--s6) 0 var(--s7); border-top:1px solid var(--linie)}
+footer a{color:var(--ink-2)}
+footer .recht{margin-top:var(--s2); font-size:16px}
+</style>
+</head>
+<body>
+
+<div class="brandbar"><div class="wrap">R&amp;F <span class="dot">·</span> Institut für Vermögensbildung</div></div>
+
+<!-- 1 — HERO -->
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Kostenloses Live-Seminar</p>
+    <h1>Geldentscheidungen, die du selbst verstehst.</h1>
+    <p class="lead">Ein Live-Seminar über den Einstieg in den Vermögensaufbau — ruhig erklärt, ohne
+      Fachchinesisch, ohne Verkaufsdruck. Du brauchst kein Vorwissen. Nur 60 Minuten Zeit — wer mag, bleibt danach zur Fragerunde.</p>
+    <ul class="fakten">
+      <li>0 €</li><li>60 Minuten</li><li>live und online</li><li>kein Vorwissen</li><li>kein Anruf danach</li>
+    </ul>
+    <a class="cta" href="#lage">Meine Ausgangslage angeben</a>
+    <p class="termin-zeile">
+      <b>Nächster Termin: <span data-termin="naechster">Sonntag, 20. September, 20:00 Uhr</span></b> (deutsche Zeit)<br>
+      Live mit René Flé · danach Zeit für deine Fragen · weitere Termine zur Auswahl
+    </p>
+  </div>
+</header>
+
+<!-- 1b — AUSGANGSLAGE zuerst (Ablauf aus dem Gespräch vom 19./20.09.): Abfrage -> Danke + vier Fragen -> Termin -->
+<section id="lage" style="padding-top:0">
+  <div class="wrap">
+    <div id="abfrage">
+    <p class="eyebrow">Zuerst: deine Ausgangslage</p>
+    <h2 tabindex="-1" id="abKopf">Was trifft am ehesten auf deine aktuelle Situation zu?</h2>
+    <p class="lead">Wähle in jeder der fünf Zeilen die Aussage, die eher zu dir passt. Danach
+      siehst du vier Seminarfragen dazu. Nach der fünften Antwort geht es von selbst
+      weiter — zurück kommst du jederzeit.</p>
+    <p class="disc">Freiwillig. Die Auswahl bleibt zunächst nur auf dieser Seite. Mitgeschickt
+      wird sie erst, wenn du bei der Anmeldung ausdrücklich zustimmst — dann verknüpfen wir sie
+      mit deiner E-Mail-Adresse und geben sie zur Vorbereitung an René Flé weiter.</p>
+
+
+    <div class="paare" id="paare">
+      <fieldset class="paar">
+        <legend>Deine Lage</legend>
+        <label class="chip"><input type="radio" name="p1" value="a" id="p1a"><span>Bei mir ist das Geld gerade knapp.</span></label>
+        <label class="chip"><input type="radio" name="p1" value="b" id="p1b"><span>Ich stehe finanziell stabil da.</span></label>
+      </fieldset>
+      <fieldset class="paar">
+        <legend>Was du suchst</legend>
+        <label class="chip"><input type="radio" name="p2" value="a" id="p2a"><span>Ich will bessere Geldentscheidungen treffen und Struktur reinbringen.</span></label>
+        <label class="chip"><input type="radio" name="p2" value="b" id="p2b"><span>Ich habe ein bestimmtes Problem und suche dafür konkrete Hinweise.</span></label>
+      </fieldset>
+      <fieldset class="paar">
+        <legend>Dein Zeithorizont</legend>
+        <label class="chip"><input type="radio" name="p3" value="a" id="p3a"><span>Ich denke an später — Zukunft und Altersvorsorge.</span></label>
+        <label class="chip"><input type="radio" name="p3" value="b" id="p3b"><span>Ich will für die nächsten anstehenden Entscheidungen startklar sein.</span></label>
+      </fieldset>
+      <fieldset class="paar">
+        <legend>Wie du entscheiden willst</legend>
+        <label class="chip"><input type="radio" name="p4" value="a" id="p4a"><span>Ich will selbstständiger und auf Augenhöhe entscheiden.</span></label>
+        <label class="chip"><input type="radio" name="p4" value="b" id="p4b"><span>Ich wünsche mir konkrete Empfehlungen für Kauf, Depot oder Investment.</span></label>
+      </fieldset>
+      <fieldset class="paar">
+        <legend>Was dich interessiert</legend>
+        <label class="chip"><input type="radio" name="p5" value="a" id="p5a"><span>Langfristiger Vermögensaufbau, Investment oder Immobilien.</span></label>
+        <label class="chip"><input type="radio" name="p5" value="b" id="p5b"><span>Aktiver Börsenhandel mit kürzerem Zeithorizont.</span></label>
+      </fieldset>
+    </div>
+    <p class="disc" id="autoStatus" aria-live="polite" style="min-height:1.6em"></p>
+    <button class="cta" type="button" id="weiterFragen" style="margin-top:var(--s5)" hidden>Meine vier Fragen anzeigen</button>
+    <button class="allgemein" type="button" id="allgemein">Lieber ohne Auswahl weiter</button>
+    </div>
+
+    <div id="meineFragen" hidden>
+      <p class="eyebrow">Danke für deine Angaben</p>
+      <h2 tabindex="-1" id="mfKopf">Diese vier Fragen passen zu deiner Auswahl.</h2>
+      <p class="lead" id="mfLead">Im Seminar bekommst du dazu eine verständliche, allgemeine Orientierung:</p>
+      <ul class="liste" id="fragenListe"></ul>
+      <p class="disc" id="hinweisEmpf" hidden style="margin-top:var(--s5); color:var(--ink)"><b>Ehrlich vorab:</b>
+        Du hast dir konkrete Empfehlungen gewünscht. Die gibt es im Seminar nicht — du lernst,
+        Empfehlungen selbst zu prüfen. Wenn dir das reicht, bist du richtig.</p>
+      <p class="disc" style="margin-top:var(--s4)">Das Seminar vermittelt Bildung. Konkrete Kauf-
+        oder Produktempfehlungen gibt es nicht — du lernst, selbst zu entscheiden.</p>
+      <a class="cta" href="#anmelden" style="margin-top:var(--s5)">Jetzt Termin aussuchen</a>
+      <button class="allgemein" type="button" id="zurueck" style="display:block">Auswahl ändern</button>
+    </div>
+  </div>
+</section>
+
+<!-- 2 — ANMELDUNG (v06: direkt unter dem Hero, zwei Schritte) -->
+<section id="anmelden" style="padding-top:0">
+  <div class="wrap">
+    <p class="eyebrow">Kostenlos anmelden</p>
+    <h2>Such dir deinen Termin aus.</h2>
+    <!-- Brevo-Formular "Seminar-Anmeldung" (angelegt 20.09.2026). Feldnamen = Brevo-Attribute. Kein Schluessel im Code. -->
+    <form class="karte form" id="anmeldeform" action="https://ce6de19f.sibforms.com/serve/MUIFAMnYwgX8B7QJbWkcZqR9wZghsSwZAFJBTDnwoBiN2RZ7ic6Gwg_YYStKtCH7q4LBnGak6L5tha9CGstsqtCyBcBFkULtI6VJarGxvmtTnYPhTmrzGsV_0jkCxw9-Pb1MlMh1BOJ7wdq2NODgyhB3U36OJtydASOAQX8VOzmqfxT_hzhBglpF0trT6Qh_qZ2xminirVUvdyZVrg==" method="POST">
+      <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <input type="hidden" name="locale" value="de">
+      <input type="hidden" name="html_type" value="simple">
+      <input type="hidden" name="UTM_CAMPAIGN" id="utmCampaign" value="">
+      <input type="hidden" name="UTM_CONTENT" id="utmContent" value="">
+
+
+      <!-- SCHRITT 1 — nur das Nötige -->
+      <div id="schritt1">
+        
+        <fieldset style="border:0;padding:0;margin:0">
+        <legend class="feldname" style="font-size:17px;font-weight:700;padding:0;margin-bottom:var(--s1)">Welcher Termin passt dir? <span style="font-weight:400;color:var(--ink-2)">(deutsche Zeit)</span></legend>
+        <div class="termine">
+          <!-- TERMINE: Simons Liste vom 20.09.2026. Hier und im Hero/Schlussblock
+               (data-termin="naechster") pflegen. -->
+          <label class="termin-wahl">
+            <input type="radio" name="TERMIN" value="So 20.09. 20:00" data-zeit="2026-09-20T20:00:00+02:00" checked>
+            <span><b>Sonntag, 20. September · 20:00 Uhr</b><span class="wo">abends</span></span>
+          </label>
+          <label class="termin-wahl">
+            <input type="radio" name="TERMIN" value="Di 22.09. 18:30" data-zeit="2026-09-22T18:30:00+02:00">
+            <span><b>Dienstag, 22. September · 18:30 Uhr</b><span class="wo">abends</span></span>
+          </label>
+          <label class="termin-wahl">
+            <input type="radio" name="TERMIN" value="Sa 26.09. 10:00" data-zeit="2026-09-26T10:00:00+02:00">
+            <span><b>Samstag, 26. September · 10:00 Uhr</b><span class="wo">vormittags</span></span>
+          </label>
+          <label class="termin-wahl">
+            <input type="radio" name="TERMIN" value="So 27.09. 19:00" data-zeit="2026-09-27T19:00:00+02:00">
+            <span><b>Sonntag, 27. September · 19:00 Uhr</b><span class="wo">abends</span></span>
+          </label>
+          <label class="termin-wahl">
+            <input type="radio" name="TERMIN" value="warteliste">
+            <span><b>Keiner passt — schick mir neue Termine</b><span class="wo">du kommst auf die Warteliste</span></span>
+          </label>
+        </div>
+        </fieldset>
+
+        <label class="feldname" for="email">E-Mail-Adresse</label>
+        <input type="email" id="email" name="EMAIL" placeholder="deine@mail.de" autocomplete="email" required>
+
+        <label class="feldname" for="vorname">Vorname <span style="font-weight:400;color:var(--ink-2)">— freiwillig</span></label>
+        <input type="text" id="vorname" name="VORNAME" placeholder="damit wir dich ansprechen können" autocomplete="given-name">
+
+        <input type="hidden" name="AUSGANGSLAGE" id="ausgangslage" value="">
+        <details class="zusatz" style="margin-top:var(--s4)">
+          <summary>Freiwillig: zwei Angaben, damit René sich vorbereiten kann</summary>
+          <p class="klein" style="margin-top:var(--s2)">René sieht vor dem Termin, was die Runde
+            beschäftigt, und setzt danach seine Schwerpunkte. Beide Angaben verknüpfen wir mit
+            deiner E-Mail-Adresse und geben sie an René Flé weiter.</p>
+        <p class="feldname" style="font-size:17px;font-weight:700;margin:var(--s4) 0 0" id="standTitel">Wo stehst du beim Anlegen?</p>
+          <div class="chips" role="radiogroup" aria-labelledby="standTitel">
+            <label class="chip"><input type="radio" name="STAND" value="faengt bei null an"><span>Ich fange bei null an.</span></label>
+            <label class="chip"><input type="radio" name="STAND" value="spart, legt nicht an"><span>Ich spare, lege aber noch nichts an.</span></label>
+            <label class="chip"><input type="radio" name="STAND" value="legt schon an"><span>Ich lege schon an — zum Beispiel ETF, Aktien oder Immobilien.</span></label>
+          </div>
+
+          <label class="feldname" for="frage" style="margin-top:var(--s5)">Welches allgemeine Thema soll René im Seminar einordnen? <span style="font-weight:400;color:var(--ink-2)">— freiwillig</span></label>
+          <input type="text" id="frage" name="FRAGE" maxlength="200" placeholder="in deinen Worten" aria-describedby="frageHinweis">
+          <p class="klein" id="frageHinweis" style="margin-top:var(--s1)">Bitte keine Kontodaten, Depotwerte oder andere vertrauliche Angaben.</p>
+
+        </details>
+
+        <div id="zustimmungBox" hidden style="margin-top:var(--s4)">
+          <label class="chip"><input type="checkbox" id="zustimmung">
+            <span>Meine Auswahl zur Ausgangslage mitschicken — freiwillig. Sie wird mit meiner
+              E-Mail-Adresse verknüpft und zur Vorbereitung an René Flé weitergegeben.</span></label>
+        </div>
+
+
+        <button class="cta" type="submit" id="weiter">Kostenlos anmelden</button>
+        <p class="disc">Du bekommst eine Mail mit einem Bestätigungslink. Erst mit dem Klick
+          darauf ist deine Anmeldung fertig. <span id="zweckText">Wir verwenden deine E-Mail für Bestätigung, Zugang
+          und Erinnerung zu diesem Seminar.</span> Mehr dazu in der
+          <a href="datenschutz.html" style="color:inherit">Datenschutzerklärung</a>.</p>
+      </div>
+
+    </form>
+  </div>
+</section>
+
+<!-- VIDEO: am 20.09.2026 auf Simons Wunsch entfernt, kommt nachtraeglich. Vorlage: index_v06_entwurf.html -->
+
+<!-- SIGNATURE-ELEMENT: Dranbleib-Rechner -->
+<section class="navy">
+  <div class="wrap">
+    <p class="eyebrow">Der Dranbleib-Rechner</p>
+    <h2>Nicht die Höhe entscheidet. Sondern dass du dranbleibst.</h2>
+    <p class="lead">Schieb einmal und schau, was allein durchs regelmäßige Beiseitelegen zusammenkommt.</p>
+    <div class="karte" style="box-shadow:none; background:#F7F4EE">
+      <div class="feld">
+        <label for="betrag">Monatlich <span class="val"><span id="betragVal">50</span> €</span></label>
+        <input type="range" id="betrag" min="10" max="500" step="10" value="50">
+      </div>
+      <div class="feld">
+        <label for="jahre">Über <span class="val"><span id="jahreVal">10</span> Jahre</span></label>
+        <input type="range" id="jahre" min="1" max="40" step="1" value="10">
+      </div>
+      <div class="ergebnis">
+        <div class="zahl" id="summe">6.000 €</div>
+        <div class="cap">So viel legst du in dieser Zeit beiseite.</div>
+      </div>
+      <p class="disc">Das ist die Summe deiner eigenen Einzahlungen — <b>kein Renditeversprechen
+        und keine Prognose.</b> Was daraus über die Zeit werden kann und was dabei zu beachten
+        ist, besprechen wir im Seminar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 4 — ABLAUF -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Der Ablauf</p>
+    <h2>Eine Stunde, dann deine Fragen.</h2>
+    <ul class="ablauf">
+      <li><span>Live</span> Mit René Flé über Microsoft Teams — keine Aufzeichnung.</li>
+      <li><span>60 Minuten</span> Das Seminar. Du musst nichts vorbereiten und nichts mitbringen.</li>
+      <li><span>Danach</span> Fragerunde — freiwillig. Wer nur die 60 Minuten hat, verpasst vom Seminar nichts.</li>
+      <li><span>Kostenlos</span> 0 €, keine Kaufpflicht, keine Kündigung nötig.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 5 — FÜR WEN / FÜR WEN NICHT -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Ehrlich vorab</p>
+    <h2>Für wen das hier gedacht ist.</h2>
+    <div class="fuerwen">
+      <div class="ja">
+        <h3>Für dich, wenn …</h3>
+        <p class="klein">… du deine Geldentscheidungen selbst verstehen willst, statt sie
+          jemandem zu überlassen. Auch — und gerade — wenn du bei null anfängst.</p>
+      </div>
+      <div>
+        <h3>Nichts für dich, wenn …</h3>
+        <p class="klein">… du fertige Kauftipps suchst oder erwartest, dass dir jemand sagt,
+          welches Produkt du nehmen sollst. Das tun wir nicht.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 — ÜBER RENÉ (menschliches Element, W8) -->
+<section class="navy">
+  <div class="wrap">
+    <p class="eyebrow">Wer das Seminar hält</p>
+    <h2>René Flé, R&amp;F Institut für Vermögensbildung.</h2>
+    <div class="stimme">
+      <p>„Als ich anfing, mich um mein Geld zu kümmern, war jede Frage eine Frage an einen
+        Bankberater. Ich habe gemacht, was empfohlen wurde — und nie verstanden, warum.</p>
+      <p style="margin-top:14px">Heute weiß ich: Es geht nicht darum, das richtige Produkt
+        zu finden. Es geht darum, zu verstehen, wie Geldanlage in das eigene Leben passt.
+        Genau darum geht es in diesem Seminar — und genau deshalb bekommst du von mir keine
+        Kauftipps, sondern Werkzeug zum Selberdenken.“</p>
+      <span class="wer">René Flé · R&amp;F Institut für Vermögensbildung</span>
+    </div>
+    <p class="lead">Keine Anlageberatung, keine Produktempfehlung. Das Seminar vermittelt
+      Bildung — die Entscheidung über dein Geld bleibt bei dir.</p>
+  </div>
+</section>
+
+<!-- 7 — FAQ -->
+<section>
+  <div class="wrap">
+    <p class="eyebrow">Häufige Fragen</p>
+    <h2>Was du vorher wissen willst.</h2>
+    <div class="faq">
+      <details>
+        <summary>Kostet das wirklich nichts?</summary>
+        <p>Ja — 0 €. Keine Kaufpflicht, kein Abo, nichts, was du hinterher kündigen musst.</p>
+      </details>
+      <details>
+        <summary>Gibt es eine Aufzeichnung?</summary>
+        <p>Nein. Das Seminar findet nur live statt. Such dir deshalb den Termin aus, an dem
+          du wirklich Zeit hast — und falls doch etwas dazwischenkommt, kannst du auf einen
+          der anderen Termine wechseln.</p>
+      </details>
+      <details>
+        <summary>Was brauche ich technisch?</summary>
+        <p>Ein Handy, Tablet oder Rechner mit Internet. Das Seminar läuft über Microsoft Teams;
+          je nach Gerät kann die Teams-App nötig sein. Den Zugangslink schicken wir dir per Mail, nachdem du deine Anmeldung bestätigt hast.</p>
+      </details>
+      <details>
+        <summary>Bekomme ich eine persönliche Empfehlung?</summary>
+        <p>Nein. Das Seminar beantwortet allgemeine Bildungsfragen. Persönliche Depot-, Kauf-
+          oder Produktempfehlungen gibt es nicht — auch nicht in der Fragerunde.</p>
+      </details>
+      <details>
+        <summary>Muss ich etwas vorbereiten?</summary>
+        <p>Nein. Kein Vorwissen, keine Unterlagen, keine Zahlen. Komm einfach dazu.</p>
+      </details>
+      <details>
+        <summary>Werde ich danach angerufen?</summary>
+        <p>Nein. Wir fragen keine Telefonnummer ab und rufen niemanden an. Du bekommst die
+          Mails zum Seminar — mehr nicht.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 8 — ZWEITER ANMELDE-KNOPF -->
+<section class="navy">
+  <div class="wrap" style="text-align:left">
+    <h2>Such dir den Termin aus, der dir passt.</h2>
+    <p class="lead">Nächster Termin: <span data-termin="naechster">Sonntag, 20. September, 20:00 Uhr</span> —
+      live mit René. Passt er nicht, such dir einen anderen aus.</p>
+    <a class="cta" href="#lage" style="margin-top:var(--s5)">Meine Ausgangslage angeben</a>
+  </div>
+</section>
+
+<!-- 9 — FOOTER -->
+<footer>
+  <div class="wrap">
+    <div>
+      R&amp;F · Institut für Vermögensbildung ·
+      <a href="impressum.html">Impressum</a> ·
+      <a href="datenschutz.html">Datenschutz</a> ·
+      <a href="teilnahmebedingungen.html">Teilnahmebedingungen</a>
+    </div>
+    <div class="recht">Keine Anlageberatung, keine Anlagevermittlung, keine Empfehlung
+      konkreter Wertpapiere. Das Seminar dient der Bildung.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('betrag'), j=document.getElementById('jahre');
+  function fmt(n){return n.toLocaleString('de-DE');}
+  function upd(){
+    document.getElementById('betragVal').textContent=b.value;
+    document.getElementById('jahreVal').textContent=j.value;
+    document.getElementById('summe').textContent=fmt(parseInt(b.value,10)*12*parseInt(j.value,10))+' €';
+  }
+  /* --- Ausgangslage -> vier passende Fragen ---
+     Je Paar und Seite genau eine Frage. Mehr als vier Antworten: gekuerzt nach PRIO.
+     Weniger als vier: aufgefuellt aus STANDARD. Anzeige immer in Paar-Reihenfolge. */
+  var FRAGEN={
+    p1a:'Welche finanzielle Basis solltest du klären, bevor du mit dem Vermögensaufbau beginnst?',
+    p1b:'Welche nächsten Schritte kannst du prüfen, wenn deine finanzielle Basis steht?',
+    p2a:'Mit welchen Prüfschritten kannst du Geldentscheidungen strukturieren?',
+    p2b:'Wie strukturierst du ein Geldproblem — und woran erkennst du, wann fachliche Hilfe sinnvoll ist?',
+    p3a:'Wann genügt Sparen für ein Ziel, und wann kommen langfristige Anlageformen grundsätzlich infrage?',
+    p3b:'Welche Prüffragen helfen dir vor einer größeren Geldentscheidung?',
+    p4a:'Woran erkennst du, ob dir jemand etwas verkaufen will?',
+    p4b:'Wie prüfst du eine Kauf- oder Anlageempfehlung selbst, bevor du ihr folgst?',
+    p5a:'Wie passt langfristiger Vermögensaufbau in dein Leben — statt umgekehrt?',
+    p5b:'Was unterscheidet aktiven Börsenhandel vom langfristigen Anlegen — und was heißt das für dein Risiko?'
+  };
+  /* Alle fuenf beantwortet: Frage 4 verbindet Paar 4 und 5 — so wirkt JEDE Antwort
+     auf die Anzeige (Befund Codex 20.09.: vorher fiel Paar 1 immer heraus). */
+  var KOMBI={
+    'p4a-p5a':'Wie vergleichst du langfristige Anlagewege selbst und entscheidest auf Augenhöhe?',
+    'p4a-p5b':'Wie grenzt du kurzfristigen Handel von langfristigem Anlegen ab und ordnest die Risiken selbst ein?',
+    'p4b-p5a':'Wie prüfst du Empfehlungen zu langfristigen Anlagen? Ein Produkt nennen wir dir nicht.',
+    'p4b-p5b':'Wie prüfst du Aussagen zum aktiven Handel, und woran erkennst du die Risiken?'
+  };
+  var STANDARD=['Wie fängst du überhaupt an — auch wenn du bisher nichts damit zu tun hattest?',FRAGEN.p3a,FRAGEN.p5a,FRAGEN.p4a];
+  var PAARE=['p1','p2','p3','p4','p5'];
+  var box=document.getElementById('meineFragen'), liste=document.getElementById('fragenListe');
+  var zBox=document.getElementById('zustimmungBox'), zChk=document.getElementById('zustimmung'), feld=document.getElementById('ausgangslage');
+  var auswahl='';
+  function feldSetzen(){ feld.value=(zChk.checked?auswahl:''); feld.disabled=!zChk.checked; }   /* ohne Zustimmung wird das Feld gar nicht uebertragen */
+  feldSetzen();
+  zChk.addEventListener('change',feldSetzen);
+  function zeigeFragen(){
+    var wahl={}, keys=[];
+    PAARE.forEach(function(n){
+      var r=document.querySelector('input[name='+n+']:checked'); if(r){wahl[n]=n+r.value; keys.push(n+r.value);}
+    });
+    var texte;
+    if(keys.length===5){
+      texte=[FRAGEN[wahl.p1],FRAGEN[wahl.p2],FRAGEN[wahl.p3],KOMBI[wahl.p4+'-'+wahl.p5]];
+    }else{
+      texte=keys.map(function(k){return FRAGEN[k];});
+      STANDARD.forEach(function(t){ if(texte.length<4 && texte.indexOf(t)<0) texte.push(t); });
+    }
+    liste.innerHTML=''; texte.forEach(function(t){var li=document.createElement('li'); li.textContent=t; liste.appendChild(li);});
+    document.getElementById('hinweisEmpf').hidden=(wahl.p4!=='p4b');
+    var kopf=document.getElementById('mfKopf'), eyebrow=box.querySelector('.eyebrow');
+    if(keys.length===0){kopf.textContent='Diese vier allgemeinen Fragen erwarten dich im Seminar.'; eyebrow.textContent='Was dich erwartet';}
+    else if(keys.length<5){kopf.textContent='Diese Fragen passen zu deiner Auswahl — ergänzt um allgemeine.'; eyebrow.textContent='Danke für deine Angaben';}
+    else{kopf.textContent='Diese vier Fragen passen zu deiner Auswahl.'; eyebrow.textContent='Danke für deine Angaben';}
+    document.getElementById('autoStatus').textContent='';
+    /* Auswahl bleibt auf der Seite; ins Formular nur mit Zustimmung */
+    auswahl=keys.join(','); zBox.hidden=(keys.length===0); if(keys.length===0){zChk.checked=false;} feldSetzen();
+    abfrage.hidden=true; box.hidden=false;
+    document.getElementById('mfKopf').focus({preventScroll:true});
+    document.getElementById('lage').scrollIntoView({block:'start'});
+  }
+  var abfrage=document.getElementById('abfrage'), weiterF=document.getElementById('weiterFragen'), timer=null;
+  document.getElementById('paare').addEventListener('change',function(){
+    var n=document.querySelectorAll('#paare input:checked').length;
+    weiterF.hidden=(n===0 || n===5);   /* bei fuenf greift die Automatik — Knopf nicht aufblitzen lassen */
+    clearTimeout(timer);
+    /* automatisch weiter (Vorgabe Auftraggeber) — im Text angekuendigt, 1,5 s Pause mit Statuszeile */
+    zChk.checked=false; feldSetzen();   /* geaenderte Auswahl: Zustimmung neu einholen */
+    var st=document.getElementById('autoStatus');
+    if(n===5){st.textContent='Alle fünf beantwortet — es geht gleich weiter.'; timer=setTimeout(zeigeFragen,1500);} else {st.textContent='';}
+  });
+  weiterF.addEventListener('click',function(){clearTimeout(timer); zeigeFragen();});
+  document.getElementById('allgemein').addEventListener('click',function(){
+    clearTimeout(timer);
+    document.querySelectorAll('#paare input[type=radio]').forEach(function(r){r.checked=false;});   /* ohne Auswahl heisst: nichts behalten */
+    weiterF.hidden=true; zChk.checked=false; zeigeFragen();
+  });
+  document.getElementById('zurueck').addEventListener('click',function(){
+    box.hidden=true; abfrage.hidden=false; document.getElementById('abKopf').focus({preventScroll:true});
+    document.getElementById('lage').scrollIntoView({block:'start'});
+  });
+
+  /* --- Termine: Abgelaufenes ausblenden, "naechster Termin" aus den Daten ableiten --- */
+  (function(){
+    var jetzt=Date.now(), erster=null;
+    document.querySelectorAll('input[name=TERMIN][data-zeit]').forEach(function(r){
+      var vorbei=new Date(r.getAttribute('data-zeit')).getTime()<=jetzt;
+      r.closest('.termin-wahl').hidden=vorbei; r.disabled=vorbei;
+      if(!vorbei && !erster){erster=r;}
+    });
+    var ziel=erster||document.querySelector('input[name=TERMIN][value=warteliste]');
+    ziel.checked=true;
+    var txt=erster?erster.closest('.termin-wahl').querySelector('b').textContent.replace(' · ',', '):'in Kürze — trag dich auf die Warteliste ein';
+    document.querySelectorAll('[data-termin=naechster]').forEach(function(e){e.textContent=txt;});
+  })();
+  var knopf=document.getElementById('weiter');
+  document.querySelectorAll('input[name=TERMIN]').forEach(function(r){r.addEventListener('change',knopfText);});
+  function knopfText(){
+    var w=document.querySelector('input[name=TERMIN]:checked');
+    var wl=(w && w.value==='warteliste');
+    knopf.textContent=wl?'Über neue Termine informieren':'Kostenlos anmelden';
+    document.getElementById('zweckText').textContent=wl?'Wir speichern deine E-Mail, um dich über neue Seminartermine zu informieren — bis du dich abmeldest.':'Wir verwenden deine E-Mail für Bestätigung, Zugang und Erinnerung zu diesem Seminar.';
+  }
+  knopfText();
+
+    /* Herkunft aus der Adresse in die verdeckten Felder */
+  (function(){var q=new URLSearchParams(location.search);
+    document.getElementById('utmCampaign').value=(q.get('utm_campaign')||'').slice(0,80);
+    document.getElementById('utmContent').value=(q.get('utm_content')||'').slice(0,80);})();
+  /* Absenden geht direkt an Brevo (Double-Opt-in). Der Browser prueft die E-Mail selbst. */
+  b.addEventListener('input',upd); j.addEventListener('input',upd); upd();
+})();
+</script>
+</body>
+</html>
