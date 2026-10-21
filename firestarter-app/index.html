@@ -1,7 +1,7 @@
 <!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="robots" content="noindex"><style>html{color-scheme:light}body{margin:0}</style></head><body><title>Firestarter App Handy</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Stand 7 (21.10.2026): Start S2 (Flamme spricht, Wochenbogen, drei Weg-Kästen), Weg als Wisch-Seiten mit gespeichertem Stand, Bibliothek als Suche mit Themen und Treffern je Lektion, Lesemodus, Ich ohne Kästen, Funke-Videos, Glas-Leiste. Fortschritt wird im Gerät gespeichert. Alle Formen direkt gezeichnet. */
+/* Stand 7b (21.10.2026): Bibliothek wörtlich wie B2 (Suche, Zuletzt gesehen, Alle Kapitel als Kacheln). Stand 7: Start S2 (Flamme spricht, Wochenbogen, drei Weg-Kästen), Weg als Wisch-Seiten mit gespeichertem Stand, Bibliothek als Suche mit Themen und Treffern je Lektion, Lesemodus, Ich ohne Kästen, Funke-Videos, Glas-Leiste. Fortschritt wird im Gerät gespeichert. Alle Formen direkt gezeichnet. */
 :root{
   --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --wtint:#E9EEF5; --line:#E6E0D3; --grey:#6B6257; --ph:#8A8272;
   --serif:"Gloock",Georgia,serif; --sans:"Nunito",ui-rounded,system-ui,sans-serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
@@ -85,6 +85,12 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .suche svg{width:20px;height:20px;fill:none;stroke:var(--wc);stroke-width:2;flex:none}
 .suche input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:500 16px var(--body2);color:var(--wc-2)}
 .chips{display:flex;gap:8px;flex-wrap:wrap}
+.kacheln{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kacheln .t{background:#fff;border-radius:16px;padding:13px;display:grid;gap:3px;cursor:pointer}
+.kacheln .t .z{font-family:var(--serif);font-size:20px;color:var(--wc)}
+.kacheln .t b{font-size:12px;font-weight:600}
+.kacheln .t small{font-size:10.5px;color:var(--grey)}
+.kacheln .t.aus{opacity:.55}
 .chips span{background:#fff;border-radius:999px;padding:10px 16px;font-size:15px;font-weight:600;color:var(--wc);cursor:pointer}
 .audio{display:flex;gap:12px;align-items:center;padding:12px 2px;border-bottom:1px solid rgba(0,0,0,.07);cursor:pointer}
 .audio .pl{width:40px;height:40px;border-radius:50%;background:var(--wc);flex:none;display:grid;place-items:center}
@@ -150,11 +156,11 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
   <section class="screen" id="s-bib">
     <div class="kopf"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
-      <div class="suche" data-go="suche"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="flex:1">Was war nochmal …? Zum Beispiel ETF</span></div>
+      <div class="suche" data-go="suche"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span style="flex:1">Thema oder Lektion</span></div>
       <div class="lbl">Zuletzt gesehen</div>
       <div id="bib-zuletzt"></div>
-      <div class="lbl">Häufig gesucht</div>
-      <div class="chips" id="bib-chips"></div>
+      <div class="lbl">Alle Kapitel</div>
+      <div class="kacheln" id="bib-kacheln"></div>
     </div>
   </section>
 
@@ -327,11 +333,11 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
     var se=document.getElementById('seiten');se.onscroll=function(){var i=Math.round(se.scrollLeft/(se.firstElementChild.offsetWidth+12));document.getElementById('wg-klein').textContent='Baustein '+(i+1)+' von 9';document.querySelectorAll('#punkte i').forEach(function(x,k){x.classList.toggle('on',k===i)});};
     setTimeout(function(){scrollZu(cur,true)},30);}
   function scrollZu(bi,sofort){var se=document.getElementById('seiten'),k=se.children[bi];if(!k)return;se.scrollTo({left:k.offsetLeft-22,behavior:sofort?'auto':'smooth'});}
-  function renderBib(){var z=S.zuletzt.slice(0,3).map(function(nr){var l=find(nr);if(!l)return '';var f=istFertig(nr);return '<div class="audio" data-lek="'+nr+'"><span class="pl"></span><div><b>'+nr+' '+l.t+'</b><small>'+(f?'fertig':'noch '+l.min+' Min')+'</small><span class="bar"><i style="--p:'+(f?100:38)+'%"></i></span></div></div>';}).join('');
+  function renderBib(){var z=S.zuletzt.slice(0,2).map(function(nr){var l=find(nr);if(!l)return '';var f=istFertig(nr);return '<div class="audio" data-lek="'+nr+'"><span class="pl"></span><div><b>'+nr+' '+l.t+'</b><small>'+(f?'fertig':'noch '+l.min+' Min')+'</small><span class="bar"><i style="--p:'+(f?100:38)+'%"></i></span></div></div>';}).join('');
     document.getElementById('bib-zuletzt').innerHTML=z||'<div class="leer">Noch nichts gesehen.</div>';
-    document.getElementById('bib-chips').innerHTML=THEMEN.slice(0,8).map(function(t){return '<span data-q="'+t+'">'+t+'</span>'}).join('');
+    var cur=aktuell().b;document.getElementById('bib-kacheln').innerHTML=B.map(function(b,bi){var n=b.lek.filter(function(l){return istFertig(l.nr)}).length;var kurz=b.t.replace(' & Zinseszins-Kontinuität',' & Zinseszins').replace('Finanzielle ','').replace(' ohne Fehler','');return '<div class="t'+(bi>cur?' aus':'')+'" data-bst="'+bi+'"><span class="z">0'+(bi+1)+'</span><b>'+kurz+'</b><small>5 Lektionen'+(n?' · '+n+' fertig':'')+'</small></div>';}).join('');
     document.querySelectorAll('#bib-zuletzt [data-lek]').forEach(function(l){l.addEventListener('click',function(){openLek(l.dataset.lek)})});
-    document.querySelectorAll('#bib-chips span').forEach(function(c){c.addEventListener('click',function(){show('suche');document.getElementById('q').value=c.dataset.q;renderSuche(c.dataset.q);})});}
+    document.querySelectorAll('#bib-kacheln .t').forEach(function(t){t.addEventListener('click',function(){show('weg');scrollZu(+t.dataset.bst);})});}
   function renderSuche(q){q=(q||'').trim().toLowerCase();document.getElementById('su-chips').innerHTML=THEMEN.map(function(t){return '<span data-q="'+t+'">'+t+'</span>'}).join('');
     document.querySelectorAll('#su-chips span').forEach(function(c){c.addEventListener('click',function(){document.getElementById('q').value=c.dataset.q;renderSuche(c.dataset.q);})});
     document.getElementById('su-themen').style.display=q?'none':'block';var out=document.getElementById('su-ergebnis');if(!q){out.innerHTML='';return;}
