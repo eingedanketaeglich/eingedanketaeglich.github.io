@@ -2,9 +2,11 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Firestarter">
 <meta name="theme-color" content="#102444">
 <meta name="robots" content="noindex">
 <title>Firestarter App Handy</title>
@@ -24,16 +26,16 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .app{position:fixed;inset:0;background:var(--wcream)}
 .screen{position:absolute;inset:0;display:none;flex-direction:column;overflow:hidden}
 .screen.on{display:flex}
-.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 20px calc(110px + var(--bot))}
+.scroll{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:18px 20px calc(96px + var(--bot))}
 /* Kopf wie im Login: schmal, Weltfarbe, Zickzack */
-.kopf{position:relative;background:var(--wc);color:#F5F1EA;padding:calc(18px + var(--top)) 22px 30px;flex:none}
+.kopf{position:relative;background:var(--wc);color:#F5F1EA;padding:calc(18px + var(--top)) 118px 30px 22px;flex:none}
 .kopf .klein{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:4px}
 .kopf .gross{font-family:var(--serif);font-size:30px;line-height:1.05}
 .kopf .edge{position:absolute;left:0;right:0;bottom:-1px;height:34px;width:100%;display:block;z-index:1}
 .kopf .edge{fill:var(--wcream)}.kopf .edge path{fill:var(--wcream)}
 .kopf .funke{position:absolute;right:18px;bottom:-8px;width:84px;height:96px;z-index:2;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .kopf .funke .flame{transform-origin:50% 90%;animation:flicker 1.6s ease-in-out infinite}
-.kopf .punkt{position:absolute;right:16px;bottom:66px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--wa);color:var(--wc);font:800 12px var(--sans);display:grid;place-items:center;border:2px solid var(--wcream);pointer-events:none}
+.kopf .punkt{position:absolute;right:14px;bottom:74px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--wa);color:var(--wc);font:800 12px var(--sans);display:grid;place-items:center;border:2px solid var(--wcream);pointer-events:none}
 .kopf .back{position:absolute;left:14px;top:calc(12px + var(--top));width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.14);border:0;color:#F5F1EA;font-size:20px;display:grid;place-items:center;cursor:pointer}
 @keyframes flicker{0%,100%{transform:scaleX(1) scaleY(1) rotate(0)}30%{transform:scaleX(.96) scaleY(1.04) rotate(-2deg)}60%{transform:scaleX(1.03) scaleY(.98) rotate(2deg)}}
 .lbl{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ph);margin:16px 0 8px}
@@ -129,13 +131,26 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .vid div{display:grid;flex:1;min-width:0}.vid b{font-size:15px;font-weight:600}.vid small{font-size:12.5px;color:var(--grey)}
 .vid .neu{background:var(--wa);color:var(--wc);border-radius:999px;padding:3px 10px;font:800 12px var(--sans);flex:none}
 /* Leiste unten, zwei Fassungen */
-.nav{position:absolute;left:0;right:0;bottom:calc(14px + var(--bot));display:flex;justify-content:center;z-index:20;pointer-events:none}
+.nav{position:absolute;left:0;right:0;bottom:calc(6px + var(--bot));display:flex;justify-content:center;z-index:20;pointer-events:none}
 .nav .pill{pointer-events:auto;display:flex;gap:2px;padding:8px 10px;border-radius:999px;background:var(--wc);box-shadow:0 12px 30px rgba(16,36,68,.28);transition:background .3s,box-shadow .3s}
 .nav button{width:62px;height:56px;border:0;background:transparent;border-radius:999px;display:grid;gap:3px;justify-items:center;align-content:center;color:rgba(245,241,234,.7);font:600 10.5px var(--body2);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .25s,color .25s}
 .nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-pressed="true"]{color:#F5F1EA;background:rgba(255,255,255,.14)}
 .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
-html.glas .nav .pill{background:rgba(255,255,255,.22);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);box-shadow:0 12px 30px rgba(16,36,68,.16),inset 0 0 0 1px rgba(255,255,255,.55)}
+html.glas .nav .pill{background:rgba(255,255,255,.14);backdrop-filter:blur(26px) saturate(1.6);-webkit-backdrop-filter:blur(26px) saturate(1.6);box-shadow:0 10px 30px rgba(16,36,68,.12),inset 0 0 0 1px rgba(255,255,255,.45)}
+/* Fassung B: volle Breite, Glas bis zum Rand, wie die iOS-Tableiste */
+html.nav-b .nav{bottom:0}
+html.nav-b .nav .pill{width:100%;border-radius:0;padding:8px 10px calc(8px + var(--bot));justify-content:space-around;background:rgba(255,255,255,.14);backdrop-filter:blur(26px) saturate(1.6);-webkit-backdrop-filter:blur(26px) saturate(1.6);box-shadow:0 -1px 0 rgba(255,255,255,.5),0 -10px 30px rgba(16,36,68,.08)}
+html.nav-b .nav button{color:var(--grey);width:64px}
+html.nav-b .nav button[aria-pressed="true"]{color:var(--wc);background:transparent}
+html.nav-b .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
+/* Fassung C: nur Symbole, sehr durchsichtig, aktiver Punkt orange */
+html.nav-c .nav .pill{background:rgba(255,255,255,.1);backdrop-filter:blur(30px) saturate(1.6);-webkit-backdrop-filter:blur(30px) saturate(1.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);padding:6px 8px}
+html.nav-c .nav button{width:54px;height:50px;color:var(--grey);font-size:0}
+html.nav-c .nav button svg{width:24px;height:24px}
+html.nav-c .nav button[aria-pressed="true"]{color:var(--wc);background:rgba(255,255,255,.55)}
+html.nav-c .nav button[aria-pressed="true"]:after{content:"";width:5px;height:5px;border-radius:50%;background:var(--wa);display:block}
+html.nav-c .nav button[aria-pressed="true"] svg{stroke:var(--wc)}
 html.glas .nav button{color:var(--grey)}
 html.glas .nav button[aria-pressed="true"]{color:var(--wc);background:rgba(255,255,255,.6)}
 html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
@@ -244,22 +259,20 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
     <div class="scroll">
       <div class="profil"><div class="av">S</div><div><b>Simon Schlerf</b><small>Firestarter Vollversion · seit Oktober 2026</small></div></div>
       <div class="lbl">Post</div>
-      <div class="plain"><div class="r"><span class="t">Nachrichten vom R&amp;F Institut</span><span class="neu">2 neu</span><span class="chev"></span></div></div>
+      <div class="plain"><div class="r" data-go="post"><span class="t">Nachrichten vom R&amp;F Institut</span><span class="neu" id="post-neu">2 neu</span><span class="chev"></span></div></div>
       <div class="lbl">Lernen</div>
       <div class="plain">
         <div class="r" data-toggle><span class="t">Erinnerung am Abend<small>19:30 Uhr</small></span><span class="sw on"></span></div>
         <div class="r" data-toggle><span class="t">Die Flamme spricht</span><span class="sw on"></span></div>
-        <div class="r"><span class="t">Wochenziel<small>3 Lektionen</small></span><span class="chev"></span></div>
+        <div class="r" data-go="ziel"><span class="t">Wochenziel<small id="ziel-text">3 Lektionen</small></span><span class="chev"></span></div>
         <div class="r" data-go="funke"><span class="t">Einführung noch einmal ansehen</span><span class="chev"></span></div>
       </div>
-      <div class="lbl">Darstellung</div>
-      <div class="plain">
-        <div class="r"><span class="t">Leiste unten<small>Durchsichtig ist Standard</small></span><span class="opt" role="group"><button type="button" data-nav="blau" aria-pressed="false">Blau</button><button type="button" data-nav="glas" aria-pressed="true">Durchsichtig</button></span></div>
-        <div class="r"><span class="t">Welt<small>Blau: Zirkel · Grün: Aufbruch</small></span><span class="opt" role="group"><button type="button" data-welt="blau" aria-pressed="true">Blau</button><button type="button" data-welt="gruen" aria-pressed="false">Grün</button></span></div>
-        <div class="r" data-toggle><span class="t">Größere Schrift</span><span class="sw"></span></div>
-      </div>
       <div class="lbl">Konto</div>
-      <div class="plain"><div class="r"><span class="t">Passwort ändern</span><span class="chev"></span></div><div class="r"><span class="t">Rechtliches und Hilfe</span><span class="chev"></span></div><div class="r" style="color:#B3403A"><span class="t">Abmelden</span></div></div>
+      <div class="plain"><div class="r" data-go="passwort"><span class="t">Passwort ändern</span><span class="chev"></span></div><div class="r" data-go="hilfe"><span class="t">Hilfe und Kontakt</span><span class="chev"></span></div></div>
+      <div class="lbl">Rechtliches</div>
+      <div class="plain"><div class="r" data-go="recht"><span class="t">Impressum</span><span class="chev"></span></div><div class="r" data-go="recht"><span class="t">Datenschutz</span><span class="chev"></span></div><div class="r" data-go="recht"><span class="t">AGB</span><span class="chev"></span></div></div>
+      <div class="lbl">&nbsp;</div>
+      <div class="plain"><div class="r" style="color:#B3403A"><span class="t">Abmelden</span></div></div>
     </div>
   </section>
 
@@ -276,6 +289,62 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
       <div class="mehr" style="padding-top:18px"><span data-swipe="-1" style="cursor:pointer">‹ <span id="lk-prev">vorige</span></span><span data-swipe="1" style="cursor:pointer"><span id="lk-next">nächste</span> ›</span></div>
       <p class="text" style="font-size:13px;color:var(--ph);text-align:center;margin-top:6px">Wische nach rechts für die Lektion davor, nach links für die nächste.</p>
     </div>
+  </section>
+
+  <!-- POST -->
+  <section class="screen" id="s-post">
+    <div class="kopf"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Vom R&amp;F Institut</div><div class="gross" style="margin-left:48px">Post</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+    <div class="scroll">
+      <div class="plain">
+        <div class="r" data-go="brief" style="align-items:flex-start"><span class="t"><b style="font-weight:600">Dein Zugang ist jetzt die Vollversion</b><small>Alle neun Bausteine sind frei. Fang bei 1.2 an, da warst du zuletzt.</small><small style="margin-top:4px;color:var(--ph)">Heute, 18:40</small></span><span class="neu">neu</span></div>
+        <div class="r" data-go="brief" style="align-items:flex-start"><span class="t"><b style="font-weight:600">Neu: der Zinseszins-Rechner</b><small>Ab heute unter Werkzeuge. Die Flamme zeigt dir in zwei Minuten, wie er geht.</small><small style="margin-top:4px;color:var(--ph)">Heute, 09:10</small></span><span class="neu">neu</span></div>
+        <div class="r" data-go="brief" style="align-items:flex-start"><span class="t"><b style="font-weight:600">Willkommen bei Firestarter</b><small>Simon und René begrüßen dich. Zehn Minuten, die sich lohnen.</small><small style="margin-top:4px;color:var(--ph)">Montag</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRIEF -->
+  <section class="screen" id="s-brief">
+    <div class="kopf"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Post · heute, 09:10</div><div class="gross" style="margin-left:48px;font-size:24px">Neu: der Zinseszins-Rechner</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+    <div class="scroll"><p class="text">Hallo Simon,</p><p class="text" style="margin-top:12px">ab heute findest du unter Werkzeuge den Zinseszins-Rechner. Du gibst Betrag, Zeit und Zinssatz ein und siehst sofort, was Zeit mit Geld macht. Die Flamme erklärt ihn dir in zwei Minuten, wenn du magst.</p><p class="text" style="margin-top:12px">Herzliche Grüße<br>René und Simon</p><div style="height:20px"></div><button class="btn deep" type="button" data-go="werk">Zu den Werkzeugen</button></div>
+  </section>
+
+  <!-- WOCHENZIEL -->
+  <section class="screen" id="s-ziel">
+    <div class="kopf"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Lernen</div><div class="gross" style="margin-left:48px">Wochenziel</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+    <div class="scroll">
+      <p class="text" style="margin:0 0 16px">Wie viele Lektionen willst du pro Woche schaffen? Du kannst es jederzeit ändern. Eine Lektion dauert sechs bis zehn Minuten.</p>
+      <div class="frage" style="margin:0">
+        <div class="o" data-ziel="2">2 Lektionen pro Woche<br><small style="color:var(--grey)">locker, etwa 15 Minuten</small></div>
+        <div class="o on" data-ziel="3">3 Lektionen pro Woche<br><small style="color:var(--grey)">unser Vorschlag, etwa 25 Minuten</small></div>
+        <div class="o" data-ziel="5">5 Lektionen pro Woche<br><small style="color:var(--grey)">zügig, etwa 40 Minuten</small></div>
+      </div>
+      <div style="height:16px"></div>
+      <button class="btn" type="button" data-go="zurueck">Übernehmen</button>
+    </div>
+  </section>
+
+  <!-- PASSWORT -->
+  <section class="screen" id="s-passwort">
+    <div class="kopf"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Konto</div><div class="gross" style="margin-left:48px">Passwort ändern</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+    <div class="scroll" style="display:grid;gap:12px;align-content:start">
+      <label class="suche" style="border-radius:14px;margin:0"><input type="password" placeholder="Aktuelles Passwort"></label>
+      <label class="suche" style="border-radius:14px;margin:0"><input type="password" placeholder="Neues Passwort (mindestens 8 Zeichen)"></label>
+      <label class="suche" style="border-radius:14px;margin:0"><input type="password" placeholder="Neues Passwort wiederholen"></label>
+      <button class="btn deep" type="button" data-go="zurueck">Passwort speichern</button>
+    </div>
+  </section>
+
+  <!-- HILFE -->
+  <section class="screen" id="s-hilfe">
+    <div class="kopf"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Konto</div><div class="gross" style="margin-left:48px">Hilfe und Kontakt</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+    <div class="scroll"><div class="plain"><div class="r" data-go="funke"><span class="t">Die Flamme fragen<small>Bedienung, Begriffe, wo finde ich was</small></span><span class="chev"></span></div><div class="r"><span class="t">E-Mail an das Institut<small>info@rf-institut.de</small></span><span class="chev"></span></div><div class="r" data-go="funke"><span class="t">Einführung noch einmal ansehen</span><span class="chev"></span></div></div></div>
+  </section>
+
+  <!-- RECHT -->
+  <section class="screen" id="s-recht">
+    <div class="kopf"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Rechtliches</div><div class="gross" style="margin-left:48px">Impressum</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+    <div class="scroll"><p class="text">Hier stehen die bestehenden Rechtstexte der App: Impressum, Datenschutz und AGB, so wie sie heute in Firestarter hinterlegt sind. Im Mockup nur als Platzhalter.</p></div>
   </section>
 
   <!-- FUNKE -->
@@ -329,6 +398,7 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
     if(g==='zurueck'){hist.pop();show(hist[hist.length-1]||'start',false);return;}
     if(g==='weiter-schritt'){tipp('Mockup: nächster Schritt der Lektion');return;}
     if(g==='funke'){document.getElementById('punkt').style.display='none';}
+    if(g==='post'){var pn=document.getElementById('post-neu');if(pn)pn.style.display='none';}
     show(g);});
   /* Weg: Akkordeon */
   document.querySelectorAll('#wegliste .m[data-acc]').forEach(function(m){m.addEventListener('click',function(){var n=m.dataset.acc;var sub=document.getElementById('acc-'+n);if(!sub){tipp('Öffnet sich nach Baustein '+(n-1));return;}m.classList.toggle('open');sub.style.display=m.classList.contains('open')?'grid':'none';})});
@@ -353,6 +423,8 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
   document.querySelectorAll('[data-swipe]').forEach(function(el){el.addEventListener('click',function(){var r=+el.dataset.swipe;if((r<0&&li>0)||(r>0&&li<LEK.length-1))lek(li+r,r);})});
   (function(){var sx=0,sy=0,el=document.getElementById('s-lektion');el.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});el.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){if(dx>0&&li>0)lek(li-1,-1);else if(dx<0&&li<LEK.length-1)lek(li+1,1);}},{passive:true});})();
   lek(1);
+  document.querySelectorAll('[data-ziel]').forEach(function(o){o.addEventListener('click',function(){o.parentElement.querySelectorAll('.o').forEach(function(x){x.classList.remove('on')});o.classList.add('on');document.getElementById('ziel-text').textContent=o.dataset.ziel+' Lektionen';})});
+  if(location.hash==='#nav-b')H.classList.add('nav-b');if(location.hash==='#nav-c')H.classList.add('nav-c');
   document.querySelectorAll('[data-toggle]').forEach(function(r){r.addEventListener('click',function(){var s=r.querySelector('.sw');s.classList.toggle('on');})});
   document.querySelectorAll('[data-opt]').forEach(function(o){o.addEventListener('click',function(){o.parentElement.querySelectorAll('.o').forEach(function(x){x.classList.remove('on')});o.classList.add('on');})});
   document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){H.classList.toggle('glas',b.dataset.nav==='glas');b.parentElement.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});})});
