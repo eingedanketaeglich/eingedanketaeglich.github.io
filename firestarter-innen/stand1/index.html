@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102444">
+<meta name="robots" content="noindex">
+<title>Firestarter Innen Stand 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Stand 1 innen: Mischung nach Simons Wahl (Weg als Basis, Lesemodus in der Lektion, Pillen-Navigation mit fünf Zielen). Sechs Screens mit eingebetteten Illustrationen, dazu die Einführung als geführter Rundgang mit Abdunkeln und Spotlight. Welt-Umschaltung färbt alles. */
+:root{
+  --bg:#FCFAF6; --surface:#FFFFFF; --surface-2:#F3EEE3; --line:#E3DCCB;
+  --fg:#1C1917; --fg-2:#6B6257; --navy:#102444; --navy-ink:#F5F1EA;
+  --orange:#FF7A00; --orange-ink:#102444; --gold:#BBA45F; --gold-soft:#F1E9CF;
+  --sans:"Nunito",ui-rounded,system-ui,sans-serif; --serif:"Gloock",Georgia,serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --wtint:#E9EEF5; --wmid:#2A4268;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0F1A2E; --surface:#16233C; --surface-2:#1C2B48; --line:#2A3B5C; --fg:#EFE9DD; --fg-2:#A9B0C2; --navy:#F5F1EA; --navy-ink:#102444; --orange:#FF8A1F; --gold:#D4BC72; --gold-soft:#3A3524; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#0F1A2E; --surface:#16233C; --surface-2:#1C2B48; --line:#2A3B5C; --fg:#EFE9DD; --fg-2:#A9B0C2; --navy:#F5F1EA; --navy-ink:#102444; --orange:#FF8A1F; --gold:#D4BC72; --gold-soft:#3A3524; color-scheme:dark }
+body.w-gruen{ --wc:#173A2B; --wc-2:#10291F; --wa:#B39465; --wsoft:#C9D8CE; --wcream:#F3F1EA; --wtint:#E6EDE6; --wmid:#2F5A46 }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;padding-block:0 56px;padding-inline:16px}
+.wrap{max-width:1060px;margin:0 auto}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,40px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(22px,4.5vw,28px);font-weight:800}
+h3{font-size:17px;font-weight:800}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+header{padding-block:32px 18px;display:grid;gap:12px}
+header .lead{font-size:18px;color:var(--fg-2);max-width:66ch}
+section{display:grid;gap:16px;padding-block:28px;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:30px;height:28px;padding:0 8px;border-radius:8px;background:var(--navy);color:var(--navy-ink);font-weight:800;font-size:14px;margin-right:10px;vertical-align:middle}
+.note{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:12px 14px;font-size:15px}
+.muted{font-size:15px;color:var(--fg-2)}
+.weltbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.weltbar .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2)}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:999px;padding:4px;gap:4px}
+.seg button{font:inherit;font-weight:800;font-size:14px;border:0;background:transparent;color:var(--fg-2);border-radius:999px;padding:7px 16px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--wc);color:#F5F1EA}
+button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.row3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));justify-items:center}
+.cell{display:grid;gap:6px;justify-items:center;min-width:0;width:100%}
+.cell .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.cell .cap{font-size:13.5px;color:var(--fg-2);text-align:center;max-width:30ch}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:800}
+
+/* Telefon */
+.ph{width:min(100%,250px);aspect-ratio:9/18.6;border-radius:32px;background:#0A1424;padding:8px;position:relative;box-shadow:0 12px 32px rgba(60,40,10,.12)}
+.ph.gross{width:min(100%,300px)}
+.scr{position:relative;width:100%;height:100%;border-radius:25px;overflow:hidden;background:var(--wcream);color:var(--wc-2);font-family:var(--body2);font-size:10px;line-height:1.3}
+.scr *{box-sizing:border-box}
+.inner{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr auto}
+.kopf{position:relative;background:var(--wc);color:#F5F1EA;padding:22px 14px 22px;display:grid;gap:2px}
+.kopf .klein{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.kopf .gross{font-family:var(--serif);font-size:19px;line-height:1.05}
+.kopf .edge{position:absolute;left:0;right:0;bottom:-1px;height:18px;width:100%;display:block;z-index:1}
+.kopf .edge path{fill:var(--wcream)}
+.kopf .funke{position:absolute;right:10px;bottom:-4px;width:42px;height:50px;z-index:2}
+.kopf .bell{position:absolute;right:12px;top:12px;width:18px;height:18px;border-radius:50%;background:rgba(255,255,255,.14);display:grid;place-items:center}
+.kopf .bell i{width:7px;height:8px;border-radius:3px 3px 1px 1px;background:#F5F1EA;display:block}
+.kopf .bell b{position:absolute;right:-1px;top:-1px;width:6px;height:6px;border-radius:50%;background:var(--wa)}
+.kopf.flach{padding:16px 14px 14px}
+.kopf.hell{background:var(--wcream);color:var(--wc-2);padding:18px 14px 6px}
+.kopf.hell .klein{color:#8A8272}
+.body{padding:12px 12px 10px;display:grid;gap:9px;align-content:start;overflow:hidden}
+.lbl{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A8272}
+.nav{display:flex;justify-content:center;padding:0 0 8px}
+.nav div{display:flex;gap:7px;background:var(--wc);border-radius:999px;padding:6px 9px;box-shadow:0 6px 16px color-mix(in srgb,var(--wc) 30%,transparent)}
+.nav span{display:grid;gap:2px;justify-items:center;font-size:6px;color:rgba(245,241,234,.7);width:34px}
+.nav i{width:14px;height:14px;border-radius:5px;background:rgba(255,255,255,.3);display:block}
+.nav span.on{color:#F5F1EA;font-weight:600}.nav span.on i{background:var(--wa)}
+.btn{height:32px;border-radius:10px;background:var(--wc);color:#F5F1EA;font-weight:600;font-size:10px;display:grid;place-items:center;box-shadow:0 5px 12px color-mix(in srgb,var(--wc) 25%,transparent)}
+.btn.akz{background:var(--wa);color:var(--wc);box-shadow:0 5px 12px color-mix(in srgb,var(--wa) 30%,transparent)}
+.btn.hell{background:#fff;color:var(--wc);box-shadow:none;border:1px solid var(--line)}
+/* Illustrierte Karten */
+.bild{border-radius:12px;overflow:hidden;background:var(--wtint);aspect-ratio:16/9;display:grid;place-items:center;position:relative}
+.bild svg{width:100%;height:100%;display:block}
+.hero{border-radius:14px;overflow:hidden;background:#fff;border:1px solid var(--line);display:grid}
+.hero .bild{border-radius:0;aspect-ratio:16/8}
+.hero .tx{padding:9px 10px 10px;display:grid;gap:3px}
+.hero .tx b{font-size:12px;font-weight:600;line-height:1.2}
+.hero .tx small{font-size:8.5px;color:#6B6257}
+.kacheln{display:flex;gap:8px;overflow:hidden}
+.kacheln .k{flex:0 0 31%;display:grid;gap:4px}
+.kacheln .k .bild{aspect-ratio:1/1;border-radius:12px}
+.kacheln .k b{font-size:8px;font-weight:600;line-height:1.15}
+.kacheln .k small{font-size:7px;color:#8A8272}
+.kacheln .k.gesperrt .bild{opacity:.45;filter:saturate(.3)}
+/* Weg mit Bildkarten */
+.weg{position:relative;display:grid;gap:9px}
+.weg:before{content:"";position:absolute;left:16px;top:10px;bottom:10px;width:3px;border-radius:2px;background:#E6E0D3}
+.weg .m{display:flex;gap:8px;align-items:center;position:relative}
+.weg .m i{width:20px;height:20px;border-radius:50%;background:#E6E0D3;display:grid;place-items:center;font-style:normal;font-size:7px;font-weight:600;color:#8A8272;flex:none;margin-left:7px;border:3px solid var(--wcream)}
+.weg .m.done i{background:var(--wc);color:#F5F1EA}
+.weg .m.now i{background:var(--wa);color:var(--wc);box-shadow:0 0 0 4px color-mix(in srgb,var(--wa) 25%,transparent)}
+.weg .m .k{flex:1;display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px;min-width:0}
+.weg .m.now .k{border-color:var(--wc);box-shadow:0 6px 16px color-mix(in srgb,var(--wc) 15%,transparent)}
+.weg .m .k .bild{width:44px;aspect-ratio:1/1;border-radius:9px;flex:none}
+.weg .m .k div{display:grid;min-width:0}
+.weg .m .k b{font-size:9.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.weg .m .k small{font-size:7.5px;color:#6B6257}
+.weg .m.gesperrt .k{opacity:.55}
+.weg .m.now .funke2{width:22px;height:26px;flex:none}
+/* Bibliothek */
+.suche{height:30px;border-radius:999px;background:#fff;border:1px solid var(--line);display:flex;align-items:center;gap:7px;padding:0 10px;font-size:9px;color:#8A8272}
+.suche i{width:10px;height:10px;border-radius:50%;border:1.8px solid var(--wc);display:block}
+.chips{display:flex;gap:5px;overflow:hidden}.chips span{border:1px solid var(--line);background:#fff;border-radius:999px;padding:4px 8px;font-size:7.5px;font-weight:600;color:var(--wc);white-space:nowrap}
+.chips span.on{background:var(--wc);color:#F5F1EA;border-color:transparent}
+.zeilen{display:grid;gap:6px}
+.zeile{display:flex;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:12px;padding:6px}
+.zeile .bild{width:36px;aspect-ratio:1/1;border-radius:8px;flex:none}
+.zeile div{display:grid;flex:1;min-width:0}.zeile b{font-size:9px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.zeile small{font-size:7.5px;color:#6B6257}
+.zeile .ring{width:18px;height:18px;border-radius:50%;background:conic-gradient(var(--wa) var(--p,0%),#E6E0D3 0);flex:none}
+.zeile.gesperrt{opacity:.55}
+/* Werkzeuge */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.tools .t{background:#fff;border:1px solid var(--line);border-radius:12px;padding:8px;display:grid;gap:4px;min-height:74px}
+.tools .t .bild{aspect-ratio:16/9;border-radius:8px}
+.tools .t b{font-size:8.5px;font-weight:600;line-height:1.15}.tools .t small{font-size:7px;color:#8A8272}
+.tools .t.gesperrt{opacity:.55}
+/* Ich */
+.profil{display:flex;gap:10px;align-items:center}
+.profil .av{width:36px;height:36px;border-radius:50%;background:var(--wc);color:#F5F1EA;display:grid;place-items:center;font-family:var(--serif);font-size:14px}
+.profil div{display:grid}.profil b{font-size:11px;font-weight:600}.profil small{font-size:8px;color:#6B6257}
+.set{display:grid;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.set .r{display:flex;align-items:center;gap:8px;padding:8px 10px;border-top:1px solid var(--line);font-size:9px;font-weight:500}
+.set .r:first-child{border-top:0}
+.set .r i{width:16px;height:16px;border-radius:5px;background:var(--wtint);flex:none}
+.set .r span{flex:1}
+.set .r .sw{width:22px;height:13px;border-radius:999px;background:#D9D2C3;position:relative}
+.set .r .sw:after{content:"";position:absolute;top:2px;left:2px;width:9px;height:9px;border-radius:50%;background:#fff}
+.set .r .sw.on{background:var(--wc)}.set .r .sw.on:after{left:11px}
+.set .r .chev{width:6px;height:6px;border-right:1.5px solid #8A8272;border-bottom:1.5px solid #8A8272;transform:rotate(-45deg)}
+/* Lektion */
+.video{border-radius:12px;background:var(--wc-2);aspect-ratio:16/9;display:grid;place-items:center;position:relative;overflow:hidden}
+.video i{width:30px;height:30px;border-radius:50%;background:var(--wa);display:grid;place-items:center}
+.video i:after{content:"";border-left:9px solid var(--wc);border-top:6px solid transparent;border-bottom:6px solid transparent;margin-left:2px}
+.video small{position:absolute;left:8px;bottom:6px;font-size:7px;color:rgba(245,241,234,.85)}
+.dots{display:flex;gap:4px;align-items:center}.dots i{width:6px;height:6px;border-radius:50%;background:#E6E0D3}.dots i.on{background:var(--wa)}.dots i.done{background:var(--wc)}
+.text{font-size:9px;color:#3B342C;line-height:1.45}
+.text b{font-weight:600;color:var(--wc-2)}
+.gross-serif{font-family:var(--serif);font-size:22px;line-height:1.05;color:var(--wc-2)}
+.dropcap:first-letter{font-family:var(--serif);font-size:26px;float:left;line-height:.8;padding:3px 4px 0 0;color:var(--wc)}
+.frage{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px;display:grid;gap:5px}
+.frage .q{font-size:9.5px;font-weight:600}
+.frage .o{border:1px solid var(--line);border-radius:8px;padding:5px 8px;font-size:8.5px}
+.frage .o.on{border-color:var(--wc);background:var(--wtint)}
+
+/* Einführung */
+.tour{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));align-items:start}
+.tour .ph{justify-self:center}
+.dim{position:absolute;inset:0;z-index:6;pointer-events:none;opacity:0;transition:opacity .4s}
+.dim .loch{position:absolute;border-radius:12px;box-shadow:0 0 0 2000px rgba(10,24,48,.62);transition:all .5s cubic-bezier(.2,0,0,1);outline:2px solid var(--wa);outline-offset:3px}
+.scr.t-on .dim{opacity:1}
+.tf{position:absolute;width:48px;height:56px;z-index:8;transition:all .55s cubic-bezier(.2,0,0,1);filter:drop-shadow(0 4px 8px rgba(0,0,0,.35))}
+.tf .flame{transform-origin:50% 90%;animation:flicker 1.6s ease-in-out infinite}
+@keyframes flicker{0%,100%{transform:scaleX(1) scaleY(1) rotate(0)}30%{transform:scaleX(.96) scaleY(1.04) rotate(-2deg)}60%{transform:scaleX(1.03) scaleY(.98) rotate(2deg)}}
+.blase{position:absolute;z-index:8;max-width:150px;background:#fff;color:var(--wc-2);border-radius:12px;padding:7px 9px;font-size:9px;line-height:1.35;box-shadow:0 6px 18px rgba(0,0,0,.25);transition:all .55s cubic-bezier(.2,0,0,1)}
+.blase:after{content:"";position:absolute;right:-6px;bottom:10px;border:6px solid transparent;border-left-color:#fff;border-right:0}
+.blase.links:after{left:-6px;right:auto;border-right-color:#fff;border-left:0;border-right:6px solid #fff}
+.blase b{font-weight:600}
+.tsteps{display:grid;gap:8px}
+.tsteps button{text-align:left;font:inherit;font-size:14.5px;border:1.5px solid var(--line);background:var(--surface);color:var(--fg);border-radius:12px;padding:9px 12px;cursor:pointer;display:grid;gap:2px}
+.tsteps button[aria-pressed="true"]{border-color:var(--wc);background:var(--gold-soft)}
+.tsteps button small{font-size:12.5px;color:var(--fg-2)}
+.tsteps .ctl{display:flex;gap:8px;flex-wrap:wrap}
+.tsteps .ctl button{display:inline-flex;padding:9px 14px;font-weight:800}
+.tsteps .ctl button.primary{background:var(--orange);color:var(--orange-ink);border-color:transparent}
+.sprich{font-family:var(--mono);font-size:12px;color:var(--fg-2);background:var(--surface-2);border-radius:10px;padding:8px 10px;min-height:52px}
+footer{padding-block:24px;font-size:14px;color:var(--fg-2);border-top:1px solid var(--line)}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body style="padding-left:16px;padding-right:16px">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="il-feuer" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wc)"/><circle cx="128" cy="20" r="8" fill="#F5F1EA" opacity=".9"/><circle cx="30" cy="18" r="1.5" fill="#F5F1EA"/><circle cx="60" cy="10" r="1.2" fill="#F5F1EA"/><circle cx="100" cy="30" r="1.2" fill="#F5F1EA"/><path d="M0 72 Q80 60 160 74 L160 90 L0 90Z" fill="var(--wmid)"/><path d="M64 76 L96 76 M60 80 L100 80" stroke="#8A6A3A" stroke-width="3" stroke-linecap="round"/><path d="M80 36 C88 46 94 52 94 62 C94 70 88 76 80 76 C72 76 66 70 66 62 C66 54 72 50 74 44 C75 50 78 51 79 48 C77 43 78 39 80 36Z" fill="var(--wa)"/><path d="M80 52 C84 56 86 59 86 64 C86 68 83 71 80 71 C77 71 74 68 74 64 C74 60 77 58 78 56 C78 59 80 60 80 58Z" fill="#FFD9A8"/></symbol>
+    <symbol id="il-kompass" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><circle cx="80" cy="45" r="30" fill="#fff" stroke="var(--wc)" stroke-width="2"/><circle cx="80" cy="45" r="22" fill="none" stroke="var(--wsoft)" stroke-width="1.5"/><path d="M80 23 L87 45 L80 67 L73 45Z" fill="var(--wa)"/><path d="M58 45 L80 38 L102 45 L80 52Z" fill="var(--wc)"/><circle cx="80" cy="45" r="3" fill="#fff"/></symbol>
+    <symbol id="il-schild" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><path d="M80 12 L110 22 L110 48 C110 64 96 74 80 80 C64 74 50 64 50 48 L50 22Z" fill="var(--wc)"/><path d="M62 54 L72 44 L82 52 L98 34" stroke="var(--wa)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="il-saeulen" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><path d="M40 28 L80 12 L120 28Z" fill="var(--wc)"/><rect x="44" y="32" width="72" height="5" fill="var(--wc)"/><rect x="50" y="40" width="8" height="30" fill="var(--wc)"/><rect x="66" y="40" width="8" height="30" fill="var(--wc)"/><rect x="86" y="40" width="8" height="30" fill="var(--wc)"/><rect x="102" y="40" width="8" height="30" fill="var(--wc)"/><rect x="42" y="72" width="76" height="6" fill="var(--wa)"/></symbol>
+    <symbol id="il-waage" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><rect x="78" y="18" width="4" height="52" fill="var(--wc)"/><rect x="60" y="70" width="40" height="5" rx="2" fill="var(--wc)"/><path d="M40 28 L120 28" stroke="var(--wc)" stroke-width="4" stroke-linecap="round"/><path d="M40 30 L30 52 L50 52Z" fill="var(--wa)"/><path d="M120 30 L110 52 L130 52Z" fill="var(--wsoft)"/></symbol>
+    <symbol id="il-zahnrad" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><circle cx="70" cy="45" r="18" fill="none" stroke="var(--wc)" stroke-width="8" stroke-dasharray="6 6"/><circle cx="70" cy="45" r="7" fill="var(--wc)"/><circle cx="104" cy="58" r="12" fill="none" stroke="var(--wa)" stroke-width="6" stroke-dasharray="5 5"/><circle cx="104" cy="58" r="4" fill="var(--wa)"/></symbol>
+    <symbol id="il-tropfen" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><path d="M80 14 C92 34 104 44 104 58 C104 72 93 80 80 80 C67 80 56 72 56 58 C56 44 68 34 80 14Z" fill="var(--wc)"/><path d="M80 44 C86 52 90 56 90 62 C90 68 86 72 80 72 C74 72 70 68 70 62 C70 56 74 52 80 44Z" fill="var(--wa)"/></symbol>
+    <symbol id="il-auge" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><path d="M34 45 C50 22 110 22 126 45 C110 68 50 68 34 45Z" fill="#fff" stroke="var(--wc)" stroke-width="3"/><circle cx="80" cy="45" r="13" fill="var(--wc)"/><circle cx="80" cy="45" r="5" fill="var(--wa)"/></symbol>
+    <symbol id="il-fahne" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><path d="M20 78 L60 58 L100 68 L140 48" stroke="var(--wc)" stroke-width="4" fill="none" stroke-linecap="round"/><rect x="136" y="16" width="4" height="36" fill="var(--wc)"/><path d="M140 16 L164 24 L140 32Z" fill="var(--wa)"/></symbol>
+    <symbol id="il-chart" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><path d="M20 70 L45 56 L70 62 L95 40 L120 44 L145 22" stroke="var(--wc)" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="145" cy="22" r="6" fill="var(--wa)"/></symbol>
+    <symbol id="il-brief" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><rect x="40" y="26" width="80" height="48" rx="6" fill="#fff" stroke="var(--wc)" stroke-width="3"/><path d="M40 30 L80 56 L120 30" stroke="var(--wc)" stroke-width="3" fill="none"/><circle cx="118" cy="28" r="8" fill="var(--wa)"/></symbol>
+    <symbol id="il-rechner" viewBox="0 0 160 90"><rect width="160" height="90" fill="var(--wtint)"/><rect x="56" y="14" width="48" height="62" rx="6" fill="var(--wc)"/><rect x="62" y="20" width="36" height="14" rx="3" fill="#F5F1EA"/><g fill="#F5F1EA"><rect x="62" y="40" width="9" height="8" rx="2"/><rect x="75" y="40" width="9" height="8" rx="2"/><rect x="88" y="40" width="9" height="8" rx="2"/><rect x="62" y="52" width="9" height="8" rx="2"/><rect x="75" y="52" width="9" height="8" rx="2"/><rect x="62" y="64" width="22" height="8" rx="2"/></g><rect x="88" y="52" width="9" height="20" rx="2" fill="var(--wa)"/></symbol>
+    <symbol id="funke" viewBox="0 0 62 76"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></symbol>
+    <symbol id="zick" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z"/></symbol>
+  </defs>
+</svg>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">R&amp;F Firestarter · Innenoptik · Stand 1 · 21.10.2026</p>
+  <h1>Firestarter innen, Stand 1</h1>
+  <p class="lead">Simons Mischung vom 21.10.: der Weg als Basis, der Lesemodus aus dem Magazin für die Lektion, die Pillen-Navigation aus dem Dashboard, jetzt mit fünf Zielen samt Einstellungen. Die Karte „Weiter bei Lektion 1.1 … 1 von 8" ist weg. Neu: eingebettete Illustrationen in einem Stil, eine große Bildkarte statt Textkarten, Suche in der Bibliothek, Einstellungen als Zeilen mit Schaltern. Dazu die Einführung als geführter Rundgang mit der Flamme.</p>
+  <div class="note"><strong>Zu den Bildern:</strong> Die Illustrationen hier sind einfache Flächen-Zeichnungen in Weltfarbe und Akzent (ein Motiv je Baustein: Feuer, Kompass, Schild, Säulen, Waage, Zahnrad, Tropfen, Auge, Fahne). Sie zeigen Platz und Wirkung, nicht den endgültigen Stil. Für die echte App empfehle ich neun Baustein-Bilder und sechs Werkzeug-Bilder in einem Stil, passend zu den 3D-Figuren des Geldbaum-Flyers, erzeugt erst nach Kostenplan und Go.</div>
+</header>
+
+<div class="weltbar"><span class="lbl">Welt</span><div class="seg" role="group" aria-label="Welt wählen"><button type="button" id="w-blau" aria-pressed="true">Blau · Zirkel</button><button type="button" id="w-gruen" aria-pressed="false">Grün · Aufbruch</button></div></div>
+
+<section>
+  <h2><span class="num">1</span>Die sechs Screens</h2>
+  <div class="row3">
+    <div class="cell"><span class="tag">Start</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><span class="bell"><i></i><b></b></span><svg class="funke"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="hero"><div class="bild"><svg><use href="#il-feuer"/></svg></div><div class="tx"><span class="lbl">Baustein 1 · du bist hier</span><b>Mindset &amp; Zinseszins-Kontinuität</b><small>Lektion 1.1 · Der Funke gehört dir · 6 Min</small><div class="btn akz" style="margin-top:4px">Weiter</div></div></div>
+          <span class="lbl">Dein Weg</span>
+          <div class="kacheln">
+            <div class="k"><div class="bild"><svg><use href="#il-feuer"/></svg></div><b>01 Mindset</b><small>2 von 5</small></div>
+            <div class="k gesperrt"><div class="bild"><svg><use href="#il-kompass"/></svg></div><b>02 Selbstführung</b><small>nach Baustein 1</small></div>
+            <div class="k gesperrt"><div class="bild"><svg><use href="#il-schild"/></svg></div><b>03 Investment</b><small>32 Schritte</small></div>
+          </div>
+          <div class="hero" style="grid-template-columns:52px 1fr"><div class="bild" style="aspect-ratio:1/1"><svg><use href="#il-brief"/></svg></div><div class="tx"><b>Mein Zukunftsbrief</b><small>An dein zukünftiges Ich. Schreiben und aufheben.</small></div></div>
+        </div>
+        <div class="nav"><div><span class="on"><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Eine große Bildkarte für den laufenden Baustein, kein Zahlenring, die Flamme im Kopf, Post als Glocke oben rechts.</p></div>
+    <div class="cell"><span class="tag">Weg</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Dein Fundament · 9 Bausteine</div><div class="gross">Dein Weg</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="weg">
+            <div class="m now"><i>1</i><div class="k"><div class="bild"><svg><use href="#il-feuer"/></svg></div><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 Lerneinheiten · du bist hier</small></div><svg class="funke2"><use href="#funke"/></svg></div></div>
+            <div class="m gesperrt"><i>2</i><div class="k"><div class="bild"><svg><use href="#il-kompass"/></svg></div><div><b>Finanzielle Selbstführung</b><small>öffnet sich nach Baustein 1</small></div></div></div>
+            <div class="m gesperrt"><i>3</i><div class="k"><div class="bild"><svg><use href="#il-schild"/></svg></div><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>4</i><div class="k"><div class="bild"><svg><use href="#il-saeulen"/></svg></div><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>5</i><div class="k"><div class="bild"><svg><use href="#il-waage"/></svg></div><div><b>Steuern verstehen</b><small>35 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>6</i><div class="k"><div class="bild"><svg><use href="#il-zahnrad"/></svg></div><div><b>Infrastruktur</b><small>6 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>7</i><div class="k"><div class="bild"><svg><use href="#il-tropfen"/></svg></div><div><b>Treibstoff</b><small>34 Schritte</small></div></div></div>
+          </div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span class="on"><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Der Weg als Bildkarten, der laufende Baustein hervorgehoben mit der Flamme, die übrigen gedämpft.</p></div>
+    <div class="cell"><span class="tag">Lektion · Lesemodus</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf hell"><div class="klein">Lektion 1.1 · Schritt 2 von 8</div><div class="dots" style="margin-top:3px"><i class="done"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i></div></div>
+        <div class="body" style="padding-top:6px">
+          <div class="gross-serif">Der Funke gehört dir</div>
+          <div class="text" style="color:#6B6257;font-size:8.5px">Worum es hier wirklich geht.</div>
+          <div class="video"><i></i><small>Video · 3:40</small></div>
+          <div class="text dropcap">Stell dir ein Lagerfeuer in der Dämmerung vor. Du könntest warten, bis jemand vorbeikommt und es dir anzündet. Oder du nimmst selbst ein Streichholz und schlägst deinen eigenen Funken.</div>
+          <div class="frage"><div class="q">Was trifft auf dich zu?</div><div class="o on">Ich habe schon mal einen Finanzrat bekommen, der mir nicht gut tat.</div><div class="o">Ich habe noch nie mit jemandem über Geld gesprochen.</div></div>
+          <div class="btn akz">Weiter</div>
+        </div>
+      </div></div></div>
+      <p class="cap">Der Lesemodus aus dem Magazin: große Serif-Überschrift, Initial, Video im Text, eine Frage, ein Knopf.</p></div>
+    <div class="cell"><span class="tag">Bibliothek</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="suche"><i></i>Thema oder Lektion suchen</div>
+          <div class="chips"><span class="on">Alle</span><span>Mindset</span><span>Zinseszins</span><span>Steuern</span><span>Börse</span></div>
+          <span class="lbl">Baustein 1 · Mindset &amp; Zinseszins</span>
+          <div class="zeilen">
+            <div class="zeile"><div class="bild"><svg><use href="#il-feuer"/></svg></div><div><b>1.1 Willkommen, und die unbequeme Eröffnung</b><small>6 Min · 2 von 8 Schritten</small></div><span class="ring" style="--p:25%"></span></div>
+            <div class="zeile"><div class="bild"><svg><use href="#il-chart"/></svg></div><div><b>1.2 Der stille Saboteur</b><small>8 Min</small></div><span class="ring"></span></div>
+            <div class="zeile"><div class="bild"><svg><use href="#il-auge"/></svg></div><div><b>1.3 Bildung schlägt Beratung</b><small>7 Min</small></div><span class="ring"></span></div>
+            <div class="zeile"><div class="bild"><svg><use href="#il-kompass"/></svg></div><div><b>1.4 Wo stehst du, und wo willst du hin?</b><small>10 Min</small></div><span class="ring"></span></div>
+            <div class="zeile"><div class="bild"><svg><use href="#il-brief"/></svg></div><div><b>1.5 Der Zukunftsbrief</b><small>9 Min</small></div><span class="ring"></span></div>
+          </div>
+          <span class="lbl">Baustein 2 · Finanzielle Selbstführung</span>
+          <div class="zeilen"><div class="zeile gesperrt"><div class="bild"><svg><use href="#il-kompass"/></svg></div><div><b>2.1 Unternehmer-Denken im eigenen Leben</b><small>öffnet sich mit Baustein 2</small></div></div></div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span><i></i>Weg</span><span class="on"><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Suche oben wie bei Higgsfield, Themen-Chips, Lektionen als Zeilen mit kleinem Bild und Ring.</p></div>
+    <div class="cell"><span class="tag">Werkzeuge</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Rechner und Checks</div><div class="gross">Werkzeuge</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="text" style="font-size:8.5px;color:#6B6257">Jedes Werkzeug öffnet sich, sobald seine Lektion frei ist.</div>
+          <div class="tools">
+            <div class="t"><div class="bild"><svg><use href="#il-auge"/></svg></div><b>Berater-Kurz-Check</b><small>aus Lektion 1.3</small></div>
+            <div class="t"><div class="bild"><svg><use href="#il-kompass"/></svg></div><b>Standort-Kompass</b><small>aus Lektion 1.4</small></div>
+            <div class="t gesperrt"><div class="bild"><svg><use href="#il-rechner"/></svg></div><b>Zinseszins-Rechner</b><small>nach Baustein 1</small></div>
+            <div class="t gesperrt"><div class="bild"><svg><use href="#il-chart"/></svg></div><b>Sparquote-Rechner</b><small>mit Lektion 2.2</small></div>
+            <div class="t gesperrt"><div class="bild"><svg><use href="#il-tropfen"/></svg></div><b>Notgroschen-Check</b><small>mit Lektion 2.3</small></div>
+            <div class="t gesperrt"><div class="bild"><svg><use href="#il-waage"/></svg></div><b>Realzins-Rechner</b><small>mit Lektion 3.1</small></div>
+          </div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span class="on"><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Zwei Spalten mit Bild, gesperrte Werkzeuge gedämpft statt mit Schloss.</p></div>
+    <div class="cell"><span class="tag">Ich · Einstellungen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Dein Konto</div><div class="gross">Ich</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="profil"><div class="av">S</div><div><b>Simon Schlerf</b><small>Firestarter Vollversion · seit Oktober 2026</small></div></div>
+          <span class="lbl">Post</span>
+          <div class="set"><div class="r"><i></i><span>Nachrichten vom R&amp;F Institut</span><b style="background:var(--wa);color:var(--wc);border-radius:999px;padding:1px 6px;font-size:7px">2 neu</b><span class="chev" style="flex:none"></span></div></div>
+          <span class="lbl">Lernen</span>
+          <div class="set"><div class="r"><i></i><span>Erinnerung am Abend, 19:30</span><span class="sw on"></span></div><div class="r"><i></i><span>Die Flamme spricht</span><span class="sw on"></span></div><div class="r"><i></i><span>Wochenziel: 3 Lektionen</span><span class="chev" style="flex:none"></span></div></div>
+          <span class="lbl">Darstellung</span>
+          <div class="set"><div class="r"><i></i><span>Dunkler Modus</span><span class="sw"></span></div><div class="r"><i></i><span>Größere Schrift</span><span class="sw"></span></div></div>
+          <span class="lbl">Konto</span>
+          <div class="set"><div class="r"><i></i><span>Passwort ändern</span><span class="chev" style="flex:none"></span></div><div class="r"><i></i><span>Rechtliches und Hilfe</span><span class="chev" style="flex:none"></span></div><div class="r" style="color:#B3403A"><i></i><span>Abmelden</span></div></div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span class="on"><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Einstellungen und Post unter „Ich": Zeilen mit Schaltern wie in den Settings-Showcases, Nachrichten als erste Gruppe.</p></div>
+  </div>
+  <div class="liste">
+    <div><b>Navigation:</b> Pille mit fünf Zielen (Start, Weg, Bibliothek, Werkzeuge, Ich). Einstellungen und Post liegen unter „Ich", zusätzlich eine Glocke oben rechts für neue Nachrichten. Alternative: vier Ziele plus Zahnrad im Kopf, wenn dir fünf zu viele sind.</div>
+    <div><b>Weg weg vom Zahlenring:</b> Der Stand steht nur noch als Satz („2 von 5 Lerneinheiten") in der Karte. Große Zahlen gibt es nur bei echten Abschlüssen.</div>
+    <div><b>Eine Handschrift:</b> Kopf mit Zickzack auf jedem Reiter, Bildkarten statt Textkarten, Gloock nur im Kopf und in der Lektionsüberschrift, sonst Work Sans und Nunito.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Die Einführung: die Flamme führt durch die App</h2>
+  <p class="muted">Kein Video, sondern die echte App mit Stimme. Der Bildschirm wird dunkler, nur das Ziel bleibt hell, die Flamme wandert dorthin und spricht. Man tippt selbst, die Flamme erklärt den nächsten Teil. Am Ende geht sie an ihren Platz im Kopf zurück. Klicke die Schritte durch oder lass sie laufen.</p>
+  <div class="tour">
+    <div class="ph gross"><div class="scr" id="tscr"><div class="inner">
+        <div class="kopf"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><span class="bell" id="t-bell"><i></i><b></b></span><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body" id="t-body">
+          <div class="hero" id="t-hero"><div class="bild"><svg><use href="#il-feuer"/></svg></div><div class="tx"><span class="lbl">Baustein 1 · du bist hier</span><b>Mindset &amp; Zinseszins-Kontinuität</b><small>Lektion 1.1 · Der Funke gehört dir · 6 Min</small><div class="btn akz" style="margin-top:4px">Weiter</div></div></div>
+          <span class="lbl">Dein Weg</span>
+          <div class="kacheln"><div class="k"><div class="bild"><svg><use href="#il-feuer"/></svg></div><b>01 Mindset</b><small>2 von 5</small></div><div class="k gesperrt"><div class="bild"><svg><use href="#il-kompass"/></svg></div><b>02 Selbstführung</b><small>nach Baustein 1</small></div><div class="k gesperrt"><div class="bild"><svg><use href="#il-schild"/></svg></div><b>03 Investment</b><small>32 Schritte</small></div></div>
+        </div>
+        <div class="nav" id="t-nav"><div><span class="on" id="t-n0"><i></i>Start</span><span id="t-n1"><i></i>Weg</span><span id="t-n2"><i></i>Bibliothek</span><span id="t-n3"><i></i>Werkzeuge</span><span id="t-n4"><i></i>Ich</span></div></div>
+      </div>
+      <div class="dim"><div class="loch" id="loch"></div></div>
+      <svg class="tf" id="tf"><use href="#funke"/></svg>
+      <div class="blase" id="blase"></div>
+    </div></div>
+    <div class="tsteps" id="tsteps">
+      <div class="ctl"><button type="button" class="primary" id="t-play">Rundgang abspielen</button><button type="button" id="t-prev">Zurück</button><button type="button" id="t-next">Weiter</button></div>
+      <div class="sprich" id="t-sprich">Die Flamme spricht. Hier steht, was sie sagt.</div>
+      <button type="button" data-step="0" aria-pressed="true">1 · Begrüßung<small>Die Flamme kommt aus dem Kopf in die Mitte und stellt sich vor.</small></button>
+      <button type="button" data-step="1" aria-pressed="false">2 · Dein Weg<small>Bildschirm dunkel, nur der Reiter „Weg" bleibt hell. „Tipp auf Weg."</small></button>
+      <button type="button" data-step="2" aria-pressed="false">3 · Die laufende Lektion<small>Die große Bildkarte bleibt hell. „Hier geht es immer weiter."</small></button>
+      <button type="button" data-step="3" aria-pressed="false">4 · Bibliothek<small>„Zum Nachschlagen, mit Suche."</small></button>
+      <button type="button" data-step="4" aria-pressed="false">5 · Werkzeuge<small>„Rechner und Checks. Sie öffnen sich mit den Lektionen."</small></button>
+      <button type="button" data-step="5" aria-pressed="false">6 · Ich und Post<small>„Einstellungen, Erinnerung, Nachrichten vom Institut."</small></button>
+      <button type="button" data-step="6" aria-pressed="false">7 · Zurück an den Platz<small>Die Flamme geht in den Kopf. „Wenn du mich brauchst, tipp auf mich."</small></button>
+    </div>
+  </div>
+  <div class="liste">
+    <div><b>Dauer:</b> sieben Schritte, je 20 bis 40 Sekunden Sprache, zusammen 3 bis 5 Minuten. Überspringbar, später unter „Ich" erneut startbar.</div>
+    <div><b>Stimme:</b> echte Sprachausgabe (z. B. ElevenLabs, eine feste Stimme für die Flamme), Text dazu eingeblendet, Ton unter „Ich" abschaltbar. Erzeugung der Audio-Dateien erst nach Kostenplan.</div>
+    <div><b>Tipp auf die Flamme, drei Ideen:</b> a) „Frag den Funken": kurze Antworten zu Bedienung und Begriffen aus der Bibliothek. b) Tageszeile: ein Satz zum Stand plus Vorschlag für die nächsten 6 Minuten. c) Rundgang erneut starten. Empfehlung: a plus c.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">3</span>Was aus Higgsfield und der Lern-App übertragbar ist</h2>
+  <div class="liste">
+    <div><b>Übernommen:</b> Suche prominent oben (Bibliothek) · Kacheln mit Bild als Einstieg (Dein Weg) · große Bildkarte als Hauptaktion · Navigation als Pille · Settings als Zeilen mit Schaltern · Begrüßung oben mit Tageszeit.</div>
+    <div><b>Nicht übernommen:</b> Dunkler Grund (unsere Welt ist hell, Dunkelmodus bleibt Option) · Neongelb · viele Fotos (wir haben wenige Motive, dafür eine Illustrationsfamilie) · Burger-Menü (Reiter unten sind für 60 plus belegt besser auffindbar).</div>
+    <div><b>Noch offen:</b> der Stil der Illustrationen (flach wie Imprint oder 3D wie der Geldbaum-Flyer) · ob Dein Weg auf Start bleibt oder nur im Reiter Weg lebt · ob fünf Reiter oder vier plus Zahnrad.</div>
+  </div>
+</section>
+
+<footer>Datei: 10_PROJEKTE/Firestarter/innen_2026-10-21/Firestarter_Innen_Stand1.html · Mockups sind HTML-Nachbauten mit Platzhalter-Illustrationen · Status Entwurf, Entscheidung bei Simon.</footer>
+</div>
+
+<script>
+(function(){
+  var b=document.body;function welt(g){b.classList.toggle('w-gruen',g);document.getElementById('w-blau').setAttribute('aria-pressed',!g);document.getElementById('w-gruen').setAttribute('aria-pressed',g);}
+  document.getElementById('w-blau').addEventListener('click',function(){welt(false)});document.getElementById('w-gruen').addEventListener('click',function(){welt(true)});
+  /* Rundgang */
+  var scr=document.getElementById('tscr'), loch=document.getElementById('loch'), tf=document.getElementById('tf'), blase=document.getElementById('blase'), sprich=document.getElementById('t-sprich'), step=0, timer=null;
+  var STEPS=[
+    {ziel:null, fl:[50,36], bl:[10,52,'links'], text:'Hallo Simon. Ich bin der Funke. Ich zeige dir in drei Minuten, wo alles ist. Du kannst jederzeit tippen, ich warte.', spot:null},
+    {ziel:'t-n1', fl:[28,78], bl:[12,60,'links'], text:'Unten ist deine Leiste. Tipp auf „Weg". Dort siehst du alle neun Bausteine und wo du gerade stehst.'},
+    {ziel:'t-hero', fl:[70,46], bl:[8,8,'links'], text:'Das hier ist immer dein nächster Schritt. Ein Tipp auf „Weiter", und es geht dort los, wo du aufgehört hast.'},
+    {ziel:'t-n2', fl:[52,78], bl:[6,60,'links'], text:'In der Bibliothek findest du jede Lektion zum Nachschlagen. Oben die Suche, darunter die Themen.'},
+    {ziel:'t-n3', fl:[72,78], bl:[4,60,'links'], text:'Werkzeuge sind Rechner und Checks. Sie öffnen sich, sobald ihre Lektion frei ist.'},
+    {ziel:'t-n4', fl:[84,78], bl:[4,60,'links'], text:'Unter „Ich" stellst du die Erinnerung ein, schaltest meine Stimme aus und findest die Post vom Institut.'},
+    {ziel:null, fl:[84,10], bl:[6,26,'links'], text:'Das war der Rundgang. Ich bleibe hier oben. Wenn du mich brauchst, tipp auf mich. Jetzt bist du dran.'}
+  ];
+  function rect(id){var el=document.getElementById(id),r=el.getBoundingClientRect(),s=scr.getBoundingClientRect();return {l:(r.left-s.left)/s.width*100,t:(r.top-s.top)/s.height*100,w:r.width/s.width*100,h:r.height/s.height*100};}
+  function show(n){step=Math.max(0,Math.min(STEPS.length-1,n));var S=STEPS[step];
+    scr.classList.toggle('t-on',!!S.ziel);
+    if(S.ziel){var r=rect(S.ziel);loch.style.left=(r.l-2)+'%';loch.style.top=(r.t-1.5)+'%';loch.style.width=(r.w+4)+'%';loch.style.height=(r.h+3)+'%';}
+    tf.style.left=S.fl[0]+'%';tf.style.top=S.fl[1]+'%';tf.style.translate='-50% -50%';
+    blase.style.left=S.bl[0]+'%';blase.style.top=S.bl[1]+'%';blase.className='blase '+(S.bl[2]||'');blase.innerHTML=S.text;
+    sprich.textContent='Die Flamme: „'+S.text+'"';
+    document.querySelectorAll('#tsteps button[data-step]').forEach(function(x){x.setAttribute('aria-pressed',+x.dataset.step===step)});}
+  document.querySelectorAll('#tsteps button[data-step]').forEach(function(x){x.addEventListener('click',function(){clearInterval(timer);show(+x.dataset.step)})});
+  document.getElementById('t-next').addEventListener('click',function(){clearInterval(timer);show(step+1)});
+  document.getElementById('t-prev').addEventListener('click',function(){clearInterval(timer);show(step-1)});
+  document.getElementById('t-play').addEventListener('click',function(){clearInterval(timer);show(0);timer=setInterval(function(){if(step>=STEPS.length-1){clearInterval(timer);return;}show(step+1);},3800);});
+  window.addEventListener('resize',function(){show(step)});
+  setTimeout(function(){show(0)},300);
+})();
+</script>
+</body>
+</html>
