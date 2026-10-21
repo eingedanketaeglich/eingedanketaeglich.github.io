@@ -1,0 +1,248 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><style>html{color-scheme:light}body{margin:0}</style></head><body><title>Firestarter Lektion Mockups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Vier Mockups fuer das Innenleben einer Lektion (22.10.2026). L1 bis L3: Aufbau der echten App bleibt (acht Schritte, fuenf Reiter), nur die Optik ist neu. L4: Option 2, Wisch-Strecke Schritt fuer Schritt. Inhalt ist der echte Schritt 3 von Lektion 1.1 (Die drei Leitbegriffe). Alle Formen direkt gezeichnet, immer hell. */
+:root{
+  --bg:#FCFAF6; --surface:#FFFFFF; --line:#E3DCCB; --fg:#1C1917; --fg-2:#6B6257; --navy:#102444; --navy-ink:#F5F1EA; --gold:#BBA45F; --gold-soft:#F1E9CF;
+  --sans:"Nunito",ui-rounded,system-ui,sans-serif; --serif:"Gloock",Georgia,serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --wtint:#E9EEF5; --grey:#6B6257; --ph:#8A8272; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;padding-block:0 56px;padding-inline:16px}
+.wrap{max-width:1060px;margin:0 auto}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,40px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(22px,4.5vw,28px);font-weight:800}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+header{padding-block:32px 18px;display:grid;gap:12px}
+header .lead{font-size:18px;color:var(--fg-2);max-width:66ch}
+section{display:grid;gap:16px;padding-block:28px;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:30px;height:28px;padding:0 8px;border-radius:8px;background:var(--navy);color:var(--navy-ink);font-weight:800;font-size:14px;margin-right:10px;vertical-align:middle}
+.note{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:12px 14px;font-size:15px}
+.muted{font-size:15px;color:var(--fg-2)}
+.row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));justify-items:center}
+.cell{display:grid;gap:6px;justify-items:center;min-width:0;width:100%}
+.cell .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.cell .cap{font-size:13.5px;color:var(--fg-2);text-align:center;max-width:32ch}
+.cell .cap b{color:var(--fg);font-weight:800}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:800}
+.ist{width:min(100%,250px);border-radius:32px;overflow:hidden;background:#0A1424;padding:8px;box-shadow:0 12px 32px rgba(60,40,10,.12)}
+.ist img{display:block;width:100%;border-radius:25px}
+/* Telefon */
+.ph{width:min(100%,250px);aspect-ratio:9/18.6;border-radius:32px;background:#0A1424;padding:8px;position:relative;box-shadow:0 12px 32px rgba(60,40,10,.12)}
+.scr{position:relative;width:100%;height:100%;border-radius:25px;overflow:hidden;background:var(--wcream);color:var(--wc-2);font-family:var(--body2);font-size:10px;line-height:1.35}
+.scr *{box-sizing:border-box}
+.inner{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr}
+.lk{padding:14px 12px 6px;display:grid;gap:5px}
+.lk .zeile{display:flex;align-items:center;gap:7px}
+.lk .back{width:22px;height:22px;border-radius:50%;background:#fff;display:grid;place-items:center;font-size:13px;color:var(--wc);flex:none}
+.lk .klein{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ph)}
+.dots{display:flex;gap:3px;align-items:center}.dots i{width:5px;height:5px;border-radius:50%;background:#E6E0D3;display:block}.dots i.on{background:var(--wa);width:12px;border-radius:3px}.dots i.done{background:var(--wc)}
+.reiter{display:flex;gap:4px;overflow:hidden}
+.reiter span{background:#fff;border-radius:999px;padding:4px 8px;font-size:7px;font-weight:600;color:var(--wc);white-space:nowrap}
+.reiter span.on{background:var(--wc);color:#F5F1EA}
+.body{padding:8px 12px 44px;display:grid;gap:8px;align-content:start;overflow:hidden;position:relative}
+.lbl{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ph)}
+.video{border-radius:10px;background:var(--wc-2);aspect-ratio:16/9;display:grid;place-items:center;position:relative}
+.video i{width:26px;height:26px;border-radius:50%;background:var(--wa);display:grid;place-items:center}
+.video i:after{content:"";border-left:8px solid var(--wc);border-top:5px solid transparent;border-bottom:5px solid transparent;margin-left:2px}
+.video small{position:absolute;left:7px;bottom:5px;font-size:6px;color:rgba(245,241,234,.85)}
+.h{font-family:var(--serif);font-size:16px;line-height:1.1;color:var(--wc-2)}
+.sub{font-size:8.5px;color:var(--grey)}
+.text{font-size:8.6px;color:#3B342C;line-height:1.5}
+.text b{font-weight:600;color:var(--wc-2)}
+.dropcap:first-letter{font-family:var(--serif);font-size:24px;float:left;line-height:.8;padding:3px 4px 0 0;color:var(--wc)}
+.leit{display:flex;gap:7px;align-items:flex-start}
+.leit .ci{width:22px;height:22px;border-radius:50%;background:var(--wtint);display:grid;place-items:center;flex:none;color:var(--wc)}
+.leit .ci svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.leit .ci.z{font-family:var(--serif);font-size:12px;background:var(--wc);color:#F5F1EA}
+.leit div{display:grid;gap:1px}
+.leit b{font-size:9px;font-weight:600}.leit b small{font-weight:400;color:var(--ph);font-size:7px;margin-left:3px}
+.leit p{font-size:8px;color:#3B342C;line-height:1.4}
+.kern{border-left:3px solid var(--wa);padding:5px 8px;background:#fff;border-radius:4px 9px 9px 4px;font-size:8.5px}
+.kern .lbl{margin-bottom:2px}
+.aha{background:var(--wc);color:#F5F1EA;border-radius:10px;padding:8px 9px;font-size:8.5px}
+.aha .lbl{color:rgba(245,241,234,.7);margin-bottom:2px}
+.aha b{font-weight:600}
+.karte{background:#fff;border-radius:11px;padding:9px;display:grid;gap:4px}
+.karte.orange{background:color-mix(in srgb,var(--wa) 14%,#fff)}
+.btn{height:28px;border-radius:9px;background:var(--wa);color:var(--wc);font-weight:600;font-size:9.5px;display:grid;place-items:center}
+.btn.deep{background:var(--wc);color:#F5F1EA}
+.unten{position:absolute;left:0;right:0;bottom:0;padding:8px 12px 10px;background:linear-gradient(transparent,var(--wcream) 30%);display:grid;gap:6px;z-index:5}
+.pfeile{display:flex;justify-content:space-between;font-size:7.5px;font-weight:600;color:var(--wc)}
+.sag{display:flex;gap:6px;align-items:flex-start}
+.sag svg{width:24px;height:28px;flex:none}
+.sag .b{background:#fff;border-radius:9px;padding:7px 8px;font-size:8.3px;line-height:1.35;position:relative;flex:1}
+.sag .b:before{content:"";position:absolute;left:-5px;top:9px;border:5px solid transparent;border-right-color:#fff;border-left:0}
+/* L3: Reiter als Leiste unten */
+.navr{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;z-index:5}
+.navr div{display:flex;gap:2px;padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(14px) saturate(1.8);-webkit-backdrop-filter:blur(14px) saturate(1.8);box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 6px 16px rgba(16,36,68,.1)}
+.navr span{display:grid;gap:1px;justify-items:center;font-size:5.5px;color:var(--grey);width:38px;padding:3px 0;border-radius:999px}
+.navr span svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.navr span.on{color:var(--wc);background:rgba(255,255,255,.35);font-weight:600}.navr span.on svg{stroke:var(--wa)}
+.linie{height:3px;background:#E6E0D3;border-radius:2px;position:relative}.linie i{position:absolute;left:0;top:0;bottom:0;width:37%;background:var(--wa);border-radius:2px}
+.schritte{display:flex;gap:3px}.schritte i{flex:1;height:3px;border-radius:2px;background:#E6E0D3}.schritte i.done{background:var(--wc)}.schritte i.on{background:var(--wa)}
+/* L4: Wisch-Strecke */
+.stapel{position:absolute;inset:0;display:flex;gap:8px;padding:0 0 0 12px;align-items:stretch}
+.karteG{flex:0 0 calc(100% - 34px);background:#fff;border-radius:16px;padding:14px 12px;display:grid;gap:8px;align-content:start;position:relative;overflow:hidden}
+.karteG.peek{flex:0 0 100%;opacity:.55}
+.karteG .zahl{font-family:var(--serif);font-size:40px;line-height:1;color:var(--wa)}
+.karteG .zahl small{font-family:var(--mono);font-size:7px;color:var(--ph);letter-spacing:.1em;margin-left:4px;vertical-align:middle}
+.karteG .ic{width:44px;height:44px;border-radius:50%;background:var(--wtint);display:grid;place-items:center;color:var(--wc)}
+.karteG .ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.karteG .h{font-size:18px}
+.karteG .text{font-size:9.2px}
+.wisch{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:7px;color:var(--ph)}
+.wisch:before{content:"";display:block;width:34px;height:3px;border-radius:2px;background:#D9D2C3;margin:0 auto 4px}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Firestarter · Innenleben einer Lektion · 22.10.2026</p>
+  <h1>Eine Lektion von innen: vier Wege</h1>
+  <p class="lead">Alle vier zeigen denselben echten Inhalt: Lektion 1.1, Schritt 3 von 8, „Die drei Leitbegriffe". Links das Ist aus der heutigen App. L1 bis L3 lassen den Aufbau stehen (acht Schritte, fünf Reiter Aufgabe, Video, Anker, Lektion, Fragerunde) und ändern nur die Optik. L4 ist Option 2: eine Wisch-Strecke, ein Gedanke je Bildschirm, keine Reiter.</p>
+  <p class="note">Die acht Schritte von 1.1 heute: Einstieg · Deine Fragen · 1.1.1 Willkommen am Feuer · 1.1.2 Die unbequeme Eröffnung · 1.1.3 Die Reise · Mitnehmen und Anker · Fazit und Live-Frage · Fragerunde. Das ist Renés Inhaltsstruktur und bleibt in L1 bis L3 unangetastet.</p>
+</header>
+
+<section>
+  <h2><span class="num">Ist</span>So sieht Schritt 1 heute aus</h2>
+  <div class="row">
+    <div class="cell"><span class="tag">Ist · Lektion 1.1 heute</span>
+      <div class="ist"><img src="ist_lektion.jpg" alt="Lektion 1.1 in der heutigen App: Reiter Aufgabe, Video, Anker, Lektion, Fragerunde, Lagerfeuer-Bild, Titel Der Funke gehört dir, drei Pillen, Text"></div>
+      <p class="cap"><b>Was bleibt:</b> acht Schritte mit Punkten, fünf Reiter, Titel, Pillen, Text. <b>Was stört:</b> Gold statt Weltfarbe, Zahnrad und Flamme oben, Kästen mit Rand, Reiter mit Rand, nichts hat mit dem neuen Start zu tun.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">L1</span>Lesemodus mit Schrittleiste</h2>
+  <div class="row">
+    <div class="cell"><span class="tag">L1 · Schritt 3 von 8</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="lk">
+          <div class="zeile"><span class="back">‹</span><span class="klein">Lektion 1.1 · Schritt 3 von 8</span></div>
+          <div class="dots"><i class="done"></i><i class="done"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="reiter"><span>Aufgabe</span><span class="on">Video</span><span>Anker</span><span>Lektion</span><span>Fragerunde</span></div>
+        </div>
+        <div class="body">
+          <div class="video"><i></i><small>Video 1.1.1 · Willkommen am Feuer · 3:40</small></div>
+          <div class="h">Die drei Leitbegriffe, dein Dreieck</div>
+          <p class="sub">Das ganze Programm steht auf drei Begriffen, mit R&amp;F in der Mitte.</p>
+          <div class="leit"><span class="ci"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7M8 11h5"/></svg></span><div><b>Finanzwissen<small>Grundlage</small></b><p>Du kannst nichts steuern, was du nicht verstehst. Solange Geld, Zinsen und Börse eine Black Box sind, entscheiden andere.</p></div></div>
+          <div class="leit"><span class="ci"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></span><div><b>Vermögensaufbau<small>Ziel</small></b><p>Wissen allein füllt kein Depot. Es wird erst wertvoll, wenn es in Handlung übergeht.</p></div></div>
+          <div class="leit"><span class="ci"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-4 2 2-6z"/></svg></span><div><b>Selbstbestimmung<small>Sinn</small></b><p>Nicht reich werden um des Reichtums willen, sondern <b>frei</b> werden in deinen Entscheidungen.</p></div></div>
+          <div class="kern"><div class="lbl">Der Kern</div>Finanzwissen führt zu Vermögensaufbau, und beides zusammen führt zu Selbstbestimmung.</div>
+          <div class="aha"><div class="lbl">Der Aha-Moment</div><b>Der Funke gehört dir, nicht dem Berater.</b> Ein Feuer, das du selbst entfacht hast, kann dir niemand mehr ausreden.</div>
+        </div>
+        <div class="unten"><div class="btn deep">Weiter zu Schritt 4</div><div class="pfeile"><span>‹ Deine Fragen</span><span>Die unbequeme Eröffnung ›</span></div></div>
+      </div></div></div>
+      <p class="cap"><b>Am nächsten am Heute.</b> Oben Zurück, Schrittzeile, Punkte und die fünf Reiter als Pillen ohne Rand. Darunter Video, Serif-Titel, Leitbegriffe als Zeilen ohne Kästen, Kern mit orangem Strich, Aha in Blau. Weiter-Knopf steht fest unten.</p></div>
+
+    <div class="cell"><span class="tag">L2 · Die Flamme begleitet</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="lk">
+          <div class="zeile"><span class="back">‹</span><span class="klein">Lektion 1.1 · Die drei Leitbegriffe</span></div>
+          <div class="schritte"><i class="done"></i><i class="done"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="body">
+          <div class="sag"><svg viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><div class="b">Schritt 3: Hier geht es um drei Begriffe, auf denen alles steht. Erst das Video, dann lies in Ruhe. Zwei Minuten.</div></div>
+          <div class="video"><i></i><small>Video 1.1.1 · 3:40</small></div>
+          <div class="h">Die drei Leitbegriffe, dein Dreieck</div>
+          <p class="text dropcap"><b>Finanzwissen</b> ist die Grundlage. Du kannst nichts steuern, was du nicht verstehst. Solange Geld, Zinsen und Börse eine Black Box sind, entscheiden andere. <b>Vermögensaufbau</b> ist das Ziel: Wissen allein füllt kein Depot, es wird erst wertvoll, wenn es in Handlung übergeht. <b>Selbstbestimmung</b> ist der Sinn: frei in deinen Entscheidungen.</p>
+          <div class="karte orange"><div class="lbl">Merksatz</div><div class="text"><b>Finanzwissen führt zu Vermögensaufbau, beides zusammen zu Selbstbestimmung.</b></div></div>
+          <div class="karte"><div class="lbl">Aha-Moment</div><div class="text"><b>Der Funke gehört dir, nicht dem Berater.</b></div></div>
+        </div>
+        <div class="unten"><div class="pfeile"><span>‹ Schritt 2</span><span>Schritt 4 ›</span></div><div class="btn">Weiter</div></div>
+      </div></div></div>
+      <p class="cap"><b>Wie der Start.</b> Die Flamme sagt, was in diesem Schritt kommt und wie lange es dauert. Reiter gibt es nicht mehr sichtbar, weil Aufgabe, Anker und Fragerunde ohnehin eigene Schritte sind. Text wie ein Magazin mit Initial, Merksätze als weiche Karten.</p></div>
+
+    <div class="cell"><span class="tag">L3 · Karten, Reiter unten</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="lk">
+          <div class="zeile"><span class="back">‹</span><span class="klein">1.1 · Schritt 3 von 8</span><span class="klein" style="margin-left:auto;color:var(--wa)">3 Min</span></div>
+          <div class="linie"><i></i></div>
+        </div>
+        <div class="body">
+          <div class="karte" style="padding:0;overflow:hidden"><div class="video" style="border-radius:0"><i></i><small>Video 1.1.1 · Willkommen am Feuer</small></div><div style="padding:8px 9px"><div class="h" style="font-size:14px">Die drei Leitbegriffe, dein Dreieck</div><p class="sub">Das Programm steht auf drei Begriffen.</p></div></div>
+          <div class="karte"><div class="leit"><span class="ci z">1</span><div><b>Finanzwissen<small>Grundlage</small></b><p>Du kannst nichts steuern, was du nicht verstehst.</p></div></div></div>
+          <div class="karte"><div class="leit"><span class="ci z">2</span><div><b>Vermögensaufbau<small>Ziel</small></b><p>Wissen allein füllt kein Depot. Es wird wertvoll, wenn es in Handlung übergeht.</p></div></div></div>
+          <div class="karte"><div class="leit"><span class="ci z">3</span><div><b>Selbstbestimmung<small>Sinn</small></b><p>Nicht reich werden um des Reichtums willen, sondern frei in deinen Entscheidungen.</p></div></div></div>
+          <div class="aha"><div class="lbl">Der Aha-Moment</div><b>Der Funke gehört dir, nicht dem Berater.</b></div>
+          <div class="btn deep">Weiter</div>
+        </div>
+        <div class="navr"><div><span><svg viewBox="0 0 24 24"><path d="M9 11l3 3 8-8"/><path d="M20 12v6a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h9"/></svg>Aufgabe</span><span class="on"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M10 9l5 3-5 3z"/></svg>Video</span><span><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-6-4-6 4z"/></svg>Anker</span><span><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Lektion</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.7.3-1 .8-1 1.7M12 17h0"/></svg>Fragerunde</span></div></div>
+      </div></div></div>
+      <p class="cap"><b>Reiter wandern nach unten.</b> In der Lektion ersetzt die Glas-Leiste die fünf Hauptreiter durch die fünf Lektions-Reiter, mit Symbolen wie beim Start. Oben nur ein dünner oranger Fortschrittsstrich und die Minuten. Inhalt als weiche Karten, Leitbegriffe mit Serif-Nummer.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">L4</span>Option 2: Wisch-Strecke, ein Gedanke je Bildschirm</h2>
+  <div class="row">
+    <div class="cell"><span class="tag">L4 · Schritt 3, Karte 1 von 3</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="lk">
+          <div class="zeile"><span class="back">‹</span><span class="klein">Lektion 1.1 · Die drei Leitbegriffe</span></div>
+          <div class="schritte"><i class="done"></i><i class="done"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div style="position:relative">
+          <div class="stapel">
+            <div class="karteG">
+              <div class="zahl">1<small>VON 3</small></div>
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 19V5a2 2 0 0 1 2-2h12v16H6a2 2 0 0 0-2 2z"/><path d="M8 7h7M8 11h5"/></svg></div>
+              <div class="h">Finanzwissen</div>
+              <p class="sub">die Grundlage</p>
+              <p class="text">Du kannst nichts steuern, was du nicht verstehst. Solange Geld, Zinsen und Börse eine Black Box sind, entscheiden andere.</p>
+              <div class="video" style="margin-top:4px"><i></i><small>Dazu das Video, 1:10</small></div>
+              <div class="wisch">Wische nach links für Vermögensaufbau</div>
+            </div>
+            <div class="karteG peek">
+              <div class="zahl">2<small>VON 3</small></div>
+              <div class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></div>
+              <div class="h">Vermögensaufbau</div>
+            </div>
+          </div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Wie Duolingo, Babbel, Blinkist.</b> Jeder Schritt zerfällt in Karten mit einem Gedanken. Große Zahl, Symbol, ein Satz Kern, kurzer Text, das Video dazu. Keine Reiter, kein Scrollen: nur wischen. Die nächste Karte lugt rechts hervor.</p></div>
+
+    <div class="cell"><span class="tag">L4 · letzte Karte des Schritts</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="lk">
+          <div class="zeile"><span class="back">‹</span><span class="klein">Lektion 1.1 · Die drei Leitbegriffe</span></div>
+          <div class="schritte"><i class="done"></i><i class="done"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+        <div style="position:relative">
+          <div class="stapel">
+            <div class="karteG" style="background:var(--wc);color:#F5F1EA">
+              <div class="zahl" style="color:var(--wa)">3<small style="color:rgba(245,241,234,.6)">VON 3</small></div>
+              <div class="lbl" style="color:rgba(245,241,234,.7)">Der Aha-Moment</div>
+              <div class="h" style="color:#F5F1EA;font-size:20px">Der Funke gehört dir, nicht dem Berater.</div>
+              <p class="text" style="color:rgba(245,241,234,.85)">Ein Feuer, das du selbst entfacht hast, kann dir niemand mehr ausreden. Finanzwissen führt zu Vermögensaufbau, beides zusammen zu Selbstbestimmung.</p>
+              <div class="sag" style="margin-top:6px"><svg viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><div class="b" style="color:var(--wc-2)">Das war Schritt 3. Weiter zu „Was Firestarter nicht ist"?</div></div>
+              <div class="btn" style="margin-top:4px">Weiter zu Schritt 4</div>
+            </div>
+          </div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Der Schluss jedes Schritts ist blau.</b> Aha-Moment groß in Serif, die Flamme fragt nach dem nächsten Schritt. So fühlt sich jeder Schritt abgeschlossen an. Aufgabe, Anker und Fragerunde bekommen dieselbe Kartenform.</p></div>
+  </div>
+  <div class="liste">
+    <div><b>Für L4 spricht:</b> ein Gedanke je Bildschirm, nichts zum Scrollen, große Schrift für 40 bis 70, jeder Schritt hat ein Ende. Belegt bei Duolingo, Babbel, Blinkist (Karten-Modus).</div>
+    <div><b>Gegen L4 spricht:</b> Renés acht Schritte müssten in Karten zerlegt werden, das ist ein Eingriff in die Inhaltsstruktur und braucht sein Ja. Lange Texte (Einstieg, Vergleich „was Firestarter nicht ist") passen nicht auf eine Karte.</div>
+    <div><b>Mischweg:</b> L2 als Grundform und nur die Fragerunde und die Schätzrunde als Wisch-Karten. Dann bleibt die Struktur, und das Spielerische kommt dort hin, wo es passt.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">?</span>Was ich von dir brauche</h2>
+  <div class="liste">
+    <div><b>1. Welcher Weg:</b> L1, L2, L3 oder L4, oder eine Mischung (zum Beispiel L2 mit der Leiste aus L3).</div>
+    <div><b>2. Reiter:</b> sichtbar als Pillen (L1), als Leiste unten (L3) oder weg, weil Aufgabe, Anker und Fragerunde eigene Schritte sind (L2, L4).</div>
+    <div><b>3. Flamme in der Lektion:</b> begleitet jeden Schritt (L2, L4) oder bleibt draußen (L1, L3).</div>
+  </div>
+</section>
+</div>
+</body></html>
