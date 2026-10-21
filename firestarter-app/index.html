@@ -30,7 +30,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .kopf .klein{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85;margin-bottom:4px}
 .kopf .gross{font-family:var(--serif);font-size:30px;line-height:1.05}
 .kopf .edge{position:absolute;left:0;right:0;bottom:-1px;height:34px;width:100%;display:block;z-index:1}
-.kopf .edge path{fill:var(--wcream)}
+.kopf .edge{fill:var(--wcream)}.kopf .edge path{fill:var(--wcream)}
 .kopf .funke{position:absolute;right:18px;bottom:-8px;width:84px;height:96px;z-index:2;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .kopf .funke .flame{transform-origin:50% 90%;animation:flicker 1.6s ease-in-out infinite}
 .kopf .punkt{position:absolute;right:16px;bottom:66px;z-index:3;width:22px;height:22px;border-radius:50%;background:var(--wa);color:var(--wc);font:800 12px var(--sans);display:grid;place-items:center;border:2px solid var(--wcream);pointer-events:none}
@@ -48,7 +48,24 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .weg .m i{width:30px;height:30px;border-radius:50%;background:#E6E0D3;display:grid;place-items:center;font:700 12px var(--sans);color:var(--ph);flex:none;margin-left:8px;border:4px solid var(--wcream)}
 .weg .m.now i{background:var(--wa);color:var(--wc)}
 .weg .m .k{flex:1;display:flex;gap:12px;align-items:center;background:#fff;border-radius:16px;padding:14px;min-width:0}
-.weg .m.now .k{box-shadow:0 10px 24px rgba(16,36,68,.12)}
+.weg .m.now .k{background:var(--wc);color:#F5F1EA;box-shadow:0 10px 24px rgba(16,36,68,.18)}
+.weg .m.now .k small{color:rgba(245,241,234,.8)}
+.weg .sub{margin:4px 0 4px 52px;display:grid;gap:8px}
+.weg .sub .l{display:flex;gap:10px;align-items:center;background:#fff;border-radius:12px;padding:11px 12px;cursor:pointer}
+.weg .sub .l.now{background:var(--wc);color:#F5F1EA}
+.weg .sub .l .z{font-family:var(--serif);font-size:18px;width:34px;color:var(--wc);flex:none}
+.weg .sub .l.now .z{color:var(--wa)}
+.weg .sub .l div{display:grid;flex:1;min-width:0}
+.weg .sub .l b{font-size:14px;font-weight:600}
+.weg .sub .l small{font-size:12px;color:var(--grey)}
+.weg .sub .l.now small{color:rgba(245,241,234,.8)}
+.weg .sub .l.done .z{color:#9A9286}
+.weg .sub .l.aus{opacity:.55;cursor:default}
+.weg .sub .l .funke2{width:40px;height:46px;flex:none}
+.weg .m .k .pfeil{width:9px;height:9px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);flex:none;margin-right:6px;opacity:.6;transition:transform .25s}
+.weg .m.open .k .pfeil{transform:rotate(-135deg)}
+.mehr{display:flex;align-items:center;justify-content:space-between;padding:14px 4px;font-size:15px;font-weight:600;color:var(--wc);cursor:pointer}
+.mehr .chev{width:9px;height:9px;border-right:2px solid var(--wc);border-bottom:2px solid var(--wc);transform:rotate(-45deg)}
 .weg .m .k .z{font-family:var(--serif);font-size:26px;line-height:1;width:36px;flex:none;color:var(--wc)}
 .weg .m.now .k .z{color:var(--wa)}
 .weg .m .k div{display:grid;min-width:0;flex:1}
@@ -118,9 +135,9 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .nav button svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
 .nav button[aria-pressed="true"]{color:#F5F1EA;background:rgba(255,255,255,.14)}
 .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
-html.glas .nav .pill{background:rgba(245,241,234,.55);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:0 12px 30px rgba(16,36,68,.18),inset 0 0 0 1px rgba(255,255,255,.6)}
+html.glas .nav .pill{background:rgba(255,255,255,.22);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);box-shadow:0 12px 30px rgba(16,36,68,.16),inset 0 0 0 1px rgba(255,255,255,.55)}
 html.glas .nav button{color:var(--grey)}
-html.glas .nav button[aria-pressed="true"]{color:var(--wc);background:rgba(255,255,255,.75)}
+html.glas .nav button[aria-pressed="true"]{color:var(--wc);background:rgba(255,255,255,.6)}
 html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
 .hinweis{position:absolute;left:50%;bottom:calc(92px + var(--bot));translate:-50% 0;background:var(--wc);color:#F5F1EA;border-radius:999px;padding:8px 14px;font:600 13px var(--body2);opacity:0;transition:opacity .3s;pointer-events:none;z-index:21;white-space:nowrap}
 .hinweis.on{opacity:1}
@@ -143,55 +160,58 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
 
   <!-- START -->
   <section class="screen on" id="s-start">
-    <div class="kopf"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><svg class="funke" data-go="funke"><use href="#funke"/></svg><span class="punkt" id="punkt">1</span><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+    <div class="kopf"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><span class="punkt" id="punkt">1</span><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
       <div class="heute">Heute: Lektion 1.1, sechs Minuten.</div>
-      <button class="btn" type="button" data-go="lektion">Weiter</button>
+      <button class="btn" type="button" data-lek="1">Weiter</button>
       <div class="lbl">Dein Weg</div>
       <div class="weg">
-        <div class="m now" data-go="weg"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 Lerneinheiten · du bist hier</small></div><svg class="funke2"><use href="#funke"/></svg></div></div>
+        <div class="m now" data-go="weg"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 Lerneinheiten · du bist hier</small></div><svg class="funke2" viewBox="0 0 62 76"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg></div></div>
         <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>öffnet sich nach Baustein 1</small></div></div></div>
         <div class="m gesperrt"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
-        <div class="m gesperrt"><i>4</i><div class="k"><span class="z">04</span><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
-        <div class="m gesperrt"><i>5</i><div class="k"><span class="z">05</span><div><b>Steuern verstehen</b><small>35 Schritte</small></div></div></div>
-        <div class="m gesperrt"><i>6</i><div class="k"><span class="z">06</span><div><b>Infrastruktur</b><small>6 Schritte</small></div></div></div>
-        <div class="m gesperrt"><i>7</i><div class="k"><span class="z">07</span><div><b>Treibstoff</b><small>34 Schritte</small></div></div></div>
-        <div class="m gesperrt"><i>8</i><div class="k"><span class="z">08</span><div><b>Durchblick</b><small>43 Schritte</small></div></div></div>
-        <div class="m gesperrt"><i>9</i><div class="k"><span class="z">09</span><div><b>Mündigkeit</b><small>54 Schritte</small></div></div></div>
-      </div>
+              </div>
+      <div class="mehr" data-go="weg"><span>Alle neun Bausteine ansehen</span><span class="chev"></span></div>
     </div>
   </section>
 
   <!-- WEG -->
   <section class="screen" id="s-weg">
-    <div class="kopf"><div class="klein">Baustein 1 · 5 Lerneinheiten · 40 Min</div><div class="gross">Mindset &amp; Zinseszins</div><svg class="funke" data-go="funke"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+    <div class="kopf"><div class="klein">Dein Fundament · 9 Bausteine · 43 Lektionen</div><div class="gross">Dein Weg</div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
-      <p class="text" style="margin:0 0 14px">Die wichtigste Rechnung des Finanzlebens. Bildung statt Beratung. Dein Zukunftsbrief.</p>
-      <div class="weg">
-        <div class="m now" data-go="lektion"><i>✓</i><div class="k"><span class="z">1.1</span><div><b>Willkommen, und die unbequeme Eröffnung</b><small>6 Min · 8 von 8 Schritten, fertig</small></div></div></div>
-        <div class="m now" data-go="lektion"><i>2</i><div class="k"><span class="z">1.2</span><div><b>Der stille Saboteur</b><small>8 Min · 3 von 8 Schritten · jetzt</small></div><svg class="funke2"><use href="#funke"/></svg></div></div>
-        <div class="m gesperrt"><i>3</i><div class="k"><span class="z">1.3</span><div><b>Bildung schlägt Beratung</b><small>7 Min</small></div></div></div>
-        <div class="m gesperrt"><i>4</i><div class="k"><span class="z">1.4</span><div><b>Wo stehst du, und wo willst du hin?</b><small>10 Min</small></div></div></div>
-        <div class="m gesperrt"><i>5</i><div class="k"><span class="z">1.5</span><div><b>Der Zukunftsbrief</b><small>9 Min</small></div></div></div>
+      <div class="weg" id="wegliste">
+        <div class="m now open" data-acc="1"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 Lerneinheiten · du bist hier</small></div><span class="pfeil"></span></div></div>
+        <div class="sub" id="acc-1">
+          <div class="l done" data-lek="0"><span class="z">1.1</span><div><b>Willkommen, und die unbequeme Eröffnung</b><small>6 Min · fertig</small></div></div>
+          <div class="l now" data-lek="1"><span class="z">1.2</span><div><b>Der stille Saboteur</b><small>8 Min · Schritt 3 von 8 · jetzt</small></div><svg class="funke2" viewBox="0 0 62 76"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg></div>
+          <div class="l" data-lek="2"><span class="z">1.3</span><div><b>Bildung schlägt Beratung</b><small>7 Min</small></div></div>
+          <div class="l" data-lek="3"><span class="z">1.4</span><div><b>Wo stehst du, und wo willst du hin?</b><small>10 Min</small></div></div>
+          <div class="l" data-lek="4"><span class="z">1.5</span><div><b>Der Zukunftsbrief</b><small>9 Min</small></div></div>
+        </div>
+        <div class="m gesperrt" data-acc="2"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>5 Lerneinheiten · 27 Schritte · öffnet sich nach Baustein 1</small></div></div></div>
+        <div class="m gesperrt" data-acc="3"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+        <div class="m gesperrt" data-acc="4"><i>4</i><div class="k"><span class="z">04</span><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
+        <div class="m gesperrt" data-acc="5"><i>5</i><div class="k"><span class="z">05</span><div><b>Steuern verstehen</b><small>35 Schritte</small></div></div></div>
+        <div class="m gesperrt" data-acc="6"><i>6</i><div class="k"><span class="z">06</span><div><b>Infrastruktur</b><small>6 Schritte</small></div></div></div>
+        <div class="m gesperrt" data-acc="7"><i>7</i><div class="k"><span class="z">07</span><div><b>Treibstoff</b><small>34 Schritte</small></div></div></div>
+        <div class="m gesperrt" data-acc="8"><i>8</i><div class="k"><span class="z">08</span><div><b>Durchblick</b><small>43 Schritte</small></div></div></div>
+        <div class="m gesperrt" data-acc="9"><i>9</i><div class="k"><span class="z">09</span><div><b>Mündigkeit</b><small>54 Schritte</small></div></div></div>
       </div>
-      <div style="height:16px"></div>
-      <button class="btn deep" type="button" data-go="lektion">Lektion 1.2 fortsetzen</button>
     </div>
   </section>
 
   <!-- BIBLIOTHEK -->
   <section class="screen" id="s-bib">
-    <div class="kopf"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="funke" data-go="funke"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+    <div class="kopf"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
       <label class="suche"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><input type="search" id="q" placeholder="Thema oder Lektion suchen"></label>
       <div class="chips"><span class="on">Alle</span><span>Mindset</span><span>Zinseszins</span><span>Steuern</span><span>Börse</span><span>Werkzeuge</span></div>
       <div class="lbl">Baustein 1 · Mindset &amp; Zinseszins</div>
       <div class="plain">
-        <div class="ringrow" data-go="lektion"><span class="ring" style="--p:100%"><i>✓</i></span><div><b>1.1 Willkommen, und die unbequeme Eröffnung</b><small>6 Min · 8 von 8 Schritten</small></div></div>
-        <div class="ringrow" data-go="lektion"><span class="ring" style="--p:37.5%"><i>38 %</i></span><div><b>1.2 Der stille Saboteur</b><small>8 Min · 3 von 8 Schritten</small></div></div>
-        <div class="ringrow" data-go="lektion"><span class="ring" style="--p:0%"><i></i></span><div><b>1.3 Bildung schlägt Beratung</b><small>7 Min · noch nicht begonnen</small></div></div>
-        <div class="ringrow" data-go="lektion"><span class="ring" style="--p:0%"><i></i></span><div><b>1.4 Wo stehst du, und wo willst du hin?</b><small>10 Min</small></div></div>
-        <div class="ringrow" data-go="lektion"><span class="ring" style="--p:0%"><i></i></span><div><b>1.5 Der Zukunftsbrief</b><small>9 Min</small></div></div>
+        <div class="ringrow" data-lek="0"><span class="ring" style="--p:100%"><i>✓</i></span><div><b>1.1 Willkommen, und die unbequeme Eröffnung</b><small>6 Min · 8 von 8 Schritten</small></div></div>
+        <div class="ringrow" data-lek="1"><span class="ring" style="--p:37.5%"><i>38 %</i></span><div><b>1.2 Der stille Saboteur</b><small>8 Min · 3 von 8 Schritten</small></div></div>
+        <div class="ringrow" data-lek="2"><span class="ring" style="--p:0%"><i></i></span><div><b>1.3 Bildung schlägt Beratung</b><small>7 Min · noch nicht begonnen</small></div></div>
+        <div class="ringrow" data-lek="3"><span class="ring" style="--p:0%"><i></i></span><div><b>1.4 Wo stehst du, und wo willst du hin?</b><small>10 Min</small></div></div>
+        <div class="ringrow" data-lek="4"><span class="ring" style="--p:0%"><i></i></span><div><b>1.5 Der Zukunftsbrief</b><small>9 Min</small></div></div>
       </div>
       <div class="lbl">Baustein 2 · Finanzielle Selbstführung</div>
       <div class="plain"><div class="ringrow aus"><span class="ring"><i></i></span><div><b>2.1 Unternehmer-Denken im eigenen Leben</b><small>öffnet sich mit Baustein 2</small></div></div><div class="ringrow aus"><span class="ring"><i></i></span><div><b>2.2 Das finanzielle Cockpit</b><small>öffnet sich mit Baustein 2</small></div></div></div>
@@ -200,7 +220,7 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
 
   <!-- WERKZEUGE -->
   <section class="screen" id="s-werk">
-    <div class="kopf"><div class="klein">Rechner und Checks</div><div class="gross">Werkzeuge</div><svg class="funke" data-go="funke"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+    <div class="kopf"><div class="klein">Rechner und Checks</div><div class="gross">Werkzeuge</div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
       <p class="text" style="margin:0 0 6px;color:var(--grey);font-size:15px">Jedes Werkzeug öffnet sich, sobald seine Lektion frei ist.</p>
       <div class="lbl">Offen</div>
@@ -220,7 +240,7 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
 
   <!-- ICH -->
   <section class="screen" id="s-ich">
-    <div class="kopf"><div class="klein">Dein Konto</div><div class="gross">Ich</div><svg class="funke" data-go="funke"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+    <div class="kopf"><div class="klein">Dein Konto</div><div class="gross">Ich</div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
       <div class="profil"><div class="av">S</div><div><b>Simon Schlerf</b><small>Firestarter Vollversion · seit Oktober 2026</small></div></div>
       <div class="lbl">Post</div>
@@ -234,7 +254,7 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
       </div>
       <div class="lbl">Darstellung</div>
       <div class="plain">
-        <div class="r"><span class="t">Leiste unten<small>So, wie Simon sie sehen will</small></span><span class="opt" role="group"><button type="button" data-nav="blau" aria-pressed="true">Blau</button><button type="button" data-nav="glas" aria-pressed="false">Durchsichtig</button></span></div>
+        <div class="r"><span class="t">Leiste unten<small>Durchsichtig ist Standard</small></span><span class="opt" role="group"><button type="button" data-nav="blau" aria-pressed="false">Blau</button><button type="button" data-nav="glas" aria-pressed="true">Durchsichtig</button></span></div>
         <div class="r"><span class="t">Welt<small>Blau: Zirkel · Grün: Aufbruch</small></span><span class="opt" role="group"><button type="button" data-welt="blau" aria-pressed="true">Blau</button><button type="button" data-welt="gruen" aria-pressed="false">Grün</button></span></div>
         <div class="r" data-toggle><span class="t">Größere Schrift</span><span class="sw"></span></div>
       </div>
@@ -245,20 +265,22 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
 
   <!-- LEKTION -->
   <section class="screen" id="s-lektion">
-    <div class="lk"><div style="display:flex;align-items:center;gap:12px"><button type="button" class="back" style="position:static;background:#fff;color:var(--wc)" data-go="zurueck">‹</button><div class="klein">Lektion 1.2 · Schritt 3 von 8</div></div><div class="dots"><i class="done"></i><i class="done"></i><i class="on"></i><i></i><i></i><i></i><i></i><i></i></div></div>
-    <div class="scroll" style="padding-top:6px">
-      <div class="gross-serif">Der stille Saboteur</div>
-      <p class="text" style="color:var(--grey);margin:6px 0 0;font-size:15px">Warum Zeit mehr wiegt als Zinssatz.</p>
-      <div class="video"><i></i><small>Video · 4:10</small></div>
-      <p class="text dropcap">Stell dir zwei Menschen vor. Beide legen denselben Betrag an. Der eine fängt mit 30 an, der andere mit 40. Der Unterschied am Ende ist nicht zehn Prozent. Er ist das Doppelte. Das ist der stille Saboteur: nicht der Zinssatz, sondern die Zeit, die du verstreichen lässt.</p>
-      <div class="frage"><div class="q">Was trifft auf dich zu?</div><div class="o" data-opt>Ich habe schon mal etwas „später" angefangen und es bereut.</div><div class="o" data-opt>Ich warte noch auf den richtigen Zeitpunkt.</div><div class="o" data-opt>Ich habe bereits angefangen.</div></div>
+    <div class="lk"><div style="display:flex;align-items:center;gap:12px"><button type="button" class="back" style="position:static;background:#fff;color:var(--wc)" data-go="zurueck">‹</button><div class="klein" id="lk-klein">Lektion 1.2 · Schritt 3 von 8</div></div><div class="dots" id="lk-dots"></div></div>
+    <div class="scroll" id="lk-scroll" style="padding-top:6px">
+      <div class="gross-serif" id="lk-titel">Der stille Saboteur</div>
+      <p class="text" id="lk-unter" style="color:var(--grey);margin:6px 0 0;font-size:15px">Warum Zeit mehr wiegt als Zinssatz.</p>
+      <div class="video"><i></i><small id="lk-video">Video · 4:10</small></div>
+      <p class="text dropcap" id="lk-text"></p>
+      <div class="frage"><div class="q">Was trifft auf dich zu?</div><div class="o" data-opt id="lk-o1"></div><div class="o" data-opt id="lk-o2"></div><div class="o" data-opt id="lk-o3"></div></div>
       <button class="btn" type="button" data-go="weiter-schritt">Weiter</button>
+      <div class="mehr" style="padding-top:18px"><span data-swipe="-1" style="cursor:pointer">‹ <span id="lk-prev">vorige</span></span><span data-swipe="1" style="cursor:pointer"><span id="lk-next">nächste</span> ›</span></div>
+      <p class="text" style="font-size:13px;color:var(--ph);text-align:center;margin-top:6px">Wische nach rechts für die Lektion davor, nach links für die nächste.</p>
     </div>
   </section>
 
   <!-- FUNKE -->
   <section class="screen" id="s-funke">
-    <div class="kopf" style="padding-bottom:40px"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Der Funke</div><div class="gross" style="margin-left:48px">Ich zeig dir, wie es geht.</div><svg class="funke" style="bottom:4px"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+    <div class="kopf" style="padding-bottom:40px"><button type="button" class="back" data-go="zurueck">‹</button><div class="klein" style="margin-left:48px">Der Funke</div><div class="gross" style="margin-left:48px">Ich zeig dir, wie es geht.</div><svg class="funke" viewBox="0 0 62 76" style="bottom:4px"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
     <div class="scroll">
       <div class="lbl">Neu für dich</div>
       <div class="plain"><div class="vid"><span class="th warm"></span><div><b>Zinseszins-Rechner: so geht er</b><small>2 Min · seit heute frei</small></div><span class="neu">neu</span></div></div>
@@ -295,7 +317,7 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
 (function(){
   var H=document.documentElement, hist=['start'], hinweis=document.getElementById('hinweis'), ht=null;
   if(location.hash==='#gruen')H.classList.add('w-gruen');
-  if(location.hash==='#glas')H.classList.add('glas');
+  H.classList.add('glas');if(location.hash==='#blau')H.classList.remove('glas');
   function show(id,push){document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on',s.id==='s-'+id)});
     document.querySelectorAll('.nav button').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.tab===id)});
     var sc=document.querySelector('#s-'+id+' .scroll');if(sc)sc.scrollTop=0;
@@ -308,6 +330,29 @@ html.glas .nav button[aria-pressed="true"] svg{stroke:var(--wa)}
     if(g==='weiter-schritt'){tipp('Mockup: nächster Schritt der Lektion');return;}
     if(g==='funke'){document.getElementById('punkt').style.display='none';}
     show(g);});
+  /* Weg: Akkordeon */
+  document.querySelectorAll('#wegliste .m[data-acc]').forEach(function(m){m.addEventListener('click',function(){var n=m.dataset.acc;var sub=document.getElementById('acc-'+n);if(!sub){tipp('Öffnet sich nach Baustein '+(n-1));return;}m.classList.toggle('open');sub.style.display=m.classList.contains('open')?'grid':'none';})});
+  /* Lektionen */
+  var LEK=[
+    {nr:'1.1',t:'Der Funke gehört dir',u:'Worum es hier wirklich geht.',v:'3:40',s:8,d:8,text:'Stell dir ein Lagerfeuer in der Dämmerung vor. Du könntest warten, bis jemand vorbeikommt und es dir anzündet. Oder du nimmst selbst ein Streichholz und schlägst deinen eigenen Funken. Genau darum geht es: dass du den Funken schlägst. Nicht eine Bank, nicht ein Berater.',o:['Ich habe schon mal einen Finanzrat bekommen, der mir nicht gut tat.','Ich habe noch nie mit jemandem über Geld gesprochen.','Ich will es diesmal selbst verstehen.']},
+    {nr:'1.2',t:'Der stille Saboteur',u:'Warum Zeit mehr wiegt als Zinssatz.',v:'4:10',s:3,d:8,text:'Stell dir zwei Menschen vor. Beide legen denselben Betrag an. Der eine fängt mit 30 an, der andere mit 40. Der Unterschied am Ende ist nicht zehn Prozent. Er ist das Doppelte. Das ist der stille Saboteur: nicht der Zinssatz, sondern die Zeit, die du verstreichen lässt.',o:['Ich habe schon mal etwas „später" angefangen und es bereut.','Ich warte noch auf den richtigen Zeitpunkt.','Ich habe bereits angefangen.']},
+    {nr:'1.3',t:'Bildung schlägt Beratung',u:'Was ein Berater kann, und was nur du kannst.',v:'3:55',s:0,d:7,text:'Ein Berater kennt Produkte. Du kennst dein Leben. Die wichtigste Entscheidung ist nicht, welches Produkt, sondern wofür überhaupt. Diese Frage kann dir niemand abnehmen, und genau deshalb lohnt sich Bildung mehr als jeder Termin.',o:['Ich hatte schon einen Beratungstermin, der mit einem Produkt endete.','Ich habe noch nie beraten lassen.','Ich will erst verstehen, dann entscheiden.']},
+    {nr:'1.4',t:'Wo stehst du, und wo willst du hin?',u:'Dein Standort auf einer Seite.',v:'5:20',s:0,d:9,text:'Bevor du losgehst, brauchst du zwei Punkte: wo du stehst und wohin du willst. Beides passt auf eine Seite. Einnahmen, Ausgaben, Rücklagen, Schulden. Und ein Satz darunter: Was soll Geld für mich tun? Mehr ist es nicht, aber weniger geht nicht.',o:['Ich weiß ungefähr, wo ich stehe.','Ich habe das noch nie aufgeschrieben.','Ich habe ein klares Ziel, aber keinen Plan.']},
+    {nr:'1.5',t:'Der Zukunftsbrief',u:'Ein Brief an dich, in einem Jahr.',v:'4:45',s:0,d:5,text:'Schreib deinem zukünftigen Ich einen Brief. Nicht über Zahlen, sondern darüber, wie es sich anfühlen soll, wenn Geld kein ständiger Gedanke mehr ist. Die App hebt ihn auf und gibt ihn dir in zwölf Monaten zurück.',o:['Ich schreibe ihn jetzt.','Ich hebe ihn mir für später auf.','Ich bin skeptisch, ob das etwas bringt.']}
+  ];
+  var li=1;
+  function lek(n,richtung){li=Math.max(0,Math.min(LEK.length-1,n));var L=LEK[li];
+    document.getElementById('lk-klein').textContent='Lektion '+L.nr+' · Schritt '+Math.max(1,L.s)+' von '+L.d;
+    var d='';for(var k=0;k<L.d;k++){d+='<i class="'+(k<L.s-1?'done':(k===Math.max(0,L.s-1)?'on':''))+'"></i>';}document.getElementById('lk-dots').innerHTML=d;
+    document.getElementById('lk-titel').textContent=L.t;document.getElementById('lk-unter').textContent=L.u;document.getElementById('lk-video').textContent='Video · '+L.v;
+    document.getElementById('lk-text').textContent=L.text;['lk-o1','lk-o2','lk-o3'].forEach(function(id,i){var el=document.getElementById(id);el.textContent=L.o[i];el.classList.remove('on');});
+    document.getElementById('lk-prev').textContent=li>0?'Lektion '+LEK[li-1].nr:'Anfang';document.getElementById('lk-next').textContent=li<LEK.length-1?'Lektion '+LEK[li+1].nr:'Ende';
+    var sc=document.getElementById('lk-scroll');sc.scrollTop=0;
+    if(richtung){sc.style.transition='none';sc.style.transform='translateX('+(richtung*40)+'px)';sc.style.opacity='.4';requestAnimationFrame(function(){sc.style.transition='transform .35s cubic-bezier(.2,0,0,1),opacity .35s';sc.style.transform='translateX(0)';sc.style.opacity='1';});}}
+  document.querySelectorAll('[data-lek]').forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();lek(+el.dataset.lek);show('lektion');})});
+  document.querySelectorAll('[data-swipe]').forEach(function(el){el.addEventListener('click',function(){var r=+el.dataset.swipe;if((r<0&&li>0)||(r>0&&li<LEK.length-1))lek(li+r,r);})});
+  (function(){var sx=0,sy=0,el=document.getElementById('s-lektion');el.addEventListener('touchstart',function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});el.addEventListener('touchend',function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5){if(dx>0&&li>0)lek(li-1,-1);else if(dx<0&&li<LEK.length-1)lek(li+1,1);}},{passive:true});})();
+  lek(1);
   document.querySelectorAll('[data-toggle]').forEach(function(r){r.addEventListener('click',function(){var s=r.querySelector('.sw');s.classList.toggle('on');})});
   document.querySelectorAll('[data-opt]').forEach(function(o){o.addEventListener('click',function(){o.parentElement.querySelectorAll('.o').forEach(function(x){x.classList.remove('on')});o.classList.add('on');})});
   document.querySelectorAll('[data-nav]').forEach(function(b){b.addEventListener('click',function(){H.classList.toggle('glas',b.dataset.nav==='glas');b.parentElement.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)});})});
