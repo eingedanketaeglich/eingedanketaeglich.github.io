@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102444">
+<meta name="robots" content="noindex">
+<title>Firestarter Innen Stand 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Stand 2 innen: drei neue Start-Mockups ohne Block unter dem Zickzack, Flächen ohne Rahmen, Foto als Band, das in die Farbe ausläuft. Dazu Einstellungen ohne Kästen, Werkzeuge als Zeilen, Ring mit Prozent, Flamme mit Hinweis-Punkt und Video-Sammlung. */
+:root{
+  --bg:#FCFAF6; --surface:#FFFFFF; --surface-2:#F3EEE3; --line:#E3DCCB;
+  --fg:#1C1917; --fg-2:#6B6257; --navy:#102444; --navy-ink:#F5F1EA;
+  --orange:#FF7A00; --orange-ink:#102444; --gold:#BBA45F; --gold-soft:#F1E9CF;
+  --sans:"Nunito",ui-rounded,system-ui,sans-serif; --serif:"Gloock",Georgia,serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --wtint:#E9EEF5; --wmid:#2A4268;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){ --bg:#0F1A2E; --surface:#16233C; --surface-2:#1C2B48; --line:#2A3B5C; --fg:#EFE9DD; --fg-2:#A9B0C2; --navy:#F5F1EA; --navy-ink:#102444; --orange:#FF8A1F; --gold:#D4BC72; --gold-soft:#3A3524; color-scheme:dark } }
+:root[data-theme="dark"]{ --bg:#0F1A2E; --surface:#16233C; --surface-2:#1C2B48; --line:#2A3B5C; --fg:#EFE9DD; --fg-2:#A9B0C2; --navy:#F5F1EA; --navy-ink:#102444; --orange:#FF8A1F; --gold:#D4BC72; --gold-soft:#3A3524; color-scheme:dark }
+body.w-gruen{ --wc:#173A2B; --wc-2:#10291F; --wa:#B39465; --wsoft:#C9D8CE; --wcream:#F3F1EA; --wtint:#E6EDE6; --wmid:#2F5A46 }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;padding-block:0 56px;padding-inline:16px}
+.wrap{max-width:1060px;margin:0 auto}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,40px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(22px,4.5vw,28px);font-weight:800}
+h3{font-size:17px;font-weight:800}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+header{padding-block:32px 18px;display:grid;gap:12px}
+header .lead{font-size:18px;color:var(--fg-2);max-width:66ch}
+section{display:grid;gap:16px;padding-block:28px;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:30px;height:28px;padding:0 8px;border-radius:8px;background:var(--navy);color:var(--navy-ink);font-weight:800;font-size:14px;margin-right:10px;vertical-align:middle}
+.note{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:12px 14px;font-size:15px}
+.muted{font-size:15px;color:var(--fg-2)}
+.weltbar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.weltbar .lbl{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-2)}
+.seg{display:inline-flex;background:var(--surface-2);border-radius:999px;padding:4px;gap:4px}
+.seg button{font:inherit;font-weight:800;font-size:14px;border:0;background:transparent;color:var(--fg-2);border-radius:999px;padding:7px 16px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--wc);color:#F5F1EA}
+button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.row3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));justify-items:center}
+.cell{display:grid;gap:6px;justify-items:center;min-width:0;width:100%}
+.cell .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.cell .cap{font-size:13.5px;color:var(--fg-2);text-align:center;max-width:30ch}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:800}
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:620px}
+th,td{text-align:left;padding:8px 10px;vertical-align:top;border-top:1px solid var(--line)}
+th{border-top:0;background:var(--surface-2);font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-2)}
+td.n{font-variant-numeric:tabular-nums;text-align:center;font-weight:800}
+
+/* Telefon */
+.ph{width:min(100%,250px);aspect-ratio:9/18.6;border-radius:32px;background:#0A1424;padding:8px;position:relative;box-shadow:0 12px 32px rgba(60,40,10,.12)}
+.scr{position:relative;width:100%;height:100%;border-radius:25px;overflow:hidden;background:var(--wcream);color:var(--wc-2);font-family:var(--body2);font-size:10px;line-height:1.3}
+.scr *{box-sizing:border-box}
+.inner{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr auto}
+.kopf{position:relative;background:var(--wc);color:#F5F1EA;padding:22px 14px 22px;display:grid;gap:2px}
+.kopf .klein{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.kopf .gross{font-family:var(--serif);font-size:19px;line-height:1.05}
+.kopf .edge{position:absolute;left:0;right:0;bottom:-1px;height:18px;width:100%;display:block;z-index:1}
+.kopf .edge path{fill:var(--wcream)}
+.kopf .funke{position:absolute;right:10px;bottom:-4px;width:42px;height:50px;z-index:2}
+.kopf .punkt{position:absolute;right:8px;bottom:36px;z-index:3;width:12px;height:12px;border-radius:50%;background:var(--wa);color:var(--wc);font-size:7px;font-weight:700;display:grid;place-items:center;border:1.5px solid var(--wcream)}
+.kopf.flach{padding:16px 14px 14px}
+.body{padding:12px 12px 10px;display:grid;gap:9px;align-content:start;overflow:hidden}
+.lbl{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:#8A8272}
+.nav{display:flex;justify-content:center;padding:0 0 8px}
+.nav div{display:flex;gap:7px;background:var(--wc);border-radius:999px;padding:6px 9px;box-shadow:0 6px 16px color-mix(in srgb,var(--wc) 30%,transparent)}
+.nav span{display:grid;gap:2px;justify-items:center;font-size:6px;color:rgba(245,241,234,.7);width:34px}
+.nav i{width:14px;height:14px;border-radius:5px;background:rgba(255,255,255,.3);display:block}
+.nav span.on{color:#F5F1EA;font-weight:600}.nav span.on i{background:var(--wa)}
+.btn{height:32px;border-radius:10px;background:var(--wc);color:#F5F1EA;font-weight:600;font-size:10px;display:grid;place-items:center}
+.btn.akz{background:var(--wa);color:var(--wc)}
+/* Weg-Kästen (von Simon bestätigt), ohne Rahmenlinie, Fläche endet mit der Farbe */
+.weg{position:relative;display:grid;gap:8px}
+.weg:before{content:"";position:absolute;left:14px;top:10px;bottom:10px;width:3px;border-radius:2px;background:#E6E0D3}
+.weg .m{display:flex;gap:8px;align-items:center;position:relative}
+.weg .m i{width:20px;height:20px;border-radius:50%;background:#E6E0D3;display:grid;place-items:center;font-style:normal;font-size:7px;font-weight:600;color:#8A8272;flex:none;margin-left:5px;border:3px solid var(--wcream)}
+.weg .m.now i{background:var(--wa);color:var(--wc)}
+.weg .m .k{flex:1;display:flex;gap:8px;align-items:center;background:#fff;border-radius:12px;padding:8px 9px;min-width:0}
+.weg .m.now .k{background:var(--wc);color:#F5F1EA}
+.weg .m .k .z{font-family:var(--serif);font-size:16px;line-height:1;width:22px;flex:none;color:var(--wc)}
+.weg .m.now .k .z{color:var(--wa)}
+.weg .m .k div{display:grid;min-width:0;flex:1}
+.weg .m .k b{font-size:9.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.weg .m .k small{font-size:7.5px;color:#6B6257}.weg .m.now .k small{color:rgba(245,241,234,.8)}
+.weg .m.gesperrt .k{opacity:.6}
+.weg .m.now .funke2{width:24px;height:28px;flex:none}
+/* Foto im Kopf (Codex-Vorschlag): Foto oben, läuft in die Weltfarbe aus, darunter die Zickzack-Kante */
+.kopf.foto{padding-top:92px;min-height:150px}
+.kopf.foto img{position:absolute;left:0;top:0;width:100%;height:110px;object-fit:cover;object-position:center 40%;display:block}
+.kopf.foto .fade{position:absolute;left:0;top:0;width:100%;height:112px;background:linear-gradient(to bottom,rgba(16,36,68,.05) 0%,rgba(16,36,68,.35) 45%,var(--wc) 100%)}
+.kopf.foto .klein,.kopf.foto .gross{position:relative;z-index:1}
+/* Foto-Band */
+.band{position:relative;border-radius:14px;overflow:hidden;aspect-ratio:16/11;background:var(--wc)}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.band .fade{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(16,36,68,0) 25%,var(--wc) 78%)}
+.band .tx{position:absolute;left:10px;right:10px;bottom:9px;color:#F5F1EA;display:grid;gap:2px}
+.band .tx b{font-family:var(--serif);font-size:13px;font-weight:400;line-height:1.1}
+.band .tx small{font-size:8px;opacity:.85}
+.band .tx .btn{margin-top:4px;height:26px;font-size:9px}
+.band.hell{background:var(--wcream)}
+.band.hell .fade{background:linear-gradient(to bottom,rgba(245,241,234,0) 30%,var(--wcream) 85%)}
+.band.hell .tx{color:var(--wc-2)}
+/* Glas */
+.glas{position:relative;margin-top:-26px;z-index:3;background:rgba(255,255,255,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-radius:14px;padding:10px;display:grid;gap:4px;box-shadow:0 10px 24px rgba(16,36,68,.14)}
+.glas b{font-size:11.5px;font-weight:600;line-height:1.2}
+.glas small{font-size:8px;color:#6B6257}
+.glas .btn{margin-top:4px;height:28px}
+/* Zeilen ohne Kästen */
+.plain{display:grid}
+.plain .r{display:flex;align-items:center;gap:8px;padding:8px 2px;border-bottom:1px solid rgba(0,0,0,.06);font-size:9.5px;font-weight:500}
+.plain .r:last-child{border-bottom:0}
+.plain .r span{flex:1}
+.plain .r .chev{width:6px;height:6px;border-right:1.5px solid var(--wc);border-bottom:1.5px solid var(--wc);transform:rotate(-45deg);flex:none}
+.plain .r .sw{width:22px;height:13px;border-radius:999px;background:#D9D2C3;position:relative;flex:none}
+.plain .r .sw:after{content:"";position:absolute;top:2px;left:2px;width:9px;height:9px;border-radius:50%;background:#fff}
+.plain .r .sw.on{background:var(--wc)}.plain .r .sw.on:after{left:11px}
+.plain .r .neu{background:var(--wa);color:var(--wc);border-radius:999px;padding:1px 6px;font-size:7px;font-weight:700}
+.plain .r.aus{color:#9A9286}
+.plain .r .ic{width:16px;height:16px;flex:none;color:var(--wc)}
+.plain .r.aus .ic{color:#B5AE9F}
+.plain .r .ic svg{width:100%;height:100%;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.gross-serif{font-family:var(--serif);font-size:20px;line-height:1.05;color:var(--wc-2)}
+.profil{display:flex;gap:10px;align-items:center;padding:2px 0 4px}
+.profil .av{width:34px;height:34px;border-radius:50%;background:var(--wc);color:#F5F1EA;display:grid;place-items:center;font-family:var(--serif);font-size:14px}
+.profil div{display:grid}.profil b{font-size:11px;font-weight:600}.profil small{font-size:8px;color:#6B6257}
+/* Bibliothek Ring */
+.suche{height:30px;border-radius:999px;background:#fff;display:flex;align-items:center;gap:7px;padding:0 10px;font-size:9px;color:#8A8272}
+.suche i{width:10px;height:10px;border-radius:50%;border:1.8px solid var(--wc);display:block}
+.chips{display:flex;gap:5px;overflow:hidden}.chips span{background:#fff;border-radius:999px;padding:4px 8px;font-size:7.5px;font-weight:600;color:var(--wc);white-space:nowrap}
+.chips span.on{background:var(--wc);color:#F5F1EA}
+.ringrow{display:flex;gap:8px;align-items:center;padding:7px 2px;border-bottom:1px solid rgba(0,0,0,.06)}
+.ringrow .ring{width:26px;height:26px;border-radius:50%;background:conic-gradient(var(--wa) var(--p,0%),#E6E0D3 0);display:grid;place-items:center;flex:none}
+.ringrow .ring i{width:18px;height:18px;border-radius:50%;background:var(--wcream);display:grid;place-items:center;font-style:normal;font-size:5.5px;font-weight:700;color:var(--wc)}
+.ringrow div{display:grid;flex:1;min-width:0}.ringrow b{font-size:9px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ringrow small{font-size:7.5px;color:#6B6257}
+.ringrow.aus{opacity:.55}
+/* Funke-Seite */
+.vid{display:flex;gap:8px;align-items:center;padding:7px 2px;border-bottom:1px solid rgba(0,0,0,.06)}
+.vid .th{width:44px;aspect-ratio:16/10;border-radius:8px;background:var(--wc);flex:none;display:grid;place-items:center;position:relative;overflow:hidden}
+.vid .th:after{content:"";border-left:7px solid #F5F1EA;border-top:4.5px solid transparent;border-bottom:4.5px solid transparent;margin-left:2px}
+.vid .th.foto img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.75}
+.vid div{display:grid;flex:1;min-width:0}.vid b{font-size:9px;font-weight:600}.vid small{font-size:7.5px;color:#6B6257}
+.vid .neu{background:var(--wa);color:var(--wc);border-radius:999px;padding:1px 6px;font-size:7px;font-weight:700;flex:none}
+footer{padding-block:24px;font-size:14px;color:var(--fg-2);border-top:1px solid var(--line)}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition-duration:.01ms !important}}
+</style>
+</head>
+<body style="padding-left:16px;padding-right:16px">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="funke" viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="var(--wa)"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M46 50 L56 42" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="var(--wa)" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></symbol>
+  <symbol id="zick" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z"/></symbol>
+</defs></svg>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">R&amp;F Firestarter · Innenoptik · Stand 2 · 21.10.2026</p>
+  <h1>Firestarter innen, Stand 2</h1>
+  <p class="lead">Nach Simons Rückmeldung zu Stand 1: Die Startseite neu in drei Fassungen, ohne dunklen Block unter dem Zickzack, ohne Rahmen, Flächen enden mit der Farbe. Die Weg-Kästen mit der Flamme bleiben, weil sie gefallen. Einstellungen ohne Kästen, Werkzeuge als Zeilen ohne Bild, die Ringe in der Bibliothek mit Prozent, die Flamme mit Hinweis-Punkt und einer Video-Sammlung dahinter. Die Einführung bleibt wie in Stand 1.</p>
+</header>
+
+<div class="weltbar"><span class="lbl">Welt</span><div class="seg" role="group" aria-label="Welt wählen"><button type="button" id="w-blau" aria-pressed="true">Blau · Zirkel</button><button type="button" id="w-gruen" aria-pressed="false">Grün · Aufbruch</button></div></div>
+
+<section>
+  <h2><span class="num">1</span>Start, drei neue Fassungen</h2>
+  <div class="row3">
+    <div class="cell"><span class="tag">Start A · Der Weg sofort</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><svg class="funke"><use href="#funke"/></svg><span class="punkt">1</span><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="gross-serif" style="font-size:17px">Heute: Lektion 1.1, sechs Minuten.</div>
+          <div class="btn akz">Weiter</div>
+          <span class="lbl">Dein Weg</span>
+          <div class="weg">
+            <div class="m now"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 Lerneinheiten · du bist hier</small></div><svg class="funke2"><use href="#funke"/></svg></div></div>
+            <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>öffnet sich nach Baustein 1</small></div></div></div>
+            <div class="m gesperrt"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>4</i><div class="k"><span class="z">04</span><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>5</i><div class="k"><span class="z">05</span><div><b>Steuern verstehen</b><small>35 Schritte</small></div></div></div>
+          </div>
+        </div>
+        <div class="nav"><div><span class="on"><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Kein Bild, keine Karte: ein Satz, ein Knopf, dann der Weg mit der Flamme. Der Zickzack bleibt frei.</p></div>
+    <div class="cell"><span class="tag">Start B · Foto läuft im Kopf in die Farbe aus</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf foto"><img src="fotos_rene/main_720.jpg" alt="Blick vom WINX-Tower auf den Main"><div class="fade"></div><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><svg class="funke"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="gross-serif" style="font-size:17px">Heute: Lektion 1.1, sechs Minuten.</div>
+          <div class="btn akz">Weiter</div>
+          <span class="lbl">Dein Weg</span>
+          <div class="weg">
+            <div class="m now"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 · du bist hier</small></div><svg class="funke2"><use href="#funke"/></svg></div></div>
+            <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>nach Baustein 1</small></div></div></div>
+            <div class="m gesperrt"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>4</i><div class="k"><span class="z">04</span><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
+          </div>
+        </div>
+        <div class="nav"><div><span class="on"><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Renés Foto aus dem 21. Stock sitzt im Kopf und läuft nach unten in die Weltfarbe aus, dann der Zickzack. Kein Rand, kein Block darunter. So machen es die Flyer.</p></div>
+    <div class="cell"><span class="tag">Start C · Glas über dem Zickzack</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf" style="padding-bottom:40px"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><svg class="funke" style="bottom:14px"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body" style="padding-top:0">
+          <div class="glas"><span class="lbl">Weiter bei · Baustein 1</span><b>Der Funke gehört dir</b><small>Lektion 1.1 · Schritt 2 von 8 · 6 Min</small><div class="btn akz">Weiter</div></div>
+          <span class="lbl">Dein Weg</span>
+          <div class="weg">
+            <div class="m now"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 · du bist hier</small></div><svg class="funke2"><use href="#funke"/></svg></div></div>
+            <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>nach Baustein 1</small></div></div></div>
+            <div class="m gesperrt"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>4</i><div class="k"><span class="z">04</span><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
+          </div>
+        </div>
+        <div class="nav"><div><span class="on"><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Eine halbdurchsichtige Glasfläche hängt über der Zickzack-Kante, kein Rand, weicher Schatten. Darunter der Weg.</p></div>
+  </div>
+  <div class="note"><strong>Was in allen drei gleich ist:</strong> kein dunkler Block unter dem Kopf, keine Rahmenlinien, Weiß oder Weltfarbe enden mit der Farbe, Rundung 12 bis 14 px, die Weg-Kästen mit der Flamme am Stand, der laufende Baustein als dunkle Fläche mit oranger Nummer, gesperrte Bausteine gedämpft statt mit Schloss. Oben rechts trägt die Flamme einen orangen Punkt, wenn es etwas Neues gibt (hier: ein neues Werkzeug).</div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Nebenpunkte aus deiner Rückmeldung</h2>
+  <div class="row3">
+    <div class="cell"><span class="tag">Ich · ohne Kästen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Dein Konto</div><div class="gross">Ich</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="profil"><div class="av">S</div><div><b>Simon Schlerf</b><small>Firestarter Vollversion · seit Oktober 2026</small></div></div>
+          <span class="lbl">Post</span>
+          <div class="plain"><div class="r"><span>Nachrichten vom R&amp;F Institut</span><span class="neu" style="flex:none">2 neu</span><span class="chev"></span></div></div>
+          <span class="lbl">Lernen</span>
+          <div class="plain"><div class="r"><span>Erinnerung am Abend, 19:30</span><span class="sw on"></span></div><div class="r"><span>Die Flamme spricht</span><span class="sw on"></span></div><div class="r"><span>Wochenziel: 3 Lektionen</span><span class="chev"></span></div><div class="r"><span>Einführung noch einmal ansehen</span><span class="chev"></span></div></div>
+          <span class="lbl">Darstellung</span>
+          <div class="plain"><div class="r"><span>Dunkler Modus</span><span class="sw"></span></div><div class="r"><span>Größere Schrift</span><span class="sw"></span></div></div>
+          <span class="lbl">Konto</span>
+          <div class="plain"><div class="r"><span>Passwort ändern</span><span class="chev"></span></div><div class="r"><span>Rechtliches und Hilfe</span><span class="chev"></span></div><div class="r" style="color:#B3403A"><span>Abmelden</span></div></div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span class="on"><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Schrift direkt auf dem Creme, Pfeil rechts, „2 neu" als Punkt, Schalter. Keine Kästen, keine Absetzung.</p></div>
+    <div class="cell"><span class="tag">Werkzeuge · Zeilen statt Kästchen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Rechner und Checks</div><div class="gross">Werkzeuge</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="muted" style="font-size:8.5px;color:#6B6257">Jedes Werkzeug öffnet sich, sobald seine Lektion frei ist.</div>
+          <span class="lbl">Offen</span>
+          <div class="plain">
+            <div class="r"><span class="ic"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span><span>Berater-Kurz-Check<br><small style="font-weight:400;color:#6B6257">aus Lektion 1.3</small></span><span class="chev"></span></div>
+            <div class="r"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-4 2 2-6z"/></svg></span><span>Standort-Kompass<br><small style="font-weight:400;color:#6B6257">aus Lektion 1.4</small></span><span class="chev"></span></div>
+          </div>
+          <span class="lbl">Öffnet sich später</span>
+          <div class="plain">
+            <div class="r aus"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h3M13 11h3M8 15h3M13 15h3"/></svg></span><span>Zinseszins-Rechner<br><small style="font-weight:400">nach Baustein 1</small></span></div>
+            <div class="r aus"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 17l5-6 4 4 5-7 4 5"/></svg></span><span>Sparquote-Rechner<br><small style="font-weight:400">mit Lektion 2.2</small></span></div>
+            <div class="r aus"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 3c3 5 6 7 6 11a6 6 0 0 1-12 0c0-4 3-6 6-11z"/></svg></span><span>Notgroschen-Check<br><small style="font-weight:400">mit Lektion 2.3</small></span></div>
+            <div class="r aus"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 4v16M5 8h14M5 8l-2 6h4zM19 8l-2 6h4z"/></svg></span><span>Realzins-Rechner<br><small style="font-weight:400">mit Lektion 3.1</small></span></div>
+          </div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span><i></i>Weg</span><span><i></i>Bibliothek</span><span class="on"><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Dünne Linien-Symbole ohne farbige Kästchen, offene und spätere Werkzeuge getrennt, Pfeil nur bei offenen.</p></div>
+    <div class="cell"><span class="tag">Bibliothek · Ring mit Prozent</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf flach"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <div class="suche"><i></i>Thema oder Lektion suchen</div>
+          <div class="chips"><span class="on">Alle</span><span>Mindset</span><span>Zinseszins</span><span>Steuern</span><span>Börse</span></div>
+          <span class="lbl">Baustein 1 · Mindset &amp; Zinseszins</span>
+          <div class="plain">
+            <div class="ringrow"><span class="ring" style="--p:100%"><i>✓</i></span><div><b>1.1 Willkommen, und die unbequeme Eröffnung</b><small>6 Min · 8 von 8 Schritten</small></div></div>
+            <div class="ringrow"><span class="ring" style="--p:37.5%"><i>38 %</i></span><div><b>1.2 Der stille Saboteur</b><small>8 Min · 3 von 8 Schritten</small></div></div>
+            <div class="ringrow"><span class="ring" style="--p:0%"><i></i></span><div><b>1.3 Bildung schlägt Beratung</b><small>7 Min · noch nicht begonnen</small></div></div>
+            <div class="ringrow"><span class="ring" style="--p:0%"><i></i></span><div><b>1.4 Wo stehst du, und wo willst du hin?</b><small>10 Min</small></div></div>
+            <div class="ringrow"><span class="ring" style="--p:0%"><i></i></span><div><b>1.5 Der Zukunftsbrief</b><small>9 Min</small></div></div>
+          </div>
+          <span class="lbl">Baustein 2 · Finanzielle Selbstführung</span>
+          <div class="plain"><div class="ringrow aus"><span class="ring"><i></i></span><div><b>2.1 Unternehmer-Denken im eigenen Leben</b><small>öffnet sich mit Baustein 2</small></div></div></div>
+        </div>
+        <div class="nav"><div><span><i></i>Start</span><span><i></i>Weg</span><span class="on"><i></i>Bibliothek</span><span><i></i>Werkzeuge</span><span><i></i>Ich</span></div></div>
+      </div></div></div>
+      <p class="cap">Der Ring zeigt den Anteil der erledigten Schritte in der Lektion: 3 von 8 Schritten sind 38 Prozent, fertig ist ein Haken.</p></div>
+  </div>
+  <div class="row3">
+    <div class="cell"><span class="tag">Flamme angetippt · die Video-Sammlung</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf" style="padding-bottom:30px"><div class="klein">Der Funke</div><div class="gross">Ich zeig dir, wie es geht.</div><svg class="funke" style="bottom:4px"><use href="#funke"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><use href="#zick"/></svg></div>
+        <div class="body">
+          <span class="lbl">Neu für dich</span>
+          <div class="plain"><div class="vid"><span class="th"></span><div><b>Zinseszins-Rechner: so geht er</b><small>2 Min · seit heute frei</small></div><span class="neu">neu</span></div></div>
+          <span class="lbl">Willkommen</span>
+          <div class="plain">
+            <div class="vid"><span class="th foto"><img src="fotos_rene/main_720.jpg" alt=""></span><div><b>Simon und René: Willkommen bei Firestarter</b><small>10 Min · echtes Video, schöner Hintergrund</small></div></div>
+            <div class="vid"><span class="th"></span><div><b>Rundgang durch die App</b><small>3 Min · die Flamme führt, du tippst mit</small></div></div>
+          </div>
+          <span class="lbl">Nach Thema</span>
+          <div class="plain">
+            <div class="vid"><span class="th"></span><div><b>Dein Weg und die Bausteine</b><small>2 Min</small></div></div>
+            <div class="vid"><span class="th"></span><div><b>Eine Lektion gemeinsam durchgehen</b><small>4 Min · mit Lektion 1.1</small></div></div>
+            <div class="vid"><span class="th"></span><div><b>Bibliothek und Suche</b><small>1 Min</small></div></div>
+            <div class="vid"><span class="th"></span><div><b>Werkzeuge und Rechner</b><small>2 Min</small></div></div>
+            <div class="vid"><span class="th"></span><div><b>Post, Erinnerung, Einstellungen</b><small>1 Min</small></div></div>
+          </div>
+          <span class="lbl" style="margin-top:2px">Frag den Funken</span>
+          <div class="suche"><i></i>Wo finde ich …?</div>
+        </div>
+      </div></div></div>
+      <p class="cap">Hinter der Flamme liegen alle Einführungen: neu Freigeschaltetes oben, das Willkommen-Video von Simon und René, der Rundgang, Themen, dazu eine Frage-Zeile.</p></div>
+    <div class="cell" style="align-content:start;gap:10px">
+      <div class="liste" style="grid-template-columns:1fr;width:100%">
+        <div><b>So funktioniert der Hinweis-Punkt:</b> Wird ein Werkzeug oder ein Baustein frei, bekommt die Flamme im Kopf einen orangen Punkt mit Zahl. Tipp darauf öffnet die Sammlung, das Neue steht oben. Gesehen heißt Punkt weg.</div>
+        <div><b>Stimme:</b> Die Flamme spricht in der Einführung und in den Themen-Videos mit einer festen Stimme. Probeweise deine Stimme, später eine geklonte oder eine KI-Stimme. Ton abschaltbar unter „Ich". Audio-Erzeugung erst nach Kostenplan.</div>
+        <div><b>Das Willkommen-Video:</b> Echtes Video von dir und René, 10 Minuten, liegt als erster Eintrag in der Sammlung und läuft beim allerersten Start nach dem Rundgang als Angebot, nicht als Zwang.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bilder">
+  <h2><span class="num">3</span>Die Bildfrage: Claude und Codex, zehn Kriterien</h2>
+  <div id="gegenlauf-inhalt">
+  <p class="muted">Beide haben dasselbe Briefing bekommen (Optionen, zehn eingefrorene Kriterien, gemessene Fakten, Simons Wortlaut). Claude hat blind bewertet, bevor Codex gelesen wurde; Claude ist Autor von Stand 1, seine Noten sind Selbstbewertung. Maßgeblich ist je Option die niedrigste Note, nicht das Mittel.</p>
+  <div class="tbl"><table>
+    <thead><tr><th>Kriterium</th><th>A erzeugte Bilder<br>Claude · Codex</th><th>B Fotos in Weltfarbe<br>Claude · Codex</th><th>C keine Bilder<br>Claude · Codex</th></tr></thead>
+    <tbody>
+      <tr><td>1 Modern ohne KI-Look</td><td class="n">5 · 4</td><td class="n">8 · 9</td><td class="n">7 · 8</td></tr>
+      <tr><td>2 Passt zum Login</td><td class="n">6 · 4</td><td class="n">9 · 8</td><td class="n">9 · 10</td></tr>
+      <tr><td>3 Ermutigend 40 bis 70</td><td class="n">6 · 6</td><td class="n">8 · 8</td><td class="n">7 · 7</td></tr>
+      <tr><td>4 Rand und Kasten</td><td class="n">7 · 9</td><td class="n">9 · 10</td><td class="n">8 · 10</td></tr>
+      <tr><td>5 Konsistenz 9 Bausteine, 2 Welten</td><td class="n">4 · 4</td><td class="n">8 · 8</td><td class="n">10 · 10</td></tr>
+      <tr><td>6 Kosten und Pflege</td><td class="n">4 · 2</td><td class="n">7 · 8</td><td class="n">10 · 10</td></tr>
+      <tr><td>7 Wahrheit und Recht</td><td class="n">5 · 4</td><td class="n">9 · 9</td><td class="n">10 · 10</td></tr>
+      <tr><td>8 Informationswert</td><td class="n">7 · 8</td><td class="n">5 · 7</td><td class="n">4 · 6</td></tr>
+      <tr><td>9 Umsetzbar im Bau-Prompt</td><td class="n">5 · 5</td><td class="n">8 · 9</td><td class="n">10 · 10</td></tr>
+      <tr><td>10 Wiedererkennung R&amp;F</td><td class="n">5 · 4</td><td class="n">9 · 10</td><td class="n">7 · 8</td></tr>
+      <tr><td><b>Niedrigste Note</b></td><td class="n"><b>4 · 2</b></td><td class="n"><b>5 · 7</b></td><td class="n"><b>4 · 6</b></td></tr>
+    </tbody></table></div>
+  <div class="liste">
+    <div><b>Beide sagen B.</b> Codex: „Option A produziert genau den unerwünschten KI-Look; Option C wäre funktional sauber, verschenkt aber die bereits vorhandene R&amp;F-Handschrift." Claude: B mit Beimischung aus C, weil das Foto keine Baustein-Information trägt (Kriterium 8).</div>
+    <div><b>Wo Codex besser lag:</b> Das Foto gehört <em>in</em> die Kopffläche, läuft im unteren Drittel in Navy oder Tiefgrün aus, darunter die Zickzack-Kante. Mein erster Entwurf hatte das Foto als Karte unter dem Kopf, das erzeugt wieder den dunklen Block. Übernommen, siehe Start B.</div>
+    <div><b>Regeln für den Bau-Prompt (aus Codex, geprüft):</b> Fotos nur auf Start, Weg, Werkzeuge, nie auf den 9 Baustein- oder 44 Lektionskarten · je Welt ein Masterfoto mit drei festen Ausschnitten · kein Rand, kein Schatten, kein Text auf unruhigen Bildbereichen · höchstens 120 KB je Bild, AVIF/WebP mit JPEG-Fallback · Dunkelmodus: dasselbe Foto mit stärkerer Farbauflage · fehlt ein freigegebenes Foto, bleibt der Einstieg ohne Foto, kein KI- oder Stock-Ersatz.</div>
+    <div><b>Offen:</b> Codex schlägt für die grüne Welt den Tagungsraum vor; das ist eine Designentscheidung, keine Vorgabe. Mehr als zwei freigegebene Fotos sind nicht belegt. Die Bausteine selbst bekommen Nummer, Titel, Ring, kein Bild.</div>
+  </div>
+  <p class="muted">Rohantworten und Briefing: 10_PROJEKTE/Firestarter/gegenlauf/2026-10-21_bildfrage/. Gemini ist seit 01.10.2026 nicht mehr im Lauf.</p>
+</div>
+</section>
+
+<footer>Datei: 10_PROJEKTE/Firestarter/innen_2026-10-21/Firestarter_Innen_Stand2.html · Fotos: René, WINX-Tower, Nutzung freigegeben · Mockups sind HTML-Nachbauten · Status Entwurf, Entscheidung bei Simon.</footer>
+</div>
+<script>
+(function(){var b=document.body;function welt(g){b.classList.toggle('w-gruen',g);document.getElementById('w-blau').setAttribute('aria-pressed',!g);document.getElementById('w-gruen').setAttribute('aria-pressed',g);}
+document.getElementById('w-blau').addEventListener('click',function(){welt(false)});document.getElementById('w-gruen').addEventListener('click',function(){welt(true)});})();
+</script>
+</body>
+</html>
