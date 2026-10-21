@@ -15,7 +15,7 @@
   --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --line:#E6E0D3; --grey:#6B6257; --ph:#8A8272;
   --serif:"Gloock",Georgia,serif; --sans:"Nunito",ui-rounded,system-ui,sans-serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --ease:cubic-bezier(.2,0,0,1);
-  --top-h:calc(150px + env(safe-area-inset-top,0px));
+  --top-h:calc(160px + env(safe-area-inset-top,0px));
 }
 html.w-gruen{ --wc:#173A2B; --wc-2:#10291F; --wa:#B39465; --wsoft:#C9D8CE; --wcream:#F3F1EA }
 html,body{height:100%;margin:0}
@@ -28,11 +28,11 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 .kerzen rect{transform-origin:bottom;transform:scaleY(0);transition:transform .5s var(--ease)}
 .kerzen path{stroke:var(--wc);stroke-width:2.5;fill:none;stroke-dasharray:600;stroke-dashoffset:600;transition:stroke-dashoffset 1.2s var(--ease),opacity .4s}
 .logo{position:absolute;left:50%;top:40%;translate:-50% -50%;font-family:var(--serif);font-size:96px;letter-spacing:-.01em;line-height:1;color:var(--wc);clip-path:inset(100% 0 0 0);white-space:nowrap;z-index:3;transition:clip-path 1.1s var(--ease),top .6s var(--ease),left .6s var(--ease),translate .6s var(--ease),font-size .6s var(--ease),color .4s,scale .5s var(--ease),opacity .4s}
-.name{position:absolute;left:0;right:0;top:calc(40% + 60px);text-align:center;font-family:var(--mono);font-size:11px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:var(--wc);opacity:0;translate:0 6px;z-index:3;transition:opacity .5s ease-out,translate .5s ease-out,top .6s var(--ease),left .6s var(--ease),color .4s}
+.name{position:absolute;left:0;right:0;top:calc(40% + 60px);text-align:center;font-family:var(--mono);font-size:12px;line-height:1.5;letter-spacing:.14em;text-transform:uppercase;color:var(--wc);opacity:0;translate:0 6px;z-index:3;transition:opacity .5s ease-out,translate .5s ease-out,top .6s var(--ease),left .6s var(--ease),color .4s}
 .flaeche{position:absolute;left:0;right:0;top:0;height:var(--top-h);background:var(--wc);translate:0 -110%;z-index:2;transition:translate .7s var(--ease),height .55s var(--ease)}
 .flaeche svg.edge{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:40px;display:block}
 .flaeche svg.edge path{fill:var(--wcream);transition:opacity .3s}
-.fig{position:absolute;right:18px;top:calc(var(--top-h) - 100px + 8px);width:88px;height:100px;z-index:3;opacity:0;translate:0 10px;transition:opacity .4s ease-out,translate .4s ease-out,top .5s var(--ease),right .5s var(--ease),scale .5s var(--ease)}
+.fig{position:absolute;right:18px;top:calc(var(--top-h) - 110px + 8px);width:96px;height:110px;z-index:3;opacity:0;translate:0 10px;transition:opacity .4s ease-out,translate .4s ease-out,top .5s var(--ease),right .5s var(--ease),scale .5s var(--ease)}
 .fig .flame{transform-origin:50% 90%;animation:flicker 1.6s ease-in-out infinite}
 .fig .arm{transform-origin:46px 50px;animation:wave 1.4s ease-in-out infinite}
 @keyframes flicker{0%,100%{transform:scaleX(1) scaleY(1) rotate(0)}30%{transform:scaleX(.96) scaleY(1.04) rotate(-2deg)}60%{transform:scaleX(1.03) scaleY(.98) rotate(2deg)}}
@@ -40,16 +40,17 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 
 /* Anmeldung */
 .form{position:absolute;left:0;right:0;top:var(--top-h);bottom:0;padding:22px 22px calc(22px + env(safe-area-inset-bottom,0px));display:grid;gap:14px;align-content:space-between;translate:0 110%;z-index:1;transition:translate .6s var(--ease),opacity .3s}
-.hi{font-family:var(--serif);font-size:27px;line-height:1.1;color:var(--wc-2);text-wrap:balance}
+.hi{font-family:var(--serif);font-size:30px;line-height:1.1;color:var(--wc-2);text-wrap:balance}
 .segm{display:grid;grid-template-columns:1fr 1fr;background:#ECE7DB;border-radius:999px;padding:4px}
-.segm button{font:600 14px var(--body2);border:0;background:transparent;color:var(--grey);border-radius:999px;height:40px;cursor:pointer}
+.segm button{font:600 15px var(--body2);border:0;background:transparent;color:var(--grey);border-radius:999px;height:44px;cursor:pointer}
 .segm button[aria-pressed="true"]{background:var(--wc);color:#F5F1EA}
-.fld{position:relative;display:flex;align-items:center;gap:10px;height:54px;border-radius:14px;background:#FFFFFF;border:1px solid var(--line);padding:0 14px}
+.fld{position:relative;display:flex;align-items:center;gap:10px;height:58px;border-radius:14px;background:#FFFFFF;border:1px solid var(--line);padding:0 14px}
 .fld svg{width:18px;height:18px;flex:none;color:var(--wsoft)}
-.fld input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:500 15px var(--body2);color:var(--wc-2)}
+.fld input{flex:1;min-width:0;border:0;outline:0;background:transparent;font:500 16px var(--body2);color:var(--wc-2)}
 .fld input::placeholder{color:var(--ph)}
 .fld:focus-within{border-color:var(--wc);box-shadow:0 0 0 3px color-mix(in srgb,var(--wc) 12%,transparent)}
-.row{display:flex;justify-content:space-between;align-items:center;font-size:13.5px;color:var(--grey);padding:0 2px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13.5px;color:var(--grey);padding:0 2px}
+.row a{white-space:nowrap}
 .sw{display:inline-flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
 .sw input{position:absolute;opacity:0;width:0;height:0}
 .sw .knob{width:40px;height:24px;border-radius:999px;background:#D9D2C3;position:relative;transition:background .25s var(--ease);flex:none}
@@ -58,16 +59,38 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 .sw input:checked + .knob:after{translate:16px 0}
 .sw input:focus-visible + .knob{outline:3px solid var(--wa);outline-offset:2px}
 .row a{color:var(--wc);font-weight:600;text-decoration:none}
-.btn{height:56px;border:0;border-radius:14px;background:var(--wc);color:#F5F1EA;font:600 16px var(--body2);cursor:pointer;display:grid;place-items:center;justify-self:center;width:100%;box-shadow:0 10px 22px color-mix(in srgb,var(--wc) 25%,transparent);transition:width .45s var(--ease),border-radius .45s}
+.btn{height:60px;border:0;border-radius:14px;background:var(--wc);color:#F5F1EA;font:600 17px var(--body2);cursor:pointer;display:grid;place-items:center;justify-self:center;width:100%;box-shadow:0 10px 22px color-mix(in srgb,var(--wc) 25%,transparent);transition:width .45s var(--ease),border-radius .45s}
 .btn .dots{display:none;gap:6px}.btn .dots i{width:7px;height:7px;border-radius:50%;background:#F5F1EA;animation:dot 1s infinite}
 .btn .dots i:nth-child(2){animation-delay:.2s}.btn .dots i:nth-child(3){animation-delay:.4s}
 @keyframes dot{0%,80%,100%{opacity:.3}40%{opacity:1}}
 .div{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--ph)}
 .div:before,.div:after{content:"";height:1px;background:var(--line)}
 .soc{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.soc button{height:50px;border-radius:12px;border:1px solid var(--line);background:#fff;font:600 14px var(--body2);color:var(--wc-2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.soc button{height:54px;border-radius:12px;border:1px solid var(--line);background:#fff;font:600 14px var(--body2);color:var(--wc-2);cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
 .soc svg{width:18px;height:18px}
 
+/* Anfrage und Bestätigung */
+.form[data-mode="anfragen"] .nur-login{display:none}
+.form:not([data-mode="anfragen"]) .nur-anfragen{display:none}
+.ok{display:none;border-radius:16px;background:#fff;border:1px solid var(--line);padding:18px;gap:8px;text-align:center}
+.ok b{font-family:var(--serif);font-size:22px;color:var(--wc-2);font-weight:400}
+.ok p{margin:0;font-size:14.5px;color:var(--grey)}
+.ok button{margin-top:6px;height:46px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font:600 14px var(--body2);color:var(--wc-2);cursor:pointer}
+.form.sent .nur-anfragen,.form.sent .segm{display:none}.form.sent .ok{display:grid}
+/* Fenster (Passwort, Apple, Google) */
+.sheet{position:absolute;inset:0;z-index:7;display:none;align-items:flex-end;background:rgba(10,20,36,.45)}
+.sheet.on{display:flex}
+.sheet .box{width:100%;background:#fff;border-radius:22px 22px 0 0;padding:14px 22px calc(24px + env(safe-area-inset-bottom,0px));display:grid;gap:14px;translate:0 100%;animation:up .4s var(--ease) forwards}
+@keyframes up{to{translate:0 0}}
+.sheet .grip{width:40px;height:5px;border-radius:999px;background:#D9D2C3;justify-self:center}
+.sheet h2{margin:0;font-family:var(--serif);font-size:24px;font-weight:400;color:var(--wc-2);line-height:1.1}
+.sheet p{margin:0;font-size:14.5px;color:var(--grey)}
+.sheet .fld{background:var(--wcream)}
+.sheet .btn{height:54px;font-size:16px}
+.sheet .ghost{height:46px;border:0;background:transparent;font:600 14px var(--body2);color:var(--wc);cursor:pointer}
+.sheet .logo-row{display:flex;align-items:center;gap:12px}
+.sheet .logo-row i{width:44px;height:44px;border-radius:12px;background:var(--wcream);display:grid;place-items:center}
+.sheet .logo-row svg{width:24px;height:24px}
 /* Lernstand */
 .lern{position:absolute;inset:0;opacity:0;z-index:4;pointer-events:none;display:grid;grid-template-rows:auto 1fr;transition:opacity .45s ease-out}
 .lern .head{background:var(--wc);color:#F5F1EA;padding:calc(44px + env(safe-area-inset-top,0px)) 22px 22px;display:grid;gap:6px}
@@ -90,8 +113,8 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 .app.p2 .name{opacity:1;translate:0 0}
 .app.p3 .kerzen path,.app.p3 .kerzen rect{opacity:0}
 .app.p3 .flaeche{translate:0 0}
-.app.p3 .logo{left:22px;top:calc(36px + env(safe-area-inset-top,0px));translate:0 0;font-size:44px;color:#F5F1EA}
-.app.p3 .name{left:22px;right:auto;text-align:left;top:calc(84px + env(safe-area-inset-top,0px));color:#F5F1EA;opacity:.9}
+.app.p3 .logo{left:22px;top:calc(38px + env(safe-area-inset-top,0px));translate:0 0;font-size:48px;color:#F5F1EA}
+.app.p3 .name{left:22px;right:auto;text-align:left;top:calc(90px + env(safe-area-inset-top,0px));color:#F5F1EA;opacity:.9}
 .app.p3 .fig{opacity:1;translate:0 0}
 .app.p3 .form{translate:0 0}
 .app.p3 .skip{opacity:0;pointer-events:none}
@@ -135,14 +158,25 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 
   <form class="form" id="form" autocomplete="off">
     <div class="hi">Schön, dass du weitermachst.</div>
-    <div class="segm" role="group" aria-label="Anmelden oder Zugang anfragen"><button type="button" aria-pressed="true">Anmelden</button><button type="button" aria-pressed="false">Zugang anfragen</button></div>
-    <label class="fld"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input type="email" id="email" name="email" placeholder="E-Mail-Adresse" inputmode="email" autocomplete="username"></label>
-    <label class="fld"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><input type="password" id="pass" name="password" placeholder="Passwort" autocomplete="current-password"></label>
-    <div class="row"><label class="sw"><input type="checkbox" id="bleiben" checked><span class="knob"></span><span>Angemeldet bleiben</span></label><a href="#vergessen" id="vergessen">Passwort vergessen?</a></div>
-    <button class="btn" id="login" type="submit"><span class="txt">Anmelden</span><span class="dots"><i></i><i></i><i></i></span></button>
-    <div class="div">oder weiter mit</div>
-    <div class="soc"><button type="button"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.3.9-1.3 1.2-2.6 1.3-2.6-.1 0-2.5-1-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>Apple</button><button type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4c-.2 1.2-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6C4.8 19.8 8.1 22 12 22z"/><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1C2.4 8.8 2 10.4 2 12s.4 3.2 1.1 4.6L6.4 14z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8C17 3 14.7 2 12 2 8.1 2 4.8 4.2 3.1 7.4L6.4 10c.8-2.3 3-4.1 5.6-4.1z"/></svg>Google</button></div>
+    <div class="segm" role="group" aria-label="Anmelden oder Zugang anfragen"><button type="button" data-mode="login" aria-pressed="true">Anmelden</button><button type="button" data-mode="anfragen" aria-pressed="false">Zugang anfragen</button></div>
+    <label class="fld nur-anfragen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><input type="text" id="name" name="name" placeholder="Dein Name" autocomplete="name"></label>
+    <label class="fld nur-anfragen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input type="email" id="email2" name="email2" placeholder="E-Mail-Adresse" inputmode="email"></label>
+    <label class="fld nur-anfragen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-3 2a11 11 0 0 0 5 5l2-3 5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><input type="tel" id="tel" name="tel" placeholder="Telefon (freiwillig)" inputmode="tel"></label>
+    <p class="nur-anfragen" style="margin:0;font-size:13.5px;color:var(--grey);text-align:center">Die Testversion ist kostenlos. Wir schicken dir den Zugang per E-Mail.</p>
+    <button class="btn nur-anfragen" id="anfragen" type="button">Zugang anfragen</button>
+    <div class="ok nur-anfragen" id="ok"><b>Danke, deine Anfrage ist da.</b><p>Du bekommst deinen Zugang per E-Mail. Schau auch in den Spam-Ordner.</p><button type="button" id="ok-back">Zurück zur Anmeldung</button></div>
+    <label class="fld nur-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input type="email" id="email" name="email" placeholder="E-Mail-Adresse" inputmode="email" autocomplete="username"></label>
+    <label class="fld nur-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><input type="password" id="pass" name="password" placeholder="Passwort" autocomplete="current-password"></label>
+    <div class="row nur-login"><label class="sw"><input type="checkbox" id="bleiben" checked><span class="knob"></span><span>Angemeldet bleiben</span></label><a href="#vergessen" id="vergessen">Passwort vergessen?</a></div>
+    <button class="btn nur-login" id="login" type="submit"><span class="txt">Anmelden</span><span class="dots"><i></i><i></i><i></i></span></button>
+    <div class="div nur-login">oder weiter mit</div>
+    <div class="soc nur-login"><button type="button" id="apple"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.3.9-1.3 1.2-2.6 1.3-2.6-.1 0-2.5-1-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg>Apple</button><button type="button" id="google"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4c-.2 1.2-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6C4.8 19.8 8.1 22 12 22z"/><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1C2.4 8.8 2 10.4 2 12s.4 3.2 1.1 4.6L6.4 14z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8C17 3 14.7 2 12 2 8.1 2 4.8 4.2 3.1 7.4L6.4 10c.8-2.3 3-4.1 5.6-4.1z"/></svg>Google</button></div>
   </form>
+
+  <div class="sheet" id="sheet-pw"><div class="box"><div class="grip"></div><h2>Passwort zurücksetzen</h2><p>Gib deine E-Mail-Adresse ein. Wir schicken dir einen Link, mit dem du ein neues Passwort setzt.</p><label class="fld"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input type="email" id="pw-mail" placeholder="E-Mail-Adresse" inputmode="email"></label><button class="btn" type="button" id="pw-send">Link schicken</button><button class="ghost" type="button" data-close>Abbrechen</button></div></div>
+  <div class="sheet" id="sheet-pw-ok"><div class="box"><div class="grip"></div><h2>Link ist unterwegs.</h2><p>Wenn die Adresse bei uns bekannt ist, kommt in wenigen Minuten eine E-Mail. Schau auch in den Spam-Ordner.</p><button class="btn" type="button" data-close>Zurück zur Anmeldung</button></div></div>
+  <div class="sheet" id="sheet-apple"><div class="box"><div class="grip"></div><div class="logo-row"><i><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9s-1.8-.8-3-.8c-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.8 3-.8s1.8.8 3 .7c1.2 0 2-1.1 2.8-2.3.9-1.3 1.2-2.6 1.3-2.6-.1 0-2.5-1-2.5-3.7zM14.1 5.8c.6-.8 1.1-1.9.9-3-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.8-1 2.9 1 .1 2.1-.5 2.8-1.3z"/></svg></i><h2>Mit Apple anmelden</h2></div><p>Firestarter möchte dich mit deiner Apple-ID anmelden. Du bestätigst das mit Face ID oder deinem Code.</p><button class="btn" type="button" data-go>Fortfahren</button><button class="ghost" type="button" data-close>Abbrechen</button></div></div>
+  <div class="sheet" id="sheet-google"><div class="box"><div class="grip"></div><div class="logo-row"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#4285F4" d="M21.6 12.2c0-.7-.1-1.4-.2-2H12v3.9h5.4c-.2 1.2-.9 2.3-2 3v2.5h3.2c1.9-1.7 3-4.3 3-7.4z"/><path fill="#34A853" d="M12 22c2.7 0 5-.9 6.6-2.4l-3.2-2.5c-.9.6-2 1-3.4 1-2.6 0-4.8-1.8-5.6-4.1H3.1v2.6C4.8 19.8 8.1 22 12 22z"/><path fill="#FBBC05" d="M6.4 14c-.2-.6-.3-1.3-.3-2s.1-1.4.3-2V7.4H3.1C2.4 8.8 2 10.4 2 12s.4 3.2 1.1 4.6L6.4 14z"/><path fill="#EA4335" d="M12 5.9c1.5 0 2.8.5 3.8 1.5l2.8-2.8C17 3 14.7 2 12 2 8.1 2 4.8 4.2 3.1 7.4L6.4 10c.8-2.3 3-4.1 5.6-4.1z"/></svg></i><h2>Mit Google anmelden</h2></div><p>Wähle dein Google-Konto. Firestarter bekommt nur deinen Namen und deine E-Mail-Adresse.</p><button class="btn" type="button" data-go>Fortfahren</button><button class="ghost" type="button" data-close>Abbrechen</button></div></div>
 
   <div class="lern" id="lern">
     <div class="head"><small>Firestarter · Mein Vermögen</small><b>Willkommen zurück, Simon.</b><div class="zahl"><span id="zaehler">0</span> von 9</div></div>
@@ -160,7 +194,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   var app=document.getElementById('app'), t=[], ziel=3;
   if(location.hash==='#gruen')document.documentElement.classList.add('w-gruen');
   function clearT(){t.forEach(clearTimeout);t=[];}
-  function reset(){clearT();app.className='app';document.getElementById('zaehler').textContent='0';document.getElementById('email').value='';document.getElementById('pass').value='';}
+  function reset(){clearT();app.className='app';document.querySelectorAll('.sheet').forEach(function(x){x.classList.remove('on')});var f=document.getElementById('form');if(f){f.classList.remove('sent');f.dataset.mode='login';}document.querySelectorAll('.segm button').forEach(function(x){x.setAttribute('aria-pressed',x.dataset.mode==='login')});document.getElementById('zaehler').textContent='0';document.getElementById('email').value='';document.getElementById('pass').value='';}
   function play(){reset();
     t.push(setTimeout(function(){app.classList.add('p1')},150));
     t.push(setTimeout(function(){app.classList.add('p2')},1500));
@@ -175,8 +209,18 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();login();});
   document.getElementById('skip').addEventListener('click',skip);
   document.getElementById('again').addEventListener('click',play);
-  document.getElementById('vergessen').addEventListener('click',function(e){e.preventDefault();});
-  document.querySelectorAll('.segm button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.segm button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');});});
+  var form=document.getElementById('form');
+  document.querySelectorAll('.segm button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.segm button').forEach(function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');form.dataset.mode=b.dataset.mode;form.classList.remove('sent');});});
+  document.getElementById('anfragen').addEventListener('click',function(){document.activeElement&&document.activeElement.blur();form.classList.add('sent');});
+  document.getElementById('ok-back').addEventListener('click',function(){form.classList.remove('sent');document.querySelector('.segm button[data-mode="login"]').click();});
+  function sheet(id,on){var el=document.getElementById(id);el.classList.toggle('on',on);}
+  document.getElementById('vergessen').addEventListener('click',function(e){e.preventDefault();sheet('sheet-pw',true);});
+  document.getElementById('pw-send').addEventListener('click',function(){sheet('sheet-pw',false);sheet('sheet-pw-ok',true);});
+  document.getElementById('apple').addEventListener('click',function(){sheet('sheet-apple',true);});
+  document.getElementById('google').addEventListener('click',function(){sheet('sheet-google',true);});
+  document.querySelectorAll('.sheet [data-close]').forEach(function(b){b.addEventListener('click',function(){b.closest('.sheet').classList.remove('on');});});
+  document.querySelectorAll('.sheet [data-go]').forEach(function(b){b.addEventListener('click',function(){b.closest('.sheet').classList.remove('on');login();});});
+  document.querySelectorAll('.sheet').forEach(function(sh){sh.addEventListener('click',function(e){if(e.target===sh)sh.classList.remove('on');});});
   setTimeout(play,400);
 })();
 </script>
