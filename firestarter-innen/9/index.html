@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#102444">
+<meta name="robots" content="noindex">
+<title>Firestarter Neun Mockups</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Neun Mockups: je drei für Start, Weg, Bibliothek. Rahmen aus Stand 5 (schmaler Kopf mit Zickzack, Flamme, Glas-Leiste). Alle Formen direkt gezeichnet, keine SVG-Symbole (Safari). Immer hell. */
+:root{
+  --bg:#FCFAF6; --surface:#FFFFFF; --surface-2:#F3EEE3; --line:#E3DCCB; --fg:#1C1917; --fg-2:#6B6257; --navy:#102444; --navy-ink:#F5F1EA; --orange:#FF7A00; --gold:#BBA45F; --gold-soft:#F1E9CF;
+  --sans:"Nunito",ui-rounded,system-ui,sans-serif; --serif:"Gloock",Georgia,serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --wtint:#E9EEF5; --grey:#6B6257; --ph:#8A8272; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;padding-block:0 56px;padding-inline:16px}
+.wrap{max-width:1060px;margin:0 auto}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,40px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(22px,4.5vw,28px);font-weight:800}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+header{padding-block:32px 18px;display:grid;gap:12px}
+header .lead{font-size:18px;color:var(--fg-2);max-width:66ch}
+section{display:grid;gap:16px;padding-block:28px;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:30px;height:28px;padding:0 8px;border-radius:8px;background:var(--navy);color:var(--navy-ink);font-weight:800;font-size:14px;margin-right:10px;vertical-align:middle}
+.note{background:var(--gold-soft);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:12px 14px;font-size:15px}
+.muted{font-size:15px;color:var(--fg-2)}
+.row3{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));justify-items:center}
+.cell{display:grid;gap:6px;justify-items:center;min-width:0;width:100%}
+.cell .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+.cell .cap{font-size:13.5px;color:var(--fg-2);text-align:center;max-width:32ch}
+.cell .cap b{color:var(--fg);font-weight:800}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:800}
+/* Telefon */
+.ph{width:min(100%,250px);aspect-ratio:9/18.6;border-radius:32px;background:#0A1424;padding:8px;position:relative;box-shadow:0 12px 32px rgba(60,40,10,.12)}
+.scr{position:relative;width:100%;height:100%;border-radius:25px;overflow:hidden;background:var(--wcream);color:var(--wc-2);font-family:var(--body2);font-size:10px;line-height:1.3}
+.scr *{box-sizing:border-box}
+.inner{position:absolute;inset:0;display:grid;grid-template-rows:auto 1fr}
+.kopf{position:relative;background:var(--wc);color:#F5F1EA;padding:20px 58px 20px 14px;display:grid;gap:2px;z-index:2}
+.kopf .klein{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.kopf .gross{font-family:var(--serif);font-size:18px;line-height:1.05}
+.kopf .edge{position:absolute;left:0;right:0;bottom:-1px;height:18px;width:100%;display:block}
+.kopf .funke{position:absolute;right:8px;bottom:-4px;width:42px;height:50px;z-index:3}
+.kopf.hell{background:var(--wcream);color:var(--wc-2);padding:16px 14px 6px}
+.kopf.hell .klein{color:var(--ph)}
+.body{padding:12px 12px 48px;display:grid;gap:9px;align-content:start;overflow:hidden;position:relative}
+.lbl{font-family:var(--mono);font-size:6.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--ph)}
+.nav{position:absolute;left:0;right:0;bottom:6px;display:flex;justify-content:center;z-index:5}
+.nav div{display:flex;gap:2px;padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.08);backdrop-filter:blur(14px) saturate(1.8);-webkit-backdrop-filter:blur(14px) saturate(1.8);box-shadow:inset 0 0 0 1px rgba(255,255,255,.45),0 6px 16px rgba(16,36,68,.1)}
+.nav span{display:grid;gap:1px;justify-items:center;font-size:5.5px;color:var(--grey);width:34px;padding:3px 0;border-radius:999px}
+.nav span svg{width:12px;height:12px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+.nav span.on{color:var(--wc);background:rgba(255,255,255,.35);font-weight:600}.nav span.on svg{stroke:var(--wa)}
+.nav.drei span{width:44px}
+.btn{height:30px;border-radius:9px;background:var(--wa);color:var(--wc);font-weight:600;font-size:9.5px;display:grid;place-items:center}
+.btn.deep{background:var(--wc);color:#F5F1EA}
+.btn.hell{background:#fff;color:var(--wc)}
+.heute{font-family:var(--serif);font-size:15px;line-height:1.1;color:var(--wc-2)}
+/* Weg-Kästen Standard */
+.weg{position:relative;display:grid;gap:7px}
+.weg:before{content:"";position:absolute;left:13px;top:8px;bottom:8px;width:3px;border-radius:2px;background:#E6E0D3}
+.weg .m{display:flex;gap:7px;align-items:center;position:relative}
+.weg .m i{width:18px;height:18px;border-radius:50%;background:#E6E0D3;display:grid;place-items:center;font-style:normal;font-size:6.5px;font-weight:700;color:var(--ph);flex:none;margin-left:5px;border:3px solid var(--wcream)}
+.weg .m.now i{background:var(--wa);color:var(--wc)}
+.weg .m.done i{background:var(--wc);color:#F5F1EA}
+.weg .m .k{flex:1;display:flex;gap:7px;align-items:center;background:#fff;border-radius:11px;padding:8px 9px;min-width:0}
+.weg .m.now .k{background:var(--wc);color:#F5F1EA}
+.weg .m .k .z{font-family:var(--serif);font-size:15px;line-height:1;width:20px;flex:none;color:var(--wc)}
+.weg .m.now .k .z{color:var(--wa)}
+.weg .m .k div{display:grid;min-width:0;flex:1}.weg .m .k b{font-size:9px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.weg .m .k small{font-size:7.5px;color:var(--grey)}.weg .m.now .k small{color:rgba(245,241,234,.8)}
+.weg .m.gesperrt .k{opacity:.6}
+.weg .m.now .f2{width:22px;height:26px;flex:none}
+.weg.klein .m .k{padding:6px 8px}.weg.klein .m .k b{font-size:8px}
+/* Bahnstrecke */
+.bahn{position:relative;display:grid;gap:0;padding-left:28px}
+.bahn:before{content:"";position:absolute;left:12px;top:6px;bottom:6px;width:4px;background:linear-gradient(to bottom,var(--wc) 0 34%,#E6E0D3 34%)}
+.bahn .st{position:relative;padding:7px 0 7px 8px;display:grid}
+.bahn .st:before{content:"";position:absolute;left:-22px;top:9px;width:12px;height:12px;border-radius:50%;background:#fff;border:3px solid #E6E0D3}
+.bahn .st.done:before{background:var(--wc);border-color:var(--wc)}
+.bahn .st.now:before{background:var(--wa);border-color:var(--wa);box-shadow:0 0 0 4px color-mix(in srgb,var(--wa) 25%,transparent)}
+.bahn .st b{font-size:9.5px;font-weight:600}.bahn .st small{font-size:7.5px;color:var(--grey)}
+.bahn .st.lek{padding:4px 0 4px 8px}.bahn .st.lek:before{width:7px;height:7px;left:-19.5px;top:7px;border-width:2px}
+.bahn .st.lek b{font-size:8.5px;font-weight:500}
+.bahn .st.now b{font-size:11px}
+.bahn .st.gesperrt{opacity:.55}
+/* Wisch-Seiten */
+.seite{background:#fff;border-radius:14px;padding:12px;display:grid;gap:6px;min-height:150px}
+.seite .z{font-family:var(--serif);font-size:30px;line-height:1;color:var(--wc)}
+.seite b{font-size:12px;font-weight:600}
+.seite .l{display:flex;gap:7px;align-items:center;font-size:8.5px;padding:5px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.seite .l i{width:14px;height:14px;border-radius:50%;background:#E6E0D3;flex:none;display:grid;place-items:center;font-style:normal;font-size:6px;font-weight:700;color:var(--ph)}
+.seite .l.now i{background:var(--wa);color:var(--wc)}.seite .l.done i{background:var(--wc);color:#F5F1EA}
+.punkte{display:flex;gap:4px;justify-content:center}.punkte i{width:5px;height:5px;border-radius:50%;background:#D9D2C3}.punkte i.on{background:var(--wc);width:12px;border-radius:3px}
+.peek{position:absolute;right:-30px;top:0;bottom:0;width:36px;background:#fff;border-radius:14px;opacity:.6}
+/* Woche */
+.woche{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.woche div{display:grid;justify-items:center;gap:3px;font-size:6px;color:var(--ph)}
+.woche i{width:16px;height:16px;border-radius:50%;background:#E6E0D3;display:block}
+.woche i.on{background:var(--wa)}.woche i.heute{background:#fff;border:2px solid var(--wa)}
+/* Flammen-Zeile */
+.sag{display:flex;gap:8px;align-items:flex-start}
+.sag svg{width:26px;height:30px;flex:none}
+.sag .b{background:#fff;border-radius:12px;padding:8px 10px;font-size:9px;line-height:1.35;color:var(--wc-2);position:relative}
+.sag .b:before{content:"";position:absolute;left:-6px;top:10px;border:6px solid transparent;border-right-color:#fff;border-left:0}
+/* Netflix-Reihen */
+.reihe{display:flex;gap:7px;overflow:hidden}
+.reihe .k{flex:0 0 42%;border-radius:11px;background:#fff;padding:8px;display:grid;gap:3px}
+.reihe .k .z{font-family:var(--serif);font-size:16px;color:var(--wc)}
+.reihe .k b{font-size:8.5px;font-weight:600}.reihe .k small{font-size:7px;color:var(--grey)}
+.reihe .k.now{background:var(--wc);color:#F5F1EA}.reihe .k.now .z{color:var(--wa)}.reihe .k.now small{color:rgba(245,241,234,.8)}
+.reihe .k.aus{opacity:.55}
+/* Bibliothek */
+.suche{height:28px;border-radius:999px;background:#fff;display:flex;align-items:center;gap:6px;padding:0 10px;font-size:8.5px;color:var(--ph)}
+.suche svg{width:10px;height:10px;fill:none;stroke:var(--wc);stroke-width:2}
+.chips{display:flex;gap:4px;flex-wrap:wrap}.chips span{background:#fff;border-radius:999px;padding:4px 8px;font-size:7.5px;font-weight:600;color:var(--wc)}
+.chips span.on{background:var(--wc);color:#F5F1EA}
+.chips.gross span{font-size:9px;padding:6px 10px}
+.zeile{display:flex;gap:8px;align-items:center;padding:7px 2px;border-bottom:1px solid rgba(0,0,0,.07)}
+.zeile .ring{width:22px;height:22px;border-radius:50%;background:conic-gradient(var(--wa) var(--p,0%),#E6E0D3 0);display:grid;place-items:center;flex:none}
+.zeile .ring i{width:15px;height:15px;border-radius:50%;background:var(--wcream);display:grid;place-items:center;font-style:normal;font-size:5px;font-weight:700;color:var(--wc)}
+.zeile div{display:grid;flex:1;min-width:0}.zeile b{font-size:8.5px;font-weight:600}.zeile small{font-size:7.5px;color:var(--grey)}
+.zeile.aus{opacity:.55}
+.zeile .n{font-family:var(--serif);font-size:13px;color:var(--wc);width:20px;flex:none}
+.satz{font-size:8px;color:#3B342C;line-height:1.35}
+.az{display:flex;flex-direction:column;gap:1px;position:absolute;right:4px;top:60px;font-size:5.5px;color:var(--wc);font-weight:700;line-height:1.2}
+.kacheln{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.kacheln .t{background:#fff;border-radius:11px;padding:9px;display:grid;gap:2px}
+.kacheln .t .z{font-family:var(--serif);font-size:14px;color:var(--wc)}
+.kacheln .t b{font-size:8px;font-weight:600}.kacheln .t small{font-size:6.5px;color:var(--grey)}
+.kacheln .t.aus{opacity:.55}
+.audio{display:flex;gap:8px;align-items:center;padding:7px 2px;border-bottom:1px solid rgba(0,0,0,.07)}
+.audio .pl{width:22px;height:22px;border-radius:50%;background:var(--wc);flex:none;display:grid;place-items:center}
+.audio .pl:after{content:"";border-left:6px solid #F5F1EA;border-top:4px solid transparent;border-bottom:4px solid transparent;margin-left:1px}
+.audio div{display:grid;flex:1;gap:3px;min-width:0}.audio b{font-size:8.5px;font-weight:600}.audio small{font-size:7px;color:var(--grey)}
+.audio .bar{height:3px;border-radius:2px;background:#E6E0D3}.audio .bar i{display:block;height:100%;width:var(--p,0%);background:var(--wa);border-radius:2px}
+.fab{position:absolute;right:12px;bottom:52px;width:34px;height:34px;border-radius:50%;background:var(--wa);display:grid;place-items:center;box-shadow:0 6px 14px color-mix(in srgb,var(--wa) 35%,transparent);z-index:4}
+.fab svg{width:16px;height:16px;fill:none;stroke:var(--wc);stroke-width:2;stroke-linecap:round}
+footer{padding-block:24px;font-size:14px;color:var(--fg-2);border-top:1px solid var(--line)}
+</style>
+</head>
+<body style="padding-left:16px;padding-right:16px">
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">R&amp;F Firestarter · Innenoptik · neun Mockups · 21.10.2026</p>
+  <h1>Start, Weg, Bibliothek: je drei Wege</h1>
+  <p class="lead">Simons Auftrag: zu jedem der drei Blöcke drei optische Fassungen, so wie im Brainstorming genannt, als Mockup. Rahmen ist Stand 5: schmaler Kopf mit Zickzack und Flamme, Glas-Leiste unten, Weg-Kästen, Lesemodus in der Lektion. Jede Fassung steht für eine andere Bauweise, nicht nur eine andere Farbe. Die Recherche-Belege stehen unter jedem Block.</p>
+</header>
+
+<section>
+  <h2><span class="num">S</span>Start, drei Bauweisen</h2>
+  <div class="row3">
+    <div class="cell"><span class="tag">S1 · Ein Satz, dann der Weg</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Guten Abend</div><div class="gross">Schön, dass du da bist, Simon.</div><svg class="funke" viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M46 50 L56 42" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body">
+          <div class="heute">Du bist bei 1.2. Sechs Minuten bis zum nächsten Haken.</div>
+          <div class="btn">Weiter</div>
+          <span class="lbl">Dein Weg</span>
+          <div class="weg">
+            <div class="m now"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 · du bist hier</small></div><svg class="f2" viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/></svg></div></div>
+            <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>nach Baustein 1</small></div></div></div>
+            <div class="m gesperrt"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+          </div>
+          <div class="nav"><div><span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Wie Stand 5, nur persönlicher.</b> Der Satz nennt Stand und Rest, dann der Knopf, dann drei Bausteine. Wenig scrollen.</p></div>
+    <div class="cell"><span class="tag">S2 · Die Flamme spricht, Wochenbogen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Dienstag, 21. Oktober</div><div class="gross">Guten Abend, Simon.</div><svg class="funke" viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M46 50 L56 42" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body">
+          <div class="sag"><svg viewBox="0 0 62 76"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/></svg><div class="b">Gestern warst du bei 1.1. Heute 1.2, der stille Saboteur? Dauert sechs Minuten.</div></div>
+          <div class="btn">Ja, los</div>
+          <span class="lbl">Diese Woche · Ziel 3 Lektionen</span>
+          <div class="woche"><div><i class="on"></i>Mo</div><div><i class="heute"></i>Di</div><div><i></i>Mi</div><div><i></i>Do</div><div><i></i>Fr</div><div><i></i>Sa</div><div><i></i>So</div></div>
+          <span class="lbl">Dein Weg</span>
+          <div class="weg klein">
+            <div class="m now"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5</small></div></div></div>
+            <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>nach Baustein 1</small></div></div></div>
+          </div>
+          <div class="nav"><div><span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Die Flamme redet mit dir.</b> Eine Zeile, die sich täglich ändert, ein Knopf, der Wochenbogen ohne Streak-Druck, darunter der Weg kurz.</p></div>
+    <div class="cell"><span class="tag">S3 · Eine lange Startseite, Reihen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf hell"><div class="klein">Guten Abend</div><div class="gross" style="font-size:22px">Dein Fundament</div></div>
+        <div class="body" style="padding-top:4px">
+          <div class="reihe"><div class="k now"><span class="z">1.2</span><b>Der stille Saboteur</b><small>6 Min · weiter</small></div><div class="k"><span class="z">1.3</span><b>Bildung schlägt Beratung</b><small>7 Min</small></div><div class="k aus"><span class="z">1.4</span><b>Wo stehst du?</b><small>10 Min</small></div></div>
+          <span class="lbl">Bausteine</span>
+          <div class="reihe"><div class="k now"><span class="z">01</span><b>Mindset</b><small>2 von 5</small></div><div class="k aus"><span class="z">02</span><b>Selbstführung</b><small>gesperrt</small></div><div class="k aus"><span class="z">03</span><b>Investment</b><small>gesperrt</small></div></div>
+          <span class="lbl">Werkzeuge</span>
+          <div class="reihe"><div class="k"><b>Berater-Kurz-Check</b><small>aus 1.3</small></div><div class="k"><b>Standort-Kompass</b><small>aus 1.4</small></div><div class="k aus"><b>Zinseszins</b><small>nach B1</small></div></div>
+          <span class="lbl">Zuletzt gesehen</span>
+          <div class="zeile"><span class="ring" style="--p:100%"><i>✓</i></span><div><b>1.1 Willkommen, und die unbequeme Eröffnung</b><small>gestern</small></div></div>
+          <div class="nav drei"><div><span class="on"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Suchen</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Alles auf einer Seite, mehr scrollen.</b> Reihen zum Wischen wie bei Netflix: Weiter, Bausteine, Werkzeuge, zuletzt gesehen. Nur drei Reiter unten, kein Kopf in Weltfarbe.</p></div>
+  </div>
+  <div class="liste"><div><b>S1, direkt in die Lektion:</b> Duolingo und Speak führen vom Start mit einem Tipp in die nächste Lektion; Duolingos Startseite ist der Pfad selbst (blog.duolingo.com, 2022; help.speak.com). Belegt. Risiko: ohne Überblick fehlt „Wo bin ich im Ganzen", deshalb bleibt der Weg darunter.</div><div><b>S2, Heute-Block und Begleiter:</b> Headspace hat im Juni 2026 den „Today"-Reiter als Tages-Checkliste gebaut, darunter ein Gesprächseinstieg mit dem KI-Begleiter, dann Zuletzt und Empfehlungen (help.headspace.com, nur als Suchauszug belegt). Das jüngste belegte Muster. Unser Begleiter ist die Flamme.</div><div><b>S3, lange Startseite mit Reihen:</b> Headspace-Today als Feed in fester Reihenfolge (belegt). Calm-Home mit Inhaltstypen (2021). Dass Reihen seitwärts wischen, ist für 40 bis 70 riskant: Inhalte hinter dem Rand bleiben unsichtbar, die nächste Karte muss zur Hälfte sichtbar sein [ungeprüft]. Warnung aus einer Finch-Kritik (9/2025): wenn Checkliste, Shop, Community und Upgrade auf dem Start konkurrieren, leidet die Orientierung.</div></div>
+</section>
+
+<section>
+  <h2><span class="num">W</span>Weg, drei Bauweisen</h2>
+  <div class="row3">
+    <div class="cell"><span class="tag">W1 · Nur der laufende Baustein offen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">9 Bausteine · 43 Lektionen</div><div class="gross">Dein Weg</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body">
+          <div class="weg klein">
+            <div class="m now"><i>1</i><div class="k"><span class="z">01</span><div><b>Mindset &amp; Zinseszins</b><small>2 von 5 · aufgeklappt</small></div></div></div>
+          </div>
+          <div style="margin-left:30px;display:grid;gap:5px">
+            <div class="zeile" style="padding:5px 0"><span class="ring" style="--p:100%"><i>✓</i></span><div><b>1.1 Willkommen</b><small>6 Min · fertig</small></div></div>
+            <div class="zeile" style="padding:5px 0;background:var(--wc);border-radius:9px;padding-left:6px;padding-right:6px;color:#F5F1EA"><span class="ring" style="--p:37.5%"><i>38 %</i></span><div><b>1.2 Der stille Saboteur</b><small style="color:rgba(245,241,234,.8)">8 Min · jetzt</small></div></div>
+            <div class="zeile" style="padding:5px 0"><span class="ring"><i></i></span><div><b>1.3 Bildung schlägt Beratung</b><small>7 Min</small></div></div>
+            <div class="zeile" style="padding:5px 0"><span class="ring"><i></i></span><div><b>1.4 Wo stehst du?</b><small>10 Min</small></div></div>
+            <div class="zeile" style="padding:5px 0;border:0"><span class="ring"><i></i></span><div><b>1.5 Der Zukunftsbrief</b><small>9 Min</small></div></div>
+          </div>
+          <div class="weg klein">
+            <div class="m gesperrt"><i>2</i><div class="k"><span class="z">02</span><div><b>Finanzielle Selbstführung</b><small>5 Lerneinheiten</small></div></div></div>
+            <div class="m gesperrt"><i>3</i><div class="k"><span class="z">03</span><div><b>Investment ohne Fehler</b><small>32 Schritte</small></div></div></div>
+            <div class="m gesperrt"><i>4</i><div class="k"><span class="z">04</span><div><b>Börsenfundament</b><small>79 Schritte</small></div></div></div>
+          </div>
+          <div class="nav"><div><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span class="on"><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Akkordeon.</b> Nur der laufende Baustein ist offen, die Lektionen als Zeilen mit Ring, die laufende blau. Die anderen eingeklappt.</p></div>
+    <div class="cell"><span class="tag">W2 · Bahnstrecke mit Haltestellen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Strecke · 9 Stationen</div><div class="gross">Dein Weg</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body">
+          <div class="bahn">
+            <div class="st done"><b>01 Mindset &amp; Zinseszins</b><small>5 Lektionen</small></div>
+            <div class="st lek done"><b>1.1 Willkommen</b></div>
+            <div class="st lek now"><b>1.2 Der stille Saboteur</b><small>du bist hier · 6 Min</small></div>
+            <div class="st lek"><b>1.3 Bildung schlägt Beratung</b></div>
+            <div class="st lek"><b>1.4 Wo stehst du?</b></div>
+            <div class="st lek"><b>1.5 Der Zukunftsbrief</b></div>
+            <div class="st gesperrt"><b>02 Finanzielle Selbstführung</b><small>27 Schritte</small></div>
+            <div class="st gesperrt"><b>03 Investment ohne Fehler</b><small>32 Schritte</small></div>
+            <div class="st gesperrt"><b>04 Börsenfundament</b><small>79 Schritte</small></div>
+            <div class="st gesperrt"><b>05 Steuern verstehen</b><small>35 Schritte</small></div>
+          </div>
+          <div class="nav"><div><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span class="on"><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Eine Linie, keine Kästen.</b> Die Strecke läuft durch, erledigte Stationen voll, die laufende orange, Lektionen als kleine Halte. Ruhig, viel Luft.</p></div>
+    <div class="cell"><span class="tag">W3 · Ein Baustein je Seite, wischen</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Baustein 1 von 9</div><div class="gross">Dein Weg</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body" style="overflow:visible">
+          <div style="position:relative"><div class="seite"><span class="z">01</span><b>Mindset &amp; Zinseszins-Kontinuität</b><small style="font-size:8px;color:var(--grey)">5 Lerneinheiten · 40 Min · 2 von 5</small>
+            <div class="l done"><i>✓</i>1.1 Willkommen, und die unbequeme Eröffnung</div><div class="l now"><i>2</i>1.2 Der stille Saboteur · jetzt</div><div class="l"><i>3</i>1.3 Bildung schlägt Beratung</div><div class="l"><i>4</i>1.4 Wo stehst du, und wo willst du hin?</div><div class="l" style="border:0"><i>5</i>1.5 Der Zukunftsbrief</div>
+            <div class="btn deep" style="margin-top:6px">Lektion 1.2 fortsetzen</div></div><div class="peek"></div></div>
+          <div class="punkte"><i class="on"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <span class="lbl" style="text-align:center">Nach links wischen: Baustein 2</span>
+          <div class="nav"><div><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span class="on"><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Seiten zum Wischen.</b> Ein Baustein füllt die Seite, der nächste lugt rechts hervor, Punkte 1 bis 9 unten. Nie alle gleichzeitig.</p></div>
+  </div>
+  <div class="liste"><div><b>W1, Akkordeon mit Übersicht:</b> Mimo zeigt im Pfad „nur das, was jetzt relevant ist" und hat einen Syllabus-Knopf für die Gesamtübersicht (mimo.org, 2023). Belegt. Babbel setzt Abschlusskreise je Kurs (2019, alt). Für 9 Bausteine und 44 Lektionen die naheliegendste Form.</div><div><b>W2, Bahnstrecke:</b> keine belegte Lern-App-Umsetzung gefunden, Eigenvorschlag. Plausibel für 40 bis 70, weil Reihenfolge und Fortschritt ohne Spielwelt lesbar sind. Duolingos Pfad ist kritisiert worden („Down the wrong path", uxdesign.cc, Seite gesperrt, Inhalt nicht gelesen).</div><div><b>W3, Seiten zum Wischen:</b> Speak legt „Practice" als Wisch-Nebenreiter neben Home (help.speak.com). Für Ältere riskant, weil versteckte Gesten unsicher sind; Punkte unten und ein halb sichtbarer Nachbar sind Pflicht [Wirkung ungeprüft].</div></div>
+</section>
+
+<section>
+  <h2><span class="num">B</span>Bibliothek, drei Bauweisen</h2>
+  <div class="row3">
+    <div class="cell"><span class="tag">B1 · Suche und Themen-Wörter</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body">
+          <div class="suche"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Was willst du wissen?</div>
+          <span class="lbl">Themen</span>
+          <div class="chips gross"><span class="on">Zinseszins</span><span>Dispo</span><span>Notgroschen</span><span>Steuern</span><span>ETF</span><span>Berater</span><span>Inflation</span><span>Aktien</span><span>Zukunftsbrief</span><span>Rente</span><span>Immobilien</span><span>Risiko</span></div>
+          <span class="lbl">Zinseszins · 3 Lektionen</span>
+          <div class="zeile"><span class="ring" style="--p:37.5%"><i>38 %</i></span><div><b>1.2 Der stille Saboteur</b><small>Warum Zeit mehr wiegt als Zinssatz</small></div></div>
+          <div class="zeile"><span class="ring"><i></i></span><div><b>1.5 Der Zukunftsbrief</b><small>Ein Brief an dich in einem Jahr</small></div></div>
+          <div class="zeile aus"><span class="ring"><i></i></span><div><b>3.1 Was Geld wirklich ist</b><small>öffnet sich mit Baustein 3</small></div></div>
+          <div class="nav"><div><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span class="on"><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Nachschlagen nach Wort.</b> Suche als Frage, darunter Themen als Wörter, ein Tipp zeigt die Lektionen dazu. Kein Baustein-Raster.</p></div>
+    <div class="cell"><span class="tag">B2 · Zuletzt gesehen, dann Kapitel</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf"><div class="klein">Zum Nachschlagen</div><div class="gross">Bibliothek</div><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="body">
+          <div class="suche"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Thema oder Lektion</div>
+          <span class="lbl">Zuletzt gesehen</span>
+          <div class="audio"><span class="pl"></span><div><b>1.2 Der stille Saboteur</b><small>noch 5 Min</small><span class="bar"><i style="--p:38%"></i></span></div></div>
+          <div class="audio"><span class="pl"></span><div><b>1.1 Willkommen, und die unbequeme Eröffnung</b><small>gestern · fertig</small><span class="bar"><i style="--p:100%"></i></span></div></div>
+          <span class="lbl">Alle Kapitel</span>
+          <div class="kacheln">
+            <div class="t"><span class="z">01</span><b>Mindset &amp; Zinseszins</b><small>5 Lektionen · 2 fertig</small></div>
+            <div class="t aus"><span class="z">02</span><b>Selbstführung</b><small>5 Lektionen</small></div>
+            <div class="t aus"><span class="z">03</span><b>Investment</b><small>6 Lektionen</small></div>
+            <div class="t aus"><span class="z">04</span><b>Börsenfundament</b><small>8 Lektionen</small></div>
+          </div>
+          <div class="nav"><div><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span class="on"><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Wie eine Podcast-App.</b> Oben, was du zuletzt gesehen hast, mit Abspielknopf und Balken. Darunter die Kapitel als Kacheln mit Serif-Nummer.</p></div>
+    <div class="cell"><span class="tag">B3 · Lesen statt Liste, A bis Z</span>
+      <div class="ph"><div class="scr"><div class="inner">
+        <div class="kopf hell"><div class="klein">Zum Nachschlagen</div><div class="gross" style="font-size:22px">Bibliothek</div></div>
+        <div class="body" style="padding-top:4px;padding-right:18px">
+          <div class="suche"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>Suchen</div>
+          <span class="lbl">Baustein 1 · Mindset &amp; Zinseszins</span>
+          <div class="zeile" style="align-items:flex-start"><span class="n">1.1</span><div><b>Willkommen, und die unbequeme Eröffnung</b><span class="satz">Warum du den Funken selbst schlägst, nicht die Bank. Was dich die nächsten neun Bausteine erwartet.</span></div></div>
+          <div class="zeile" style="align-items:flex-start"><span class="n">1.2</span><div><b>Der stille Saboteur</b><span class="satz">Zeit wiegt mehr als Zinssatz. Zwei Menschen, derselbe Betrag, das Doppelte am Ende.</span></div></div>
+          <div class="zeile" style="align-items:flex-start"><span class="n">1.3</span><div><b>Bildung schlägt Beratung</b><span class="satz">Was ein Berater kann, und was nur du kannst: die Frage „wofür".</span></div></div>
+          <div class="zeile" style="align-items:flex-start"><span class="n">1.4</span><div><b>Wo stehst du, und wo willst du hin?</b><span class="satz">Dein Standort auf einer Seite.</span></div></div>
+          <div class="az"><span>A</span><span>D</span><span>E</span><span>I</span><span>N</span><span>R</span><span>S</span><span>Z</span></div>
+          <div class="nav"><div><span><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9H4z"/></svg>Start</span><span><svg viewBox="0 0 24 24"><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="5" r="2.5"/><path d="M7.5 19H13a3 3 0 0 0 0-6H11a3 3 0 0 1 0-6h5.5"/></svg>Weg</span><span class="on"><svg viewBox="0 0 24 24"><path d="M4 4h6a3 3 0 0 1 3 3v13a2 2 0 0 0-2-2H4z"/><path d="M20 4h-6a3 3 0 0 0-3 3v13a2 2 0 0 1 2-2h7z"/></svg>Bibliothek</span><span><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h8M8 15h5"/></svg>Werkzeuge</span><span><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>Ich</span></div></div>
+        </div>
+      </div></div></div>
+      <p class="cap"><b>Jede Lektion mit einem Satz Inhalt.</b> Kein farbiger Kopf, Serif-Nummern, rechts ein A-bis-Z-Register wie im Telefonbuch.</p></div>
+  </div>
+  <div class="liste"><div><b>B1, Suche zuerst mit Vorschlägen:</b> Calm „Discover" mit Suche und ausgeschriebenen Beispielen (nap, rain, anxiety), damit niemand vor dem leeren Feld steht (calm.com, 2021). Belegt. Unsere Vorschläge sind die Themen-Wörter.</div><div><b>B2, Zuletzt zuerst, Podcast-Form:</b> Headspace hält „Zuletzt gespielt" prominent, Calm trennt Sammlungen nach Ziel (belegt). Overcast gliedert in Zuletzt und Listen (nur Suchauszug). Fortschrittsbalken je Eintrag ist Eigenvorschlag [ungeprüft]. Vertraute Form, geringes Risiko.</div><div><b>B3, Lesen mit einem Satz, A bis Z:</b> keine belegte Lern-App-Umsetzung, Eigenvorschlag aus dem Magazin-Gedanken. Stärke: man findet nach Inhalt, nicht nach Nummer. Risiko: mehr Text je Zeile, mehr Scrollen.</div></div>
+</section>
+
+<section id="recherche">
+  <h2><span class="num">R</span>Was die Recherche hergibt</h2>
+  <div class="liste">
+  <div><b>Navigation ohne fünf Reiter:</b> Apple nennt 3 bis 5 Reiter, Calm hat vier, Speak Home plus Wisch-Nebenreiter. Belegt ist nur ein Weg, Werkzeuge aus der Leiste zu nehmen: Hilfsfunktionen zum Inhalt verlagern, wie Duolingo die Tipps in ein „Guidebook" je Einheit gelegt hat. Empfehlung des Rechercheurs: drei Reiter (Heute, Weg, Bibliothek), Werkzeuge als Fläche in der Lektion und auf dem Start. Für 40 bis 70 nie Wisch-Gesten als einzigen Zugang.</div>
+  <div><b>iOS-26-Leiste:</b> schwebt, schrumpft beim Scrollen, Hauptaktion abgesetzt (Suchauszug). Passt zur Glas-Leiste; Lesbarkeit der Beschriftung auf Glas bleibt ein Test am Gerät.</div>
+  <div><b>TikTok:</b> Unter #flutterui, #appdesign und #uiuxdesign gibt es fast nur Showcases von Shop-, Reise- und Finanz-Apps; zu Lern-Apps nur „Glassy Dashboard" (@settigation) und „Money wise app dashboard" (@yay68119). Die Lern-App-Muster kommen aus den Hilfeseiten der Apps selbst.</div>
+  <div><b>Was fehlt:</b> Mobbin und Page Flows (Bezahlschranke) müsstest du selbst ansehen: Brilliant, Blinkist, Audible, Apple Fitness+. Keine YouTube- oder TikTok-Quelle mit Datum zu diesen Mustern. Konfidenz des Rechercheurs 6 von 10.</div>
+</div>
+</section>
+
+<footer>Datei: 10_PROJEKTE/Firestarter/innen_2026-10-21/Firestarter_Innen_9-Mockups.html · Mockups sind HTML-Nachbauten · Status Entwurf, Entscheidung bei Simon.</footer>
+</div>
+</body>
+</html>
