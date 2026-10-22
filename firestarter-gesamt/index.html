@@ -192,7 +192,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   </div>
 </div>
 
-<script>/* Stand 21d: Anmelden springt sofort in die App. Stand 21c: angemeldet bleiben, direkt in die App */try{if(localStorage.getItem('fs_login')){document.documentElement.style.visibility='hidden';location.replace('app/');}}catch(e){}</script>
+<script>/* Stand 21d: Anmelden springt sofort in die App. Stand 21c: angemeldet bleiben, direkt in die App *//* Stand 23g: App immer unter der Adresse des aktuellen Stands oeffnen (stand.txt am Zwischenspeicher vorbei), damit das Handy keine alte Fassung zeigt. */window.zurApp=function(){var fertig=false;function geh(v){if(fertig)return;fertig=true;location.replace('app/'+(v?'?v='+encodeURIComponent(v):''));}setTimeout(function(){geh('')},900);try{fetch('stand.txt?t='+Date.now(),{cache:'no-store'}).then(function(r){return r.ok?r.text():''}).then(function(t){geh((t||'').trim())}).catch(function(){geh('')});}catch(e){geh('')}};try{if(localStorage.getItem('fs_login')){document.documentElement.style.visibility='hidden';zurApp();}}catch(e){}</script>
 <script>
 (function(){
   var app=document.getElementById('app'), t=[], ziel=3;
@@ -230,7 +230,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
     document.activeElement&&document.activeElement.blur();
     app.classList.add('p4');
     
-    function weiter(){try{sessionStorage.setItem('fs_login','1');localStorage.setItem('fs_login','1');}catch(e){}location.replace('app/');}
+    function weiter(){try{sessionStorage.setItem('fs_login','1');localStorage.setItem('fs_login','1');}catch(e){}zurApp();}
     /* Stand 21d (22.10.2026, Simons Video): kein Warten auf Uebergang und gesprochene Begruessung, sofort in die App. Der Begruessungssatz liegt in fs_gruss fuer die Startseite. */
     weiter();}
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();login();});
