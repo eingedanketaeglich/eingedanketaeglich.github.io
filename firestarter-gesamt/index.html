@@ -211,7 +211,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
     if(!app.classList.contains('p3')||app.classList.contains('p4'))return;
     var em=(document.getElementById('email').value||'').trim().toLowerCase(),pw=(document.getElementById('pass').value||'');var konto=null;KONTEN.forEach(function(k){if(k.mail===em)konto=k;});
     if(!konto||!pw){var f=document.getElementById('form');f.classList.add('fehler');setTimeout(function(){f.classList.remove('fehler')},900);var h=document.querySelector('.form .hi');if(h)h.textContent=!konto?'Diesen Zugang kennen wir nicht. Frag deinen Zugang an.':'Bitte Passwort eingeben.';return;}
-    try{localStorage.setItem('fs_name',konto.name);}catch(e){}
+    try{localStorage.setItem('fs_name',konto.name);localStorage.setItem('fs_mail',konto.mail);}catch(e){}
     document.activeElement&&document.activeElement.blur();
     app.classList.add('p4');
     
