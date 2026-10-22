@@ -169,6 +169,25 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);-webkit
 .spfad i.jetzt{background:var(--wa);border-color:var(--wa);box-shadow:0 0 0 3px rgba(255,122,0,.22)}
 .spfad b{flex:1;height:1.375px;background:var(--grey);opacity:.5}
 .spfad b.da{background:var(--wc);opacity:1}
+.kopf-lk.mit-rg{padding-bottom:40px}
+#lk-regler .rg{margin:24px 0 0;max-width:none}
+.spfad.rg{margin-bottom:0}
+.rg1 i{width:11px;height:11px;border:2.5px solid rgba(245,241,234,.55);background:transparent}
+.rg1 i.da{background:#F5F1EA;border-color:#F5F1EA}
+.rg1 i.jetzt{width:16px;height:16px;background:#FF7A00;border-color:#FF7A00;box-shadow:0 0 0 4px rgba(255,122,0,.3)}
+.rg1 b{height:2.5px;background:#F5F1EA;opacity:.35}
+.rg1 b.da{opacity:1;background:#F5F1EA}
+.rg2{gap:5px}
+.rg2 b{display:none}
+.rg2 i{flex:1;width:auto;height:7px;border-radius:999px;border:0;background:rgba(245,241,234,.25)}
+.rg2 i.da{background:#F5F1EA}
+.rg2 i.jetzt{background:#FF7A00;box-shadow:0 0 10px rgba(255,122,0,.55)}
+.rg3{margin:0 0 22px;max-width:none;padding-right:96px}
+.rg3 i{width:11px;height:11px;border:2.5px solid #A79E92;background:#F5F1EA}
+.rg3 i.da{background:var(--wc);border-color:var(--wc)}
+.rg3 i.jetzt{width:16px;height:16px;background:#FF7A00;border-color:#FF7A00;box-shadow:0 0 0 4px rgba(255,122,0,.22)}
+.rg3 b{height:2.5px;background:#CFC6B8;opacity:1}
+.rg3 b.da{background:var(--wc)}
 .lk .zeile{display:flex;align-items:center;gap:12px}
 .lk .back{position:static;width:36px;height:36px;border-radius:50%;border:0;background:#fff;color:var(--wc);font-size:20px;display:grid;place-items:center;cursor:pointer;flex:none}
 .schritte{display:flex;gap:4px}.schritte i{flex:1;height:4px;border-radius:2px;background:#E6E0D3}.schritte i.done{background:var(--wc)}.schritte i.on{background:var(--wa)}
@@ -638,7 +657,7 @@ html,body{overscroll-behavior:none}
   </section>
 
   <section class="screen" id="s-lektion">
-    <div class="kopf kopf-lk"><div class="klein" id="lk-klein"></div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L270 0 L225 14 L185 5 L150 21 L110 12 L75 28 L40 19 L0 26 Z" style="fill:var(--wc)"/></svg></div>
+    <div class="kopf kopf-lk"><div class="klein" id="lk-klein"></div><div id="lk-regler"></div><svg class="funke" viewBox="0 0 62 76" data-go="funke"><g class="flame"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/><circle cx="26" cy="47" r="2.4" fill="#102444"/><circle cx="36" cy="47" r="2.4" fill="#102444"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/></g><path d="M46 50 L56 42" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="#FF7A00" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg><svg class="edge" viewBox="0 0 270 34" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0 L270 0 L225 14 L185 5 L150 21 L110 12 L75 28 L40 19 L0 26 Z" style="fill:var(--wc)"/></svg></div>
     <div class="scroll lc" id="lk-scroll"></div>
     <div class="auftakt weg" id="auftakt"></div>
     <div class="cheer" id="cheer"></div>
@@ -867,13 +886,15 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
   function openLek(nr,i){var l=find(nr);if(!l)return;var bx=alle().filter(function(x){return x.nr===nr})[0];if(SPV&&bx&&bx.b>=1){sperrHinweis(bx.b);return;}LI=nr;merk(nr);AUF=true;var st=stepsVon(nr);LS=typeof i==='number'?i:(S.pos[nr]||0);if(LS>=st.length)LS=st.length-1;lekRender(0);show('lektion');}
   function lekRender(richtung){var st=stepsVon(LI),s=st[LS],n=st.length,l=find(LI),L=lekDaten(LI);
     var bix=alle().filter(function(x){return x.nr===LI})[0];document.getElementById('lk-klein').textContent=(bix?'Baustein '+(bix.b+1)+' · ':'')+'Lektion '+LI;
-    var html='',pfad='<div class="spfad" role="img" aria-label="Schritt '+(LS+1)+' von '+n+'">'+st.map(function(x,k){return (k?'<b class="'+(k<=LS?'da':'')+'"></b>':'')+'<i class="'+(k<LS?'da':(k===LS?'jetzt':''))+'"></i>';}).join('')+'</div>';
+    var REG=(location.search.match(/regler=([123])/)||[])[1],rgEl=document.getElementById('lk-regler');if(rgEl)rgEl.innerHTML='';document.querySelector('.kopf-lk').classList.toggle('mit-rg',REG==='1'||REG==='2');
+    var html='',pfad='<div class="spfad'+(REG?' rg rg'+REG:'')+'" role="img" aria-label="Schritt '+(LS+1)+' von '+n+'">'+st.map(function(x,k){return (k?'<b class="'+(k<=LS?'da':'')+'"></b>':'')+'<i class="'+(k<LS?'da':(k===LS?'jetzt':''))+'"></i>';}).join('')+'</div>';
     var frei=istFertig(LI);document.querySelector('.lnav').classList.toggle('zu',!frei);document.querySelector('.lnav').classList.toggle('aus',s.id==='quiz'&&!frei);
     document.getElementById('cheer').classList.remove('on');
     var auf=document.getElementById('auftakt');clearTimeout(auf._t);
     if(AUF&&!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches)){auf.innerHTML=FUNKE_SVG+'<div class="zeile"><b>Lektion '+LI+'</b>'+(l?l.t:'')+'</div>';auf.classList.remove('weg');auf.onclick=function(){auf.classList.add('weg')};auf._t=setTimeout(function(){auf.classList.add('weg')},2400);}else auf.classList.add('weg');AUF=false;
     if(s.video)html+='<div class="video" style="background:transparent"><video src="video/beispiel.mp4" poster="video/beispiel_poster.jpg" playsinline controls preload="metadata"></video></div>';
-    if(s.id==='quiz'){html+=pfad+'<div class="fr" id="fr"></div>';}
+    if(s.id==='quiz'){if(REG==='1'||REG==='2'){if(rgEl)rgEl.innerHTML=pfad;html+='<div class="fr" id="fr"></div>';}else html+=pfad+'<div class="fr" id="fr"></div>';}
+    else if(REG==='1'||REG==='2'){if(rgEl)rgEl.innerHTML=pfad;html+=s.html;}else if(REG==='3'){html+=pfad+s.html;}
     else{var sh=s.html,drin=false;sh=sh.replace(/(<(h2|div)[^>]*class="h-(?:step|cover)"[^>]*>[\s\S]*?<\/\2>)/,function(m0){drin=true;return m0+pfad;});html+=drin?sh:pfad+sh;}
     var letzter=LS>=n-1;
     html+='<div class="lc-weiter">'+(s.id==='quiz'?'':'<button class="btn deep" type="button" id="lk-weiter">'+(letzter?'Lektion abschließen':(st[LS+1].id==='quiz'?'Weiter zur Fragerunde':'Weiter'))+'</button>')+'<div class="pfeile"><span data-swipe="-1">'+(LS>0?'‹ '+st[LS-1].short:'')+'</span><span data-swipe="1">'+(letzter?'':st[LS+1].short+' ›')+'</span></div></div>';
@@ -1111,7 +1132,7 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
     g.classList.add('on');})();
 
   renderStart();
-  (function(){var q=location.search;var z=(q.match(/zeige=([a-z]+)/)||[])[1];if(!z)return;setTimeout(function(){var g=document.getElementById('gruss');if(g)g.classList.remove('on');show(z,false);var bm=(q.match(/[?&]b=(\d)/)||[])[1];if(z==='weg'&&bm)setTimeout(function(){scrollZu(+bm-1,true)},120);},300);})();
+  (function(){var q=location.search;var z=(q.match(/zeige=([a-z]+)/)||[])[1];if(!z)return;setTimeout(function(){var g=document.getElementById('gruss');if(g)g.classList.remove('on');show(z,false);var lm=(q.match(/[?&]l=([\d.]+)/)||[])[1];if(z==='lektion'&&lm){openLek(lm,0);return;}var bm=(q.match(/[?&]b=(\d)/)||[])[1];if(z==='weg'&&bm)setTimeout(function(){scrollZu(+bm-1,true)},120);},300);})();
   (function(){var p=document.getElementById('prof-name'),a=document.getElementById('prof-av'),b=document.getElementById('brief-hallo');if(p)p.textContent=VOLL;if(a)a.textContent=VOLL.charAt(0).toUpperCase();if(b)b.textContent='Hallo '+NAME+',';})();
 })();
 </script>
