@@ -226,7 +226,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
       if(key==='ziel')st.gZiel=false;if(key==='baustein')st.gBaustein=false;try{localStorage.setItem('fs13_'+konto.mail,JSON.stringify(st));}catch(e){}
       sessionStorage.setItem('fs_gruss',JSON.stringify(TX[key]));
       var datei=key==='erst'?'sparky_'+k+'_erst2':(v+'_'+k+'_'+key);
-      if(st.sprich!==false){GRUSS=new Audio('app/stimme/gruss/'+datei+'.mp3?v=22f');GRUSS.play().catch(function(){GRUSS=null;});}}catch(e){}
+      if(st.sprich!==false){GRUSS=new Audio('app/stimme/gruss/'+datei+'.mp3?v=23');GRUSS.play().catch(function(){GRUSS=null;});}}catch(e){}
     document.activeElement&&document.activeElement.blur();
     app.classList.add('p4');
     
