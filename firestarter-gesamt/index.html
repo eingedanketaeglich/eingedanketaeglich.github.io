@@ -168,8 +168,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
     <p class="nur-anfragen" style="margin:0;font-size:13.5px;color:var(--grey);text-align:center">Die Testversion ist kostenlos. Wir schicken dir den Zugang per E-Mail.</p>
     <button class="btn nur-anfragen" id="anfragen" type="button">Zugang anfragen</button>
     <div class="ok nur-anfragen" id="ok"><b>Danke, deine Anfrage ist da.</b><p>Du bekommst deinen Zugang per E-Mail. Schau auch in den Spam-Ordner.</p><button type="button" id="ok-back">Zurück zur Anmeldung</button></div>
-    <label class="fld nur-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><input type="text" id="loginname" name="loginname" placeholder="Vor- und Nachname" autocomplete="name"></label>
-    <label class="fld nur-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input type="email" id="email" name="email" placeholder="E-Mail-Adresse" inputmode="email" autocomplete="username"></label>
+        <label class="fld nur-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 8l9 6 9-6"/></svg><input type="email" id="email" name="email" placeholder="E-Mail-Adresse" inputmode="email" autocomplete="username"></label>
     <label class="fld nur-login"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="3"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><input type="password" id="pass" name="password" placeholder="Passwort" autocomplete="current-password"></label>
     <div class="row nur-login"><label class="sw"><input type="checkbox" id="bleiben" checked><span class="knob"></span><span>Angemeldet bleiben</span></label><a href="#vergessen" id="vergessen">Passwort vergessen?</a></div>
     <button class="btn nur-login" id="login" type="submit"><span class="txt">Anmelden</span><span class="dots"><i></i><i></i><i></i></span></button>
@@ -210,7 +209,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
     if(!app.classList.contains('p3')||app.classList.contains('p4'))return;
     document.activeElement&&document.activeElement.blur();
     app.classList.add('p4');
-    try{var nm=(document.getElementById('loginname').value||'').trim();if(nm)localStorage.setItem('fs_name',nm);}catch(e){}
+    try{var nm=(document.getElementById('name').value||'').trim();if(nm)localStorage.setItem('fs_name',nm);}catch(e){}
     t.push(setTimeout(function(){app.classList.add('p5');setTimeout(function(){try{sessionStorage.setItem('fs_login','1')}catch(e){}location.replace('app/');},1100);},1100));}
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();login();});
   document.getElementById('skip').addEventListener('click',skip);
