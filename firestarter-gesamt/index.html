@@ -214,13 +214,23 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
     try{localStorage.setItem('fs_name',konto.name);localStorage.setItem('fs_mail',konto.mail);}catch(e){}
     /* Stand 20: Begruessung sofort beim Tipp auf Anmelden (die Beruehrung gibt iOS den Ton frei), in der gewaehlten Stimme */
     var GRUSS=null,vorn=konto.name.split(' ')[0];try{var st=JSON.parse(localStorage.getItem('fs13_'+konto.mail))||{};var erst=!st.intro&&!(st.logins>0);var v=st.stimme||'sparky';if(v==='dialekt')v={'Bairisch':'bairisch','Schwäbisch':'schwaebisch','Sächsisch':'saechsisch','Kölsch':'koelsch','Plattdeutsch':'plattdeutsch'}[st.dialekt||'Bairisch'];if(v==='kerze')v='sparky';var k=konto.mail.split('@')[0];
-      sessionStorage.setItem('fs_gruss',JSON.stringify(erst?['Hallo '+vorn,'Schön, dass du da bist.']:['Hallo '+vorn,'Willkommen zurück.']));
-      if(st.sprich!==false){GRUSS=new Audio('app/stimme/gruss/'+v+'_'+k+'_'+(erst?'erst':'zurueck')+'.mp3');GRUSS.play().catch(function(){GRUSS=null;});}}catch(e){}
+      /* Stand 21: Begruessung nach Rangfolge: Erstbesuch > Stand (Pause, Wochenziel, Baustein) > Wochentag > Tageszeit */
+      var d=new Date(),h=d.getHours(),wt=d.getDay(),key,zeile;
+      var TX={erst:['Hallo '+vorn+', ich bin Sparky','Tipp mich an.'],pause:['Schön, dass du wieder da bist','Wir machen da weiter, wo du warst.'],ziel:['Stark, '+vorn,'Dein Wochenziel steht.'],baustein:['Willkommen zurück, '+vorn,'Der nächste Baustein wartet.'],
+        montag:['Guten Morgen, '+vorn,'Neue Woche, neuer Schritt.'],freitag:['Hallo '+vorn,'Fast Wochenende. Noch ein Schritt?'],wochenende:['Schönes Wochenende, '+vorn,'Heute ist Zeit für dich.'],
+        morgen:['Guten Morgen, '+vorn,'Starten wir in den Tag.'],mittag:['Hallo '+vorn,'Eine Lektion passt in die Pause.'],zurueck:['Hallo '+vorn,'Willkommen zurück.'],abend:['Guten Abend, '+vorn,'Schön, dass du noch vorbeischaust.'],nacht:['Noch wach, '+vorn+'?','Ein kurzer Schritt reicht.']};
+      if(erst)key='erst';else if(st.zuletztDa&&Date.now()-st.zuletztDa>7*864e5)key='pause';else if(st.gZiel)key='ziel';else if(st.gBaustein)key='baustein';
+      else if(wt===1&&h>=5&&h<11)key='montag';else if(wt===5&&h>=14)key='freitag';else if(wt===0||wt===6)key='wochenende';
+      else key=h>=5&&h<11?'morgen':(h<14&&h>=11?'mittag':(h<18&&h>=14?'zurueck':(h<22&&h>=18?'abend':'nacht')));
+      if(key==='ziel')st.gZiel=false;if(key==='baustein')st.gBaustein=false;try{localStorage.setItem('fs13_'+konto.mail,JSON.stringify(st));}catch(e){}
+      sessionStorage.setItem('fs_gruss',JSON.stringify(TX[key]));
+      var datei=key==='erst'?'sparky_'+k+'_erst2':(v+'_'+k+'_'+key);
+      if(st.sprich!==false){GRUSS=new Audio('app/stimme/gruss/'+datei+'.mp3');GRUSS.play().catch(function(){GRUSS=null;});}}catch(e){}
     document.activeElement&&document.activeElement.blur();
     app.classList.add('p4');
     
     function weiter(){try{sessionStorage.setItem('fs_login','1')}catch(e){}location.replace('app/');}
-    t.push(setTimeout(function(){app.classList.add('p5');setTimeout(function(){if(GRUSS&&!GRUSS.ended){var fertig=false;GRUSS.addEventListener('ended',function(){if(!fertig){fertig=true;weiter();}});setTimeout(function(){if(!fertig){fertig=true;weiter();}},4500);}else weiter();},1100);},1100));}
+    t.push(setTimeout(function(){app.classList.add('p5');setTimeout(function(){if(GRUSS&&!GRUSS.ended){var fertig=false;GRUSS.addEventListener('ended',function(){if(!fertig){fertig=true;weiter();}});setTimeout(function(){if(!fertig){fertig=true;weiter();}},9000);}else weiter();},1100);},1100));}
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();login();});
   document.getElementById('skip').addEventListener('click',skip);
   document.getElementById('again').addEventListener('click',play);
