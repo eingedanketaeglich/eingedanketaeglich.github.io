@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Firestarter: Kauf und Webinar, fertiges Mockup</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+html,body{margin:0;background:#F5F1EA;color:#0A1830;font-family:"Work Sans",system-ui,sans-serif}
+header{background:#102444;color:#F5F1EA;padding:22px 16px 18px}
+header h1{font-family:Gloock,serif;font-weight:400;font-size:26px;margin:0 0 6px;line-height:1.1}
+header p{margin:0;font-size:14px;opacity:.85;line-height:1.45}
+header a{color:#FF7A00}
+section{padding:22px 16px 6px;border-bottom:1px solid #E6E0D3}
+section.empf{background:#fff}
+h2{font-family:Gloock,serif;font-weight:400;font-size:21px;margin:0 0 6px;line-height:1.2;display:flex;gap:10px;align-items:flex-start}
+h2 span{flex:none;min-width:30px;height:30px;padding:0 8px;border-radius:999px;background:#FF7A00;color:#102444;display:grid;place-items:center;font-family:"Work Sans",sans-serif;font-weight:600;font-size:13px;margin-top:2px;white-space:nowrap}
+h3{font-family:Gloock,serif;font-weight:400;font-size:17px;margin:10px 0 6px;color:#102444}
+section>p{margin:0 0 12px;font-size:14.5px;color:#6B6257;line-height:1.45}
+section>p b{color:#0A1830}
+.row{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding:2px 0 12px;scrollbar-width:thin}
+figure{margin:0;flex:0 0 min(300px,82vw);scroll-snap-align:start}
+figure.quer{flex:0 0 min(620px,92vw)}
+figure img{width:100%;display:block;border-radius:18px;box-shadow:0 8px 24px rgba(16,36,68,.14);background:#fff}
+figcaption{font-size:13px;color:#102444;margin:8px 2px 0;line-height:1.35}
+.links{display:flex;flex-wrap:wrap;gap:8px;padding:0 0 14px}
+.links a{font-size:13px;color:#102444;background:#fff;border-radius:999px;padding:8px 14px;text-decoration:none;font-weight:500;border:1px solid #E6E0D3}
+.links a.gross{background:#FF7A00;border-color:#FF7A00;font-weight:600}
+ul{margin:0 0 12px;padding-left:20px;font-size:14.5px;color:#3B342C;line-height:1.5}
+footer{padding:18px 16px 40px;font-size:13px;color:#6B6257;line-height:1.5}
+@media (min-width:900px){.row{flex-wrap:wrap;overflow:visible}figure{flex:0 0 300px}figure.quer{flex:0 0 620px}}
+</style></head><body>
+<header><h1>Kauf und Webinar: fertiges Mockup</h1><p>22.10.2026, 20:30, nach deinem Entscheid: K2 für alle Welten, Webinar mit Fragen, Mail und Ansehen, Video bildschirmfüllend. Ein klickbares Mockup auf Basis von Stand 18d, nichts an der App geändert. Entscheidungsseite mit allen Varianten: <a href="../kauf/">kauf/</a>.</p></header>
+
+<section><h2><span>1</span>Kauf: K2 in allen drei Welten</h2>
+<p><b>So läuft es:</b> „Mehr erfahren" klappt ein Angebot auf und setzt den orangen Rahmen. Tippst du beim nächsten Angebot auf „Mehr erfahren", bleibt das vorherige offen mit Preis, nur der Rahmen wandert. Die Leiste unten zeigt „Ausgewählt: RainMaker-Zirkel" und „Jetzt buchen". „Jetzt buchen" führt direkt zum Stripe-Link des Angebots, kein Zwischenschritt mit Apple Pay, Karte, SEPA in der App. Solange kein Link eingetragen ist, zeigt das Mockup eine Stripe-Platzhalterseite. Unten bleibt „Noch Fragen? Schreib uns eine Nachricht".</p>
+<h3>Blaue Welt</h3><div class="row">
+<figure><img src="bilder/f_k2a_blau.png" alt="" loading="lazy"><figcaption>Investment-Zirkel offen und ausgewählt</figcaption></figure>
+<figure><img src="bilder/f_k2b_blau.png" alt="" loading="lazy"><figcaption>RainMaker auch offen: Rahmen wandert, Leiste wechselt, Investment bleibt offen</figcaption></figure>
+<figure><img src="bilder/f_stripe.png" alt="" loading="lazy"><figcaption>„Jetzt buchen": Stripe (Platzhalter, bis dein Link da ist)</figcaption></figure>
+</div>
+<h3>Grüne Welt</h3><div class="row">
+<figure><img src="bilder/f_k2a_gruen.png" alt="" loading="lazy"><figcaption>Wissenswochenende offen und ausgewählt</figcaption></figure>
+<figure><img src="bilder/f_k2b_gruen.png" alt="" loading="lazy"><figcaption>Vollversion dazu: Rahmen wandert, Leiste wechselt</figcaption></figure>
+</div>
+<h3>Goldene Welt</h3><div class="row">
+<figure><img src="bilder/f_k2a_gold.png" alt="" loading="lazy"><figcaption>Geldbaum offen, Leiste „Pfand 19 €"</figcaption></figure>
+</div>
+</section>
+
+<section><h2><span>2</span>Webinar: Karte, Fragen, Mail, Ansehen</h2>
+<p><b>So läuft es:</b> In jeder Welt unter dem Rundgang die dunkle Karte „Welches Webinar passt zu dir?". Fünf Fragen nacheinander („Worum geht es dir gerade?" und so weiter). Die Antworten werden gespeichert (im Mockup im Gerät unter <b>fs_webinar</b>, später auf dem Server, damit Brevo das passende Webinar schicken kann). Dann „Dein Webinar: Vom Zuschauen zum eigenen Regelwerk, 60 Minuten", E-Mail eintragen, „Webinar zuschicken". Danach „Dein Webinar ist unterwegs" mit dem Video zum sofortigen Ansehen und „Zurück zur Blauen Welt".</p>
+<h3>Blaue Welt</h3><div class="row">
+<figure><img src="bilder/f_karte_blau.png" alt="" loading="lazy"><figcaption>Karte unter dem Rundgang</figcaption></figure>
+<figure><img src="bilder/f_frage.png" alt="" loading="lazy"><figcaption>Frage 1 von 5 (in allen Welten gleich)</figcaption></figure>
+<figure><img src="bilder/f_mail_blau.png" alt="" loading="lazy"><figcaption>Dein Webinar ist fertig, Mail eintragen, ohne Bestätigungsschritt</figcaption></figure>
+<figure><img src="bilder/f_fertig_blau.png" alt="" loading="lazy"><figcaption>Unterwegs, oder gleich hier ansehen</figcaption></figure>
+</div>
+<h3>Grüne Welt</h3><div class="row">
+<figure><img src="bilder/f_karte_gruen.png" alt="" loading="lazy"><figcaption>Karte unter dem Rundgang</figcaption></figure>
+<figure><img src="bilder/f_mail_gruen.png" alt="" loading="lazy"><figcaption>Mail eintragen</figcaption></figure>
+<figure><img src="bilder/f_fertig_gruen.png" alt="" loading="lazy"><figcaption>Unterwegs, oder gleich hier ansehen</figcaption></figure>
+</div>
+<h3>Goldene Welt</h3><div class="row">
+<figure><img src="bilder/f_karte_gold.png" alt="" loading="lazy"><figcaption>Karte unter dem Rundgang</figcaption></figure>
+<figure><img src="bilder/f_mail_gold.png" alt="" loading="lazy"><figcaption>Mail eintragen</figcaption></figure>
+<figure><img src="bilder/f_fertig_gold.png" alt="" loading="lazy"><figcaption>Unterwegs, oder gleich hier ansehen</figcaption></figure>
+</div>
+</section>
+
+<section><h2><span>3</span>Video: immer bildschirmfüllend, auch quer</h2>
+<p>Tipp auf ein Video: Es füllt das ganze Gerät, Handy oder iPad. Dreht man das Gerät, läuft es im Querformat über die volle Breite. Schließen über das Kreuz oben rechts. Im Mockup läuft das 8-Sekunden-Beispielvideo; am iPhone nutzt die echte App den Vollbildspieler von Safari (<b>webkitEnterFullscreen</b>), auf anderen Geräten die Vollbild-Schnittstelle des Browsers. [ungeprüft am Gerät: ob Safari in der Web-App das Drehen zulässt, zeigt dein Test]</p>
+<div class="row">
+<figure><img src="bilder/f_video.png" alt="" loading="lazy"><figcaption>Hochformat: Video füllt den Bildschirm</figcaption></figure>
+<figure class="quer"><img src="bilder/f_video_quer.png" alt="" loading="lazy"><figcaption>Querformat: volle Breite</figcaption></figure>
+</div>
+</section>
+
+<section class="empf"><h2><span>4</span>Deine Frage: Braucht es die Bestätigungs-Mail?</h2>
+<p><b>Nein, nicht für das Webinar selbst.</b> Wer seine Adresse eingibt und „Webinar zuschicken" tippt, bestellt genau diese eine Mail. Das ist eine angeforderte Zustellung, dafür braucht es kein Double-Opt-in. Im Mockup steht deshalb jetzt „Der Link kommt sofort, ohne Bestätigungsschritt".</p>
+<p><b>Ja, sobald ihr danach Werbung schicken wollt.</b> Die alte Fassung hatte ein Pflicht-Häkchen „schickt mir danach Hinweise zu den Angeboten" vorangekreuzt. Dafür braucht es eine nachweisbare Einwilligung, und der übliche Nachweis ist die Bestätigungs-Mail (Double-Opt-in). Darum stand sie dort. Jetzt ist das Häkchen freiwillig und leer; nur wer es setzt, bekommt Brevo-Mails zu Angeboten, und nur dafür schickt Brevo eine Bestätigung. Ohne Häkchen kommt nur der Webinar-Link. [Trainingswissen, Stand 2026; ein Satz, kein Gate]</p>
+<p><b>Technik dahinter:</b> Mailversand und Speichern der Antworten brauchen einen Server (das Flask-Backend der echten App) mit Brevo-Schlüssel. Aus der statischen Mockup-App geht beides nicht; im Mockup sind es Platzhalter.</p>
+</section>
+
+<section><h2><span>5</span>Selbst durchklicken</h2>
+<div class="links"><a class="gross" href="varianten/f1.html?go=welten">Mockup öffnen (Welten)</a><a href="varianten/f1.html?go=welten,weltblau">Blaue Welt</a><a href="varianten/f1.html?go=welten,weltgruen">Grüne Welt</a><a href="varianten/f1.html?go=welten,weltgold">Goldene Welt</a></div>
+<p>Angebote antippen, Leiste beobachten, „Jetzt buchen", Webinar-Karte, Fragen, Mail, Video im Vollbild drehen.</p>
+</section>
+
+<footer>Projektordner 10_PROJEKTE/Firestarter/kauf-webinar_2026-10-22/fertig/ (Baukasten build_fertig.py, Bilder, Variante f1). Entscheidungsseite: <a href="../kauf/">kauf/</a>. Gesamtpaket Stand 18d: <a href="../../firestarter-gesamt/">firestarter-gesamt/</a>.</footer>
+</body></html>
