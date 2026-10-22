@@ -68,6 +68,7 @@ a{color:var(--green)}
 
 <section>
   <h2><span class="num">0</span>Kurzantwort auf deine vier Fragen</h2>
+  <p class="eyebrow" style="color:var(--gold-deep)">Stand nach Codex-Gegenlauf, 13:30: drei Fehler korrigiert, Empfehlung geändert (Abschnitt 3 und 5)</p>
   <div class="antwort">
     <div><b>Welche US-Serie?</b> Vermutlich <b>Ask the StoryBots</b> (Netflix 2016 bis 2019): Kinder stellen eine Alltagsfrage, fünf Bots suchen die Antwort in der Menschenwelt, am Ende ein Lied, je Folge ein Promi. 22 Sprachen, 190 Länder, Emmy 2017. Bitte bestätigen, Alternativen wären Cocomelon (Lieder, kein Wissen) oder Numberblocks (britisch).</div>
     <div><b>Wie machen die das?</b> Mit einem festen Rezept, nicht mit einem Werkzeug: eine Frage je Folge, 3 bis 8 Minuten, feste Figur, Antwort als Lied oder Merksatz, ruhiger Schnitt. Die Figur ist immer ein <b>festes Modell</b>, das in jeder Folge identisch bleibt. Genau das liefern KI-Videomodelle heute nicht von allein.</div>
@@ -103,12 +104,13 @@ a{color:var(--green)}
     <tr><td>Credits je Clip</td><td>Kling 3.0: 10 je 5 s in 720p, 12,5 in 1080p · Seedance 2.5: 52 je 8 s · Cinema Studio: 25 je 5 s · Standbild Nano Banana Pro: etwa 2</td></tr>
     <tr><td>Preis gegen direkt</td><td>Kling über Plus 0,098 $/s, direkt 0,084 $/s. Gewinn ist Bedienung und Bündelung, nicht Preis.</td></tr>
     <tr><td>Nicht gefunden</td><td>Ob Soul ID eine Buchstabenfigur hält · deutsche Lippensynchronität · AGB und Rechte der Fremdmodelle (nicht gelesen)</td></tr>
+    <tr><td>Veo 3.1 Grenzen</td><td>Referenzbilder (bis 3) nur bei Standard und Fast, nicht bei Lite; 1080p und 4K nur mit 8 s; Verlängerung nur 720p (Google-Doku, 22.10.)</td></tr>
   </table></div>
   <div class="tw"><table>
     <tr><th>Weg</th><th>Je fertiger Minute (Ausschuss 3 bis 5)</th></tr>
     <tr><td>Veo 3.1 Fast 1080p (0,12 $/s)</td><td><b>22 bis 36 $</b></td></tr>
     <tr><td>Kling 3.0 1080p mit Ton (0,168 $/s)</td><td><b>30 bis 50 $</b></td></tr>
-    <tr><td>Kling 3.0 über Higgsfield Plus</td><td>225 bis 375 Credits, <b>11 bis 18 $</b> Gegenwert; ein Plus-Monat reicht für 2 bis 4 fertige Minuten</td></tr>
+    <tr><td>Kling 3.0 über Higgsfield Plus</td><td>450 bis 750 Credits, <b>22 bis 37 $</b> Gegenwert; ein Plus-Monat reicht für 1 bis 2 fertige Minuten (von Codex korrigiert, vorher stand hier die Hälfte)</td></tr>
     <tr><td>Eigenes 3D-Modell in Blender</td><td>Software 0 $, Meshy Pro etwa 20 €/Monat; <b>Zeit</b> 1 bis 3 Tage je Minute nach dem Aufbau</td></tr>
   </table></div>
   <p class="lead" style="font-size:15px">Nur Videokosten. Stimme, Schnitt, Musik, Upscale kommen dazu. Der Ausschussfaktor ist eine Annahme, unsere Veritas-Erfahrung vom August lag bei 2 bis 4.</p>
@@ -119,11 +121,11 @@ a{color:var(--green)}
   <div class="weg">
     <div class="karte"><span class="k">A</span><div><p class="t">Reines KI-Video in Higgsfield</p><p class="s">Standbilder mit Nano Banana Pro, Clips mit Kling 3.0 und Veo 3.1, Lippen über LipSync Studio. <span class="gut">Tage bis zum Pilot, niedrige Kosten.</span> <span class="schlecht">Figur driftet von Clip zu Clip, und Buchstaben im Körper sind genau das, was Videomodelle am schlechtesten können.</span></p></div></div>
     <div class="karte"><span class="k">B</span><div><p class="t">Festes 3D-Modell</p><p class="s">Figurenblatt, Meshy, Rig in Blender, Rendern. <span class="gut">Figur bleibt für immer gleich, Buchstabenfigur ist ein dankbarer Fall: starr, wenige Gelenke, keine Haare.</span> <span class="schlecht">Wochen Aufbau, Pixar-Look nur mit Licht- und Materialarbeit; erster Meshy-Render im Juni kam grau.</span></p></div></div>
-    <div class="karte on"><span class="k">C</span><div><p class="t">Hybrid: B liefert die Figur, A liefert die Szenen</p><p class="s">Die feste Figur geht als Referenzbild in jedes Video und als Bildfolge in die App; Bewegung und Welt kommen aus Kling und Veo; Stimme aus ElevenLabs. <span style="color:var(--gold-hi);font-weight:700">Empfehlung, mit A als allererstem Schritt.</span></p></div></div>
+    <div class="karte on"><span class="k">C</span><div><p class="t">Hybrid 2.5D: die Figur wird nie generiert, nur die Welt</p><p class="s">R, &amp; und F kommen als exakte Gloock-Pfade in Blender (Textobjekt, extrudiert, abgerundet), dazu Augen, Mund, Arme, Schuhe. Das ist in Stunden gebaut, nicht in Wochen. Die Figur wird gerendert und als unveränderlicher Vordergrund über KI-Kulissen aus Kling und Veo gelegt; Bewegung über Augen, Mund, Arme, Kamera. <span style="color:var(--gold-hi);font-weight:700">Empfehlung nach dem Gegenlauf, zuerst der Figuren-Master, dann drei kurze Bewegungstests, dann der Pilot.</span></p></div></div>
   </div>
   <div class="pos">
-    <div class="c"><p class="l">Position Claude</p>Weg C, aber <b>zuerst der KI-Pilot</b>: Du hast Higgsfield schon, ein Pilot in Tagen zeigt am echten Bild, ob die Buchstabenfigur in Bewegung hält. Ohne den Test wäre jede Werkzeugwahl Vermutung. Parallel beginnt das 3D-Modell, weil die App ohnehin eine feste Figur braucht.</div>
-    <div class="x"><p class="l">Position Codex (Sub-Agent, Konfidenz 4 von 10)</p>Zuerst das feste 3D-Modell, Higgsfield nur Platz 3, weil nur ein festes Modell die Serie trägt. Widerspruch zu Claude: erst bauen, dann testen. Claude: erst testen (50 bis 100 $), dann Wochen in Blender. Codex-Zweitprüfung des fertigen Briefings folgt unten, sobald sie vorliegt.</div>
+    <div class="x"><p class="l">Position Codex (Zweitprüfung, Konfidenz 9 von 10)</p>Widerspruch zu Claudes erstem Entwurf („KI-Pilot zuerst"): Ein Test mit provisorischer Figur beweist nichts. <b>Die Buchstaben dürfen nie von einem Videomodell neu gezeichnet werden.</b> Zuerst ein geometrisch exakter Blender-Master aus den Gloock-Pfaden, dann drei kurze Bewegungstests mit hartem Pass/Fail (keine Buchstabenverformung in irgendeinem Bild), erst dann der Pilot. Dazu drei Rechen- und Sachfehler gefunden, alle bestätigt und oben korrigiert.</div>
+    <div class="c"><p class="l">Position Claude, nach dem Gegenlauf</p>Ich schließe mich an. Mein Argument für „Pilot zuerst" war, Wochen Blender-Aufbau zu sparen. Eine Figur aus einer vorhandenen Schrift steht aber in Stunden, damit fällt das Argument weg. Einzige Abweichung: Nano-Banana-Look-Studien (2 bis 4 $) bleiben als Stilhilfe für Gesicht und Glieder, bevor sie in Blender modelliert werden.</div>
   </div>
 </section>
 
@@ -135,19 +137,20 @@ a{color:var(--green)}
     <div><b>Werbung an Kinder (UWG Nr. 28):</b> kein „Hol dir", kein Produkt, kein Institutsname als Angebot in Kinderfolgen; Duzen plus Kindersprache zählt als gezielte Ansprache (BGH 2013). Kaufbezug nur im Elternformat.</div>
     <div><b>Der Stil ist belastet:</b> KI-Pixar-Videos wurden 2026 für Holocaust-Leugnung an Kinder missbraucht; Fiverr verkauft den Look als Massenware. Deshalb eigene Figur, ehrliche Kennzeichnung, redaktionelle Qualität.</div>
     <div><b>TikTok und Instagram:</b> ab 13, erreichen die Eltern, nicht die Kinder. Cocomelon spielt dort eine Eltern-Kampagne. Kurzformen: Nutzen für Eltern in der ersten Zeile, Figur als Wiedererkennung.</div>
-    <div><b>Offen, vor dem Livegang:</b> Higgsfield-AGB und Rechte der Fremdmodelle · JMStV-Normtext · Datenschutz bei Kindern, sobald Daten erhoben werden.</div>
+    <div><b>Neu aus dem Gegenlauf, an der Quelle bestätigt:</b> YouTube schließt KI-Personas mit „financial guidance, investment tips, wealth management advice" von der Monetarisierung aus. R&amp;F erklärt nur allgemeine Geldbildung, nie Empfehlungen. Kinderinhalte mit starker Marken- und Logopräsenz oder irreführend „educational" gelten als niedrige Qualität. AI Act Art. 50 seit 02.08.2026: KI-Hinweis im Abspann.</div>
+    <div><b>Offen, vor dem Livegang:</b> Higgsfield-AGB und Rechte der Fremdmodelle · JMStV-Normtext · Datenschutz bei Kindern, sobald Daten erhoben werden · Werbekennzeichnung nach MStV, falls je ein Elternformat mit Angebot entsteht.</div>
   </div>
 </section>
 
 <section>
   <h2><span class="num">5</span>Der Pilot: Kostenplan, braucht dein Go</h2>
   <div class="pipeline">
-    <div><b>Schritt 1</b>Figurenblatt in Pixar-Anmutung: drei Fassungen, je Vorderseite, Seite, drei Ausdrücke, Nano Banana Pro. <span class="geld">2 bis 4 $</span>. Du entscheidest am Bild.</div>
-    <div><b>Schritt 2</b>Probeszene 30 bis 45 s in Higgsfield, Kling 3.0 und Veo 3.1 parallel, Figurenblatt als Referenz, Stimme ElevenLabs. <span class="geld">15 bis 60 $ Gegenwert</span>.</div>
-    <div><b>Schritt 3</b>Parallel: feste Figur in 3D (Meshy Pro, Blender), drei Standbilder, Winken und Freuen als Bildfolge für die App. <span class="geld">20 € plus zwei bis drei Arbeitstage</span>.</div>
-    <div><b>Schritt 4</b>Mockups 2 der App, erst mit den echten Figurenbildern: Bildflächen statt gezeichneter Symbole, Figur bewegt sich, Baum als Bild. <span class="geld">0 $</span>.</div>
+    <div><b>Schritt 1</b>Figuren-Master in Blender aus den Gloock-Pfaden, drei Renders in Pixar-Anmutung (Gesicht im &amp;, Kopf oben, Buchstaben als Glieder). <span class="geld">0 $, ein Arbeitstag von mir</span>. Optional Look-Studien Nano Banana Pro <span class="geld">2 bis 4 $</span>. Du entscheidest am Bild.</div>
+    <div><b>Schritt 2</b>Drei Bewegungstests zu 5 bis 8 s in Higgsfield (Kling 3.0, Veo 3.1 Fast), Master als Referenz und Vordergrund. Pass/Fail: keine Buchstabenverformung in irgendeinem Bild, als R&amp;F erkennbar, Deutsch verständlich. <span class="geld">etwa 12 bis 25 $ Gegenwert</span>.</div>
+    <div><b>Schritt 3</b>Nur bei bestandenem Test: Pilot 30 bis 45 s, Stimme ElevenLabs (Erwachsenen-Erzählstimme, kein Kinderklon). <span class="geld">36 bis 60 $ Erzeugung</span> plus Lippen, Musik, Schnitt, die vorher je Posten festgelegt werden.</div>
+    <div><b>Schritt 4</b>Mockups 2 der App mit den echten Renders: Bildflächen statt gezeichneter Symbole, Figur als Bildfolge, Baum als Bild. <span class="geld">0 $</span>.</div>
   </div>
-  <p class="lead" style="font-size:15px">Gesamt etwa 40 bis 100 $ Erzeugung plus laufende Tarife. Prüfkriterien, die du am Bild beurteilst: Bleibt R&amp;F in allen Clips dieselbe Figur? Sind die Buchstaben lesbar? Wirkt es wie Luca, nicht wie Fiverr? Passen die Lippen zum Deutschen?</p>
+  <p class="lead" style="font-size:15px">Gesamt etwa 50 bis 90 $ Erzeugung bis zum fertigen Pilot plus laufender Higgsfield-Tarif; Arbeitszeit getrennt. Nichts wird erzeugt ohne dein Go. Prüfkriterien, die du am Bild beurteilst: Bleibt R&amp;F in allen Clips dieselbe Figur? Sind die Buchstaben lesbar? Wirkt es wie Luca, nicht wie Fiverr? Passen die Lippen zum Deutschen?</p>
 </section>
 
 <section>
@@ -155,11 +158,11 @@ a{color:var(--green)}
     <p class="mono">Was Simon entscheidet</p>
     <h3>Vier Antworten, dann startet der Pilot</h3>
     <p>1. Welche US-Serie meintest du: StoryBots, oder eine andere (Bild oder Folgentitel reicht)?</p>
-    <p>2. Go für Schritt 1, das Figurenblatt (2 bis 4 $)? Und: welcher Higgsfield-Tarif läuft bei dir?</p>
-    <p>3. Grundform der Figur fürs Blatt: F1 (Wortmarke mit Gesicht), F2 (Kopf oben), F3 (Buchstaben als Glieder), oder frei nach Pixar-Anmutung neu?</p>
+    <p>2. Go für Schritt 1, den Blender-Master mit drei Renders (0 $, ein Arbeitstag), plus optional Look-Studien für 2 bis 4 $? Und: welcher Higgsfield-Tarif läuft bei dir?</p>
+    <p>3. Sollen alle drei Gesichtsplätze (F1 Wortmarke mit Gesicht, F2 Kopf oben, F3 Buchstaben als Glieder) gerendert werden, oder hast du nach Mockups 1 schon eine Vorliebe?</p>
     <p>4. Lebt die Serie zuerst in der App oder zuerst auf YouTube? Das bestimmt Format und Länge der ersten Folge.</p>
   </div>
 </section>
 
-<footer>Datei: 10_PROJEKTE/Goldene-Welt-Kinder-App/recherche_2026-10-22/Serie_Recherche_Seite.html · Quellen im Briefing · Status Entwurf, Konfidenz 6 von 10 (Vorbilder 8, Higgsfield-Preise 7, Kosten 6, Buchstabenfigur in Bewegung 3, Recht 6).</footer>
+<footer>Datei: 10_PROJEKTE/Goldene-Welt-Kinder-App/recherche_2026-10-22/Serie_Recherche_Seite.html · Quellen im Briefing · Status Entwurf nach Zwei-KI-Gegenlauf (Claude + Codex), Konfidenz 7 von 10 (Vorbilder 8, Werkzeuggrenzen 8, Kosten 7, Buchstabenfigur in Bewegung 3, Recht 7).</footer>
 </div></body></html>
