@@ -1,0 +1,14 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Pause vor Flamme</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>body{margin:0;background:#F5F1EA;color:#102444;font:400 16px/1.45 'Work Sans',system-ui,sans-serif}main{max-width:420px;margin:0 auto;padding:28px 16px 48px}
+small{font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5A6478}h1{font:400 32px/1.1 Gloock,serif;margin:6px 0 10px}
+.k{background:#fff;border:1.5px solid #E4DDCF;border-radius:16px;padding:16px;margin:14px 0;display:grid;gap:10px}.k b{font-size:17px}.k p{margin:0;color:#3B4660;font-size:15px}
+.k.e{border-color:#102444}button{font:600 16px 'Work Sans',sans-serif;background:#102444;color:#FFFFFF;border:0;border-radius:12px;padding:13px;width:100%}button.on{background:#E86A00;color:#FFFFFF}
+.s{font-family:Gloock,serif;font-size:19px;color:#102444}.s i{font-style:normal;background:#FFE3C2;color:#102444;border-radius:4px;padding:0 4px}</style></head><body><main>
+<small>Firestarter · Sparky · Hörprobe</small><h1>Wo soll die Pause sitzen?</h1>
+<p>Gleiche Aufnahme, nicht neu vertont. Nur eine Pause eingefügt. Tipp an und hör den Anfang.</p>
+<div class="k"><small>Ist</small><div class="s">ich bin Sparky, deine Flamme.</div><p>Pause nach dem Komma 0,24 s, zwischen „deine" und „Flamme" keine.</p><button data-a="ist.mp3">Anhören</button></div>
+<div class="k e"><small>A · vor dem Wort Flamme</small><div class="s">ich bin Sparky, deine <i>…</i> Flamme.</div><p>0,35 s Pause zwischen „deine" und „Flamme".</p><button data-a="A_vor_flamme.mp3">Anhören</button></div>
+<div class="k"><small>B · nach dem Komma</small><div class="s">ich bin Sparky, <i>…</i> deine Flamme.</div><p>Pause nach dem Komma von 0,24 auf 0,60 s verlängert.</p><button data-a="B_nach_komma.mp3">Anhören</button></div>
+<p>Antwort reicht als „A" oder „B", gern mit „länger" oder „kürzer". Dann ziehe ich die Pause in alle 15 Sparky-Aufnahmen mit diesem Satz.</p>
+</main><script>var cur=null,cb=null;document.querySelectorAll('[data-a]').forEach(function(b){b.addEventListener('click',function(){if(cur){cur.pause();cb.classList.remove('on');cb.textContent='Anhören';}if(cb===b){cur=null;cb=null;return;}cur=new Audio(b.dataset.a);cb=b;b.classList.add('on');b.textContent='Stopp';cur.play();cur.onended=function(){b.classList.remove('on');b.textContent='Anhören';cur=null;cb=null;};});});</script></body></html>
