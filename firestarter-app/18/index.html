@@ -911,7 +911,7 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
     box.querySelectorAll('[data-vid]').forEach(function(v){v.addEventListener('click',function(){tipp('Mockup: hier würde das Video starten');})});
     box.querySelectorAll('[data-frag]').forEach(function(r){r.addEventListener('click',function(){frag(r.dataset.frag);})});
     box.querySelectorAll('[data-tour]').forEach(function(r){r.addEventListener('click',function(){setTimeout(tourStart,50)})});}
-  funkeRender();
+  /* erster Aufruf steht unten, nach ST/DIA (Stand 17b) */
 
   document.getElementById('ziel-text').textContent=S.ziel+' Lektionen';document.querySelectorAll('[data-ziel]').forEach(function(o){o.classList.toggle('on',+o.dataset.ziel===S.ziel)});
 
@@ -939,7 +939,7 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
   var sh=document.getElementById('dia-sheet');sh.querySelectorAll('[data-dia]').forEach(function(o){o.addEventListener('click',function(){sh.querySelectorAll('.o').forEach(function(x){x.classList.remove('on')});o.classList.add('on');S.dialekt=o.dataset.dia;save();zeig('dialekt',true);})});document.getElementById('dia-ok').addEventListener('click',function(){sh.classList.remove('on')});
   var an0=S.sprich!==false;sw.classList.toggle('on',an0);wrap.style.display=an0?'grid':'none';if(an0)zeig(S.stimme||'sparky',false);else{titel.textContent='Sparky spricht';sub.textContent='Aus. Alles, was Sparky sagen würde, steht als Text.';}
   window.addEventListener('pagehide',function(){musik(false)});
-  namenSetz();
+  namenSetz();funkeRender();
   })();
   renderStart();
   (function(){var p=document.getElementById('prof-name'),a=document.getElementById('prof-av'),b=document.getElementById('brief-hallo');if(p)p.textContent=VOLL;if(a)a.textContent=VOLL.charAt(0).toUpperCase();if(b)b.textContent='Hallo '+NAME+',';})();
