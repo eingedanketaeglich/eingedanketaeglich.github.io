@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Flamme je Reglerstufe, Runde 2</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+html,body{margin:0;background:#F5F1EA;color:#0A1830;font-family:"Work Sans",system-ui,sans-serif}
+.wrap{padding:16px 16px 24px;display:grid;gap:14px}
+h1{font-family:Gloock,serif;font-weight:400;font-size:24px;margin:0}
+p{margin:0;font-size:14px;color:#6B6257;line-height:1.4}
+.block{background:#102444;border-radius:18px;padding:14px 10px 10px}
+.lbl{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#C6D2E2;margin:0 6px 8px}
+.row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px 4px}
+.row figure{margin:0;display:grid;justify-items:center;gap:4px}
+.row svg{width:78px;height:94px}
+.row figcaption{font-size:12px;color:#F5F1EA;text-align:center;line-height:1.25}
+.row figcaption small{display:block;font-size:10.5px;color:#C6D2E2}
+.flame{transform-origin:50% 90%;animation:flicker 1.6s ease-in-out infinite}
+@keyframes flicker{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.03,.97) rotate(-1.5deg)}}
+.kflam{transform-origin:31px 36px;animation:kerze 1.3s ease-in-out infinite}
+@keyframes kerze{0%,100%{transform:scale(1,1) skewX(0deg)}30%{transform:scale(.92,1.08) skewX(-4deg)}60%{transform:scale(1.05,.95) skewX(3deg)}}
+.kopf{background:#102444;border-radius:18px;padding:14px 18px 0;color:#F5F1EA;position:relative;height:120px;overflow:hidden}
+.kopf small{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:.85}
+.kopf b{font-family:Gloock,serif;font-weight:400;font-size:26px;display:block;line-height:1.05;width:62%}
+.kopf svg{position:absolute;right:16px;bottom:-6px;width:84px;height:96px}
+</style></head><body>
+<div class="wrap">
+<h1>Flamme oben rechts, Runde 3</h1>
+<p>Deine Wahl: Farben aus V1, Gesichter und Zubehör aus V2. Fünf Stufen wie der Regler: Sparky, Ferno, Susanne, Dialekt, Kerze. Aus ist der normale Sparky, er spricht nur nicht.</p>
+<div class="block"><div class="lbl">Soll · Farbe und Gesicht je Stufe (Aus = Sparky)</div><div class="row" id="v"></div></div>
+<div class="lbl" style="color:#6B6257">So sitzt es im Kopf der App</div>
+<div class="kopf" id="k1"><small>Dein Konto</small><b>Ich</b></div>
+<div class="kopf" id="k2"><small>Dein Konto</small><b>Ich</b></div>
+<div class="kopf" id="k3"><small>Dein Konto</small><b>Ich</b></div>
+</div>
+<script>
+function flame(o){o=o||{};var c1=o.c1||'#FF7A00',c2=o.c2||'#FFD9A8',sc=o.sc||1,face=o.face!==false,extra=o.extra||'',eye=o.eye||'#102444';
+ var f=face?'<circle cx="26" cy="47" r="2.4" fill="'+eye+'"/><circle cx="36" cy="47" r="2.4" fill="'+eye+'"/>'+(o.mund||'<path d="M26.5 53 Q31 57 35.5 53" stroke="'+eye+'" stroke-width="1.8" fill="none" stroke-linecap="round"/>'):'';
+ return '<svg viewBox="0 0 62 76"><g class="flame" style="transform:scale('+sc+');transform-origin:50% 90%"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="'+c1+'"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="'+c2+'"/>'+f+extra+'</g><path d="M46 50 L56 42" stroke="'+c1+'" stroke-width="6" stroke-linecap="round"/><path d="M16 50 L8 56" stroke="'+c1+'" stroke-width="6" stroke-linecap="round"/><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg>';}
+function kerze(){return '<svg viewBox="0 0 62 76"><rect x="20" y="36" width="22" height="34" rx="5" fill="#F5F1EA"/><rect x="20" y="36" width="22" height="6" rx="3" fill="#E6E0D3"/><path d="M31 30 L31 37" stroke="#102444" stroke-width="2" stroke-linecap="round"/><g class="kflam"><path d="M31 8 C36 16 39 21 39 27 C39 33 35 36 31 36 C27 36 23 33 23 27 C23 21 26 16 31 8Z" fill="#FF7A00"/><path d="M31 20 C33 24 35 26 35 31 C35 34 33 35.5 31 35.5 C29 35.5 27 34 27 31 C27 28 29 26 31 20Z" fill="#FFD9A8"/></g><ellipse cx="31" cy="72" rx="16" ry="3" fill="rgba(0,0,0,.18)"/></svg>';}
+var brauen='<path d="M22 41 L29 43" stroke="#102444" stroke-width="2.2" stroke-linecap="round"/><path d="M40 41 L33 43" stroke="#102444" stroke-width="2.2" stroke-linecap="round"/>';
+var grinsen='<path d="M25 52 Q31 59 37 52" stroke="#102444" stroke-width="1.8" fill="none" stroke-linecap="round"/>';
+var wimpern='<path d="M22.5 44 L24 46" stroke="#102444" stroke-width="1.4" stroke-linecap="round"/><path d="M39.5 44 L38 46" stroke="#102444" stroke-width="1.4" stroke-linecap="round"/><path d="M27 55 Q31 57 35 55" stroke="#102444" stroke-width="1.4" fill="none" stroke-linecap="round"/>';
+var hut='<path d="M18 22 L44 22 L40 10 L22 10 Z" fill="#173A2B"/><rect x="14" y="21" width="34" height="4" rx="2" fill="#173A2B"/><path d="M38 12 L46 4" stroke="#F5F1EA" stroke-width="2.4" stroke-linecap="round"/>';
+var mundzu='<path d="M27 54 L35 54" stroke="#102444" stroke-width="1.8" stroke-linecap="round"/>';
+var S=[
+ {s:flame(),t:'Sparky',u:'Orange, wie heute'},
+ {s:flame({c1:'#E8540A',c2:'#FFC08A',extra:brauen,mund:grinsen,sc:1.08}),t:'Ferno',u:'Rot-Orange, Brauen, Grinsen'},
+ {s:flame({c1:'#F6CF5A',c2:'#FFF0C2',extra:wimpern,mund:''}),t:'Susanne',u:'Gold, Wimpern, weiches Lächeln'},
+ {s:flame({c1:'#5B8DEF',c2:'#DCE8FF',extra:hut}),t:'Dialekt',u:'Blau, Hut wechselt je Region'},
+ {s:kerze(),t:'Kerze',u:'kein Gesicht, nur das Feuer bewegt sich'}];
+document.getElementById('v').innerHTML=S.map(function(x){return '<figure>'+x.s+'<figcaption>'+x.t+'<small>'+x.u+'</small></figcaption></figure>'}).join('');
+document.getElementById('k1').insertAdjacentHTML('beforeend',S[1].s);
+document.getElementById('k2').insertAdjacentHTML('beforeend',S[2].s);
+document.getElementById('k3').insertAdjacentHTML('beforeend',S[3].s);
+</script>
+</body></html>
