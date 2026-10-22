@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ECBA2E">
+<meta name="robots" content="noindex">
+<title>Geldbaum Mockups 1</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Geldbaum Mockups 1 (22.10.2026): drei Figuren R&F als ein Koerper, drei Startbildschirme der Kinder-App. Alle Telefone 375 px breit, Formen direkt gezeichnet (fill-Attribute, keine SVG-Symbole). Farben aus goldene-welt.html. */
+:root{
+  --gold:#ECBA2E; --gold-hi:#F6CF5A; --gold-deep:#A98318; --cream:#FBF3DC; --desk:#1D150A; --desk-2:#3A2B12; --green:#173A2B; --green-2:#24402F;
+  --ink:#1D150A; --ink-2:#5C4A28; --line:#E2D39F; --paper:#FFFDF5;
+  --serif:"Gloock",Georgia,serif; --body:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream)}
+body{color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding:0 0 64px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:16px}
+h1,h2,h3{text-wrap:balance;line-height:1.12;margin:0;font-family:var(--serif);font-weight:400;color:var(--green)}
+h1{font-size:clamp(32px,6vw,46px)}
+h2{font-size:clamp(26px,4.5vw,34px)}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--green-2)}
+header{padding-block:30px 20px;display:grid;gap:12px}
+header .lead{font-size:18px;color:var(--ink-2);max-width:70ch}
+section{display:grid;gap:18px;padding-block:30px;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:32px;height:30px;padding:0 9px;border-radius:8px;background:var(--green);color:var(--cream);font-family:var(--body);font-weight:700;font-size:15px;margin-right:10px;vertical-align:middle}
+.note{background:var(--paper);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:12px 14px;font-size:15.5px}
+.muted{font-size:15px;color:var(--ink-2)}
+.ist{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));align-items:start}
+.ist figure{margin:0;display:grid;gap:8px}
+.ist img{width:100%;height:auto;border-radius:14px;display:block;box-shadow:0 10px 28px rgba(29,21,10,.14)}
+.ist figcaption{font-size:14px;color:var(--ink-2)}
+.ist figcaption b{color:var(--ink);font-weight:700}
+.row3{display:grid;gap:22px 18px;grid-template-columns:repeat(auto-fit,minmax(375px,1fr));justify-items:center}
+@media (max-width:420px){.wrap{padding-inline:0}.row3{gap:28px}.ist,.liste,header,.note,h2,section>p,.entscheid{margin-inline:16px}}
+.cell{display:grid;gap:8px;justify-items:center;width:100%;min-width:0}
+.cell .tag{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-2);text-align:center;padding-inline:16px}
+.cell .cap{font-size:14.5px;color:var(--ink-2);text-align:center;max-width:40ch;padding-inline:16px}
+.cell .cap b{color:var(--ink);font-weight:700}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.liste div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:700}
+.entscheid{display:grid;gap:10px;background:var(--green);color:var(--cream);border-radius:16px;padding:18px 18px 20px}
+.entscheid h3{color:var(--gold-hi);font-size:24px}
+.entscheid p{font-size:16px}
+.entscheid .mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-hi)}
+footer{margin-top:34px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-2);padding-inline:16px}
+
+/* Figuren-Buehne */
+.stage{width:375px;max-width:100%;display:grid;gap:0;border-radius:24px;overflow:hidden;background:var(--paper);box-shadow:0 12px 32px rgba(29,21,10,.12)}
+.stage .scene{background:linear-gradient(var(--gold-hi),var(--gold) 70%);display:block;width:100%;height:auto}
+.stage .klein{display:grid;grid-template-columns:1fr auto auto auto;align-items:end;gap:14px;padding:12px 18px 14px;border-top:1px solid var(--line)}
+.stage .klein .l{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2);align-self:center}
+.stage .klein svg{display:block}
+
+/* Telefon 375 x 812, Kante aussen, Schirm exakt 375 */
+.ph{width:375px;max-width:100%;height:812px;border-radius:34px;overflow:hidden;position:relative;background:var(--cream);color:var(--green);font-family:var(--body);box-shadow:0 0 0 5px var(--desk),0 16px 36px rgba(29,21,10,.22);margin:5px 0}
+.ph *{box-sizing:border-box}
+.status{height:54px;display:flex;align-items:center;justify-content:space-between;padding:12px 28px 0;font-family:var(--body);font-weight:600;font-size:15px;color:var(--green);position:relative;z-index:4}
+.status .insel{position:absolute;left:50%;top:11px;width:120px;height:34px;transform:translateX(-50%);background:#0A0A0A;border-radius:20px}
+.status .sym{display:flex;gap:5px;align-items:center}
+.status .sym i{display:block;width:16px;height:9px;border:1.5px solid currentColor;border-radius:3px;position:relative}
+.status .sym i:after{content:"";position:absolute;left:1.5px;top:1.5px;bottom:1.5px;width:9px;background:currentColor;border-radius:1px}
+.scr{position:absolute;inset:0;display:flex;flex-direction:column}
+.kopf{position:relative;background:var(--gold);color:var(--green);padding:0 20px 36px;flex:none}
+.kopf .status{margin:0 -20px}
+.kopf .klein{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--green-2);margin:6px 0 4px}
+.kopf .gross{font-family:var(--serif);font-size:32px;line-height:1.05}
+.kopf .huegel{position:absolute;left:0;right:0;bottom:-1px;height:40px;width:100%;display:block}
+.scroll{flex:1;overflow:hidden;padding:16px 20px 110px;display:grid;gap:14px;align-content:start}
+.lbl{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2)}
+.sprech{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start}
+.sprech .bla{background:var(--paper);border-radius:4px 16px 16px 16px;padding:12px 14px;font-size:17px;line-height:1.4;color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.btn{height:58px;border-radius:16px;background:var(--green);color:var(--cream);font-weight:700;font-size:19px;display:grid;place-items:center;box-shadow:0 8px 20px rgba(23,58,43,.22)}
+.btn.gold{background:var(--gold);color:var(--green);box-shadow:0 8px 20px rgba(169,131,24,.28)}
+.woche{display:flex;justify-content:space-between;align-items:end;gap:6px}
+.woche .wt{display:grid;gap:4px;justify-items:center;font-size:11px;color:var(--ink-2);font-weight:600}
+.weg{display:grid;gap:10px}
+.karte{display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;background:var(--paper);border-radius:14px;padding:12px 14px;border:1px solid var(--line)}
+.karte.on{background:var(--green);color:var(--cream);border-color:var(--green)}
+.karte .nr{font-family:var(--serif);font-size:30px;line-height:1;color:var(--gold-deep)}
+.karte.on .nr{color:var(--gold-hi)}
+.karte .t{font-weight:700;font-size:16.5px;line-height:1.2}
+.karte .s{font-size:13.5px;opacity:.78;margin-top:2px}
+.nav{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:center;z-index:5}
+.nav div{display:flex;gap:4px;padding:6px 8px;border-radius:999px;background:rgba(251,243,220,.78);backdrop-filter:blur(16px) saturate(1.6);-webkit-backdrop-filter:blur(16px) saturate(1.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.6),0 10px 24px rgba(29,21,10,.14)}
+.nav span{display:grid;gap:2px;justify-items:center;font-size:11px;color:var(--ink-2);width:88px;padding:7px 0;border-radius:999px;font-weight:600}
+.nav span svg{width:24px;height:24px;display:block}
+.nav span.on{color:var(--green);background:rgba(236,186,46,.45)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">R&amp;F · Goldene Welt · Kinder-App „Der Geldbaum" · Mockups 1 · 22.10.2026</p>
+  <h1>Die Figur R&amp;F und der Startbildschirm, je drei Fassungen</h1>
+  <p class="lead">Links das Ist: der Flyer zum Kindertag und der Firestarter-Start, von dem das Gerüst kommt. Daneben je drei Vorschläge, alle 375 px breit, so wie sie auf dem Handy stünden. Alles gezeichnet, nichts erzeugt. Entscheidung am Bild: eine Figur, ein Start.</p>
+  <p class="note"><b>Was fest ist:</b> Gold trägt die Welt, Dunkelgrün nur für Schrift, Linien und Knöpfe. Gloock für Überschriften, Work Sans für Text, Plex Mono für kleine Zeilen. Fester Kopf, feste Leiste, nur die Mitte scrollt. <b>Was hier zur Wahl steht:</b> Wo die Figur ihr Gesicht hat, und wie das Kind in die App einsteigt.</p>
+</header>
+
+<section id="ist">
+  <h2><span class="num">0</span>Das Ist</h2>
+  <div class="ist">
+    <figure><img src="ist/ist_flyer_vorn_klein.png" alt="Flyer Geldbaum, Vorderseite"><figcaption><b>Flyer Vorderseite.</b> Familie, alter Mann mit Geldsack, Baum, Frankfurt. R&amp;F ist hier nur ein Wort in Dunkelgrün, keine Figur.</figcaption></figure>
+    <figure><img src="ist/ist_flyer_hinten_klein.png" alt="Flyer Geldbaum, Rückseite"><figcaption><b>Flyer Rückseite.</b> Vier Stationen: Geld verdienen, zuerst der Baum, ausgeben und wachsen, mein Spross. Daraus werden die vier Wege der App.</figcaption></figure>
+    <figure><img src="ist/ist_firestarter_start.png" alt="Firestarter Start, Stand 12b"><figcaption><b>Firestarter Start, Stand 12b.</b> Das Gerüst: Kopf in Weltfarbe, Figur rechts, Satz, Knopf, Woche, Weg, Glas-Leiste. Für Kinder wird daraus Gold statt Navy, drei Reiter statt fünf, kaum Text.</figcaption></figure>
+  </div>
+</section>
+
+<section id="figur">
+  <h2><span class="num">F</span>Die Figur R&amp;F als ein Körper, drei Bauweisen</h2>
+  <p class="muted">Jede Fassung oben groß auf der Bühne, darunter so klein, wie sie im App-Kopf und in der Leiste stünde. Das ist der Test, ob R&amp;F lesbar bleibt.</p>
+  <div class="row3">
+
+    <div class="cell"><span class="tag">F1 · Gesicht im &amp;, die Wortmarke bleibt</span>
+      <div class="stage">
+        <svg class="scene" viewBox="0 0 375 330" xmlns="http://www.w3.org/2000/svg" data-fig="f1">
+          <ellipse cx="187" cy="318" rx="150" ry="22" fill="#A98318" opacity=".35"/>
+          <path d="M66 200 C 46 192, 32 176, 28 156" fill="none" stroke="#173A2B" stroke-width="13" stroke-linecap="round"/>
+          <circle cx="26" cy="150" r="13" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <path d="M262 214 C 292 212, 320 196, 330 166" fill="none" stroke="#173A2B" stroke-width="13" stroke-linecap="round"/>
+          <circle cx="333" cy="160" r="13" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <text x="187" y="236" text-anchor="middle" font-family="Gloock,Georgia,serif" font-size="126" fill="#173A2B">R&amp;F</text>
+          <rect x="66" y="232" width="18" height="48" rx="9" fill="#173A2B"/>
+          <rect x="250" y="232" width="18" height="48" rx="9" fill="#173A2B"/>
+          <ellipse cx="72" cy="286" rx="28" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <ellipse cx="261" cy="286" rx="28" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <circle cx="174" cy="172" r="12" fill="#FBF3DC"/><circle cx="202" cy="172" r="12" fill="#FBF3DC"/>
+          <circle cx="177" cy="174" r="6" fill="#1D150A"/><circle cx="205" cy="174" r="6" fill="#1D150A"/>
+          <circle cx="179" cy="171" r="2" fill="#FBF3DC"/><circle cx="207" cy="171" r="2" fill="#FBF3DC"/>
+          <path d="M178 196 Q 188 206, 198 196" fill="none" stroke="#FBF3DC" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="162" cy="192" r="5.5" fill="#F6CF5A" opacity=".9"/><circle cx="214" cy="192" r="5.5" fill="#F6CF5A" opacity=".9"/>
+        </svg>
+        <div class="klein"><span class="l">Im Kopf · in der Leiste</span><svg width="72" height="64" viewBox="0 0 375 330" data-copy="f1"></svg><svg width="44" height="39" viewBox="0 0 375 330" data-copy="f1"></svg><svg width="28" height="25" viewBox="0 0 375 330" data-copy="f1"></svg></div>
+      </div>
+      <p class="cap"><b>Die Wortmarke steht auf Beinen.</b> R und F bleiben ganz, das &amp; in der Mitte trägt Augen, Mund und Wangen. Arme aus R und F, Schuhe in Gold. Am besten lesbar, am wenigsten Figur.</p></div>
+
+    <div class="cell"><span class="tag">F2 · Kopf oben, R&amp;F auf der Brust</span>
+      <div class="stage">
+        <svg class="scene" viewBox="0 0 375 330" xmlns="http://www.w3.org/2000/svg" data-fig="f2">
+          <ellipse cx="187" cy="318" rx="140" ry="22" fill="#A98318" opacity=".35"/>
+          <path d="M92 220 C 66 214, 50 196, 46 176" fill="none" stroke="#173A2B" stroke-width="13" stroke-linecap="round"/>
+          <circle cx="44" cy="170" r="13" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <path d="M283 220 C 308 206, 322 182, 324 150" fill="none" stroke="#173A2B" stroke-width="13" stroke-linecap="round"/>
+          <circle cx="326" cy="144" r="13" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <rect x="138" y="246" width="20" height="40" rx="10" fill="#173A2B"/>
+          <rect x="217" y="246" width="20" height="40" rx="10" fill="#173A2B"/>
+          <ellipse cx="144" cy="290" rx="30" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <ellipse cx="231" cy="290" rx="30" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <rect x="86" y="128" width="203" height="128" rx="52" fill="#173A2B"/>
+          <text x="187" y="222" text-anchor="middle" font-family="Gloock,Georgia,serif" font-size="92" fill="#F6CF5A">R&amp;F</text>
+          <circle cx="187" cy="84" r="58" fill="#F6CF5A" stroke="#173A2B" stroke-width="7"/>
+          <circle cx="166" cy="80" r="9" fill="#1D150A"/><circle cx="208" cy="80" r="9" fill="#1D150A"/>
+          <circle cx="169" cy="76" r="3" fill="#FBF3DC"/><circle cx="211" cy="76" r="3" fill="#FBF3DC"/>
+          <path d="M170 106 Q 187 120, 204 106" fill="none" stroke="#1D150A" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="150" cy="100" r="7" fill="#ECBA2E"/><circle cx="224" cy="100" r="7" fill="#ECBA2E"/>
+          <path d="M187 26 C 196 14, 206 14, 210 22" fill="none" stroke="#173A2B" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+        <div class="klein"><span class="l">Im Kopf · in der Leiste</span><svg width="72" height="64" viewBox="0 0 375 330" data-copy="f2"></svg><svg width="44" height="39" viewBox="0 0 375 330" data-copy="f2"></svg><svg width="28" height="25" viewBox="0 0 375 330" data-copy="f2"></svg></div>
+      </div>
+      <p class="cap"><b>Eine richtige Figur mit Kopf.</b> Gold-heller Kopf mit großen Augen, der grüne Körper trägt R&amp;F wie ein Hemd. Am meisten Kindchenschema, R&amp;F ist Aufdruck statt Körper.</p></div>
+
+    <div class="cell"><span class="tag">F3 · Das R ist der Kopf, das F winkt</span>
+      <div class="stage">
+        <svg class="scene" viewBox="0 0 375 330" xmlns="http://www.w3.org/2000/svg" data-fig="f3">
+          <ellipse cx="187" cy="318" rx="150" ry="22" fill="#A98318" opacity=".35"/>
+          <text x="187" y="250" text-anchor="middle" font-family="Gloock,Georgia,serif" font-size="140" fill="#173A2B">R&amp;F</text>
+          <path d="M316 158 C 326 150, 334 140, 338 128" fill="none" stroke="#173A2B" stroke-width="12" stroke-linecap="round"/>
+          <circle cx="340" cy="120" r="15" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <ellipse cx="52" cy="268" rx="28" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <ellipse cx="266" cy="268" rx="28" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="5"/>
+          <circle cx="70" cy="178" r="13" fill="#FBF3DC"/><circle cx="100" cy="178" r="13" fill="#FBF3DC"/>
+          <circle cx="73" cy="180" r="6.5" fill="#1D150A"/><circle cx="103" cy="180" r="6.5" fill="#1D150A"/>
+          <circle cx="75" cy="177" r="2.2" fill="#FBF3DC"/><circle cx="105" cy="177" r="2.2" fill="#FBF3DC"/>
+          <path d="M76 203 Q 86 212, 96 203" fill="none" stroke="#FBF3DC" stroke-width="5" stroke-linecap="round"/>
+          <circle cx="188" cy="208" r="24" fill="#F6CF5A" opacity=".55"/>
+        </svg>
+        <div class="klein"><span class="l">Im Kopf · in der Leiste</span><svg width="72" height="64" viewBox="0 0 375 330" data-copy="f3"></svg><svg width="44" height="39" viewBox="0 0 375 330" data-copy="f3"></svg><svg width="28" height="25" viewBox="0 0 375 330" data-copy="f3"></svg></div>
+      </div>
+      <p class="cap"><b>Die Buchstaben sind die Glieder.</b> Augen im Bauch des R, der Bauch ist das &amp;, der Querbalken des F hebt die Hand. Keine angesetzten Arme oder Beine, nur Schuhe. Am eigensten, am schwersten lesbar.</p></div>
+
+  </div>
+  <div class="liste">
+    <div><b>F1 folgt Letterland:</b> Buchstabe bleibt lesbar, Füße an den unteren Linien, Gesicht an einer Stelle. Risiko: wirkt wie ein Logo mit Gesicht, nicht wie jemand.</div>
+    <div><b>F2 folgt Duo und dem Kindchenschema:</b> großer Kopf, hohe Stirn, große tief liegende Augen, kurze Glieder. Risiko: R&amp;F wird zum Aufdruck, die Idee „ein Körper aus den Buchstaben" geht verloren.</div>
+    <div><b>F3 folgt Numberblocks:</b> die Form der Figur ist der Inhalt. Risiko: mit 28 px in der Leiste ist das Gesicht nicht mehr zu erkennen, dann trägt nur die Wortmarke.</div>
+    <div><b>In allen drei:</b> Dunkelgrün für den Körper, Gold-hell für Kopf, Hände und Schuhe, Dunkelbraun für Pupillen, Creme für das Weiß der Augen. Keine neue Farbe. Die 3D-Fassung in der Optik des Flyers entsteht erst nach der Wahl, mit Kostenplan und Go.</div>
+  </div>
+</section>
+
+<section id="start">
+  <h2><span class="num">S</span>Der Startbildschirm, drei Bauweisen</h2>
+  <p class="muted">Gleiches Gerüst in allen drei: Statusleiste gold, Kopf gold mit Hügelkante, Mitte creme, Glas-Leiste mit drei Reitern (Spielen, Mein Baum, Eltern). Die Figur ist in allen drei F1, damit nur der Aufbau verglichen wird. Name „Lina" ist Platzhalter.</p>
+  <div class="row3">
+
+    <div class="cell"><span class="tag">S1 · Der Baum im Kopf, dann ein Satz und ein Knopf</span>
+      <div class="ph"><div class="scr">
+        <div class="kopf">
+          <div class="status"><span>9:41</span><span class="insel"></span><span class="sym"><i></i></span></div>
+          <div style="display:grid;grid-template-columns:1fr 130px;gap:8px;align-items:end">
+            <div><p class="klein">Dein Geldbaum</p><p class="gross">Hallo Lina. Heute wächst ein neues Blatt.</p></div>
+            <svg viewBox="0 0 130 150" width="130" height="150" style="margin-bottom:-26px">
+              <ellipse cx="65" cy="142" rx="48" ry="8" fill="#A98318" opacity=".3"/>
+              <path d="M62 140 C 60 110, 58 90, 66 70 C 70 90, 72 110, 70 140 Z" fill="#3A2B12"/>
+              <path d="M66 92 C 52 84, 44 76, 40 66" fill="none" stroke="#3A2B12" stroke-width="7" stroke-linecap="round"/>
+              <path d="M68 80 C 84 72, 92 62, 94 54" fill="none" stroke="#3A2B12" stroke-width="7" stroke-linecap="round"/>
+              <circle cx="66" cy="52" r="34" fill="#173A2B"/><circle cx="38" cy="66" r="22" fill="#24402F"/><circle cx="96" cy="60" r="24" fill="#24402F"/><circle cx="60" cy="30" r="22" fill="#2E5A3F"/>
+              <ellipse cx="50" cy="50" rx="7" ry="11" fill="#F6CF5A" transform="rotate(-30 50 50)"/><ellipse cx="84" cy="44" rx="7" ry="11" fill="#F6CF5A" transform="rotate(25 84 44)"/><ellipse cx="66" cy="72" rx="7" ry="11" fill="#F6CF5A" transform="rotate(5 66 72)"/>
+              <ellipse cx="100" cy="76" rx="7" ry="11" fill="#FBF3DC" opacity=".55" transform="rotate(40 100 76)"/>
+            </svg>
+          </div>
+          <svg class="huegel" viewBox="0 0 375 40" preserveAspectRatio="none"><path d="M0 0 C 90 40, 230 40, 375 6 L375 40 L0 40 Z" fill="#FBF3DC"/></svg>
+        </div>
+        <div class="scroll">
+          <div class="sprech"><svg width="56" height="50" viewBox="0 0 375 330" data-copy="f1"></svg><div class="bla">Weißt du, woher Geld kommt? Ich zeig es dir.</div></div>
+          <div class="btn">Ja, zeig mir!</div>
+          <p class="lbl">Diese Woche · 3 Blätter</p>
+          <div class="woche">
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="2.5" transform="rotate(-20 15 15)"/></svg>Mo</div>
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="2.5" transform="rotate(-20 15 15)"/></svg>Di</div>
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#FBF3DC" stroke="#173A2B" stroke-width="2.5" transform="rotate(-20 15 15)"/></svg>Mi</div>
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#FBF3DC" stroke="#A98318" stroke-width="2.5" stroke-dasharray="3 3" transform="rotate(-20 15 15)"/></svg>Do</div>
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#FBF3DC" stroke="#A98318" stroke-width="2.5" stroke-dasharray="3 3" transform="rotate(-20 15 15)"/></svg>Fr</div>
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#FBF3DC" stroke="#A98318" stroke-width="2.5" stroke-dasharray="3 3" transform="rotate(-20 15 15)"/></svg>Sa</div>
+            <div class="wt"><svg width="30" height="30" viewBox="0 0 30 30"><ellipse cx="15" cy="15" rx="8" ry="12" fill="#FBF3DC" stroke="#A98318" stroke-width="2.5" stroke-dasharray="3 3" transform="rotate(-20 15 15)"/></svg>So</div>
+          </div>
+          <p class="lbl">Dein Weg</p>
+          <div class="weg">
+            <div class="karte on"><span class="nr">1</span><div><p class="t">Woher kommt Geld?</p><p class="s">Münzen und Scheine · du bist hier</p></div></div>
+            <div class="karte"><span class="nr">2</span><div><p class="t">Zuerst der Baum</p><p class="s">Brauchen kommt vor Wünschen</p></div></div>
+            <div class="karte"><span class="nr">3</span><div><p class="t">Das Sparschwein bleibt ganz</p><p class="s">Ausgeben und wachsen</p></div></div>
+          </div>
+        </div>
+        <div class="nav"><div>
+          <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="#173A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-6h4v6"/></svg>Spielen</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#5C4A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><circle cx="12" cy="8" r="5"/><path d="M8 13a4 4 0 0 1 8 0"/></svg>Mein Baum</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#5C4A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M14.5 20a4 4 0 0 1 6.5-3"/></svg>Eltern</span>
+        </div></div>
+      </div></div>
+      <p class="cap"><b>Wie Firestarter, nur in Gold.</b> Der Baum sitzt im Kopf und zeigt den Stand als Blätter. Ein Satz der Figur, ein Knopf, die Woche als Blätter, dann der Weg als Karten. Wenig neu, schnell gebaut.</p></div>
+
+    <div class="cell"><span class="tag">S2 · R&amp;F spricht, Vorlesen, dann der Pfad</span>
+      <div class="ph"><div class="scr">
+        <div class="kopf" style="padding-bottom:28px">
+          <div class="status"><span>9:41</span><span class="insel"></span><span class="sym"><i></i></span></div>
+          <p class="klein" style="margin-top:4px">Der Geldbaum · Lina</p>
+          <svg class="huegel" viewBox="0 0 375 40" preserveAspectRatio="none"><path d="M0 8 C 120 44, 260 36, 375 2 L375 40 L0 40 Z" fill="#FBF3DC"/></svg>
+        </div>
+        <div class="scroll" style="padding-top:4px;gap:12px">
+          <div style="display:grid;justify-items:center;gap:0"><svg width="250" height="220" viewBox="0 0 375 330" data-copy="f1"></svg></div>
+          <div style="background:#FFFDF5;border-radius:18px;padding:14px 16px;display:grid;grid-template-columns:1fr 56px;gap:12px;align-items:center;box-shadow:0 1px 0 #E2D39F">
+            <p style="font-size:19px;line-height:1.35;color:#1D150A">Hallo Lina! Weißt du, woher Geld kommt?</p>
+            <svg width="56" height="56" viewBox="0 0 56 56"><circle cx="28" cy="28" r="28" fill="#ECBA2E"/><path d="M18 23h6l7-6v22l-7-6h-6z" fill="#173A2B"/><path d="M35 21a9 9 0 0 1 0 14M38 17a14 14 0 0 1 0 22" fill="none" stroke="#173A2B" stroke-width="2.6" stroke-linecap="round"/></svg>
+          </div>
+          <div class="btn">Ja, zeig mir!</div>
+          <p class="lbl" style="margin-top:4px">Dein Weg · 1 von 4</p>
+          <svg viewBox="0 0 335 250" width="335" height="250" style="display:block">
+            <path d="M48 30 C 160 30, 120 110, 230 110 C 330 110, 280 200, 190 220" fill="none" stroke="#E2D39F" stroke-width="8" stroke-linecap="round" stroke-dasharray="1 16"/>
+            <circle cx="48" cy="30" r="27" fill="#ECBA2E" stroke="#173A2B" stroke-width="4"/>
+            <circle cx="48" cy="30" r="12" fill="#F6CF5A" stroke="#173A2B" stroke-width="3"/><text x="48" y="35" text-anchor="middle" font-family="Gloock,Georgia,serif" font-size="15" fill="#173A2B">1</text>
+            <text x="92" y="36" font-family="Work Sans,sans-serif" font-size="16" font-weight="700" fill="#173A2B">Woher kommt Geld?</text>
+            <circle cx="230" cy="110" r="27" fill="#FBF3DC" stroke="#173A2B" stroke-width="4"/>
+            <path d="M230 124 V 100 M230 100 c -10 -2 -14 -10 -14 -16 c 8 0 14 6 14 16 c 0 -10 6 -16 14 -16 c 0 6 -4 14 -14 16" fill="none" stroke="#173A2B" stroke-width="3" stroke-linecap="round"/>
+            <text x="194" y="158" text-anchor="end" font-family="Work Sans,sans-serif" font-size="16" font-weight="700" fill="#5C4A28">Zuerst der Baum</text>
+            <circle cx="300" cy="186" r="22" fill="#FBF3DC" stroke="#A98318" stroke-width="3" stroke-dasharray="4 4"/>
+            <ellipse cx="300" cy="188" rx="11" ry="8" fill="none" stroke="#A98318" stroke-width="2.6"/><circle cx="310" cy="186" r="2.4" fill="#A98318"/>
+            <circle cx="190" cy="222" r="22" fill="#FBF3DC" stroke="#A98318" stroke-width="3" stroke-dasharray="4 4"/>
+            <path d="M190 232 V 216 c -6 0 -9 -4 -9 -9 c 6 0 9 3 9 9 c 0 -6 3 -9 9 -9 c 0 5 -3 9 -9 9" fill="none" stroke="#A98318" stroke-width="2.4" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="nav"><div>
+          <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="#173A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-6h4v6"/></svg>Spielen</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#5C4A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><circle cx="12" cy="8" r="5"/><path d="M8 13a4 4 0 0 1 8 0"/></svg>Mein Baum</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#5C4A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M14.5 20a4 4 0 0 1 6.5-3"/></svg>Eltern</span>
+        </div></div>
+      </div></div>
+      <p class="cap"><b>Die Figur ist der Start.</b> Kaum Kopf, R&amp;F groß in der Mitte, ein Satz zum Vorlesen, ein Knopf. Darunter der Weg als gewundener Pfad mit vier Stationen. Für Kinder, die noch nicht flüssig lesen.</p></div>
+
+    <div class="cell"><span class="tag">S3 · Die Wiese, alles ist ein Ort</span>
+      <div class="ph"><div class="scr">
+        <div class="kopf" style="padding-bottom:0;background:#F6CF5A">
+          <div class="status"><span>9:41</span><span class="insel"></span><span class="sym"><i></i></span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding-bottom:10px"><p class="gross" style="font-size:26px">Der Geldbaum</p><p class="klein" style="margin:0">Lina · 3 Blätter</p></div>
+        </div>
+        <svg viewBox="0 0 375 640" width="375" height="640" style="display:block;flex:none">
+          <rect x="0" y="0" width="375" height="640" fill="#F6CF5A"/>
+          <path d="M0 150 h40 v-40 h14 v40 h30 v-70 h18 v70 h26 v-100 h22 v100 h20 v-56 h16 v56 h30 v-82 h14 v82 h26 v-38 h12 v38 h40 v-64 h20 v64 h47 v160 H0z" fill="#173A2B" opacity=".18"/>
+          <path d="M0 230 C 80 190, 160 200, 240 180 C 300 165, 340 170, 375 190 V640 H0z" fill="#2E5A3F"/>
+          <path d="M0 330 C 100 290, 220 320, 375 280 V640 H0z" fill="#4C7A57"/>
+          <path d="M0 470 C 120 440, 250 470, 375 430 V640 H0z" fill="#6E9A74"/>
+          <path d="M0 470 C 120 440, 250 470, 375 430" fill="none" stroke="#F6CF5A" stroke-width="2" opacity=".5"/>
+          <path d="M70 420 C 60 340, 68 300, 80 250 C 92 300, 96 340, 90 420 Z" fill="#3A2B12"/>
+          <circle cx="82" cy="236" r="52" fill="#173A2B"/><circle cx="44" cy="262" r="32" fill="#24402F"/><circle cx="126" cy="256" r="36" fill="#24402F"/><circle cx="76" cy="200" r="30" fill="#2E5A3F"/>
+          <ellipse cx="60" cy="230" rx="8" ry="13" fill="#F6CF5A" transform="rotate(-30 60 230)"/><ellipse cx="104" cy="226" rx="8" ry="13" fill="#F6CF5A" transform="rotate(25 104 226)"/><ellipse cx="86" cy="262" rx="8" ry="13" fill="#F6CF5A" transform="rotate(5 86 262)"/>
+          <rect x="24" y="400" width="116" height="30" rx="15" fill="#FBF3DC" stroke="#173A2B" stroke-width="2"/><text x="82" y="420" text-anchor="middle" font-family="Work Sans,sans-serif" font-size="13.5" font-weight="700" fill="#173A2B">Zuerst der Baum</text>
+          <path d="M250 352 c -18 0 -30 -14 -30 -30 c 0 -12 8 -20 16 -24 c -4 -6 -2 -14 6 -14 h16 c 8 0 10 8 6 14 c 8 4 16 12 16 24 c 0 16 -12 30 -30 30 z" fill="#A98318" stroke="#173A2B" stroke-width="3"/>
+          <circle cx="242" cy="326" r="7" fill="#F6CF5A" stroke="#173A2B" stroke-width="2"/><circle cx="258" cy="332" r="7" fill="#F6CF5A" stroke="#173A2B" stroke-width="2"/><circle cx="250" cy="314" r="7" fill="#F6CF5A" stroke="#173A2B" stroke-width="2"/>
+          <rect x="178" y="364" width="146" height="30" rx="15" fill="#ECBA2E" stroke="#173A2B" stroke-width="2.5"/><text x="251" y="384" text-anchor="middle" font-family="Work Sans,sans-serif" font-size="13.5" font-weight="700" fill="#173A2B">Woher kommt Geld?</text>
+          <ellipse cx="296" cy="512" rx="34" ry="24" fill="#F6CF5A" stroke="#173A2B" stroke-width="3"/><circle cx="326" cy="508" r="9" fill="#F6CF5A" stroke="#173A2B" stroke-width="3"/><circle cx="330" cy="507" r="2" fill="#173A2B"/><rect x="274" y="530" width="8" height="12" rx="3" fill="#173A2B"/><rect x="306" y="530" width="8" height="12" rx="3" fill="#173A2B"/><rect x="290" y="488" width="14" height="4" rx="2" fill="#173A2B"/>
+          <rect x="196" y="552" width="172" height="30" rx="15" fill="#FBF3DC" stroke="#173A2B" stroke-width="2"/><text x="282" y="572" text-anchor="middle" font-family="Work Sans,sans-serif" font-size="13.5" font-weight="700" fill="#173A2B">Sparschwein bleibt ganz</text>
+          <path d="M120 560 V 520 c -14 0 -22 -10 -22 -22 c 14 0 22 8 22 22 c 0 -14 8 -22 22 -22 c 0 12 -8 22 -22 22" fill="none" stroke="#173A2B" stroke-width="5" stroke-linecap="round"/>
+          <rect x="60" y="566" width="120" height="30" rx="15" fill="#FBF3DC" stroke="#173A2B" stroke-width="2"/><text x="120" y="586" text-anchor="middle" font-family="Work Sans,sans-serif" font-size="13.5" font-weight="700" fill="#173A2B">Mein Spross</text>
+          <g transform="translate(138 378) scale(.36)"><g data-copy-g="f1"></g></g>
+        </svg>
+        <div class="nav"><div>
+          <span class="on"><svg viewBox="0 0 24 24" fill="none" stroke="#173A2B" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 11 12 4l8 7v9H4z"/><path d="M10 20v-6h4v6"/></svg>Spielen</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#5C4A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><circle cx="12" cy="8" r="5"/><path d="M8 13a4 4 0 0 1 8 0"/></svg>Mein Baum</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="#5C4A28" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><circle cx="17" cy="9" r="2.4"/><path d="M14.5 20a4 4 0 0 1 6.5-3"/></svg>Eltern</span>
+        </div></div>
+      </div></div>
+      <p class="cap"><b>Kein Menü, eine Landschaft.</b> Frankfurt hinten, Wiese vorn wie auf dem Flyer. Die vier Stationen sind Orte: Geldsack, Baum, Sparschwein, Spross. Das Kind tippt auf einen Ort, R&amp;F läuft hin. Am meisten Spiel, am meisten Bauaufwand.</p></div>
+
+  </div>
+  <div class="liste">
+    <div><b>Drei Reiter statt fünf:</b> Spielen, Mein Baum, Eltern. Bibliothek und Werkzeuge haben Kinder nicht; der Eltern-Reiter trägt Einstellungen, Fortschritt und Rechtstexte.</div>
+    <div><b>Der Baum ist der Fortschritt:</b> jede abgeschlossene Station ein goldenes Blatt, das Wochenziel in Blättern statt Lektionen. Keine Minuten, keine Zahlenwand.</div>
+    <div><b>Vier Stationen aus dem Flyer:</b> Geld verdienen, zuerst der Baum, Sparschwein bleibt ganz, mein Spross. Die Inhalte dahinter kommen von René, hier stehen nur die Namen.</div>
+    <div><b>Vorlesen:</b> jeder Satz der Figur hat einen Lautsprecher. Stimme erst nach Kostenplan und Go; bis dahin Platzhalter.</div>
+  </div>
+</section>
+
+<section>
+  <div class="entscheid">
+    <p class="mono">Was Simon entscheidet</p>
+    <h3>Eine Figur, ein Start, dann Stand 1 unter /geldbaum/1/</h3>
+    <p>1. Figur: F1, F2 oder F3, oder eine Mischung mit Angabe, was von wo kommt.</p>
+    <p>2. Start: S1, S2 oder S3, oder eine Mischung.</p>
+    <p>3. Reiter: drei (Spielen, Mein Baum, Eltern) oder andere Namen.</p>
+    <p>4. Name der Figur: heißt sie „R&amp;F", oder bekommt sie einen Rufnamen, den Kinder sprechen können?</p>
+  </div>
+</section>
+
+<footer>Datei: 10_PROJEKTE/Goldene-Welt-Kinder-App/mockups_2026-10-22/Geldbaum_Mockups_1.html · Figuren und Bildschirme sind gezeichnete Nachbauten, nichts erzeugt · Status Entwurf, Entscheidung bei Simon.</footer>
+</div>
+<script>
+/* Kleine Kopien der Figuren: Markup wird dupliziert, kein <use> (Safari zeigt use mit CSS-Fuellung schwarz). */
+document.querySelectorAll('[data-copy]').forEach(function(t){
+  var src=document.querySelector('svg[data-fig="'+t.getAttribute('data-copy')+'"]');
+  if(src) t.innerHTML=src.innerHTML;
+});
+document.querySelectorAll('[data-copy-g]').forEach(function(t){
+  var src=document.querySelector('svg[data-fig="'+t.getAttribute('data-copy-g')+'"]');
+  if(src) t.innerHTML=src.innerHTML;
+});
+</script>
+</body>
+</html>
