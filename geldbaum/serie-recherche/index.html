@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#ECBA2E">
+<meta name="robots" content="noindex">
+<title>Geldbaum Serie Recherche</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{--gold:#ECBA2E;--gold-hi:#F6CF5A;--gold-deep:#A98318;--cream:#FBF3DC;--paper:#FFFDF5;--green:#173A2B;--green-2:#24402F;--ink:#1D150A;--ink-2:#5C4A28;--line:#E2D39F;--rot:#9A3B1E;
+--serif:"Gloock",Georgia,serif;--body:"Work Sans",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--cream)}
+body{color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.55;padding:0 16px 64px}
+.wrap{max-width:900px;margin:0 auto}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.12;margin:0;color:var(--green);text-wrap:balance}
+h1{font-size:clamp(30px,6vw,44px)}h2{font-size:clamp(24px,4.5vw,32px)}h3{font-size:21px}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--green-2)}
+header{padding:30px 0 18px;display:grid;gap:12px}
+.lead{font-size:18px;color:var(--ink-2)}
+section{display:grid;gap:14px;padding:26px 0;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:32px;height:30px;padding:0 9px;border-radius:8px;background:var(--green);color:var(--cream);font-family:var(--body);font-weight:700;font-size:15px;margin-right:10px;vertical-align:middle}
+.antwort{display:grid;gap:10px}
+.antwort div{background:var(--paper);border-left:4px solid var(--gold);border-radius:6px 12px 12px 6px;padding:12px 14px;font-size:16px}
+.antwort b{color:var(--green)}
+table{width:100%;border-collapse:collapse;font-size:14.5px;background:var(--paper);border-radius:12px;overflow:hidden}
+th,td{text-align:left;vertical-align:top;padding:9px 10px;border-bottom:1px solid var(--line)}
+th{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--green-2);background:#F4E9C4}
+td b{font-weight:700;color:var(--green)}
+.tw.breit{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -16px;padding:0 16px}
+.tw.breit table{min-width:640px}
+.gut{color:var(--green);font-weight:700}.schlecht{color:var(--rot);font-weight:700}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.liste div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:700}
+.weg{display:grid;gap:12px}
+.karte{display:grid;grid-template-columns:44px 1fr;gap:12px;background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
+.karte.on{background:var(--green);color:var(--cream);border-color:var(--green)}
+.karte .k{font-family:var(--serif);font-size:30px;line-height:1;color:var(--gold-deep)}
+.karte.on .k{color:var(--gold-hi)}
+.karte .t{font-weight:700;font-size:17px}
+.karte .s{font-size:14.5px;opacity:.85;margin-top:3px}
+.pos{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.pos div{border-radius:14px;padding:14px;font-size:15px}
+.pos .c{background:var(--green);color:var(--cream)}.pos .x{background:#F4E9C4;color:var(--ink);border:1px solid var(--line)}
+.pos .l{font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;opacity:.85;margin-bottom:6px}
+.entscheid{display:grid;gap:10px;background:var(--green);color:var(--cream);border-radius:16px;padding:18px}
+.entscheid h3{color:var(--gold-hi);font-size:24px}
+.entscheid p{font-size:16px}
+.entscheid .mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold-hi)}
+.pipeline{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}
+.pipeline div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14px;position:relative}
+.pipeline div b{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--green-2);margin-bottom:4px}
+.pipeline .geld{color:var(--gold-deep);font-weight:700}
+footer{margin-top:30px;font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-2)}
+a{color:var(--green)}
+</style>
+</head>
+<body><div class="wrap">
+
+<header>
+  <p class="eyebrow">R&amp;F · Goldene Welt · Der Geldbaum · Recherche Serie und Animation · 22.10.2026</p>
+  <h1>Wie die guten Kinderserien gemacht sind, und wie R&amp;F dahin kommt</h1>
+  <p class="lead">Deine Rückmeldung zu Mockups 1: altbacken, begeistert kein Kind. Richtung: Animation, Bilder, Pixar-Anmutung wie Luca oder Elemental, langfristig eine Serie. Hier die Antwort aus drei Recherchen, eigenhändig nachgeprüft. Vollständig mit allen Quellen: <code>20_WISSEN-QUELLEN/Recherche-Briefings/Kinderserie_Geldbaum_Animation_2026-10-22.md</code>.</p>
+</header>
+
+<section>
+  <h2><span class="num">0</span>Kurzantwort auf deine vier Fragen</h2>
+  <div class="antwort">
+    <div><b>Welche US-Serie?</b> Vermutlich <b>Ask the StoryBots</b> (Netflix 2016 bis 2019): Kinder stellen eine Alltagsfrage, fünf Bots suchen die Antwort in der Menschenwelt, am Ende ein Lied, je Folge ein Promi. 22 Sprachen, 190 Länder, Emmy 2017. Bitte bestätigen, Alternativen wären Cocomelon (Lieder, kein Wissen) oder Numberblocks (britisch).</div>
+    <div><b>Wie machen die das?</b> Mit einem festen Rezept, nicht mit einem Werkzeug: eine Frage je Folge, 3 bis 8 Minuten, feste Figur, Antwort als Lied oder Merksatz, ruhiger Schnitt. Die Figur ist immer ein <b>festes Modell</b>, das in jeder Folge identisch bleibt. Genau das liefern KI-Videomodelle heute nicht von allein.</div>
+    <div><b>Higgsfield, einige hundert Prozent?</b> Für <b>einzelne Szenen ja</b>, ein Clip in Minuten statt Tagen. Für <b>eine Serie nicht belegt</b>: Engpässe sind Figur-Konsistenz über Folgen, deutsche Lippen und die Buchstaben R&amp;F, die Videomodelle verformen. Higgsfield ist ein Sammelzugang zu Veo 3.1, Kling 3.0, Seedance 2.5 und Wan 3.0 mit Figurenspeicher (Soul ID) und Lippenschicht (LipSync Studio), kein eigenes Pixar-Werkzeug.</div>
+    <div><b>Wie Pixar-Anmutung?</b> Zweigleisig: jetzt ein <b>Pilot von 30 bis 45 Sekunden</b> in Higgsfield, um Look und Konsistenz am echten Bild zu sehen; parallel die Figur einmal als <b>festes 3D-Modell</b>, das in der App und als Referenz für jedes Video dient. Ehrlich: Luca und Elemental sind Produktionen mit dreistelligen Millionenbudgets. Erreichbar ist die Anmutung in Standbildern und kurzen Clips, nicht das Schauspiel.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">1</span>Die Vorbilder, geprüft</h2>
+  <div class="tw breit"><table>
+    <tr><th>Serie</th><th>Technik</th><th>Folge</th><th>Alter</th><th>Reichweite</th><th>Wie Wissen vermittelt wird</th></tr>
+    <tr><td><b>Ask the StoryBots</b><br>USA, JibJab, Netflix</td><td>Mischform 3D, 2D, Knete, Realfilm</td><td>halbstündig, 22 Folgen</td><td>Vorschule, Fragen tragen bis 9</td><td>22 Sprachen, 190 Länder, Emmy</td><td>Kinderfrage, Suche, Antwort als Musikvideo, Promi hilft</td></tr>
+    <tr><td><b>Numberblocks</b><br>GB, Blue Zoo, CBeebies</td><td>3D</td><td>5 Min, über 180 Folgen</td><td>3 bis 6</td><td>12,6 Mio. Abonnenten, 11 Mrd. Aufrufe</td><td>Jede Zahl ist eine Figur, die Form ist der Inhalt</td></tr>
+    <tr><td><b>Cocomelon</b><br>USA, Moonbug</td><td>3D</td><td>2 bis 4 Min Lieder</td><td>2 bis 5</td><td>200 Mio. Abonnenten, Platz 3 weltweit</td><td>Lieder, kein Erklärformat; Kritik: hektisch</td></tr>
+    <tr><td><b>Bluey</b><br>Australien, Ludo</td><td>2D</td><td>7 Min</td><td>2 bis 6</td><td>meistgestreamt in den USA 2025</td><td>kein Wissen; Vorbild für Wärme und Ruhe</td></tr>
+    <tr><td><b>Checker Tobi, Maus</b><br>D</td><td>Realfilm plus Trick</td><td>25 bis 30 Min</td><td>6 bis 10</td><td>nicht gefunden</td><td>„Geld-Check": Flohmarkt, Bank, Banknoten</td></tr>
+    <tr><td><b>KNAX (Sparkasse)</b></td><td>Comic, Erklärfilme</td><td>Hefte seit 1974</td><td>6 bis 12</td><td>kein Serien-Erfolg belegt</td><td>Didi und Dodo, gekoppelt an Startkonto</td></tr>
+  </table></div>
+  <div class="liste">
+    <div><b>Die Lücke:</b> Kein belegtes Vorbild für „Geld, 6 bis 9, Kinofilm-Look". Die großen Kanäle bedienen 0 bis 6 mit Liedern, die deutschen Wissensformate für 6 bis 10 sind Realfilm. Chance und Risiko zugleich: ohne Vorbild kein Beweis, dass es trägt. Erkennungstest mit fünf Kindern vor der ersten Folge.</div>
+    <div><b>Das Rezept:</b> eine Alltagsfrage je Folge · die Figur weiß es selbst nicht und findet es heraus · Antwort als Lied oder Merksatz, zweimal · 3 bis 8 Minuten · Form ist Inhalt (bei uns: der Baum wächst, die Buchstaben tun etwas) · Ruhe im Bild · kein Kaufappell an Kinder.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">2</span>Higgsfield heute und die Preise</h2>
+  <div class="tw"><table>
+    <tr><th>Punkt</th><th>Befund (Stand Oktober 2026)</th></tr>
+    <tr><td>Tarife</td><td>Starter 15 $ (200 Credits) · Plus 49 $ (1.000) · Ultra 129 $ (3.000), jährlich günstiger. Welcher bei dir läuft, weiß ich nicht.</td></tr>
+    <tr><td>Modelle drin</td><td>Veo 3.1 · Kling 3.0 · Seedance 2.5 · Wan 3.0 · Gemini Omni Flash. Sora 2 ist seit April 2026 abgeschaltet, fällt überall weg.</td></tr>
+    <tr><td>Eigene Werkzeuge</td><td>Soul ID (Figur über Szenen halten, auf Gesichter ausgelegt) · Cinema Studio 4.0 (Szene in Shots, Kamerapresets) · LipSync Studio (Bild spricht, acht Modelle)</td></tr>
+    <tr><td>Credits je Clip</td><td>Kling 3.0: 10 je 5 s in 720p, 12,5 in 1080p · Seedance 2.5: 52 je 8 s · Cinema Studio: 25 je 5 s · Standbild Nano Banana Pro: etwa 2</td></tr>
+    <tr><td>Preis gegen direkt</td><td>Kling über Plus 0,098 $/s, direkt 0,084 $/s. Gewinn ist Bedienung und Bündelung, nicht Preis.</td></tr>
+    <tr><td>Nicht gefunden</td><td>Ob Soul ID eine Buchstabenfigur hält · deutsche Lippensynchronität · AGB und Rechte der Fremdmodelle (nicht gelesen)</td></tr>
+  </table></div>
+  <div class="tw"><table>
+    <tr><th>Weg</th><th>Je fertiger Minute (Ausschuss 3 bis 5)</th></tr>
+    <tr><td>Veo 3.1 Fast 1080p (0,12 $/s)</td><td><b>22 bis 36 $</b></td></tr>
+    <tr><td>Kling 3.0 1080p mit Ton (0,168 $/s)</td><td><b>30 bis 50 $</b></td></tr>
+    <tr><td>Kling 3.0 über Higgsfield Plus</td><td>225 bis 375 Credits, <b>11 bis 18 $</b> Gegenwert; ein Plus-Monat reicht für 2 bis 4 fertige Minuten</td></tr>
+    <tr><td>Eigenes 3D-Modell in Blender</td><td>Software 0 $, Meshy Pro etwa 20 €/Monat; <b>Zeit</b> 1 bis 3 Tage je Minute nach dem Aufbau</td></tr>
+  </table></div>
+  <p class="lead" style="font-size:15px">Nur Videokosten. Stimme, Schnitt, Musik, Upscale kommen dazu. Der Ausschussfaktor ist eine Annahme, unsere Veritas-Erfahrung vom August lag bei 2 bis 4.</p>
+</section>
+
+<section>
+  <h2><span class="num">3</span>Drei Wege zur Pixar-Anmutung</h2>
+  <div class="weg">
+    <div class="karte"><span class="k">A</span><div><p class="t">Reines KI-Video in Higgsfield</p><p class="s">Standbilder mit Nano Banana Pro, Clips mit Kling 3.0 und Veo 3.1, Lippen über LipSync Studio. <span class="gut">Tage bis zum Pilot, niedrige Kosten.</span> <span class="schlecht">Figur driftet von Clip zu Clip, und Buchstaben im Körper sind genau das, was Videomodelle am schlechtesten können.</span></p></div></div>
+    <div class="karte"><span class="k">B</span><div><p class="t">Festes 3D-Modell</p><p class="s">Figurenblatt, Meshy, Rig in Blender, Rendern. <span class="gut">Figur bleibt für immer gleich, Buchstabenfigur ist ein dankbarer Fall: starr, wenige Gelenke, keine Haare.</span> <span class="schlecht">Wochen Aufbau, Pixar-Look nur mit Licht- und Materialarbeit; erster Meshy-Render im Juni kam grau.</span></p></div></div>
+    <div class="karte on"><span class="k">C</span><div><p class="t">Hybrid: B liefert die Figur, A liefert die Szenen</p><p class="s">Die feste Figur geht als Referenzbild in jedes Video und als Bildfolge in die App; Bewegung und Welt kommen aus Kling und Veo; Stimme aus ElevenLabs. <span style="color:var(--gold-hi);font-weight:700">Empfehlung, mit A als allererstem Schritt.</span></p></div></div>
+  </div>
+  <div class="pos">
+    <div class="c"><p class="l">Position Claude</p>Weg C, aber <b>zuerst der KI-Pilot</b>: Du hast Higgsfield schon, ein Pilot in Tagen zeigt am echten Bild, ob die Buchstabenfigur in Bewegung hält. Ohne den Test wäre jede Werkzeugwahl Vermutung. Parallel beginnt das 3D-Modell, weil die App ohnehin eine feste Figur braucht.</div>
+    <div class="x"><p class="l">Position Codex (Sub-Agent, Konfidenz 4 von 10)</p>Zuerst das feste 3D-Modell, Higgsfield nur Platz 3, weil nur ein festes Modell die Serie trägt. Widerspruch zu Claude: erst bauen, dann testen. Claude: erst testen (50 bis 100 $), dann Wochen in Blender. Codex-Zweitprüfung des fertigen Briefings folgt unten, sobald sie vorliegt.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">4</span>Was auf YouTube und rechtlich fest gilt</h2>
+  <div class="liste">
+    <div><b>„Für Kinder" (COPPA):</b> Kennzeichnung Pflicht, dann keine Kommentare, keine personalisierten Anzeigen, keine Abonnenten-Benachrichtigung, keine Endkarten. Wachstum über Suche und Empfehlung.</div>
+    <div><b>Inauthentic Content (seit 15.07.2025):</b> gleichförmige oder nur KI-vertonte Massenvideos werden nicht mehr monetarisiert. KI bleibt erlaubt, wenn jede Folge eigenes Drehbuch, Regie, Stimme und Schnitt hat.</div>
+    <div><b>Werbung an Kinder (UWG Nr. 28):</b> kein „Hol dir", kein Produkt, kein Institutsname als Angebot in Kinderfolgen; Duzen plus Kindersprache zählt als gezielte Ansprache (BGH 2013). Kaufbezug nur im Elternformat.</div>
+    <div><b>Der Stil ist belastet:</b> KI-Pixar-Videos wurden 2026 für Holocaust-Leugnung an Kinder missbraucht; Fiverr verkauft den Look als Massenware. Deshalb eigene Figur, ehrliche Kennzeichnung, redaktionelle Qualität.</div>
+    <div><b>TikTok und Instagram:</b> ab 13, erreichen die Eltern, nicht die Kinder. Cocomelon spielt dort eine Eltern-Kampagne. Kurzformen: Nutzen für Eltern in der ersten Zeile, Figur als Wiedererkennung.</div>
+    <div><b>Offen, vor dem Livegang:</b> Higgsfield-AGB und Rechte der Fremdmodelle · JMStV-Normtext · Datenschutz bei Kindern, sobald Daten erhoben werden.</div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">5</span>Der Pilot: Kostenplan, braucht dein Go</h2>
+  <div class="pipeline">
+    <div><b>Schritt 1</b>Figurenblatt in Pixar-Anmutung: drei Fassungen, je Vorderseite, Seite, drei Ausdrücke, Nano Banana Pro. <span class="geld">2 bis 4 $</span>. Du entscheidest am Bild.</div>
+    <div><b>Schritt 2</b>Probeszene 30 bis 45 s in Higgsfield, Kling 3.0 und Veo 3.1 parallel, Figurenblatt als Referenz, Stimme ElevenLabs. <span class="geld">15 bis 60 $ Gegenwert</span>.</div>
+    <div><b>Schritt 3</b>Parallel: feste Figur in 3D (Meshy Pro, Blender), drei Standbilder, Winken und Freuen als Bildfolge für die App. <span class="geld">20 € plus zwei bis drei Arbeitstage</span>.</div>
+    <div><b>Schritt 4</b>Mockups 2 der App, erst mit den echten Figurenbildern: Bildflächen statt gezeichneter Symbole, Figur bewegt sich, Baum als Bild. <span class="geld">0 $</span>.</div>
+  </div>
+  <p class="lead" style="font-size:15px">Gesamt etwa 40 bis 100 $ Erzeugung plus laufende Tarife. Prüfkriterien, die du am Bild beurteilst: Bleibt R&amp;F in allen Clips dieselbe Figur? Sind die Buchstaben lesbar? Wirkt es wie Luca, nicht wie Fiverr? Passen die Lippen zum Deutschen?</p>
+</section>
+
+<section>
+  <div class="entscheid">
+    <p class="mono">Was Simon entscheidet</p>
+    <h3>Vier Antworten, dann startet der Pilot</h3>
+    <p>1. Welche US-Serie meintest du: StoryBots, oder eine andere (Bild oder Folgentitel reicht)?</p>
+    <p>2. Go für Schritt 1, das Figurenblatt (2 bis 4 $)? Und: welcher Higgsfield-Tarif läuft bei dir?</p>
+    <p>3. Grundform der Figur fürs Blatt: F1 (Wortmarke mit Gesicht), F2 (Kopf oben), F3 (Buchstaben als Glieder), oder frei nach Pixar-Anmutung neu?</p>
+    <p>4. Lebt die Serie zuerst in der App oder zuerst auf YouTube? Das bestimmt Format und Länge der ersten Folge.</p>
+  </div>
+</section>
+
+<footer>Datei: 10_PROJEKTE/Goldene-Welt-Kinder-App/recherche_2026-10-22/Serie_Recherche_Seite.html · Quellen im Briefing · Status Entwurf, Konfidenz 6 von 10 (Vorbilder 8, Higgsfield-Preise 7, Kosten 6, Buchstabenfigur in Bewegung 3, Recht 6).</footer>
+</div></body></html>
