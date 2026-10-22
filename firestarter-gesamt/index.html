@@ -192,7 +192,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   </div>
 </div>
 
-<script>/* Stand 21c: angemeldet bleiben, direkt in die App */try{if(localStorage.getItem('fs_login')){sessionStorage.setItem('fs_login','1');location.replace('app/');}}catch(e){}</script>
+<script>/* Stand 21d: Anmelden springt sofort in die App. Stand 21c: angemeldet bleiben, direkt in die App */try{if(localStorage.getItem('fs_login')){sessionStorage.setItem('fs_login','1');location.replace('app/');}}catch(e){}</script>
 <script>
 (function(){
   var app=document.getElementById('app'), t=[], ziel=3;
@@ -231,7 +231,8 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
     app.classList.add('p4');
     
     function weiter(){try{sessionStorage.setItem('fs_login','1');localStorage.setItem('fs_login','1');}catch(e){}location.replace('app/');}
-    t.push(setTimeout(function(){app.classList.add('p5');setTimeout(function(){if(GRUSS&&!GRUSS.ended){var fertig=false;GRUSS.addEventListener('ended',function(){if(!fertig){fertig=true;weiter();}});setTimeout(function(){if(!fertig){fertig=true;weiter();}},9000);}else weiter();},1100);},1100));}
+    /* Stand 21d (22.10.2026, Simons Video): kein Warten auf Uebergang und gesprochene Begruessung, sofort in die App. Der Begruessungssatz liegt in fs_gruss fuer die Startseite. */
+    weiter();}
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();login();});
   document.getElementById('skip').addEventListener('click',skip);
   document.getElementById('again').addEventListener('click',play);
