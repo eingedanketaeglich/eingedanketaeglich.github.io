@@ -192,7 +192,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   </div>
 </div>
 
-<script>/* Stand 21d: Anmelden springt sofort in die App. Stand 21c: angemeldet bleiben, direkt in die App */try{if(localStorage.getItem('fs_login')){sessionStorage.setItem('fs_login','1');location.replace('app/');}}catch(e){}</script>
+<script>/* Stand 21d: Anmelden springt sofort in die App. Stand 21c: angemeldet bleiben, direkt in die App */try{if(localStorage.getItem('fs_login')){document.documentElement.style.visibility='hidden';location.replace('app/');}}catch(e){}</script>
 <script>
 (function(){
   var app=document.getElementById('app'), t=[], ziel=3;
