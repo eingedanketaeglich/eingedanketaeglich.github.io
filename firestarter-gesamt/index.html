@@ -132,9 +132,12 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 @media (prefers-reduced-motion: reduce){.app *{transition-duration:.01ms !important;animation:none !important}}
 .lern{display:none !important}
 /* Gesamtpaket 22.10.2026: nach der Anmeldung geht es in die App (app/), der Lernstand-Platzhalter ist aus. */
+/* Simons Idee 22.10.: waehrend des Charts bleibt die Statusleiste creme, erst mit dem Anmeldeformular (p3) wird der Kantenstreifen navy. */
+body:has(.app.p3) #kante{background:#102444}
+body:has(.app.p5) #kante{background:#102444}
 </style>
 </head>
-<body style="background:linear-gradient(#102444 0 40%,#F5F1EA 40%)"><div id="kante" style="position:fixed;top:0;left:0;right:0;height:12px;background:#102444;z-index:999;pointer-events:none"></div>
+<body style="background:#F5F1EA"><div id="kante" style="position:fixed;top:0;left:0;right:0;height:12px;background:#F5F1EA;z-index:999;pointer-events:none;transition:background .4s"></div>
 
 <div class="app" id="app">
   <svg class="kerzen" viewBox="0 0 390 844" preserveAspectRatio="none" aria-hidden="true">
