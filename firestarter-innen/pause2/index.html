@@ -1,0 +1,14 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Länge der Pause</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Work+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>body{margin:0;background:#F5F1EA;color:#102444;font:400 16px/1.45 'Work Sans',system-ui,sans-serif}main{max-width:420px;margin:0 auto;padding:28px 16px 48px}
+small{font:500 12px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#5A6478}h1{font:400 32px/1.1 Gloock,serif;margin:6px 0 10px}
+.k{background:#fff;border:1.5px solid #E4DDCF;border-radius:16px;padding:16px;margin:14px 0;display:grid;gap:10px}.k p{margin:0;color:#3B4660;font-size:15px}
+.k.e{border-color:#102444}button{font:600 16px 'Work Sans',sans-serif;background:#102444;color:#FFFFFF;border:0;border-radius:12px;padding:13px;width:100%}button.on{background:#E86A00;color:#FFFFFF}
+.s{font-family:Gloock,serif;font-size:19px;color:#102444}.s i{font-style:normal;background:#FFE3C2;color:#102444;border-radius:4px;padding:0 4px}</style></head><body><main>
+<small>Firestarter · Sparky · Hörprobe 2</small><h1>Wie lang soll die Pause sein?</h1>
+<p>Pause vor „Flamme“ wie gewählt (A). Hier nur die Länge. Die erste Karte ist genau die Fassung, die jetzt in der App liegt.</p>
+<div class="k e"><small>0,35 s · jetzt in der App</small><div class="s">ich bin Sparky, deine <i>…</i> Flamme.</div><button data-a="laenge_0_35.mp3">Anhören</button></div>
+<div class="k"><small>0,55 s</small><div class="s">ich bin Sparky, deine <i>· · …</i> Flamme.</div><button data-a="laenge_0_55.mp3">Anhören</button></div>
+<div class="k"><small>0,75 s</small><div class="s">ich bin Sparky, deine <i>· · · · …</i> Flamme.</div><button data-a="laenge_0_75.mp3">Anhören</button></div>
+<p>Antwort reicht als „0,55“ oder „0,75“ (oder eine andere Zahl). Dann setze ich diese Länge in alle 15 Sparky-Aufnahmen.</p>
+</main><script>var cur=null,cb=null;document.querySelectorAll('[data-a]').forEach(function(b){b.addEventListener('click',function(){if(cur){cur.pause();cb.classList.remove('on');cb.textContent='Anhören';}if(cb===b){cur=null;cb=null;return;}cur=new Audio(b.dataset.a);cb=b;b.classList.add('on');b.textContent='Stopp';cur.play();cur.onended=function(){b.classList.remove('on');b.textContent='Anhören';cur=null;cb=null;};});});</script></body></html>
