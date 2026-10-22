@@ -1,0 +1,109 @@
+<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex"><style>html{color-scheme:light}body{margin:0}</style></head><body><title>Firestarter Anfangschart Kopf</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Gloock&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Drei Mockups fuer den oberen Rand des Anfangscharts (22.10.2026). Seit die Statusleiste blau ist, liegt ueber dem cremefarbenen Chart-Intro ein glatter blauer Balken. Hier drei Wege, wie das Blau oben zum Chart gehoeren kann. Alle Formen direkt gezeichnet, immer hell. */
+:root{
+  --bg:#FCFAF6; --surface:#FFFFFF; --line:#E3DCCB; --fg:#1C1917; --fg-2:#6B6257; --navy:#102444; --navy-ink:#F5F1EA; --gold:#BBA45F; --gold-soft:#F1E9CF;
+  --sans:"Nunito",ui-rounded,system-ui,sans-serif; --serif:"Gloock",Georgia,serif; --body2:"Work Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --wc:#102444; --wc-2:#0A1830; --wa:#FF7A00; --wsoft:#C6D2E2; --wcream:#F5F1EA; --grey:#6B6257; --ph:#8A8272; color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.55;padding-block:0 56px;padding-inline:16px}
+.wrap{max-width:1100px;margin:0 auto}
+h1,h2{text-wrap:balance;line-height:1.15;margin:0}
+h1{font-size:clamp(30px,6vw,40px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:clamp(22px,4.5vw,28px);font-weight:800}
+p{margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2)}
+header{padding-block:32px 18px;display:grid;gap:12px}
+header .lead{font-size:18px;color:var(--fg-2);max-width:66ch}
+section{display:grid;gap:16px;padding-block:28px;border-top:1px solid var(--line)}
+.num{display:inline-grid;place-items:center;min-width:30px;height:28px;padding:0 8px;border-radius:8px;background:var(--navy);color:var(--navy-ink);font-weight:800;font-size:14px;margin-right:10px;vertical-align:middle}
+.row{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));justify-items:center}
+.cell{display:grid;gap:6px;justify-items:center;min-width:0;width:100%}
+.cell .tag{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--fg-2);text-align:center}
+.cell .cap{font-size:13.5px;color:var(--fg-2);text-align:center;max-width:32ch}
+.cell .cap b{color:var(--fg);font-weight:800}
+.liste{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.liste div{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:14.5px}
+.liste b{font-weight:800}
+/* Telefon mit Statusleiste */
+.ph{width:min(100%,250px);aspect-ratio:9/19.5;border-radius:32px;background:#0A1424;padding:8px;position:relative;box-shadow:0 12px 32px rgba(60,40,10,.12)}
+.scr{position:relative;width:100%;height:100%;border-radius:25px;overflow:hidden;background:var(--wcream);color:var(--wc-2);font-family:var(--body2);font-size:10px}
+.status{position:absolute;left:0;right:0;top:0;height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;font:600 9px var(--sans);color:#F5F1EA;z-index:6}
+.status i{width:46px;height:12px;border-radius:999px;background:#000;display:block}
+.status.dunkel{color:var(--wc-2)}
+.skip{position:absolute;right:14px;top:36px;font-size:8px;color:var(--ph);z-index:6}
+.skip.hell{color:rgba(245,241,234,.8)}
+.logo{position:absolute;left:0;right:0;top:34%;text-align:center;font-family:var(--serif);font-size:44px;color:var(--wc);line-height:1}
+.name{position:absolute;left:0;right:0;top:47%;text-align:center;font-family:var(--mono);font-size:7px;letter-spacing:.14em;text-transform:uppercase;color:var(--wc);line-height:1.8}
+.chart{position:absolute;left:0;right:0;bottom:0;height:52%}
+.chart svg{width:100%;height:100%;display:block}
+.zz{position:absolute;left:0;right:0;top:0;background:var(--wc);z-index:4}
+.zz svg{position:absolute;left:0;right:0;bottom:-1px;width:100%;height:16px;display:block}
+.dunkel .logo,.dunkel .name{color:#F5F1EA}
+</style>
+
+<div class="wrap">
+<header>
+  <p class="eyebrow">Firestarter · Anfangschart · oberer Rand · 22.10.2026</p>
+  <h1>Das Blau oben soll zum Chart gehören</h1>
+  <p class="lead">Seit die Statusleiste blau ist, liegt über dem cremefarbenen Chart-Intro ein glatter blauer Balken. Drei Wege, wie das Blau oben Teil des Bildes wird. Alles andere am Intro (R&amp;F wächst, Kerzen steigen, Linie läuft, Formular schiebt sich hoch) bleibt unverändert.</p>
+  <div class="liste"><div><b>K0, Simons Idee, bereits eingebaut:</b> Während des Charts bleibt die Statusleiste creme, erst wenn das Anmeldeformular hochkommt, wird sie blau. Der Kantenstreifen schaltet im selben Moment um wie der blaue Kopf. Ob iOS die Farbe live mitzieht, zeigt erst der Test am Gerät; falls nicht, sind K1 bis K3 die Alternativen.</div></div>
+</header>
+
+<section>
+  <h2><span class="num">Ist</span>So sieht es jetzt aus</h2>
+  <div class="row">
+    <div class="cell"><span class="tag">Ist · Intro mit glattem Balken</span>
+      <div class="ph"><div class="scr">
+        <div class="zz" style="height:30px"></div>
+        <div class="status"><span>9:41</span><i></i><span>▮▮▮</span></div>
+        <span class="skip">Überspringen</span>
+        <div class="logo">R&amp;F</div><div class="name">Institut für<br>Vermögensbildung</div>
+        <div class="chart"><svg viewBox="0 0 390 440" preserveAspectRatio="none"><rect x="58" y="236" width="14" height="90" fill="#C6D2E2"/><rect x="101" y="196" width="14" height="130" fill="#C6D2E2"/><rect x="144" y="218" width="14" height="108" fill="#C6D2E2"/><rect x="187" y="144" width="14" height="182" fill="#C6D2E2"/><rect x="230" y="96" width="14" height="230" fill="#C6D2E2"/><rect x="273" y="118" width="14" height="208" fill="#C6D2E2"/><rect x="316" y="36" width="14" height="290" fill="#FF7A00"/><path d="M30 308 L65 264 L108 230 L151 250 L194 172 L237 130 L280 152 L323 46 L360 -8" fill="none" stroke="#102444" stroke-width="3"/></svg></div>
+      </div></div>
+      <p class="cap"><b>Was stört:</b> ein harter blauer Streifen ohne Bezug zum Rest, darunter sofort Creme.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">K</span>Drei Wege</h2>
+  <div class="row">
+    <div class="cell"><span class="tag">K1 · Zickzack-Kopf wie in der App</span>
+      <div class="ph"><div class="scr">
+        <div class="zz" style="height:78px"><svg viewBox="0 0 270 34" preserveAspectRatio="none"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="status"><span>9:41</span><i></i><span>▮▮▮</span></div>
+        <span class="skip hell">Überspringen</span>
+        <div class="logo" style="top:36%">R&amp;F</div><div class="name" style="top:49%">Institut für<br>Vermögensbildung</div>
+        <div class="chart"><svg viewBox="0 0 390 440" preserveAspectRatio="none"><rect x="58" y="236" width="14" height="90" fill="#C6D2E2"/><rect x="101" y="196" width="14" height="130" fill="#C6D2E2"/><rect x="144" y="218" width="14" height="108" fill="#C6D2E2"/><rect x="187" y="144" width="14" height="182" fill="#C6D2E2"/><rect x="230" y="96" width="14" height="230" fill="#C6D2E2"/><rect x="273" y="118" width="14" height="208" fill="#C6D2E2"/><rect x="316" y="36" width="14" height="290" fill="#FF7A00"/><path d="M30 308 L65 264 L108 230 L151 250 L194 172 L237 130 L280 152 L323 46 L360 -8" fill="none" stroke="#102444" stroke-width="3"/></svg></div>
+      </div></div>
+      <p class="cap"><b>Der Kopf ist von Anfang an da.</b> Ein schmaler blauer Kopf mit derselben Zickzack-Kante wie in der App, leer, nur „Überspringen" darin. Am Ende rutscht R&amp;F genau in diesen Kopf, so wie heute. Das Blau oben hat dann einen Grund.</p></div>
+
+    <div class="cell"><span class="tag">K2 · Ganz dunkel, der Chart leuchtet</span>
+      <div class="ph"><div class="scr dunkel" style="background:#102444">
+        <div class="status"><span>9:41</span><i></i><span>▮▮▮</span></div>
+        <span class="skip hell">Überspringen</span>
+        <div class="logo">R&amp;F</div><div class="name" style="color:rgba(245,241,234,.85)">Institut für<br>Vermögensbildung</div>
+        <div class="chart"><svg viewBox="0 0 390 440" preserveAspectRatio="none"><rect x="58" y="236" width="14" height="90" fill="rgba(198,210,226,.35)"/><rect x="101" y="196" width="14" height="130" fill="rgba(198,210,226,.35)"/><rect x="144" y="218" width="14" height="108" fill="rgba(198,210,226,.35)"/><rect x="187" y="144" width="14" height="182" fill="rgba(198,210,226,.35)"/><rect x="230" y="96" width="14" height="230" fill="rgba(198,210,226,.35)"/><rect x="273" y="118" width="14" height="208" fill="rgba(198,210,226,.35)"/><rect x="316" y="36" width="14" height="290" fill="#FF7A00"/><path d="M30 308 L65 264 L108 230 L151 250 L194 172 L237 130 L280 152 L323 46 L360 -8" fill="none" stroke="#F5F1EA" stroke-width="3"/></svg></div>
+      </div></div>
+      <p class="cap"><b>Das Intro ist blau, das Formular wird creme.</b> Der ganze Anfang spielt auf Navy: R&amp;F in Creme, Kerzen hellblau, Linie creme, die letzte Kerze orange. Dann schiebt sich das cremefarbene Formular von unten hoch, die Umkehr von heute. Statusleiste und Seite sind eins.</p></div>
+
+    <div class="cell"><span class="tag">K3 · Nur die Kante, hauchdünn</span>
+      <div class="ph"><div class="scr">
+        <div class="zz" style="height:34px"><svg viewBox="0 0 270 34" preserveAspectRatio="none" style="height:12px"><path d="M0 34 L0 26 L40 19 L75 28 L110 12 L150 21 L185 5 L225 14 L270 0 L270 34 Z" fill="#F5F1EA"/></svg></div>
+        <div class="status"><span>9:41</span><i></i><span>▮▮▮</span></div>
+        <span class="skip" style="top:50px">Überspringen</span>
+        <div class="logo">R&amp;F</div><div class="name">Institut für<br>Vermögensbildung</div>
+        <div class="chart"><svg viewBox="0 0 390 440" preserveAspectRatio="none"><rect x="58" y="236" width="14" height="90" fill="#C6D2E2"/><rect x="101" y="196" width="14" height="130" fill="#C6D2E2"/><rect x="144" y="218" width="14" height="108" fill="#C6D2E2"/><rect x="187" y="144" width="14" height="182" fill="#C6D2E2"/><rect x="230" y="96" width="14" height="230" fill="#C6D2E2"/><rect x="273" y="118" width="14" height="208" fill="#C6D2E2"/><rect x="316" y="36" width="14" height="290" fill="#FF7A00"/><path d="M30 308 L65 264 L108 230 L151 250 L194 172 L237 130 L280 152 L323 46 L360 -8" fill="none" stroke="#102444" stroke-width="3"/></svg></div>
+      </div></div>
+      <p class="cap"><b>Das Blau endet direkt unter der Uhrzeit mit einer kleinen Zickzack-Kante.</b> Kein Kopf, nur ein Saum, als wäre die Statusleiste selbst aus der Kurslinie geschnitten. Das Intro bleibt sonst exakt wie heute. Am Ende wächst der Saum zum Kopf der Anmeldung.</p></div>
+  </div>
+  <div class="liste">
+    <div><b>Aufwand:</b> K3 ist die kleinste Änderung (nur die Kante oben), K1 mittel (Kopf von Anfang an, Übergang anpassen), K2 am größten (Farben des ganzen Intros drehen, Übergang umkehren).</div>
+    <div><b>Meine Empfehlung:</b> K1. Es ist dieselbe Form wie in der App, der Nutzer sieht vom ersten Bild an die Kante, die ihn später überall begleitet, und R&amp;F landet am Ende genau dort.</div>
+    <div><b>Was bleibt:</b> in allen drei Fällen die Animation (R&amp;F wächst, Kerzen steigen, Linie läuft, Formular schiebt sich hoch) und der Übergang in die App.</div>
+  </div>
+</section>
+</div>
+</body></html>
