@@ -133,6 +133,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
 .lern{display:none !important}
 /* Gesamtpaket 22.10.2026: nach der Anmeldung geht es in die App (app/), der Lernstand-Platzhalter ist aus. */
 /* Simons Idee 22.10.: waehrend des Charts bleibt die Statusleiste creme, erst mit dem Anmeldeformular (p3) wird der Kantenstreifen navy. */
+.form.fehler{animation:shakeX .5s ease}@keyframes shakeX{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
 </style>
 </head>
 <body style="background:#F5F1EA"><div id="kante" style="position:fixed;top:0;left:0;right:0;height:12px;background:#F5F1EA;z-index:999;pointer-events:none"></div>
@@ -204,11 +205,16 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   function kanteNavy(){var k=document.getElementById('kante');if(!k)return;var p=k.parentNode;p.removeChild(k);k.style.background='#102444';p.insertBefore(k,p.firstChild);}
   function skip(){clearT();app.classList.add('p1','p2','p3');kanteNavy();}
   function count(){var el=document.getElementById('zaehler'),n=0;function step(){n++;el.textContent=n;if(n<ziel)t.push(setTimeout(step,160));}t.push(setTimeout(step,500));}
+  /* Zugaenge (Mockup, 23.10.2026): Simon, Rene, Stefan. Erkennung ueber die E-Mail-Adresse (Anfang), Passwort beliebig, nicht leer. Echte Konten kommen mit dem Server. */
+  var KONTEN=[{k:'simon',name:'Simon Schlerf'},{k:'rene',name:'René Flé'},{k:'stefan',name:'Stefan'}];
   function login(){
     if(!app.classList.contains('p3')||app.classList.contains('p4'))return;
+    var em=(document.getElementById('email').value||'').trim().toLowerCase(),pw=(document.getElementById('pass').value||'');var konto=null;KONTEN.forEach(function(k){if(!konto&&em.replace(/[^a-z]/g,'').indexOf(k.k)===0)konto=k;});
+    if(!konto||!pw){var f=document.getElementById('form');f.classList.add('fehler');setTimeout(function(){f.classList.remove('fehler')},900);var h=document.querySelector('.form .hi');if(h)h.textContent=!konto?'Diesen Zugang kennen wir nicht. Frag deinen Zugang an.':'Bitte Passwort eingeben.';return;}
+    try{localStorage.setItem('fs_name',konto.name);}catch(e){}
     document.activeElement&&document.activeElement.blur();
     app.classList.add('p4');
-    try{var nm=(document.getElementById('name').value||'').trim();if(nm)localStorage.setItem('fs_name',nm);}catch(e){}
+    
     t.push(setTimeout(function(){app.classList.add('p5');setTimeout(function(){try{sessionStorage.setItem('fs_login','1')}catch(e){}location.replace('app/');},1100);},1100));}
   document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();login();});
   document.getElementById('skip').addEventListener('click',skip);
