@@ -1,4 +1,10 @@
 <!doctype html><html lang="de" class="mk-b" style="background:#F5F1EA"><head><script>/* Mockup: ohne Anmeldung, alle Bausteine offen */try{if(!localStorage.getItem('fs_login')){localStorage.setItem('fs_login','1');localStorage.setItem('fs_name','Simon Schlerf');localStorage.setItem('fs_mail','simon@rf-institut.de');}}catch(e){}</script><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#102444"><meta name="robots" content="noindex"><style>html{color-scheme:light}body{margin:0}</style><title>Firestarter Mockup B · Ruhiger Lesefluss</title></head><body style="background:linear-gradient(#102444 0 40%,#F5F1EA 40%)"><script>
+/* Mockup B: Werkzeug-Bildschirm mit gezacktem Kopf wie die Werkzeug-Übersicht */
+document.addEventListener('DOMContentLoaded',function(){var wz=document.querySelector('#s-werkzeug .lk'),vorlage=document.querySelector('#s-lektion .kopf');if(!wz||!vorlage)return;
+ var k=document.createElement('div');k.className='kopf mk-wzkopf';var back=wz.querySelector('.back'),kl=document.getElementById('wz-klein');if(back)k.appendChild(back);if(kl)k.appendChild(kl);
+ var g=document.createElement('div');g.className='gross';g.id='mk-wz-gross';k.appendChild(g);
+ var e=vorlage.querySelector('.edge');if(e)k.appendChild(e.cloneNode(true));var f=vorlage.querySelector('svg.funke');if(f)k.appendChild(f.cloneNode(true));wz.replaceWith(k);
+ var sc=document.getElementById('wz-scroll');if(sc)new MutationObserver(function(){var h=sc.querySelector('.h-step');g.textContent=h?h.textContent:'Werkzeug';}).observe(sc,{childList:true});});
 window.MK={nach:function(c){var sc=c.sc;var lauf=[];
  [...sc.children].concat([null]).forEach(function(e){if(e&&e.matches('details.acci')){lauf.push(e)}else{if(lauf.length>=3)MK._sheet(lauf,sc);lauf=[]}});},
  _sheet:function(l,sc){var b=document.createElement('button');b.type='button';b.className='mk-begriffe';b.innerHTML=l.length+' Begriffe ansehen <span>›</span>';l[0].parentNode.insertBefore(b,l[0]);
@@ -1310,6 +1316,12 @@ html.mk-b{--wtint:#F4EFE7;--wsoft:#DCD3C6;--wcream:#FBF8F3}
 .mk-b .lc .take .n{font-size:24px}
 .mk-b .fr .o{background:transparent;border-bottom:1px solid #E6E0D3;border-radius:0}.mk-b .fr .o.on{background:#102444;color:#F5F1EA;border-radius:10px}
 .mk-b .btn:not(.deep):not(.gruen):not(.rot){background:transparent;border:1.5px solid #102444;color:#102444;box-shadow:none}
+.mk-wzkopf{padding-top:calc(58px + var(--top,0px))}
+.mk-wzkopf .klein{color:#F5F1EA}
+.mk-wzkopf .gross{font-size:28px;text-wrap:balance}
+#s-werkzeug #wz-scroll>.h-step:first-child{display:none}
+#s-werkzeug #wz-scroll{padding-top:50px!important}
+#s-werkzeug #wz-scroll>.step-sub{margin-top:0}
 .mk-begriffe{display:inline-flex;gap:8px;align-items:center;justify-self:start;border:1.5px solid #E6E0D3!important;background:#fff!important;color:#102444!important;border-radius:999px!important;padding:10px 16px;font:600 15px 'Work Sans',sans-serif;color:#102444;cursor:pointer}
 .mk-begriffe span{color:#FF7A00}
 .mk-sheet-bg{position:fixed;inset:0;background:rgba(28,25,23,.32);z-index:8000;opacity:0;pointer-events:none;transition:opacity .25s}
