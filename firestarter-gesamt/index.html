@@ -207,14 +207,14 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   function skip(){clearT();app.classList.add('p1','p2','p3');kanteNavy();}
   function count(){var el=document.getElementById('zaehler'),n=0;function step(){n++;el.textContent=n;if(n<ziel)t.push(setTimeout(step,160));}t.push(setTimeout(step,500));}
   /* Zugaenge (Mockup, 23.10.2026): Simon, Rene, Stefan. Erkennung ueber die E-Mail-Adresse (Anfang), Passwort beliebig, nicht leer. Echte Konten kommen mit dem Server. */
-  var KONTEN=[{mail:'simon@rf-institut.de',name:'Simon Schlerf'},{mail:'rene@rf-institut.de',name:'René Flé'},{mail:'stefan@rf-institut.de',name:'Stefan'},{mail:'patrick@rf-institut.de',name:'Patrick'}];
+  var KONTEN=[{mail:'simon@rf-institut.de',name:'Simon Schlerf'},{mail:'rene@rf-institut.de',name:'René Flé'},{mail:'stefan@rf-institut.de',name:'Stefan'},{mail:'patrick@rf-institut.de',name:'Patrick'},{mail:'matteo@rf-institut.de',name:'Matteo'},{mail:'test@rf-institut.de',name:'Test'}];
   function login(){
     if(!app.classList.contains('p3')||app.classList.contains('p4'))return;
     var em=(document.getElementById('email').value||'').trim().toLowerCase(),pw=(document.getElementById('pass').value||'');var konto=null;KONTEN.forEach(function(k){if(k.mail===em)konto=k;});
     if(!konto||!pw){var f=document.getElementById('form');f.classList.add('fehler');setTimeout(function(){f.classList.remove('fehler')},900);var h=document.querySelector('.form .hi');if(h)h.textContent=!konto?'Diesen Zugang kennen wir nicht. Frag deinen Zugang an.':'Bitte Passwort eingeben.';return;}
     try{localStorage.setItem('fs_name',konto.name);localStorage.setItem('fs_mail',konto.mail);}catch(e){}
     /* Stand 20: Begruessung sofort beim Tipp auf Anmelden (die Beruehrung gibt iOS den Ton frei), in der gewaehlten Stimme */
-    var GRUSS=null,vorn=konto.name.split(' ')[0];try{var st=JSON.parse(localStorage.getItem('fs13_'+konto.mail))||{};var erst=!st.intro&&!(st.logins>0);var v=st.stimme||'sparky';if(v==='dialekt')v={'Bairisch':'bairisch','Schwäbisch':'schwaebisch','Sächsisch':'saechsisch','Kölsch':'koelsch','Plattdeutsch':'plattdeutsch'}[st.dialekt||'Bairisch'];if(v==='kerze')v='sparky';var k=konto.mail.split('@')[0];
+    var GRUSS=null,vorn=konto.name.split(' ')[0];try{var st=JSON.parse(localStorage.getItem('fs13_'+konto.mail))||{};var erst=!st.intro&&!(st.logins>0);var v=st.stimme||'sparky';if(v==='dialekt')v={'Bairisch':'bairisch','Schwäbisch':'schwaebisch','Sächsisch':'saechsisch','Kölsch':'koelsch','Plattdeutsch':'plattdeutsch'}[st.dialekt||'Bairisch'];if(v==='kerze')v='sparky';var k=konto.mail.split('@')[0];if(!({simon:1,rene:1,stefan:1,patrick:1})[k])k='gast';
       /* Stand 21: Begruessung nach Rangfolge: Erstbesuch > Stand (Pause, Wochenziel, Baustein) > Wochentag > Tageszeit */
       var d=new Date(),h=d.getHours(),wt=d.getDay(),key,zeile;
       var TX={erst:['Hallo '+vorn+', ich bin Sparky','Tipp mich an.'],pause:['Schön, dass du wieder da bist','Wir machen da weiter, wo du warst.'],ziel:['Stark, '+vorn,'Dein Wochenziel steht.'],baustein:['Willkommen zurück, '+vorn,'Der nächste Baustein wartet.'],
