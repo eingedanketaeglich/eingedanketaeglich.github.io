@@ -977,7 +977,7 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
   function gruss(){var h=new Date().getHours();var set=h<11?[['Guten Morgen, '+NAME,'Starten wir durch?'],['Guten Morgen','Sechs Minuten für dich?'],['Guten Morgen','Schön, dass du da bist.']]:h<18?[['Hallo, '+NAME,'Heute ein Schritt?'],['Hallo','Weiter geht es.'],['Hallo','Zeit für eine Lektion?']]:[['Guten Abend, '+NAME,'Heute ein Schritt?'],['Guten Abend','Weiter geht es.'],['Guten Abend','Ein ruhiger Moment.']];return set[new Date().getDate()%3];}
   function renderStart(){var gs=null;try{gs=JSON.parse(sessionStorage.getItem('fs_gruss'));}catch(e){}var g=gs?gs:((!S.hint)?['Tipp '+flName()+' an','Dann hörst du mich.']:gruss());document.getElementById('st-klein').textContent=g[0];document.getElementById('st-gross').textContent=g[1];document.querySelector('#s-start .kopf .funke').classList.toggle('pulse',!S.hint);
     var a=aktuell(),prev=null;S.zuletzt.forEach(function(x){if(!prev&&istFertig(x)&&x!==a.nr)prev=x});
-    var pos=S.pos&&S.pos[a.nr];var z0=S.zuletzt[0],ziel=a.nr,satz;if(z0&&find(z0)&&!istFertig(z0)){ziel=z0;satz='Zuletzt warst du bei Lektion '+z0+'. Machst du dort weiter?';}else if(z0&&find(z0)){satz='Zuletzt warst du bei Lektion '+z0+'. Weiter geht es mit Lektion '+a.nr+'.';}else satz='Heute Lektion '+a.nr+', '+a.t+'.';document.getElementById('st-sag').textContent=satz;document.getElementById('st-weiter').onclick=function(){openLek(ziel)};
+    var pos=S.pos&&S.pos[a.nr];var z0=S.zuletzt.filter(function(x){return find(x)&&!istFertig(x)})[0]||S.zuletzt[0],ziel=a.nr,satz;if(z0&&find(z0)&&!istFertig(z0)){ziel=z0;satz='Zuletzt warst du bei Lektion '+z0+'. Machst du dort weiter?';}else if(z0&&find(z0)){satz='Zuletzt warst du bei Lektion '+z0+'. Weiter geht es mit Lektion '+a.nr+'.';}else satz='Heute Lektion '+a.nr+', '+a.t+'.';document.getElementById('st-sag').textContent=satz;document.getElementById('st-weiter').onclick=function(){openLek(ziel)};
     document.getElementById('st-wochelbl').textContent='Diese Woche · Ziel '+S.ziel+' Lektionen';
     var tg=['Mo','Di','Mi','Do','Fr','Sa','So'],heute=(new Date().getDay()+6)%7,w='';for(var i=0;i<7;i++){w+='<div><i class="'+(S.tage.indexOf(i)>=0?'on':(i===heute?'heute':''))+'"></i>'+tg[i]+'</div>';}document.getElementById('woche').innerHTML=w;
     var bi=a.b,kl=[];if(bi>0)kl.push({i:bi-1,st:'done'});kl.push({i:bi,st:'now'});if(bi<8)kl.push({i:bi+1,st:'next'});if(bi===0)kl.push({i:2,st:'next'});
@@ -1167,31 +1167,33 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
     SB_L={sparquote:'aus Lektion 2.2',notgroschen:'aus Lektion 2.3',realzins:'aus Lektion 3.1',zins:'aus Lektion 1.2',standort:'aus Lektion 1.4'},SB_W={sparquote:'spar',notgroschen:'not',realzins:'real',zins:'zins',standort:'std'},
     SB_STD={fw:'Finanzwissen',sb:'Selbstbestimmung',va:'Vermögensaufbau'};
   function sbDaten(){if(!S.steckbrief){S.steckbrief={};var d=S.steckbrief;
-      if(S.cockpit&&S.cockpit.quote!==undefined){var c=S.cockpit;d.sparquote=[{w:rcPz(c.quote),n:c.quote,d:'Übrig pro Monat: '+rcEur(c.netto-c.fix-c.variabel)+' · Fix '+rcEur(c.fix)+' · Variabel '+rcEur(c.variabel),t:null}];}
+      if(S.cockpit&&S.cockpit.quote!==undefined){var c=S.cockpit;d.sparquote=[{w:rcPz(c.quote),n:c.quote,d:(c.netto-c.fix-c.variabel>=0?'Übrig pro Monat: '+rcEur(c.netto-c.fix-c.variabel):'Pro Monat fehlen '+rcEur(c.fix+c.variabel-c.netto))+' · Fix '+rcEur(c.fix)+' · Variabel '+rcEur(c.variabel),t:null}];}
       if(S.notgroschen&&S.notgroschen.ziel){var g=S.notgroschen;d.notgroschen=[{w:rcEur(g.ziel),n:g.ziel,d:g.monate+' Monatsnettos à '+rcEur(g.netto),t:null}];}
       if(S.standort){d.standort=[{w:'',n:null,o:S.standort,t:null}];}save();}
     return S.steckbrief;}
   function sbPush(art,e){var d=sbDaten();e.t=Date.now();(d[art]=d[art]||[]).push(e);if(d[art].length>24)d[art]=d[art].slice(-24);}
   var sbTo=document.createElement('div');sbTo.id='sb-toast';document.body.appendChild(sbTo);var sbTt;
-  function sbToast(){sbTo.innerHTML='<span>Im Steckbrief gespeichert</span><span>Ansehen ›</span>';sbTo.setAttribute('data-go','steckbrief');sbTo.classList.add('on');clearTimeout(sbTt);sbTt=setTimeout(function(){sbTo.classList.remove('on')},4200);sbKarte();}
+  function sbGesichert(){try{var g=JSON.parse(localStorage.getItem(SKEY));return !!(g&&g.steckbrief)}catch(e){return false}}
+  function sbToast(){if(!sbGesichert()){tipp('Speichern auf diesem Gerät nicht möglich (privates Fenster?)');return;}sbTo.innerHTML='<span>Im Steckbrief gespeichert</span><span>Ansehen ›</span>';sbTo.setAttribute('data-go','steckbrief');sbTo.classList.add('on');clearTimeout(sbTt);sbTt=setTimeout(function(){sbTo.classList.remove('on')},4200);sbKarte();}
   sbTo.addEventListener('click',function(){sbTo.classList.remove('on')});
   window.sbPush=sbPush;window.sbToast=sbToast;window.sbDaten=sbDaten;window.rcBig=rcBig;
   window.rfRzSave=function(){var c=rcBox(),o=rcQ(c,'rz-out'),b=o&&o.querySelector('.big');if(!b){tipp('Bitte zuerst zwei Werte eintragen');return;}var t=(b.textContent||'').trim(),sub=(o.textContent||'').replace(/^Realzins pro Jahr/,'').replace(t,'').trim();sbPush('realzins',{w:t,n:rcNum(t),d:sub});save();sbToast();};
   window.rfZinsSave=function(){var c=rcBox(),v=(rcQ(c,'c-result').textContent||'').trim();if(!v||v==='…'){tipp('Bitte zuerst rechnen');return;}sbPush('zins',{w:v,n:rcNum(v),d:(rcQ(c,'c-detail').textContent||'').trim()});save();sbToast();};
+  function sbEsc(t){return String(t==null?'':t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function sbDat(t){return t?new Date(t).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'}):'früher gespeichert';}
   function sbKurz(t){return t?new Date(t).toLocaleDateString('de-DE',{month:'2-digit',year:'2-digit'}).replace('/','.'):'früher';}
-  function sbDelta(art,a,b){if(a.n===null||b.n===null||a.n===undefined||b.n===undefined)return '';var x=Math.round((b.n-a.n)*10)/10;if(!x)return '<span class="sb-delta">unverändert seit '+sbDat(a.t)+'</span>';var pkt=art==='sparquote'||art==='realzins';
+  function sbDelta(art,a,b){if(a.n===null||b.n===null||a.n===undefined||b.n===undefined)return '';var pk=art==='sparquote'||art==='realzins',x=pk?Math.round((b.n-a.n)*10)/10:Math.round(b.n-a.n);if(!x)return '<span class="sb-delta">unverändert seit '+sbDat(a.t)+'</span>';var pkt=art==='sparquote'||art==='realzins';
     return '<span class="sb-delta'+(x<0?' neg':'')+'">'+(x>0?'+':'−')+Math.abs(x).toLocaleString('de-DE',{maximumFractionDigits:pkt?1:0})+(pkt?' Punkte':' €')+' seit '+sbDat(a.t)+'</span>';}
-  function sbStd(o){return Object.keys(SB_STD).filter(function(k){return o&&o[k]}).map(function(k){return '<div class="sb-std"><span>'+SB_STD[k]+'</span><b>'+o[k][0]+' → '+o[k][1]+'</b></div>'}).join('');}
+  function sbStd(o){return Object.keys(SB_STD).filter(function(k){return o&&o[k]}).map(function(k){return '<div class="sb-std"><span>'+SB_STD[k]+'</span><b>'+(+o[k][0])+' → '+(+o[k][1])+'</b></div>'}).join('');}
   function sbKarteHtml(art,L){var lab='<span class="sb-lab">'+SB_N[art]+' · '+SB_L[art]+'</span>';
     if(!L||!L.length)return '<div class="sb-karte sb-offen"><div class="sb-kopf">'+lab+'</div><div class="sb-wert">noch offen</div><a class="sb-neu" data-wk="'+SB_W[art]+'">Jetzt rechnen ›</a></div>';
     var z=L[L.length-1],v=L.length>1?L[L.length-2]:null;
     if(art==='standort')return '<div class="sb-karte"><div class="sb-kopf">'+lab+'<span class="sb-dat">'+sbDat(z.t)+'</span></div><div class="sb-det" style="margin-top:8px">Heute → Ziel</div>'+sbStd(z.o)+'<a class="sb-neu" data-wk="std">Neu einstellen ›</a></div>';
     var h=L.slice(-6),mx=Math.max.apply(null,h.map(function(x){return Math.abs(x.n||0)}).concat([1]));
-    return '<div class="sb-karte"><div class="sb-kopf">'+lab+'<span class="sb-dat">'+sbDat(z.t)+'</span></div><div class="sb-wert">'+rcBig(z.w)+'</div><div class="sb-det">'+(z.d||'')+'</div>'+(v?sbDelta(art,v,z):'')+
+    return '<div class="sb-karte"><div class="sb-kopf">'+lab+'<span class="sb-dat">'+sbDat(z.t)+'</span></div><div class="sb-wert">'+rcBig(sbEsc(z.w))+'</div><div class="sb-det">'+sbEsc(z.d)+'</div>'+(v?sbDelta(art,v,z):'')+
       (h.length>1?'<div class="sb-spark">'+h.map(function(x,i){return '<i class="'+(i===h.length-1?'letzt':'')+'" style="height:'+Math.max(10,Math.abs(x.n||0)/mx*100)+'%"></i>'}).join('')+'</div><div class="sb-spark-l">'+h.map(function(x){return '<span>'+sbKurz(x.t)+'</span>'}).join('')+'</div>':'')+
       '<a class="sb-neu" data-wk="'+SB_W[art]+'">Neu rechnen ›</a></div>';}
-  function sbNaechst(){var d=sbDaten(),m=d._erinn||6,letzt=0;SB_ORD.forEach(function(a){(d[a]||[]).forEach(function(x){if(x.t)letzt=Math.max(letzt,x.t)})});if(!letzt)return null;var n=new Date(letzt);n.setMonth(n.getMonth()+m);return n;}
+  function sbNaechst(){var d=sbDaten(),m=d._erinn||6,letzt=0;SB_ORD.forEach(function(a){(d[a]||[]).forEach(function(x){if(x.t)letzt=Math.max(letzt,x.t)})});if(!letzt)return null;var v=new Date(letzt),n=new Date(v.getFullYear(),v.getMonth()+m,1),ende=new Date(n.getFullYear(),n.getMonth()+1,0).getDate();n.setDate(Math.min(v.getDate(),ende));return n;}
   window.sbRender=function(){var d=sbDaten(),sc=document.getElementById('sb-scroll'),n=SB_ORD.filter(function(a){return d[a]&&d[a].length}).length,m=d._erinn||6,nx=sbNaechst();
     sc.innerHTML='<p class="sb-intro">'+(n?'Deine gespeicherten Ergebnisse aus den Rechnern. Rechnest du neu, siehst du hier, wie sich deine Zahlen entwickeln.':'Hier sammeln sich deine Ergebnisse aus den Rechnern. Tipp nach dem Rechnen auf „In den Steckbrief“.')+'</p>'+
       SB_ORD.map(function(a){return sbKarteHtml(a,d[a])}).join('')+
@@ -1201,7 +1203,7 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
     sc.querySelectorAll('[data-wk]').forEach(function(x){x.addEventListener('click',function(){window._werk(x.dataset.wk)})});
     sc.querySelectorAll('.sb-chips button').forEach(function(b){b.addEventListener('click',function(){sbDaten()._erinn=+b.dataset.m;save();sbRender();sbKarte();})});};
   window.sbKarte=function(){var d=sbDaten(),a=SB_ORD.filter(function(x){return d[x]&&d[x].length&&x!=='standort'})[0],el=document.getElementById('st-sb'),nx=sbNaechst(),faellig=nx&&nx.getTime()<=Date.now();
-    if(el)el.innerHTML='<div><small>'+(faellig?'Zeit für einen neuen Blick':'Dein Finanz-Steckbrief')+'</small><b>'+(a?SB_N[a]+' <em>'+rcBig(d[a][d[a].length-1].w)+'</em>':'Deine Zahlen an einem Ort')+'</b></div><span class="chev">›</span>';
+    if(el)el.innerHTML='<div><small>'+(faellig?'Zeit für einen neuen Blick':'Dein Finanz-Steckbrief')+'</small><b>'+(a?SB_N[a]+' <em>'+rcBig(sbEsc(d[a][d[a].length-1].w))+'</em>':'Deine Zahlen an einem Ort')+'</b></div><span class="chev">›</span>';
     var n=SB_ORD.filter(function(x){return d[x]&&d[x].length}).length,ich=document.getElementById('ich-sb-s');if(ich)ich.textContent=n?n+' von 5 Ergebnissen gespeichert':'Ergebnisse aus den Rechnern';};
 
   (function(){var ta=document.getElementById('zb-text');document.getElementById('zb-save').addEventListener('click',function(){var at=new Date().toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'});S.brief={text:ta.value,at:at};save();document.getElementById('zb-saved').style.display='inline';document.getElementById('zb-meta').textContent='Zuletzt aufgehoben: '+at;});
@@ -1288,7 +1290,7 @@ var RECHT={"impressum": {"t": "Impressum", "h": "<div>\n    <p>Angaben gemäß �
   document.querySelectorAll('[data-opt]').forEach(function(o){o.addEventListener('click',function(){o.parentElement.querySelectorAll('.o').forEach(function(x){x.classList.remove('on')});o.classList.add('on');})});
   document.querySelectorAll('[data-toggle]').forEach(function(r){r.addEventListener('click',function(){r.querySelector('.sw').classList.toggle('on');})});
   document.querySelectorAll('[data-ziel]').forEach(function(o){o.addEventListener('click',function(){o.parentElement.querySelectorAll('.o').forEach(function(x){x.classList.remove('on')});o.classList.add('on');S.ziel=+o.dataset.ziel;save();document.getElementById('ziel-text').textContent=S.ziel+' Lektionen';})});
-  document.getElementById('reset').addEventListener('click',function(){S={done:[],ziel:3,tage:[],zuletzt:[],steps:{},pos:{}};save();tipp('Zurückgesetzt auf Lektion 1.1');renderStart();});
+  document.getElementById('reset').addEventListener('click',function(){S.done=[];S.ziel=3;S.tage=[];S.zuletzt=[];S.steps={};S.pos={};save();tipp('Zurückgesetzt auf Lektion 1.1');if(window.sbKarte)sbKarte();renderStart();});
 
   /* Stand 13: Videoliste. Willkommen immer groß oben, Rundgang darunter, Neues bis zum ersten Ansehen, dann nach Thema. */
   /* Stand 17: nur das Willkommensvideo ist ein Video; alles andere sind Führungen der gewählten Flamme (Frag-Wege) */
