@@ -207,7 +207,7 @@ body{background:var(--wcream);color:var(--wc-2);font-family:var(--body2);overflo
   function skip(){clearT();app.classList.add('p1','p2','p3');kanteNavy();}
   function count(){var el=document.getElementById('zaehler'),n=0;function step(){n++;el.textContent=n;if(n<ziel)t.push(setTimeout(step,160));}t.push(setTimeout(step,500));}
   /* Zugaenge (Mockup, 23.10.2026): Simon, Rene, Stefan. Erkennung ueber die E-Mail-Adresse (Anfang), Passwort beliebig, nicht leer. Echte Konten kommen mit dem Server. */
-  var KONTEN=[{mail:'simon@rf-institut.de',name:'Simon Schlerf'},{mail:'rene@rf-institut.de',name:'René Flé'},{mail:'stefan@rf-institut.de',name:'Stefan'},{mail:'patrick@rf-institut.de',name:'Patrick'},{mail:'matteo@rf-institut.de',name:'Matteo'},{mail:'test@rf-institut.de',name:'Test'}];
+  var KONTEN=[{mail:'simon@rf-institut.de',name:'Simon Schlerf'},{mail:'rene@rf-institut.de',name:'René Flé'},{mail:'stefan@rf-institut.de',name:'Stefan'},{mail:'patrick@rf-institut.de',name:'Patrick'},{mail:'matteo@rf-institut.de',name:'Matteo'},{mail:'test@rf-institut.de',name:'Test'},{mail:'mia@rf-institut.de',name:'Mia'},{mail:'david@rf-institut.de',name:'David'}];
   function login(){
     if(!app.classList.contains('p3')||app.classList.contains('p4'))return;
     var em=(document.getElementById('email').value||'').trim().toLowerCase(),pw=(document.getElementById('pass').value||'');var konto=null;KONTEN.forEach(function(k){if(k.mail===em)konto=k;});
