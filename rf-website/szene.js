@@ -24,12 +24,14 @@
   var modus=null,C,leisten=[],ziel=0,jetzt=0,gezeigt=-1,letzterPunkt=-1,geladen=false;
   var kL=[],kZiel=0,kJetzt=0,kGezeigt=-1;
 
-  /* Bildleisten laden und vorab entschlüsseln: das Zeichnen beim Scrollen kostet dann fast nichts */
-  function holeLeisten(pfad,n){var ls=[];for(var i=0;i<Math.ceil(n/K);i++){(function(i){var im=new Image();im.decoding='async';var e={img:im,bm:null};ls[i]=e;
-    im.onload=function(){if(window.createImageBitmap){createImageBitmap(im).then(function(b){e.bm=b;neuZeichnen()}).catch(function(){})}else neuZeichnen()};
-    im.src=pfad+String(i+1).padStart(3,'0')+'.jpg';})(i)}return ls;}
-  function neuZeichnen(){gezeigt=-1;kGezeigt=-1;}
-  function male(c,el,ls,i){var e=ls[Math.floor(i/K)];if(!e)return false;var q=e.bm||e.img;var w=e.bm?e.bm.width:e.img.naturalWidth,hh=e.bm?e.bm.height:e.img.naturalHeight;if(!w)return false;
+  /* Bildleisten laden; entschlüsselt bleiben nur die Leiste am aktuellen Bild und ihre zwei Nachbarn.
+     Fassung 3 (Simons Test 29.10.: Chrome-Absturz „Fehlercode 11“, iPad ohne kleine Flamme): vorher lagen alle Leisten
+     entschlüsselt im Speicher (rund 1,4 GB). */
+  function holeLeisten(pfad,n){var ls=[];for(var i=0;i<Math.ceil(n/K);i++){var im=new Image();im.decoding='async';im.src=pfad+String(i+1).padStart(3,'0')+'.jpg';ls.push({img:im,bm:null,laeuft:false});}return ls;}
+  function fenster(ls,i){var mitte=Math.floor(i/K);for(var j=0;j<ls.length;j++){var e=ls[j],nah=Math.abs(j-mitte)<=1;
+      if(nah&&!e.bm&&!e.laeuft&&e.img.complete&&e.img.naturalWidth&&window.createImageBitmap){e.laeuft=true;(function(e){createImageBitmap(e.img).then(function(b){e.laeuft=false;if(e.weg){b.close&&b.close();e.weg=false;return;}e.bm=b;gezeigt=-1;kGezeigt=-1;}).catch(function(){e.laeuft=false});})(e);}
+      if(!nah){if(e.bm){e.bm.close&&e.bm.close();e.bm=null;}if(e.laeuft)e.weg=true;}}}
+  function male(c,el,ls,i){var e=ls[Math.floor(i/K)];if(!e)return false;fenster(ls,i);var q=e.bm||e.img;var w=e.bm?e.bm.width:e.img.naturalWidth,hh=e.bm?e.bm.height:e.img.naturalHeight;if(!w)return false;
     var fh=hh/K,r=i%K;c.drawImage(q,0,r*fh,w,fh,0,0,el.width,el.height);return true;}
 
   function lade(){var m=innerWidth<=760?'hoch':'quer';if(m===modus)return;modus=m;C=CFG[m];still.src=C.still;leisten=geladen?holeLeisten(C.pfad,C.n):[];gezeigt=-1;groesse();}
