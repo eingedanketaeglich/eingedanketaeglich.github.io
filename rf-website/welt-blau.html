@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="de" data-r="B">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Blaue Welt · Präsenz-Zirkel · R&amp;F Institut</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="start.css">
+<link rel="stylesheet" href="effekte.css">
+<style>
+  /* Zirkel Variante 1 */
+  .zirkel-v1 .w-schritt{min-height:62vh;align-content:center}
+  .zirkel-v1 .w-schritt .preise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .zirkel-v1 .tage{display:grid;gap:8px}
+  .zirkel-v1 .tag{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:10px 12px;border-radius:12px;background:#F3F5F8}
+  .zirkel-v1 .tag b{color:#102444}
+  .zirkel-v1 .zusatz{color:var(--text2);margin:0}
+  @media (max-width:860px){.zirkel-v1 .w-schritt{min-height:56svh}}
+</style>
+</head>
+<body>
+<div class="innen">
+<div id="kopf"></div>
+<!-- Quelle aller Inhalte: „R&F Präsenz-Ladder“ (11.10.2026), „Flyer Präsenz-Zirkel“, „Wegweiser Verkaufsgespräch“ -->
+<main>
+<section class="welt-held blau">
+  <img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum in der 21. Etage zur blauen Stunde" fetchpriority="high">
+  <div class="inhalt">
+    <span class="mono">Blaue Welt · Präsenz-Zirkel · Herbst 2026</span>
+    <h1>Börse lernen. Nach eigenen Regeln.</h1>
+    <p class="lede">Zwei Tage im 21. Stock des WINX-Towers, direkt am Main. Höchstens 12 Plätze im Raum und 24 live online. Danach dein eigener Weg.</p>
+    <div class="sprung"><a href="#grundlagen">Grundlagen-Tag</a><a href="#zirkel">Zirkel</a><a href="#mentoring">Mentoring</a><a href="#raum">Der Raum</a></div>
+  </div>
+</section>
+
+<!-- Wechsler: drei Zeitebenen -->
+<section class="ab" id="wege">
+  <div class="ab-kopf"><span class="mono">Drei Wege, drei Zeitebenen</span><h2>Vom Überblick bis zum 5-Minuten-Chart.</h2><p>Präsenz jeweils 9:30–17:00 Uhr mit Mittagessen. Online live zuschauen, Fragen am Ende.</p></div>
+  <div class="wechsler">
+    <div class="w-bilder"><img src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungstisch am Morgen" loading="lazy"><img src="bilder/web/02_skyline_goldene-stunde_16x9.jpg" alt="Skyline durchs Eckfenster" loading="lazy"><img src="bilder/web/03_skyline_blaue-stunde_16x9.jpg" alt="Skyline zur blauen Stunde" loading="lazy"><span class="w-titel"></span></div>
+    <div class="w-schritte">
+      <article class="w-schritt" id="grundlagen" data-titel="Grundlagen-Tag · 1 Tag">
+        <span class="mono">1 Tag · Einstieg ohne Vorkenntnis · über allen Zeitebenen</span><h3>Grundlagen-Tag</h3>
+        <p>Lerne Investment, Börsenhandel, Optionen und Strategie im Zusammenhang kennen. Buchst du innerhalb von 6 Monaten einen Zirkel, wird der Grundlagen-Tag voll angerechnet.</p>
+        <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>479 €</strong><small>mit Mittagessen</small></div><div class="preis"><span>Live online</span><strong>249 €</strong><small>Fragen am Ende</small></div></div>
+      </article>
+      <article class="w-schritt" data-titel="Investment-Zirkel · 14./15.11.">
+        <span class="mono">2 Tage · aktiver Anleger · Jahres-, Quartals-, Monatschart</span><h3>Investment-Zirkel</h3>
+        <p>Lerne, langfristiges Vermögen nach eigenen Regeln zu steuern und zu begründen, warum ein Unternehmen ins Depot gehört und ein anderes nicht.</p>
+        <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>1.990 €</strong><small>mit deiner persönlichen App</small></div><div class="preis"><span>Live online</span><strong>999 €</strong><small>Fragen am Ende</small></div></div>
+      </article>
+      <article class="w-schritt" data-titel="RainMaker-Zirkel · 28./29.11.">
+        <span class="mono">2 Tage · RainMaker · Wochen- bis 5-Minuten-Chart</span><h3>RainMaker-Zirkel</h3>
+        <p>Lerne kurzfristigen Börsenhandel nach einem selbst geschriebenen Regelwerk, mit festem Risikobudget und wiederholbaren Strategien mit Erfolgskontrolle.</p>
+        <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>2.390 €</strong><small>mit deiner persönlichen App</small></div><div class="preis"><span>Live online</span><strong>1.190 €</strong><small>Fragen am Ende</small></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- Zirkel: Variante 1 „Bildwechsel“ (Simons Wahl 29.10.2026, Zirkel-Mockup) -->
+<section class="ab welt-ab blau zirkel-v1" id="zirkel">
+      <div class="ab-kopf"><span class="mono">Die Zirkel · zwei Wochenenden im 21. Stock</span><h2>Ein Wochenende pro Weg. Oder beide.</h2></div>
+      <div class="wechsler" >
+        <div class="w-bilder"><img class="an" src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungsraum am Morgen"><img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum zur blauen Stunde"><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm"><span class="w-titel">Investment-Zirkel · 14.–15. Nov</span></div>
+        <div class="w-schritte">
+          <article class="w-schritt an" data-titel="Investment-Zirkel · 14.–15. Nov"><span class="mono">Sa 14. und So 15. November 2026 · 9:30–17:00</span><h3>Investment-Zirkel</h3>
+            <div class="tage"><div class="tag"><b>Tag 1</b><span>Bewertung, Portfolio-Bildung, zwei Strategien</span></div><div class="tag"><b>Tag 2</b><span>Marktanomalien, 13F-Meldungen, Short Call auf gehaltene Aktien, Short Put für rabattierte Käufe</span></div></div>
+            <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>1.990 €</strong><small>persönliche App inklusive</small></div><div class="preis"><span>Live online</span><strong>999 €</strong><small>Fragen am Ende</small></div></div>
+            <p class="zusatz">Zu zweit im Raum: 3.290 € für beide.</p></article>
+          <article class="w-schritt" data-titel="RainMaker-Zirkel · 28.–29. Nov"><span class="mono">Sa 28. und So 29. November 2026 · 9:30–17:00</span><h3>RainMaker-Zirkel</h3>
+            <div class="tage"><div class="tag"><b>Tag 1</b><span>Swing: Trend, Bewegung, Nachrichten</span></div><div class="tag"><b>Tag 2</b><span>Futures in kleinster Größe und BOX-Handel, mit Risiko vorab berechnet</span></div></div>
+            <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>2.390 €</strong><small>persönliche App inklusive</small></div><div class="preis"><span>Live online</span><strong>1.190 €</strong><small>Fragen am Ende</small></div></div>
+            <p class="zusatz">Zu zweit im Raum: 3.990 € für beide.</p></article>
+          <article class="w-schritt" data-titel="Beide Zirkel im Paket"><span class="mono">Beide Wege · beide Zeitebenen</span><h3>Beide Wochenenden im Paket.</h3><p>Investment-Zirkel und RainMaker-Zirkel zusammen. Im Raum mit einer persönlichen App für beide Zirkel.</p>
+            <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>3.890 €</strong><small>einzeln zusammen 4.380 €</small></div><div class="preis"><span>Live online</span><strong>1.990 €</strong><small>einzeln zusammen 2.189 €</small></div></div></article>
+          <article class="w-schritt" data-titel="Deine persönliche App"><span class="mono">Nur in den Präsenz-Zirkeln</span><h3>Deine persönliche App.</h3><p>Eigens für dich programmiert, mit eigenem Aussehen. Im Vorgespräch klären wir deine aktuelle Frage. Läuft auf Handy, Tablet und Computer. Übergabe an Tag 2, 2 Monate App-Pflege inklusive.</p><a class="knopf erst" href="kontakt.html" style="justify-self:start">Platz anfragen</a></article>
+        </div>
+      </div>
+    </section>
+
+<!-- Mentoring: Anschluss auf jeder Zeitebene (Simon 28.10.: „Mentoring muss auf jeden Fall rein, und das Tandem“) -->
+<section class="ab welt-ab blau" id="mentoring" style="background:#0A1830">
+  <div class="ab-kopf"><span class="mono">Anschluss · auf jeder Zeitebene möglich</span><h2>Deine eigene Strategie, an deinen eigenen Zahlen.</h2><p>Nach den Zirkeln geht es im Mentoring weiter: allein mit René oder zu zweit im Tandem.</p></div>
+  <div class="anschluss">
+    <article class="angebot"><span class="dauer">zu zweit · je Person</span><h3>Tandem-Mentoring</h3><strong class="gross">8.500 €</strong><p>Dieselbe Ausbildung wie im Einzelmentoring, mit einer zweiten Perspektive neben dir und getrennten eigenen Ergebnissen.</p></article>
+    <article class="angebot"><span class="dauer">allein · mit René</span><h3>1:1-Mentoring</h3><strong class="gross">12.000 €</strong><p>Die eigene Strategie in sechs Zyklen bis zur Anwendungsreife ausarbeiten, an den eigenen Zahlen, nicht an Beispielen.</p></article>
+    <article class="angebot"><span class="dauer">für Absolventen</span><h3>Continuum</h3><strong class="gross" style="font-size:1.3rem">App-Pflege</strong><p>Updates und eine neue Funktion je Quartal für deine persönliche App. Die ersten 2 Monate nach dem Zirkel sind inklusive, danach als eigener Vertrag.</p></article>
+  </div>
+  <div class="kopf-knoepfe" style="margin-top:22px"><a class="knopf erst" href="kontakt.html">Erstgespräch anfragen</a></div>
+</section>
+
+<section class="ab" id="raum">
+  <div class="ab-kopf"><span class="mono">Wo wir unterrichten</span><h2>WINX-Tower, 21. Etage, direkt am Mainufer.</h2><p>Auf der einen Seite liegt der Main, auf der anderen die Skyline mit dem Commerzbank-Tower. Für Anreisende gibt es ein Zimmerkontingent mit Frühstück.</p></div>
+  <div class="raum-raster">
+    <figure class="gross"><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern, grünen Stühlen und Ringleuchten" loading="lazy"></figure>
+    <figure><img src="app/fotos/mainblick.jpg" alt="Blick auf den Main" loading="lazy"></figure>
+    <figure><img src="app/fotos/lounge.jpg" alt="Lounge mit Sofa und Fensterfront" loading="lazy"></figure>
+    <figure><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm und Flipchart" loading="lazy"></figure>
+    <figure><img src="app/fotos/foyer.jpg" alt="Foyer im WINX-Tower" loading="lazy"></figure>
+  </div>
+  <div class="raum-fakten"><div><strong data-zahl="12">12</strong><span>Plätze im Raum, damit jede Frage Platz hat</span></div><div><strong data-zahl="24">24</strong><span>Plätze live online</span></div><div><strong>5</strong><span>weitere Städte bei Nachfrage: Stuttgart · Düsseldorf · München · Berlin · Hamburg</span></div></div>
+</section>
+
+
+<section class="ab" id="kontakt">
+  <div class="kontakt-teaser"><div><h2>Platz anfragen.</h2><p>Höchstens 12 im Raum je Termin. Schreib uns an info@rf-institut.de, wir sagen dir offen, wie viele Plätze frei sind.</p></div><a class="knopf" href="kontakt.html">Zum Kontakt</a></div>
+</section>
+</main>
+<div id="fuss"></div>
+</div>
+<script src="seite.js"></script>
+</body>
+</html>

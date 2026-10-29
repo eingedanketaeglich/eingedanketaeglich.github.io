@@ -1,0 +1,179 @@
+/* Startseite „Institut zuerst“ · 28.10.2026
+   Anlass: Renés Rückmeldung, die alte Startseite wirkte wie eine Landingpage der Firestarter-App.
+   Jetzt: Institut + Frankfurt oben, drei Welten gleichrangig, App als eines von mehreren Angeboten.
+   Baut auf stil.css auf; Richtung B ist Standard (Simon 28.10.). */
+
+:root{--gruen-hell:#EEF3EC;--gruen-mittel:#2F6B4F;--blau-hell:#E9EEF6;--gold-hell:#FBF3DC;--gold-text:#7A5D12}
+
+/* ---------- Einstieg: Vollbild Frankfurt ---------- */
+.einstieg{position:relative;margin-inline:calc(-1*clamp(16px,4vw,48px));min-height:min(92svh,860px);display:grid;align-items:end;overflow:hidden;color:#F5F1EA;background:#0A1830;border-radius:0 0 var(--r-haupt) var(--r-haupt)}
+.einstieg picture,.einstieg picture img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.einstieg picture{opacity:0;transition:opacity .9s cubic-bezier(.2,0,0,1)}
+.einstieg picture.an{opacity:1}
+.einstieg[data-bild="echt"] picture img{object-position:62% 50%}
+.einstieg[data-bild="main"] picture img{object-position:60% 50%}
+.einstieg[data-bild="skyline"] picture img{object-position:66% 40%}
+.einstieg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,24,48,.45) 0%,rgba(10,24,48,0) 26%,rgba(10,24,48,.15) 48%,rgba(10,24,48,.88) 100%);pointer-events:none}
+.einstieg-text{position:relative;z-index:2;display:grid;gap:18px;padding:clamp(20px,5vw,64px);padding-top:120px;max-width:820px}
+.einstieg-text .mono{color:#E6E0D3;opacity:.9}
+.einstieg h1{color:#FFFFFF;font-size:clamp(2.2rem,6.4vw,4.8rem);font-weight:900;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.einstieg .lede{color:#EDE8DE;max-width:44ch;font-size:clamp(1.05rem,2.2vw,1.25rem)}
+.einstieg .knopf.leise{color:#F5F1EA;border-color:rgba(245,241,234,.55)}
+.einstieg .vertrauen{font-size:.9rem;color:#D8D2C6}
+.einstieg .quelle{font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,241,234,.7);margin-top:-6px}
+/* Bildwahl nur im Entwurf: Simon vergleicht echtes Foto und Nachbau */
+.bildwahl{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));right:clamp(12px,3vw,40px);display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:calc(100% - 24px)}
+.bildwahl span{width:100%;text-align:right;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.85)}
+.bildwahl button{font:700 .8rem var(--f);border-radius:999px;padding:8px 13px;border:1.5px solid rgba(245,241,234,.55);background:rgba(10,24,48,.45);color:#F5F1EA;cursor:pointer;backdrop-filter:blur(6px)}
+.bildwahl button[aria-pressed="true"]{background:#FF7A00;border-color:#FF7A00;color:#1C1917}
+@media (max-width:700px){.einstieg{min-height:94svh}.einstieg-text{padding-top:200px}}
+
+/* ---------- Institut ---------- */
+.institut{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:start}
+.institut .ab-kopf{margin-bottom:0}
+.saeulen{display:grid;gap:14px}
+.saeule{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:20px;border-radius:var(--r-karte);background:var(--flaeche)}
+.saeule .nr{grid-row:span 2;font-family:var(--mono);font-size:.8rem;color:#D96400;padding-top:4px}
+.saeule b{font-size:1.12rem}
+.saeule p{color:var(--text2);font-size:.98rem}
+.zitat{grid-column:1/-1;font:800 clamp(1.4rem,3.2vw,2.2rem)/1.2 var(--f);letter-spacing:-.01em;text-wrap:balance;border-left:5px solid #FF7A00;padding-left:clamp(14px,2vw,24px);max-width:34ch}
+.zitat small{display:block;margin-top:10px;font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text2)}
+@media (max-width:900px){.institut{grid-template-columns:1fr}}
+
+/* ---------- Angebote: drei Welten gleichrangig ---------- */
+.welten3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2vw,24px)}
+.weltkarte{position:relative;display:grid;grid-template-rows:auto 1fr;border-radius:var(--r-haupt);overflow:hidden;text-decoration:none;color:inherit;background:var(--flaeche);transition:transform .45s cubic-bezier(.2,0,0,1),box-shadow .45s}
+.weltkarte:hover{transform:translateY(-4px);box-shadow:0 24px 50px -28px rgba(16,36,68,.55)}
+.weltkarte img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.weltkarte .inhalt{display:grid;gap:8px;padding:20px 20px 22px;align-content:start}
+.weltkarte .welt-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase}
+.weltkarte .welt-tag::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--wf)}
+.weltkarte h3{font-size:1.4rem}
+.weltkarte p{color:var(--text2);font-size:.97rem}
+.weltkarte .preis-zeile{margin-top:6px;font-weight:800;font-size:.95rem}
+.weltkarte .mehr{margin-top:4px;font-weight:800;color:var(--wf-text)}
+.weltkarte.gruen{--wf:#2F6B4F;--wf-text:#173A2B;background:var(--gruen-hell)}
+.weltkarte.blau{--wf:#102444;--wf-text:#102444;background:var(--blau-hell)}
+.weltkarte.gold{--wf:#ECBA2E;--wf-text:#7A5D12;background:var(--gold-hell)}
+.weitere{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(14px,2vw,24px);margin-top:clamp(14px,2vw,24px)}
+.klein-karte{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 18px;border-radius:var(--r-karte);border:1.5px solid var(--linie);text-decoration:none;color:inherit;background:#FFFFFF}
+.klein-karte svg{width:40px;height:auto}
+.klein-karte b{display:block;font-size:1.02rem}
+.klein-karte small{color:var(--text2);font-size:.88rem}
+.klein-karte .pfeil{font-weight:800;color:#D96400}
+@media (max-width:900px){.welten3{grid-template-columns:1fr}.weitere{grid-template-columns:1fr}.weltkarte{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- Welt-Abschnitte ---------- */
+section.welt-ab{border-top:0;margin-inline:calc(-1*clamp(16px,4vw,48px));padding-inline:clamp(16px,4vw,48px);border-radius:var(--r-haupt)}
+section.welt-ab.gruen{background:var(--gruen-hell)}
+section.welt-ab.blau{background:#102444;color:#F5F1EA}
+section.welt-ab.blau .ab-kopf p,section.welt-ab.blau .mono{color:#C6D2E2}
+section.welt-ab + section.welt-ab{margin-top:clamp(14px,2vw,24px)}
+.welt-kopf{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;margin-bottom:clamp(28px,4vw,48px)}
+.welt-kopf .ab-kopf{margin-bottom:0}
+.welt-kopf img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-haupt)}
+.bild-vermerk{display:block;margin-top:8px;font-family:var(--mono);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text2)}
+section.welt-ab.blau .bild-vermerk{color:#9FB0C8}
+@media (max-width:900px){.welt-kopf{grid-template-columns:1fr}.welt-kopf figure{order:-1}}
+figure{margin:0}
+
+.angebote{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:clamp(14px,2vw,22px)}
+.angebot{display:grid;gap:14px;align-content:start;padding:clamp(18px,2.4vw,26px);border-radius:var(--r-haupt);background:#FFFFFF;color:var(--text)}
+section.welt-ab.blau .angebot{background:#FFFFFF}
+.angebot .dauer{font-family:var(--mono);font-size:.64rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}
+.angebot h3{font-size:1.5rem}
+.angebot > p{color:var(--text2)}
+.angebot .listen{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:14px}
+.angebot ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:.95rem}
+.angebot ul li{position:relative;padding-left:18px}
+.angebot ul li::before{content:"";position:absolute;left:0;top:.6em;width:7px;height:7px;border-radius:50%;background:var(--wf,#2F6B4F)}
+.angebot .listen b{display:block;font-size:.8rem;font-family:var(--mono);font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);margin-bottom:4px}
+.tage{display:grid;gap:8px}
+.tag{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:baseline;padding:12px 14px;border-radius:var(--r-knopf);background:var(--blau-hell);font-size:.95rem}
+.tag b{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#102444;white-space:nowrap}
+.preise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:auto}
+.preis{display:grid;gap:2px;padding:14px 16px;border-radius:var(--r-karte);background:var(--flaeche)}
+.preis span{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2)}
+.preis strong{font-size:1.6rem;font-weight:900;letter-spacing:-.01em}
+.preis small{color:var(--text2);font-size:.84rem;line-height:1.35}
+.preis.haupt{background:#102444;color:#F5F1EA}
+.preis.haupt span,.preis.haupt small{color:#C6D2E2}
+section.welt-ab.gruen .preis.haupt{background:#173A2B}
+section.welt-ab.gruen .preis.haupt span,section.welt-ab.gruen .preis.haupt small{color:#CFE0D4}
+.angebot .termin{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:#D96400}
+.angebot .termin::before{content:"";width:9px;height:9px;border-radius:50%;background:#FF7A00}
+.angebot .zusatz{font-size:.9rem;color:var(--text2);border-top:1px solid var(--linie);padding-top:12px}
+.paket{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:center}
+@media (max-width:760px){.paket{grid-template-columns:1fr}}
+.fehler{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(230px,1fr);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px;margin-bottom:clamp(28px,4vw,44px)}
+.fehler div{scroll-snap-align:start;display:grid;gap:6px;align-content:start;padding:18px;border-radius:var(--r-karte);background:#FFFFFF}
+.fehler q{font:800 1.15rem/1.25 var(--f)}
+.fehler p{color:var(--text2);font-size:.92rem}
+.regel-zeile{margin-top:clamp(20px,3vw,32px);display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.9rem;color:var(--text2)}
+section.welt-ab.blau .regel-zeile{color:#C6D2E2}
+.app-hinweis{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;margin-top:clamp(18px,3vw,28px);padding:16px 18px;border-radius:var(--r-karte);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
+.app-hinweis b{display:block}
+.app-hinweis small{opacity:.85}
+.app-hinweis .icon{width:44px;height:44px;border-radius:12px;background:#FF7A00;display:grid;place-items:center;font-weight:900;color:#1C1917}
+
+/* ---------- Raum ---------- */
+.raum-raster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,18vw,230px);gap:10px}
+.raum-raster figure{position:relative;overflow:hidden;border-radius:var(--r-karte)}
+.raum-raster img{width:100%;height:100%;object-fit:cover}
+.raum-raster figcaption{position:absolute;left:10px;bottom:10px;font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;background:rgba(10,24,48,.7);color:#F5F1EA;padding:4px 8px;border-radius:6px}
+.raum-raster .gross{grid-column:span 2;grid-row:span 2}
+.raum-fakten{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px}
+.raum-fakten div{padding:16px 18px;border-radius:var(--r-karte);background:var(--flaeche)}
+.raum-fakten strong{display:block;font-size:2rem;font-weight:900;line-height:1}
+.raum-fakten span{color:var(--text2);font-size:.92rem}
+@media (max-width:760px){.raum-raster{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px}.raum-fakten{grid-template-columns:1fr}}
+
+/* ---------- App als ein Angebot von mehreren ---------- */
+.app-ab .app-preise{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.app-ab .app-preise span{padding:8px 12px;border-radius:999px;background:var(--flaeche);font-size:.9rem}
+.app-ab .app-preise b{font-weight:900}
+
+/* ---------- René ---------- */
+.gruender{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:start;margin-bottom:clamp(32px,5vw,56px)}
+.gruender h2{font-size:clamp(1.7rem,3.4vw,2.6rem)}
+.gruender p{color:var(--text2)}
+.gruender .text{display:grid;gap:14px}
+@media (max-width:900px){.gruender{grid-template-columns:1fr}}
+
+/* ---------- Stimmen ---------- */
+.stimme{display:grid;gap:14px;padding:clamp(20px,3vw,32px);border-radius:var(--r-haupt);background:var(--flaeche);max-width:760px}
+.stimme blockquote{margin:0;font:600 clamp(1.05rem,2vw,1.3rem)/1.45 var(--f)}
+.stimme cite{font-style:normal;font-weight:800}
+.stimme cite small{display:block;font-weight:500;color:var(--text2)}
+.zahlen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:18px;max-width:760px}
+.zahlen div{padding:16px;border-radius:var(--r-karte);border:1.5px solid var(--linie)}
+.zahlen strong{display:block;font-size:1.8rem;font-weight:900}
+.zahlen span{color:var(--text2);font-size:.9rem}
+@media (max-width:600px){.zahlen{grid-template-columns:1fr}}
+
+/* ---------- Familie ---------- */
+.familie img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-haupt)}
+.fakten-gold{display:flex;flex-wrap:wrap;gap:8px}
+.fakten-gold span{padding:8px 12px;border-radius:999px;background:#FFFFFF;font-weight:700;font-size:.9rem;color:#3A2B12}
+
+@media (prefers-reduced-motion:reduce){.einstieg picture,.weltkarte{transition:none}}
+
+/* Grid-Spalte darf nicht von der Platzhalter-Breite aufgezogen werden */
+.familie .text,.angebot,.ab-kopf,.welt-kopf .ab-kopf{grid-template-columns:minmax(0,1fr)}
+.platz{white-space:normal}
+
+/* Kopfleiste: acht Einträge, nie umbrechen */
+.menue a,.leiste .knopf{white-space:nowrap}
+@media (max-width:1240px){.menue{display:none}.burger{display:inline-flex}}
+@media (max-width:420px){.leiste .knopf{padding:10px 14px;font-size:.9rem}}
+
+/* Desktop: Text links lesbar halten */
+@media (min-width:701px){.einstieg::after{background:linear-gradient(90deg,rgba(10,24,48,.86) 0%,rgba(10,24,48,.62) 40%,rgba(10,24,48,.05) 72%),linear-gradient(180deg,rgba(10,24,48,.35) 0%,rgba(10,24,48,0) 30%,rgba(10,24,48,.45) 100%)}}
+/* 29.10.2026: Webinar-Band und Vertrauenszeile */
+.webinar-band{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;padding:clamp(22px,4vw,40px);border-radius:var(--r-haupt);background:#FFFFFF;box-shadow:inset 0 0 0 2px #FF7A00}
+.webinar-band p{color:var(--text2);margin:6px 0 0;max-width:60ch}
+.beleg-zeile{display:grid;gap:22px}
+.beleg-zeile blockquote{margin:0;font:800 clamp(1.3rem,3vw,2rem)/1.25 var(--f);letter-spacing:-.01em}
+.beleg-zeile figure{margin:0;display:grid;gap:8px;border-left:5px solid #102444;padding-left:clamp(14px,2vw,24px)}
+.beleg-zeile figcaption{color:var(--text2)}
+@media (max-width:700px){.webinar-band{grid-template-columns:1fr}}

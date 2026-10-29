@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="de" data-r="B">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Preise und Rahmen · R&amp;F</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="start.css">
+<link rel="stylesheet" href="effekte.css">
+<script>(function(){var r=(location.hash||'#A').replace('#','').split('-')[0];if(['A','B','C'].indexOf(r)<0)r='A';document.documentElement.dataset.r=r;})();</script>
+<style>
+.tafeln{display:grid;gap:22px}
+.tafel{border:1px solid var(--linie);border-radius:var(--r-haupt);overflow:hidden;background:#FFFFFF}
+.tafel header{display:flex;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--linie)}
+.tafel .punkt{width:12px;height:12px;border-radius:50%;background:var(--tf);flex:none}
+.tafel h2{font-size:1.25rem}
+.tafel header p{color:var(--text2);font-size:.92rem}
+.pz-kopf,.pz{display:grid;grid-template-columns:minmax(0,1fr) 120px 120px;gap:16px;align-items:center;padding:14px 20px}
+.pz-kopf{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);background:#F4F6F9;padding-block:8px}
+.pz-kopf span:not(:first-child),.pz-raum,.pz-online{text-align:right}
+.pz{text-decoration:none;color:inherit;border-top:1px solid var(--linie);transition:background .25s}
+.pz:hover{background:#F4F6F9}
+.pz-name b{display:block;font-size:1.05rem}
+.pz-name small{color:var(--text2);font-size:.88rem}
+.pz-raum{font-weight:900;font-size:1.15rem;color:#102444;font-variant-numeric:tabular-nums}
+.pz-online{font-weight:700;color:var(--text2);font-variant-numeric:tabular-nums}
+.pz em{display:none;font-style:normal;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);font-weight:500}
+.pz small{display:block}
+.pz-raum small{font-size:.75rem;font-weight:600;color:var(--text2)}
+.tafel-fuss{margin-top:16px;color:var(--text2);max-width:72ch}
+@media (max-width:640px){
+ .pz-kopf{display:none}
+ .pz{grid-template-columns:1fr 1fr;gap:6px 16px}
+ .pz-name{grid-column:1/-1}
+ .pz-raum,.pz-online{text-align:left}
+ .pz em{display:block}
+}
+  /* Variante 1 (Simons Wahl 29.10.2026, Preise-Mockup) */
+.schalter{display:inline-grid;grid-auto-flow:column;gap:4px;padding:4px;border-radius:999px;background:#E6EBF2}
+.schalter button{all:unset;cursor:pointer;padding:9px 18px;border-radius:999px;font:800 .92rem "Nunito",sans-serif;color:var(--mb-navy)}
+.schalter button[aria-pressed="true"]{background:var(--mb-navy);color:#FFFFFF}
+.schalter button:focus-visible{outline:3px solid var(--mb-blau);outline-offset:2px}
+[data-modus="online"] .nur-raum{display:none}
+[data-modus="raum"] .nur-online{display:none}
+/* Weltfarben */
+.gr{--w:#2F6B4F;--w-hell:#E7F1EB;--w-dunkel:#173A2B}
+.bl{--w:#2E5AA8;--w-hell:#E8EFFC;--w-dunkel:#102444}
+.go{--w:#C9970F;--w-hell:#FFF4CC;--w-dunkel:#5C4A24}
+.mt{--w:#102444;--w-hell:#EEF1F5;--w-dunkel:#0A1830}
+.kopfzeile{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;margin-bottom:18px}
+.hinweis{color:var(--text2);margin:14px 0 0;font-size:.95rem}
+
+/* P1 Tabelle */
+.p1-gruppe{margin-top:18px;border-radius:18px;overflow:clip;border:1.5px solid var(--w-hell)}
+.p1-gruppe>header{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:12px 16px;background:var(--w-hell)}
+.p1-gruppe>header b{font:900 1.05rem "Nunito",sans-serif;color:var(--w-dunkel)}
+.p1-gruppe>header span{color:var(--text2);font-size:.9rem}
+.p1-zeile{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 16px;border-top:1px solid #E3E7ED}
+.p1-zeile h3{margin:0;font-size:1.08rem}
+.p1-zeile p{margin:2px 0 0;color:var(--text2);font-size:.92rem}
+.p1-preis{font:900 1.35rem "Nunito",sans-serif;color:var(--w-dunkel);text-align:right;font-variant-numeric:tabular-nums;min-width:110px}
+.p1-preis small{display:block;font:600 .78rem "Nunito",sans-serif;color:var(--text2)}
+.p1-zeile a{font-weight:800;color:var(--w);text-decoration:none;white-space:nowrap}
+@media (max-width:640px){.p1-zeile{grid-template-columns:minmax(0,1fr) auto}.p1-zeile a{grid-column:1/-1}}
+
+
+  .preis-v1{display:grid;gap:4px}
+  .preis-v1 .p1-gruppe:first-of-type{margin-top:6px}
+  :root{--mb-navy:#102444;--mb-blau:#5B8DEF}
+</style>
+</head>
+<body>
+<div class="innen">
+<div id="kopf"></div>
+
+<main>
+<section class="preis-v1" data-modus="raum" style="padding-block:clamp(32px,6vw,72px) 0">
+      <div class="kopfzeile"><div class="ab-kopf" style="margin:0"><span class="mono">Preise</span><h1>Alle Angebote auf einen Blick.</h1><p class="lede">Im Raum in Frankfurt oder live online. Tipp eine Zeile an, um mehr zu erfahren.</p></div>
+        <div class="schalter" role="group" aria-label="Teilnahme"><button type="button" aria-pressed="true" data-m="raum">Im Raum</button><button type="button" aria-pressed="false" data-m="online">Live online</button></div></div>
+      <div class="p1-gruppe gr"><header><b>Grüne Welt · R&amp;F Aufbruch</b><span>ohne Vorwissen · Getränke inklusive · ab 18</span></header>
+        <div class="p1-zeile"><div><h3>Geldtag</h3><p>1 Tag · Ordnung ins eigene Geld</p></div><div class="p1-preis"><span class="nur-raum">289 €</span><span class="nur-online">129 €</span></div><a href="welt-gruen.html#geldtag">Mehr →</a></div>
+        <div class="p1-zeile"><div><h3>Wissenswochenende</h3><p>Sa + So · Investieren verstehen · Geldtag wird angerechnet</p></div><div class="p1-preis"><span class="nur-raum">599 €</span><span class="nur-online">269 €</span></div><a href="welt-gruen.html#wochenende">Mehr →</a></div>
+      </div>
+      <div class="p1-gruppe bl"><header><b>Blaue Welt · Präsenz-Zirkel</b><span>9:30–17:00 mit Mittagessen · höchstens 12 im Raum</span></header>
+        <div class="p1-zeile"><div><h3>Grundlagen-Tag</h3><p>1 Tag · bei Zirkel-Buchung in 6 Monaten angerechnet</p></div><div class="p1-preis"><span class="nur-raum">479 €</span><span class="nur-online">249 €</span></div><a href="welt-blau.html#grundlagen">Mehr →</a></div>
+        <div class="p1-zeile"><div><h3>Investment-Zirkel</h3><p>14./15.11.2026 · 2 Tage<span class="nur-raum"> · persönliche App inklusive</span></p></div><div class="p1-preis"><span class="nur-raum">1.990 €</span><span class="nur-online">999 €</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
+        <div class="p1-zeile"><div><h3>RainMaker-Zirkel</h3><p>28./29.11.2026 · 2 Tage<span class="nur-raum"> · persönliche App inklusive</span></p></div><div class="p1-preis"><span class="nur-raum">2.390 €</span><span class="nur-online">1.190 €</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
+        <div class="p1-zeile"><div><h3>Beide Zirkel</h3><p><span class="nur-raum">eine persönliche App für beide · </span>einzeln zusammen <span class="nur-raum">4.380 €</span><span class="nur-online">2.189 €</span></p></div><div class="p1-preis"><span class="nur-raum">3.890 €</span><span class="nur-online">1.990 €</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
+        <div class="p1-zeile"><div><h3>Zirkel zu zweit</h3><p>für zwei Personen · persönliche App je Person</p></div><div class="p1-preis"><span class="nur-raum">ab 3.290 €</span><span class="nur-online" style="font-size:.95rem">nur im Raum</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
+      </div>
+      <div class="p1-gruppe mt"><header><b>Mentoring</b><span>Anschluss auf jeder Zeitebene</span></header>
+        <div class="p1-zeile"><div><h3>Tandem-Mentoring</h3><p>zu zweit, getrennte eigene Ergebnisse</p></div><div class="p1-preis">8.500 €<small>je Person</small></div><a href="kontakt.html">Erstgespräch →</a></div>
+        <div class="p1-zeile"><div><h3>1:1-Mentoring</h3><p>eigene Strategie in sechs Zyklen</p></div><div class="p1-preis">12.000 €</div><a href="kontakt.html">Erstgespräch →</a></div>
+      </div>
+      <div class="p1-gruppe go"><header><b>Kostenlos</b><span>Selbstlernen und Familien</span></header>
+        <div class="p1-zeile"><div><h3>Firestarter-App</h3><p>Testversion kostenlos · Vollversion nach Geldtag oder Grundlagen-Tag 149 €, nach Wochenende oder Zirkel 49 €, regulär 399 € (ab 2027 499 €)</p></div><div class="p1-preis" style="font-size:1.05rem">kostenlos</div><a href="firestarter.html">Testen →</a></div>
+        <div class="p1-zeile"><div><h3>Kindertag „Der Geldbaum“</h3><p>60 Minuten · 6 bis 9 Jahre mit einem Erwachsenen · 19 € Pfand je Kind, am Tag zurück</p></div><div class="p1-preis" style="font-size:1.05rem">kostenlos</div><a href="kinder.html">Mehr →</a></div>
+        <div class="p1-zeile"><div><h3>Webinar</h3><p>Einstieg online · Termin folgt</p></div><div class="p1-preis" style="font-size:1.05rem">kostenlos</div><a href="start.html#webinar">Vormerken →</a></div>
+      </div>
+      <p class="hinweis">Von online in den Raum wechseln: gegen die Differenz, solange Plätze frei sind. Bildung, keine Anlageberatung und keine Kauf-Tipps.</p>
+    </section>
+<div class="kontakt-teaser" style="margin-top:28px"><div><h2>Platz anfragen.</h2><p>Schreib uns an info@rf-institut.de. Wir antworten persönlich.</p></div><a class="knopf" href="kontakt.html">Zum Kontakt</a></div>
+</main>
+
+<div id="fuss"></div>
+</div>
+<script src="seite.js"></script>
+<script>
+document.querySelectorAll('.schalter').forEach(function(s){var box=s.closest('[data-modus]');s.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){box.dataset.modus=b.dataset.m;s.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});});});});
+</script>
+</body>
+</html>

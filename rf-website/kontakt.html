@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="de" data-r="B">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Kontakt · R&amp;F</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="start.css">
+<link rel="stylesheet" href="effekte.css">
+<script>(function(){var r=(location.hash||'#A').replace('#','').split('-')[0];if(['A','B','C'].indexOf(r)<0)r='A';document.documentElement.dataset.r=r;})();</script>
+<style>
+  .karte{position:relative;border-radius:var(--r-haupt);overflow:hidden;height:clamp(360px,60vh,560px);background:linear-gradient(135deg,#E8EEF7,#F3F5F8);border:1px solid var(--linie)}
+  .karte iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .karte-platz{position:absolute;inset:0;display:grid;place-content:center;justify-items:center;gap:10px;text-align:center;padding:24px}
+  .karte-platz svg{width:52px;height:52px}
+  .karte-platz p{color:var(--text2);max-width:40ch;margin:0}
+</style>
+</head>
+<body>
+<div class="innen">
+<div id="kopf"></div>
+
+<main>
+<div class="seite-kopf">
+  
+  <h1>Schreib uns.</h1>
+  <p class="lede">Eine Frage zu einem Programm, zur App oder zum Kindertag? Wir antworten persönlich.</p>
+</div>
+
+<div class="zwei">
+  <form class="formular" id="formular" novalidate>
+    <div class="feld"><label for="name">Dein Name</label><input id="name" name="name" autocomplete="name" required></div>
+    <div class="feld"><label for="mail">Deine E-Mail-Adresse</label><input id="mail" name="mail" type="email" autocomplete="email" required></div>
+    <div class="feld"><label for="thema">Worum geht es?</label><select id="thema" name="thema"><option>Firestarter-App</option><option>Grundlagen-Tag</option><option>Investment-Zirkel</option><option>RainMaker</option><option>R&amp;F Aufbruch</option><option>Kindertag und Geldbaum</option><option>Etwas anderes</option></select></div>
+    <div class="feld"><label for="text">Deine Nachricht</label><textarea id="text" name="text" required placeholder="Schreib, was du wissen willst. Kurz reicht."></textarea></div>
+    <label class="einwilligung"><input type="checkbox" id="dsgvo" required><span>Ich bin einverstanden, dass meine Angaben zur Beantwortung meiner Anfrage gespeichert werden. Hinweise in der <a href="recht.html#datenschutz">Datenschutzerklärung</a>. <span class="platz">Wortlaut folgt</span></span></label>
+    <div><button class="knopf" type="submit">Nachricht senden</button></div>
+    <p class="rueck" id="rueck">Das Formular ist noch nicht angeschlossen. Schreib uns bitte direkt an info@rf-institut.de, wir antworten persönlich.</p>
+  </form>
+
+  <aside class="kasten" aria-label="Andere Wege">
+    <span class="mono">Andere Wege</span>
+    <div class="kontaktwege">
+      <div class="kontaktweg"><i>@</i><div><b>E-Mail</b><span id="mail-adresse">info@rf-institut.de</span><button class="kopier" type="button" data-copy="info@rf-institut.de">Kopieren</button></div></div>
+      <div class="kontaktweg nur-entwurf"><i>Tel</i><div><b>Telefon</b><span class="platz">Nummer folgt von René</span><br><small>Erreichbarkeit folgt</small></div></div>
+      <div class="kontaktweg nur-entwurf"><i>Ort</i><div><b>Vor Ort</b><span class="platz">Anschrift folgt</span><br><small>Tagungsraum mit Blick über den Main</small></div></div>
+    </div>
+  </aside>
+</div>
+
+<!-- Simon 29.10.: große Google-Maps-Karte wie auf vielen Seiten. Zwei-Klick-Lösung: Google lädt erst nach Klick (Datenschutz). -->
+<section class="ab" id="anfahrt">
+  <div class="ab-kopf"><span class="mono">So findest du uns</span><h2>WINX-Tower, 21. Etage, Frankfurt am Main.</h2><p>Im MainTor-Quartier direkt am Mainufer. Sieh dir auf der Karte an, wo wir sind und wie weit du es hast.</p></div>
+  <div class="karte" id="karte">
+    <div class="karte-platz">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4c-8.3 0-15 6.5-15 14.6C9 30 24 44 24 44s15-14 15-25.4C39 10.5 32.3 4 24 4z" fill="#102444"/><circle cx="24" cy="18.5" r="5.5" fill="#FFFFFF"/></svg>
+      <b>Karte von Google Maps</b>
+      <p>Beim Laden überträgt dein Browser Daten an Google. Mehr dazu in der <a href="recht.html#datenschutz">Datenschutzerklärung</a>.</p>
+      <button class="knopf" type="button" id="karte-laden">Karte laden</button>
+    </div>
+  </div>
+  <div class="kopf-knoepfe" style="margin-top:16px"><a class="knopf leise" href="https://www.google.com/maps/dir/?api=1&amp;destination=WINX-Tower%2C%20Frankfurt%20am%20Main" target="_blank" rel="noopener">Route von meinem Standort ↗</a><a class="knopf leise" href="https://www.google.com/maps/search/?api=1&amp;query=WINX-Tower%2C%20Frankfurt%20am%20Main" target="_blank" rel="noopener">In Google Maps öffnen ↗</a></div>
+</section>
+</main>
+
+<div id="fuss"></div>
+</div>
+<script>
+document.getElementById('formular').addEventListener('submit',function(e){e.preventDefault();var f=e.target;if(!f.checkValidity()){f.reportValidity();return;}document.getElementById('rueck').classList.add('da');});
+document.querySelectorAll('.kopier').forEach(function(b){b.addEventListener('click',function(){var t=b.dataset.copy;function ok(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Kopieren'},1500)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(function(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail-adresse'));var s=getSelection();s.removeAllRanges();s.addRange(r);});}else{var r=document.createRange();r.selectNodeContents(document.getElementById('mail-adresse'));var s=getSelection();s.removeAllRanges();s.addRange(r);}});});
+</script>
+<script>
+document.getElementById('karte-laden').addEventListener('click',function(){var k=document.getElementById('karte');k.innerHTML='<iframe title="Karte: WINX-Tower Frankfurt am Main" src="https://www.google.com/maps?q=WINX-Tower,+Frankfurt+am+Main&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';});
+</script>
+<script src="seite.js"></script>
+</body>
+</html>

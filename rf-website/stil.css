@@ -1,0 +1,333 @@
+/* R&F-Website · Mockup-Richtungen 26.10.2026
+   Eine Stilgrundlage, drei Richtungen über html[data-r]:
+   A „Apple-Ruhe“  – Reinweiß, Produktleiste, viel Luft
+   B „Mensch zuerst“ – Weiß, Vollbild-Foto von Menschen, kräftiges Orange
+   C „Creme-Welten“ – DESIGN.md-treu, Creme, drei Welten farbig
+   Fonts: Nunito (rund, W3) · Gloock nur Wortmarke · IBM Plex Mono für Labels */
+
+:root{
+  --navy:#102444; --navy-tief:#0A1830; --orange:#FF7A00; --orange-knopf:#D96400; --gold:#BBA45F;
+  --gruen:#173A2B; --goldwelt:#ECBA2E; --goldwelt-hi:#F6CF5A; --goldwelt-tief:#A98318;
+  --text:#1C1917; --text2:#6B6257; --linie:#E6E0D3;
+  --platz:#F1EBDF; --platz-rand:#C9BBA2; --platz-text:#6B5B46;
+  --f:"Nunito","Avenir Next","Segoe UI",sans-serif; --wort:"Gloock",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --r-klein:6px; --r-knopf:12px; --r-karte:14px; --r-haupt:20px;
+  --grund:#FFFFFF; --flaeche:#F7F4EE; --kopf-grund:#FFFFFF; --kopf-text:#1C1917; --akzent:#FF7A00; --knopf:#102444; --knopf-text:#F5F1EA;
+  --h1:clamp(2.05rem,6vw,4.6rem); --h1-w:800; --schatten:0 18px 40px -18px rgba(16,36,68,.4);
+}
+html[data-r="A"]{--grund:#FFFFFF;--flaeche:#F6F5F2;--h1-w:800;--akzent:#FF7A00}
+html[data-r="B"]{--grund:#FFFFFF;--flaeche:#F5F1EA;--h1-w:900;--h1:clamp(2.2rem,7vw,5.2rem);--akzent:#FF7A00;--knopf:#FF7A00;--knopf-text:#1C1917}
+h1,h2{overflow-wrap:anywhere}
+html[data-r="C"]{--grund:#F5F1EA;--flaeche:#FFFDF8;--h1-w:800;--akzent:#B39465;--knopf:#102444}
+
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--grund);color:var(--text);font:400 17px/1.6 var(--f);-webkit-font-smoothing:antialiased}
+.innen{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+h1,h2,h3,h4{font-family:var(--f);line-height:1.1;text-wrap:balance;margin:0}
+h1{font-size:var(--h1);font-weight:var(--h1-w);letter-spacing:-.02em}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem);font-weight:800;letter-spacing:-.015em}
+h3{font-size:1.35rem;font-weight:800}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.mono{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}
+.lede{font-size:1.18rem;color:var(--text2);max-width:36ch}
+img{max-width:100%;display:block}
+
+/* Platzhalter für Renés Texte und Fotos */
+.platz{display:inline-flex;justify-self:start;width:max-content;max-width:100%;align-items:center;gap:6px;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;color:var(--platz-text);border:1px solid var(--platz-rand);border-radius:6px;padding:3px 9px;background:var(--platz)}
+.platz::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.zeilen{display:grid;gap:9px;margin-top:6px}
+.zeilen i{display:block;height:10px;border-radius:5px;background:var(--platz)}
+.zeilen i:nth-child(2){width:86%}.zeilen i:nth-child(3){width:62%}
+.foto{position:relative;overflow:hidden;background:linear-gradient(135deg,#D9D2C3,#B7AE9B 60%,#8F8673);color:#2A2419;display:grid;place-items:center;text-align:center;padding:18px}
+.foto span{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(255,255,255,.75);border-radius:999px;padding:6px 12px}
+.foto small{display:block;font-size:.86rem;margin-top:8px;max-width:30ch;color:#3A3328}
+.arbeitstitel{}
+
+/* Knöpfe */
+.knopf{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:var(--r-knopf);padding:14px 22px;font:800 1rem var(--f);text-decoration:none;cursor:pointer;color:var(--knopf-text);background:var(--knopf);box-shadow:0 10px 24px -12px rgba(16,36,68,.5);transition:transform .35s cubic-bezier(.2,0,0,1)}
+.knopf:active{transform:translateY(2px)}
+.knopf.leise{background:transparent;color:var(--text);border:1.5px solid var(--linie);box-shadow:none}
+html[data-r="B"] .knopf{border-radius:999px}
+html[data-r="A"] .knopf{border-radius:999px;padding:12px 20px;font-weight:700}
+
+/* Kopfleiste */
+.leiste{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;position:sticky;top:0;background:color-mix(in srgb,var(--grund) 88%,transparent);backdrop-filter:blur(10px);z-index:20}
+.marke{display:grid;grid-template-columns:auto;gap:0;text-decoration:none;line-height:1}
+.marke b{font-family:var(--wort);font-weight:400;font-size:1.8rem;color:var(--navy)}
+.marke span{font-family:var(--mono);font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;color:var(--text2);margin-top:2px;white-space:nowrap}
+.menue{display:flex;gap:24px;font-weight:700;font-size:.96rem}
+.menue a{text-decoration:none;color:var(--text2)}
+.menue a[aria-current]{color:var(--text)}
+@media (max-width:900px){.menue{display:none}.marke span{display:none}}
+.burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid var(--linie);background:transparent;align-items:center;justify-content:center;cursor:pointer}
+.burger i{width:18px;height:2px;background:var(--text);box-shadow:0 -6px 0 var(--text),0 6px 0 var(--text);display:block}
+@media (max-width:900px){.burger{display:inline-flex}}
+
+/* Kopfbereich – drei Varianten */
+.kopf{padding-block:clamp(24px,5vw,64px) 40px}
+.kopf-text{display:grid;gap:20px;min-width:0}
+.kopf-knoepfe{display:flex;flex-wrap:wrap;gap:12px}
+.hinweis{font-size:.85rem;color:var(--text2)}
+/* A: Text links, Telefon-Bühne rechts, weiß, ruhig */
+html[data-r="A"] .kopf-raster{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(24px,5vw,72px);align-items:center}
+/* B: Vollbild-Foto von Menschen, Text darauf; Telefon-Bühne darunter */
+html[data-r="B"] .kopf{padding-block:0 40px}
+html[data-r="B"] .kopf-raster{display:grid;grid-template-columns:1fr}
+html[data-r="B"] .held{position:relative;min-height:min(78vh,720px);border-radius:0 0 var(--r-haupt) var(--r-haupt);overflow:hidden;display:grid;align-items:end;margin-inline:calc(-1*clamp(16px,4vw,48px))}
+html[data-r="B"] .held .foto{position:absolute;inset:0;padding:0;border-radius:0}
+html[data-r="B"] .held .foto span{position:absolute;top:18px;right:18px}
+html[data-r="B"] .held .foto small{position:absolute;top:56px;right:18px;text-align:right}
+html[data-r="B"] .held::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,24,48,0) 30%,rgba(10,24,48,.85) 100%)}
+html[data-r="B"] .held .kopf-text{position:relative;z-index:2;padding:clamp(20px,5vw,56px);color:#F5F1EA}
+html[data-r="B"] .held .lede{color:#E6E0D3;max-width:40ch}
+html[data-r="B"] .held .hinweis{color:#C6D2E2}
+html[data-r="B"] .held .knopf.leise{color:#F5F1EA;border-color:rgba(245,241,234,.5)}
+html[data-r="B"] .buehne-block{margin-top:40px}
+html[data-r="A"] .held,html[data-r="C"] .held{display:contents}
+html[data-r="A"] .held .foto,html[data-r="C"] .held .foto{display:none}
+/* C: Creme, Kopf wie A, aber Figur Sparky größer im Bild */
+html[data-r="C"] .kopf-raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:1000px){html[data-r="A"] .kopf-raster,html[data-r="C"] .kopf-raster{grid-template-columns:1fr}}
+
+/* Telefon-Bühne */
+.buehne{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:center;min-width:0;padding-bottom:96px}
+.kapitel{display:grid;gap:4px;min-width:0;max-width:100%}
+.buehne>*,.kopf-raster>*,.held>*{min-width:0}
+.innen{min-width:0;overflow-x:clip}
+.kapitel button{all:unset;outline:revert;cursor:pointer;display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;padding:10px 12px;border-radius:var(--r-knopf);color:var(--text2);transition:background .4s cubic-bezier(.2,0,0,1)}
+.kapitel button .punkt{width:12px;height:12px;margin-top:6px;border-radius:50%;border:2px solid var(--linie)}
+.kapitel button b{display:block;color:var(--text);font-weight:800;font-size:1rem}
+.kapitel button small{display:block;font-size:.86rem;line-height:1.4}
+.kapitel button[aria-current="true"]{background:var(--flaeche)}
+.kapitel button[aria-current="true"] .punkt{border-color:var(--akzent);background:var(--akzent)}
+.lauf{height:3px;border-radius:3px;background:var(--linie);overflow:hidden;margin:2px 12px 0 44px}
+.lauf i{display:block;height:100%;width:0;background:var(--akzent)}
+.selbst{font-size:.84rem;color:var(--text2);padding:8px 12px 0 44px}
+.telefon{--b:clamp(250px,24vw,320px);width:var(--b);aspect-ratio:390/844;justify-self:center;position:relative;border-radius:52px;background:#0B0B0D;padding:11px;box-shadow:var(--schatten),inset 0 0 0 2px #2A2A2E;max-width:100%}
+.telefon .glas{position:relative;width:100%;height:100%;border-radius:42px;overflow:hidden;background:#F5F1EA;container-type:inline-size}
+.telefon .status{position:absolute;inset:0 0 auto 0;height:calc(100% * 50 / 844);display:flex;align-items:center;justify-content:space-between;padding:0 9% 0 11%;font:700 clamp(10px,3.6cqw,15px)/1 var(--f);color:#F5F1EA;background:#102444;z-index:1}
+.telefon .status .akku{display:flex;gap:5px;align-items:center}
+.telefon .status .akku i{display:block;width:1.6em;height:.8em;border-radius:3px;border:1.5px solid #F5F1EA;position:relative}
+.telefon .status .akku i::after{content:"";position:absolute;inset:1.5px 25% 1.5px 1.5px;background:#F5F1EA;border-radius:1px}
+.telefon .rahmen{position:absolute;left:0;right:0;bottom:0;top:calc(100% * 50 / 844)}
+.telefon iframe{position:absolute;top:0;left:0;width:390px;height:794px;border:0;transform-origin:0 0}
+.telefon .insel{position:absolute;top:21px;left:50%;translate:-50% 0;width:31%;height:27px;border-radius:20px;background:#0B0B0D;z-index:2;pointer-events:none}
+.telefon .blase{position:absolute;left:-10px;right:-10px;top:calc(100% + 16px);z-index:3;background:#102444;color:#F5F1EA;border-radius:16px;padding:12px 14px;font-weight:700;font-size:.95rem;line-height:1.35;box-shadow:0 14px 30px -14px rgba(16,36,68,.7);transition:opacity .45s cubic-bezier(.2,0,0,1),translate .45s cubic-bezier(.2,0,0,1)}
+.telefon .blase.weg{opacity:0;translate:0 8px}
+.telefon .blase span{display:block;font-family:var(--mono);font-weight:500;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#FFB766;margin-bottom:2px}
+@media (max-width:960px){
+  .buehne{grid-template-columns:1fr;gap:34px;padding-bottom:0}
+  .telefon{--b:min(78vw,320px);margin-bottom:92px}
+  .kapitel{order:2;grid-auto-flow:column;grid-auto-columns:minmax(150px,1fr);overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+  .kapitel button{scroll-snap-align:start;grid-template-columns:1fr}
+  .kapitel button .punkt,.lauf,.selbst{display:none}
+}
+
+/* Abschnitte */
+section.ab{padding-block:clamp(56px,8vw,104px);border-top:1px solid var(--linie)}
+.ab-kopf{display:grid;gap:14px;max-width:62ch;margin-bottom:clamp(28px,4vw,48px)}
+.ab-kopf p{color:var(--text2);font-size:1.08rem}
+
+/* Produktleiste wie bei Apple (Simons Notiz Runde 1) */
+.produkte{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(150px,180px);gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 2px 14px;scrollbar-width:thin}
+.produkt{scroll-snap-align:start;display:grid;gap:10px;text-decoration:none;color:inherit}
+.produkt .bild{aspect-ratio:1;border-radius:var(--r-karte);background:var(--flaeche);display:grid;place-items:center;position:relative;overflow:hidden}
+.produkt .bild svg{width:58%;height:auto}
+.produkt b{font-size:1rem;font-weight:800}
+.produkt small{font-size:.84rem;color:var(--text2)}
+.produkt .neu{color:var(--text2);font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.w-blau .bild{background:#E4EAF4}.w-gruen .bild{background:#E3EBE4}.w-gold .bild{background:#FBF3DC}.w-app .bild{background:#FFE8D1}
+html[data-r="C"] .produkt .bild{border:1px solid var(--linie)}
+
+/* Der Weg durch die drei Welten */
+.weg{display:grid;gap:clamp(28px,4vw,40px)}
+.welt{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr);gap:clamp(16px,3vw,40px);align-items:start}
+.welt-name{display:grid;gap:8px}
+.welt-name .farbe{width:44px;height:6px;border-radius:6px}
+.welt-name h3{font-size:1.45rem}
+.welt-name p{color:var(--text2);font-size:.95rem}
+.stationen{display:grid;position:relative;padding-left:30px}
+.stationen::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--wf)}
+.station{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 24px;padding:18px 0 22px;border-bottom:1px solid var(--linie);text-decoration:none;color:inherit}
+.station:last-child{border-bottom:0}
+.station::before{content:"";position:absolute;left:-28px;top:24px;width:15px;height:15px;border-radius:50%;background:var(--grund);border:3px solid var(--wf)}
+.station h4{font-size:1.22rem;font-weight:800}
+.station .zeilen{grid-column:1/-1;max-width:520px}
+.station .rechts{display:flex;flex-direction:column;align-items:flex-end;gap:6px;text-align:right}
+.station .rechts small{font-size:.8rem;color:var(--text2)}
+.blau{--wf:#2E4F86}.gruen{--wf:#2F6B4F}.gold{--wf:#C9970F}
+.blau .farbe{background:#102444}.gruen .farbe{background:#173A2B}.gold .farbe{background:#ECBA2E}
+@media (max-width:760px){.welt{grid-template-columns:1fr}.station{grid-template-columns:1fr}.station .rechts{align-items:flex-start;text-align:left;flex-direction:row;flex-wrap:wrap}}
+
+/* Ausprobieren: Lektion abspielen und vorlesen (Simons Notiz Lovable) */
+.probe{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,48px);align-items:center;background:var(--flaeche);border-radius:var(--r-haupt);padding:clamp(20px,4vw,44px)}
+.probe .text{display:grid;gap:14px;min-width:0}
+.probe .spieler{background:var(--grund);border-radius:var(--r-karte);border:1px solid var(--linie);padding:18px;display:grid;gap:14px}
+.probe .spieler .zeile{display:flex;align-items:center;gap:12px}
+.probe .spieler .play{width:46px;height:46px;border-radius:50%;background:var(--knopf);color:var(--knopf-text);display:grid;place-items:center;border:0;cursor:pointer;flex:none}
+.probe .spieler .play::before{content:"";border-left:14px solid currentColor;border-top:9px solid transparent;border-bottom:9px solid transparent;margin-left:3px}
+.probe .spieler .balken{height:6px;border-radius:6px;background:var(--linie);overflow:hidden}
+.probe .spieler .balken i{display:block;height:100%;width:34%;background:var(--akzent)}
+.probe .spieler .wahl{display:flex;flex-wrap:wrap;gap:8px}
+.probe .spieler .wahl button{font:700 .86rem var(--f);border:1.5px solid var(--linie);background:transparent;color:var(--text);border-radius:999px;padding:7px 12px;cursor:pointer}
+.probe .spieler .wahl button[aria-pressed="true"]{background:var(--navy);color:#F5F1EA;border-color:var(--navy)}
+html[data-r="B"] .probe .spieler .wahl button[aria-pressed="true"]{background:var(--orange);color:#1C1917;border-color:var(--orange)}
+@media (max-width:860px){.probe{grid-template-columns:1fr}}
+
+/* Ort / Über uns */
+.ort{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center}
+.ort figure{margin:0;position:relative}
+.ort img,.ort .foto{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r-haupt)}
+.ort figcaption{position:absolute;left:14px;bottom:14px;background:rgba(10,24,48,.82);color:#F5F1EA;border-radius:999px;padding:6px 12px;font-family:var(--mono);font-size:.64rem;letter-spacing:.12em;text-transform:uppercase}
+.ort .text{display:grid;gap:16px;min-width:0}
+@media (max-width:860px){.ort{grid-template-columns:1fr}}
+
+/* Menschen-Reihe (Monzo/Trade Republic: Gesichter) */
+.menschen{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:16px}
+.mensch{display:grid;gap:10px}
+.mensch .foto{aspect-ratio:3/4;border-radius:var(--r-karte)}
+.mensch b{font-size:1.05rem}
+.mensch small{color:var(--text2)}
+
+/* Familien (Gold) */
+.familie{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:center;background:#FBF3DC;color:#173A2B;border-radius:var(--r-haupt);padding:clamp(24px,4vw,48px)}
+.familie .text{display:grid;gap:14px;min-width:0}
+.familie .text p{color:#3E4A3A}
+.familie .baum{display:grid;place-items:center}
+.familie .baum svg{width:min(100%,300px);height:auto}
+.familie .platz{background:#F6E7BE;border-color:#C9A54A;color:#7A5D12}
+@media (max-width:760px){.familie{grid-template-columns:1fr}}
+
+/* Belege */
+.belege{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+.beleg{border:1px solid var(--linie);border-radius:var(--r-knopf);padding:20px;display:grid;gap:10px;background:var(--platz);min-width:0}
+.beleg b{font-size:1.02rem}
+.beleg p{font-size:.9rem;color:var(--platz-text)}
+
+/* Kontakt-Teaser und Fußzeile */
+.kontakt-teaser{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;border-radius:var(--r-haupt);background:var(--navy);color:#F5F1EA;padding:clamp(22px,4vw,40px)}
+.kontakt-teaser p{color:#C6D2E2}
+.kontakt-teaser .knopf{background:#F5F1EA;color:#102444}
+@media (max-width:760px){.kontakt-teaser{grid-template-columns:1fr}}
+.fuss{border-top:1px solid var(--linie);padding-block:clamp(40px,6vw,72px) 32px;display:grid;gap:28px}
+.fuss .gross{display:flex;align-items:flex-end;gap:clamp(8px,2vw,24px);line-height:.8}
+.fuss .gross b{font-family:var(--wort);font-weight:400;font-size:clamp(5rem,22vw,17rem);color:var(--navy);letter-spacing:-.02em}
+.fuss .gross svg{width:clamp(64px,12vw,170px);height:auto;margin-bottom:clamp(6px,2vw,22px)}
+.fuss .gross svg .arm{transform-origin:46px 50px;animation:winken 2.6s cubic-bezier(.2,0,0,1) 3}
+@keyframes winken{0%,62%,100%{rotate:0deg}70%{rotate:-22deg}80%{rotate:6deg}90%{rotate:-14deg}}
+.fuss-spalten{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px;font-size:.94rem}
+.fuss-spalten b{display:block;margin-bottom:8px}
+.fuss-spalten a{display:block;text-decoration:none;color:var(--text2);padding:3px 0}
+.fuss-unten{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;color:var(--text2);font-size:.86rem;border-top:1px solid var(--linie);padding-top:18px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* Unterseiten */
+.seite-kopf{padding-block:clamp(24px,5vw,56px) 24px;display:grid;gap:16px;max-width:64ch}
+.brotkrumen{display:flex;gap:8px;font-size:.86rem;color:var(--text2)}
+.brotkrumen a{text-decoration:none}
+.zwei{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:clamp(24px,4vw,56px);align-items:start}
+@media (max-width:860px){.zwei{grid-template-columns:1fr}}
+.kasten{background:var(--flaeche);border-radius:var(--r-haupt);padding:clamp(18px,3vw,28px);display:grid;gap:14px;position:sticky;top:90px}
+.liste{display:grid;gap:12px;margin:0;padding:0;list-style:none}
+.liste li{display:grid;grid-template-columns:28px 1fr;gap:12px;align-items:start}
+.liste li i{width:28px;height:28px;border-radius:50%;background:var(--flaeche);border:2px solid var(--akzent);display:grid;place-items:center;font:800 .8rem var(--f);color:var(--text)}
+.ablauf{display:grid;gap:0;position:relative;padding-left:30px}
+.ablauf::before{content:"";position:absolute;left:9px;top:12px;bottom:12px;width:3px;border-radius:3px;background:var(--wf,#2E4F86)}
+.ablauf .schritt{position:relative;padding:14px 0}
+.ablauf .schritt::before{content:"";position:absolute;left:-28px;top:20px;width:15px;height:15px;border-radius:50%;background:var(--grund);border:3px solid var(--wf,#2E4F86)}
+.ablauf .schritt b{display:block;font-size:1.05rem}
+
+/* Formular (nur Seiten-UI) */
+.formular{display:grid;gap:14px}
+.feld{display:grid;gap:6px}
+.feld label{font-weight:700;font-size:.95rem}
+.feld input,.feld textarea,.feld select{font:400 1rem var(--f);padding:13px 14px;border:1.5px solid var(--linie);border-radius:var(--r-knopf);background:var(--grund);color:var(--text);min-height:48px}
+.feld textarea{min-height:120px;resize:vertical}
+.einwilligung{display:grid;grid-template-columns:22px 1fr;gap:10px;align-items:start;font-size:.9rem;color:var(--text2)}
+.einwilligung input{width:20px;height:20px;margin-top:2px}
+.rueck{display:none;background:var(--flaeche);border-radius:var(--r-knopf);padding:14px 16px;font-weight:700}
+.rueck.da{display:block}
+.kontaktwege{display:grid;gap:14px}
+.kontaktweg{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:start}
+.kontaktweg i{width:44px;height:44px;border-radius:12px;background:var(--grund);border:1.5px solid var(--linie);display:grid;place-items:center;font:800 .9rem var(--mono);color:var(--navy)}
+.kontaktweg b{display:block}
+.kontaktweg small{color:var(--text2)}
+.kopier{font:700 .82rem var(--f);border:1.5px solid var(--linie);background:transparent;border-radius:999px;padding:5px 10px;cursor:pointer;margin-left:8px}
+
+/* Kinderwelt (Gold) – bunt, Spiel, Interaktion (Simons Notiz HeyGen) */
+html[data-r="K"]{--grund:#FBF3DC;--flaeche:#FFFDF5;--akzent:#ECBA2E;--knopf:#173A2B;--knopf-text:#FBF3DC;--text:#173A2B;--text2:#5C4A28;--linie:#E2D39F;--navy:#173A2B}
+html[data-r="K"] body{font-size:18px}
+html[data-r="K"] h1{font-family:var(--wort);font-weight:400;letter-spacing:0}
+html[data-r="K"] .kopf-raster{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(24px,5vw,64px);align-items:center}
+@media (max-width:900px){html[data-r="K"] .kopf-raster{grid-template-columns:1fr}}
+.kinder-himmel{position:relative;border-radius:var(--r-haupt);background:linear-gradient(180deg,#CDE7F5 0%,#E8F3F8 60%,#D6EBC9 100%);min-height:360px;overflow:hidden;display:grid;place-items:end center;padding:0 0 18px}
+.kinder-himmel .wolke{position:absolute;background:#fff;border-radius:999px;opacity:.9}
+.kinder-himmel .wolke::before,.kinder-himmel .wolke::after{content:"";position:absolute;background:#fff;border-radius:50%}
+.kinder-himmel .baum{width:min(70%,300px);height:auto;position:relative;z-index:2}
+.kinder-himmel .blatt{position:absolute;width:44px;height:44px;border-radius:50% 0;background:#F6CF5A;border:2px solid #A98318;z-index:3;cursor:pointer;background-clip:padding-box;box-shadow:inset 0 0 0 9px var(--grund);transition:transform .5s cubic-bezier(.34,1.56,.64,1),opacity .4s}
+.kinder-himmel .blatt.weg{transform:translateY(60px) rotate(60deg);opacity:0}
+.kinder-himmel .zaehler{position:absolute;top:14px;left:14px;z-index:3;background:#fff;border-radius:999px;padding:6px 12px;font:800 .95rem var(--f);color:#173A2B;border:2px solid #ECBA2E}
+.wege{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:16px}
+.weg-karte{display:grid;gap:10px;background:var(--flaeche);border:2px solid var(--linie);border-radius:var(--r-haupt);padding:18px;text-decoration:none;color:inherit}
+.weg-karte .nr{font-family:var(--wort);font-size:2.4rem;color:#A98318;line-height:1}
+.weg-karte b{font-size:1.15rem}
+.weg-karte .farbe{height:8px;border-radius:8px}
+.spiel{background:var(--flaeche);border:2px solid var(--linie);border-radius:var(--r-haupt);padding:clamp(18px,3vw,28px);display:grid;gap:14px}
+.spiel .frage{font-size:1.3rem;font-weight:800}
+.spiel .antworten{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,160px),1fr));gap:12px}
+.spiel .antworten button{font:800 1.05rem var(--f);background:#fff;border:2px solid var(--linie);border-radius:16px;padding:16px;cursor:pointer;color:var(--text);min-height:60px;border-bottom-width:5px}
+.spiel .antworten button:active{transform:translateY(2px);border-bottom-width:3px}
+.spiel .antworten button.richtig{background:#DDEFD8;border-color:#2F6B4F}
+.spiel .antworten button.falsch{background:#FBE2D7;border-color:#B3442E}
+.spiel .satz{min-height:1.6em;font-weight:700;color:#2F6B4F}
+.sparky-sagt{display:grid;grid-template-columns:64px 1fr;gap:14px;align-items:center}
+.sparky-sagt svg{width:64px;height:auto}
+.sparky-sagt p{background:#fff;border:2px solid var(--linie);border-radius:16px;padding:12px 14px;font-size:1.05rem;position:relative}
+.sparky-sagt p::before{content:"";position:absolute;left:-10px;top:22px;border:8px solid transparent;border-right-color:var(--linie);border-left:0}
+.eltern{border-left:4px solid #ECBA2E;padding-left:14px;color:var(--text2);font-size:.95rem}
+
+/* Handy-Menü (Deckel) */
+.deckel{position:fixed;inset:0;background:var(--grund);z-index:60;display:none;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 24px;overflow:auto}
+.deckel.offen{display:block}
+.deckel .zu{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:clamp(16px,4vw,48px);width:44px;height:44px;border-radius:12px;border:1.5px solid var(--linie);background:transparent;font:400 1.8rem/1 var(--f);color:var(--text);cursor:pointer}
+.deckel-nav{display:grid;gap:4px;margin-top:64px}
+.deckel-nav a{font:800 1.6rem/1.3 var(--f);text-decoration:none;color:var(--text);padding:12px 0;border-bottom:1px solid var(--linie)}
+.deckel-nav a[aria-current]{color:var(--akzent)}
+
+/* Personen-Wischer – Hintergrund wechselt mit der Person (Simon, 26.10.2026) */
+.rahmen-liste{display:grid;gap:14px}
+.rahmen{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px 20px;align-items:center;padding:18px 20px;border:1.5px solid var(--linie);border-radius:var(--r-karte);background:var(--flaeche)}
+.rahmen b{font-size:1.1rem}
+.rahmen small{display:block;color:var(--text2)}
+@media (max-width:600px){.rahmen{grid-template-columns:1fr}}
+
+/* Über uns als Bühne (Simon 26.10. abends): beim Runterscrollen wechselt die Person, die Farbe und der Text */
+.pbuehne-lauf{position:relative;margin:0 calc(-1 * clamp(16px,4vw,48px))}
+.pbuehne{position:sticky;top:0;height:100svh;min-height:560px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr) auto;background:var(--b-grund,#102444);color:var(--b-text,#F5F1EA);transition:background .9s cubic-bezier(.2,0,0,1),color .9s}
+.pbuehne .b-kopf{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:calc(88px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 0}
+.pbuehne .b-kopf .mono{opacity:.75;color:inherit}
+.pbuehne .wer{font-family:var(--wort);font-weight:400;font-size:clamp(1.5rem,3vw,2.2rem)}
+.pbuehne .b-mitte{position:relative;display:grid;grid-template-columns:minmax(0,1fr);align-items:start;padding:14px clamp(16px,4vw,48px) 0;min-height:0}
+.pbuehne .avatar{position:absolute;right:0;bottom:0;height:min(58%,520px);width:auto;max-width:92%;object-fit:contain;object-position:bottom right;pointer-events:none;filter:drop-shadow(0 18px 40px rgba(0,0,0,.35));transition:opacity .6s,transform .9s cubic-bezier(.2,0,0,1)}
+.pbuehne .avatar[hidden]{display:block!important;opacity:0!important;transform:translateX(40px);pointer-events:none}
+.pbuehne .avatar.silhouette{opacity:.9}
+.pbuehne .saetze{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr);gap:10px;max-width:52ch;min-width:0;padding-bottom:0;grid-row:1;grid-column:1}
+.pbuehne .satz{overflow-wrap:anywhere;font:800 clamp(1.3rem,4.6vw,2.6rem)/1.15 var(--f);letter-spacing:-.015em;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .6s cubic-bezier(.2,0,0,1);text-wrap:balance}
+.pbuehne .satz.da{opacity:1;transform:none}
+.pbuehne .satz.leise{font-weight:600;font-size:clamp(1rem,3.4vw,1.35rem);opacity:0;letter-spacing:0}
+.pbuehne .satz.leise.da{opacity:1}
+.pbuehne .rolle{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;opacity:.8}
+.pbuehne .b-fuss{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 clamp(16px,4vw,48px) calc(18px + env(safe-area-inset-bottom,0px))}
+.pbuehne .punkte{display:flex;gap:8px}
+.pbuehne .punkte i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s,transform .3s}
+.pbuehne .punkte i.an{background:var(--b-akzent,#FF7A00);transform:scale(1.3)}
+.pbuehne .platz{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:inherit}
+.pbuehne .platz::before{background:var(--b-akzent,#FF7A00)}
+.pbuehne .weiter{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
+@media (min-width:860px){.pbuehne .b-mitte{align-items:center}.pbuehne .avatar{right:clamp(16px,4vw,48px);height:min(88%,640px);max-width:46%}.pbuehne .saetze{max-width:48ch;padding-bottom:0}}
+@media (prefers-reduced-motion:reduce){.pbuehne,.pbuehne .avatar,.pbuehne .satz{transition:none}}
+
+.probe .spieler .play[disabled]{opacity:.45;cursor:not-allowed}

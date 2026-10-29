@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="de" data-r="B" data-v="1">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Über uns · R&amp;F Institut für Vermögensbildung</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="start.css">
+<link rel="stylesheet" href="effekte.css">
+<style>
+  .intro{padding-block:clamp(48px,8vw,110px) clamp(20px,4vw,40px);display:grid;gap:16px;max-width:760px}
+  .intro h1{font-size:clamp(2.2rem,6vw,4.4rem);font-weight:900}
+  .intro .lede{max-width:46ch}
+  .person-szene{margin-inline:calc(-1*clamp(16px,4vw,48px))}
+  .zwischen{padding-block:clamp(48px,8vw,96px);display:grid;gap:16px;max-width:760px}
+  .zwischen p{color:var(--text2);font-size:1.1rem}
+  .weiter-hinweis{font-family:var(--mono);font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}
+  .rene-zitat{margin:12px 0 0;font:800 clamp(1.25rem,2.6vw,1.8rem)/1.3 var(--f);letter-spacing:-.01em;border-left:5px solid #2E5AA8;padding-left:clamp(14px,2vw,24px);text-wrap:pretty}
+  .rene-zitat cite{display:block;margin-top:10px;font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text2);font-style:normal}
+  .zr-liste{list-style:none;margin:28px 0 0;padding:0;position:relative;display:grid;gap:clamp(22px,3.5vw,36px)}
+  .zr-liste::before{content:"";position:absolute;left:clamp(86px,14vw,150px);top:8px;bottom:8px;width:2px;background:linear-gradient(#2E5AA8,#2E5AA8 85%,#2F7A55)}
+  .zr{display:grid;grid-template-columns:clamp(70px,12vw,130px) minmax(0,1fr);gap:clamp(32px,4vw,40px);position:relative}
+  .zr::before{content:"";position:absolute;left:calc(clamp(86px,14vw,150px) - 6px);top:6px;width:14px;height:14px;border-radius:50%;background:#FFFFFF;border:3px solid #2E5AA8;box-sizing:border-box}
+  .zr.leise::before{border-color:#2F7A55}
+  .zr-zeit{font:800 clamp(.95rem,1.8vw,1.15rem)/1.3 var(--f);color:#2E5AA8;text-align:right;padding-top:1px}
+  .zr.leise .zr-zeit{color:#2F7A55}
+  .zr h3{margin:0 0 6px;font-size:clamp(1.1rem,2.2vw,1.4rem);font-weight:900}
+  .zr p{margin:0;color:var(--text2);max-width:62ch}
+  .zr.gross > div{background:#EEF2F8;border-radius:var(--r-haupt);padding:clamp(16px,2.5vw,26px)}
+  .zr.gross h3{font-size:clamp(1.3rem,2.8vw,1.8rem)}
+  .zr-zahlen{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:16px}
+  .zr-zahlen div{background:#FFFFFF;border-radius:var(--r-karte);padding:14px;display:grid;gap:4px}
+  .zr-zahlen strong{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#102444;line-height:1.1}
+  .zr-zahlen span{font-size:.9rem;color:var(--text2)}
+  @media (max-width:600px){
+    .zr-liste::before{left:7px}
+    .zr{grid-template-columns:1fr;gap:4px;padding-left:30px}
+    .zr::before{left:1px}
+    .zr-zeit{text-align:left}
+    .zr-zahlen{grid-template-columns:1fr}
+  }
+  /* Simon 29.10.: „Das Testimonial geht extrem unter“ */
+  #stimme .stimme{max-width:none;background:#102444;color:#FFFFFF;padding:clamp(28px,6vw,72px);gap:22px;position:relative;overflow:hidden}
+  #stimme .stimme::before{content:"“";position:absolute;right:clamp(12px,4vw,48px);top:-.18em;font:400 clamp(9rem,22vw,16rem)/1 var(--wort);color:rgba(91,141,239,.28)}
+  #stimme .stimme blockquote{position:relative;font:800 clamp(1.3rem,3vw,2.1rem)/1.3 var(--f);letter-spacing:-.01em;max-width:34ch;text-wrap:pretty}
+  #stimme .stimme cite{color:#FFFFFF;font-size:1.05rem}
+  #stimme .stimme cite small{color:#C6D2E2}
+  #stimme .sterne{color:#FFB547;letter-spacing:.2em;font-size:1.1rem}
+  .standort-zeile{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;font-size:1.15rem;font-weight:700;margin:0}
+</style>
+</head>
+<body>
+<div class="innen">
+<div id="kopf"></div>
+<main>
+<section class="intro">
+  <span class="mono">Über uns</span>
+  <h1>Zwei Menschen, eine Haltung.</h1>
+  <p class="lede">Finanzbildung ohne Produktverkauf. Du lernst, wie Geld funktioniert, und entscheidest selbst. Scroll weiter, wir stellen uns vor.</p>
+  <span class="weiter-hinweis">↓ Weiterscrollen</span>
+</section>
+
+<!-- René: Fokusfarbe Blau -->
+<section class="person-szene rechts" style="--farbe:#2E5AA8;--farbe-text:#102444" aria-label="René stellt sich vor">
+  <div class="ps-buehne">
+    <div class="tint"></div>
+    <span class="name-gross" aria-hidden="true">René</span>
+    <img class="avatar" src="bilder/web/rene_final_frei.png" alt="René Flé">
+    <div class="ps-text">
+      <span class="rolle">René Flé · Gründer · Inhalte und Programme</span>
+      <p class="satz">Hey, ich bin René.</p>
+      <p class="satz">Ich kenne das System von innen. Deshalb musste ich etwas verändern.</p>
+      <p class="satz leise">Ich bin Wirtschaftswissenschaftler, mit über 25.000 Lehreinheiten als Dozent und als Ausbilder von Wirtschaftsprüfern und Steuerberatern.</p>
+      <p class="satz leise">Zwischen 1999 und 2020 habe ich mit „BWLKurse“ an der Goethe-Universität eines der größten Repetitorien im DACH-Raum aufgebaut.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Simon: Fokusfarbe Grün -->
+<section class="person-szene links" style="--farbe:#2F7A55;--farbe-text:#173A2B" aria-label="Simon stellt sich vor">
+  <div class="ps-buehne">
+    <div class="tint"></div>
+    <span class="name-gross" aria-hidden="true">Simon</span>
+    <img class="avatar" src="bilder/web/simon_final_frei.png" alt="Simon Schlerf">
+    <div class="ps-text">
+      <span class="rolle">Simon Schlerf · Mitgründer · Apps und Lernräume</span>
+      <p class="satz">Und ich bin Simon.</p>
+      <p class="satz">Ich baue die Räume, in denen Lernen leicht wird.</p>
+      <p class="satz leise">Die Firestarter-App, diese Website und der Geldbaum für Kinder sind meine Arbeit.</p>
+    </div>
+  </div>
+</section>
+
+<section class="zwischen">
+  <span class="mono">Warum es das Institut gibt</span>
+  <h2>Anlageberatung zementiert Abhängigkeit. Finanzbildung schafft Mündigkeit.</h2>
+  <p>Anlageberatung überlassen wir den erfahrenen Anbietern. Rendite ist und bleibt das Ergebnis von Methode und Können, vor allem aber von Selbstdisziplin und Wiederholung. Genau das trainieren wir: in der richtigen Reihenfolge, in kleinen Gruppen, von Mensch zu Mensch.</p>
+  <blockquote class="rene-zitat auf">„Ob in der Schule, beim Sport oder in der Universität. Wir alle haben uns am Durchschnitt orientiert. Ein fataler Irrtum, aber erst nach Jahrzehnten spürbar. Beim Investieren ist das anders: Durchschnitt und Halbwissen bedeuten hier sofortige Abhängigkeit.“<cite>René Flé</cite></blockquote>
+</section>
+
+<!-- Zeitreise: Quelle aller Angaben „ANLAGE A Wortlaute v46“, Block 7 und 8 (alte Startseite, René). Keine Jahreszahlen ergänzt, die dort nicht stehen. -->
+<section class="ab zeitreise" id="geschichte" aria-labelledby="zr-titel">
+  <div class="ab-kopf"><span class="mono">Eine Zeitreise</span><h2 id="zr-titel">Wie aus über 20 Jahren Lehre ein Institut wurde.</h2><p>Die Geschichte des Instituts ist vor allem Renés Geschichte: Er hat tausende Menschen durch schwere Prüfungen geführt und dabei gesehen, wo Verstehen verloren geht.</p></div>
+  <ol class="zr-liste">
+    <li class="zr auf"><span class="zr-zeit">Die 90er</span><div><h3>Erst der Taschenrechner.</h3><p>Erlaubt erst ab der siebten Klasse, in Prüfungen beschränkt, nie mit programmierten Formeln. Die Aufgaben waren so gebaut, dass man es sehen musste: Verstehst du es oder drückst du nur Tasten?</p></div></li>
+    <li class="zr auf"><span class="zr-zeit">1999</span><div><h3>René startet „BWLKurse“ an der Goethe-Universität.</h3><p>Bis 2020 baut er daraus eines der größten Repetitorien im DACH-Raum auf.</p></div></li>
+    <li class="zr auf gross"><span class="zr-zeit">Über die Jahre</span><div><h3>Dozent, Ausbilder, Forscher.</h3><p>René ist Wirtschaftswissenschaftler. Er bildet Wirtschaftsprüfer und Steuerberater aus, arbeitet in der Forschung und als Honorardozent an zwei der größten deutschen Privat-Universitäten. In verschiedenen Rollen führt er tausende Wirtschaftsstudenten durch ihre anspruchsvollen Prüfungen.</p><div class="zr-zahlen"><div><strong data-zahl="25000" data-nach="+">25.000+</strong><span>Lehreinheiten als Dozent</span></div><div><strong>Tausende</strong><span>Wirtschaftsstudenten durch ihre Prüfungen geführt</span></div><div><strong data-zahl="20" data-nach="+">20+</strong><span>Jahre Repetitorium an der Goethe-Universität, 1999 bis 2020</span></div></div></div></li>
+    <li class="zr auf"><span class="zr-zeit">15 Jahre später</span><div><h3>Tastenkombinationen statt Verstehen.</h3><p>René wird ständig nach Tastenkombinationen gefragt, die man zu bestimmten Stichwörtern auswendig lernen kann.</p></div></li>
+    <li class="zr auf"><span class="zr-zeit">Heute</span><div><h3>Dasselbe Muster mit der KI. Nur schneller.</h3><p>Menschen fragen Maschinen, ohne zu wissen, worüber sie eigentlich fragen. Keine KI prüft, ob eine Antwort wahr oder plausibel ist. Besonders bei Finanzen solltest du dir das Wissen selbst aneignen. Deshalb gibt es heute das R&amp;F Institut für Vermögensbildung.</p></div></li>
+    <li class="zr auf leise"><span class="zr-zeit">Jetzt</span><div><h3>Inhalte von René, Räume von Simon.</h3><p>René entwickelt die Inhalte und Programme. Simon baut die Firestarter-App, diese Website und den Geldbaum für Kinder.</p></div></li>
+  </ol>
+</section>
+
+<section class="ab" id="stimme">
+  <figure class="stimme auf"><span class="mono" style="color:#C6D2E2">Was Menschen über René sagen</span><span class="sterne" aria-label="5 von 5 Sternen">★★★★★</span><blockquote>„René ging weit über den Lehrplan hinaus. Er hat mir nicht nur Fachwissen vermittelt, sondern beigebracht, Chancen zu erkennen und Märkte bewusster zu verstehen. Für mich war er nicht nur ein sehr lehrreicher Professor, sondern ein echter Mentor, der meine fachliche und persönliche Entwicklung nachhaltig geprägt hat.“</blockquote><figcaption><cite>Matteo Seth<small>Wirtschaftsstudent</small></cite></figcaption></figure>
+</section>
+
+<section class="ab" id="raum">
+  <p class="standort-zeile"><span class="mono">Wo wir uns treffen</span> WINX-Tower, 21. Etage, direkt am Main in Frankfurt. <a class="mehr-link" href="welt-blau.html#raum">Den Raum ansehen →</a> <a class="mehr-link" href="kontakt.html#anfahrt">Anfahrt →</a></p>
+</section>
+
+<section class="ab" id="kontakt">
+  <div class="kontakt-teaser"><div><h2>Lern uns persönlich kennen.</h2><p>Schreib uns an info@rf-institut.de. Wir antworten selbst.</p></div><a class="knopf" href="kontakt.html">Zum Kontakt</a></div>
+</section>
+</main>
+<div id="fuss"></div>
+</div>
+<script src="seite.js"></script>
+</body>
+</html>

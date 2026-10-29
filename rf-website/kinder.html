@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="de" data-r="K">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Goldene Welt · Der Geldbaum · R&amp;F Institut</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="stil.css">
+<link rel="stylesheet" href="start.css">
+<link rel="stylesheet" href="effekte.css">
+<style>
+  .gold-preis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+  .gold-preis div{padding:20px;border-radius:var(--r-haupt);background:#FFFFFF;display:grid;gap:4px}
+  .gold-preis strong{font-size:2rem;font-weight:900;color:#3A2B12;line-height:1.1}
+  .gold-preis span{color:#5C4A24}
+  @media (max-width:760px){.gold-preis{grid-template-columns:1fr}}
+  .zeiten{display:flex;flex-wrap:wrap;gap:8px}
+  .zeiten span{padding:10px 16px;border-radius:999px;background:#FFFFFF;font-weight:800;color:#3A2B12}
+  section.welt-ab.goldgrund{background:#FBF3DC}
+  /* Simon 29.10.: Stationen liefen zu schnell durch */
+  #stunde .w-schritte{gap:28vh;padding-block:10vh 30vh}
+  #stunde .w-schritt{min-height:70svh;align-content:center}
+</style>
+</head>
+<body>
+<div class="innen">
+<div id="kopf"></div>
+<!-- Quelle: „Flyer Goldene Welt Geldbaum“ (Entwurf 21.10.2026) + Simon 28.10.: kostenlos, 19 € sind nur Pfand -->
+<main>
+<section class="welt-held gold">
+  <img src="bilder/web/11_gold_setzlinge-ton_4x3.jpg" alt="Junger Baum und Setzlinge vor der Frankfurter Skyline, Knetwelt" fetchpriority="high">
+  <div class="inhalt">
+    <span class="mono">Goldene Welt · Für Kinder. Für Eltern.</span>
+    <h1>Spaß. Spielen. Ernten.</h1>
+    <p class="lede">Der Geldbaum: eine Stunde Spielen im 21. Stock über Frankfurt, für Familien mit Kindern von 6 bis 9 Jahren. Dein Kind entscheidet, du spielst mit.</p>
+    <div class="sprung"><a href="#stunde">So läuft die Stunde</a><a href="#spiel">Gleich mitspielen</a><a href="#termine">Kostenlos · Termine</a></div>
+  </div>
+</section>
+
+<section class="ab" id="fakten">
+  <div class="gold-preis">
+    <div class="auf"><span>Teilnahme</span><strong>kostenlos</strong><span>für Kinder und ihre Erwachsenen</span></div>
+    <div class="auf" style="--i:1"><span>Pfand</span><strong>19 €</strong><span>je Kind, am Kindertag vollständig zurück</span></div>
+    <div class="auf" style="--i:2"><span>Gruppe</span><strong data-zahl="8">8</strong><span>Kinder, jedes mit einem Erwachsenen</span></div>
+  </div>
+</section>
+
+<!-- Wechsler: die vier Stationen der Stunde -->
+<section class="ab welt-ab goldgrund" id="stunde">
+  <div class="ab-kopf"><span class="mono" style="color:#7A5D12">So läuft die Stunde im 21. Stock</span><h2>Geld verstehen, spielend.</h2><p>Drei Spiele in 60 Minuten, zum Abschluss dein eigener Spross zum Mitnehmen. Du bleibst die ganze Stunde dabei. Kein Verkauf, keine Werbung im Spiel.</p></div>
+  <div class="wechsler">
+    <div class="w-bilder" style="background:#FBF3DC"><img src="bilder/web/11_gold_setzlinge-ton_4x3.jpg" alt="Setzlinge in Töpfen" loading="lazy"><img src="bilder/web/10_gold_baum-ton_4x3.jpg" alt="Setzling mit Gießkanne" loading="lazy"><img src="bilder/web/11_gold_setzlinge-ton_4x3.jpg" alt="Baum und Setzlinge" loading="lazy" style="object-position:20% 50%"><img src="bilder/web/10_gold_baum-ton_4x3.jpg" alt="Kleiner Baum zum Mitnehmen" loading="lazy"><span class="w-titel"></span></div>
+    <div class="w-schritte">
+      <article class="w-schritt" data-titel="Station 1"><span class="mono">Station 1</span><h3>Geld verdienen</h3><p>Münzen verteilen und Scheine verstehen.</p></article>
+      <article class="w-schritt" data-titel="Station 2"><span class="mono">Station 2</span><h3>Zuerst der Baum</h3><p>Dann brauchen, danach wünschen.</p></article>
+      <article class="w-schritt" data-titel="Station 3"><span class="mono">Station 3</span><h3>Ausgeben und wachsen</h3><p>Warum das Sparschwein ganz bleiben darf.</p></article>
+      <article class="w-schritt" data-titel="Zum Abschluss"><span class="mono">Zum Abschluss</span><h3>Mein erster Spross</h3><p>Wir helfen dem Baum zu wachsen: pflegen, gießen, schützen. Der Spross geht mit nach Hause.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="ab" id="spiel">
+  <div class="ab-kopf"><span class="mono">Gleich hier mitspielen</span><h2>Was machst du mit deinem Taschengeld?</h2><p>So fühlt sich der Geldbaum an: eine Frage, drei Antworten, und die Figur sagt, was passiert.</p></div>
+  <div class="zwei" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:20px;align-items:start">
+    <figure class="zoom auf gross"><img src="bilder/web/10_gold_baum-ton_4x3.jpg" alt="Setzling im Topf mit Gießkanne" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover"></figure>
+    <div class="spiel auf rechts">
+      <div class="sparky-sagt"><svg viewBox="0 0 62 76" aria-hidden="true"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#ECBA2E"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FBF3DC"/><circle cx="26" cy="47" r="2.4" fill="#173A2B"/><circle cx="36" cy="47" r="2.4" fill="#173A2B"/><path d="M26.5 53 Q31 57 35.5 53" stroke="#173A2B" stroke-width="1.8" fill="none" stroke-linecap="round"/></svg><p id="sparky-text">Du hast 5 Euro Taschengeld. Was machst du damit?</p></div>
+      <div class="antworten">
+        <button type="button" data-a="aus">Alles für Süßes ausgeben</button>
+        <button type="button" data-a="teil">Einen Teil in den Baum legen</button>
+        <button type="button" data-a="alles">Alles in den Baum legen</button>
+      </div>
+      <p class="satz" id="satz"></p>
+    </div>
+  </div>
+</section>
+
+<section class="ab welt-ab goldgrund" id="termine">
+  <div class="ab-kopf"><span class="mono" style="color:#7A5D12">Kostenlos · Platz anfragen</span><h2>Fünf Gruppen am Kindertag.</h2><p>Die Teilnahme ist kostenlos. Bei der Anmeldung hinterlegst du 19 € Pfand je Kind, das du am Kindertag vollständig zurückbekommst. Am Kindertag machen wir keine Fotos von Kindergesichtern.</p></div>
+  <div class="zeiten"><span class="auf">9:30</span><span class="auf" style="--i:1">11:00</span><span class="auf" style="--i:2">12:30</span><span class="auf" style="--i:3">14:00</span><span class="auf" style="--i:4">15:30</span></div>
+  <p style="margin-top:16px"><span class="platz">Datum des Kindertags folgt</span></p>
+  <div class="kopf-knoepfe" style="margin-top:20px"><a class="knopf" href="kontakt.html" style="background:#173A2B;color:#FBF3DC">Platz anfragen</a></div>
+</section>
+</main>
+<div id="fuss"></div>
+</div>
+<script src="seite.js"></script>
+<script>
+(function(){
+  var n=0,bl=document.querySelectorAll('.blatt'),z=document.getElementById('zaehler');
+  bl.forEach(function(b){b.addEventListener('click',function(){if(b.classList.contains('weg'))return;b.classList.add('weg');n++;z.textContent=n+' von 5 Blättern'+(n===5?' · Alle gefunden!':'');});});
+  var S={aus:['falsch','Jetzt ist es weg. Morgen ist der Baum genauso klein wie heute.'],teil:['richtig','Ein Teil für heute, ein Teil wächst. So bleibt beides möglich: heute etwas, morgen mehr.'],alles:['richtig','Alles wächst. Aber ein kleines Eis heute wäre auch in Ordnung gewesen.']};
+  document.querySelectorAll('.spiel .antworten button').forEach(function(b){b.addEventListener('click',function(){document.querySelectorAll('.spiel .antworten button').forEach(function(x){x.classList.remove('richtig','falsch')});var s=S[b.dataset.a];b.classList.add(s[0]);document.getElementById('satz').textContent=s[1];});});
+})();
+</script>
+</body>
+</html>
