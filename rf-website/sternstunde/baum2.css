@@ -1,0 +1,90 @@
+/* Sternstunde · stehender Baum (Runde 2, 31.10.2026). Der Baum ist ein fertiges Bild in zwei Ebenen (Stamm, Blätter);
+   die Kamera fährt beim Wischen am Bild hoch, die Flammen stehen auf den Ästen, die Blätter wehen (CSS), oben wird es Nacht. */
+:root{--gold:#ECBA2E;--gold-hi:#F6CF5A;--gold-deep:#A98318;--cream:#FBF3DC;--paper:#FFFDF5;--green:#173A2B;--desk:#1D150A;--desk-2:#3A2B12;--text2:#5C4A28;--linie:#E2D39F;--sparky:#FF7A2F;--nacht:#17101F;--daemmer:#2B1D3A;--abend:#8A5A7A;--r:18px}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--green);font:400 17px/1.45 "Work Sans",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:Gloock,Georgia,serif;font-weight:400;margin:0;line-height:1.1}
+.mono{font:500 12px/1 "IBM Plex Mono",ui-monospace,monospace;letter-spacing:.13em;text-transform:uppercase}
+.welt{position:relative}
+html{scroll-snap-type:y proximity}
+.anker{height:100svh;scroll-snap-align:start}   /* Höhe setzt baum2.js je Halt = Kameraweg (1:1), der letzte bleibt 1 Bildschirm */
+.buehne{position:sticky;top:0;height:100svh;overflow:hidden;margin-bottom:-100svh;background:var(--cream)}
+/* Himmel: 300 Bildschirme hoch, unten Tag, oben Nacht; fährt mit der Kamera */
+/* Licht: Tag bis zur Krone (0 bis 55 %), dann Abend und Nacht nur über der Krone */
+.himmel{position:absolute;left:0;right:0;bottom:0;height:300svh;will-change:transform;background:linear-gradient(to top,#FBF3DC 0%,#FBE9B8 30%,#F7DC94 52%,#F3D9A0 62%,#D9A9A6 70%,var(--abend) 78%,var(--daemmer) 88%,var(--nacht) 100%)}
+.sonne{position:absolute;left:66%;top:49%;width:26vw;height:26vw;border-radius:50%;background:radial-gradient(circle,#FFF2C2 0%,#F6CF5A 45%,rgba(246,207,90,0) 72%)}
+.sterne{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .6s}
+.sterne i{position:absolute;width:3px;height:3px;border-radius:50%;background:#FFF4CF;box-shadow:0 0 6px 1px rgba(255,244,207,.8);animation:funkeln 2.6s ease-in-out infinite}
+.sterne i:nth-child(3n){width:2px;height:2px;animation-delay:.9s}.sterne i:nth-child(5n){animation-delay:1.7s;width:4px;height:4px}
+@keyframes funkeln{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.25)}}
+/* Das Baum-Bild: ein Rahmen, der um den Zoom größer ist als der Bildschirm; die Kamera verschiebt ihn */
+.baum{position:absolute;left:0;top:0;will-change:transform;transform-origin:0 0}
+.baum .ebene{position:absolute;left:0;top:0;width:100%;height:100%}
+.baum .ebene.stammebene{-webkit-mask-image:linear-gradient(#000 97.6%,transparent 99.6%);mask-image:linear-gradient(#000 97.6%,transparent 99.6%)}
+.baum img{position:absolute;left:0;top:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
+/* Drei Höhenbänder derselben Blattebene, jedes mit eigenem Takt und Drehpunkt: unten träge, oben lebhafter */
+.baum .blaetter.b1{clip-path:inset(62% 0 0 0);transform-origin:50% 100%;animation:wehen1 8s ease-in-out infinite}
+.baum .blaetter.b2{clip-path:inset(30% 0 38% 0);transform-origin:50% 70%;animation:wehen2 6.5s ease-in-out -2s infinite}
+.baum .blaetter.b3{clip-path:inset(0 0 70% 0);transform-origin:50% 30%;animation:wehen3 5.5s ease-in-out -4s infinite}
+@keyframes wehen1{0%,100%{transform:translateX(0)}50%{transform:translateX(.15%)}}
+@keyframes wehen2{0%,100%{transform:translateX(-.1%)}50%{transform:translateX(.2%)}}
+@keyframes wehen3{0%,100%{transform:translateX(.1%)}50%{transform:translateX(-.25%)}}
+.baum .nachtschleier{position:absolute;left:-100vw;top:-60%;width:calc(100% + 200vw);height:160%;background:linear-gradient(to bottom,rgba(23,16,31,.85) 0%,rgba(43,29,58,.7) 38%,rgba(138,90,122,.35) 48%,rgba(0,0,0,0) 60%);mix-blend-mode:multiply;pointer-events:none;opacity:0;transition:opacity .4s}
+/* Hügel unter den Wurzeln: die Kamera darf am ersten Halt unter das Baumbild fahren, der Baum steht auf Wiese statt zu schweben */
+.boden{position:absolute;left:0;width:100%;top:97.4%;height:28.6%;background:#2A1C11 url(baum/erde.webp?v=1) top center/100% auto no-repeat}
+/* Flammen sitzen auf dem Ast wie ein Affe (Simon 31.10., Skizze): Sitzpunkt = gemessene Astoberkante nahe am Stamm, wo kein Laub ist.
+   Fuß eine Fingerbreit über der Rinde, leichtes Auf und Ab, darunter ein weicher Schatten auf dem Ast, der mitatmet. */
+.flamme{position:absolute;width:19%;transform:translate(-50%,-101%);transform-origin:50% 100%}
+.flamme .fig{position:relative;animation:schweben 3.2s ease-in-out infinite}
+.flamme .fig img{position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 6px 8px rgba(29,21,10,.25))}
+/* Ferno hält das kleine iPhone (Simon 31.10. abends): an der rechten Hand, leicht schräg */
+.flamme .fig .app-handy{position:absolute;width:34%;left:72%;top:46%;filter:drop-shadow(0 6px 8px rgba(20,12,6,.4))}
+.flamme .schatten{position:absolute;left:20%;right:20%;bottom:-2.5%;height:7%;border-radius:50%;background:radial-gradient(ellipse at center,rgba(29,21,10,.5),rgba(29,21,10,0) 70%);animation:schattenatmen 3.2s ease-in-out infinite}
+@keyframes schweben{0%,100%{transform:translateY(-1%) rotate(-.5deg)}50%{transform:translateY(-4.5%) rotate(.5deg)}}
+@keyframes schattenatmen{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(.84);opacity:.7}}
+.flamme.einlauf .fig{animation:einlauf .8s cubic-bezier(.2,.9,.3,1.15) both, schweben 3.2s ease-in-out .8s infinite}
+@keyframes einlauf{0%{transform:translateY(-40%) scale(.6);opacity:0}60%{transform:translateY(3%) scale(1.04);opacity:1}100%{transform:translateY(-1%) scale(1)}}
+/* Handy aus der Rinde (Simon 31.10. nachmittags: keine Tür, keine Höhle; „wie wenn was aus der Wand rauskommt"): ein Stück Rinde
+   wölbt sich am App-Halt aus dem Stamm, wächst zum Handy, die Rindenhaut dehnt sich mit und löst sich auf; der Schirm leuchtet zuletzt. */
+.handy{position:absolute;width:19%;aspect-ratio:640/1120;transform:translate(-50%,-50%) scale(.06);transition:transform 2.4s cubic-bezier(.4,.9,.3,1) .2s}
+.handy img{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 14px 18px rgba(30,18,8,.45))}
+.handy .haut{position:absolute;inset:13% 15% 10% 15%;border-radius:12% / 7%;background-repeat:no-repeat;opacity:1;transition:opacity 1s ease 1.6s}
+.handy .haut:after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse at 38% 30%,rgba(255,240,200,.3),rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 100%)}
+.handy.an{transform:translate(-50%,-56%) scale(1)}
+.handy.an .haut{opacity:0}
+/* Gras vor den Wurzeln: die Wurzelenden stecken im Boden (Simon 31.10.: „wie ein richtiger Baum, der im Gras sitzt") */
+.baum .gras{display:none}
+/* Wiese geht weich ins Erdreich über statt mit harter Bildkante */
+.baum .erdkante{display:none}
+.stammschatten{display:none}
+.stern-gross{position:absolute;width:38%;transform:translate(-50%,-50%);animation:pulsieren 3s ease-in-out infinite;opacity:0;transition:opacity .6s}
+.stern-gross.an{opacity:1}
+@keyframes pulsieren{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
+/* Text: Sprechblase + kleine Karte, unten im Bildschirm, nur an der aktiven Station */
+.station{position:absolute;left:0;right:0;bottom:0;padding:0 5% 7svh;opacity:0;pointer-events:none;transition:opacity .35s;display:grid;gap:10px}
+.station.sichtbar{opacity:1;pointer-events:auto}
+.blase{justify-self:start;max-width:78%;background:#fff;color:var(--green);border-radius:20px 20px 20px 4px;padding:11px 14px;font-size:18px;line-height:1.3;box-shadow:0 8px 24px rgba(29,21,10,.18);border:1.5px solid var(--linie)}
+.blase b{color:var(--sparky)}
+.station.rechts .blase{justify-self:end;border-radius:20px 20px 4px 20px}
+.karte{background:rgba(255,253,245,.96);border-radius:var(--r);padding:14px 16px;box-shadow:0 14px 34px rgba(29,21,10,.2);border:1.5px solid var(--linie);display:grid;gap:6px}
+.karte .mono{color:var(--gold-deep)}
+.karte h2{font-size:24px}
+.karte p{margin:0;color:var(--text2);font-size:16px}
+.karte p.preis{color:var(--green);font-weight:600;font-size:15px}
+.station.nacht .karte h2{font-size:27px}
+.fakten{display:grid;gap:4px;margin:0;padding:0;list-style:none}
+.fakten li{display:flex;gap:8px;align-items:baseline}.fakten li b{font-family:Gloock,Georgia,serif;font-weight:400;font-size:20px;color:var(--desk-2);min-width:40px}
+.zeiten{display:flex;flex-wrap:wrap;gap:6px}.zeiten span{padding:7px 11px;border-radius:999px;background:var(--cream);font-weight:700;color:var(--desk-2);border:1.5px solid var(--linie);font-size:15px}
+.reihe{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.knopf{appearance:none;border:0;border-radius:16px;padding:12px 16px;font:700 16px "Work Sans",system-ui,sans-serif;cursor:pointer;display:inline-flex;align-items:center;gap:8px;box-shadow:0 8px 18px rgba(23,58,43,.22)}
+.knopf.haupt{background:var(--green);color:var(--cream)}.knopf.gold{background:var(--gold-hi);color:var(--green)}.knopf.leise{background:transparent;color:var(--green);box-shadow:none;border:1.5px solid var(--linie);padding:9px 12px;font-weight:600}
+.knopf.weiter{margin-left:auto}
+.spiel .knopf{padding:7px 10px;font-size:14px}
+.untertitel{position:absolute;left:5%;right:5%;bottom:1.5svh;text-align:center;color:#fff;font-size:16px;text-shadow:0 1px 6px rgba(0,0,0,.6);opacity:0;transition:opacity .3s;pointer-events:none}.untertitel.an{opacity:1}
+.kopf{position:fixed;left:0;right:0;top:0;z-index:20;padding:12px 16px 10px;display:flex;align-items:center;justify-content:space-between;color:var(--green);transition:color .4s}
+.kopf .marke{font-family:Gloock,Georgia,serif;font-size:20px}.kopf.hell{color:#FFF4CF}
+.punkte{display:none}   /* Simon 31.10. abends: der goldene Punkt am Rand störte */
+.punkte i{width:8px;height:8px;border-radius:50%;background:rgba(23,58,43,.25);transition:all .3s}.punkte i.an{background:var(--gold-deep);transform:scale(1.4)}
+.punkte.hell i{background:rgba(255,244,207,.35)}.punkte.hell i.an{background:var(--gold-hi)}
+@media (prefers-reduced-motion:reduce){.baum .blaetter,.flamme .fig,.flamme .schatten,.sterne i,.stern-gross{animation:none!important}.handy,.handy .haut{transition-duration:.01s!important;transition-delay:0s!important}}
+@media (min-width:760px){.station{padding-inline:calc(50% - 250px)}.blase{max-width:420px}}
