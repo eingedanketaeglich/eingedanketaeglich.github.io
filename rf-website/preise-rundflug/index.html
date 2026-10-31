@@ -288,26 +288,27 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
   function tween(ms,f){return new Promise(function(r){if(ruhig){f(1);r();return;}var t0=performance.now();(function s(){var t=klemm((performance.now()-t0)*tempo/ms);f(t);if(t<1)requestAnimationFrame(s);else r();})();});}
   async function wegErde(von,bis,ms){glc.style.visibility='visible';buehneSicht(false);await tween(ms,function(t){erdeJetzt=mische(E[von],E[bis],glatt(t));erdeZeichnen();});}
   async function wegNebel(richtung,erde,film){var v=video(film);
-    if(richtung==='ein'){v.currentTime=0;stand('stufe10_weiter/still/'+film+'_0.jpg');}
+    if(richtung==='ein'){Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.remove('an');});v.currentTime=0;stand('stufe10_weiter/still/'+film+'_0.jpg');}
     else stand('stufe10_weiter/still/'+film+'_e.jpg');
     await tween(1800,function(t){nebel(t);var unten=richtung==='ein'?t<.5:t>=.5;
       if(unten){glc.style.visibility='visible';buehneSicht(false);erdeJetzt=E[erde];erdeZoom=richtung==='ein'?glatt(t*2):glatt((1-t)*2);erdeZeichnen();}
       else{glc.style.visibility='hidden';buehneSicht(true);}});
     nebel(0);erdeZoom=0;}
-  function wegFlug(film){return new Promise(function(r){var v=video(film),fertig=false;glc.style.visibility='hidden';buehneSicht(true);
+  /* Das Abbremsen steckt fest im Video (bremse_einbauen.sh) – das Tempo wird nie umgeschaltet, das verträgt Safari am iPhone nicht.
+     Am Ende bleibt das Video auf seinem letzten Bild stehen; das gleiche Standbild liegt schon vorher fertig darunter. */
+  function wegFlug(film){return new Promise(function(r){var v=video(film),fertig=false,endBild='stufe10_weiter/still/'+film+'_e.jpg';glc.style.visibility='hidden';buehneSicht(true);
+      var vb=new Image();vb.src=endBild;
       Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.toggle('an',k===film);});
-      function ende(){if(fertig)return;fertig=true;stand('stufe10_weiter/still/'+film+'_e.jpg');setTimeout(function(){v.classList.remove('an');r();},120);}
-      v.onplaying=function(){still.classList.remove('an');};
-      /* in den letzten 0,7 s sanft abbremsen; „Weiter“ während des Flugs verdoppelt das Tempo */
-      var rate=1,zuletzt=-1,stillSeit=performance.now();
-      v.ontimeupdate=function(){if(!v.duration)return;var rest=v.duration-v.currentTime,soll=(rest<.35?.5:rest<.7?.7:1)*tempo;if(soll!==rate){rate=soll;v.playbackRate=soll;}if(rest<.05)ende();};
-      v.onended=ende;v.onerror=ende;try{v.currentTime=0;}catch(e){}
-      /* Wachhund: steht der Film 2,5 s still (Netz, Speicher), geht es mit dem Standbild weiter statt hängen zu bleiben */
-      (function wache(){if(fertig)return;if(v.currentTime!==zuletzt){zuletzt=v.currentTime;stillSeit=performance.now();}else if(performance.now()-stillSeit>2500){ende();return;}setTimeout(wache,250);})();
+      function ende(){if(fertig)return;fertig=true;still.src=endBild;hinten.src=endBild;still.classList.add('an');r();}
+      v.onplaying=function(){still.classList.remove('an');setTimeout(function(){if(!fertig){still.src=endBild;hinten.src=endBild;}},400);};
+      v.onended=ende;v.onerror=ende;v.ontimeupdate=null;try{v.playbackRate=1;v.currentTime=0;}catch(e){}
+      /* Wachhund: steht der Film 4 s still (Netz, Speicher), geht es mit dem Standbild weiter statt hängen zu bleiben */
+      var zuletzt=-1,stillSeit=performance.now();
+      (function wache(){if(fertig)return;if(v.currentTime!==zuletzt){zuletzt=v.currentTime;stillSeit=performance.now();}else if(performance.now()-stillSeit>4000){ende();return;}setTimeout(wache,250);})();
       if(ruhig){ende();return;}var p=v.play();if(p&&p.catch)p.catch(ende);});}
   /* ---------- Ankunft (auch direkt, für „Zurück“) ---------- */
   function ankunft(i){var s=SCHRITT[i];document.getElementById('start').classList.toggle('weg',i>0);
-    if(s.station){var st=STATION[s.station];glc.style.visibility='hidden';stand('stufe10_weiter/still/'+st.film+'_e.jpg');buehneSicht(true);Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.remove('an');});
+    if(s.station){var st=STATION[s.station];glc.style.visibility='hidden';stand('stufe10_weiter/still/'+st.film+'_e.jpg');buehneSicht(true);Object.keys(VIDEO).forEach(function(k){var v=VIDEO[k];v.classList.toggle('an',k===st.film&&v.duration>0&&v.currentTime>v.duration-.15);});
       nadelSetzen(s.station,true);karteSetzen(st);}
     else{nadelSetzen(null,false);buehneSicht(false);glc.style.visibility='visible';erdeJetzt=E[s.erde||'E0'];erdeZeichnen();karteSetzen(s.karte?KARTE[s.karte]:null);}
     punkte.querySelectorAll('i').forEach(function(p,j){p.classList.toggle('an',j===i);});
