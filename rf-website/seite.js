@@ -13,7 +13,7 @@
   var tc=document.createElement('meta');tc.name='theme-color';tc.content=H.dataset.welt==='gruen'?'#143426':'#0C182C';document.head.appendChild(tc);
 
   /* ---------- Kopf und Fuß ---------- */
-  var MENUE=[['welt-gruen.html','Grüne Welt'],['welt-blau.html','Blaue Welt'],['kinder.html','Goldene Welt'],['firestarter.html','Firestarter-App'],['ueber-uns.html','Über uns'],['preise.html','Preise'],['kontakt.html','Kontakt']];
+  var MENUE=[['welt-gruen.html','Grüne Welt'],['welt-blau.html','Blaue Welt'],['kinder.html','Sternstunde'],['firestarter.html','Firestarter-App'],['ueber-uns.html','Über uns'],['preise.html','Preise'],['kontakt.html','Kontakt']];
   function link(h){return h+zusatz;}
   var kopf=document.getElementById('kopf');
   if(kopf){
@@ -26,7 +26,7 @@
     fuss.outerHTML='<footer class="fuss"><div class="gross" aria-label="R&amp;F"><b>R&amp;F</b></div><div class="fuss-spalten">'+
       '<div><b>Grüne Welt</b><a href="'+link('welt-gruen.html')+'#geldtag">Geldtag</a><a href="'+link('welt-gruen.html')+'#wochenende">Wissenswochenende</a></div>'+
       '<div><b>Blaue Welt</b><a href="'+link('welt-blau.html')+'#grundlagen">Grundlagen-Tag</a><a href="'+link('welt-blau.html')+'#zirkel">Investment-Zirkel</a><a href="'+link('welt-blau.html')+'#zirkel">RainMaker-Zirkel</a><a href="'+link('welt-blau.html')+'#mentoring">Mentoring</a><a href="'+link('start.html')+'#webinar">Webinar</a></div>'+
-      '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Goldene Welt</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('ueber-uns.html')+'">Über uns</a><a href="'+link('preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
+      '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Sternstunde</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('ueber-uns.html')+'">Über uns</a><a href="'+link('preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
       '<div><b>Rechtliches</b><a href="'+link('recht.html')+'#impressum">Impressum</a><a href="'+link('recht.html')+'#datenschutz">Datenschutz</a><a href="'+link('recht.html')+'#agb">AGB</a></div></div>'+
       '<div class="fuss-unten"><span class="mono">R&amp;F · Institut für Vermögensbildung · Frankfurt am Main</span><span>Bildung, keine Anlageberatung · info@rf-institut.de</span></div></footer>';
   }
