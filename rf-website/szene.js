@@ -7,7 +7,7 @@
   var FR={quer:193,hoch:193,klein:241},K=6;
   var CFG={
     quer:{n:FR.quer,pfad:'bilder/szene/quer_leiste/l_',still:'bilder/szene/schluss_quer.jpg',w:16,h:9,handy:[.6315,.3984,.6904,.6126],zielH:.80,zielX:.64,zielY:.53},
-    hoch:{n:FR.hoch,pfad:'bilder/szene/hoch_leiste/l_',still:'bilder/szene/schluss_hoch.jpg',w:9,h:16,handy:[.7656,.5453,.8978,.6898],zielH:.62,zielX:.5,zielY:.63}
+    hoch:{n:FR.hoch,pfad:'bilder/szene/hoch_leiste/l_',still:'bilder/szene/schluss_hoch.jpg',w:9,h:16,handy:[.7656,.5453,.8978,.6898],zielH:.52,zielX:.5,zielY:.635} /* Simon 29.10. Gesprächsrunde: Handy kleiner und tiefer, Blase hat darüber Platz */
   };
   var PUNKTE=[
     {ab:.66,tab:'start',t:'In der App lernst du in <b>Lektionen von sechs Minuten</b>: Video, Aufgabe, Anker.'},
@@ -22,17 +22,24 @@
   var blase=document.getElementById('fs-blase'),knopf=document.getElementById('fs-knopf'),titel=document.getElementById('fs-titel'),hinw=document.getElementById('fs-hinweis');
   var DPR=Math.min(1.5,window.devicePixelRatio||1);
   var modus=null,C,leisten=[],ziel=0,jetzt=0,gezeigt=-1,letzterPunkt=-1,geladen=false;
-  var kL=[],kZiel=0,kJetzt=0,kGezeigt=-1;
+  var kL=[],kZiel=0,kJetzt=0,kGezeigt=-1,blaseB=0;
 
   /* Bildleisten laden; entschlüsselt bleiben nur die Leiste am aktuellen Bild und ihre zwei Nachbarn.
      Fassung 3 (Simons Test 29.10.: Chrome-Absturz „Fehlercode 11“, iPad ohne kleine Flamme): vorher lagen alle Leisten
      entschlüsselt im Speicher (rund 1,4 GB). */
   function holeLeisten(pfad,n){var ls=[];for(var i=0;i<Math.ceil(n/K);i++){var im=new Image();im.decoding='async';im.src=pfad+String(i+1).padStart(3,'0')+'.jpg';ls.push({img:im,bm:null,laeuft:false});}return ls;}
-  function fenster(ls,i){var mitte=Math.floor(i/K);for(var j=0;j<ls.length;j++){var e=ls[j],nah=Math.abs(j-mitte)<=1;
-      if(nah&&!e.bm&&!e.laeuft&&e.img.complete&&e.img.naturalWidth&&window.createImageBitmap){e.laeuft=true;(function(e){createImageBitmap(e.img).then(function(b){e.laeuft=false;if(e.weg){b.close&&b.close();e.weg=false;return;}e.bm=b;gezeigt=-1;kGezeigt=-1;}).catch(function(){e.laeuft=false});})(e);}
-      if(!nah){if(e.bm){e.bm.close&&e.bm.close();e.bm=null;}if(e.laeuft)e.weg=true;}}}
-  function male(c,el,ls,i){var e=ls[Math.floor(i/K)];if(!e)return false;fenster(ls,i);var q=e.bm||e.img;var w=e.bm?e.bm.width:e.img.naturalWidth,hh=e.bm?e.bm.height:e.img.naturalHeight;if(!w)return false;
-    var fh=hh/K,r=i%K;c.drawImage(q,0,r*fh,w,fh,0,0,el.width,el.height);return true;}
+  /* Fassung 4 (Gesprächsrunde 29.10., Absturz nach Sprung in der Vorschau nachgestellt): höchstens eine Leiste wird gleichzeitig
+     entschlüsselt, die aktuelle zuerst. Vorher lief für jede überquerte Leiste eine eigene Entschlüsselung. */
+  function fenster(ls,i){var mitte=Math.floor(i/K),belegt=false;
+    for(var j=0;j<ls.length;j++){var e=ls[j];if(Math.abs(j-mitte)<=1){e.weg=false;if(e.laeuft)belegt=true;}else{if(e.bm){e.bm.close&&e.bm.close();e.bm=null;}if(e.laeuft)e.weg=true;}}
+    if(belegt||!window.createImageBitmap)return;
+    [mitte,mitte+1,mitte-1].some(function(j){var e=ls[j];if(!e||e.bm||e.laeuft||!e.img.complete||!e.img.naturalWidth)return false;e.laeuft=true;
+      createImageBitmap(e.img).then(function(b){e.laeuft=false;if(e.weg){b.close&&b.close();e.weg=false;return;}e.bm=b;gezeigt=-1;kGezeigt=-1;}).catch(function(){e.laeuft=false});return true;});}
+  /* Ohne fertige Leiste bleibt das letzte Bild stehen, statt die große Leiste beim Zeichnen nebenbei zu entschlüsseln.
+     Nur das allererste Bild darf aus der rohen Leiste kommen, sonst bliebe die Fläche leer. */
+  function male(c,el,ls,i){var e=ls[Math.floor(i/K)];if(!e)return false;fenster(ls,i);if(!e.bm&&window.createImageBitmap&&c.__hat)return false;
+    var q=e.bm||e.img;var w=e.bm?e.bm.width:e.img.naturalWidth,hh=e.bm?e.bm.height:e.img.naturalHeight;if(!w)return false;
+    var fh=hh/K,r=i%K;c.drawImage(q,0,r*fh,w,fh,0,0,el.width,el.height);c.__hat=true;return true;}
 
   function lade(){var m=innerWidth<=760?'hoch':'quer';if(m===modus)return;modus=m;C=CFG[m];still.src=C.still;leisten=geladen?holeLeisten(C.pfad,C.n):[];gezeigt=-1;groesse();}
   function starteLaden(){if(geladen)return;geladen=true;leisten=holeLeisten(C.pfad,C.n);kL=holeLeisten('bilder/szene/klein_leiste/l_',FR.klein);}
@@ -41,8 +48,9 @@
   var B={x:0,y:0,w:0,h:0};
   function groesse(){var W=st.clientWidth,H=st.clientHeight,r=C.w/C.h;var bw=Math.min(W,H*r),bh=bw/r;if(bh>H){bh=H;bw=bh*r;}
     B={x:(W-bw)/2,y:(H-bh)/2+(modus==='quer'?H*.03:0),w:bw,h:bh};bu.style.width=bw+'px';bu.style.height=bh+'px';
-    cv.width=Math.round(bw*DPR);cv.height=Math.round(bh*DPR);
-    var kr=kcv.getBoundingClientRect();kcv.width=Math.round((kr.width||400)*DPR);kcv.height=Math.round((kr.height||225)*DPR);
+    cv.width=Math.round(bw*DPR);cv.height=Math.round(bh*DPR);ctx.__hat=false;
+    var kr=kcv.getBoundingClientRect();kcv.width=Math.round((kr.width||400)*DPR);kcv.height=Math.round((kr.height||225)*DPR);kctx.__hat=false;
+
     gezeigt=-1;kGezeigt=-1;stelle();}
 
   /* App füllt das Handy randlos: Breite 390 px wie ein iPhone, Höhe passend zum Bildschirm, kein Rand links, rechts oder oben */
@@ -62,6 +70,8 @@
     bu.style.transform='translate('+(cx-hx*s)+'px,'+(cy-hy*s)+'px) scale('+s+')';
     still.style.opacity=klemm((p-.40)/.03,0,1);bu.style.opacity=p<.52?1:0;
     var coverW=hw0*sCover,coverH=hh0*sCover,fH=H*C.zielH,fW=fH*(hw0/hh0),fX=W*C.zielX-fW/2,fY=H*C.zielY-fH/2;
+    /* Simon 29.10. Gesprächsrunde: am Mac endet die Blase 40 px vor dem Handy (gleiche Maße wie das Handy, linker Rand wie in szene.css) */
+    if(modus==='quer'){var bl=Math.min(56,Math.max(24,innerWidth*.04)),bb=Math.round(Math.max(220,Math.min(620,fX-bl-40)));if(bb!==blaseB){blaseB=bb;blase.style.width=bb+'px';}}else if(blaseB){blaseB=0;blase.style.width='';}
     var pr=weich(klemm((p-.52)/.08,0,1));
     var tw=coverW+(fW-coverW)*pr,th=coverH+(fH-coverH)*pr,tcx=W/2+(fX+fW/2-W/2)*pr,tcy=H/2+(fY+fH/2-H/2)*pr;
     tel.style.width=tw+'px';tel.style.height=th+'px';tel.style.left=(tcx-tw/2)+'px';tel.style.top=(tcy-th/2)+'px';
@@ -71,15 +81,16 @@
     klein.style.opacity=klemm((p-.62)/.02,0,1);kZiel=klemm((p-.62)/.34,0,1)*(FR.klein-1);
     var k=-1;PUNKTE.forEach(function(q,i){if(p>=q.ab)k=i});
     blase.style.opacity=k>=0?1:0;blase.style.transform=k>=0?'none':'translateY(8px)';
-    if(k!==letzterPunkt){letzterPunkt=k;if(k>=0){blase.innerHTML=PUNKTE[k].t;clearTimeout(tabTimer);var q=PUNKTE[k];tabTimer=setTimeout(function(){tab(q)},180);}}
+    if(k!==letzterPunkt){letzterPunkt=k;if(k>=0){blase.innerHTML='<span>'+PUNKTE[k].t+'</span>';clearTimeout(tabTimer);var q=PUNKTE[k];tabTimer=setTimeout(function(){tab(q)},180);}}
     var pb=klemm((p-.92)/.03,0,1);knopf.style.opacity=pb;knopf.classList.toggle('an',pb>.9);
   }
   /* Reiter der App erst wechseln, wenn das Scrollen kurz ruht: verhindert Ruckeln in der App */
   function tab(q){try{var d=app.contentDocument;if(!d)return;var n=d.querySelector('.nav button[data-tab="'+q.tab+'"]');if(n)n.click();}catch(e){}}
   /* weiches Nachführen: das angezeigte Bild gleitet zum Zielbild, gezeichnet wird nur bei neuem Bild */
   function lauf(){
-    var d=ziel-jetzt;if(Math.abs(d)>.01)jetzt+=d*.22;var i=Math.round(jetzt);if(i!==gezeigt&&male(ctx,cv,leisten,i))gezeigt=i;
-    var e=kZiel-kJetzt;if(Math.abs(e)>.01)kJetzt+=e*.22;var j=Math.round(kJetzt);if(j!==kGezeigt&&male(kctx,kcv,kL,j))kGezeigt=j;
+    /* Großer Sprung (schnelles Wischen, Sprungmarke): direkt ans Ziel statt durch alle Zwischenbilder gleiten */
+    var d=ziel-jetzt;if(Math.abs(d)>K*2)jetzt=ziel;else if(Math.abs(d)>.01)jetzt+=d*.22;var i=Math.round(jetzt);if(i!==gezeigt&&male(ctx,cv,leisten,i))gezeigt=i;
+    var e=kZiel-kJetzt;if(Math.abs(e)>K*2)kJetzt=kZiel;else if(Math.abs(e)>.01)kJetzt+=e*.22;var j=Math.round(kJetzt);if(j!==kGezeigt&&male(kctx,kcv,kL,j))kGezeigt=j;
     requestAnimationFrame(lauf);}
   var tick=false;addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){stelle();tick=false})},{passive:true});
   addEventListener('resize',function(){var m=modus;modus=null;lade();if(m===modus)groesse();});
