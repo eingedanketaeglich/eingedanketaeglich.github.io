@@ -41,3 +41,9 @@
 .fs-tel .telefon .glas{background:#102444}
 .fs-tel .telefon .status{background:#102444;color:#F5F1EA}
 .fs-tel .telefon .rahmen iframe{position:absolute;left:0;top:0;border:0}
+/* Simon 01.11.2026: kein heller Strich zwischen Statusleiste und App, eine blaue Fläche */
+.fs-tel .telefon .rahmen{border:0;background:#102444}
+
+/* Fassung 5 (Simon 01.11.2026): scharfe Bildschirm-Ebene beim Flug ins Handy */
+.fs-scharf{position:absolute;z-index:3;left:0;top:0;opacity:0;pointer-events:none;background:#F5F1EA;display:grid;place-items:center;border-radius:12%/5.6%}
+.fs-scharf svg{width:24%;height:auto}

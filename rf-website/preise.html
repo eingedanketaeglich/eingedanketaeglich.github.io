@@ -88,6 +88,8 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
 .kontakt{background:var(--orange);color:#1C1917;font:800 1rem/1 var(--f);border-radius:999px;padding:14px 22px;text-decoration:none;justify-self:start;margin-top:6px}
 /* Mac und Querformat (breiter als 6:5): eigene Breitbild-Flüge, Karte und Knöpfe links unten, Nadeln in der rechten Bildhälfte */
 @media (min-aspect-ratio:6/5){#unten{left:max(36px,calc(env(safe-area-inset-left,0px) + 20px));translate:none;width:min(420px,calc(100% - 56px));bottom:max(32px,calc(env(safe-area-inset-bottom,0px) + 16px))}}
+/* Mac (Simon 01.11.2026): Titel rund 1 cm tiefer */
+@media (min-aspect-ratio:6/5){#start{bottom:calc(110px + env(safe-area-inset-bottom,0px))}}
 @media (prefers-reduced-motion:reduce){.nadel *,#karte,#start{transition:none!important}}
 </style><link rel="stylesheet" href="sternstunde/rahmen.css?v=2">
 </head>
@@ -272,7 +274,9 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
     himmel.style.opacity=(klemm((z.n-.4)/.6)*.85).toFixed(3);sc.style.opacity=klemm((z.n-.55)/.45).toFixed(3);
     if(!erdeDa||document.documentElement.dataset.geladen!=='1')return;
     sonne.set(z.sx,z.sy,z.sz).normalize();gruppe.rotation.x=z.lat*Math.PI/180;erdeG.rotation.y=-(z.lon+90)*Math.PI/180;
-    gruppe.position.set(0,z.y,0);gruppe.scale.setScalar(z.s*(1+erdeZoom*.3));cam.position.set(0,0,zH);cam.lookAt(0,0,0);
+    /* Mac (Simon 01.11.2026): Erde rund 3 cm (125 px) tiefer, damit sie nicht unter die Kopfleiste ragt */
+    var tief=innerWidth/innerHeight>1.2?125/innerHeight*2*zH*Math.tan(13*Math.PI/180):0;
+    gruppe.position.set(0,z.y-tief,0);gruppe.scale.setScalar(z.s*(1+erdeZoom*.3));cam.position.set(0,0,zH);cam.lookAt(0,0,0);
     U.gruen.value=z.g;U.blau.value=z.b;U.nachtA.value=z.n;U.lichter.value=klemm((z.n-.3)/.6);U.zeit.value=0;saumU.hell.value=1-z.dunkel;
     saum.material.blending=z.dunkel>.5?THREE.AdditiveBlending:THREE.NormalBlending;R.render(szene,cam);}
 
