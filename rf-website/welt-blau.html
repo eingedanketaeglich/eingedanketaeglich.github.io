@@ -94,14 +94,24 @@
 
 <section class="ab" id="raum">
   <div class="ab-kopf"><span class="mono">Wo wir unterrichten</span><h2>WINX-Tower, 21. Etage, direkt am Mainufer.</h2><p>Auf der einen Seite liegt der Main, auf der anderen die Skyline mit dem Commerzbank-Tower. Für Anreisende gibt es ein Zimmerkontingent mit Frühstück.</p></div>
-  <div class="raum-raster">
-    <figure class="gross"><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern, grünen Stühlen und Ringleuchten" loading="lazy"></figure>
-    <figure><img src="app/fotos/mainblick.jpg" alt="Blick auf den Main" loading="lazy"></figure>
-    <figure><img src="app/fotos/lounge.jpg" alt="Lounge mit Sofa und Fensterfront" loading="lazy"></figure>
-    <figure><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm und Flipchart" loading="lazy"></figure>
-    <figure><img src="app/fotos/foyer.jpg" alt="Foyer im WINX-Tower" loading="lazy"></figure>
+  <!-- Simon 01.11.2026, Variante D: immer ein großes Bild, mit Pfeilen oder Wischen blättern; doppeltes Raumbild und Foyer raus, Zahlen als Zeile -->
+  <div class="raum-blaettern">
+    <div class="rb-spur" tabindex="0" aria-label="Fotos vom Raum, zum Blättern wischen">
+      <figure><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern, grünen Stühlen und Ringleuchten" style="object-position:50% 60%"></figure>
+      <figure><img src="app/fotos/mainblick.jpg" alt="Blick auf den Main" loading="lazy" style="object-position:50% 55%"></figure>
+      <figure><img src="app/fotos/lounge.jpg" alt="Lounge mit Sofa und Fensterfront" loading="lazy" style="object-position:50% 62%"></figure>
+      <figure><img src="app/fotos/tagungsraum2.jpg" alt="Tagungsraum mit Bildschirm und Blick über Frankfurt" loading="lazy" style="object-position:50% 60%"></figure>
+    </div>
+    <button class="rb-pfeil l" type="button" aria-label="Vorheriges Foto">‹</button><button class="rb-pfeil r" type="button" aria-label="Nächstes Foto">›</button>
+    <div class="rb-punkte" aria-hidden="true"><i class="an"></i><i></i><i></i><i></i></div>
   </div>
-  <div class="raum-fakten"><div><strong data-zahl="12">12</strong><span>Plätze im Raum, damit jede Frage Platz hat</span></div><div><strong data-zahl="24">24</strong><span>Plätze live online</span></div><div><strong>5</strong><span>weitere Städte bei Nachfrage: Stuttgart · Düsseldorf · München · Berlin · Hamburg</span></div></div>
+  <p class="raum-zahlen"><b>12</b> Plätze im Raum, damit jede Frage Platz hat · <b>24</b> Plätze live online · <b>5</b> weitere Städte bei Nachfrage: Stuttgart · Düsseldorf · München · Berlin · Hamburg</p>
+  <script>(function(){var w=document.querySelector('.raum-blaettern');if(!w)return;var sp=w.querySelector('.rb-spur'),pk=w.querySelectorAll('.rb-punkte i'),n=sp.children.length;
+    function i(){return Math.round(sp.scrollLeft/Math.max(1,sp.clientWidth));}
+    function geh(k){k=(k+n)%n;sp.scrollTo({left:k*sp.clientWidth,behavior:'smooth'});}
+    w.querySelector('.l').addEventListener('click',function(){geh(i()-1);});w.querySelector('.r').addEventListener('click',function(){geh(i()+1);});
+    sp.addEventListener('scroll',function(){var k=i();pk.forEach(function(p,j){p.classList.toggle('an',j===k);});},{passive:true});
+    sp.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){e.preventDefault();geh(i()+1);}if(e.key==='ArrowLeft'){e.preventDefault();geh(i()-1);}});})();</script>
 </section>
 
 
