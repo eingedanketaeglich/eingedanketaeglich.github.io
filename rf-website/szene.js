@@ -1,6 +1,6 @@
 /* Flammen-Szene der Startseite (Storyboard Fassung 2, Simon 29.10.2026)
-   Fassung 5 (Simon 01.11.2026): Kapitel statt Daumenkino. Der Finger wählt nur das Kapitel, das Kapitel läuft in eigenem Tempo ab,
-   die Seite rastet an der Kapitelstelle ein, an einer Blase gestikuliert Sparky leise weiter. Schärfer: kleiner Sparky aus den Originalbildern (960 px),
+   Fassung 5/6 (Simon 01.11.2026): Lauf folgt dem Finger; ab „Lauf fertig“ Kapitel statt Daumenkino (Kapitel läuft in eigenem Tempo,
+   die Seite rastet an der Kapitelstelle ein). Schärfer: kleiner Sparky aus den Originalbildern (960 px),
    Zeichnen in doppelter Auflösung, beim Flug ins Handy liegt eine scharfe Bildschirm-Ebene über dem Film.
    Ablauf über den Scroll-Fortschritt p (0–1) des hohen Abschnitts:
    0–0,40 Lauf (Bildfolge) · 0,40–0,60 Kamerafahrt ins Handy und zurück · 0,62–1 echte App, kleine Flamme, Sprechblase, Knopf.
@@ -32,18 +32,21 @@
   /* Bildleisten laden; entschlüsselt bleiben nur die Leiste am aktuellen Bild und ihre zwei Nachbarn.
      Fassung 3 (Simons Test 29.10.: Chrome-Absturz „Fehlercode 11“, iPad ohne kleine Flamme): vorher lagen alle Leisten
      entschlüsselt im Speicher (rund 1,4 GB). */
-  function holeLeisten(pfad,n){var ls=[];for(var i=0;i<Math.ceil(n/K);i++){var im=new Image();im.decoding='async';im.src=pfad+String(i+1).padStart(3,'0')+'.jpg';ls.push({img:im,bm:null,laeuft:false});}return ls;}
+  /* Fassung 6 (Absturz „Fehlercode 11“ am 01.11. nachgestellt und eingegrenzt): Bild-Elemente behalten ihre entschlüsselte Fassung,
+     solange sie existieren; nach einmal Durchscrollen lag fast 1 GB im Speicher. Jetzt nur die komprimierte Datei holen und
+     ausschließlich als ImageBitmap entschlüsseln, die beim Weiterscrollen wieder freigegeben wird. */
+  function holeLeisten(pfad,n){var ls=[];for(var i=0;i<Math.ceil(n/K);i++){(function(e){ls.push(e);fetch(e.url).then(function(r){return r.blob();}).then(function(b){e.blob=b;gezeigt=-1;kGezeigt=-1;}).catch(function(){});})({url:pfad+String(i+1).padStart(3,'0')+'.jpg',blob:null,bm:null,laeuft:false});}return ls;}
   /* Fassung 4 (Gesprächsrunde 29.10., Absturz nach Sprung in der Vorschau nachgestellt): höchstens eine Leiste wird gleichzeitig
      entschlüsselt, die aktuelle zuerst. Vorher lief für jede überquerte Leiste eine eigene Entschlüsselung. */
   function fenster(ls,i){var mitte=Math.floor(i/K),belegt=false;
     for(var j=0;j<ls.length;j++){var e=ls[j];if(Math.abs(j-mitte)<=1){e.weg=false;if(e.laeuft)belegt=true;}else{if(e.bm){e.bm.close&&e.bm.close();e.bm=null;}if(e.laeuft)e.weg=true;}}
     if(belegt||!window.createImageBitmap)return;
-    [mitte,mitte+1,mitte-1].some(function(j){var e=ls[j];if(!e||e.bm||e.laeuft||!e.img.complete||!e.img.naturalWidth)return false;e.laeuft=true;
-      createImageBitmap(e.img).then(function(b){e.laeuft=false;if(e.weg){b.close&&b.close();e.weg=false;return;}e.bm=b;gezeigt=-1;kGezeigt=-1;}).catch(function(){e.laeuft=false});return true;});}
+    [mitte,mitte+1,mitte-1].some(function(j){var e=ls[j];if(!e||e.bm||e.laeuft||!e.blob)return false;e.laeuft=true;
+      createImageBitmap(e.blob).then(function(b){e.laeuft=false;if(e.weg){b.close&&b.close();e.weg=false;return;}e.bm=b;gezeigt=-1;kGezeigt=-1;}).catch(function(){e.laeuft=false});return true;});}
   /* Ohne fertige Leiste bleibt das letzte Bild stehen, statt die große Leiste beim Zeichnen nebenbei zu entschlüsseln.
      Nur das allererste Bild darf aus der rohen Leiste kommen, sonst bliebe die Fläche leer. */
-  function male(c,el,ls,i){var e=ls[Math.floor(i/K)];if(!e)return false;fenster(ls,i);if(!e.bm&&window.createImageBitmap&&c.__hat)return false;
-    var q=e.bm||e.img;var w=e.bm?e.bm.width:e.img.naturalWidth,hh=e.bm?e.bm.height:e.img.naturalHeight;if(!w)return false;
+  function male(c,el,ls,i){var e=ls[Math.floor(i/K)];if(!e)return false;fenster(ls,i);if(!e.bm)return false;
+    var q=e.bm;var w=q.width,hh=q.height;if(!w)return false;
     var fh=hh/K,r=i%K;c.drawImage(q,0,r*fh,w,fh,0,0,el.width,el.height);c.__hat=true;return true;}
 
   function lade(){var m=innerWidth<=760?'hoch':'quer';if(m===modus)return;modus=m;C=CFG[m];still.src=C.still;leisten=geladen?holeLeisten(C.pfad,C.n):[];gezeigt=-1;groesse();}
@@ -102,13 +105,15 @@
   function stelle(){var R=roh(),p=R.p;
     if(performance.now()<schnapp){letzterY=scrollY;if(!tw)zeige(pv);return;}
     if(scrollY!==letzterY){richtung=scrollY>letzterY?1:-1;letzterY=scrollY;}
-    var ch=cur;while(ch<S.length-1&&p>S[ch]+.22*(S[ch+1]-S[ch]))ch++;while(ch>0&&p<S[ch]-.22*(S[ch]-S[ch-1]))ch--;
-    if(p<=0)ch=0;if(ch!==cur)geheZu(ch);
-    /* Einrasten: ruht der Finger in der Szene, gleitet die Seite auf die Kapitelstelle; ein kleiner Wisch zählt als ganzes Kapitel */
     clearTimeout(rastT);
-    if(p>.004&&p<S[S.length-1]+.01){rastT=setTimeout(function(){var Q=roh();if(Q.p<=.004||Q.p>=S[S.length-1]+.01)return;
-      /* nur in Scrollrichtung weiterschalten; liegt die Kapitelstelle noch vor dem Finger, gleitet die Seite einfach dorthin */
-      if(richtung>0&&Q.p>S[cur]+.006&&cur<S.length-1)geheZu(cur+1);else if(richtung<0&&Q.p<S[cur]-.006&&cur>0)geheZu(cur-1);
+    /* Lauf (Simon 01.11.: nicht von selbst abspielen): folgt dem Finger, lauf() führt weich nach */
+    if(p<S[1]){if(cur!==0){cur=0;if(tw&&tw.nach>S[1])tw=null;}return;}
+    if(cur===0){cur=1;tw={von:pv,nach:S[1],t0:performance.now(),d:Math.max(250,(S[1]-pv)*2500)};}
+    var ch=cur;while(ch<S.length-1&&p>S[ch]+.22*(S[ch+1]-S[ch]))ch++;while(ch>1&&p<S[ch]-.22*(S[ch]-S[ch-1]))ch--;
+    if(ch!==cur)geheZu(ch);
+    /* Einrasten ab „Lauf fertig“: ruht der Finger, gleitet die Seite auf die Kapitelstelle; ein kleiner Wisch zählt als ganzes Kapitel */
+    if(p<S[S.length-1]+.01){rastT=setTimeout(function(){var Q=roh();if(Q.p<S[1]||Q.p>=S[S.length-1]+.01)return;
+      if(richtung>0&&Q.p>S[cur]+.006&&cur<S.length-1)geheZu(cur+1);else if(richtung<0&&Q.p<S[cur]-.006&&cur>1)geheZu(cur-1);
       var y=Q.oben-52+S[cur]*Q.lauf;if(Math.abs(y-scrollY)>3){schnapp=performance.now()+900;scrollTo({top:y,behavior:ruhig?'auto':'smooth'});}},200);}
     if(!tw)zeige(pv);}
   /* Reiter der App erst wechseln, wenn das Scrollen kurz ruht: verhindert Ruckeln in der App */
@@ -117,8 +122,8 @@
   function lauf(){
     var jetztT=performance.now();
     if(tw){var t=(jetztT-tw.t0)/tw.d;if(t>=1){pv=tw.nach;tw=null;}else pv=tw.von+(tw.nach-tw.von)*weich(t);zeige(pv);}
-    /* An einer Blase gestikuliert Sparky leise weiter: sanftes Hin und Her über die letzten Bilder vor der Ruhepose */
-    else if(cur>=2&&!ruhig){kZiel=Math.max(0,kBasis-9*(.5-.5*Math.cos(jetztT/1000*2*Math.PI/2.6)));}
+    /* Lauf: Anzeige folgt dem Finger weich (keine Schleife an den Blasen mehr, Simon 01.11.: „wie ein Video, das sich wiederholt“) */
+    else if(cur===0){var z=klemm(roh().p,0,S[1]);if(Math.abs(z-pv)>.0004){pv+=(z-pv)*(ruhig?1:.2);zeige(pv);}}
     /* Großer Sprung (schnelles Wischen, Sprungmarke): direkt ans Ziel statt durch alle Zwischenbilder gleiten */
     var d=ziel-jetzt;if(Math.abs(d)>K*2)jetzt=ziel;else if(Math.abs(d)>.01)jetzt+=d*.22;var i=Math.round(jetzt);if(i!==gezeigt&&male(ctx,cv,leisten,i))gezeigt=i;
     var e=kZiel-kJetzt;if(Math.abs(e)>K*2)kJetzt=kZiel;else if(Math.abs(e)>.01)kJetzt+=e*.22;var j=Math.round(kJetzt);if(j!==kGezeigt&&male(kctx,kcv,kL,j))kGezeigt=j;
