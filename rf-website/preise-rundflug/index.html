@@ -24,6 +24,7 @@ body{font:600 16px/1.55 var(--f);color:var(--text);background:#FAFAF8;touch-acti
 #buehne video,#buehne .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
 #buehne.breit .hinten{display:block}
 #buehne.breit video,#buehne.breit .still{object-fit:contain;object-position:50% 50%}
+#buehne.mac video,#buehne.mac .still{object-position:50% 50%}
 #buehne video{opacity:0}#buehne video.an{opacity:1}
 #buehne .still{opacity:0;transition:opacity .25s}#buehne .still.an{opacity:1}
 #wolken{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:6;pointer-events:none;visibility:hidden}
@@ -85,6 +86,8 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
 .liste h3{margin:10px 0 0;font:800 .78rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--leise)}
 .mono{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--leise)}
 .kontakt{background:var(--orange);color:#1C1917;font:800 1rem/1 var(--f);border-radius:999px;padding:14px 22px;text-decoration:none;justify-self:start;margin-top:6px}
+/* Mac und Querformat (breiter als 6:5): eigene Breitbild-Flüge, Karte und Knöpfe links unten, Nadeln in der rechten Bildhälfte */
+@media (min-aspect-ratio:6/5){#unten{left:max(36px,calc(env(safe-area-inset-left,0px) + 20px));translate:none;width:min(420px,calc(100% - 56px));bottom:max(32px,calc(env(safe-area-inset-bottom,0px) + 16px))}}
 @media (prefers-reduced-motion:reduce){.nadel *,#karte,#start{transition:none!important}}
 </style></head>
 <body>
@@ -121,11 +124,11 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
 
   /* ---------- Inhalte: Preise wörtlich wie im freigegebenen Handytest; Nadeln an echten Orten im Stationsbild ---------- */
   var STATION={
-    geldtag:{film:'a',welt:'gruen',x:0.68,y:0.66,kap:'Grüne Welt · 1 von 2',ttl:'Ordnung ins eigene Geld.',schild:['Geldtag','289 €'],zeilen:[['Geldtag','1 Tag · Ordnung ins eigene Geld','289 €']]},
-    wissen:{film:'b',welt:'gruen',x:0.66,y:0.685,kap:'Grüne Welt · 2 von 2',ttl:'Investieren verstehen.',schild:['Wissenswochenende','599 €'],zeilen:[['Wissenswochenende','Sa + So · Geldtag wird angerechnet','599 €']]},
-    grundlagen:{film:'k',welt:'blau',x:0.26,y:0.6,kap:'Blaue Welt · 1 von 3',ttl:'Der Einstieg in die Börse.',schild:['Grundlagen-Tag','479 €'],zeilen:[['Grundlagen-Tag','1 Tag · bei Zirkel-Buchung angerechnet','479 €']]},
-    zirkel:{film:'c',welt:'blau',x:0.2,y:0.545,kap:'Blaue Welt · 2 von 3',ttl:'Die Zirkel.',schild:['Zirkel','ab 1.990 €'],zeilen:[['Investment-Zirkel','','1.990 €'],['RainMaker-Zirkel','','2.390 €'],['Beide Zirkel','','3.890 €'],['Zirkel zu zweit','','ab 3.290 €']]},
-    mentoring:{film:'d',welt:'blau',x:0.12,y:0.57,kap:'Blaue Welt · 3 von 3',ttl:'Du steuerst selbst.',schild:['Mentoring','ab 8.500 €'],zeilen:[['Tandem-Mentoring','zu zweit, eigene Ergebnisse','8.500 € je Person'],['1:1-Mentoring','eigene Strategie in sechs Zyklen','12.000 €']]}
+    geldtag:{film:'a',welt:'gruen',x:0.68,y:0.66,mx:0.64,my:0.8,kap:'Grüne Welt · 1 von 2',ttl:'Ordnung ins eigene Geld.',schild:['Geldtag','289 €'],zeilen:[['Geldtag','1 Tag · Ordnung ins eigene Geld','289 €']]},
+    wissen:{film:'b',welt:'gruen',x:0.66,y:0.685,mx:0.57,my:0.83,kap:'Grüne Welt · 2 von 2',ttl:'Investieren verstehen.',schild:['Wissenswochenende','599 €'],zeilen:[['Wissenswochenende','Sa + So · Geldtag wird angerechnet','599 €']]},
+    grundlagen:{film:'k',welt:'blau',x:0.26,y:0.6,mx:0.68,my:0.52,kap:'Blaue Welt · 1 von 3',ttl:'Der Einstieg in die Börse.',schild:['Grundlagen-Tag','479 €'],zeilen:[['Grundlagen-Tag','1 Tag · bei Zirkel-Buchung angerechnet','479 €']]},
+    zirkel:{film:'c',welt:'blau',x:0.2,y:0.545,mx:0.7,my:0.62,kap:'Blaue Welt · 2 von 3',ttl:'Die Zirkel.',schild:['Zirkel','ab 1.990 €'],zeilen:[['Investment-Zirkel','','1.990 €'],['RainMaker-Zirkel','','2.390 €'],['Beide Zirkel','','3.890 €'],['Zirkel zu zweit','','ab 3.290 €']]},
+    mentoring:{film:'d',welt:'blau',x:0.12,y:0.57,mx:0.72,my:0.62,kap:'Blaue Welt · 3 von 3',ttl:'Du steuerst selbst.',schild:['Mentoring','ab 8.500 €'],zeilen:[['Tandem-Mentoring','zu zweit, eigene Ergebnisse','8.500 € je Person'],['1:1-Mentoring','eigene Strategie in sechs Zyklen','12.000 €']]}
   };
   var KARTE={
     gruenIntro:{hell:1,kap:'Grüne Welt · das Land',ttl:'Für den Anfang.',zeilen:[]},
@@ -155,14 +158,18 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
   var punkte=document.getElementById('punkte');SCHRITT.forEach(function(){punkte.appendChild(document.createElement('i'));});
 
   /* ---------- Bühne: echte Videos, Standbild am Anfang/Ende ---------- */
+  /* Breiter als 6:5 (Mac, Querformat): Breitbild-Flüge 1920 × 1080 aus stufe11_mac, sonst die Hochkant-Flüge 1072 × 1928 */
+  var MAC=innerWidth/innerHeight>1.2;
+  function vPfad(k){return MAC?'stufe11_mac/v16/'+k+'.mp4':'stufe10_weiter/v/'+k+'.mp4';}
+  function sPfad(k,t){return (MAC?'stufe11_mac/still16/':'stufe10_weiter/still/')+k+t+'.jpg';}
   var buehne=document.getElementById('buehne'),still=buehne.querySelector('.still'),hinten=buehne.querySelector('.hinten'),VIDEO={};
-  function video(k){if(VIDEO[k])return VIDEO[k];var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src='stufe10_weiter/v/'+k+'.mp4';buehne.insertBefore(v,still);VIDEO[k]=v;return v;}
+  function video(k){if(VIDEO[k])return VIDEO[k];var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=vPfad(k);buehne.insertBefore(v,still);VIDEO[k]=v;return v;}
   function filmeAb(i,bis){var f={};for(var j=Math.max(0,i);j<Math.min(SCHRITT.length,bis);j++)(SCHRITT[j].weg||[]).forEach(function(w){if(w[0]==='flug')f[w[1]]=1;else if(w[0]==='nebel')f[w[3]]=1;});return f;}
   function vorladen(i){Object.keys(filmeAb(i,i+2)).forEach(function(k){var v=video(k);if(v.readyState<2)v.load();});}
   /* nicht mehr gebrauchte Filme ganz freigeben – sonst läuft der Videospeicher am iPhone voll und das Bild friert ein */
   function aufraeumen(i){var bleib=filmeAb(i,i+3);Object.keys(VIDEO).forEach(function(k){if(bleib[k])return;var v=VIDEO[k];v.pause();v.removeAttribute('src');v.load();v.remove();delete VIDEO[k];});}
   function stand(bild){still.src=bild;hinten.src=bild;still.classList.add('an');}
-  function breitPruefen(){buehne.classList.toggle('breit',innerWidth/innerHeight>.72);}
+  function breitPruefen(){buehne.classList.toggle('breit',!MAC&&innerWidth/innerHeight>.72);buehne.classList.toggle('mac',MAC);}
   function buehneSicht(an){buehne.style.opacity=an?1:0;}
 
   /* ---------- Nebel ---------- */
@@ -274,8 +281,8 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
     n.innerHTML='<span class="schatten"></span><span class="stift"></span><span class="kopf"></span><span class="schild">'+esc(s.schild[0])+'<b>'+esc(s.schild[1])+'</b></span>';nadelBox.appendChild(n);NADEL[k]=n;});
   /* Lage eines Bildpunkts auf dem Schirm: wie object-fit cover (50 % 55 %) bzw. contain auf breiten Schirmen */
   function nadelSetzen(k,an){Object.keys(NADEL).forEach(function(j){NADEL[j].classList.remove('da');});if(!an||!k)return;
-    var st=STATION[k],n=NADEL[k],W=innerWidth,H=innerHeight,iw=1072,ih=1928,breit=W/H>.72,s=breit?Math.min(W/iw,H/ih):Math.max(W/iw,H/ih),ox=(W-iw*s)*.5,oy=(H-ih*s)*(breit?.5:.55);
-    var x=ox+iw*s*st.x,y=oy+ih*s*st.y;n.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+    var st=STATION[k],n=NADEL[k],W=innerWidth,H=innerHeight,iw=MAC?1920:1072,ih=MAC?1080:1928,breit=!MAC&&W/H>.72,s=breit?Math.min(W/iw,H/ih):Math.max(W/iw,H/ih),ox=(W-iw*s)*.5,oy=(H-ih*s)*(breit||MAC?.5:.55);
+    var x=ox+iw*s*(MAC?st.mx:st.x),y=oy+ih*s*(MAC?st.my:st.y);n.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
     var sb=n.querySelector('.schild').offsetWidth,rechts=x+18+sb<=W-8,links=x-18-sb>=8;n.classList.toggle('links',!rechts&&links);n.classList.toggle('mitte',!rechts&&!links);
     requestAnimationFrame(function(){n.classList.add('da');});}
   var karte=document.getElementById('karte');
@@ -288,15 +295,15 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
   function tween(ms,f){return new Promise(function(r){if(ruhig){f(1);r();return;}var t0=performance.now();(function s(){var t=klemm((performance.now()-t0)*tempo/ms);f(t);if(t<1)requestAnimationFrame(s);else r();})();});}
   async function wegErde(von,bis,ms){glc.style.visibility='visible';buehneSicht(false);await tween(ms,function(t){erdeJetzt=mische(E[von],E[bis],glatt(t));erdeZeichnen();});}
   async function wegNebel(richtung,erde,film){var v=video(film);
-    if(richtung==='ein'){Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.remove('an');});v.currentTime=0;stand('stufe10_weiter/still/'+film+'_0.jpg');}
-    else stand('stufe10_weiter/still/'+film+'_e.jpg');
+    if(richtung==='ein'){Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.remove('an');});v.currentTime=0;stand(sPfad(film,'_0'));}
+    else stand(sPfad(film,'_e'));
     await tween(1800,function(t){nebel(t);var unten=richtung==='ein'?t<.5:t>=.5;
       if(unten){glc.style.visibility='visible';buehneSicht(false);erdeJetzt=E[erde];erdeZoom=richtung==='ein'?glatt(t*2):glatt((1-t)*2);erdeZeichnen();}
       else{glc.style.visibility='hidden';buehneSicht(true);}});
     nebel(0);erdeZoom=0;}
   /* Das Abbremsen steckt fest im Video (bremse_einbauen.sh) – das Tempo wird nie umgeschaltet, das verträgt Safari am iPhone nicht.
      Am Ende bleibt das Video auf seinem letzten Bild stehen; das gleiche Standbild liegt schon vorher fertig darunter. */
-  function wegFlug(film){return new Promise(function(r){var v=video(film),fertig=false,endBild='stufe10_weiter/still/'+film+'_e.jpg';glc.style.visibility='hidden';buehneSicht(true);
+  function wegFlug(film){return new Promise(function(r){var v=video(film),fertig=false,endBild=sPfad(film,'_e');glc.style.visibility='hidden';buehneSicht(true);
       var vb=new Image();vb.src=endBild;
       Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.toggle('an',k===film);});
       function ende(){if(fertig)return;fertig=true;still.src=endBild;hinten.src=endBild;still.classList.add('an');r();}
@@ -308,7 +315,7 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
       if(ruhig){ende();return;}var p=v.play();if(p&&p.catch)p.catch(ende);});}
   /* ---------- Ankunft (auch direkt, für „Zurück“) ---------- */
   function ankunft(i){var s=SCHRITT[i];document.getElementById('start').classList.toggle('weg',i>0);
-    if(s.station){var st=STATION[s.station];glc.style.visibility='hidden';stand('stufe10_weiter/still/'+st.film+'_e.jpg');buehneSicht(true);Object.keys(VIDEO).forEach(function(k){var v=VIDEO[k];v.classList.toggle('an',k===st.film&&v.duration>0&&v.currentTime>v.duration-.15);});
+    if(s.station){var st=STATION[s.station];glc.style.visibility='hidden';stand(sPfad(st.film,'_e'));buehneSicht(true);Object.keys(VIDEO).forEach(function(k){var v=VIDEO[k];v.classList.toggle('an',k===st.film&&v.duration>0&&v.currentTime>v.duration-.15);});
       nadelSetzen(s.station,true);karteSetzen(st);}
     else{nadelSetzen(null,false);buehneSicht(false);glc.style.visibility='visible';erdeJetzt=E[s.erde||'E0'];erdeZeichnen();karteSetzen(s.karte?KARTE[s.karte]:null);}
     punkte.querySelectorAll('i').forEach(function(p,j){p.classList.toggle('an',j===i);});
@@ -333,7 +340,7 @@ body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{b
   function blattAuf(){blatt.classList.add('auf');}function blattZu(){blatt.classList.remove('auf');}
   document.getElementById('alle').addEventListener('click',blattAuf);blatt.querySelector('.zu').addEventListener('click',blattZu);blatt.addEventListener('click',function(e){if(e.target===blatt)blattZu();});
 
-  function groesse(){wc.width=Math.round(innerWidth*DPR*.5);wc.height=Math.round(innerHeight*DPR*.5);sterneMalen();breitPruefen();
+  function groesse(){var m=innerWidth/innerHeight>1.2;if(m!==MAC&&!laeuft){MAC=m;Object.keys(VIDEO).forEach(function(k){var v=VIDEO[k];v.pause();v.removeAttribute('src');v.load();v.remove();delete VIDEO[k];});vorladen(jetzt+1);}wc.width=Math.round(innerWidth*DPR*.5);wc.height=Math.round(innerHeight*DPR*.5);sterneMalen();breitPruefen();
     if(erdeDa){R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();}erdeZeichnen();if(!laeuft)ankunft(jetzt);}
   addEventListener('resize',groesse);
   groesse();vorladen(1);
