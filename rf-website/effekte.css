@@ -291,3 +291,12 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 .welt-held,.einstieg{width:100vw;margin-inline:calc(50% - 50vw);min-height:100svh;border-radius:0}
 .welt-held .inhalt,.einstieg-text{--rand:max(clamp(20px,5vw,64px),calc(50vw - 590px + clamp(16px,4vw,48px)));
   padding-inline:var(--rand) clamp(20px,5vw,64px);max-width:calc(var(--rand) + 716px)}
+/* Über uns: Duo-Foto als Titelbild (Simon 01.11.2026). Hochkant-Bildschirme: Foto ist quer, steht deshalb in der oberen Hälfte
+   und läuft ins Dunkelblau aus, damit beide Gesichter ganz bleiben. */
+.welt-held.duo{--held-dunkel:rgba(10,24,48,.92);background:#0A1830}
+.welt-held.duo img{object-position:50% 20%}
+.welt-held.duo .weiter-hinweis{color:rgba(255,255,255,.8)}
+@media (max-aspect-ratio:1/1){
+  .welt-held.duo img{inset:0 0 auto 0;height:50%;object-position:50% 10%;transform:none}
+  .welt-held.duo::after{background:linear-gradient(180deg,rgba(10,24,48,0) 0%,rgba(10,24,48,0) 32%,rgba(10,24,48,.97) 50%,#0A1830 100%)}
+}
