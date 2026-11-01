@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#FBF3DC">
 <title>Sternstunde · Der Geldbaum · R&amp;F Institut</title>
 <meta name="description" content="Sternstunde: eine Stunde, drei Spiele und ein Spross für zu Hause. Der Kindertag des R&amp;F Instituts im 21. Stock über Frankfurt, für Kinder von 6 bis 9. Kostenlos, 19 € Pfand je Kind.">
 <!-- Baumseite (abgenommen von Simon am 31.10.2026), ersetzt die bisherige Kinderseite (Sicherung: kinder_2026-10-31_vor-baum.html).
@@ -13,10 +12,12 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
 <link rel="stylesheet" href="baum2.css?v=21">
 <link rel="stylesheet" href="anfrage.css?v=3">
+<link rel="stylesheet" href="rahmen.css?v=2">
 <style>body.still *{animation:none!important;transition:none!important}</style>
 </head>
 <body data-look="pixar">
-<header class="kopf" id="kopf"><span class="marke">Sternstunde</span><a class="mono kopf-link" href="../start.html">R&amp;F Institut ›</a></header>
+<!-- Kopfleiste und Fußzeile wie auf allen Seiten der Website: kommen aus ../seite.js (Simon 01.11.2026) -->
+<div id="kopf"></div>
 <div class="punkte" id="punkte" aria-hidden="true"></div>
 <div class="welt" id="welt">
   <div class="buehne" id="buehne">
@@ -25,6 +26,8 @@
     <div class="baum" id="baum"></div>
   </div>
 </div>
+
+<div class="fuss-rahmen"><div class="innen"><div id="fuss"></div></div></div>
 
 <!-- Platz anfragen (Simon 31.10.2026): Formular, die Bestätigung schickt Brevo -->
 <div class="anfrage" id="anfrage" role="dialog" aria-modal="true" aria-labelledby="anfrage-titel" hidden>
@@ -68,7 +71,10 @@
 </div>
 
 <script>if(new URLSearchParams(location.search).get('still')==='1')document.body.classList.add('still');</script>
-<script src="baum2.js?v=21"></script>
+<script src="../seite.js"></script>
+<script>/* base href zeigt auf sternstunde/: Links aus seite.js auf die Website-Ebene heben */
+document.querySelectorAll('.leiste a[href],.deckel a[href],.fuss a[href]').forEach(function(a){var h=a.getAttribute('href');if(!/^(https?:|mailto:|#|\.\.\/|\/)/.test(h))a.setAttribute('href','../'+h);});</script>
+<script src="baum2.js?v=22"></script>
 <script src="anfrage.js?v=3"></script>
 </body>
 </html>

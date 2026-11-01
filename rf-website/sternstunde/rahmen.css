@@ -1,0 +1,67 @@
+/* Sternstunde · Kopfleiste, Handy-Menü und Fußzeile der Website (Simon 01.11.2026: „wie die Blaue Welt“).
+   Markup kommt aus ../seite.js (eine Quelle für alle Seiten). Die Regeln sind aus ../stil.css, ../start.css und
+   ../effekte.css übernommen und auf .leiste/.deckel/.fuss-rahmen begrenzt: Die ganzen Website-Stile können hier nicht
+   geladen werden, weil sie dieselben Klassennamen wie der Baum benutzen (baum, buehne, station, blase, welt …)
+   und dieselben Variablen (--gold, --linie, --text2) anders belegen. Ändert sich die Leiste dort, hier nachziehen. */
+.leiste,.deckel,.fuss-rahmen{
+  --navy:#102444;--orange:#FF7A00;--text:#1C1917;--text2:#6B6257;--linie:#E3E7ED;--grund:#FFFFFF;--akzent:#FF7A00;
+  --knopf:#FF7A00;--knopf-text:#1C1917;--r-knopf:12px;
+  --f:"Nunito","Avenir Next","Segoe UI",sans-serif;--wort:"Gloock",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+
+/* Kopfleiste: fest, randlos, dunkel (effekte.css) */
+.leiste{position:fixed;left:0;right:0;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:52px;box-sizing:border-box;padding:calc(4px + env(safe-area-inset-top,0px)) max(clamp(16px,4vw,48px),calc((100vw - 1180px) / 2 + 48px)) 4px;
+  background:rgba(12,24,44,.8);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);font-family:var(--f)}
+.leiste .marke{display:grid;text-decoration:none;line-height:1}
+.leiste .marke b{font-family:var(--wort);font-weight:400;font-size:1.35rem;color:#FFFFFF}
+.leiste .marke span{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:2px;white-space:nowrap}
+.leiste .menue{display:flex;gap:24px;font-weight:700;font-size:.92rem}
+.leiste .menue a{text-decoration:none;color:rgba(255,255,255,.88);white-space:nowrap}
+.leiste .menue a:hover,.leiste .menue a[aria-current]{color:#FFFFFF}
+.leiste .knopf{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;min-height:44px;box-sizing:border-box;padding:8px 16px;
+  font:800 .88rem var(--f);text-decoration:none;white-space:nowrap;cursor:pointer;color:var(--knopf-text);background:var(--knopf);box-shadow:0 10px 24px -12px rgba(16,36,68,.5)}
+.leiste .burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid rgba(255,255,255,.4);background:transparent;align-items:center;justify-content:center;cursor:pointer}
+.leiste .burger i{width:18px;height:2px;background:#FFFFFF;box-shadow:0 -6px 0 #FFFFFF,0 6px 0 #FFFFFF;display:block}
+@media (max-width:1240px){.leiste .menue{display:none}.leiste .burger{display:inline-flex}}
+@media (max-width:900px){.leiste .marke span{display:none}}
+@media (max-width:420px){.leiste .knopf{padding:10px 14px;font-size:.9rem}}
+
+/* Neuere Leiste der Website (effekte.css, „Wer steckt dahinter?“-Knopf statt Untertitel) – passt zu beiden Fassungen von seite.js */
+.leiste .marke-wrap{position:relative;display:grid;justify-items:start;gap:3px}
+.leiste .marke-mehr{all:unset;box-sizing:border-box;cursor:pointer;font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);display:inline-flex;align-items:center;gap:6px;line-height:1.25;padding-block:4px;margin-block:-4px;white-space:nowrap}
+.leiste .marke-mehr:hover,.leiste .marke-mehr[aria-expanded="true"]{color:#FFFFFF}
+.leiste .marke-mehr i{flex:0 0 auto;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #FF9A3D;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.leiste .marke-mehr[aria-expanded="true"] i{transform:rotate(180deg)}
+.leiste .marke-mehr:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.leiste .wer-kasten{position:absolute;left:0;top:calc(100% + 16px);width:min(360px,calc(100vw - 32px));box-sizing:border-box;background:#FFFDF8;color:var(--text);border:2px solid var(--navy);border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 18px 40px -18px rgba(16,36,68,.5);transform-origin:top left;animation:wer-auf .42s cubic-bezier(.3,1.25,.5,1);z-index:30}
+.leiste .wer-kasten b{font:900 1.1rem/1.2 var(--f);color:var(--navy)}
+.leiste .wer-kasten p{margin:0;font-size:.92rem;line-height:1.45;color:var(--text2)}
+.leiste .wer-kasten .klein{font-size:.8rem}
+.leiste .wer-kasten a{font:800 .95rem/1 var(--f);color:#2E5AA8;text-decoration:none;padding-block:10px 4px;justify-self:start}
+.leiste .wer-kasten[hidden]{display:none}
+@keyframes wer-auf{from{opacity:0;transform:translateY(-6px) scaleY(.85)}to{opacity:1;transform:none}}
+@media (max-width:900px){.leiste .marke-mehr{font-size:.46rem;max-width:100px;white-space:normal;padding-block:8px;margin-block:-8px}}
+@media (prefers-reduced-motion:reduce){.leiste .wer-kasten{animation:none}.leiste .marke-mehr i{transition:none}}
+
+/* Handy-Menü */
+.deckel{position:fixed;inset:0;background:var(--grund);z-index:60;display:none;box-sizing:border-box;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 24px;overflow:auto;font-family:var(--f)}
+.deckel.offen{display:block}
+.deckel .zu{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:clamp(16px,4vw,48px);width:44px;height:44px;border-radius:12px;border:1.5px solid var(--linie);background:transparent;font:400 1.8rem/1 var(--f);color:var(--text);cursor:pointer}
+.deckel-nav{display:grid;gap:4px;margin-top:64px}
+.deckel-nav a{display:flex;align-items:center;gap:14px;font:800 1.6rem/1.3 var(--f);text-decoration:none;color:var(--text);padding:12px 0;border-bottom:1px solid var(--linie)}
+.deckel-nav a[aria-current]{color:var(--akzent)}
+.deckel-nav a .ic{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center}
+.deckel-nav a .ic svg{width:100%;height:100%;display:block}
+.deckel-nav a.nebenbei{font-size:1.15rem;color:var(--text2);border-bottom:0}
+
+/* Fußzeile (weißer Grund wie auf den anderen Seiten) */
+.fuss-rahmen{position:relative;z-index:5;background:#FFFFFF;color:var(--text);font:400 17px/1.6 var(--f)}
+.fuss-rahmen .innen{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+.fuss{border-top:1px solid var(--linie);padding-block:clamp(40px,6vw,72px) 32px;display:grid;gap:28px}
+.fuss .gross{display:flex;align-items:flex-end;gap:clamp(8px,2vw,24px);line-height:.8}
+.fuss .gross b{font-family:var(--wort);font-weight:400;font-size:clamp(5rem,22vw,17rem);color:var(--navy);letter-spacing:-.02em}
+.fuss-spalten{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px;font-size:.94rem}
+.fuss-spalten b{display:block;margin-bottom:8px}
+.fuss-spalten a{display:block;text-decoration:none;color:var(--text2);padding:3px 0}
+.fuss-unten{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;color:var(--text2);font-size:.86rem;border-top:1px solid var(--linie);padding-top:18px}
+.fuss-unten .mono{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}

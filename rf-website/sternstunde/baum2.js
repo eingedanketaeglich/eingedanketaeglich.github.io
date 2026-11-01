@@ -77,8 +77,9 @@
   function haltIndex(y){for(var i=0;i<N-1;i++){if(y<S[i+1])return i+klemm((y-S[i])/(S[i+1]-S[i]),0,1);}return N-1;}
   function groesse(){vw=buehne.clientWidth;vh=innerHeight;zoom=vw<760?ZOOM_HANDY:ZOOM_DESK;
     BW=vw*zoom;BH=BW*(META?META.hoehe/META.breite:3);baum.style.width=BW+'px';baum.style.height=BH+'px';
-    /* Desktop: Baum passt in die Höhe von etwa 2,4 Bildschirmen, damit die Kamera noch fährt */
-    if(zoom===ZOOM_DESK){BH=vh*2.6;BW=BH*(META?META.breite/META.hoehe:1/3);baum.style.width=BW+'px';baum.style.height=BH+'px';}
+    /* Desktop: Baum mindestens 2,6 Bildschirme hoch, damit die Kamera noch fährt, und immer so breit wie das Fenster
+       (Simon 01.11.: muss die ganze Seite ausfüllen, vorher blieb rechts ein leerer Streifen) */
+    if(zoom===ZOOM_DESK){BW=Math.max(vw,vh*2.6*(META?META.breite/META.hoehe:1/3));BH=BW*(META?META.hoehe/META.breite:3);baum.style.width=BW+'px';baum.style.height=BH+'px';}
     rinde();grasKante();anker();stelle(true);}
   function lies(){zielP=haltIndex(scrollY)/(N-1);}
   /* Wie weit unter der Oberkante die Flamme sitzt: 30 % der Höhe, bei hohen Karten (Spiel, Eltern) höher, damit die
