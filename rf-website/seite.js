@@ -17,12 +17,17 @@
      „Über uns“ klappt an der Institutszeile aus und steht im Fuß */
   var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','Grüne Welt'],['welt-blau.html','Blaue Welt'],['kinder.html','Sternstunde'],['preise.html','Preise'],['kontakt.html','Kontakt']];
   function link(h){return h+zusatz;}
+  var WER_SATZ='Wer wir sind, ist eigentlich nicht das Wichtigste. Wichtig ist, welches Problem wir für dich lösen.';
+  /* Vorschau beim Überfahren der Kopfleiste (Simon 01.11.2026): Bild je Menüpunkt, Stile in effekte.css und sternstunde/rahmen.css */
+  var FL='<svg viewBox="0 0 62 76" aria-hidden="true"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/></svg>';
+  var VS={'firestarter.html':'<span class="vs vs-flamme" aria-hidden="true">'+FL+'</span>','welt-gruen.html':'<span class="vs vs-kugel vs-gruen" aria-hidden="true"></span>',
+    'welt-blau.html':'<span class="vs vs-kugel vs-blau" aria-hidden="true"></span>',
+    'kinder.html':'<span class="vs vs-stern" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3l6.2 13.2 14.5 1.7-10.7 9.9 2.9 14.3L24 34.9 11.1 42.1 14 27.8 3.3 17.9l14.5-1.7z" fill="#F6CF5A" stroke="#FFF3C4" stroke-width="2" stroke-linejoin="round"/></svg></span>'};
   var kopf=document.getElementById('kopf');
   if(kopf){
-    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F Institut für Vermögensbildung, Startseite"><b>R&amp;F</b></a>'+
-      '<button class="marke-mehr" type="button" aria-expanded="false" aria-controls="wer-kasten">Institut für Vermögensbildung<i aria-hidden="true"></i></button>'+
-      '<div class="wer-kasten" id="wer-kasten" hidden><b>Wer steckt dahinter?</b><p>René und Simon. „Wir versprechen dir das Können und das Fundament, deinen eigenen Weg zu gehen.“</p><p class="klein">Bildung, keine Anlageberatung · WINX-Tower, 21. Etage</p><a href="'+link('ueber-uns.html')+'">Mehr über uns →</a></div></div>'+
-      '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+'</a>'}).join('')+'</nav>'+
+    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F Institut für Vermögensbildung, Startseite"><b>R&amp;F</b><small class="marke-mehr">Institut für Vermögensbildung</small></a>'+
+      '<div class="wer-fenster" id="wer-fenster" hidden></div></div>'+
+      '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+(VS[m[0]]||'')+'</a>'}).join('')+'</nav>'+
       '<a class="knopf" href="'+link('preise.html')+'">Termine &amp; Preise</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';
   }
   var fuss=document.getElementById('fuss');
@@ -47,8 +52,11 @@
     var ZEICHEN={'firestarter.html':'<svg viewBox="0 0 62 76" aria-hidden="true"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/></svg>',
       'welt-gruen.html':KUGEL('#BFD8E4','#4C8A3E'),'welt-blau.html':KUGEL('#1F5C8F','#6E9466'),
       'kinder.html':'<svg viewBox="0 0 50 50" aria-hidden="true"><path d="M25 3 L30.5 18.5 L47 19 L34 29 L38.5 45 L25 35.5 L11.5 45 L16 29 L3 19 L19.5 18.5 Z" fill="#D9A21E"/></svg>'};
-    deckel.querySelectorAll('.deckel-nav a').forEach(function(a){var h=(a.getAttribute('href')||'').split(/[?#]/)[0];a.insertAdjacentHTML('afterbegin','<span class="ic">'+(ZEICHEN[h]||'')+'</span>');});
-    deckel.querySelector('.deckel-nav').insertAdjacentHTML('beforeend','<a href="'+link('ueber-uns.html')+'" class="nebenbei"><span class="ic"></span>Über uns</a>');
+    deckel.querySelectorAll('.deckel-nav a > .vs').forEach(function(v){v.remove();});
+    deckel.querySelectorAll('.deckel-nav a').forEach(function(a){var h=(a.getAttribute('href')||'').split(/[?#]/)[0];a.insertAdjacentHTML('afterbegin','<span class="ic">'+(VS[h]||ZEICHEN[h]||'')+'</span>');});
+    deckel.querySelector('.deckel-nav').insertAdjacentHTML('beforeend','<div class="deckel-wer"><button class="deckel-wer-knopf" type="button" aria-expanded="false">Wer steckt dahinter? <span aria-hidden="true">▾</span></button>'+
+      '<div class="deckel-wer-text" hidden><p>'+WER_SATZ+'</p><p><b>Willst du es trotzdem wissen?</b> <a href="'+link('ueber-uns.html')+'">Hier entlang →</a></p></div></div>');
+    var dw=deckel.querySelector('.deckel-wer-knopf');dw.addEventListener('click',function(){var t=dw.nextElementSibling,o=t.hidden;t.hidden=!o;dw.setAttribute('aria-expanded',o?'true':'false');dw.querySelector('span').textContent=o?'▴':'▾';});
     document.body.appendChild(deckel);
     var auf=function(o){deckel.classList.toggle('offen',o);document.body.style.overflow=o?'hidden':'';burger.setAttribute('aria-expanded',o?'true':'false');if(o){deckel.querySelector('.zu').focus();}else{burger.focus();}};
     burger.addEventListener('click',function(){auf(true)});deckel.querySelector('.zu').addEventListener('click',function(){auf(false)});
@@ -56,17 +64,24 @@
     document.addEventListener('keydown',function(e){if(e.key==='Escape')auf(false)});
   }
 
-  /* ---------- „Wer steckt dahinter?“ an der Institutszeile (Gesprächsrunde Punkt 4, Variante A). Das Logo bleibt der Weg zur Startseite. ---------- */
-  var mehr=document.querySelector('.marke-mehr'),wer=document.getElementById('wer-kasten');
-  if(mehr&&wer){
-    var zeige=function(o){wer.hidden=!o;mehr.setAttribute('aria-expanded',o?'true':'false');};
-    mehr.addEventListener('click',function(e){e.stopPropagation();zeige(wer.hidden);});
-    if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){var wrap=mehr.parentNode,zu=null;
-      wrap.addEventListener('mouseenter',function(){clearTimeout(zu);zeige(true)});wrap.addEventListener('mouseleave',function(){zu=setTimeout(function(){zeige(false)},350)});}
-    document.addEventListener('click',function(e){if(!wer.hidden&&!wer.contains(e.target))zeige(false);});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!wer.hidden){zeige(false);mehr.focus();}});
+  /* ---------- „Wer steckt dahinter?“ (Simon 01.11.2026, Variante C): Klick auf R&F oder die Institutszeile führt immer zur Startseite.
+     Überfahren zeigt René und Simon klein mit der Frage, ein Klick darauf das Fenster mit dem Satz und dem Weg zu „Über uns“. ---------- */
+  var wrap=document.querySelector('.marke-wrap'),fen=document.getElementById('wer-fenster');
+  if(wrap&&fen){
+    var PFX=document.querySelector('base')?'../':'',DUO=PFX+'bilder/web/duo_studio_3x2.jpg',offen=0,zuT=null;
+    var schliessen=function(){fen.hidden=true;fen.innerHTML='';offen=0;};
+    var pille=function(){if(offen)return;offen=1;fen.innerHTML='<button class="wer-pille" type="button"><img src="'+DUO+'" alt="">Wer steckt dahinter? <i aria-hidden="true">↓</i></button>';fen.hidden=false;};
+    var fenster=function(){offen=2;fen.innerHTML='<div class="wer-karte" role="dialog" aria-label="Wer steckt dahinter?"><button class="zu" type="button" aria-label="Schließen">×</button>'+
+      '<div class="kopf"><img src="'+DUO+'" alt="René Flé und Simon Schlerf"><b>René und Simon</b></div><p>'+WER_SATZ+'</p><p class="frage">Willst du es trotzdem wissen?</p>'+
+      '<a href="'+PFX+link('ueber-uns.html')+'">Hier entlang zu Über uns →</a></div>';fen.hidden=false;};
+    if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+      wrap.addEventListener('mouseenter',function(){clearTimeout(zuT);pille();});
+      wrap.addEventListener('mouseleave',function(){if(offen===2)return;zuT=setTimeout(schliessen,380);});
+      wrap.querySelector('.marke').addEventListener('focus',pille);}
+    fen.addEventListener('click',function(e){var t=e.target.closest('.wer-pille,.zu');if(!t)return;e.stopPropagation();if(t.classList.contains('wer-pille'))fenster();else schliessen();});
+    document.addEventListener('click',function(e){if(offen&&!wrap.contains(e.target))schliessen();});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&offen)schliessen();});
   }
-
 
   /* ---------- Telefon-Rahmen: App-Ansicht (390 × 794) passend skalieren ---------- */
   document.querySelectorAll('.telefon[data-auto]').forEach(function(tel){
