@@ -76,7 +76,9 @@
 document.querySelectorAll('.leiste a[href],.deckel a[href],.fuss a[href]').forEach(function(a){var h=a.getAttribute('href');if(!/^(https?:|mailto:|#|\.\.\/|\/)/.test(h))a.setAttribute('href','../'+h);});</script>
 <script>/* Grundfarbe unter der Seite (Simon 01.11.: kein heller Streifen am Rand): Erde, solange der Baum zu sehen ist, weiß an der Fußzeile */
 (function(){var f=document.querySelector('.fuss-rahmen'),H=document.documentElement;function farbe(){var unten=f&&f.getBoundingClientRect().top<innerHeight*.5;H.style.background=document.body.style.background=unten?'#FFFFFF':'#2A1C11';}
-addEventListener('scroll',farbe,{passive:true});addEventListener('resize',farbe);farbe();})();</script>
+addEventListener('scroll',farbe,{passive:true});addEventListener('resize',farbe);farbe();
+if('ResizeObserver' in window)new ResizeObserver(farbe).observe(document.body);  /* erst wenn der Baum steht, stimmt die Lage der Fußzeile */
+})();</script>
 <script src="baum2.js?v=23"></script>
 <script src="anfrage.js?v=4"></script>
 </body>
