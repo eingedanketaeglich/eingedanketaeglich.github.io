@@ -5,7 +5,7 @@
    Look (pixar | foto | buch) kommt aus data-look am body. */
 (function(){
   var LOOK=document.body.dataset.look||'pixar', q=new URLSearchParams(location.search), STILL=q.get('still')==='1';
-  var ZOOM_HANDY=1.55, ZOOM_DESK=1.0, BV='?v=16';  /* BV: Bildversion gegen Browser-Cache (langer Baum ohne Höhle, 31.10. abends) */
+  var ZOOM_HANDY=1.55, ZOOM_DESK=1.0, BV='?v=17';  /* BV: Bildversion gegen Browser-Cache (langer Baum ohne Höhle, 31.10. abends) */
   /* Scrollen 1:1 (Simon 31.10. abends): der Baum bewegt sich so weit wie der Finger. Jeder Anker ist genau so hoch wie der Kameraweg
      zum nächsten Halt (S[]), mindestens 0,45 Bildschirme; mehr Baum zwischen den Halten kommt aus dem längeren Render (--lang 1.3). */   /* 2,3 war zu nah: Stamm füllte alles, Äste und Flammen lagen außerhalb (Test 31.10.) */
   var H=[  /* Halte; cx/cy werden aus anker.json gesetzt. Texte: Fassung E, Textrunde 31.10.2026 (Simon: 'E gilt') */
@@ -26,12 +26,20 @@
   if(punkte)for(var j=0;j<N;j++)punkte.appendChild(document.createElement('i'));
 
   /* Baum-Bild aufbauen: Stamm, Blätter (zweimal, leicht versetzt für Tiefe), Nachtschleier, Flammen, Handy, Stern */
-  baum.innerHTML='<div class="boden"></div><div class="ebene stammebene"><img class="stamm" src="baum/'+LOOK+'_stamm.webp'+BV+'" alt=""></div>'+
+  /* Mac (Simon 01.11.): ab 760 px eigenes Breitbild. Mitte = das Handy-Bild unverändert (2400 × 7489 bei x 1318, y 18),
+     links und rechts von Higgsfield ergänzt (Sternstunde-Mac_2026-11-01/komposit_mac.py). Figuren behalten ihre Größe zum Baum. */
+  var MAC=innerWidth>=760,SK=1,STAMM='baum/'+LOOK+(MAC?'_mac':'_stamm')+'.webp'+BV;
+  function macMeta(m){var W=5036,Hh=7507,X=1318,Y=18,QW=2400,QH=7489;
+    function p(o){var n={};for(var k in o)n[k]=o[k];n.x=(X+o.x*QW)/W;n.y=(Y+o.y*QH)/Hh;return n;}
+    var n={};for(var k in m)n[k]=m[k];
+    if(m.anker)n.anker=m.anker.map(p);if(m.sitz)n.sitz=m.sitz.map(p);n.rinde=p(m.rinde);n.krone=p(m.krone);
+    n.breite=W;n.hoehe=Hh;if(m.sicht)n.sicht=m.sicht*Hh/QH;SK=QW/W;baum.style.setProperty('--sk',SK);return n;}
+  baum.innerHTML='<div class="boden"></div><div class="ebene stammebene"><img class="stamm" src="'+STAMM+'" alt=""></div>'+
     /* Blattebene entfällt (31.10. spät): das Higgsfield-Bild steht als Ganzes, damit die Blätter scharf bleiben */
     '<div class="ebene gras" id="gras"></div><div class="erdkante"></div><div class="stammschatten"></div><div class="ebene nachtschleier"></div><div class="ebene figuren"></div>';
   var fig=baum.querySelector('.figuren'),schleier=baum.querySelector('.nachtschleier');
   var META=null,flammen=[],handy,sternEl;
-  function bauen(meta){META=meta;
+  function bauen(meta){if(MAC)meta=macMeta(meta);META=meta;
     /* Sitzpunkte (sitz_messen.py): gemessene Astoberkante nahe am Stamm; Sitz 0 ist die Wurzel für Sparky. Ohne Messung: Anker. */
     var sitz=meta.sitz||[{x:.29,y:.9}].concat(meta.anker);
     H[0].cx=.5;H[0].cy=.93;  /* Wurzeln: so tief, dass Bo auf Ast 1 oben aus dem Bild ist */
@@ -46,7 +54,7 @@
     groesse();}
   /* Rinde auf dem Handy: die Haut trägt exakt die Stamm-Textur ihrer Stelle (bei Ruhe unsichtbar), das Gehäuse die Rinde daneben.
      Beim Herauskommen wächst das Element aus der Mitte; die Haut dehnt sich wie eine Wölbung und löst sich dann auf. */
-  function rinde(){if(!META||!handy)return;var Wp=.19*BW,Hp=Wp*1.75,L=META.rinde.x*BW-Wp/2+.15*Wp,T=META.rinde.y*BH-Hp/2+.13*Hp,url='url(baum/'+LOOK+'_stamm.webp'+BV+')',size=BW+'px '+BH+'px';
+  function rinde(){if(!META||!handy)return;var Wp=.19*SK*BW,Hp=Wp*1.75,L=META.rinde.x*BW-Wp/2+.15*Wp,T=META.rinde.y*BH-Hp/2+.13*Hp,url='url('+STAMM+')',size=BW+'px '+BH+'px';
     /* Rindenhaut über dem Handykörper: exakt die Stamm-Textur dieser Stelle, löst sich beim Herauskommen auf */
     var haut=handy.querySelector('.haut');haut.style.backgroundImage=url;haut.style.backgroundSize=size;haut.style.backgroundPosition=(-L)+'px '+(-T)+'px';}
   /* Graskante vor den Wurzeln: unregelmäßige Büschel, einmal gewürfelt */
@@ -72,27 +80,17 @@
   var vw=innerWidth,vh=innerHeight,zoom=1,BW=1,BH=3,zielP=0,p=0,aktiv=-1,handyAn=false,sternAn=false,audio=null,S=[0];
   function camY(i){var y=klemm(H[i].cy*BH-versatz(i),-vh*.55,Math.max(0,BH-vh*.42));
     /* Stern: ganz unter der Kopfleiste der Website (Simon 01.11.: oben abgeschnitten) */
-    if(i===N-1&&META){var l=document.querySelector('.leiste'),oben=(l?l.offsetHeight:0)+12;y=Math.min(y,(META.krone.y-.17)*BH-.19*BW-oben);}  /* Sternmitte wie im Markup, Breite 38 % */
+    if(i===N-1&&META){var l=document.querySelector('.leiste'),oben=(l?l.offsetHeight:0)+12;y=Math.min(y,(META.krone.y-.17)*BH-.19*SK*BW-oben);}  /* Sternmitte wie im Markup, Breite 38 % */
     return y;}
   function anker(){S=[0];for(var i=0;i<N-1;i++){S.push(S[i]+Math.max(Math.abs(camY(i+1)-camY(i)),vh*.45));}
     var el=welt.querySelectorAll('.anker');for(var j=0;j<N;j++){el[j].style.height=(j<N-1?S[j+1]-S[j]:vh)+'px';}}
   /* Scrollposition → Haltindex mit Bruchteil (linear, damit der Baum 1:1 mitfährt) */
   function haltIndex(y){for(var i=0;i<N-1;i++){if(y<S[i+1])return i+klemm((y-S[i])/(S[i+1]-S[i]),0,1);}return N-1;}
-  /* Umfeld (Simon 01.11.): breiter als der Baum ist das Fenster am Desktop. Links und rechts läuft dasselbe Bild weich
-     gezeichnet weiter, mit Erde darunter, damit die Seite ohne Ränder von Erde bis Himmel durchgeht. */
-  var umfeld=document.createElement('div');umfeld.className='umfeld';umfeld.setAttribute('aria-hidden','true');buehne.insertBefore(umfeld,baum);
-  function umfeldStellen(){var breit=BW<vw;baum.classList.toggle('breit',breit);umfeld.style.display=breit?'block':'none';if(!breit)return;
-    umfeld.style.height=(BH*1.3)+'px';
-    umfeld.style.backgroundImage='url(baum/'+LOOK+'_stamm.webp'+BV+'),url(baum/erde.webp?v=1),linear-gradient(#2A1C11,#2A1C11)';
-    umfeld.style.backgroundSize='100% '+BH+'px,100% '+(BH*.286)+'px,100% '+(BH*.33)+'px';
-    umfeld.style.backgroundPosition='0 0,0 '+(BH*.974)+'px,0 '+(BH*.974)+'px';}
   function groesse(){vw=buehne.clientWidth;vh=innerHeight;zoom=vw<760?ZOOM_HANDY:ZOOM_DESK;
     BW=vw*zoom;BH=BW*(META?META.hoehe/META.breite:3);baum.style.width=BW+'px';baum.style.height=BH+'px';
     /* Desktop: Baum passt in die Höhe von etwa 2,4 Bildschirmen, damit die Kamera noch fährt (Proportionen wie am Handy).
-       Ist das Fenster breiter als der Baum, steht er mittig und das Umfeld füllt die Ränder (Simon 01.11.: ganze Breite,
-       aber Sparky und Stern nicht riesig) */
-    if(zoom===ZOOM_DESK){BH=vh*2.6;BW=BH*(META?META.breite/META.hoehe:1/3);baum.style.width=BW+'px';baum.style.height=BH+'px';}
-    umfeldStellen();
+       Das Mac-Breitbild füllt die Fensterbreite; ist das Fenster noch breiter, wird es leicht größer, nie schmaler als das Fenster */
+    if(zoom===ZOOM_DESK){var r=META?META.breite/META.hoehe:1/3;BH=vh*2.6*(MAC?7507/7489:1);BW=BH*r;if(BW<vw){BW=vw;BH=BW/r;}baum.style.width=BW+'px';baum.style.height=BH+'px';}
     rinde();grasKante();anker();stelle(true);}
   function lies(){zielP=haltIndex(scrollY)/(N-1);}
   /* Wie weit unter der Oberkante die Flamme sitzt: 30 % der Höhe, bei hohen Karten (Spiel, Eltern) höher, damit die
@@ -107,8 +105,7 @@
     /* Flamme sitzt bei 30 % der Höhe, über Blase und Karte; am Stern darf die Kamera über das Bild hinaus in den Himmel,
        an den Wurzeln unter das Bild auf den Hügel (sonst hängt der erste Halt am Bildrand und Sparky liegt hinter der Karte) */
     var x=BW<vw?(BW-vw)/2:klemm(cx*BW-vw/2,0,BW-vw),y=camY(Math.min(i,N-1))*(1-t)+camY(Math.min(i+1,N-1))*t;
-    baum.style.transform='translate('+(-x)+'px,'+(-y)+'px)';
-    if(umfeld)umfeld.style.transform='translateY('+(-y)+'px)';}
+    baum.style.transform='translate('+(-x)+'px,'+(-y)+'px)';}
   function stelle(sofort){
     if(sofort||STILL)p=zielP;else p+=(zielP-p)*0.5;
     if(!META)return;

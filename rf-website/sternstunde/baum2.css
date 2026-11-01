@@ -11,9 +11,6 @@ html{scroll-snap-type:y proximity}
 .buehne{position:sticky;top:0;height:100svh;overflow:hidden;margin-bottom:-100svh;background:var(--cream)}
 /* iPhone: Bühne so hoch wie der große Bildschirm, damit unter der eingeklappten Safari-Leiste kein heller Streifen bleibt (Simon 01.11.) */
 @supports (height:100lvh){.buehne{height:100lvh;margin-bottom:-100lvh}.station{padding-bottom:calc(7svh + 100lvh - 100svh)!important}}
-.umfeld{position:absolute;left:-6%;top:0;width:112%;display:none;background-repeat:no-repeat;filter:blur(26px) saturate(1.05);will-change:transform;pointer-events:none}
-.baum.breit .ebene.stammebene{-webkit-mask-image:linear-gradient(#000 97.6%,transparent 99.6%),linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(#000 97.6%,transparent 99.6%),linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-composite:intersect}
-.baum.breit .boden{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 /* Himmel: 300 Bildschirme hoch, unten Tag, oben Nacht; fährt mit der Kamera */
 /* Licht: Tag bis zur Krone (0 bis 55 %), dann Abend und Nacht nur über der Krone */
 .himmel{position:absolute;left:0;right:0;bottom:0;height:300svh;will-change:transform;background:linear-gradient(to top,#FBF3DC 0%,#FBE9B8 30%,#F7DC94 52%,#F3D9A0 62%,#D9A9A6 70%,var(--abend) 78%,var(--daemmer) 88%,var(--nacht) 100%)}
@@ -39,7 +36,7 @@ html{scroll-snap-type:y proximity}
 .boden{position:absolute;left:0;width:100%;top:97.4%;height:28.6%;background:#2A1C11 url(baum/erde.webp?v=1) top center/100% auto no-repeat}
 /* Flammen sitzen auf dem Ast wie ein Affe (Simon 31.10., Skizze): Sitzpunkt = gemessene Astoberkante nahe am Stamm, wo kein Laub ist.
    Fuß eine Fingerbreit über der Rinde, leichtes Auf und Ab, darunter ein weicher Schatten auf dem Ast, der mitatmet. */
-.flamme{position:absolute;width:19%;transform:translate(-50%,-101%);transform-origin:50% 100%}
+.flamme{position:absolute;width:calc(19% * var(--sk,1));transform:translate(-50%,-101%);transform-origin:50% 100%}
 .flamme .fig{position:relative;animation:schweben 3.2s ease-in-out infinite}
 .flamme .fig img{position:relative;width:100%;height:auto;display:block;filter:drop-shadow(0 6px 8px rgba(29,21,10,.25))}
 /* Ferno hält das kleine iPhone (Simon 31.10. abends): an der rechten Hand, leicht schräg */
@@ -51,7 +48,7 @@ html{scroll-snap-type:y proximity}
 @keyframes einlauf{0%{transform:translateY(-40%) scale(.6);opacity:0}60%{transform:translateY(3%) scale(1.04);opacity:1}100%{transform:translateY(-1%) scale(1)}}
 /* Handy aus der Rinde (Simon 31.10. nachmittags: keine Tür, keine Höhle; „wie wenn was aus der Wand rauskommt"): ein Stück Rinde
    wölbt sich am App-Halt aus dem Stamm, wächst zum Handy, die Rindenhaut dehnt sich mit und löst sich auf; der Schirm leuchtet zuletzt. */
-.handy{position:absolute;width:19%;aspect-ratio:640/1120;transform:translate(-50%,-50%) scale(.06);transition:transform 2.4s cubic-bezier(.4,.9,.3,1) .2s}
+.handy{position:absolute;width:calc(19% * var(--sk,1));aspect-ratio:640/1120;transform:translate(-50%,-50%) scale(.06);transition:transform 2.4s cubic-bezier(.4,.9,.3,1) .2s}
 .handy img{position:absolute;inset:0;width:100%;height:100%;filter:drop-shadow(0 14px 18px rgba(30,18,8,.45))}
 .handy .haut{position:absolute;inset:13% 15% 10% 15%;border-radius:12% / 7%;background-repeat:no-repeat;opacity:1;transition:opacity 1s ease 1.6s}
 .handy .haut:after{content:"";position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse at 38% 30%,rgba(255,240,200,.3),rgba(0,0,0,0) 45%,rgba(0,0,0,.45) 100%)}
@@ -62,7 +59,7 @@ html{scroll-snap-type:y proximity}
 /* Wiese geht weich ins Erdreich über statt mit harter Bildkante */
 .baum .erdkante{display:none}
 .stammschatten{display:none}
-.stern-gross{position:absolute;width:38%;transform:translate(-50%,-50%);animation:pulsieren 3s ease-in-out infinite;opacity:0;transition:opacity .6s}
+.stern-gross{position:absolute;width:calc(38% * var(--sk,1));transform:translate(-50%,-50%);animation:pulsieren 3s ease-in-out infinite;opacity:0;transition:opacity .6s}
 .stern-gross.an{opacity:1}
 @keyframes pulsieren{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.06)}}
 /* Text: Sprechblase + kleine Karte, unten im Bildschirm, nur an der aktiven Station */
