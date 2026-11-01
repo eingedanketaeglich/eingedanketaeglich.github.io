@@ -283,3 +283,11 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 .deckel-nav a .ic{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center}
 .deckel-nav a .ic svg{width:100%;height:100%;display:block}
 .deckel-nav a.nebenbei{font-size:1.15rem;color:var(--text2);border-bottom:0}
+
+/* Randlose Titelbilder (Simon 01.11.2026, ST-2): keine Karte mehr, Bild über die ganze Breite,
+   genau eine Bildschirmhöhe hoch (100svh, beim ersten Laden nie verdeckt), keine runden Ecken.
+   Gilt für Startseite (.einstieg), Grüne und Blaue Welt (.welt-held). Querscrollen verhindert html/body (overflow-x:clip). */
+.innen{overflow-x:visible}
+.welt-held,.einstieg{width:100vw;margin-inline:calc(50% - 50vw);min-height:100svh;border-radius:0}
+.welt-held .inhalt,.einstieg-text{--rand:max(clamp(20px,5vw,64px),calc(50vw - 590px + clamp(16px,4vw,48px)));
+  padding-inline:var(--rand) clamp(20px,5vw,64px);max-width:calc(var(--rand) + 716px)}
