@@ -13,11 +13,15 @@
   var tc=document.createElement('meta');tc.name='theme-color';tc.content=H.dataset.welt==='gruen'?'#143426':'#0C182C';document.head.appendChild(tc);
 
   /* ---------- Kopf und Fuß ---------- */
-  var MENUE=[['welt-gruen.html','Grüne Welt'],['welt-blau.html','Blaue Welt'],['kinder.html','Sternstunde'],['firestarter.html','Firestarter-App'],['ueber-uns.html','Über uns'],['preise.html','Preise'],['kontakt.html','Kontakt']];
+  /* Simon 29.10. (Gesprächsrunde Punkt 3+4): Firestarter-App zuerst, Goldene Welt heißt Sternstunde,
+     „Über uns“ klappt an der Institutszeile aus und steht im Fuß */
+  var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','Grüne Welt'],['welt-blau.html','Blaue Welt'],['kinder.html','Sternstunde'],['preise.html','Preise'],['kontakt.html','Kontakt']];
   function link(h){return h+zusatz;}
   var kopf=document.getElementById('kopf');
   if(kopf){
-    kopf.outerHTML='<header class="leiste"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F Institut für Vermögensbildung, Startseite"><b>R&amp;F</b><span>Institut für Vermögensbildung</span></a>'+
+    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F Institut für Vermögensbildung, Startseite"><b>R&amp;F</b></a>'+
+      '<button class="marke-mehr" type="button" aria-expanded="false" aria-controls="wer-kasten">Institut für Vermögensbildung<i aria-hidden="true"></i></button>'+
+      '<div class="wer-kasten" id="wer-kasten" hidden><b>Wer steckt dahinter?</b><p>René und Simon. „Wir versprechen dir das Können und das Fundament, deinen eigenen Weg zu gehen.“</p><p class="klein">Bildung, keine Anlageberatung · WINX-Tower, 21. Etage</p><a href="'+link('ueber-uns.html')+'">Mehr über uns →</a></div></div>'+
       '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+'</a>'}).join('')+'</nav>'+
       '<a class="knopf" href="'+link('preise.html')+'">Termine &amp; Preise</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';
   }
@@ -38,11 +42,29 @@
   if(burger&&menue){
     var deckel=document.createElement('div');deckel.className='deckel';deckel.setAttribute('role','dialog');deckel.setAttribute('aria-modal','true');deckel.setAttribute('aria-label','Menü');
     deckel.innerHTML='<button class="zu" type="button" aria-label="Menü schließen">×</button><nav class="deckel-nav"><a href="'+link('start.html')+'">Start</a>'+menue.innerHTML+'</nav>';
+    /* Zeichen je Welt im Handy-Menü (Gesprächsrunde Punkt 4, Variante A) */
+    var KUGEL=function(meer,land){return '<svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="12.5" fill="'+meer+'"/><path d="M10 5.5c2.6-.9 5.6-.4 6.6 1.6.9 1.8-1.3 2.6.4 4.6 1.6 1.9 3.6 3.2 2.3 6.2-1.2 2.8-3.8 4.4-5.1 2.4-1-1.6-.4-3.6-2.2-4.6-1.9-1-4.2-1.2-4.3-3.9-.1-2.6.6-5.4 2.3-6.3z" fill="'+land+'"/><circle cx="14" cy="14" r="12.5" fill="none" stroke="rgba(16,36,68,.25)"/></svg>';};
+    var ZEICHEN={'firestarter.html':'<svg viewBox="0 0 62 76" aria-hidden="true"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/></svg>',
+      'welt-gruen.html':KUGEL('#BFD8E4','#4C8A3E'),'welt-blau.html':KUGEL('#1F5C8F','#6E9466'),
+      'kinder.html':'<svg viewBox="0 0 50 50" aria-hidden="true"><path d="M25 3 L30.5 18.5 L47 19 L34 29 L38.5 45 L25 35.5 L11.5 45 L16 29 L3 19 L19.5 18.5 Z" fill="#D9A21E"/></svg>'};
+    deckel.querySelectorAll('.deckel-nav a').forEach(function(a){var h=(a.getAttribute('href')||'').split(/[?#]/)[0];a.insertAdjacentHTML('afterbegin','<span class="ic">'+(ZEICHEN[h]||'')+'</span>');});
+    deckel.querySelector('.deckel-nav').insertAdjacentHTML('beforeend','<a href="'+link('ueber-uns.html')+'" class="nebenbei"><span class="ic"></span>Über uns</a>');
     document.body.appendChild(deckel);
     var auf=function(o){deckel.classList.toggle('offen',o);document.body.style.overflow=o?'hidden':'';burger.setAttribute('aria-expanded',o?'true':'false');if(o){deckel.querySelector('.zu').focus();}else{burger.focus();}};
     burger.addEventListener('click',function(){auf(true)});deckel.querySelector('.zu').addEventListener('click',function(){auf(false)});
     deckel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){auf(false)})});
     document.addEventListener('keydown',function(e){if(e.key==='Escape')auf(false)});
+  }
+
+  /* ---------- „Wer steckt dahinter?“ an der Institutszeile (Gesprächsrunde Punkt 4, Variante A). Das Logo bleibt der Weg zur Startseite. ---------- */
+  var mehr=document.querySelector('.marke-mehr'),wer=document.getElementById('wer-kasten');
+  if(mehr&&wer){
+    var zeige=function(o){wer.hidden=!o;mehr.setAttribute('aria-expanded',o?'true':'false');};
+    mehr.addEventListener('click',function(e){e.stopPropagation();zeige(wer.hidden);});
+    if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){var wrap=mehr.parentNode,zu=null;
+      wrap.addEventListener('mouseenter',function(){clearTimeout(zu);zeige(true)});wrap.addEventListener('mouseleave',function(){zu=setTimeout(function(){zeige(false)},350)});}
+    document.addEventListener('click',function(e){if(!wer.hidden&&!wer.contains(e.target))zeige(false);});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!wer.hidden){zeige(false);mehr.focus();}});
   }
 
 

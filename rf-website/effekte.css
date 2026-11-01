@@ -261,3 +261,25 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 /* Handys randlos (Simon 29.10.): App-Blau hinter Statusleiste und App, kein heller Streifen */
 .telefon .glas{background:#102444}
 .telefon .status{background:#102444}
+
+/* Simon 29.10. (Gesprächsrunde Punkt 4, Variante A): Institutszeile klappt „Wer steckt dahinter?“ aus, Logo bleibt Start.
+   Handy-Menü mit Zeichen je Welt, „Über uns“ am Ende und im Fuß. */
+.marke-wrap{position:relative;display:grid;justify-items:start;gap:3px}
+.marke-mehr{all:unset;box-sizing:border-box;cursor:pointer;font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);display:inline-flex;align-items:center;gap:6px;line-height:1.25;padding-block:4px;margin-block:-4px;white-space:nowrap}
+.marke-mehr:hover,.marke-mehr[aria-expanded="true"]{color:#FFFFFF}
+.marke-mehr i{flex:0 0 auto;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #FF9A3D;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.marke-mehr[aria-expanded="true"] i{transform:rotate(180deg)}
+.marke-mehr:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.wer-kasten{position:absolute;left:0;top:calc(100% + 16px);width:min(360px,calc(100vw - 32px));background:#FFFDF8;color:var(--text);border:2px solid var(--navy);border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 18px 40px -18px rgba(16,36,68,.5);transform-origin:top left;animation:wer-auf .42s cubic-bezier(.3,1.25,.5,1);z-index:30}
+.wer-kasten b{font:900 1.1rem/1.2 var(--f);color:var(--navy)}
+.wer-kasten p{font-size:.92rem;line-height:1.45;color:var(--text2)}
+.wer-kasten .klein{font-size:.8rem}
+.wer-kasten a{font:800 .95rem/1 var(--f);color:#2E5AA8;text-decoration:none;padding-block:10px 4px;justify-self:start}
+.wer-kasten[hidden]{display:none}
+@keyframes wer-auf{from{opacity:0;transform:translateY(-6px) scaleY(.85)}to{opacity:1;transform:none}}
+@media (max-width:900px){.marke-mehr{font-size:.46rem;max-width:100px;white-space:normal;padding-block:8px;margin-block:-8px}}
+@media (prefers-reduced-motion:reduce){.wer-kasten{animation:none}.marke-mehr i{transition:none}}
+.deckel-nav a{display:flex;align-items:center;gap:14px}
+.deckel-nav a .ic{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center}
+.deckel-nav a .ic svg{width:100%;height:100%;display:block}
+.deckel-nav a.nebenbei{font-size:1.15rem;color:var(--text2);border-bottom:0}
