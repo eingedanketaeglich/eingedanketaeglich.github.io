@@ -38,12 +38,5 @@
       .then(function(){ knopf.disabled = false; knopf.textContent = 'Platz anfragen'; });
   });
 
-  // Rechtliches am Stern: Impressum und Datenschutz unter der letzten Karte
-  function rechtZeile(){
-    var k = document.querySelector('.station.nacht .karte'); if (!k || k.querySelector('.recht-zeile')) return;
-    var p = document.createElement('p'); p.className = 'recht-zeile';
-    p.innerHTML = '<a href="../recht.html#impressum">Impressum</a> · <a href="../recht.html#datenschutz">Datenschutz</a>';
-    k.appendChild(p);
-  }
-  rechtZeile(); setTimeout(rechtZeile, 600);
+  // Impressum und Datenschutz stehen seit 01.11.2026 in der Fußzeile der Website, nicht mehr unter der letzten Karte (Simon)
 })();
