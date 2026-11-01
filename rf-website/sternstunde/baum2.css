@@ -22,7 +22,7 @@ html{scroll-snap-type:y proximity}
 /* Das Baum-Bild: ein Rahmen, der um den Zoom größer ist als der Bildschirm; die Kamera verschiebt ihn */
 .baum{position:absolute;left:0;top:0;will-change:transform;transform-origin:0 0}
 .baum .ebene{position:absolute;left:0;top:0;width:100%;height:100%}
-.baum .ebene.stammebene{-webkit-mask-image:linear-gradient(#000 97.6%,transparent 99.6%);mask-image:linear-gradient(#000 97.6%,transparent 99.6%)}
+/* Stamm-Maske und Erdblock (.boden) entfallen seit 01.11.: die Erde ist Teil des Bildes */
 .baum img{position:absolute;left:0;top:0;width:100%;height:100%;display:block;user-select:none;-webkit-user-drag:none}
 /* Drei Höhenbänder derselben Blattebene, jedes mit eigenem Takt und Drehpunkt: unten träge, oben lebhafter */
 .baum .blaetter.b1{clip-path:inset(62% 0 0 0);transform-origin:50% 100%;animation:wehen1 8s ease-in-out infinite}
