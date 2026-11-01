@@ -52,7 +52,7 @@
 
 <!-- Simon 29.10.: große Google-Maps-Karte wie auf vielen Seiten. Zwei-Klick-Lösung: Google lädt erst nach Klick (Datenschutz). -->
 <section class="ab" id="anfahrt">
-  <div class="ab-kopf"><span class="mono">So findest du uns</span><h2>WINX-Tower, 21. Etage, Frankfurt am Main.</h2><p>Im MainTor-Quartier direkt am Mainufer. Sieh dir auf der Karte an, wo wir sind und wie weit du es hast.</p></div>
+  <div class="ab-kopf"><span class="mono">So findest du uns</span><h2>WINX-Tower, Frankfurt am Main.</h2><p><b>Neue Mainzer Straße 6 · 60311 Frankfurt am Main</b><br>Im MainTor-Quartier direkt am Mainufer. Sieh dir auf der Karte an, wo wir sind und wie weit du es hast.</p></div>
   <div class="karte" id="karte">
     <div class="karte-platz">
       <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 4c-8.3 0-15 6.5-15 14.6C9 30 24 44 24 44s15-14 15-25.4C39 10.5 32.3 4 24 4z" fill="#102444"/><circle cx="24" cy="18.5" r="5.5" fill="#FFFFFF"/></svg>
@@ -61,7 +61,7 @@
       <button class="knopf" type="button" id="karte-laden">Karte laden</button>
     </div>
   </div>
-  <div class="kopf-knoepfe" style="margin-top:16px"><a class="knopf leise" href="https://www.google.com/maps/dir/?api=1&amp;destination=WINX-Tower%2C%20Frankfurt%20am%20Main" target="_blank" rel="noopener">Route von meinem Standort ↗</a><a class="knopf leise" href="https://www.google.com/maps/search/?api=1&amp;query=WINX-Tower%2C%20Frankfurt%20am%20Main" target="_blank" rel="noopener">In Google Maps öffnen ↗</a></div>
+  <div class="kopf-knoepfe" style="margin-top:16px"><a class="knopf leise" href="https://www.google.com/maps/dir/?api=1&amp;destination=WINX-Tower%2C%20Neue%20Mainzer%20Stra%C3%9Fe%206%2C%2060311%20Frankfurt%20am%20Main" target="_blank" rel="noopener">Route von meinem Standort ↗</a><a class="knopf leise" href="https://www.google.com/maps/search/?api=1&amp;query=WINX-Tower%2C%20Neue%20Mainzer%20Stra%C3%9Fe%206%2C%2060311%20Frankfurt%20am%20Main" target="_blank" rel="noopener">In Google Maps öffnen ↗</a></div>
 </section>
 </main>
 
@@ -72,7 +72,7 @@ document.getElementById('formular').addEventListener('submit',function(e){e.prev
 document.querySelectorAll('.kopier').forEach(function(b){b.addEventListener('click',function(){var t=b.dataset.copy;function ok(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Kopieren'},1500)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(function(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail-adresse'));var s=getSelection();s.removeAllRanges();s.addRange(r);});}else{var r=document.createRange();r.selectNodeContents(document.getElementById('mail-adresse'));var s=getSelection();s.removeAllRanges();s.addRange(r);}});});
 </script>
 <script>
-document.getElementById('karte-laden').addEventListener('click',function(){var k=document.getElementById('karte');k.innerHTML='<iframe title="Karte: WINX-Tower Frankfurt am Main" src="https://www.google.com/maps?q=WINX-Tower,+Frankfurt+am+Main&amp;z=15&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';});
+document.getElementById('karte-laden').addEventListener('click',function(){var k=document.getElementById('karte');k.innerHTML='<iframe title="Karte: WINX-Tower Frankfurt am Main" src="https://www.google.com/maps?q=WINX-Tower%2C%20Neue%20Mainzer%20Stra%C3%9Fe%206%2C%2060311%20Frankfurt%20am%20Main&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';});
 </script>
 <script src="seite.js"></script>
 </body>

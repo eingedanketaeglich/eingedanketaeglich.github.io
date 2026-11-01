@@ -14,6 +14,7 @@
 <link rel="stylesheet" href="anfrage.css?v=3">
 <link rel="stylesheet" href="rahmen.css?v=2">
 <style>body.still *{animation:none!important;transition:none!important}</style>
+<style>body{position:relative}.recht-mini{position:absolute;left:0;right:0;bottom:calc(12px + env(safe-area-inset-bottom,0px));z-index:40;text-align:center;font:600 12px/1.4 "Nunito",system-ui,sans-serif;color:rgba(255,255,255,.78);text-shadow:0 1px 6px rgba(0,0,0,.55)}.recht-mini a{color:inherit;text-decoration:none;padding:6px 4px}.recht-mini a:hover,.recht-mini a:focus-visible{color:#FFFFFF;text-decoration:underline}</style>
 </head>
 <body data-look="pixar">
 <!-- Kopfleiste und Fußzeile wie auf allen Seiten der Website: kommen aus ../seite.js (Simon 01.11.2026) -->
@@ -27,7 +28,8 @@
   </div>
 </div>
 
-<div class="fuss-rahmen"><div class="innen"><div id="fuss"></div></div></div>
+<!-- Simon 01.11.2026: kein Fuß, die Seite endet mit dem Bild. Impressum und Datenschutz bleiben von hier aus mit einem Klick erreichbar. -->
+<nav class="recht-mini" aria-label="Rechtliches"><a href="../recht.html#impressum">Impressum</a> · <a href="../recht.html#datenschutz">Datenschutz</a></nav>
 
 <!-- Platz anfragen (Simon 31.10.2026): Formular, die Bestätigung schickt Brevo -->
 <div class="anfrage" id="anfrage" role="dialog" aria-modal="true" aria-labelledby="anfrage-titel" hidden>
