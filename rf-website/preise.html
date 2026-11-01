@@ -1,114 +1,351 @@
 <!doctype html>
-<html lang="de" data-r="B">
-<head>
-<meta charset="utf-8">
+<html lang="de"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Preise und Rahmen · R&amp;F</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
-<link rel="stylesheet" href="stil.css">
-<link rel="stylesheet" href="start.css">
-<link rel="stylesheet" href="effekte.css">
-<script>(function(){var r=(location.hash||'#A').replace('#','').split('-')[0];if(['A','B','C'].indexOf(r)<0)r='A';document.documentElement.dataset.r=r;})();</script>
+<title>Preise · R&amp;F</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500&family=Gloock&display=swap">
 <style>
-.tafeln{display:grid;gap:22px}
-.tafel{border:1px solid var(--linie);border-radius:var(--r-haupt);overflow:hidden;background:#FFFFFF}
-.tafel header{display:flex;gap:14px;align-items:center;padding:18px 20px;border-bottom:1px solid var(--linie)}
-.tafel .punkt{width:12px;height:12px;border-radius:50%;background:var(--tf);flex:none}
-.tafel h2{font-size:1.25rem}
-.tafel header p{color:var(--text2);font-size:.92rem}
-.pz-kopf,.pz{display:grid;grid-template-columns:minmax(0,1fr) 120px 120px;gap:16px;align-items:center;padding:14px 20px}
-.pz-kopf{font-family:var(--mono);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);background:#F4F6F9;padding-block:8px}
-.pz-kopf span:not(:first-child),.pz-raum,.pz-online{text-align:right}
-.pz{text-decoration:none;color:inherit;border-top:1px solid var(--linie);transition:background .25s}
-.pz:hover{background:#F4F6F9}
-.pz-name b{display:block;font-size:1.05rem}
-.pz-name small{color:var(--text2);font-size:.88rem}
-.pz-raum{font-weight:900;font-size:1.15rem;color:#102444;font-variant-numeric:tabular-nums}
-.pz-online{font-weight:700;color:var(--text2);font-variant-numeric:tabular-nums}
-.pz em{display:none;font-style:normal;font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text2);font-weight:500}
-.pz small{display:block}
-.pz-raum small{font-size:.75rem;font-weight:600;color:var(--text2)}
-.tafel-fuss{margin-top:16px;color:var(--text2);max-width:72ch}
-@media (max-width:640px){
- .pz-kopf{display:none}
- .pz{grid-template-columns:1fr 1fr;gap:6px 16px}
- .pz-name{grid-column:1/-1}
- .pz-raum,.pz-online{text-align:left}
- .pz em{display:block}
-}
-  /* Variante 1 (Simons Wahl 29.10.2026, Preise-Mockup) */
-.schalter{display:inline-grid;grid-auto-flow:column;gap:4px;padding:4px;border-radius:999px;background:#E6EBF2}
-.schalter button{all:unset;cursor:pointer;padding:9px 18px;border-radius:999px;font:800 .92rem "Nunito",sans-serif;color:var(--mb-navy)}
-.schalter button[aria-pressed="true"]{background:var(--mb-navy);color:#FFFFFF}
-.schalter button:focus-visible{outline:3px solid var(--mb-blau);outline-offset:2px}
-[data-modus="online"] .nur-raum{display:none}
-[data-modus="raum"] .nur-online{display:none}
-/* Weltfarben */
-.gr{--w:#2F6B4F;--w-hell:#E7F1EB;--w-dunkel:#173A2B}
-.bl{--w:#2E5AA8;--w-hell:#E8EFFC;--w-dunkel:#102444}
-.go{--w:#C9970F;--w-hell:#FFF4CC;--w-dunkel:#5C4A24}
-.mt{--w:#102444;--w-hell:#EEF1F5;--w-dunkel:#0A1830}
-.kopfzeile{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between;margin-bottom:18px}
-.hinweis{color:var(--text2);margin:14px 0 0;font-size:.95rem}
-
-/* P1 Tabelle */
-.p1-gruppe{margin-top:18px;border-radius:18px;overflow:clip;border:1.5px solid var(--w-hell)}
-.p1-gruppe>header{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;padding:12px 16px;background:var(--w-hell)}
-.p1-gruppe>header b{font:900 1.05rem "Nunito",sans-serif;color:var(--w-dunkel)}
-.p1-gruppe>header span{color:var(--text2);font-size:.9rem}
-.p1-zeile{display:grid;grid-template-columns:minmax(0,1fr) auto auto;gap:16px;align-items:center;padding:14px 16px;border-top:1px solid #E3E7ED}
-.p1-zeile h3{margin:0;font-size:1.08rem}
-.p1-zeile p{margin:2px 0 0;color:var(--text2);font-size:.92rem}
-.p1-preis{font:900 1.35rem "Nunito",sans-serif;color:var(--w-dunkel);text-align:right;font-variant-numeric:tabular-nums;min-width:110px}
-.p1-preis small{display:block;font:600 .78rem "Nunito",sans-serif;color:var(--text2)}
-.p1-zeile a{font-weight:800;color:var(--w);text-decoration:none;white-space:nowrap}
-@media (max-width:640px){.p1-zeile{grid-template-columns:minmax(0,1fr) auto}.p1-zeile a{grid-column:1/-1}}
-
-
-  .preis-v1{display:grid;gap:4px}
-  .preis-v1 .p1-gruppe:first-of-type{margin-top:6px}
-  :root{--mb-navy:#102444;--mb-blau:#5B8DEF}
-</style>
-</head>
+/* Preisseite „Weiter“ (31.10.2026, Simon: „erst Step, dann auf Weiter klicken, dann geht das automatisch“; 0 Credits).
+   Ein Tipp auf „Weiter“ spielt den Weg bis zur nächsten Station von selbst: Erde → Nebel → Drohnenflug (echtes Video, H.264 crf 18, volle Schärfe)
+   → Stecknadel an einem echten Ort im Bild + Preiskarte. „Zurück“ springt auf die vorige Station. Auch Wischen nach oben/unten,
+   Mausrad und Pfeiltasten gehen Schritt für Schritt. Alle Preise jederzeit über „Alle Preise“ oben. */
+:root{--f:"Nunito","Avenir Next",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--wort:"Gloock",Georgia,serif;
+  --text:#14213A;--leise:#5B6474;--orange:#FF7A00;--gruen:#2F7A55;--blau:#2E5AA8;--gold:#F6CF5A;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;overflow:hidden;overscroll-behavior:none}
+body{font:600 16px/1.55 var(--f);color:var(--text);background:#FAFAF8;touch-action:none}
+#grund{position:fixed;inset:0;z-index:0}
+#himmel{position:fixed;inset:-3%;z-index:0;background:url(preise-rundflug/erde/himmel_hoch.jpg) center/cover no-repeat;opacity:0;pointer-events:none}
+@media (min-aspect-ratio:4/5){#himmel{background-image:url(preise-rundflug/erde/himmel_quer.jpg)}}
+#sterne{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity .8s}
+#gl{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:2;pointer-events:none}
+#buehne{position:fixed;inset:0;z-index:5;pointer-events:none;opacity:0}
+#buehne .hinten{position:absolute;inset:-6%;width:112%;height:112%;object-fit:cover;filter:blur(36px) brightness(.85);display:none}
+#buehne video,#buehne .still{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+#buehne.breit .hinten{display:block}
+#buehne.breit video,#buehne.breit .still{object-fit:contain;object-position:50% 50%}
+#buehne.mac video,#buehne.mac .still{object-position:50% 50%}
+#buehne video{opacity:0}#buehne video.an{opacity:1}
+#buehne .still{opacity:0;transition:opacity .25s}#buehne .still.an{opacity:1}
+#wolken{position:fixed;inset:0;width:100%;height:100%;display:block;z-index:6;pointer-events:none;visibility:hidden}
+#nadeln{position:fixed;inset:0;z-index:7;pointer-events:none}
+.leiste{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;min-height:52px;padding:8px max(16px,env(safe-area-inset-right,0px)) 8px max(16px,env(safe-area-inset-left,0px));background:rgba(12,24,44,.8);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);color:#F5F1EA}
+.leiste .wm{font:400 1.35rem/1 var(--wort)}
+.leiste button{border:0;cursor:pointer;background:var(--orange);color:#1C1917;font:800 .85rem/1 var(--f);border-radius:999px;padding:12px 16px}
+/* Stecknadel */
+.nadel{position:absolute;left:0;top:0;width:0;height:0;opacity:0;transition:opacity .35s}
+.nadel.da{opacity:1}
+.nadel .stift{position:absolute;left:-1.5px;bottom:0;width:3px;height:46px;background:linear-gradient(#EEF0F3,#8C94A3);border-radius:2px;transform-origin:50% 100%;transform:scaleY(0);transition:transform .55s cubic-bezier(.3,1.6,.5,1)}
+.nadel .kopf{position:absolute;left:-13px;bottom:40px;width:26px;height:26px;border-radius:50%;background:var(--c);box-shadow:inset -5px -5px 8px rgba(0,0,0,.3),inset 3px 3px 6px rgba(255,255,255,.55),0 6px 12px rgba(0,0,0,.35);transform:translateY(-30px) scale(.4);opacity:0;transition:transform .55s cubic-bezier(.3,1.6,.5,1),opacity .3s}
+.nadel .schatten{position:absolute;left:-9px;bottom:-4px;width:18px;height:7px;border-radius:50%;background:rgba(0,0,0,.35);filter:blur(2px)}
+.nadel .schild{position:absolute;left:18px;bottom:46px;white-space:nowrap;background:rgba(255,255,255,.96);color:var(--text);font:800 .9rem/1 var(--f);padding:8px 12px;border-radius:999px;box-shadow:0 10px 22px -12px rgba(0,0,0,.6);opacity:0;transform:translateX(-6px);transition:opacity .35s .25s,transform .35s .25s}
+.nadel .schild b{font-weight:900;margin-left:6px}
+.nadel.links .schild{left:auto;right:18px}
+.nadel.mitte .schild{left:0;right:auto;bottom:76px;translate:-50% 0}
+.nadel.da .stift{transform:none}.nadel.da .kopf{transform:none;opacity:1}.nadel.da .schild{opacity:1;transform:none}
+/* Unten: Karte und Steuerung */
+#unten{position:fixed;left:50%;bottom:max(14px,calc(env(safe-area-inset-bottom,0px) + 8px));translate:-50% 0;width:min(480px,calc(100% - 28px));z-index:8;display:grid;gap:10px}
+#karte{display:grid;gap:8px;opacity:0;transform:translateY(14px);transition:opacity .45s,transform .45s}
+#karte.an{opacity:1;transform:none}
+#karte .kap{font:500 .72rem/1.2 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+#karte .ttl{font:900 1.8rem/1.05 var(--f);color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5);margin-bottom:2px;text-wrap:balance}
+#karte.hell .kap{color:var(--leise);text-shadow:none}#karte.hell .ttl{color:var(--text);text-shadow:none}
+#karte .zl{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;align-items:center;background:#fff;color:var(--text);border-radius:16px;padding:11px 16px;box-shadow:0 18px 36px -20px rgba(0,0,0,.6)}
+#karte .zl b{font:900 1.02rem/1.2 var(--f)}
+#karte .zl small{grid-column:1;font:600 .8rem/1.3 var(--f);color:var(--leise)}
+#karte .zl .p{grid-column:2;grid-row:1/span 2;font:900 1.1rem/1 var(--f);white-space:nowrap;text-align:right}
+#karte.dicht .zl{padding:8px 14px;border-radius:13px}#karte.dicht .zl b{font-size:.95rem}#karte.dicht .ttl{font-size:1.5rem}
+#karte .zl.gold{box-shadow:0 0 0 2px var(--gold),0 0 30px 6px rgba(246,207,90,.45)}
+#steuer{display:flex;gap:10px;align-items:center}
+#steuer button{border:0;cursor:pointer;font:900 1rem/1 var(--f);border-radius:999px;padding:15px 18px;min-height:50px}
+#zurueck{background:rgba(255,255,255,.92);color:var(--text);flex:0 0 auto;font:900 .95rem/1 var(--f)!important;padding:15px 18px 15px 14px!important;display:inline-flex;align-items:center;gap:6px}
+#zurueck svg{width:18px;height:18px}
+#weiter{background:var(--orange);color:#1C1917;flex:1 1 auto;box-shadow:0 12px 26px -14px rgba(0,0,0,.6)}
+#zurueck:disabled{display:none}
+#weiter.laeuft{opacity:.75}
+#punkte{display:flex;gap:6px;justify-content:center}
+#punkte i{width:7px;height:7px;border-radius:50%;background:rgba(20,33,58,.25)}
+#punkte i.an{background:var(--orange)}
+body.dunkel #punkte i{background:rgba(255,255,255,.3)}body.dunkel #punkte i.an{background:var(--orange)}
+#start{position:fixed;left:0;right:0;bottom:calc(150px + env(safe-area-inset-bottom,0px));z-index:8;text-align:center;padding:0 16px;transition:opacity .5s}
+#start h1{margin:0;font:900 2.2rem/1.04 var(--f);letter-spacing:-.02em;text-wrap:balance}
+#start p{margin:8px auto 0;color:var(--leise);max-width:34ch}
+#start.weg{opacity:0;pointer-events:none}
+/* Alle Preise: Blatt von unten */
+#blatt{position:fixed;inset:0;z-index:30;background:rgba(10,20,40,.35);opacity:0;pointer-events:none;transition:opacity .3s}
+#blatt.auf{opacity:1;pointer-events:auto}
+#blatt .innen{position:absolute;left:0;right:0;bottom:0;max-height:88svh;overflow:auto;background:#FAFAF8;border-radius:22px 22px 0 0;padding:18px 16px calc(28px + env(safe-area-inset-bottom,0px));touch-action:pan-y;transform:translateY(30px);transition:transform .35s}
+#blatt.auf .innen{transform:none}
+#blatt .feld{max-width:560px;margin:0 auto;display:grid;gap:10px}
+#blatt h2{margin:0;font:900 1.4rem/1.1 var(--f)}
+#blatt .zu{justify-self:end;border:0;background:none;font:400 1.8rem/1 var(--f);color:var(--leise);cursor:pointer;margin:-6px -4px 0 0}
+.liste{display:grid;gap:8px}
+.liste div{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 14px;align-items:center;background:#fff;border-radius:14px;padding:11px 14px;box-shadow:0 14px 30px -24px rgba(16,36,68,.5)}
+.liste b{font:900 1rem/1.2 var(--f)}.liste small{grid-column:1;font:600 .8rem/1.3 var(--f);color:var(--leise)}
+.liste .p{grid-column:2;grid-row:1/span 2;font:900 1.02rem/1 var(--f);white-space:nowrap}
+.liste h3{margin:10px 0 0;font:800 .78rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--leise)}
+.mono{font:500 .7rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--leise)}
+.kontakt{background:var(--orange);color:#1C1917;font:800 1rem/1 var(--f);border-radius:999px;padding:14px 22px;text-decoration:none;justify-self:start;margin-top:6px}
+/* Mac und Querformat (breiter als 6:5): eigene Breitbild-Flüge, Karte und Knöpfe links unten, Nadeln in der rechten Bildhälfte */
+@media (min-aspect-ratio:6/5){#unten{left:max(36px,calc(env(safe-area-inset-left,0px) + 20px));translate:none;width:min(420px,calc(100% - 56px));bottom:max(32px,calc(env(safe-area-inset-bottom,0px) + 16px))}}
+@media (prefers-reduced-motion:reduce){.nadel *,#karte,#start{transition:none!important}}
+</style></head>
 <body>
-<div class="innen">
-<div id="kopf"></div>
-
-<main>
-<section class="preis-v1" data-modus="raum" style="padding-block:clamp(32px,6vw,72px) 0">
-      <div class="kopfzeile"><div class="ab-kopf" style="margin:0"><span class="mono">Preise</span><h1>Alle Angebote auf einen Blick.</h1><p class="lede">Im Raum in Frankfurt oder live online. Tipp eine Zeile an, um mehr zu erfahren.</p></div>
-        <div class="schalter" role="group" aria-label="Teilnahme"><button type="button" aria-pressed="true" data-m="raum">Im Raum</button><button type="button" aria-pressed="false" data-m="online">Live online</button></div></div>
-      <div class="p1-gruppe gr"><header><b>Grüne Welt · R&amp;F Aufbruch</b><span>ohne Vorwissen · Getränke inklusive · ab 18</span></header>
-        <div class="p1-zeile"><div><h3>Geldtag</h3><p>1 Tag · Ordnung ins eigene Geld</p></div><div class="p1-preis"><span class="nur-raum">289 €</span><span class="nur-online">129 €</span></div><a href="welt-gruen.html#geldtag">Mehr →</a></div>
-        <div class="p1-zeile"><div><h3>Wissenswochenende</h3><p>Sa + So · Investieren verstehen · Geldtag wird angerechnet</p></div><div class="p1-preis"><span class="nur-raum">599 €</span><span class="nur-online">269 €</span></div><a href="welt-gruen.html#wochenende">Mehr →</a></div>
-      </div>
-      <div class="p1-gruppe bl"><header><b>Blaue Welt · Präsenz-Zirkel</b><span>9:30–17:00 mit Mittagessen · höchstens 12 im Raum</span></header>
-        <div class="p1-zeile"><div><h3>Grundlagen-Tag</h3><p>1 Tag · bei Zirkel-Buchung in 6 Monaten angerechnet</p></div><div class="p1-preis"><span class="nur-raum">479 €</span><span class="nur-online">249 €</span></div><a href="welt-blau.html#grundlagen">Mehr →</a></div>
-        <div class="p1-zeile"><div><h3>Investment-Zirkel</h3><p>14./15.11.2026 · 2 Tage<span class="nur-raum"> · persönliche App inklusive</span></p></div><div class="p1-preis"><span class="nur-raum">1.990 €</span><span class="nur-online">999 €</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
-        <div class="p1-zeile"><div><h3>RainMaker-Zirkel</h3><p>28./29.11.2026 · 2 Tage<span class="nur-raum"> · persönliche App inklusive</span></p></div><div class="p1-preis"><span class="nur-raum">2.390 €</span><span class="nur-online">1.190 €</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
-        <div class="p1-zeile"><div><h3>Beide Zirkel</h3><p><span class="nur-raum">eine persönliche App für beide · </span>einzeln zusammen <span class="nur-raum">4.380 €</span><span class="nur-online">2.189 €</span></p></div><div class="p1-preis"><span class="nur-raum">3.890 €</span><span class="nur-online">1.990 €</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
-        <div class="p1-zeile"><div><h3>Zirkel zu zweit</h3><p>für zwei Personen · persönliche App je Person</p></div><div class="p1-preis"><span class="nur-raum">ab 3.290 €</span><span class="nur-online" style="font-size:.95rem">nur im Raum</span></div><a href="welt-blau.html#zirkel">Mehr →</a></div>
-      </div>
-      <div class="p1-gruppe mt"><header><b>Mentoring</b><span>Anschluss auf jeder Zeitebene</span></header>
-        <div class="p1-zeile"><div><h3>Tandem-Mentoring</h3><p>zu zweit, getrennte eigene Ergebnisse</p></div><div class="p1-preis">8.500 €<small>je Person</small></div><a href="kontakt.html">Erstgespräch →</a></div>
-        <div class="p1-zeile"><div><h3>1:1-Mentoring</h3><p>eigene Strategie in sechs Zyklen</p></div><div class="p1-preis">12.000 €</div><a href="kontakt.html">Erstgespräch →</a></div>
-      </div>
-      <div class="p1-gruppe go"><header><b>Kostenlos</b><span>Selbstlernen und Familien</span></header>
-        <div class="p1-zeile"><div><h3>Firestarter-App</h3><p>Testversion kostenlos · Vollversion nach Geldtag oder Grundlagen-Tag 149 €, nach Wochenende oder Zirkel 49 €, regulär 399 € (ab 2027 499 €)</p></div><div class="p1-preis" style="font-size:1.05rem">kostenlos</div><a href="firestarter.html">Testen →</a></div>
-        <div class="p1-zeile"><div><h3>Kindertag „Der Geldbaum“</h3><p>60 Minuten · 6 bis 9 Jahre mit einem Erwachsenen · 19 € Pfand je Kind, am Tag zurück</p></div><div class="p1-preis" style="font-size:1.05rem">kostenlos</div><a href="kinder.html">Mehr →</a></div>
-        <div class="p1-zeile"><div><h3>Webinar</h3><p>Einstieg online · Termin folgt</p></div><div class="p1-preis" style="font-size:1.05rem">kostenlos</div><a href="start.html#webinar">Vormerken →</a></div>
-      </div>
-      <p class="hinweis">Von online in den Raum wechseln: gegen die Differenz, solange Plätze frei sind. Bildung, keine Anlageberatung und keine Kauf-Tipps.</p>
-    </section>
-<div class="kontakt-teaser" style="margin-top:28px"><div><h2>Platz anfragen.</h2><p>Schreib uns an info@rf-institut.de. Wir antworten persönlich.</p></div><a class="knopf" href="kontakt.html">Zum Kontakt</a></div>
-</main>
-
-<div id="fuss"></div>
+<div id="grund"></div>
+<div id="himmel" aria-hidden="true"></div>
+<canvas id="sterne" aria-hidden="true"></canvas>
+<canvas id="gl" aria-hidden="true"></canvas>
+<div id="buehne" aria-hidden="true"><img class="hinten" alt=""><img class="still" alt=""></div>
+<canvas id="wolken" aria-hidden="true"></canvas>
+<div id="nadeln"></div>
+<header class="leiste" aria-label="Kopfleiste"><a class="wm" href="start.html" aria-label="R&amp;F, zur Startseite" style="color:inherit;text-decoration:none">R&amp;F</a><button type="button" id="alle">Alle Preise</button></header>
+<div id="start"><span class="mono">Preise</span><h1>Drei Welten, eine Erde.</h1><p>Vom ersten Überblick über dein Geld bis zur Börse nach eigenen Regeln.</p></div>
+<div id="unten">
+  <div id="karte" aria-live="polite"></div>
+  <div id="steuer"><button type="button" id="zurueck" aria-label="Zurück"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Zurück</button><button type="button" id="weiter">Los geht's</button></div>
+  <div id="punkte" aria-hidden="true"></div>
 </div>
-<script src="seite.js"></script>
+<div id="blatt" role="dialog" aria-modal="true" aria-label="Alle Preise"><div class="innen"><div class="feld">
+  <button type="button" class="zu" aria-label="Schließen">×</button>
+  <span class="mono">Alle Preise als Liste</span><h2>Alles auf einen Blick.</h2>
+  <div class="liste" id="liste"></div>
+  <p style="margin:8px 0 0;color:var(--leise)">Schreib uns an info@rf-institut.de. Von online in den Raum wechseln geht gegen die Differenz, solange Plätze frei sind. Bildung, keine Anlageberatung.</p>
+  <a class="kontakt" href="kontakt.html">Platz anfragen</a>
+</div></div></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
-document.querySelectorAll('.schalter').forEach(function(s){var box=s.closest('[data-modus]');s.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){box.dataset.modus=b.dataset.m;s.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b?'true':'false')});});});});
+(function(){
+  var ruhig=matchMedia('(prefers-reduced-motion: reduce)').matches,DPR=Math.min(2,devicePixelRatio||1);
+  function klemm(x){return Math.max(0,Math.min(1,x));}
+  function glatt(x){x=klemm(x);return x*x*(3-2*x);}
+  function esc(t){return String(t).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];});}
+  function warte(ms){return new Promise(function(r){setTimeout(r,ms);});}
+
+  /* ---------- Inhalte: Preise wörtlich wie im freigegebenen Handytest; Nadeln an echten Orten im Stationsbild ---------- */
+  var STATION={
+    geldtag:{film:'a',welt:'gruen',x:0.68,y:0.66,mx:0.64,my:0.8,kap:'Grüne Welt · 1 von 2',ttl:'Ordnung ins eigene Geld.',schild:['Geldtag','289 €'],zeilen:[['Geldtag','1 Tag · Ordnung ins eigene Geld','289 €']]},
+    wissen:{film:'b',welt:'gruen',x:0.66,y:0.685,mx:0.57,my:0.83,kap:'Grüne Welt · 2 von 2',ttl:'Investieren verstehen.',schild:['Wissenswochenende','599 €'],zeilen:[['Wissenswochenende','Sa + So · Geldtag wird angerechnet','599 €']]},
+    grundlagen:{film:'k',welt:'blau',x:0.26,y:0.6,mx:0.68,my:0.52,kap:'Blaue Welt · 1 von 3',ttl:'Der Einstieg in die Börse.',schild:['Grundlagen-Tag','479 €'],zeilen:[['Grundlagen-Tag','1 Tag · bei Zirkel-Buchung angerechnet','479 €']]},
+    zirkel:{film:'c',welt:'blau',x:0.2,y:0.545,mx:0.7,my:0.62,kap:'Blaue Welt · 2 von 3',ttl:'Die Zirkel.',schild:['Zirkel','ab 1.990 €'],zeilen:[['Investment-Zirkel','','1.990 €'],['RainMaker-Zirkel','','2.390 €'],['Beide Zirkel','','3.890 €'],['Zirkel zu zweit','','ab 3.290 €']]},
+    mentoring:{film:'d',welt:'blau',x:0.12,y:0.57,mx:0.72,my:0.62,kap:'Blaue Welt · 3 von 3',ttl:'Du steuerst selbst.',schild:['Mentoring','ab 8.500 €'],zeilen:[['Tandem-Mentoring','zu zweit, eigene Ergebnisse','8.500 € je Person'],['1:1-Mentoring','eigene Strategie in sechs Zyklen','12.000 €']]}
+  };
+  var KARTE={
+    gruenIntro:{hell:1,kap:'Grüne Welt · das Land',ttl:'Für den Anfang.',zeilen:[]},
+    blauIntro:{hell:1,kap:'Blaue Welt · das Meer',ttl:'Bereit für die raue See.',zeilen:[]},
+    sternstunde:{kap:'Sternstunde · unser größter Schatz',ttl:'Eine Stunde im 21. Stock.',zeilen:[['Sternstunde · Der Geldbaum','60 Minuten · 6 bis 9 Jahre mit einem Erwachsenen','kostenlos','gold']]},
+    kostenlos:{kap:'Kostenlos zum Selbstlernen',ttl:'Für zu Hause.',zeilen:[['Firestarter-App','Testversion kostenlos','kostenlos'],['Webinar','Einstieg online · Termin folgt','kostenlos']]}
+  };
+  (function(){var L=document.getElementById('liste');function kopf(t){var h=document.createElement('h3');h.textContent=t;L.appendChild(h);}
+    function zeile(z){var d=document.createElement('div');d.innerHTML='<b>'+esc(z[0])+'</b>'+(z[1]?'<small>'+esc(z[1])+'</small>':'')+'<span class="p">'+esc(z[2])+'</span>';L.appendChild(d);}
+    kopf('Grüne Welt');['geldtag','wissen'].forEach(function(k){STATION[k].zeilen.forEach(zeile);});
+    kopf('Blaue Welt');['grundlagen','zirkel','mentoring'].forEach(function(k){STATION[k].zeilen.forEach(zeile);});
+    kopf('Kostenlos');KARTE.sternstunde.zeilen.concat(KARTE.kostenlos.zeilen).forEach(zeile);})();
+
+  /* ---------- Schritte: jeder Schritt hat einen Weg (läuft nach „Weiter“) und eine Ankunft ---------- */
+  var SCHRITT=[
+    {name:'start'},
+    {name:'gruenIntro',weg:[['erde','E0','E1',1500]],karte:'gruenIntro',erde:'E1'},
+    {name:'geldtag',weg:[['nebel','ein','E1','a'],['flug','a']],station:'geldtag'},
+    {name:'wissen',weg:[['flug','b']],station:'wissen'},
+    {name:'blauIntro',weg:[['nebel','aus','E1','b'],['erde','E1','E3',1900]],karte:'blauIntro',erde:'E3'},
+    {name:'grundlagen',weg:[['nebel','ein','E3','k'],['flug','k']],station:'grundlagen'},
+    {name:'zirkel',weg:[['flug','c']],station:'zirkel'},
+    {name:'mentoring',weg:[['flug','d']],station:'mentoring'},
+    {name:'sternstunde',weg:[['nebel','aus','E3','d'],['erde','E3','EN',2600]],karte:'sternstunde',erde:'EN'},
+    {name:'kostenlos',weg:[],karte:'kostenlos',erde:'EN'}
+  ];
+  var punkte=document.getElementById('punkte');SCHRITT.forEach(function(){punkte.appendChild(document.createElement('i'));});
+
+  /* ---------- Bühne: echte Videos, Standbild am Anfang/Ende ---------- */
+  /* Breiter als 6:5 (Mac, Querformat): Breitbild-Flüge 1920 × 1080 aus stufe11_mac, sonst die Hochkant-Flüge 1072 × 1928 */
+  var MAC=innerWidth/innerHeight>1.2;
+  function vPfad(k){return MAC?'preise-rundflug/stufe11_mac/v16/'+k+'.mp4':'preise-rundflug/stufe10_weiter/v/'+k+'.mp4';}
+  function sPfad(k,t){return (MAC?'preise-rundflug/stufe11_mac/still16/':'preise-rundflug/stufe10_weiter/still/')+k+t+'.jpg';}
+  var buehne=document.getElementById('buehne'),still=buehne.querySelector('.still'),hinten=buehne.querySelector('.hinten'),VIDEO={};
+  function video(k){if(VIDEO[k])return VIDEO[k];var v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.preload='auto';v.src=vPfad(k);buehne.insertBefore(v,still);VIDEO[k]=v;return v;}
+  function filmeAb(i,bis){var f={};for(var j=Math.max(0,i);j<Math.min(SCHRITT.length,bis);j++)(SCHRITT[j].weg||[]).forEach(function(w){if(w[0]==='flug')f[w[1]]=1;else if(w[0]==='nebel')f[w[3]]=1;});return f;}
+  function vorladen(i){Object.keys(filmeAb(i,i+2)).forEach(function(k){var v=video(k);if(v.readyState<2)v.load();});}
+  /* nicht mehr gebrauchte Filme ganz freigeben – sonst läuft der Videospeicher am iPhone voll und das Bild friert ein */
+  function aufraeumen(i){var bleib=filmeAb(i,i+3);Object.keys(VIDEO).forEach(function(k){if(bleib[k])return;var v=VIDEO[k];v.pause();v.removeAttribute('src');v.load();v.remove();delete VIDEO[k];});}
+  function stand(bild){still.src=bild;hinten.src=bild;still.classList.add('an');}
+  function breitPruefen(){buehne.classList.toggle('breit',!MAC&&innerWidth/innerHeight>.72);buehne.classList.toggle('mac',MAC);}
+  function buehneSicht(an){buehne.style.opacity=an?1:0;}
+
+  /* ---------- Nebel ---------- */
+  var wc=document.getElementById('wolken'),wgl=wc.getContext('webgl',{premultipliedAlpha:true,alpha:true}),uP,uA;
+  if(wgl){
+    var vs='attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;gl_Position=vec4(p,0.,1.);}';
+    var fs=['precision highp float;varying vec2 v;uniform float P,A;',
+      'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+      'float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+      'float fbm(vec2 p){float s=0.,a=.5;for(int i=0;i<6;i++){s+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return s;}',
+      'vec4 schicht(vec2 q,float z,float dicht,float sat){vec2 r=q/z;float d=fbm(r*2.2+sat)+.5*fbm(r*5.+sat*2.);d=d/1.5;',
+      ' float a=smoothstep(dicht,dicht+.13,d);float licht=smoothstep(.35,.95,fbm(r*2.2+sat+vec2(.06,.08)));',
+      ' vec3 c=mix(vec3(.62,.68,.78),vec3(1.,.995,.98),clamp(.25+.9*(d-.35)+.3*(1.-licht),0.,1.));return vec4(c*a,a);}',
+      'void main(){vec2 q=(v-.5)*vec2(A,1.);',
+      ' float p=P;float c=p<.5?smoothstep(0.,.5,p):1.-smoothstep(.5,.82,p);float dicht=mix(.74,.30,c);',
+      ' vec4 o=vec4(0.);',
+      ' for(int i=0;i<2;i++){float fi=float(i);float z=mix(1.6,.18,fract(p*.9+fi/2.));float w=smoothstep(.0,.25,z)*smoothstep(1.7,1.0,z);',
+      '  vec4 s=schicht(q,z,dicht+.04*fi,fi*13.1);s*=w;o=o+s*(1.-o.a);}',
+      ' float voll=smoothstep(.42,.5,p)*smoothstep(.58,.5,p);o=mix(o,vec4(vec3(.95,.96,.975),1.),voll*.9);',
+      ' o*=1.-smoothstep(.74,.86,p);gl_FragColor=o;}'].join('\n');
+    function sh(t,src){var s=wgl.createShader(t);wgl.shaderSource(s,src);wgl.compileShader(s);if(!wgl.getShaderParameter(s,wgl.COMPILE_STATUS))console.error(wgl.getShaderInfoLog(s));return s;}
+    var pr=wgl.createProgram();wgl.attachShader(pr,sh(wgl.VERTEX_SHADER,vs));wgl.attachShader(pr,sh(wgl.FRAGMENT_SHADER,fs));wgl.linkProgram(pr);wgl.useProgram(pr);
+    var bu=wgl.createBuffer();wgl.bindBuffer(wgl.ARRAY_BUFFER,bu);wgl.bufferData(wgl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),wgl.STATIC_DRAW);
+    var lp=wgl.getAttribLocation(pr,'p');wgl.enableVertexAttribArray(lp);wgl.vertexAttribPointer(lp,2,wgl.FLOAT,false,0,0);
+    uP=wgl.getUniformLocation(pr,'P');uA=wgl.getUniformLocation(pr,'A');
+  }
+  function nebel(p){if(!wgl||p<=0||p>=1){wc.style.visibility='hidden';return;}wc.style.visibility='visible';
+    wgl.viewport(0,0,wc.width,wc.height);wgl.clearColor(0,0,0,0);wgl.clear(wgl.COLOR_BUFFER_BIT);wgl.uniform1f(uP,p);wgl.uniform1f(uA,wc.width/wc.height);wgl.drawArrays(wgl.TRIANGLE_STRIP,0,4);}
+
+  /* ---------- Sterne ---------- */
+  var sc=document.getElementById('sterne'),sx=sc.getContext('2d');
+  function sterneMalen(){sc.width=innerWidth*DPR;sc.height=innerHeight*DPR;var z=(function(s){return function(){s=(s*16807)%2147483647;return (s-1)/2147483646;};})(7);
+    for(var i=0;i<220;i++){var x=z()*sc.width,y=z()*sc.height,r=(.4+Math.pow(z(),3)*1.6)*DPR,a=.35+z()*.65;sx.fillStyle='rgba(255,'+Math.round(235+z()*20)+','+Math.round(215+z()*40)+','+a+')';sx.beginPath();sx.arc(x,y,r,0,6.283);sx.fill();}}
+
+  /* ---------- Erde ---------- */
+  var handy=innerWidth<=800,K=handy?'2k':'4k',erdeDa=!!window.THREE;
+  if(erdeDa){
+  /* ---------- 3D ---------- */
+  var cv=document.getElementById('gl'),R=new THREE.WebGLRenderer({canvas:cv,antialias:!handy,alpha:true,powerPreference:'high-performance'});
+  R.setPixelRatio(Math.min(handy?1.5:1.75,devicePixelRatio||1));R.setSize(innerWidth,innerHeight,false);
+  var szene=new THREE.Scene(),cam=new THREE.PerspectiveCamera(26,innerWidth/innerHeight,.1,60);
+  var lade=new THREE.TextureLoader(),pfad='preise-rundflug/erde/';
+  function tex(n){var t=lade.load(pfad+n);t.anisotropy=Math.min(8,R.capabilities.getMaxAnisotropy());return t;}
+  var tag=tex('tag_'+K+'.jpg'),nacht=tex('nacht_'+K+'.jpg'),wolken=tex('wolken_2k.jpg');
+  var sonne=new THREE.Vector3(-.55,.42,1).normalize();
+  var gruppe=new THREE.Group(),erdeG=new THREE.Group();gruppe.add(erdeG);szene.add(gruppe);
+  var VS='varying vec2 vUv;varying vec3 vN;varying vec3 vP;void main(){vUv=uv;vN=normalize(mat3(modelMatrix)*normal);vec4 w=modelMatrix*vec4(position,1.);vP=w.xyz;gl_Position=projectionMatrix*viewMatrix*w;}';
+  var U={tag:{value:tag},nacht:{value:nacht},wolkenT:{value:wolken},sonne:{value:sonne},zeit:{value:0},gruen:{value:0},blau:{value:0},nachtA:{value:0},lichter:{value:0}};
+  var erde=new THREE.Mesh(new THREE.SphereGeometry(1,handy?128:160,handy?96:120),new THREE.ShaderMaterial({uniforms:U,vertexShader:VS,fragmentShader:[
+    'uniform sampler2D tag,nacht,wolkenT;uniform vec3 sonne;uniform float zeit,gruen,blau,nachtA,lichter;varying vec2 vUv;varying vec3 vN;varying vec3 vP;',
+    'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
+    'float n2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}',
+    'vec3 sat(vec3 c,float s){float l=dot(c,vec3(.299,.587,.114));return mix(vec3(l),c,s);}',
+    'vec2 wuv(vec2 uv,float t,float ph){float f=fract(t*.02+ph);vec2 o=vec2(t*.0011,0.)+vec2(n2(uv*vec2(36.,18.)+t*.05)-.5,n2(uv*vec2(36.,18.)-t*.04+7.)-.5)*.012*f;return uv+o;}float wolke(sampler2D w,vec2 uv,float t){float f1=fract(t*.02),f2=fract(t*.02+.5);float a=texture2D(w,wuv(uv,t,0.)).r,b=texture2D(w,wuv(uv,t,.5)).r;return mix(a,b,abs(f1*2.-1.));}',
+    'void main(){',
+    ' vec3 N=normalize(vN),V=normalize(cameraPosition-vP),L=normalize(sonne);',
+    ' vec3 d=texture2D(tag,vUv).rgb;float w=smoothstep(.015,.10,d.b-max(d.r,d.g*.92));',
+    ' vec3 land=sat(d,1.+.45*gruen-.35*blau)*(1.+.12*gruen-.18*blau);land=mix(land,land*vec3(.92,1.08,.86),.5*gruen);',
+    ' float wind=n2(vUv*vec2(900.,450.)+vec2(zeit*1.6,zeit*.4))*n2(vUv*vec2(140.,70.)-vec2(zeit*.25,0.));land*=1.+gruen*.10*(wind-.25);',
+    ' float ml=dot(d,vec3(.299,.587,.114));vec3 tief=mix(vec3(.03,.13,.32),vec3(.06,.30,.55),smoothstep(.05,.35,ml));',
+    ' vec3 meer=mix(sat(d,1.-.45*gruen)*(1.+.10*gruen),tief*1.15,.65*blau);meer=mix(meer,mix(meer,vec3(.42,.58,.70),.35),gruen);',
+    ' vec3 c=mix(land,meer,w);',
+    ' float lam=dot(N,L),tagA=smoothstep(-.12,.28,lam);',
+    ' c*=vec3(1.)*(mix(.10,.02,nachtA)+.95*max(lam,0.));',
+    /* Wolkenschatten auf dem Boden, leicht versetzt zur Sonne */
+    ' float ws=smoothstep(.25,.85,wolke(wolkenT,vUv+vec2(.0025,-.0015),zeit));c*=1.-.32*ws*smoothstep(0.,.3,lam);',
+    ' c=mix(c,c*vec3(1.25,.85,.65),smoothstep(.28,0.,lam)*smoothstep(-.12,.05,lam)*.8);',
+    ' vec3 H=normalize(L+V);float nh=max(dot(N,H),0.);float sp=pow(nh,140.)*1.2+pow(nh,18.)*.12;',
+    ' float gl=n2(vUv*vec2(2600.,1300.)+vec2(zeit*2.6,zeit*1.5))*n2(vUv*vec2(700.,350.)-vec2(zeit*1.1,zeit*.6));float see=mix(1.,.25+2.4*pow(gl,2.),blau);',
+    ' c+=w*sp*see*vec3(1.,.96,.88)*(.6+.5*blau-.4*gruen)*tagA;',
+    /* Stadtlichter: gehen hinter der Dämmerungslinie nacheinander an, jede Gegend zu ihrer Zeit, leicht warm (Simons Idee 31.10.) */
+    ' vec3 roh=texture2D(nacht,vUv).rgb;float sl=dot(roh,vec3(.299,.587,.114));',
+    ' float zelle=h(floor(vUv*vec2(720.,360.)));float dunkel=smoothstep(.02,-.25,lam);',
+    ' float an=smoothstep(zelle*.85,zelle*.85+.12,lichter*1.05)*dunkel;',
+    ' vec3 st=smoothstep(.15,.8,sl)*vec3(1.,.78,.42)*4.4*an+vec3(.10,.13,.20)*sl*.9*nachtA;',
+    ' c+=st*(1.-tagA);',
+    ' float fr=pow(1.-max(dot(N,V),0.),2.6);c=mix(c,vec3(.55,.74,1.)*(.25+.9*tagA),fr*(.55+.2*tagA));',
+    ' c=c/(c+vec3(.62))*1.6;gl_FragColor=vec4(c,1.);}'].join('\n')}));
+  erdeG.add(erde);
+  var wolkenU={w:{value:wolken},sonne:{value:sonne},zeit:U.zeit};
+  var wolkenM=new THREE.Mesh(new THREE.SphereGeometry(1.007,handy?96:128,handy?72:96),new THREE.ShaderMaterial({uniforms:wolkenU,transparent:true,depthWrite:false,vertexShader:VS,
+    fragmentShader:'uniform sampler2D w;uniform vec3 sonne;uniform float zeit;varying vec2 vUv;varying vec3 vN;varying vec3 vP;float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}float n2(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}vec2 wuv(vec2 uv,float t,float ph){float f=fract(t*.02+ph);vec2 o=vec2(t*.0011,0.)+vec2(n2(uv*vec2(36.,18.)+t*.05)-.5,n2(uv*vec2(36.,18.)-t*.04+7.)-.5)*.012*f;return uv+o;}float wolke(sampler2D w,vec2 uv,float t){float f1=fract(t*.02),f2=fract(t*.02+.5);float a=texture2D(w,wuv(uv,t,0.)).r,b=texture2D(w,wuv(uv,t,.5)).r;return mix(a,b,abs(f1*2.-1.));}void main(){vec3 N=normalize(vN),V=normalize(cameraPosition-vP);float c=wolke(w,vUv,zeit);float a=smoothstep(.18,.85,c)*.92;float lam=dot(N,normalize(sonne));float l=smoothstep(-.1,.35,lam);float rand=pow(1.-max(dot(N,V),0.),3.);vec3 col=mix(vec3(.07,.09,.14),vec3(1.),l);gl_FragColor=vec4(col,a*(1.-rand*.6)*(.18+.82*l));}'}));
+  erdeG.add(wolkenM);
+  var saumU={sonne:{value:sonne},hell:{value:1}};
+  var saum=new THREE.Mesh(new THREE.SphereGeometry(1.045,96,64),new THREE.ShaderMaterial({uniforms:saumU,side:THREE.BackSide,transparent:true,depthWrite:false,vertexShader:VS,
+    fragmentShader:'uniform vec3 sonne;uniform float hell;varying vec3 vN;varying vec3 vP;void main(){vec3 V=normalize(cameraPosition-vP);float i=pow(clamp(-dot(vN,V)*3.2,0.,1.),2.2);float l=.25+.75*smoothstep(-.5,.5,dot(vN,normalize(sonne)));vec3 c=mix(vec3(.38,.62,1.),vec3(.62,.80,1.),hell);gl_FragColor=vec4(c,i*l*mix(1.,.42,hell));}'}));
+  gruppe.add(saum);
+  }
+  var zH=Math.max(6.4,2*.92/(.86*2*Math.tan(13*Math.PI/180)*Math.min(innerWidth/innerHeight,.62)));
+  var E={
+    E0:{lon:12,lat:12,sx:-.55,sy:.42,sz:1,g:.35,b:.35,n:0,y:zH*.09,s:.92,grund:[250,250,248],dunkel:0},
+    E1:{lon:10,lat:47,sx:-.3,sy:.55,sz:1,g:1,b:0,n:0,y:zH*.07,s:1.1,grund:[236,243,238],dunkel:0},
+    E3:{lon:-160,lat:2,sx:-.45,sy:.40,sz:1,g:0,b:1,n:0,y:zH*.07,s:1.1,grund:[230,237,247],dunkel:0},
+    EN:{lon:14,lat:34,sx:1.35,sy:.12,sz:-.65,g:0,b:.2,n:1,y:zH*.02,s:.85,grund:[8,16,36],dunkel:1}};
+  function mische(a,b,t){var o={};for(var k in a){if(Array.isArray(a[k]))o[k]=a[k].map(function(v,i){return v+(b[k][i]-v)*t});else o[k]=a[k]+(b[k]-a[k])*t;}var d=((b.lon-a.lon+540)%360)-180;o.lon=a.lon+d*t;return o;}
+  var grund=document.getElementById('grund'),himmel=document.getElementById('himmel'),glc=document.getElementById('gl'),erdeJetzt=E.E0,erdeZoom=0;
+  function erdeZeichnen(){var z=erdeJetzt;document.body.classList.toggle('dunkel',z.dunkel>.5);
+    grund.style.background='radial-gradient(circle at 50% 42%,rgb('+z.grund.map(function(q){return Math.round(q*(z.dunkel>.5?1.4:.985))}).join(',')+') 0,rgb('+z.grund.map(Math.round).join(',')+') 65%)';
+    himmel.style.opacity=(klemm((z.n-.4)/.6)*.85).toFixed(3);sc.style.opacity=klemm((z.n-.55)/.45).toFixed(3);
+    if(!erdeDa||document.documentElement.dataset.geladen!=='1')return;
+    sonne.set(z.sx,z.sy,z.sz).normalize();gruppe.rotation.x=z.lat*Math.PI/180;erdeG.rotation.y=-(z.lon+90)*Math.PI/180;
+    gruppe.position.set(0,z.y,0);gruppe.scale.setScalar(z.s*(1+erdeZoom*.3));cam.position.set(0,0,zH);cam.lookAt(0,0,0);
+    U.gruen.value=z.g;U.blau.value=z.b;U.nachtA.value=z.n;U.lichter.value=klemm((z.n-.3)/.6);U.zeit.value=0;saumU.hell.value=1-z.dunkel;
+    saum.material.blending=z.dunkel>.5?THREE.AdditiveBlending:THREE.NormalBlending;R.render(szene,cam);}
+
+  /* ---------- Nadeln und Karte ---------- */
+  var nadelBox=document.getElementById('nadeln'),NADEL={};
+  Object.keys(STATION).forEach(function(k){var s=STATION[k],n=document.createElement('div');n.className='nadel';n.style.setProperty('--c',s.welt==='gruen'?'var(--gruen)':'var(--blau)');
+    n.innerHTML='<span class="schatten"></span><span class="stift"></span><span class="kopf"></span><span class="schild">'+esc(s.schild[0])+'<b>'+esc(s.schild[1])+'</b></span>';nadelBox.appendChild(n);NADEL[k]=n;});
+  /* Lage eines Bildpunkts auf dem Schirm: wie object-fit cover (50 % 55 %) bzw. contain auf breiten Schirmen */
+  function nadelSetzen(k,an){Object.keys(NADEL).forEach(function(j){NADEL[j].classList.remove('da');});if(!an||!k)return;
+    var st=STATION[k],n=NADEL[k],W=innerWidth,H=innerHeight,iw=MAC?1920:1072,ih=MAC?1080:1928,breit=!MAC&&W/H>.72,s=breit?Math.min(W/iw,H/ih):Math.max(W/iw,H/ih),ox=(W-iw*s)*.5,oy=(H-ih*s)*(breit||MAC?.5:.55);
+    var x=ox+iw*s*(MAC?st.mx:st.x),y=oy+ih*s*(MAC?st.my:st.y);n.style.transform='translate3d('+x.toFixed(1)+'px,'+y.toFixed(1)+'px,0)';
+    var sb=n.querySelector('.schild').offsetWidth,rechts=x+18+sb<=W-8,links=x-18-sb>=8;n.classList.toggle('links',!rechts&&links);n.classList.toggle('mitte',!rechts&&!links);
+    requestAnimationFrame(function(){n.classList.add('da');});}
+  var karte=document.getElementById('karte');
+  function karteSetzen(d){karte.classList.remove('an');if(!d)return;karte.className=(d.hell?'hell':'')+(d.zeilen.length>2?' dicht':'');
+    karte.innerHTML='<span class="kap">'+esc(d.kap)+'</span><span class="ttl">'+esc(d.ttl)+'</span>'+d.zeilen.map(function(z){return '<div class="zl'+(z[3]?' '+z[3]:'')+'"><b>'+esc(z[0])+'</b>'+(z[1]?'<small>'+esc(z[1])+'</small>':'')+'<span class="p">'+esc(z[2])+'</span></div>';}).join('');
+    requestAnimationFrame(function(){karte.classList.add('an');});}
+
+  /* ---------- Wege abspielen ---------- */
+  var tempo=1;  /* „Weiter“ während eines Wegs beschleunigt ihn */
+  function tween(ms,f){return new Promise(function(r){if(ruhig){f(1);r();return;}var t0=performance.now();(function s(){var t=klemm((performance.now()-t0)*tempo/ms);f(t);if(t<1)requestAnimationFrame(s);else r();})();});}
+  async function wegErde(von,bis,ms){glc.style.visibility='visible';buehneSicht(false);await tween(ms,function(t){erdeJetzt=mische(E[von],E[bis],glatt(t));erdeZeichnen();});}
+  async function wegNebel(richtung,erde,film){var v=video(film);
+    if(richtung==='ein'){Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.remove('an');});v.currentTime=0;stand(sPfad(film,'_0'));}
+    else stand(sPfad(film,'_e'));
+    await tween(1800,function(t){nebel(t);var unten=richtung==='ein'?t<.5:t>=.5;
+      if(unten){glc.style.visibility='visible';buehneSicht(false);erdeJetzt=E[erde];erdeZoom=richtung==='ein'?glatt(t*2):glatt((1-t)*2);erdeZeichnen();}
+      else{glc.style.visibility='hidden';buehneSicht(true);}});
+    nebel(0);erdeZoom=0;}
+  /* Das Abbremsen steckt fest im Video (bremse_einbauen.sh) – das Tempo wird nie umgeschaltet, das verträgt Safari am iPhone nicht.
+     Am Ende bleibt das Video auf seinem letzten Bild stehen; das gleiche Standbild liegt schon vorher fertig darunter. */
+  function wegFlug(film){return new Promise(function(r){var v=video(film),fertig=false,endBild=sPfad(film,'_e');glc.style.visibility='hidden';buehneSicht(true);
+      var vb=new Image();vb.src=endBild;
+      Object.keys(VIDEO).forEach(function(k){VIDEO[k].classList.toggle('an',k===film);});
+      function ende(){if(fertig)return;fertig=true;still.src=endBild;hinten.src=endBild;still.classList.add('an');r();}
+      v.onplaying=function(){still.classList.remove('an');setTimeout(function(){if(!fertig){still.src=endBild;hinten.src=endBild;}},400);};
+      v.onended=ende;v.onerror=ende;v.ontimeupdate=null;try{v.playbackRate=1;v.currentTime=0;}catch(e){}
+      /* Wachhund: steht der Film 4 s still (Netz, Speicher), geht es mit dem Standbild weiter statt hängen zu bleiben */
+      var zuletzt=-1,stillSeit=performance.now();
+      (function wache(){if(fertig)return;if(v.currentTime!==zuletzt){zuletzt=v.currentTime;stillSeit=performance.now();}else if(performance.now()-stillSeit>4000){ende();return;}setTimeout(wache,250);})();
+      if(ruhig){ende();return;}var p=v.play();if(p&&p.catch)p.catch(ende);});}
+  /* ---------- Ankunft (auch direkt, für „Zurück“) ---------- */
+  function ankunft(i){var s=SCHRITT[i];document.getElementById('start').classList.toggle('weg',i>0);
+    if(s.station){var st=STATION[s.station];glc.style.visibility='hidden';stand(sPfad(st.film,'_e'));buehneSicht(true);Object.keys(VIDEO).forEach(function(k){var v=VIDEO[k];v.classList.toggle('an',k===st.film&&v.duration>0&&v.currentTime>v.duration-.15);});
+      nadelSetzen(s.station,true);karteSetzen(st);}
+    else{nadelSetzen(null,false);buehneSicht(false);glc.style.visibility='visible';erdeJetzt=E[s.erde||'E0'];erdeZeichnen();karteSetzen(s.karte?KARTE[s.karte]:null);}
+    punkte.querySelectorAll('i').forEach(function(p,j){p.classList.toggle('an',j===i);});
+    zurueck.disabled=i===0;weiter.textContent=i===0?"Los geht's":i===SCHRITT.length-1?'Alle Preise':'Weiter';weiter.classList.remove('laeuft');}
+  var jetzt=0,laeuft=false,weiter=document.getElementById('weiter'),zurueck=document.getElementById('zurueck');
+  async function vor(){if(laeuft){tempo=2.2;return;}if(jetzt===SCHRITT.length-1){blattAuf();return;}
+    laeuft=true;tempo=1;weiter.classList.add('laeuft');weiter.textContent='…';var n=jetzt+1,s=SCHRITT[n];
+    document.getElementById('start').classList.add('weg');nadelSetzen(null,false);karte.classList.remove('an');vorladen(n+1);
+    for(var w of (s.weg||[])){if(w[0]==='erde')await wegErde(w[1],w[2],w[3]);else if(w[0]==='nebel')await wegNebel(w[1],w[2],w[3]);else if(w[0]==='flug')await wegFlug(w[1]);}
+    jetzt=n;laeuft=false;tempo=1;ankunft(n);aufraeumen(n);}
+  function rueck(){if(laeuft||jetzt===0)return;jetzt--;ankunft(jetzt);aufraeumen(jetzt);vorladen(jetzt+1);}
+  weiter.addEventListener('click',vor);zurueck.addEventListener('click',rueck);
+  addEventListener('keydown',function(e){if(blatt.classList.contains('auf')){if(e.key==='Escape')blattZu();return;}
+    if(e.key==='ArrowDown'||e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();vor();}if(e.key==='ArrowUp'||e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();rueck();}});
+  /* Wischen und Mausrad: ein Schwung = ein Schritt */
+  var ty=null,radSperre=0;
+  addEventListener('touchstart',function(e){if(blatt.classList.contains('auf'))return;ty=e.touches[0].clientY;},{passive:true});
+  addEventListener('touchend',function(e){if(ty===null)return;var d=ty-e.changedTouches[0].clientY;ty=null;if(Math.abs(d)>40){if(d>0)vor();else rueck();}},{passive:true});
+  addEventListener('wheel',function(e){if(blatt.classList.contains('auf'))return;e.preventDefault();var t=performance.now();if(t<radSperre||Math.abs(e.deltaY)<8)return;radSperre=t+900;if(e.deltaY>0)vor();else rueck();},{passive:false});
+  /* Alle Preise */
+  var blatt=document.getElementById('blatt');
+  function blattAuf(){blatt.classList.add('auf');}function blattZu(){blatt.classList.remove('auf');}
+  document.getElementById('alle').addEventListener('click',blattAuf);blatt.querySelector('.zu').addEventListener('click',blattZu);blatt.addEventListener('click',function(e){if(e.target===blatt)blattZu();});
+
+  function groesse(){var m=innerWidth/innerHeight>1.2;if(m!==MAC&&!laeuft){MAC=m;Object.keys(VIDEO).forEach(function(k){var v=VIDEO[k];v.pause();v.removeAttribute('src');v.load();v.remove();delete VIDEO[k];});vorladen(jetzt+1);}wc.width=Math.round(innerWidth*DPR*.5);wc.height=Math.round(innerHeight*DPR*.5);sterneMalen();breitPruefen();
+    if(erdeDa){R.setSize(innerWidth,innerHeight,false);cam.aspect=innerWidth/innerHeight;cam.updateProjectionMatrix();}erdeZeichnen();if(!laeuft)ankunft(jetzt);}
+  addEventListener('resize',groesse);
+  groesse();vorladen(1);
+  if(erdeDa)THREE.DefaultLoadingManager.onLoad=function(){document.documentElement.dataset.geladen='1';erdeZeichnen();};
+  window.__weiter={stand:function(){return {schritt:jetzt,name:SCHRITT[jetzt].name,laeuft:laeuft,karte:karte.className,nadel:Object.keys(NADEL).filter(function(k){return NADEL[k].classList.contains('da');})};},vor:vor,rueck:rueck};
+})();
 </script>
-</body>
-</html>
+</body></html>
