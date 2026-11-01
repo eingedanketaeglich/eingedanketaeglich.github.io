@@ -9,6 +9,11 @@ h1,h2,h3{font-family:Gloock,Georgia,serif;font-weight:400;margin:0;line-height:1
 html{scroll-snap-type:y proximity}
 .anker{height:100svh;scroll-snap-align:start}   /* Höhe setzt baum2.js je Halt = Kameraweg (1:1), der letzte bleibt 1 Bildschirm */
 .buehne{position:sticky;top:0;height:100svh;overflow:hidden;margin-bottom:-100svh;background:var(--cream)}
+/* iPhone: Bühne so hoch wie der große Bildschirm, damit unter der eingeklappten Safari-Leiste kein heller Streifen bleibt (Simon 01.11.) */
+@supports (height:100lvh){.buehne{height:100lvh;margin-bottom:-100lvh}.station{padding-bottom:calc(7svh + 100lvh - 100svh)!important}}
+.umfeld{position:absolute;left:-6%;top:0;width:112%;display:none;background-repeat:no-repeat;filter:blur(26px) saturate(1.05);will-change:transform;pointer-events:none}
+.baum.breit .ebene.stammebene{-webkit-mask-image:linear-gradient(#000 97.6%,transparent 99.6%),linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);-webkit-mask-composite:source-in;mask-image:linear-gradient(#000 97.6%,transparent 99.6%),linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-composite:intersect}
+.baum.breit .boden{-webkit-mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent);mask-image:linear-gradient(90deg,transparent,#000 7%,#000 93%,transparent)}
 /* Himmel: 300 Bildschirme hoch, unten Tag, oben Nacht; fährt mit der Kamera */
 /* Licht: Tag bis zur Krone (0 bis 55 %), dann Abend und Nacht nur über der Krone */
 .himmel{position:absolute;left:0;right:0;bottom:0;height:300svh;will-change:transform;background:linear-gradient(to top,#FBF3DC 0%,#FBE9B8 30%,#F7DC94 52%,#F3D9A0 62%,#D9A9A6 70%,var(--abend) 78%,var(--daemmer) 88%,var(--nacht) 100%)}

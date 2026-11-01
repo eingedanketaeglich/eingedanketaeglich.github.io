@@ -70,16 +70,29 @@
   function klemm(x,a,b){return Math.max(a,Math.min(b,x))}
   function weich(x){return x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2}
   var vw=innerWidth,vh=innerHeight,zoom=1,BW=1,BH=3,zielP=0,p=0,aktiv=-1,handyAn=false,sternAn=false,audio=null,S=[0];
-  function camY(i){return klemm(H[i].cy*BH-versatz(i),-vh*.55,Math.max(0,BH-vh*.42));}
+  function camY(i){var y=klemm(H[i].cy*BH-versatz(i),-vh*.55,Math.max(0,BH-vh*.42));
+    /* Stern: ganz unter der Kopfleiste der Website (Simon 01.11.: oben abgeschnitten) */
+    if(i===N-1&&META){var l=document.querySelector('.leiste'),oben=(l?l.offsetHeight:0)+12;y=Math.min(y,(META.krone.y-.17)*BH-.19*BW-oben);}  /* Sternmitte wie im Markup, Breite 38 % */
+    return y;}
   function anker(){S=[0];for(var i=0;i<N-1;i++){S.push(S[i]+Math.max(Math.abs(camY(i+1)-camY(i)),vh*.45));}
     var el=welt.querySelectorAll('.anker');for(var j=0;j<N;j++){el[j].style.height=(j<N-1?S[j+1]-S[j]:vh)+'px';}}
   /* Scrollposition → Haltindex mit Bruchteil (linear, damit der Baum 1:1 mitfährt) */
   function haltIndex(y){for(var i=0;i<N-1;i++){if(y<S[i+1])return i+klemm((y-S[i])/(S[i+1]-S[i]),0,1);}return N-1;}
+  /* Umfeld (Simon 01.11.): breiter als der Baum ist das Fenster am Desktop. Links und rechts läuft dasselbe Bild weich
+     gezeichnet weiter, mit Erde darunter, damit die Seite ohne Ränder von Erde bis Himmel durchgeht. */
+  var umfeld=document.createElement('div');umfeld.className='umfeld';umfeld.setAttribute('aria-hidden','true');buehne.insertBefore(umfeld,baum);
+  function umfeldStellen(){var breit=BW<vw;baum.classList.toggle('breit',breit);umfeld.style.display=breit?'block':'none';if(!breit)return;
+    umfeld.style.height=(BH*1.3)+'px';
+    umfeld.style.backgroundImage='url(baum/'+LOOK+'_stamm.webp'+BV+'),url(baum/erde.webp?v=1),linear-gradient(#2A1C11,#2A1C11)';
+    umfeld.style.backgroundSize='100% '+BH+'px,100% '+(BH*.286)+'px,100% '+(BH*.33)+'px';
+    umfeld.style.backgroundPosition='0 0,0 '+(BH*.974)+'px,0 '+(BH*.974)+'px';}
   function groesse(){vw=buehne.clientWidth;vh=innerHeight;zoom=vw<760?ZOOM_HANDY:ZOOM_DESK;
     BW=vw*zoom;BH=BW*(META?META.hoehe/META.breite:3);baum.style.width=BW+'px';baum.style.height=BH+'px';
-    /* Desktop: Baum mindestens 2,6 Bildschirme hoch, damit die Kamera noch fährt, und immer so breit wie das Fenster
-       (Simon 01.11.: muss die ganze Seite ausfüllen, vorher blieb rechts ein leerer Streifen) */
-    if(zoom===ZOOM_DESK){BW=Math.max(vw,vh*2.6*(META?META.breite/META.hoehe:1/3));BH=BW*(META?META.hoehe/META.breite:3);baum.style.width=BW+'px';baum.style.height=BH+'px';}
+    /* Desktop: Baum passt in die Höhe von etwa 2,4 Bildschirmen, damit die Kamera noch fährt (Proportionen wie am Handy).
+       Ist das Fenster breiter als der Baum, steht er mittig und das Umfeld füllt die Ränder (Simon 01.11.: ganze Breite,
+       aber Sparky und Stern nicht riesig) */
+    if(zoom===ZOOM_DESK){BH=vh*2.6;BW=BH*(META?META.breite/META.hoehe:1/3);baum.style.width=BW+'px';baum.style.height=BH+'px';}
+    umfeldStellen();
     rinde();grasKante();anker();stelle(true);}
   function lies(){zielP=haltIndex(scrollY)/(N-1);}
   /* Wie weit unter der Oberkante die Flamme sitzt: 30 % der Höhe, bei hohen Karten (Spiel, Eltern) höher, damit die
@@ -93,8 +106,9 @@
     if(zoom>1){cx=.5+(cx-.5)*.8;}
     /* Flamme sitzt bei 30 % der Höhe, über Blase und Karte; am Stern darf die Kamera über das Bild hinaus in den Himmel,
        an den Wurzeln unter das Bild auf den Hügel (sonst hängt der erste Halt am Bildrand und Sparky liegt hinter der Karte) */
-    var x=klemm(cx*BW-vw/2,0,Math.max(0,BW-vw)),y=camY(Math.min(i,N-1))*(1-t)+camY(Math.min(i+1,N-1))*t;
-    baum.style.transform='translate('+(-x)+'px,'+(-y)+'px)';}
+    var x=BW<vw?(BW-vw)/2:klemm(cx*BW-vw/2,0,BW-vw),y=camY(Math.min(i,N-1))*(1-t)+camY(Math.min(i+1,N-1))*t;
+    baum.style.transform='translate('+(-x)+'px,'+(-y)+'px)';
+    if(umfeld)umfeld.style.transform='translateY('+(-y)+'px)';}
   function stelle(sofort){
     if(sofort||STILL)p=zielP;else p+=(zielP-p)*0.5;
     if(!META)return;
