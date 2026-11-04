@@ -72,7 +72,7 @@ document.getElementById('formular').addEventListener('submit',function(e){e.prev
 document.querySelectorAll('.kopier').forEach(function(b){b.addEventListener('click',function(){var t=b.dataset.copy;function ok(){b.textContent='Kopiert';setTimeout(function(){b.textContent='Kopieren'},1500)}if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok).catch(function(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail-adresse'));var s=getSelection();s.removeAllRanges();s.addRange(r);});}else{var r=document.createRange();r.selectNodeContents(document.getElementById('mail-adresse'));var s=getSelection();s.removeAllRanges();s.addRange(r);}});});
 </script>
 <script>
-document.getElementById('karte-laden').addEventListener('click',function(){var k=document.getElementById('karte');k.innerHTML='<iframe title="Karte: WINX-Tower Frankfurt am Main" src="https://www.google.com/maps?q=WINX-Tower%2C%20Neue%20Mainzer%20Stra%C3%9Fe%206%2C%2060311%20Frankfurt%20am%20Main&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';});
+document.getElementById('karte-laden').addEventListener('click',function(){var k=document.getElementById('karte');k.innerHTML='<iframe title="Karte: WINX-Tower Frankfurt am Main" src="https://www.google.com/maps?q=Neue%20Mainzer%20Stra%C3%9Fe%206%2C%2060311%20Frankfurt%20am%20Main&amp;z=16&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>';});
 </script>
 <script src="seite.js"></script>
 </body>
