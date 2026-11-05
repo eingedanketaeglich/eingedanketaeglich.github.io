@@ -9,46 +9,58 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500&family=Gloock&display=swap">
 <link rel="stylesheet" href="sternstunde/rahmen.css?v=2">
 <style>
-/* Preisseite „Leiste“ (05.11.2026). Der Website-Kopf kommt aus seite.js (fest, dunkel, Klasse .leiste).
-   Darunter klebt die Zeichenleiste: R, & und F leben darin (Clips, per Canvas mit der Form der Standbilder
-   freigestellt, darum echte Transparenz ohne Kasten). Beim Scrollen wächst das Zeichen der Welt, die gerade
-   unter der Leiste liegt, die anderen werden kleiner und blasser; an die Scrollposition gebunden, zurück geht zurück.
-   In der Sternstunde tritt hinter dem & ein Stern aus Licht hervor. Quelle: 10_PROJEKTE/RF-Website/Preise-neu_2026-11-04/ */
+/* Preisseite v8 (05.11.2026, Simons Diktat):
+   1. Auftakt: nur R & F, ganz groß, mitten im Bild, kein Text.
+   2. Weiterscrollen: die Zeichen schrumpfen in die Leiste oben (etwas größer als v7), darunter „Zwei Welten. Ein Preis je Schritt.“
+   3. Jede Welt füllt den Bildschirm allein (Grün, Blau, Sternstunde, Alle Preise); Einrasten beim Scrollen, damit nie zwei Welten halb zu sehen sind.
+   4. Kein Strich unter der Leiste. Die Leiste färbt sich mit der Welt: grünlich, bläulich, Nacht, am Ende wieder hell.
+   Die Leiste ist fest (position:fixed) und ändert nur ihre eigene Größe, die Seite darunter springt dadurch nicht. */
 :root{--f:"Nunito","Avenir Next",system-ui,sans-serif;--mono:"IBM Plex Mono",ui-monospace,monospace;--wort:"Gloock",Georgia,serif;
-  --bg:#F7F3EC;--ink:#14213A;--leise:#5B6474;--gruen:#2F7A55;--blau:#2E5AA8;--gold:#F6CF5A;--linie:#DCD4C6;--karte:#FFFDF9;--kopf:52px;color-scheme:light}
+  --bg:#F7F3EC;--ink:#14213A;--leise:#5B6474;--gruen:#2F7A55;--blau:#2E5AA8;--gold:#F6CF5A;--linie:#DCD4C6;--karte:#FFFDF9;
+  --kopf:52px;--leisteK:160px;--vh:100svh;color-scheme:light}
 *{box-sizing:border-box}
+html{scroll-snap-type:y mandatory;scroll-padding-top:calc(var(--kopf) + var(--leisteK))}
 html,body{margin:0;background:var(--bg);color:var(--ink);font:600 16px/1.5 var(--f)}
-body{padding-top:calc(var(--kopf) + env(safe-area-inset-top,0px))}
+body{padding-top:calc(var(--kopf) + var(--leisteK))}
 
-/* Zeichenleiste */
-.zeichenleiste{position:sticky;top:calc(var(--kopf) + env(safe-area-inset-top,0px));z-index:20;background:var(--bg);padding:12px 10px 4px;border-bottom:1px solid var(--linie)}
-.rf{display:flex;align-items:flex-end;justify-content:center;gap:0;--s:118px;max-width:520px;margin:0 auto}
-@media (min-width:700px){.rf{--s:150px}}
-.zeichen{position:relative;width:var(--s);height:var(--s);flex:0 0 auto;transform-origin:50% 92%;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s,filter .5s}
-.zeichen canvas,.zeichen img.poster{position:absolute;inset:0;width:100%;height:100%;display:block}
+/* ---------- Zeichenleiste ---------- */
+.zeichenleiste{position:fixed;left:0;right:0;top:var(--kopf);z-index:20;background:var(--zl-farbe,#F7F3EC);transition:background-color .6s ease;padding:var(--pad,10px) 10px 8px}
+/* statt Strich: weicher Übergang in die Seite */
+.zeichenleiste::after{content:"";position:absolute;left:0;right:0;top:100%;height:22px;background:linear-gradient(var(--zl-farbe,#F7F3EC),rgba(0,0,0,0));transition:background .6s ease;pointer-events:none;opacity:var(--fade,1)}
+.zeichenleiste[data-welt="g"]{--zl-farbe:#E4EEDC}
+.zeichenleiste[data-welt="b"]{--zl-farbe:#D8E5F2}
+.zeichenleiste[data-welt="s"]{--zl-farbe:#0B1A38}
+.zeichenleiste[data-welt="s"]::after{opacity:0}
+.zeichenleiste::after{background:linear-gradient(to bottom,var(--zl-farbe,#F7F3EC),transparent)}
+.rf{display:flex;align-items:flex-end;justify-content:center;--s:var(--gr,136px)}
+.zeichen{position:relative;width:var(--s);height:var(--s);flex:0 0 auto;margin:0 calc(var(--s) * -.11);transform-origin:50% 92%;transition:transform .5s cubic-bezier(.16,1,.3,1),opacity .5s,filter .5s}
+.zeichen canvas,.zeichen img.poster{position:absolute;inset:0;width:100%;height:100%;display:block;z-index:1}
 .zeichen video{position:absolute;width:2px;height:2px;opacity:0;pointer-events:none}
-.zeichen.amp{width:calc(var(--s) * .62);height:calc(var(--s) * .62);margin:0 -4px 6px}
-/* Stern aus Licht hinter dem &: Kern, Schein, sechs Strahlen; sichtbar nur in der Sternstunde (--g) */
+.zeichen.amp{width:calc(var(--s) * .62);height:calc(var(--s) * .62);margin-bottom:calc(var(--s) * .05)}
 .stern{position:absolute;left:50%;top:50%;width:calc(var(--s) * 1.9);height:calc(var(--s) * 1.9);margin:calc(var(--s) * -.95) 0 0 calc(var(--s) * -.95);pointer-events:none;opacity:0;transform:scale(.6);transition:opacity .4s,transform .6s cubic-bezier(.16,1,.3,1)}
 .stern svg{width:100%;height:100%;display:block}
-.zeichen canvas,.zeichen img.poster{z-index:1}
-/* --g: Fortschritt in der Welt (0 bis 1) */
-.zeichenleiste[data-welt="g"] .r{transform:scale(calc(1 + .2 * var(--g,0)))}
+/* --g: Fortschritt in der Welt, 0 bis 1 */
+.zeichenleiste[data-welt="g"] .r{transform:scale(calc(1 + .14 * var(--g,0)))}
 .zeichenleiste[data-welt="g"] .f,.zeichenleiste[data-welt="g"] .amp{transform:scale(calc(1 - .16 * var(--g,0)));opacity:calc(1 - .6 * var(--g,0));filter:saturate(calc(1 - .7 * var(--g,0)))}
-.zeichenleiste[data-welt="b"] .f{transform:scale(calc(1 + .2 * var(--g,0)))}
+.zeichenleiste[data-welt="b"] .f{transform:scale(calc(1 + .14 * var(--g,0)))}
 .zeichenleiste[data-welt="b"] .r,.zeichenleiste[data-welt="b"] .amp{transform:scale(calc(1 - .16 * var(--g,0)));opacity:calc(1 - .6 * var(--g,0));filter:saturate(calc(1 - .7 * var(--g,0)))}
-.zeichenleiste[data-welt="s"] .r,.zeichenleiste[data-welt="s"] .f{transform:scale(calc(1 - .14 * var(--g,0)));opacity:calc(1 - .55 * var(--g,0));filter:saturate(calc(1 - .6 * var(--g,0)))}
+.zeichenleiste[data-welt="s"] .r,.zeichenleiste[data-welt="s"] .f{transform:scale(calc(1 - .14 * var(--g,0)));opacity:calc(1 - .45 * var(--g,0));filter:saturate(calc(1 - .5 * var(--g,0)))}
 .zeichenleiste[data-welt="s"] .amp{transform:scale(calc(1 + .22 * var(--g,0)))}
-.zeichenleiste[data-welt="s"] .stern{opacity:var(--g,0);transform:scale(calc(.6 + .4 * var(--g,0)))}
+.zeichenleiste[data-welt="s"] .stern{opacity:var(--g,0);transform:scale(calc(.6 + 1.0 * var(--g,0)))}
+.zeichenleiste[data-welt="s"] .stern svg{animation:sternatmen 6s ease-in-out infinite}
+@keyframes sternatmen{0%,100%{opacity:.82}50%{opacity:1}}
 
-.intro{text-align:center;padding:22px 22px 10px;max-width:640px;margin:0 auto}
-.intro h1{font-family:var(--wort);font-weight:400;font-size:clamp(25px,4vw,34px);margin:0;line-height:1.2}
-.intro p{color:var(--leise);font-size:15px;margin:8px 0 0}
-
-section.welt{display:flex;flex-direction:column;align-items:center;padding:34px 22px 34px}
-section.welt>*{width:100%;max-width:560px}
+/* ---------- Abschnitte: jeder füllt genau den Bildschirm unter Kopf und Leiste ---------- */
+.voll{min-height:calc(var(--vh) - var(--kopf) - var(--leisteK));scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 22px 34px;position:relative}
+.voll>*{width:100%;max-width:560px}
+.auftakt{justify-content:flex-end}
+.auftakt .hinweis{text-align:center;font-size:12px;color:var(--leise);letter-spacing:.12em;text-transform:uppercase;opacity:var(--p,1)}
+.auftakt .hinweis::after{content:"";display:block;width:1px;height:28px;background:#C9BEAD;margin:8px auto 0}
+.intro{text-align:center}
+.intro h1{font-family:var(--wort);font-weight:400;font-size:clamp(30px,5.6vw,46px);margin:0;line-height:1.15}
+.intro p{color:var(--leise);font-size:16px;margin:12px 0 0}
 .kap{font-size:11px;font-weight:900;letter-spacing:.12em;text-transform:uppercase;text-align:center}
-.welt h2{font-family:var(--wort);font-weight:400;font-size:clamp(26px,3.6vw,32px);margin:4px 0 14px;text-align:center;line-height:1.15}
+.voll h2{font-family:var(--wort);font-weight:400;font-size:clamp(26px,3.6vw,34px);margin:4px 0 16px;text-align:center;line-height:1.15}
 .karte{border-radius:20px;padding:12px 18px 16px}
 .reihe{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding:11px 0;border-bottom:1px solid var(--linie)}
 .reihe:last-of-type{border-bottom:0}
@@ -56,47 +68,50 @@ section.welt>*{width:100%;max-width:560px}
 .reihe .p{font-family:var(--mono);font-size:17px;white-space:nowrap}
 .cta{display:block;margin-top:8px;text-align:center;border-radius:14px;padding:13px;font-weight:800;font-size:15px;text-decoration:none}
 
-.g{background:radial-gradient(ellipse at 50% 0%,#E6F0DF 0%,#F7F3EC 60%)}
+.g{background:linear-gradient(180deg,#E4EEDC 0%,#EEF2E6 40%,#F7F3EC 100%)}
 .g .kap{color:var(--gruen)}.g .karte{background:var(--karte);border:1px solid var(--linie)}.g .cta{background:var(--gruen);color:#fff}
-.b{background:linear-gradient(180deg,#0F3F6E 0%,#0A2E55 60%,#071F3C 100%);color:#F1ECE2}
+.b{background:linear-gradient(180deg,#D8E5F2 0%,#6E93BC 6%,#0F3F6E 15%,#0A2E55 65%,#071F3C 100%);color:#F1ECE2}
 .b .kap{color:#9FD0FF}.b .karte{background:rgba(8,28,52,.72);border:1px solid rgba(159,208,255,.25)}
 .b .reihe{border-color:rgba(159,208,255,.2);padding:9px 0}.b .reihe small{color:#B9C4DA}.b .cta{background:#9FD0FF;color:#071F3C}
-.s{background:#01122A url("preise-leiste/stern.jpg") center 30%/cover no-repeat;color:#F1ECE2;position:relative;min-height:540px;justify-content:flex-end}
-.s::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(1,18,42,.45) 0%,rgba(1,18,42,0) 35%,rgba(1,18,42,0) 60%,rgba(1,18,42,.6) 100%);pointer-events:none}
-.s>*{position:relative}.s .kap{color:var(--gold)}.s h2{font-size:26px}
-.s .kopfzeile{position:absolute;top:30px;left:0;right:0;max-width:none}
-.s .schein{position:absolute;left:50%;top:38%;width:220px;height:220px;margin:-110px 0 0 -110px;max-width:none;border-radius:50%;background:radial-gradient(circle,rgba(246,207,90,.35) 0%,rgba(246,207,90,.12) 35%,rgba(246,207,90,0) 70%);animation:schein 6s ease-in-out infinite;pointer-events:none}
+/* Sternstunde (Simons Markierung 05.11.: Übergang nicht gelungen): nur noch EIN Stern, der hinter dem &.
+   Sein Licht fällt von der Leiste aus in den Nachthimmel, oben gleiche Farbe wie die Leiste, kein Bild mit zweitem Stern. */
+.s{background:radial-gradient(1.4px 1.4px at 14% 38%,rgba(255,255,255,.75) 50%,transparent 60%),radial-gradient(1.2px 1.2px at 82% 30%,rgba(255,255,255,.6) 50%,transparent 60%),radial-gradient(1px 1px at 70% 58%,rgba(255,255,255,.55) 50%,transparent 60%),radial-gradient(1.3px 1.3px at 26% 66%,rgba(255,255,255,.5) 50%,transparent 60%),radial-gradient(1px 1px at 90% 72%,rgba(255,255,255,.45) 50%,transparent 60%),radial-gradient(1.2px 1.2px at 6% 82%,rgba(255,255,255,.4) 50%,transparent 60%),linear-gradient(180deg,#0B1A38 0%,#0A1834 55%,#06102A 100%);color:#F1ECE2;justify-content:flex-end}
+.s::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,16,42,0) 60%,rgba(6,16,42,.55) 100%);pointer-events:none}
+.s>*{position:relative}.s .kap{color:var(--gold)}
+.s .kopfzeile{position:absolute;top:30px;left:0;right:0;max-width:none;padding:0 22px}
+.s .schein{position:absolute;left:50%;top:0;width:260px;height:260px;margin:-130px 0 0 -130px;max-width:none;border-radius:50%;background:radial-gradient(circle,rgba(246,207,90,.35) 0%,rgba(246,207,90,.12) 35%,rgba(246,207,90,0) 70%);animation:schein 6s ease-in-out infinite;pointer-events:none}
 .s .karte{background:rgba(1,18,42,.72);border:1px solid rgba(246,207,90,.25)}.s .reihe{border-color:rgba(246,207,90,.25)}
 .s .reihe small,.s p{color:#B9C4DA}.s p{margin:0 0 4px;font-size:14px;text-align:center}.s .p{color:var(--gold)}.s .cta{background:var(--gold);color:#3A2A00}
-.k{background:linear-gradient(180deg,#FBF8F2 0%,#F7F3EC 40%,#F7F3EC 100%)}
-.k h2{font-size:24px}
+.k h2{font-size:clamp(24px,3.2vw,30px)}
 .k .karte{background:var(--karte);border:1px solid var(--linie);padding-top:4px}
 .k .reihe{padding:8px 0}.k .reihe b{font-size:14px}.k .reihe .p{font-size:15px}
 .k .cta{background:var(--ink);color:var(--bg)}
-.k .zitat{margin:20px 0 0;font-family:var(--wort);font-size:16px;line-height:1.35;text-align:center}
-.fussklein{text-align:center;font-size:13px;color:var(--leise);padding:18px 16px calc(24px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--linie)}
+.k .zitat{margin:18px 0 0;font-family:var(--wort);font-size:16px;line-height:1.35;text-align:center}
+.fussklein{text-align:center;font-size:13px;color:var(--leise);padding:18px 16px calc(24px + env(safe-area-inset-bottom,0px));scroll-snap-align:end}
 .fussklein a{color:var(--leise)}
 @keyframes schein{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.12);opacity:1}}
-@media (prefers-reduced-motion:reduce){.s .schein{animation:none}.zeichen,.stern{transition:none}}
+@media (prefers-reduced-motion:reduce){html{scroll-snap-type:none}.s .schein{animation:none}.zeichen,.stern{transition:none}}
 </style>
 </head>
 <body>
 <div id="kopf"></div>
 
-<div class="zeichenleiste" id="zl" style="--g:0">
-<div class="rf">
+<div class="zeichenleiste" id="zl" style="--g:0;--p:1">
+<div class="rf" id="rf">
 <div class="zeichen r" data-maske="preise-leiste/R_maske.png"><img class="poster" src="preise-leiste/R_poster.png" alt="R aus Rasen und Erde"><canvas aria-hidden="true"></canvas><video muted loop playsinline autoplay preload="auto"><source src="preise-leiste/R.mp4" type="video/mp4"></video></div>
 <div class="zeichen amp" data-maske="preise-leiste/Und_maske.png"><div class="stern" aria-hidden="true"><svg viewBox="0 0 200 200"><defs><radialGradient id="sg"><stop offset="0" stop-color="#FFF8E1"/><stop offset=".22" stop-color="#F6CF5A" stop-opacity=".85"/><stop offset=".55" stop-color="#F6CF5A" stop-opacity=".22"/><stop offset="1" stop-color="#F6CF5A" stop-opacity="0"/></radialGradient><linearGradient id="st" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#F6CF5A" stop-opacity="0"/><stop offset=".5" stop-color="#FFF2C2" stop-opacity=".95"/><stop offset="1" stop-color="#F6CF5A" stop-opacity="0"/></linearGradient></defs><circle cx="100" cy="100" r="96" fill="url(#sg)"/><g fill="url(#st)"><rect x="2" y="98.6" width="196" height="2.8" rx="1.4"/><rect x="2" y="98.6" width="196" height="2.8" rx="1.4" transform="rotate(90 100 100)"/><rect x="18" y="99.2" width="164" height="1.6" rx=".8" transform="rotate(45 100 100)"/><rect x="18" y="99.2" width="164" height="1.6" rx=".8" transform="rotate(-45 100 100)"/></g></svg></div><img class="poster" src="preise-leiste/Und_poster.png" alt="Und-Zeichen aus Sand"><canvas aria-hidden="true"></canvas><video muted loop playsinline autoplay preload="auto"><source src="preise-leiste/Und.mp4" type="video/mp4"></video></div>
 <div class="zeichen f" data-maske="preise-leiste/F_maske.png"><img class="poster" src="preise-leiste/F_poster.png" alt="F aus Meer"><canvas aria-hidden="true"></canvas><video muted loop playsinline autoplay preload="auto"><source src="preise-leiste/F.mp4" type="video/mp4"></video></div>
 </div>
 </div>
 
-<div class="intro">
+<section class="voll auftakt" id="auftakt" data-welt=""><div class="hinweis">Scrollen</div></section>
+
+<section class="voll intro" id="intro" data-welt="">
 <h1>Zwei Welten.<br>Ein Preis je Schritt.</h1>
 <p>Grün für den Anfang. Blau für die raue See.</p>
-</div>
+</section>
 
-<section class="welt g" data-welt="g" id="gruen">
+<section class="voll g" data-welt="g" id="gruen">
 <div class="kap">Grüne Welt · das Land</div>
 <h2>Für den Anfang.</h2>
 <div class="karte">
@@ -106,7 +121,7 @@ section.welt>*{width:100%;max-width:560px}
 </div>
 </section>
 
-<section class="welt b" data-welt="b" id="blau">
+<section class="voll b" data-welt="b" id="blau">
 <div class="kap">Blaue Welt · das Meer</div>
 <h2>Bereit für die raue See.</h2>
 <div class="karte">
@@ -119,9 +134,8 @@ section.welt>*{width:100%;max-width:560px}
 </div>
 </section>
 
-<section class="welt s" data-welt="s" id="sternstunde">
+<section class="voll s" data-welt="s" id="sternstunde">
 <div class="kopfzeile"><div class="kap">Sternstunde · unser größter Schatz</div><h2>Eine Stunde im 21. Stock.</h2></div>
-<div class="schein" aria-hidden="true"></div>
 <div class="karte">
 <p>Für Kinder von 6 bis 9 Jahren, mit einem Erwachsenen.</p>
 <div class="reihe"><div><b>Der Geldbaum</b><small>60 Minuten</small></div><div class="p">kostenlos</div></div>
@@ -129,7 +143,7 @@ section.welt>*{width:100%;max-width:560px}
 </div>
 </section>
 
-<section class="welt k" data-welt="k" id="alle">
+<section class="voll k" data-welt="k" id="alle">
 <h2>Alle Preise auf einen Blick.</h2>
 <div class="karte">
 <div class="reihe"><b>Geldtag</b><span class="p">289 €</span></div>
@@ -149,12 +163,35 @@ section.welt>*{width:100%;max-width:560px}
 <script src="seite.js"></script>
 <script>
 (function(){
-  /* Höhe des Website-Kopfs messen, damit die Zeichenleiste exakt darunter klebt */
-  var zl=document.getElementById('zl');
-  function kopf(){var k=document.querySelector('header.leiste');if(k)document.documentElement.style.setProperty('--kopf',k.getBoundingClientRect().height+'px');}
-  /* Lebende Zeichen: Clip auf Canvas zeichnen und mit der Form des Standbilds ausschneiden */
+  var H=document.documentElement,zl=document.getElementById('zl'),auftakt=document.getElementById('auftakt');
+  var M={kopf:52,klein:136,gross:300,vh:800};
+  /* Maße: Kopf der Website, kleine und große Zeichengröße, Bildschirmhöhe */
+  function mass(){
+    var k=document.querySelector('header.leiste');M.kopf=k?k.getBoundingClientRect().height:52;
+    M.vh=innerHeight;var w=innerWidth;
+    M.klein=w>=700?172:Math.round(Math.min(150,(w-24)/1.9));
+    M.gross=Math.round(Math.min((w-24)/1.9,(M.vh-M.kopf)*.5,420));
+    var leisteK=10+M.klein+8;
+    H.style.setProperty('--kopf',M.kopf+'px');H.style.setProperty('--leisteK',leisteK+'px');H.style.setProperty('--vh',M.vh+'px');
+    roll();
+  }
+  /* Auftakt: p = 1 ganz oben (Zeichen groß, mittig), p = 0 wenn der Auftakt weggescrollt ist */
+  function roll(){
+    var hoehe=auftakt.offsetHeight||1,p=Math.max(0,Math.min(1,1-scrollY/(hoehe*.9)));
+    var s=M.klein+(M.gross-M.klein)*p;
+    var frei=M.vh-M.kopf,pad=10+p*Math.max(0,(frei-s)/2-10);
+    zl.style.setProperty('--gr',s.toFixed(1)+'px');zl.style.setProperty('--pad',pad.toFixed(1)+'px');zl.style.setProperty('--p',p.toFixed(3));
+    zl.style.setProperty('--fade',p>.02?0:1);
+    /* Welt unter der Leiste */
+    /* aktiv ist die Welt, die die Mitte der freien Fläche bedeckt; eingerastet (Oberkante an der Leiste) heißt g = 1 */
+    var lb=M.kopf+10+M.klein+8,halb=(M.vh-lb)/2,mitte=lb+halb,best=null,g=0;
+    [].forEach.call(document.querySelectorAll('section[data-welt]'),function(sec){var r=sec.getBoundingClientRect();if(r.top<=mitte&&r.bottom>mitte){best=sec;g=Math.min(1,Math.max(0,(mitte-r.top)/halb));}});
+    var w=best?best.getAttribute('data-welt'):'';if(w==='k')w='';
+    zl.setAttribute('data-welt',w);zl.style.setProperty('--g',(w?g:0).toFixed(3));
+  }
+  /* Lebende Zeichen: Clip auf Canvas, mit der Form des Standbilds ausgeschnitten */
   [].forEach.call(document.querySelectorAll('.zeichen'),function(el){
-    var v=el.querySelector('video'),c=el.querySelector('canvas'),p=el.querySelector('img.poster'),m=new Image(),ctx=c.getContext('2d'),N=360,an=false;
+    var v=el.querySelector('video'),c=el.querySelector('canvas'),p=el.querySelector('img.poster'),m=new Image(),ctx=c.getContext('2d'),N=720,an=false;
     c.width=N;c.height=N;
     function zeichne(){
       if(v.readyState>=2&&!v.paused){ctx.clearRect(0,0,N,N);ctx.drawImage(v,0,0,N,N);ctx.globalCompositeOperation='destination-in';ctx.drawImage(m,0,0,N,N);ctx.globalCompositeOperation='source-over';if(!an){an=true;p.style.visibility='hidden';}}
@@ -165,16 +202,8 @@ section.welt>*{width:100%;max-width:560px}
     var start=function(){v.play().catch(function(){});};
     start();document.addEventListener('touchstart',start,{once:true,passive:true});document.addEventListener('click',start,{once:true});
   });
-  var secs=[].slice.call(document.querySelectorAll('section[data-welt]'));
-  function roll(){
-    var lb=zl.getBoundingClientRect().bottom,best=null,g=0;
-    secs.forEach(function(s){var r=s.getBoundingClientRect();if(r.top<=lb+30&&r.bottom>lb+30){best=s;g=Math.min(1,Math.max(0,(lb+30-r.top)/200));}});
-    var w=best?best.getAttribute('data-welt'):'';
-    zl.setAttribute('data-welt',w==='k'?'':w);
-    zl.style.setProperty('--g',(w==='k'?0:g).toFixed(3));
-  }
-  addEventListener('scroll',roll,{passive:true});addEventListener('resize',function(){kopf();roll();});
-  kopf();roll();setTimeout(function(){kopf();roll();},80);
+  addEventListener('scroll',roll,{passive:true});addEventListener('resize',mass);
+  mass();setTimeout(mass,80);setTimeout(mass,600);
 })();
 </script>
 </body>
