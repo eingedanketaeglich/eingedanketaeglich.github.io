@@ -55,7 +55,9 @@
   function starteLaden(){if(geladen)return;geladen=true;vid.preload='auto';vid.src=C.video;vid.load();kL=holeLeisten('bilder/szene/klein_leiste2/l_',KLEIN_N);}
 
   var B={x:0,y:0,w:0,h:0};
-  function groesse(){var W=st.clientWidth,H=st.clientHeight,r=C.w/C.h;var bw=Math.min(W,H*r),bh=bw/r;if(bh>H){bh=H;bw=bh*r;}
+  /* Simon 05.11. (Vorbild Apple): Die Bühne füllt den Bildschirm bis an beide Ränder, Sparky läuft vom Bildschirmrand herein.
+     Vorher passte sie hinein (contain) und ließ links und rechts Weiß; jetzt deckt sie ab (cover), oben und unten liegt im Clip ohnehin Weiß. */
+  function groesse(){var W=st.clientWidth,H=st.clientHeight,r=C.w/C.h;var bw=Math.max(W,H*r),bh=bw/r;if(bh<H){bh=H;bw=bh*r;}
     B={x:(W-bw)/2,y:(H-bh)/2+(modus==='quer'?H*.03:0),w:bw,h:bh};bu.style.width=bw+'px';bu.style.height=bh+'px';
     var kr=kcv.getBoundingClientRect();kcv.width=Math.round((kr.width||400)*DPR);kcv.height=Math.round((kr.height||225)*DPR);kGezeigt=-1;zeige(p);}
 
