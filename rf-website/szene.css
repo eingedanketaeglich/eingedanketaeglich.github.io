@@ -47,3 +47,11 @@
 /* Fassung 5 (Simon 01.11.2026): scharfe Bildschirm-Ebene beim Flug ins Handy */
 .fs-scharf{position:absolute;z-index:3;left:0;top:0;opacity:0;pointer-events:none;background:#F5F1EA;display:grid;place-items:center;border-radius:12%/5.6%}
 .fs-scharf svg{width:24%;height:auto}
+
+/* Fassung 7 (Simon 05.11.2026): der Lauf ist ein echtes Video, das ab der Szene von selbst einmal abläuft (wie bei Apple),
+   ohne sichtbares Videosymbol. Leichte Aufhellung hebt das Video-Weiß (253–255) auf das Seiten-Weiß, sonst ahnt man einen Kasten. */
+.fs-szene{height:calc(100svh - 52px + 50svh)}
+.fs-buehne video{position:absolute;inset:0;width:100%;height:100%;display:block;object-fit:cover;background:#FFFFFF;filter:brightness(1.025);pointer-events:none}
+.fs-buehne video::-webkit-media-controls,.fs-buehne video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
+/* Weniger Bewegung: gleich der Schlusszustand, ein Bildschirm hoch (height:auto liesse die Bühne zusammenfallen, alles darin ist absolut gesetzt) */
+@media (prefers-reduced-motion:reduce){.fs-szene{height:calc(100svh - 52px)}.fs-sticky{position:sticky;height:calc(100svh - 52px)}}
