@@ -155,12 +155,13 @@ section.welt>*{width:100%;max-width:560px}
   /* Lebende Zeichen: Clip auf Canvas zeichnen und mit der Form des Standbilds ausschneiden */
   [].forEach.call(document.querySelectorAll('.zeichen'),function(el){
     var v=el.querySelector('video'),c=el.querySelector('canvas'),p=el.querySelector('img.poster'),m=new Image(),ctx=c.getContext('2d'),N=360,an=false;
-    c.width=N;c.height=N;m.src=el.getAttribute('data-maske');
+    c.width=N;c.height=N;
     function zeichne(){
       if(v.readyState>=2&&!v.paused){ctx.clearRect(0,0,N,N);ctx.drawImage(v,0,0,N,N);ctx.globalCompositeOperation='destination-in';ctx.drawImage(m,0,0,N,N);ctx.globalCompositeOperation='source-over';if(!an){an=true;p.style.visibility='hidden';}}
       requestAnimationFrame(zeichne);
     }
     m.onload=function(){requestAnimationFrame(zeichne);};
+    m.src=el.getAttribute('data-maske');if(m.complete&&m.naturalWidth)requestAnimationFrame(zeichne);
     var start=function(){v.play().catch(function(){});};
     start();document.addEventListener('touchstart',start,{once:true,passive:true});document.addEventListener('click',start,{once:true});
   });
