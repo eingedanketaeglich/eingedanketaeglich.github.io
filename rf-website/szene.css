@@ -55,3 +55,11 @@
 .fs-buehne video::-webkit-media-controls,.fs-buehne video::-webkit-media-controls-start-playback-button{display:none!important;-webkit-appearance:none}
 /* Weniger Bewegung: gleich der Schlusszustand, ein Bildschirm hoch (height:auto liesse die Bühne zusammenfallen, alles darin ist absolut gesetzt) */
 @media (prefers-reduced-motion:reduce){.fs-szene{height:calc(100svh - 52px)}.fs-sticky{position:sticky;height:calc(100svh - 52px)}}
+
+/* Simons iPhone-Test 05.11.2026:
+   1. Die Kamera-Insel hatte feste Pixelmaße (27 px hoch, 21 px von oben) und lag im verkleinerten Handy groß mitten in der App.
+      Jetzt in Anteilen wie beim iPhone (126 × 37 Punkte, 11 Punkte vom Rand): klein, oben zwischen Uhrzeit und Netzanzeige.
+   2. Der Startbildschirm mit dem Flammen-Logo lag nach dem Ausblenden unsichtbar über der App und fing jedes Tippen ab.
+      Er lässt Berührungen jetzt durch, die App ist bedienbar. */
+.fs-tel .telefon .insel{top:1.3%;height:4.4%;width:32%;border-radius:999px}
+.fs-splash{pointer-events:none}
