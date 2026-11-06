@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Blaue Welt · Präsenz-Zirkel · R&amp;F Institut</title>
+<title>R&amp;F Institut für Vermögenskompetenz</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
 <link rel="stylesheet" href="stil.css">
 <link rel="stylesheet" href="start.css">
@@ -18,65 +18,56 @@
   .zirkel-v1 .tag b{color:#102444}
   .zirkel-v1 .zusatz{color:var(--text2);margin:0}
   @media (max-width:860px){.zirkel-v1 .w-schritt{min-height:56svh}}
+
+  /* Module (Simon 06.11.2026, neue Weltstruktur) */
+  .module{display:grid;gap:8px;margin:4px 0 2px}
+  .modul-z{display:grid;grid-template-columns:38px minmax(0,1fr);gap:12px;align-items:start;padding:12px 14px;border-radius:12px;background:#F3F5F8}
+  .modul-z .nr{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:900;font-size:.85rem;color:#FFFFFF;background:var(--modul,#2A5698)}
+  .modul-z b{display:block;color:#14202E;line-height:1.3}
+  .modul-z p{margin:3px 0 0;color:#46505E;font-size:.95rem;line-height:1.45}
+  .modul-z small{display:block;margin-top:5px;color:#46505E;font-size:.8rem;line-height:1.4}
+  .modul-z .betont{color:var(--modul,#2A5698);font-weight:800}
+  .anrechnung{color:var(--text2);margin:0;font-size:.92rem}
 </style>
 </head>
 <body>
 <div class="innen">
 <div id="kopf"></div>
-<!-- Quelle aller Inhalte: „R&F Präsenz-Ladder“ (11.10.2026), „Flyer Präsenz-Zirkel“, „Wegweiser Verkaufsgespräch“ -->
+<!-- Quelle der Angebote: Simons Vorlage „Blaue Welt · Module A–D“ (06.11.2026); Raum, Mentoring, Continuum aus „R&F Präsenz-Ladder“ (11.10.2026) -->
 <main>
 <section class="welt-held blau">
   <img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum in der 21. Etage zur blauen Stunde" fetchpriority="high">
   <div class="inhalt">
-    <span class="mono">Blaue Welt · Präsenz-Zirkel · Herbst 2026</span>
-    <h1>Börse lernen. Nach eigenen Regeln.</h1>
-    <p class="lede">Zwei Tage im 21. Stock des WINX-Towers, direkt am Main. Höchstens 12 Plätze im Raum und 24 live online. Danach dein eigener Weg.</p>
-    <div class="sprung"><a href="#grundlagen">Grundlagen-Tag</a><a href="#zirkel">Zirkel</a><a href="#mentoring">Mentoring</a><a href="#raum">Der Raum</a></div>
+    <span class="mono">R&amp;F Institut für Vermögenskompetenz</span>
+    <h1>Vermögen verstehen&nbsp;– selbstbestimmt agieren.</h1>
+    <p class="lede">Von Vermögensfragen über Finanzwissen zur Beratung auf Augenhöhe. Im 21. Stock des WINX-Towers, direkt am Main. Höchstens 12 Plätze im Raum und 24 live online.</p>
+    <div class="sprung"><a href="#investment">Investment Zirkel</a><a href="#rainmaker">Rainmaker Zirkel</a><a href="#mentoring">Mentoring</a><a href="#raum">Der Raum</a></div>
   </div>
 </section>
 
 <!-- Wechsler: drei Zeitebenen -->
-<section class="ab" id="wege">
-  <div class="ab-kopf"><span class="mono">Drei Wege, drei Zeitebenen</span><h2>Vom Überblick bis zum 5-Minuten-Chart.</h2><p>Präsenz jeweils 9:30–17:00 Uhr mit Mittagessen. Online live zuschauen, Fragen am Ende.</p></div>
+<section class="ab" id="investment">
+  <div class="ab-kopf"><span class="mono">Investment Zirkel · 1 Tag · 2 Module à 3 Stunden</span><h2>Der nächste Schritt für dein Vermögen.</h2><p>Finanzwissen anwenden. Kontrolliert nach festen Regeln handeln.</p></div>
   <div class="wechsler">
     <div class="w-bilder"><img src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungstisch am Morgen" loading="lazy"><img src="bilder/web/02_skyline_goldene-stunde_16x9.jpg" alt="Skyline durchs Eckfenster" loading="lazy"><img src="bilder/web/03_skyline_blaue-stunde_16x9.jpg" alt="Skyline zur blauen Stunde" loading="lazy"><span class="w-titel"></span></div>
     <div class="w-schritte">
-      <article class="w-schritt" id="grundlagen" data-titel="Grundlagen-Tag · 1 Tag">
-        <span class="mono">1 Tag · Einstieg ohne Vorkenntnis · über allen Zeitebenen</span><h3>Grundlagen-Tag</h3>
-        <p>Lerne Investment, Börsenhandel, Optionen und Strategie im Zusammenhang kennen. Buchst du innerhalb von 6 Monaten einen Zirkel, wird der Grundlagen-Tag voll angerechnet.</p>
-        <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>479 €</strong><small>mit Mittagessen</small></div><div class="preis"><span>Live online</span><strong>249 €</strong><small>Fragen am Ende</small></div></div>
-      </article>
-      <article class="w-schritt" data-titel="Investment-Zirkel · 14./15.11.">
-        <span class="mono">2 Tage · aktiver Anleger · Jahres-, Quartals-, Monatschart</span><h3>Investment-Zirkel</h3>
-        <p>Lerne, langfristiges Vermögen nach eigenen Regeln zu steuern und zu begründen, warum ein Unternehmen ins Depot gehört und ein anderes nicht.</p>
-        <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>1.990 €</strong><small>mit deiner persönlichen App</small></div><div class="preis"><span>Live online</span><strong>999 €</strong><small>Fragen am Ende</small></div></div>
-      </article>
-      <article class="w-schritt" data-titel="RainMaker-Zirkel · 28./29.11.">
-        <span class="mono">2 Tage · RainMaker · Wochen- bis 5-Minuten-Chart</span><h3>RainMaker-Zirkel</h3>
-        <p>Lerne kurzfristigen Börsenhandel nach einem selbst geschriebenen Regelwerk, mit festem Risikobudget und wiederholbaren Strategien mit Erfolgskontrolle.</p>
-        <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>2.390 €</strong><small>mit deiner persönlichen App</small></div><div class="preis"><span>Live online</span><strong>1.190 €</strong><small>Fragen am Ende</small></div></div>
-      </article>
+      <article class="w-schritt" data-titel="Modul A"><span class="mono">Modul A · 3-Stunden-Workshop · einzeln buchbar</span><div class="module"><div class="modul-z"><span class="nr">A</span><div><b>Dein Maßstab für Investition und Beratung</b><p>Rendite, Risiko, Kosten und Zeithorizont. Deine persönliche Anlagestrategie und Werkzeuge ausprobieren. Erhalte fundiertes Feedback und gute Fragen für dein nächstes Beratungsgespräch.</p></div></div></div><div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>299&nbsp;€</strong><small>inkl. Getränke und Snacks</small></div><div class="preis"><span>Live online</span><strong>199&nbsp;€</strong><small>Fragen am Ende</small></div></div><p class="anrechnung">Zubuchbar: Firestarter-App für 149&nbsp;€.</p></article>
+      <article class="w-schritt" data-titel="Modul B"><span class="mono">Modul B</span><div class="module"><div class="modul-z"><span class="nr">B</span><div><b>Zwei langfristige Börsenstrategien mit kontrolliertem Risiko und Ertrag</b><p>Klare Handelsregeln, erkenne Trends und trainiere strukturierte Risikokontrolle mit zwei langfristig profitablen Handelsstrategien.</p></div></div></div></article>
+      <article class="w-schritt" data-titel="Investment · A + B"><span class="mono">Investment · Module A + B · 1 Tag</span><h3>Der ganze Tag.</h3><div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>890&nbsp;€</strong><small>inkl. Mittagessen, Getränke und Snacks</small></div><div class="preis"><span>Live online</span><strong>429&nbsp;€</strong><small>Fragen am Ende</small></div></div><p class="anrechnung">Firestarter-App kostenlos dazu. Persönliche App: 199&nbsp;€ auf Bestellung, nur buchbar, wenn du den ersten Tag komplett besucht hast.</p></article>
     </div>
   </div>
 </section>
 
-<!-- Zirkel: Variante 1 „Bildwechsel“ (Simons Wahl 29.10.2026, Zirkel-Mockup) -->
-<section class="ab welt-ab blau zirkel-v1" id="zirkel">
-      <div class="ab-kopf"><span class="mono">Die Zirkel · zwei Wochenenden im 21. Stock</span><h2>Ein Wochenende pro Weg. Oder beide.</h2></div>
+<!-- Rainmaker: Variante 1 „Bildwechsel“ (Simons Wahl 29.10.2026, Zirkel-Mockup) -->
+<section class="ab welt-ab blau zirkel-v1" id="rainmaker">
+      <div class="ab-kopf"><span class="mono">Rainmaker Zirkel · optional · 1 Tag · 2 Module</span><h2>Vier profitable Börsenstrategien für dein Vermögen – Anwendung in jeder Marktlage.</h2></div>
       <div class="wechsler" >
-        <div class="w-bilder"><img class="an" src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungsraum am Morgen"><img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum zur blauen Stunde"><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm"><span class="w-titel">Investment-Zirkel · 14.–15. Nov</span></div>
+        <div class="w-bilder"><img class="an" src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungsraum am Morgen"><img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum zur blauen Stunde"><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm"><span class="w-titel">Modul C</span></div>
         <div class="w-schritte">
-          <article class="w-schritt an" data-titel="Investment-Zirkel · 14.–15. Nov"><span class="mono">Sa 14. und So 15. November 2026 · 9:30–17:00</span><h3>Investment-Zirkel</h3>
-            <div class="tage"><div class="tag"><b>Tag 1</b><span>Bewertung, Portfolio-Bildung, zwei Strategien</span></div><div class="tag"><b>Tag 2</b><span>Marktanomalien, 13F-Meldungen, Short Call auf gehaltene Aktien, Short Put für rabattierte Käufe</span></div></div>
-            <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>1.990 €</strong><small>persönliche App inklusive</small></div><div class="preis"><span>Live online</span><strong>999 €</strong><small>Fragen am Ende</small></div></div>
-            <p class="zusatz">Zu zweit im Raum: 3.290 € für beide.</p></article>
-          <article class="w-schritt" data-titel="RainMaker-Zirkel · 28.–29. Nov"><span class="mono">Sa 28. und So 29. November 2026 · 9:30–17:00</span><h3>RainMaker-Zirkel</h3>
-            <div class="tage"><div class="tag"><b>Tag 1</b><span>Swing: Trend, Bewegung, Nachrichten</span></div><div class="tag"><b>Tag 2</b><span>Futures in kleinster Größe und BOX-Handel, mit Risiko vorab berechnet</span></div></div>
-            <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>2.390 €</strong><small>persönliche App inklusive</small></div><div class="preis"><span>Live online</span><strong>1.190 €</strong><small>Fragen am Ende</small></div></div>
-            <p class="zusatz">Zu zweit im Raum: 3.990 € für beide.</p></article>
-          <article class="w-schritt" data-titel="Beide Zirkel im Paket"><span class="mono">Beide Wege · beide Zeitebenen</span><h3>Beide Wochenenden im Paket.</h3><p>Investment-Zirkel und RainMaker-Zirkel zusammen. Im Raum mit einer persönlichen App für beide Zirkel.</p>
-            <div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>3.890 €</strong><small>einzeln zusammen 4.380 €</small></div><div class="preis"><span>Live online</span><strong>1.990 €</strong><small>einzeln zusammen 2.189 €</small></div></div></article>
-          <article class="w-schritt" data-titel="Deine persönliche App"><span class="mono">Nur in den Präsenz-Zirkeln</span><h3>Deine persönliche App.</h3><p>Eigens für dich programmiert, mit eigenem Aussehen. Im Vorgespräch klären wir deine aktuelle Frage. Läuft auf Handy, Tablet und Computer. Übergabe an Tag 2, 2 Monate App-Pflege inklusive.</p><a class="knopf erst" href="kontakt.html" style="justify-self:start">Platz anfragen</a></article>
+          <article class="w-schritt an" data-titel="Modul C"><span class="mono">Modul C</span><div class="module"><div class="modul-z"><span class="nr">C</span><div><b>Vom Kursbild zur nachhaltigen Strategie</b><p>Erkenne die Struktur profitabler Börsenstrategien in unterschiedlichen Zeithorizonten. Klare Ein- und Ausstiege ohne komplizierte Indikatoren. Aktiviere deine Risikokontrolle.</p></div></div></div></article>
+          <article class="w-schritt" data-titel="Modul D"><span class="mono">Modul D</span><div class="module"><div class="modul-z"><span class="nr">D</span><div><b>Vier Börsenstrategien im Praxistest</b><p>Wie sie umgesetzt werden, warum sie nachhaltig funktionieren und welchen Einfluss dein Mindset auf die Ergebnisse hat, trainierst du mit uns im Simulator.</p></div></div></div></article>
+          <article class="w-schritt" data-titel="Rainmaker · C + D"><span class="mono">Rainmaker · Module C + D · 1 Tag · separat buchbar</span><h3>Der ganze Tag.</h3><div class="preise"><div class="preis haupt"><span>Im Raum</span><strong>1.049&nbsp;€</strong><small>nur für Teilnehmer des ersten Tages</small></div><div class="preis haupt"><span>Im Raum</span><strong>1.249&nbsp;€</strong><small>nach Vorgespräch für neue Teilnehmer</small></div></div><p class="zusatz">Vor Ort inkl. Mittag- und Abendessen, Getränke und Snacks, inklusive persönlicher App. Firestarter-App kostenlos dazu.</p><p class="zusatz">Online 429&nbsp;€. Persönliche App 199&nbsp;€ zubuchbar – nur, wenn du vorher den ersten ganzen Tag online besucht hast.</p></article>
+          <article class="w-schritt" data-titel="Deine persönliche App"><span class="mono">Nur in den Zirkeln</span><h3>Deine persönliche App.</h3><p>Eigens für dich programmiert, mit eigenem Aussehen. Im Vorgespräch klären wir deine aktuelle Frage. Läuft auf Handy, Tablet und Computer.</p><p class="zusatz">Im Rainmaker Zirkel vor Ort inklusive. Sonst 199&nbsp;€, wenn du den ersten Tag komplett besucht hast.</p><a class="knopf erst" href="kontakt.html" style="justify-self:start">Platz anfragen</a></article>
         </div>
       </div>
     </section>
@@ -85,8 +76,8 @@
 <section class="ab welt-ab blau" id="mentoring" style="background:#0A1830">
   <div class="ab-kopf"><span class="mono">Anschluss · auf jeder Zeitebene möglich</span><h2>Deine eigene Strategie, an deinen eigenen Zahlen.</h2><p>Nach den Zirkeln geht es im Mentoring weiter: allein mit René oder zu zweit im Tandem.</p></div>
   <div class="anschluss">
-    <article class="angebot"><span class="dauer">zu zweit · je Person</span><h3>Tandem-Mentoring</h3><strong class="gross">8.500 €</strong><p>Dieselbe Ausbildung wie im Einzelmentoring, mit einer zweiten Perspektive neben dir und getrennten eigenen Ergebnissen.</p></article>
-    <article class="angebot"><span class="dauer">allein · mit René</span><h3>1:1-Mentoring</h3><strong class="gross">12.000 €</strong><p>Die eigene Strategie in sechs Zyklen bis zur Anwendungsreife ausarbeiten, an den eigenen Zahlen, nicht an Beispielen.</p></article>
+    <article class="angebot"><span class="dauer">zu zweit · je Person</span><h3>Tandem-Mentoring</h3><strong class="gross">8.500&nbsp;€</strong><p>Dieselbe Ausbildung wie im Einzelmentoring, mit einer zweiten Perspektive neben dir und getrennten eigenen Ergebnissen.</p></article>
+    <article class="angebot"><span class="dauer">allein · mit René</span><h3>1:1-Mentoring</h3><strong class="gross">12.000&nbsp;€</strong><p>Die eigene Strategie in sechs Zyklen bis zur Anwendungsreife ausarbeiten, an den eigenen Zahlen, nicht an Beispielen.</p></article>
     <article class="angebot"><span class="dauer">für Absolventen</span><h3>Continuum</h3><strong class="gross" style="font-size:1.3rem">App-Pflege</strong><p>Updates und eine neue Funktion je Quartal für deine persönliche App. Die ersten 2 Monate nach dem Zirkel sind inklusive, danach als eigener Vertrag.</p></article>
   </div>
   <div class="kopf-knoepfe" style="margin-top:22px"><a class="knopf erst" href="kontakt.html">Erstgespräch anfragen</a></div>

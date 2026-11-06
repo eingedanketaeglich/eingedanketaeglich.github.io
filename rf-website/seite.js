@@ -15,7 +15,7 @@
   /* ---------- Kopf und Fuß ---------- */
   /* Simon 29.10. (Gesprächsrunde Punkt 3+4): Firestarter-App zuerst, Goldene Welt heißt Sternstunde,
      „Über uns“ klappt an der Institutszeile aus und steht im Fuß */
-  var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','Grüne Welt'],['welt-blau.html','Blaue Welt'],['kinder.html','Sternstunde'],['preise.html','Preise'],['kontakt.html','Kontakt']];
+  var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','R&amp;F Akademie'],['welt-blau.html','R&amp;F Institut'],['kinder.html','Sternstunde'],['preise.html','Preise'],['kontakt.html','Kontakt']];
   function link(h){return h+zusatz;}
   var WER_SATZ='Wer wir sind, ist eigentlich nicht das Wichtigste. Wichtig ist, welches Problem wir für dich lösen.';
   /* Vorschau beim Überfahren der Kopfleiste (Simon 01.11.2026): Bild je Menüpunkt, Stile in effekte.css und sternstunde/rahmen.css */
@@ -25,7 +25,7 @@
     'kinder.html':'<span class="vs vs-stern" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3l6.2 13.2 14.5 1.7-10.7 9.9 2.9 14.3L24 34.9 11.1 42.1 14 27.8 3.3 17.9l14.5-1.7z" fill="#F6CF5A" stroke="#FFF3C4" stroke-width="2" stroke-linejoin="round"/></svg></span>'};
   var kopf=document.getElementById('kopf');
   if(kopf){
-    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F Institut für Vermögensbildung, Startseite"><b>R&amp;F</b><small class="marke-mehr">Institut für Vermögensbildung</small></a>'+
+    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F, Startseite"><b>R&amp;F</b></a>'+
       '<div class="wer-fenster" id="wer-fenster" hidden></div></div>'+
       '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+(VS[m[0]]||'')+'</a>'}).join('')+'</nav>'+
       '<a class="knopf" href="'+link('preise.html')+'">Termine &amp; Preise</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';
@@ -33,11 +33,11 @@
   var fuss=document.getElementById('fuss');
   if(fuss){
     fuss.outerHTML='<footer class="fuss"><div class="gross" aria-label="R&amp;F"><b>R&amp;F</b></div><div class="fuss-spalten">'+
-      '<div><b>Grüne Welt</b><a href="'+link('welt-gruen.html')+'#geldtag">Geldtag</a><a href="'+link('welt-gruen.html')+'#wochenende">Wissenswochenende</a></div>'+
-      '<div><b>Blaue Welt</b><a href="'+link('welt-blau.html')+'#grundlagen">Grundlagen-Tag</a><a href="'+link('welt-blau.html')+'#zirkel">Investment-Zirkel</a><a href="'+link('welt-blau.html')+'#zirkel">RainMaker-Zirkel</a><a href="'+link('welt-blau.html')+'#mentoring">Mentoring</a><a href="'+link('start.html')+'#webinar">Webinar</a></div>'+
+      '<div><b>R&amp;F Akademie</b><a href="'+link('welt-gruen.html')+'#erster-tag">Dein erster Tag</a><a href="'+link('welt-gruen.html')+'#investmenttag">Investmenttag</a><a href="'+link('welt-gruen.html')+'#boersentag">Börsentag</a></div>'+
+      '<div><b>R&amp;F Institut</b><a href="'+link('welt-blau.html')+'#investment">Investment Zirkel</a><a href="'+link('welt-blau.html')+'#rainmaker">Rainmaker Zirkel</a><a href="'+link('welt-blau.html')+'#mentoring">Mentoring</a><a href="'+link('start.html')+'#webinar">Webinar</a></div>'+
       '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Sternstunde</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('ueber-uns.html')+'">Über uns</a><a href="'+link('preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
       '<div><b>Rechtliches</b><a href="'+link('recht.html')+'#impressum">Impressum</a><a href="'+link('recht.html')+'#datenschutz">Datenschutz</a><a href="'+link('recht.html')+'#agb">AGB</a></div></div>'+
-      '<div class="fuss-unten"><span class="mono">R&amp;F · Institut für Vermögensbildung · Frankfurt am Main</span><span>Bildung, keine Anlageberatung · info@rf-institut.de</span></div></footer>';
+      '<div class="fuss-unten"><span class="mono">R&amp;F · Frankfurt am Main</span><span>Bildung, keine Anlageberatung · info@rf-institut.de</span></div></footer>';
   }
   /* Interne Links tragen ?entwurf / ?v weiter */
   if(zusatz)document.querySelectorAll('main a[href$=".html"],main a[href*=".html#"]').forEach(function(a){var h=a.getAttribute('href');if(/^https?:/.test(h)||h.indexOf('?')>=0)return;var t=h.split('#');a.setAttribute('href',t[0]+zusatz+(t[1]?'#'+t[1]:''));});
