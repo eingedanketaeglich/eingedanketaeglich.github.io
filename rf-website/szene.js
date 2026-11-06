@@ -13,9 +13,10 @@
    Tippt jemand in die App, hören die Sprechblasen auf zu wechseln und der Schluss steht. */
 (function(){
   var KLEIN_N=241,K=6;
+  /* Simon 06.11.: Handy im Schlussbild größer (Mac 0,80→0,90, Handy 0,52→0,58 der Bühnenhöhe) */
   var CFG={
-    quer:{video:'bilder/szene/lauf_quer.mp4',poster:'bilder/szene/lauf_quer_poster.jpg',still:'bilder/szene/schluss_quer.jpg',w:16,h:9,handy:[.6315,.3984,.6904,.6126],zielH:.80,zielX:.64,zielY:.53},
-    hoch:{video:'bilder/szene/lauf_hoch.mp4',poster:'bilder/szene/lauf_hoch_poster.jpg',still:'bilder/szene/schluss_hoch.jpg',w:9,h:16,handy:[.7656,.5453,.8978,.6898],zielH:.52,zielX:.5,zielY:.635}
+    quer:{video:'bilder/szene/lauf_quer.mp4',poster:'bilder/szene/lauf_quer_poster.jpg',still:'bilder/szene/schluss_quer.jpg',w:16,h:9,handy:[.6315,.3984,.6904,.6126],zielH:.90,zielX:.64,zielY:.53},
+    hoch:{video:'bilder/szene/lauf_hoch.mp4',poster:'bilder/szene/lauf_hoch_poster.jpg',still:'bilder/szene/schluss_hoch.jpg',w:9,h:16,handy:[.7656,.5453,.8978,.6898],zielH:.58,zielX:.5,zielY:.605}
   };
   var PUNKTE=[
     {ab:.66,tab:'start',t:'In der App lernst du in <b>Lektionen von sechs Minuten</b>: Video, Aufgabe, Anker.'},
@@ -108,10 +109,14 @@
   function zurueck(){zustand='warten';vid.pause();try{vid.currentTime=0}catch(e){}appAngefasst=false;letzterPunkt=-2;setze(0);}
   vid.addEventListener('ended',fahrtStarten);
   vid.addEventListener('error',function(){if(zustand==='lauf')fahrtStarten();});
-  /* Hängt das Video (Netz), nicht ewig warten: nach 12 s geht es mit dem Schlussbild weiter */
-  var waechter=0;
+  /* Hängt das Video (Netz), nicht ewig warten: nach 12 s ohne Start geht es mit dem Schlussbild weiter.
+     Simon 06.11.: Es hing auch mitten im Lauf. Steht das Bild 2,5 s still, obwohl das Video laufen soll, geht es ebenfalls weiter. */
+  var waechter=0,letzteZeit=-1,stehtSeit=0;
   function lauf(){var jetzt=performance.now();
-    if(zustand==='lauf'){if(!waechter)waechter=jetzt;if(jetzt-waechter>12000&&vid.currentTime<.5)fahrtStarten();}else waechter=0;
+    if(zustand==='lauf'){if(!waechter)waechter=jetzt;if(jetzt-waechter>12000&&vid.currentTime<.5)fahrtStarten();
+      if(sichtbar&&vid.currentTime>.3){if(vid.currentTime!==letzteZeit){letzteZeit=vid.currentTime;stehtSeit=jetzt;}else if(jetzt-stehtSeit>2500)fahrtStarten();}
+      if(vid.duration&&vid.currentTime>=vid.duration-.05)fahrtStarten();}
+    else{waechter=0;letzteZeit=-1;}
     if(zustand==='fahrt'){var z=PLAN[planI],t=(jetzt-planT0)/(z[2]*1000);
       if(t>=1){setze(z[1]);planI++;planT0=jetzt;if(planI>=PLAN.length)zustand='fertig';}
       else setze(z[0]+(z[1]-z[0])*(z[3]?weich(t):t));}
@@ -123,16 +128,16 @@
   function angefasst(){if(appAngefasst)return;appAngefasst=true;if(zustand==='fahrt'||zustand==='lauf'){zustand='fertig';vid.pause();setze(ENDE);}}
   app.addEventListener('load',function(){appFuellen();try{var d=app.contentDocument;d.addEventListener('pointerdown',angefasst,true);d.addEventListener('touchstart',angefasst,{capture:true,passive:true});}catch(e){}});
 
-  /* ---------- Sichtbarkeit: Start bei 60 %, Pause außerhalb, Rückweg nach oben setzt zurück ---------- */
+  /* ---------- Sichtbarkeit: Start erst, wenn die Szene fast ganz im Bild steht (Simon 06.11.: bei 60 % lief Sparky am Handy schon, bevor man ihn sah), Pause außerhalb, Rückweg nach oben setzt zurück ---------- */
   if('IntersectionObserver' in window){
     new IntersectionObserver(function(es){if(es[0].isIntersecting)starteLaden();},{rootMargin:'150% 0px'}).observe(sek);
     new IntersectionObserver(function(es){var e=es[0];sichtbar=e.intersectionRatio>0;
-      if(e.intersectionRatio>=.6){if(zustand==='warten')starten();else if(zustand==='lauf')spiele();}
+      if(e.intersectionRatio>=.95){if(zustand==='warten')starten();else if(zustand==='lauf')spiele();}
       else if(!sichtbar){
         if(zustand==='lauf')vid.pause();
         if(e.boundingClientRect.top>0){if(zustand!=='warten')zurueck();}   /* Szene liegt unter dem Bild: nach oben verlassen, nächstes Mal von vorn */
         else if(zustand==='lauf'||zustand==='fahrt')fertig();              /* nach unten verlassen: beim Zurückkommen steht der Schluss */
-      }},{threshold:[0,.6]}).observe(st);
+      }},{threshold:[0,.6,.95]}).observe(st);
   }else{starteLaden();starten();}
 
   addEventListener('resize',function(){var m=modus;modus=null;lade();if(m===modus)groesse();});

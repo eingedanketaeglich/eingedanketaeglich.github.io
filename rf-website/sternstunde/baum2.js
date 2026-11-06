@@ -5,7 +5,7 @@
    Look (pixar | foto | buch) kommt aus data-look am body. */
 (function(){
   var LOOK=document.body.dataset.look||'pixar', q=new URLSearchParams(location.search), STILL=q.get('still')==='1';
-  var ZOOM_HANDY=1.55, ZOOM_DESK=1.0, BV='?v=18';  /* BV: Bildversion gegen Browser-Cache (langer Baum ohne Höhle, 31.10. abends) */
+  var ZOOM_HANDY=1.55, ZOOM_DESK=1.0, BV='?v=19';  /* BV: Bildversion gegen Browser-Cache (langer Baum ohne Höhle, 31.10. abends) */
   /* Scrollen 1:1 (Simon 31.10. abends): der Baum bewegt sich so weit wie der Finger. Jeder Anker ist genau so hoch wie der Kameraweg
      zum nächsten Halt (S[]), mindestens 0,45 Bildschirme; mehr Baum zwischen den Halten kommt aus dem längeren Render (--lang 1.3). */   /* 2,3 war zu nah: Stamm füllte alles, Äste und Flammen lagen außerhalb (Test 31.10.) */
   var H=[  /* Halte; cx/cy werden aus anker.json gesetzt. Texte: Fassung E, Textrunde 31.10.2026 (Simon: 'E gilt') */
@@ -50,7 +50,7 @@
     H[7].cx=meta.krone.x;H[7].cy=meta.krone.y-.11*YS;          /* Stern: über der Krone, im Himmel; Stern selbst sitzt höher als die Kameramitte */
     var html='';
     for(var i=0;i<N;i++){var h=H[i];if(!h.fig)continue;var s=sitz[i];if(!s)continue;
-      html+='<div class="flamme" data-i="'+i+'" style="left:'+(s.x*100)+'%;top:'+(s.y*100)+'%"><i class="schatten"></i><div class="fig"><img src="bilder/frei/'+h.fig+'_'+h.pose+'.png" alt="'+h.fig+'">'+(h.id==='app'?'<img class="app-handy" src="baum/iphone.webp'+BV+'" alt="Sternstunde-App">':'')+'</div></div>';}
+      html+='<div class="flamme" data-i="'+i+'" style="left:'+(s.x*100)+'%;top:'+(s.y*100)+'%"><i class="schatten"></i><div class="fig"><img src="bilder/frei/'+h.fig+'_'+h.pose+'.webp'+BV+'" alt="'+h.fig+'">'+(h.id==='app'?'<img class="app-handy" src="baum/iphone.webp'+BV+'" alt="Sternstunde-App">':'')+'</div></div>';}
     html+='<svg class="stern-gross" id="stern" viewBox="0 0 200 200" style="left:'+(meta.krone.x*100)+'%;top:'+((meta.krone.y-.17*YS)*100)+'%"><defs><radialGradient id="sg"><stop offset="0" stop-color="#FFF8DC" stop-opacity=".95"/><stop offset=".3" stop-color="#F6CF5A" stop-opacity=".45"/><stop offset="1" stop-color="#F6CF5A" stop-opacity="0"/></radialGradient><linearGradient id="sk" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFF4C8"/><stop offset=".55" stop-color="#F6CF5A"/><stop offset="1" stop-color="#D99A1E"/></linearGradient></defs><circle cx="100" cy="100" r="98" fill="url(#sg)"/><g transform="translate(43 40) scale(1.14)"><path d="M50 4 L61 36 L96 38 L68 60 L78 94 L50 74 L22 94 L32 60 L4 38 L39 36 Z" fill="url(#sk)" stroke="#FFF4C8" stroke-width="7" stroke-linejoin="round"/><path d="M50 4 L61 36 L96 38 L68 60 L78 94 L50 74 L22 94 L32 60 L4 38 L39 36 Z" fill="url(#sk)"/><ellipse cx="42" cy="34" rx="9" ry="5" fill="#FFFBEA" opacity=".8" transform="rotate(-25 42 34)"/></g><g fill="#FFF8DC"><path d="M160 48 l3 8 8 3 -8 3 -3 8 -3 -8 -8 -3 8 -3z"/><path d="M34 140 l2.5 6.5 6.5 2.5 -6.5 2.5 -2.5 6.5 -2.5 -6.5 -6.5 -2.5 6.5 -2.5z"/><path d="M168 150 l2 5 5 2 -5 2 -2 5 -2 -5 -5 -2 5 -2z"/></g></svg>';
     fig.innerHTML=html;flammen=Array.prototype.slice.call(fig.querySelectorAll('.flamme'));handy=document.getElementById('handy');sternEl=document.getElementById('stern');
     groesse();}

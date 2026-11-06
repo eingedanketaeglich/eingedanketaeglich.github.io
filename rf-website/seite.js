@@ -20,12 +20,14 @@
   var WER_SATZ='Wer wir sind, ist eigentlich nicht das Wichtigste. Wichtig ist, welches Problem wir für dich lösen.';
   /* Vorschau beim Überfahren der Kopfleiste (Simon 01.11.2026): Bild je Menüpunkt, Stile in effekte.css und sternstunde/rahmen.css */
   var FL='<svg viewBox="0 0 62 76" aria-hidden="true"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#FF7A00"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/></svg>';
-  var VS={'firestarter.html':'<span class="vs vs-flamme" aria-hidden="true">'+FL+'</span>','welt-gruen.html':'<span class="vs vs-kugel vs-gruen" aria-hidden="true"></span>',
-    'welt-blau.html':'<span class="vs vs-kugel vs-blau" aria-hidden="true"></span>',
+  var VS={'firestarter.html':'<span class="vs vs-flamme" aria-hidden="true">'+FL+'</span>','welt-gruen.html':'<span class="vs vs-zeichen vs-akademie" aria-hidden="true"></span>',
+    'welt-blau.html':'<span class="vs vs-zeichen vs-institut" aria-hidden="true"></span>',
     'kinder.html':'<span class="vs vs-stern" aria-hidden="true"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 3l6.2 13.2 14.5 1.7-10.7 9.9 2.9 14.3L24 34.9 11.1 42.1 14 27.8 3.3 17.9l14.5-1.7z" fill="#F6CF5A" stroke="#FFF3C4" stroke-width="2" stroke-linejoin="round"/></svg></span>'};
+  /* Simon 06.11.2026: in den Welten steht der ganze Name unter R&F, sonst nur R&F */
+  var WELTNAME={'welt-gruen.html':'Akademie für Finanzkompetenz','welt-blau.html':'Institut für Vermögenskompetenz'};
   var kopf=document.getElementById('kopf');
   if(kopf){
-    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F, Startseite"><b>R&amp;F</b></a>'+
+    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F, Startseite"><b>R&amp;F</b>'+(WELTNAME[hier]?'<small class="marke-mehr">'+WELTNAME[hier]+'</small>':'')+'</a>'+
       '<div class="wer-fenster" id="wer-fenster" hidden></div></div>'+
       '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+(VS[m[0]]||'')+'</a>'}).join('')+'</nav>'+
       '<a class="knopf" href="'+link('preise.html')+'">Termine &amp; Preise</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';

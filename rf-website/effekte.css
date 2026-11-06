@@ -45,7 +45,8 @@ html:not(.entwurf) .platz,html:not(.entwurf) .bild-vermerk,html:not(.entwurf) .b
 .w-bilder img.an{opacity:1;transform:scale(1)}
 .w-bilder .w-titel{position:absolute;left:18px;bottom:18px;z-index:2;font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:#FFFFFF;background:rgba(10,24,48,.6);padding:6px 10px;border-radius:8px;backdrop-filter:blur(6px)}
 .w-schritte{display:grid;gap:clamp(40px,12vh,140px);padding-block:8vh 20vh}
-.w-schritt{display:grid;gap:12px;opacity:.35;transition:opacity .6s}
+/* Simon 06.11.2026: kein blasser Farbton mehr für die gerade nicht aktiven Schritte, alles in voller Farbe wie der Rest der Seite */
+.w-schritt{display:grid;gap:12px;opacity:1;transition:opacity .6s}
 .w-schritt.an{opacity:1}
 .w-schritt h3{font-size:clamp(1.5rem,3vw,2.2rem)}
 .w-schritt p{color:var(--text2);font-size:1.05rem}
@@ -223,6 +224,7 @@ html:not(.js) .ps-text,html:not(.js) .ps-text .satz{opacity:1;transform:none}
 main{padding-top:52px}
 html{scroll-padding-top:68px}
 html[data-welt="gruen"] .leiste{background:rgba(20,52,38,.86)!important}
+html[data-welt="blau"] .leiste{background:rgba(16,36,68,.92)!important} /* Simon 06.11.2026: Institut färbt die Leiste blau wie die Akademie grün */
 /* Kein Beige mehr: Flächen und Linien kühl-neutral */
 html[data-r="B"]{--flaeche:#F3F5F8;--linie:#E3E7ED}
 .kontakt-teaser .knopf{background:#FFFFFF!important;color:#102444!important}
@@ -316,6 +318,11 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 @keyframes vs-land{to{background-position-x:66%}}
 .vs-blau{background-position-x:140%;filter:saturate(1.4) brightness(.92) hue-rotate(-6deg);box-shadow:inset -12px -8px 18px rgba(0,6,30,.75),inset 5px 4px 10px rgba(255,255,255,.22),0 0 16px 3px rgba(70,140,255,.65);animation:vs-meer 16s ease-in-out infinite alternate}
 @keyframes vs-meer{to{background-position-x:131%}}
+/* Simon 06.11.2026: statt der Weltkugel die Zeichen aus dem Logo, R aus Rasen (Akademie) und F aus Meer (Institut) */
+.vs-zeichen{display:block;width:50px;height:50px;background:center/contain no-repeat}
+.vs-akademie{background-image:url(bilder/web/vs_R.png);filter:drop-shadow(0 0 10px rgba(90,205,120,.7))}
+.vs-institut{background-image:url(bilder/web/vs_F.png);filter:drop-shadow(0 0 10px rgba(70,140,255,.75))}
+.deckel-nav a .ic .vs-zeichen{width:28px;height:28px}
 .vs-flamme{display:block;width:44px;height:54px;filter:drop-shadow(0 0 10px rgba(255,122,0,.75))}
 .vs-flamme svg,.vs-stern svg{width:100%;height:100%;display:block}
 .vs-flamme svg{transform-origin:50% 90%;animation:vs-flacker .9s ease-in-out infinite alternate}

@@ -11,13 +11,12 @@
 <link rel="stylesheet" href="effekte.css">
 <style>
   /* Zirkel Variante 1 */
-  .zirkel-v1 .w-schritt{min-height:62vh;align-content:center}
+  /* Simon 06.11.2026: Rainmaker-Schritte ohne eigene Mindesthöhe, Abstände wie beim Investment Zirkel */
   .zirkel-v1 .w-schritt .preise{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
   .zirkel-v1 .tage{display:grid;gap:8px}
   .zirkel-v1 .tag{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:10px 12px;border-radius:12px;background:#F3F5F8}
   .zirkel-v1 .tag b{color:#102444}
   .zirkel-v1 .zusatz{color:var(--text2);margin:0}
-  @media (max-width:860px){.zirkel-v1 .w-schritt{min-height:56svh}}
 
   /* Module (Simon 06.11.2026, neue Weltstruktur) */
   .module{display:grid;gap:8px;margin:4px 0 2px}
