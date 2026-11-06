@@ -90,3 +90,16 @@ html{scroll-snap-type:y proximity}
 .punkte.hell i{background:rgba(255,244,207,.35)}.punkte.hell i.an{background:var(--gold-hi)}
 @media (prefers-reduced-motion:reduce){.baum .blaetter,.flamme .fig,.flamme .schatten,.sterne i,.stern-gross{animation:none!important}.handy,.handy .haut{transition-duration:.01s!important;transition-delay:0s!important}}
 @media (min-width:760px){.station{padding-inline:calc(50% - 250px)}.blase{max-width:420px}}
+
+/* Simon 06.11.2026: Sterne statt Flammen, dazu ein leises Funkeln per Code (keine Clips, keine Credits).
+   Zwei kleine Lichtpunkte je Figur blitzen versetzt an den Sternspitzen auf. */
+.flamme .fig::before,.flamme .fig::after{content:"";position:absolute;z-index:2;width:14%;aspect-ratio:1;pointer-events:none;
+  background:radial-gradient(circle,#FFFFFF 0 14%,rgba(255,244,200,.85) 22%,rgba(255,244,200,0) 60%);
+  clip-path:polygon(50% 0,58% 42%,100% 50%,58% 58%,50% 100%,42% 58%,0 50%,42% 42%);
+  opacity:0;transform:scale(.3);animation:funkeln 3.4s ease-in-out infinite}
+.flamme .fig::before{left:44%;top:-4%}
+.flamme .fig::after{left:84%;top:30%;animation-delay:1.7s;width:10%}
+.flamme:nth-child(2n) .fig::before{animation-delay:.9s}
+.flamme:nth-child(3n) .fig::after{animation-delay:2.4s}
+@keyframes funkeln{0%,62%,100%{opacity:0;transform:scale(.3) rotate(0)}72%{opacity:1;transform:scale(1) rotate(20deg)}84%{opacity:0;transform:scale(.4) rotate(40deg)}}
+@media (prefers-reduced-motion:reduce){.flamme .fig::before,.flamme .fig::after{animation:none;opacity:0}}
