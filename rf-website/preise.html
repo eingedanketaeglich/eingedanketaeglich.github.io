@@ -240,7 +240,7 @@ var wahl=document.getElementById('wahl'),welt=document.getElementById('welt'),st
 var cv=document.getElementById('marke'),cx=cv.getContext('2d'),et=document.getElementById('etagen'),buehne=document.getElementById('buehne'),szene=document.getElementById('szene');
 /* Sterne der Sternstunde: Platz = Mitte des Sterns knapp über der Oberkante eines freien Astes, in % des Baumbildes (gemessen 08.11.2026) */
 var sterneEl=document.getElementById('sterne'),STERNE=[   /* x, y, Breite, Name, Bild[, x, y am Handy: oberster Ast liegt dort unter der Überschrift] */
-  [60,30,12,'Funkel','funkel_freude'],[39,18,12,'Bo','bo_ruhe',42.5,26],[60,56,12,'Lumi','lumi_ruhe'],[38,43.5,12,'Nova','nova_ruhe'],[42,58.5,11,'Susanne','susanne_ruhe']];
+  [60,30,12,'Funkel','funkel_freude'],[39,18,12,'Bo','bo_ruhe',42.5,26],[60,56,12,'Lumi','lumi_ruhe'],[38,43.5,12,'Nova','nova_ruhe'],[37,69,11,'Susanne','susanne_ruhe']];
 function sterne(an,sofort){sterneEl.innerHTML='';sterneEl.classList.remove('lebt','los','still');if(!an)return;
   STERNE.forEach(function(p,n){var e=document.createElement('span');e.className='st';var hy=!breit.matches&&p.length>5;e.style.left=(hy?p[5]:p[0])+'%';e.style.top=(hy?p[6]:p[1])+'%';e.style.width=p[2]+'%';
     e.innerHTML='<span class="f"><span class="k"><img src="sternstunde/bilder/frei/'+p[4]+'.webp" alt=""></span></span><span class="nm">'+p[3]+'</span>';sterneEl.appendChild(e);
