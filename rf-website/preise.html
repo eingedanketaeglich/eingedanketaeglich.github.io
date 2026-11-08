@@ -253,7 +253,7 @@ var cur=null,etage=-1,phase='aus',drin=false,auf=[],aufl=2,animRaf=0,zuBild={};
 var LAT=[443,577,755,943],latBild={},latAuf=0,latRaf=0;
 function alle(){return document.getElementById('alle');}
 /* Bilder vorladen; geschlossene Räume als eigene Ebene */
-WELT.forEach(function(w){[w.offen,w.poster,w.vorne,w.hd,w.vorne_hd].concat((w.wolken||[]).map(function(x){return x[0];})).forEach(function(s){if(s){var i=new Image();i.src=s;}});
+WELT.forEach(function(w){[w.offen,w.poster,w.vorne].concat((w.wolken||[]).map(function(x){return x[0];})).forEach(function(s){if(s){var i=new Image();i.src=s;}});
   if(w.zu_raeume){var i=new Image();i.onload=function(){if(cur===w)zeichne();};i.src=w.zu_raeume;zuBild[w.w]=i;}
   if(w.laterne){var l=new Image();l.onload=function(){if(cur===w)zeichne();};l.src=w.laterne;latBild[w.w]=l;}});
 
@@ -306,7 +306,7 @@ function kamera(S,ox,oy,px,py,sanft){var W0=buehne.clientWidth,H0=buehne.clientH
 function grundKamera(sanft){var k=cur.kamera;kamera(k[0],k[1],k[2],breit.matches?.5:k[3],k[4],sanft);}
 
 /* ---------- Welt öffnen ---------- */
-function oeffne(i){cur=WELT[i];wahl.hidden=true;document.getElementById('hinweis').hidden=true;if(alle())alle().hidden=true;welt.hidden=false;window.scrollTo(0,0);
+function oeffne(i){cur=WELT[i];[cur.hd,cur.vorne_hd].forEach(function(s){if(s){var i=new Image();i.src=s;}});/* HD erst laden, wenn die Welt geöffnet wird (Ladezeit, 08.11.) */wahl.hidden=true;document.getElementById('hinweis').hidden=true;if(alle())alle().hidden=true;welt.hidden=false;window.scrollTo(0,0);
   var s=welt.style;s.setProperty('--fo',cur.f.oben);s.setProperty('--fm',cur.f.mitte);s.setProperty('--fu',cur.f.unten);
   document.getElementById('w-kl').textContent=cur.kl;document.getElementById('w-h').textContent=cur.h;still.alt=cur.alt;
   drin=false;welt.classList.remove('drin');schirmK.hidden=true;raus.hidden=true;
