@@ -318,11 +318,9 @@ function zeichne(){if(!cur||!cur.geo){cv.classList.remove('an');return;}var img=
   var sx=cv.width/1696,sy=cv.height/2528,ix=img.naturalWidth/1696,iy=img.naturalHeight/2528;
   cur.geo.raeume.forEach(function(r,i){var f=auf[i]||0,y0=r[0],x0=r[2],x1=r[3],hh=r[1]-r[0],sicht=hh*(1-f);
     cx.drawImage(img,x0*ix,y0*iy,(x1-x0)*ix,sicht*iy,x0*sx,y0*sy,(x1-x0)*sx,sicht*sy);
-    if(f>.02){var yk=(y0+sicht)*sy,g=cx.createLinearGradient(0,yk,0,yk+14*sy);g.addColorStop(0,'rgba(0,0,0,'+(.3*f)+')');g.addColorStop(1,'rgba(0,0,0,0)');
+    if(f>.02){var yk=(y0+sicht)*sy,g=cx.createLinearGradient(0,yk,0,yk+14*sy);g.addColorStop(0,'rgba(0,0,0,'+(1.2*f*(1-f))+')');g.addColorStop(1,'rgba(0,0,0,0)');
       cx.save();cx.beginPath();cx.rect(x0*sx,yk,(x1-x0)*sx,14*sy);cx.clip();cx.fillStyle=g;cx.fillRect(x0*sx,yk,(x1-x0)*sx,14*sy);cx.restore();
-      /* Decke weniger auffällig: weich abgedunkelt, läuft ohne Kante aus */
-      var dk=hh*.38,gd=cx.createLinearGradient(0,y0*sy,0,(y0+dk)*sy);gd.addColorStop(0,'rgba(10,8,6,'+(.42*f)+')');gd.addColorStop(1,'rgba(10,8,6,0)');
-      cx.fillStyle=gd;cx.fillRect(x0*sx,y0*sy,(x1-x0)*sx,dk*sy);}});
+      /* Simon 08.11. (iPhone): „Diese rechteckigen Kästen um die Räume (dunkel durchsichtig) … weg bei allem. Nur der Kasten.“ -> keine Abdunklung der Decke mehr */}});
   cv.classList.add('an');}
 function oeffneRaum(ziel){var start=performance.now(),von=auf.slice(),dauer=ruhig?1:750;cancelAnimationFrame(animRaf);
   function schritt(t){var k=Math.min(1,(t-start)/dauer),e=1-Math.pow(1-k,3);
