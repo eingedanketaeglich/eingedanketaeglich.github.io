@@ -386,9 +386,11 @@ function detail(){var d=W[cur.w],box=document.getElementById('detail');
 
 /* ---------- Etage betreten: Kamera fährt in den Raum, der Bildschirm wird zum Knopf ---------- */
 var hdAn=false;
+/* HD erst einsetzen, wenn es vollständig geladen ist – bis dahin bleibt das bisherige Bild stehen (kein Aufblitzen bei schwachem Netz, 08.11.) */
+function hdSetzen(el,src){var w=cur,i=new Image();i.onload=function(){if(hdAn&&drin&&cur===w)el.src=src;};i.src=src;}
 function betreten(sofort){if(etage<0||!cur.geo)return;var s=cur.stufen[etage],q=s.o==='r'?cur.geo.raeume[s.i]:cur.geo.lampe;
   drin=true;welt.classList.add('drin');raus.hidden=false;
-  if(cur.hd&&!hdAn){still.src=cur.hd;if(cur.vorne_hd)vorne.src=cur.vorne_hd;hdAn=true;}
+  if(cur.hd&&!hdAn){hdAn=true;hdSetzen(still,cur.hd);if(cur.vorne_hd)hdSetzen(vorne,cur.vorne_hd);}
   v2.classList.remove('an');
   var bw=(q[3]-q[2])/1696,bh=(q[1]-q[0])/2528,S=Math.min(.9/bw,.5/bh);
   kamera(S,(q[2]+q[3])/2/1696,(q[0]+q[1])/2/2528,.5,.42,!sofort);
