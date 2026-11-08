@@ -27,6 +27,14 @@
   .modul-z small{display:block;margin-top:5px;color:#46505E;font-size:.8rem;line-height:1.4}
   .modul-z .betont{color:var(--modul,#2A5698);font-weight:800}
   .anrechnung{color:var(--text2);margin:0;font-size:.92rem}
+  /* Simon 08.11.2026: Zirkel-Name als fester Unter-Kopf direkt unter der Kopfleiste; wechselt beim Scrollen von Investment auf Rainmaker
+     (sticky je Abschnitt). Name groß, „1 Tag“ und die Module klein darunter. Bildleiste rutscht darunter. */
+  .zirkel-kopf{--zk:72px;position:sticky;top:52px;z-index:20;height:var(--zk);box-sizing:border-box;margin:0 calc(-1*clamp(16px,4vw,48px)) 22px;padding:0 clamp(16px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--linie);box-shadow:0 8px 18px -14px rgba(16,36,68,.35)}
+  .zirkel-kopf p{margin:0;display:flex;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
+  .zirkel-kopf b{font:400 clamp(24px,6vw,32px)/1.05 "Gloock",Georgia,serif;color:#102444;letter-spacing:-.005em}
+  .zirkel-kopf span,.zirkel-kopf small{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}
+  #investment .w-bilder,#rainmaker .w-bilder{top:calc(52px + 72px + 16px)}
+  @media (max-width:860px){#investment .w-bilder,#rainmaker .w-bilder{top:calc(52px + 72px)}}
 </style>
 </head>
 <body>
@@ -52,7 +60,8 @@
 
 <!-- Wechsler: drei Zeitebenen -->
 <section class="ab" id="investment">
-  <div class="ab-kopf"><span class="mono">Investment Zirkel · 1 Tag · 2 Module à 3 Stunden</span><h2>Der nächste Schritt für dein Vermögen.</h2><p>Finanzwissen anwenden. Kontrolliert nach festen Regeln handeln.</p></div>
+  <div class="zirkel-kopf"><p><b>Investment Zirkel</b><span>· 1 Tag</span></p><small>2 Module à 3 Stunden</small></div>
+  <div class="ab-kopf"><h2>Der nächste Schritt für dein Vermögen.</h2><p>Finanzwissen anwenden. Kontrolliert nach festen Regeln handeln.</p></div>
   <div class="wechsler">
     <div class="w-bilder"><img src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungstisch am Morgen" loading="lazy"><img src="bilder/web/02_skyline_goldene-stunde_16x9.jpg" alt="Skyline durchs Eckfenster" loading="lazy"><img src="bilder/web/03_skyline_blaue-stunde_16x9.jpg" alt="Skyline zur blauen Stunde" loading="lazy"><span class="w-titel"></span></div>
     <div class="w-schritte">
@@ -65,7 +74,8 @@
 
 <!-- Rainmaker: Variante 1 „Bildwechsel“ (Simons Wahl 29.10.2026, Zirkel-Mockup) -->
 <section class="ab welt-ab blau zirkel-v1" id="rainmaker">
-      <div class="ab-kopf"><span class="mono">Rainmaker Zirkel · optional · 1 Tag · 2 Module</span><h2>Vier profitable Börsenstrategien für dein Vermögen – Anwendung in jeder Marktlage.</h2></div>
+      <div class="zirkel-kopf"><p><b>Rainmaker Zirkel</b><span>· 1 Tag</span></p><small>optional · 2 Module</small></div>
+      <div class="ab-kopf"><h2>Vier profitable Börsenstrategien für dein Vermögen – Anwendung in jeder Marktlage.</h2></div>
       <div class="wechsler" >
         <div class="w-bilder"><img class="an" src="bilder/web/07_blau_raum-morgen_4x3.jpg" alt="Tagungsraum am Morgen"><img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum zur blauen Stunde"><img src="app/fotos/raum_panorama.jpg" alt="Tagungsraum mit Eckfenstern"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm"><span class="w-titel">Modul C</span></div>
         <div class="w-schritte">
