@@ -21,6 +21,17 @@
   .anrechnung{color:var(--text2);margin:0;font-size:.92rem}
 /* Simon 08.11.2026 (Handy-Zeichnung): Institut-Karte über die ganze Breite, solange die Leiter zweispaltig ist; am Mac bleibt die Reihe */
 @media (max-width:620px){.stufe.breit{grid-column:1/-1}}
+  /* Simon 08.11.2026: alle optischen Änderungen der blauen Welt übernommen – Tag als fester Unter-Kopf unter der Kopfleiste
+     (wechselt beim Scrollen, Text kommt vom aktiven Schritt), halber Abstand davor, enge Abstände am Handy */
+  .zirkel-kopf{--zk:72px;position:sticky;top:52px;z-index:20;height:var(--zk);box-sizing:border-box;margin:0 calc(-1*clamp(16px,4vw,48px)) 22px;padding:0 clamp(16px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--linie);box-shadow:0 8px 18px -14px rgba(16,36,68,.35)}
+  .zirkel-kopf p{margin:0;display:flex;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
+  .zirkel-kopf b{font:400 clamp(24px,6vw,32px)/1.05 "Gloock",Georgia,serif;color:#143426;letter-spacing:-.005em}
+  .zirkel-kopf span,.zirkel-kopf small{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}
+  #fuer-wen{padding-bottom:clamp(24px,3vw,44px)}#formate{padding-top:clamp(24px,3vw,44px)}
+  #formate .w-bilder{top:calc(52px + 72px + 16px)}
+  @media (max-width:860px){#formate .w-bilder{top:calc(52px + 72px)}#formate .w-schritt{min-height:0;padding:28px 0 4px}#formate .w-schritte{gap:0!important;padding-block:0 12px!important}}
+  /* Simon 08.11.2026: Kopfbild 11 % höher (weniger Decke), Schrift bleibt unten, unten kein Weiß */
+  .welt-held img{top:-11svh;height:calc(100% + 11svh)}
 </style>
 </head>
 <body>
@@ -31,7 +42,6 @@
 <section class="welt-held gruen">
   <img src="bilder/web/08_gruen_kuechentisch_4x3.jpg" alt="Notizbuch mit Einnahmen und Ausgaben, Kaffee und Pflanze auf einem Küchentisch" fetchpriority="high">
   <div class="inhalt">
-    <span class="mono">R&amp;F Akademie für Finanzkompetenz</span>
     <h1>Geld verstehen&nbsp;– selbstbestimmt entscheiden.</h1>
     <p class="lede">Von Geldfragen über gute Entscheidungen zur ersten Strategie. Drei Tage mit je zwei Modulen, in Frankfurt im Raum oder live online.</p>
     <div class="sprung"><a href="#erster-tag">Dein erster Tag</a><a href="#investmenttag">Investmenttag</a><a href="#boersentag">Börsentag</a></div>
@@ -65,6 +75,7 @@
 
 <!-- Wechsler: Bild tauscht mit dem Format -->
 <section class="ab welt-ab gruen" id="formate">
+  <div class="zirkel-kopf"><p><b>Dein erster Tag</b><span>· 1 Tag</span></p><small>2 Module à 3 Stunden</small></div>
   <div class="ab-kopf"><span class="mono">Drei Tage · sechs Module</span><h2>Ein Tag, zwei Module. Du entscheidest, wie weit du gehst.</h2><p>Im Raum mit Getränken und Snacks oder live online. Unterricht 9:30–12:30 und 13:30–16:30 Uhr.</p></div>
   <div class="wechsler">
     <div class="w-bilder"><img src="bilder/web/08_gruen_kuechentisch_4x3.jpg" alt="Küchentisch mit Haushaltsbuch" loading="lazy"><img src="bilder/web/09_gruen_lernecke_4x3.jpg" alt="Lernecke mit Notizbuch und Tee" loading="lazy"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm und Flipchart" loading="lazy"><span class="w-titel"></span></div>
@@ -117,5 +128,8 @@
 <div id="fuss"></div>
 </div>
 <script src="seite.js?v=20261107a"></script>
+<script>/* Unter-Kopf folgt dem aktiven Tag (Klasse „an“ setzt seite.js) */(function(){var k=document.querySelector('#formate .zirkel-kopf');if(!k)return;var b=k.querySelector('b'),sp=k.querySelector('span'),sm=k.querySelector('small');
+var st=[].slice.call(document.querySelectorAll('#formate .w-schritt'));function neu(){var a=st.filter(function(s){return s.classList.contains('an')})[0];if(!a)return;var tag=!!a.id;b.textContent=a.dataset.titel||'';sp.hidden=!tag;sm.textContent=tag?'2 Module à 3 Stunden':'Du entscheidest, wie du dabei bist';}
+st.forEach(function(s){new MutationObserver(neu).observe(s,{attributes:true,attributeFilter:['class']})});neu();})();</script>
 </body>
 </html>
