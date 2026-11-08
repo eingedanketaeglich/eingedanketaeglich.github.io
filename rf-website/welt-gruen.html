@@ -19,6 +19,8 @@
   .modul-z small{display:block;margin-top:5px;color:#46505E;font-size:.8rem;line-height:1.4}
   .modul-z .betont{color:var(--modul,#2F6B4F);font-weight:800}
   .anrechnung{color:var(--text2);margin:0;font-size:.92rem}
+/* Simon 08.11.2026 (Handy-Zeichnung): Institut-Karte über die ganze Breite, solange die Leiter zweispaltig ist; am Mac bleibt die Reihe */
+@media (max-width:620px){.stufe.breit{grid-column:1/-1}}
 </style>
 </head>
 <body>
@@ -86,7 +88,7 @@
     <div class="stufe heute"><span class="klein">Module 01 und 02</span><b>Dein erster Tag</b><strong>289&nbsp;€</strong><p>Mehr Geldverstand. Online 159&nbsp;€.</p></div>
     <div class="stufe heute"><span class="klein">Module 03 und 04</span><b>Investmenttag</b><strong>329&nbsp;€</strong><p>Langfristige Geldanlage verstehen. Online 179&nbsp;€.</p></div>
     <div class="stufe heute"><span class="klein">Module 05 und 06</span><b>Börsentag</b><strong>369&nbsp;€</strong><p>Börsenhandel in Simulationen erproben. Online 199&nbsp;€.</p></div>
-    <div class="stufe"><span class="klein">später, wenn du willst</span><b>R&amp;F Institut für Vermögenskompetenz</b><p>Investment Zirkel und Rainmaker Zirkel.</p><a class="mehr-link" href="welt-blau.html">Zum Institut →</a></div>
+    <div class="stufe breit"><span class="klein">später, wenn du willst</span><b>R&amp;F Institut für Vermögenskompetenz</b><p>Investment Zirkel und Rainmaker Zirkel.</p><a class="mehr-link" href="welt-blau.html">Zum Institut →</a></div>
   </div>
   <p style="margin-top:18px;color:var(--text2);max-width:70ch"><b style="color:var(--text)">Anrechnung:</b> Bereits besuchter 3-Stunden-Workshop wird angerechnet, wenn du an einem anderen Tag dazukommst.</p>
 </section>
