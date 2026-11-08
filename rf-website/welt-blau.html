@@ -29,6 +29,8 @@
   .anrechnung{color:var(--text2);margin:0;font-size:.92rem}
   /* Simon 08.11.2026: Zirkel-Name als fester Unter-Kopf direkt unter der Kopfleiste; wechselt beim Scrollen von Investment auf Rainmaker
      (sticky je Abschnitt). Name groß, „1 Tag“ und die Module klein darunter. Bildleiste rutscht darunter. */
+  /* Abstand Zitat → Investment Zirkel halbiert (Simon, 08.11.2026) */
+  #raue-see{padding-bottom:clamp(24px,3vw,44px)}#investment{padding-top:clamp(24px,3vw,44px)}
   .zirkel-kopf{--zk:72px;position:sticky;top:52px;z-index:20;height:var(--zk);box-sizing:border-box;margin:0 calc(-1*clamp(16px,4vw,48px)) 22px;padding:0 clamp(16px,4vw,48px);display:flex;flex-direction:column;justify-content:center;gap:3px;background:rgba(255,255,255,.95);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);border-bottom:1px solid var(--linie);box-shadow:0 8px 18px -14px rgba(16,36,68,.35)}
   .zirkel-kopf p{margin:0;display:flex;align-items:baseline;gap:10px;white-space:nowrap;min-width:0}
   .zirkel-kopf b{font:400 clamp(24px,6vw,32px)/1.05 "Gloock",Georgia,serif;color:#102444;letter-spacing:-.005em}
@@ -47,7 +49,6 @@
 <section class="welt-held blau">
   <img src="bilder/web/06_blau_raum-abend_4x3.jpg" alt="Tagungsraum in der 21. Etage zur blauen Stunde" fetchpriority="high">
   <div class="inhalt">
-    <span class="mono">R&amp;F Institut für Vermögenskompetenz</span>
     <h1>Vermögen verstehen&nbsp;– selbstbestimmt agieren.</h1>
     <p class="lede">Von Vermögensfragen über Finanzwissen zur Beratung auf Augenhöhe. Im 21. Stock des WINX-Towers, direkt am Main. Kleine Gruppe: vor Ort in der Regel höchstens 12 Teilnehmer.</p>
     <div class="sprung"><a href="#investment">Investment Zirkel</a><a href="#rainmaker">Rainmaker Zirkel</a><a href="#mentoring">Mentoring</a><a href="#raum">Der Raum</a></div>
@@ -57,7 +58,7 @@
 <!-- Hook aus der alten Startseite (06.11.2026); hell wie alle Weltbloecke (effekte.css schaltet welt-ab auf Weiss) -->
 <section class="ab" id="raue-see">
   <div class="ab-kopf"><span class="mono">Die raue See</span><h2>Ein Minus von 50&nbsp;% verlangt ein Plus von 100&nbsp;%, nur um wieder bei null zu sein.</h2><p>Keine Meinung, Mathematik. Krisen kommen, nur weiß niemand, wann. Schon das Durchhalten fällt im Absturz schwer.</p></div>
-  <p style="font-size:1.35rem;font-weight:900;color:#102444;margin-top:20px;border-left:4px solid #2E5AA8;padding-left:16px">„Die Rendite ist die Belohnung der Disziplin und nicht ihr Motor.“ <span style="font-size:.9rem;font-weight:600;color:#4A5568">R&amp;F</span></p>
+  <p style="font-size:1.35rem;font-weight:900;color:#102444;margin-top:20px;border-left:4px solid #2E5AA8;padding-left:16px">„Die Rendite ist die Belohnung der Disziplin und nicht ihr Motor.“</p>
 </section>
 
 <!-- Wechsler: drei Zeitebenen -->
