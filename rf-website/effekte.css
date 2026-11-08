@@ -318,11 +318,14 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 @keyframes vs-land{to{background-position-x:66%}}
 .vs-blau{background-position-x:140%;filter:saturate(1.4) brightness(.92) hue-rotate(-6deg);box-shadow:inset -12px -8px 18px rgba(0,6,30,.75),inset 5px 4px 10px rgba(255,255,255,.22),0 0 16px 3px rgba(70,140,255,.65);animation:vs-meer 16s ease-in-out infinite alternate}
 @keyframes vs-meer{to{background-position-x:131%}}
-/* Simon 06.11.2026: statt der Weltkugel die Zeichen aus dem Logo, R aus Rasen (Akademie) und F aus Meer (Institut) */
-.vs-zeichen{display:block;width:50px;height:50px;background:center/contain no-repeat}
-.vs-akademie{background-image:url(bilder/web/vs_R.png);filter:drop-shadow(0 0 10px rgba(90,205,120,.7))}
-.vs-institut{background-image:url(bilder/web/vs_F.png);filter:drop-shadow(0 0 10px rgba(70,140,255,.75))}
-.deckel-nav a .ic .vs-zeichen{width:28px;height:28px}
+/* Simon 07.11.2026: statt R und F die Bauwerke der Preisseite, Leuchtturm (Akademie) und Hochhaus (Institut) */
+.vs-bau{display:block;width:50px;height:50px}
+.vs-bau svg{width:100%;height:100%;display:block}
+.vs-akademie{filter:drop-shadow(0 0 8px rgba(90,205,120,.7))}
+.vs-institut{filter:drop-shadow(0 0 8px rgba(70,140,255,.75))}
+.deckel-nav a .ic .vs-bau{width:28px;height:28px}
+.deckel-nav a .ic .vs-akademie{filter:drop-shadow(0 0 5px rgba(90,205,120,.7))}
+.deckel-nav a .ic .vs-institut{filter:drop-shadow(0 0 5px rgba(70,140,255,.75))}
 .vs-flamme{display:block;width:44px;height:54px;filter:drop-shadow(0 0 10px rgba(255,122,0,.75))}
 .vs-flamme svg,.vs-stern svg{width:100%;height:100%;display:block}
 .vs-flamme svg{transform-origin:50% 90%;animation:vs-flacker .9s ease-in-out infinite alternate}
