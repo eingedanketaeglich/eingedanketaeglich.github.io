@@ -84,6 +84,22 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
 .welt:not([hidden]) .buehne-innen{animation:auf .7s ease both}.buehne{cursor:pointer}@keyframes auf{from{opacity:0}to{opacity:1}}
 .buehne img.lebt{animation:lebt 26s ease-in-out infinite alternate}
 @keyframes lebt{from{transform:scale(1)}to{transform:scale(1.045)}}
+/* Simon 08.11.2026: Die Sterne der Sternstunde fallen nach dem Wachsen von oben aus dem Bildschirm auf die Äste des Geldbaums.
+   Eigene Ebene über dem Bild (außerhalb des Bildausschnitts, damit sie von ganz oben kommen); atmet mit dem Bild mit (lebt) */
+.sterne{position:absolute;inset:0;z-index:2;pointer-events:none}
+.sterne.lebt{animation:lebt 26s ease-in-out infinite alternate}
+.sterne .st{position:absolute;aspect-ratio:1;translate:-50% -50%}
+.sterne .f,.sterne .k{position:absolute;inset:0}
+.buehne .sterne img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 2px 3px rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(255,226,150,.7))}
+.sterne .nm{position:absolute;left:50%;bottom:98%;translate:-50% 0;font:800 11px "Nunito",system-ui,sans-serif;color:#0B1A38;background:#FFF3C4;border-radius:999px;padding:2px 8px;white-space:nowrap;box-shadow:0 1px 4px rgba(0,0,0,.3);opacity:0}
+.sterne.los .f{animation:fall 1.5s both;animation-delay:var(--d)}
+.sterne.los .k{animation:funkeln 2.6s ease-in-out infinite alternate;animation-delay:calc(var(--d) + 1.6s)}
+.sterne.los .nm{animation:nm .4s ease-out both;animation-delay:calc(var(--d) + 1.35s)}
+.sterne.still .nm{opacity:1}
+@keyframes fall{0%{transform:translate(var(--dx),var(--dy)) rotate(-30deg);animation-timing-function:cubic-bezier(.35,0,.8,.6)}
+  80%{transform:translate(0,0) rotate(6deg);animation-timing-function:ease-out}90%{transform:translate(0,-9%) rotate(-3deg);animation-timing-function:ease-in}100%{transform:none}}
+@keyframes funkeln{from{transform:translateY(0) rotate(-3deg)}to{transform:translateY(-4%) rotate(3deg)}}
+@keyframes nm{from{opacity:0;transform:translateY(-3px)}to{opacity:1;transform:none}}
 .w-oben{position:absolute;left:0;right:0;top:0;padding:14px max(16px,env(safe-area-inset-left,0px)) 0;z-index:3;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
 .zurueck{all:unset;cursor:pointer;font:800 14px "Nunito",system-ui,sans-serif;color:#fff;background:var(--glas);border:1px solid var(--rand);backdrop-filter:blur(10px);border-radius:999px;padding:7px 14px}
 .zurueck:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
@@ -128,7 +144,7 @@ video::-webkit-media-controls,video::-webkit-media-controls-start-playback-butto
   .detail{grid-column:2;grid-row:3;margin:18px 24px 40px 34px;max-width:520px;z-index:2}
 }
 @media (max-width:899px){.welt-hg{display:none}}
-@media (prefers-reduced-motion:reduce){.k-teil,.et,.buehne video,.buehne canvas{transition:none}.buehne img.lebt,.buehne .wz,.wahl-hg .wz,.strahl i,.glut,.schirm{animation:none}.wahl-hg .hg,.wahl-hg .wolken{transition:none}}
+@media (prefers-reduced-motion:reduce){.k-teil,.et,.buehne video,.buehne canvas{transition:none}.buehne img.lebt,.sterne.lebt,.sterne .f,.sterne .k,.buehne .wz,.wahl-hg .wz,.strahl i,.glut,.schirm{animation:none}.wahl-hg .hg,.wahl-hg .wolken{transition:none}}
 
 body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 .alle{max-width:760px;margin:0 auto;padding-block:30px 40px}.alle h2{font:400 clamp(26px,6vw,38px)/1.1 "Gloock",Georgia,serif;color:#fff;margin:0 0 12px}
@@ -162,7 +178,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
   <div class="buehne" id="buehne"><div class="buehne-innen"><div class="szene" id="szene">
     <img id="still" alt=""><div class="wolken" id="wolken"></div><img id="vorne" alt="" hidden><video id="v1" muted playsinline preload="auto" disablepictureinpicture disableremoteplayback></video>
     <video id="v2" muted playsinline loop preload="auto" disablepictureinpicture disableremoteplayback></video><canvas id="marke"></canvas>
-    <div class="strahl" id="strahl" aria-hidden="true" hidden><i></i><i></i></div><div class="glut" id="glut" aria-hidden="true" hidden></div></div></div>
+    <div class="strahl" id="strahl" aria-hidden="true" hidden><i></i><i></i></div><div class="glut" id="glut" aria-hidden="true" hidden></div></div></div><div class="sterne" id="sterne" aria-hidden="true"></div>
     <button class="schirm" id="schirm" hidden aria-label="Video ansehen"><span>▶ Video ansehen</span></button>
 
     <div class="etagen" id="etagen" role="group" aria-label="Etagen, oben teuer, unten günstig"></div>
@@ -222,6 +238,14 @@ var ruhig=matchMedia('(prefers-reduced-motion: reduce)').matches,breit=matchMedi
 var akt=0,teile=[].slice.call(document.querySelectorAll('.k-teil')),kw=document.getElementById('kw');
 var wahl=document.getElementById('wahl'),welt=document.getElementById('welt'),still=document.getElementById('still'),v1=document.getElementById('v1'),v2=document.getElementById('v2');
 var cv=document.getElementById('marke'),cx=cv.getContext('2d'),et=document.getElementById('etagen'),buehne=document.getElementById('buehne'),szene=document.getElementById('szene');
+/* Sterne der Sternstunde: Platz = Mitte des Sterns knapp über der Oberkante eines freien Astes, in % des Baumbildes (gemessen 08.11.2026) */
+var sterneEl=document.getElementById('sterne'),STERNE=[   /* x, y, Breite, Name, Bild[, x, y am Handy: oberster Ast liegt dort unter der Überschrift] */
+  [60,30,12,'Funkel','funkel_freude'],[39,18,12,'Bo','bo_ruhe',42.5,26],[60,56,12,'Lumi','lumi_ruhe'],[38,43.5,12,'Nova','nova_ruhe'],[42,58.5,11,'Susanne','susanne_ruhe']];
+function sterne(an,sofort){sterneEl.innerHTML='';sterneEl.classList.remove('lebt','los','still');if(!an)return;
+  STERNE.forEach(function(p,n){var e=document.createElement('span');e.className='st';var hy=!breit.matches&&p.length>5;e.style.left=(hy?p[5]:p[0])+'%';e.style.top=(hy?p[6]:p[1])+'%';e.style.width=p[2]+'%';
+    e.innerHTML='<span class="f"><span class="k"><img src="sternstunde/bilder/frei/'+p[4]+'.webp" alt=""></span></span><span class="nm">'+p[3]+'</span>';sterneEl.appendChild(e);
+    var r=e.getBoundingClientRect();e.style.setProperty('--dy',(-(r.bottom+40)).toFixed(0)+'px');e.style.setProperty('--dx',((n%2?1:-1)*r.width*.7).toFixed(0)+'px');e.style.setProperty('--d',(.25+n*.45)+'s');});
+  void sterneEl.offsetWidth;sterneEl.classList.add(sofort?'still':'los');sterneEl.classList.add('lebt');}
 var vorne=document.getElementById('vorne'),wolken=document.getElementById('wolken'),strahl=document.getElementById('strahl'),glut=document.getElementById('glut');
 var schirmK=document.getElementById('schirm'),raus=document.getElementById('raus');
 var cur=null,etage=-1,phase='aus',drin=false,auf=[],aufl=2,animRaf=0,zuBild={};
@@ -284,7 +308,7 @@ function oeffne(i){cur=WELT[i];wahl.hidden=true;document.getElementById('hinweis
   document.getElementById('w-kl').textContent=cur.kl;document.getElementById('w-h').textContent=cur.h;still.alt=cur.alt;
   drin=false;welt.classList.remove('drin');schirmK.hidden=true;raus.hidden=true;
   etage=cur.stufen.length===1?0:-1;auf=(cur.geo?cur.geo.raeume:[]).map(function(){return 0;});
-  liste();detail();platzEtagen();still.classList.remove('lebt');
+  liste();detail();platzEtagen();still.classList.remove('lebt');sterne(false);
   vorne.hidden=!cur.vorne;if(cur.vorne)vorne.src=cur.vorne;setzeWolken();
   strahl.hidden=!(cur.geo&&cur.geo.lampe);glut.hidden=strahl.hidden;glut.classList.remove('an');
   if(cur.geo&&cur.geo.lampe){var l=cur.geo.lampe,lx=((l[2]+l[3])/2/1696*100)+'%',ly=((l[0]+l[1])/2/2528*100)+'%';
@@ -304,8 +328,8 @@ function oeffne(i){cur=WELT[i];wahl.hidden=true;document.getElementById('hinweis
   v1.onended=weiter;v1.onerror=zeigeOffen;
   var p=v1.play();if(p&&p.catch)p.catch(zeigeOffen);
   document.getElementById('zur').focus({preventScroll:true});}
-function weiter(){if(phase!=='intro')return;phase='bild';still.src=cur.offen;v1.classList.remove('an');still.classList.add('lebt');}
-function zeigeOffen(){phase='bild';still.src=cur.poster||cur.offen;v1.classList.remove('an');v2.classList.remove('an');if(!cur.schleife&&!cur.vorne)still.classList.add('lebt');}
+function weiter(){if(phase!=='intro')return;phase='bild';still.src=cur.offen;v1.classList.remove('an');still.classList.add('lebt');sterne(cur.w==='s',false);}
+function zeigeOffen(){phase='bild';still.src=cur.poster||cur.offen;v1.classList.remove('an');v2.classList.remove('an');if(!cur.schleife&&!cur.vorne)still.classList.add('lebt');sterne(cur.w==='s',true);}
 function setzeWolken(){wolken.innerHTML=(cur.wolken||[]).map(function(x){
   return '<div class="wz" style="animation-duration:'+x[3]+'s;animation-delay:-'+(x[3]*x[4]).toFixed(1)+'s"><img src="'+x[0]+'" alt="" style="top:'+x[1]+'%;width:'+x[2]+'%;opacity:'+x[5]+(x[6]?';transform:scaleX(-1)':'')+'"></div>';}).join('');}
 function platzEtagen(){if(breit.matches){welt.insertBefore(et,document.getElementById('detail'));}else if(et.parentNode!==buehne){buehne.appendChild(et);}}
@@ -380,7 +404,7 @@ function video(a){von=schirmK;
 function schliesse(){raum.hidden=true;document.body.classList.remove('zu');if(von)von.focus({preventScroll:true});}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!raum.hidden)schliesse();else if(drin)verlassen();}
   if(!welt.hidden&&raum.hidden&&cur&&cur.stufen.length>1){if(e.key==='ArrowUp'){e.preventDefault();waehleEtage(Math.min(cur.stufen.length-1,etage+1));}if(e.key==='ArrowDown'){e.preventDefault();waehleEtage(Math.max(0,etage-1));}}});
-document.getElementById('zur').onclick=function(){phase='aus';drin=false;welt.classList.remove('drin');[v1,v2].forEach(function(v){v.onplaying=v.ontimeupdate=v.onended=v.onerror=null;v.pause();v.classList.remove('an');});
+document.getElementById('zur').onclick=function(){phase='aus';sterne(false);drin=false;welt.classList.remove('drin');[v1,v2].forEach(function(v){v.onplaying=v.ontimeupdate=v.onended=v.onerror=null;v.pause();v.classList.remove('an');});
   if(hdAn){hdAn=false;}wolken.innerHTML='';vorne.hidden=true;cv.classList.remove('an');welt.hidden=true;wahl.hidden=false;document.getElementById('hinweis').hidden=false;if(alle())alle().hidden=false;
   window.scrollTo(0,0);mitte(akt);lage();vorladen();document.getElementById('waehlen').focus({preventScroll:true});};
 
