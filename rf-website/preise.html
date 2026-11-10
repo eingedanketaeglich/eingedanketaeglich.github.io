@@ -239,7 +239,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 .d-sub{color:#E9F0F5;text-shadow:0 1px 8px rgba(0,0,0,.6)}
 .duo-tipp{margin:12px 0 0;color:#E9F0F5}
 .wahl .schnupper{margin:8px 0 0;color:#E9F0F5;pointer-events:auto}
-/* ===== 10.11.2026 Runde 21: Bühne mit dem breiten Bild als ganzem Hintergrund ===== */
+/* ===== 10./11.11.2026 Runde 21: Bühne mit dem breiten Bild als ganzem Hintergrund ===== */
 .welt{background:#0C1420}
 .welt-hg,.buehne-innen,.welt .schirm{visibility:hidden!important}
 .buehne{-webkit-mask-image:none!important;mask-image:none!important}
@@ -271,6 +271,84 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
   .n-welt[data-w="b"] .n-bild{transform:translate(-50%,-44%)}   /* Hochhaus: Spitze im Bild */
   .n-welt::after{background:linear-gradient(90deg,rgba(8,14,24,0) 38%,rgba(8,14,24,.62) 72%,rgba(8,14,24,.78) 100%)}
 }
+/* ===== 10./11.11.2026 Runde 25 ===== */
+/* Flugzeug: klein und hoch (weiter weg), quert das Bild in 34 s, dann 20 s Pause; verschwindet hinter der Hochhaus-Spitze */
+.n-bild>img.n-flug{position:absolute;inset:auto;right:auto;bottom:auto;object-fit:fill;top:8.6%;left:104%;width:2.3%;height:auto;opacity:.92;filter:blur(.2px);animation:n-flug 54s linear infinite;animation-delay:-6s;pointer-events:none}
+@keyframes n-flug{0%{left:104%;top:15%}63%{left:-6%;top:13.6%}100%{left:-6%;top:13.6%}}   /* über der Stadt, aber unter der Überschrift */
+.n-bild>img.n-spitze{position:absolute;inset:auto;object-fit:fill;left:45.3125%;top:4.63%;width:9.375%;height:auto;pointer-events:none}
+/* Glanz: wenn ein Strahl des Leuchtturms nach rechts zeigt (alle 4,5 s), huscht ein schmaler Lichtschein über die Glasfassade */
+.n-glanz{position:absolute;left:45.7%;top:5.4%;width:8.4%;height:88%;pointer-events:none;mix-blend-mode:screen;
+  background:linear-gradient(100deg,rgba(255,236,190,0) 34%,rgba(255,236,190,.7) 47%,rgba(255,246,222,.95) 50%,rgba(255,236,190,.7) 53%,rgba(255,236,190,0) 66%) 0 0/300% 100% no-repeat;
+  animation:n-glanz 4.5s linear infinite;opacity:0}
+@keyframes n-glanz{0%{opacity:1;background-position:55% 0}12%{opacity:0;background-position:100% 0}84%{opacity:0;background-position:0 0}92%{opacity:.55;background-position:25% 0}100%{opacity:1;background-position:55% 0}}
+/* Leuchtturm am Mac weiter links */
+@media (min-width:900px){.n-welt[data-w="g"] .n-bild{left:28%;-webkit-mask-image:linear-gradient(to right,#000 80%,transparent 100%);mask-image:linear-gradient(to right,#000 80%,transparent 100%)}}   /* rechts läuft das Bild weich in den dunklen Grund unter der Angebotsspalte aus */
+/* Börsentag / Investmenttag: Lampe glüht auf, Name und Preis stehen oben im Licht */
+.n-lampe{position:absolute;left:50%;top:19.4%;width:9%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,246,210,.95) 0,rgba(255,226,150,.55) 30%,rgba(255,220,140,0) 70%);opacity:0;transition:opacity .6s ease}
+.n-licht{position:absolute;left:54.5%;top:19.4%;transform:translateY(-50%);white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .6s ease .2s;
+  font:400 clamp(20px,2.3vw,36px)/1.05 "Gloock",Georgia,serif;color:#FFF8E6;text-shadow:0 1px 3px rgba(40,24,0,.75),0 0 14px rgba(255,214,120,.9),0 0 30px rgba(255,200,90,.55)}
+.n-licht.links{left:auto;right:54.5%;text-align:right}
+.n-licht small{display:block;text-shadow:0 1px 3px rgba(40,24,0,.8);font:800 clamp(13px,1.1vw,17px) "Nunito",system-ui,sans-serif;color:#FFE9B0;margin-top:3px}
+.n-welt.leuchtet .n-lampe{opacity:1;animation:n-puls 2.4s ease-in-out infinite}.n-welt.leuchtet .n-licht{opacity:1}
+@keyframes n-puls{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.25)}}
+/* Menü: R&F in der Schrift der Wortmarke, Wellen des Leuchtturm-Zeichens 20 % schneller und 50 % höher */
+.rf{font-family:var(--wort),Georgia,serif!important;font-weight:400!important;letter-spacing:0!important;margin-right:-.12em}
+.vs-welle{animation:vs-welle2 2.24s ease-in-out infinite alternate!important}.vs-welle.w2{animation-duration:2.88s!important;animation-direction:alternate-reverse!important}
+@keyframes vs-welle2{from{transform:translate(-1.2px,.75px)}to{transform:translate(1.2px,-.9px)}}
+@media (prefers-reduced-motion:reduce){.n-flug,.n-glanz,.n-lampe{animation:none!important}.n-flug{display:none}}
+
+/* ===== Runde 26: ein Lichtkegel über beide Bilder, Spiegelung an der Glasfassade ===== */
+.n-bild .strahl i+i{display:none}   /* ein Kegel wie bei einem echten Leuchtturm */
+.n-bild>video.n-glanzfilm{position:absolute;inset:auto;left:43.75%;top:2.78%;width:12.5%;height:91.67%;object-fit:fill;mix-blend-mode:screen;pointer-events:none}
+.duo-licht{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.duo-licht .strahl i{width:175%!important;height:12%!important;top:calc(var(--ly) - 6%)!important;clip-path:polygon(0 46%,100% 18%,100% 82%,0 54%)!important;
+  background:linear-gradient(90deg,rgba(255,248,222,.85) 0,rgba(255,240,200,.38) 15%,rgba(255,236,190,.17) 45%,rgba(255,232,180,.06) 75%,rgba(255,232,180,0) 98%)!important;filter:blur(6px)!important}
+.duo-licht .strahl i+i,.duo-licht .strahl b+b{display:none}
+/* Laterne blitzt auf, wenn der Strahl zum Betrachter zeigt (Viertel der Umdrehung) */
+.duo-blitz{position:absolute;left:var(--lx);top:var(--ly);width:12vmin;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;opacity:0;
+  background:radial-gradient(circle,rgba(255,252,236,1) 0,rgba(255,236,180,.6) 25%,rgba(255,226,160,0) 65%);animation:duo-blitz 9s linear infinite}
+@keyframes duo-blitz{0%,20%,30%,100%{opacity:0}25%{opacity:1}}
+.duo-licht .strahl b{position:absolute;left:var(--lx);top:var(--ly);width:55%;height:3%;margin-top:-1.5%;transform-origin:0 50%;animation:dreh 9s linear infinite;
+  background:linear-gradient(90deg,rgba(255,252,236,.85),rgba(255,244,214,.25) 45%,rgba(255,244,214,0) 100%);filter:blur(3px);clip-path:polygon(0 46%,100% 15%,100% 85%,0 54%)}
+.duo-licht .strahl b+b{animation-delay:-4.5s}
+/* Spiegelung: Wo der Strahl auf das Glas trifft, leuchtet die Fassade warm auf; ein schwacher Gegenstrahl wirft das Licht zurück */
+.n-spiegel{position:absolute;pointer-events:none;mix-blend-mode:screen;z-index:3}
+.duo-turm{position:absolute;pointer-events:none;z-index:3}
+.duo-glanzfilm{position:absolute;pointer-events:none;z-index:4;mix-blend-mode:screen;object-fit:fill}
+.n-spiegel .treff{display:none;position:absolute;left:-45%;right:-45%;top:calc(var(--sy) - 9%);height:18%;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(255,252,236,1),rgba(255,232,176,.7) 35%,rgba(255,214,140,.2) 70%,rgba(255,214,140,0));filter:blur(3px);opacity:0;animation:n-treff 4.5s ease-in-out infinite}
+.n-spiegel .glas{display:none;position:absolute;inset:0;opacity:0;animation:n-treff 4.5s ease-in-out infinite;
+  background:linear-gradient(180deg,rgba(255,230,170,0) calc(var(--sy) - 22%),rgba(255,236,190,.55) var(--sy),rgba(255,230,170,0) calc(var(--sy) + 22%)),
+             repeating-linear-gradient(90deg,rgba(255,244,214,.32) 0 2px,transparent 2px 16.6%)}
+.n-spiegel .zurueck{position:absolute;right:60%;top:var(--sy);width:260%;height:7%;margin-top:-3.5%;transform-origin:100% 50%;transform:rotate(-9deg);opacity:0;
+  background:linear-gradient(270deg,rgba(255,240,200,.55),rgba(255,236,190,.12) 60%,rgba(255,236,190,0));clip-path:polygon(100% 42%,0 0,0 100%,100% 58%);filter:blur(2px);animation:n-zurueck 9s ease-out infinite;animation-delay:-8.4s}
+/* Scheiben: Vorderseite des Hochhauses ab 29 % der Breite, sechs Felder; zwei Etagen in Strahlhöhe. Jede Scheibe blitzt kurz und hart auf,
+   nacheinander von außen nach innen, während der Strahl über das Haus streicht; dazu ein schwacher Lichthof auf den Profilen */
+.n-spiegel .sch{position:absolute;width:11%;height:3.4%;top:calc(var(--sy) - 1.8% + var(--dy,0%));left:var(--x);opacity:0;border-radius:1px;
+  background:linear-gradient(160deg,rgba(255,255,248,1),rgba(255,236,190,.85) 45%,rgba(255,220,150,.35));box-shadow:0 0 6px 2px rgba(255,236,190,.7),0 0 18px 6px rgba(255,214,140,.35);
+  animation:n-sch 9s linear infinite;animation-delay:var(--d)}
+@keyframes n-sch{0%{opacity:0}0.8%{opacity:1}3%{opacity:.35}4.6%,100%{opacity:0}}
+/* Die dem Leuchtturm zugewandte Schmalseite wird warm angestrahlt, solange der Strahl lang genug ist, um das Haus zu erreichen */
+.n-spiegel .seite{position:absolute;left:0;width:29%;top:calc(var(--sy) - 3.4%);height:6.8%;opacity:0;filter:blur(1.5px);background:linear-gradient(90deg,rgba(255,236,190,.95),rgba(255,226,170,.55));animation:n-seite 9s linear infinite}
+@keyframes n-seite{0%{opacity:1}13%{opacity:0}87%{opacity:0}100%{opacity:1}}
+.n-spiegel .hof{position:absolute;left:-10%;right:-10%;top:calc(var(--sy) - 5%);height:10%;opacity:0;filter:blur(4px);
+  background:radial-gradient(closest-side,rgba(255,236,190,.45),rgba(255,236,190,0));animation:n-hof 9s ease-out infinite;animation-delay:-8.4s}
+@keyframes n-hof{0%{opacity:0}4%{opacity:1}14%{opacity:0}100%{opacity:0}}
+@keyframes n-treff{0%{opacity:1}22%{opacity:.15}32%,68%{opacity:0}80%{opacity:.25}100%{opacity:1}}
+@keyframes n-zurueck{0%{opacity:0}2%{opacity:.55}9%{opacity:0}100%{opacity:0}}
+/* Menü: Geschenk öffnet sich samt Schleife, Handy klingelt und vibriert */
+.vs-deckel{transform-box:view-box;transform-origin:8px 23px;animation:vs-deckel 4.8s ease-in-out infinite}
+@keyframes vs-deckel{0%,52%,100%{transform:none}62%,80%{transform:translate(-1px,-6px) rotate(-16deg)}}
+.vs-schleife{transform-box:fill-box;transform-origin:50% 100%;animation:vs-schleife 4.8s ease-in-out infinite}
+@keyframes vs-schleife{0%,52%,100%{transform:none}62%,80%{transform:scale(1.35,.7)}}
+.vs-glanz{opacity:0;animation:vs-glanzg 4.8s ease-in-out infinite}@keyframes vs-glanzg{0%,55%,100%{opacity:0}65%,78%{opacity:1}}
+.vs-handy{transform-box:view-box;transform-origin:24px 24px;animation:vs-handy 3.6s linear infinite}
+@keyframes vs-handy{0%,30%,100%{transform:none}2%,6%,10%,14%,18%,22%{transform:rotate(-9deg)}4%,8%,12%,16%,20%,24%{transform:rotate(9deg)}26%{transform:rotate(-4deg)}28%{transform:rotate(3deg)}}
+.vs-ring{opacity:0;animation:vs-ring 3.6s ease-out infinite}.vs-ring.r2{animation-delay:.25s}
+@keyframes vs-ring{0%{opacity:0}4%{opacity:1}26%{opacity:.9}34%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.duo-licht .strahl b,.n-spiegel *,.vs-deckel,.vs-schleife,.vs-glanz,.vs-handy,.vs-ring{animation:none!important}}
+
 </style>
 <link rel="stylesheet" href="vidon.css">
 </head>
@@ -282,7 +360,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 
 <section class="wahl rand" id="wahl">
   <div class="wahl-hg" aria-hidden="true"><div class="hg" style="background-image:url(bilder/preise/hg_g.webp)"></div><div class="hg" style="background-image:url(bilder/preise/hg_b.webp)"></div><div class="hg" style="background-image:url(bilder/preise/hg_s.webp)"></div><div class="wolken" id="k-wolken"></div></div>
-  <h1>Wähle deine Welt</h1><div class="duo"><button class="d-teil li" data-i="0" aria-label="Akademie fürs Geld, Leuchtturm ansehen"><span class="n-bild"><img src="bilder/preise/lt_echt.webp" alt=""><span class="strahl" style="--lx:50%;--ly:19.4%"><i></i><i></i></span></span></button><button class="d-teil re" data-i="1" aria-label="Institut fürs Vermögen, Hochhaus ansehen"><span class="n-bild"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen_0.webp" src="bilder/preise/hh_ebenen.mp4"></video></span></button></div><div class="duo-unten"><div class="duo-namen"><div><span class="d-nm">Akademie</span><span class="d-sub">fürs Geld</span></div><div><span class="d-nm">Institut</span><span class="d-sub">fürs Vermögen</span></div></div><p class="duo-tipp">Tippe auf eine Welt.</p></div><p class="lead">Wische und wähle deine Welt.</p>
+  <h1>Wähle deine Welt</h1><div class="duo"><button class="d-teil li" data-i="0" aria-label="Akademie fürs Geld, Leuchtturm ansehen"><span class="n-bild"><img src="bilder/preise/lt_echt.webp" alt=""><span class="strahl" style="--lx:50%;--ly:19.4%"><i></i><i></i></span></span></button><button class="d-teil re" data-i="1" aria-label="Institut fürs Vermögen, Hochhaus ansehen"><span class="n-bild"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen_0.webp" src="bilder/preise/hh_ebenen6.mp4"></video><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="n-spitze" src="bilder/preise/hh_spitze.webp" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video></span></button></div><div class="duo-unten"><div class="duo-namen"><div><span class="d-nm">Akademie</span><span class="d-sub">fürs Geld</span></div><div><span class="d-nm">Institut</span><span class="d-sub">fürs Vermögen</span></div></div><p class="duo-tipp">Tippe auf eine Welt.</p></div><p class="lead">Wische und wähle deine Welt.</p>
   <div class="karussell" id="karussell"><div class="k-teil" data-i="0" aria-label="Akademie, Leuchtturm im Sturm"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_schleife_0.webp" src="bilder/preise/leuchtturm_wellen.mp4"></video><img class="kz" src="bilder/preise/lt_raeume_zu.webp" alt=""></div><div class="k-teil" data-i="1" aria-label="Institut, Hochhaus in der Stadt"><img src="bilder/preise/hh_frei.webp" alt=""></div><div class="k-teil" data-i="2" aria-label="Sternstunde, Der Geldbaum im Sonnenuntergang"><img src="bilder/preise/baum_frei.webp" alt=""></div><div class="k-wisch" id="kw" tabindex="0" role="listbox" aria-roledescription="Karussell" aria-label="Drei Welten, zum Wechseln wischen"></div></div>
   <div class="k-unter" aria-live="polite"><div class="nm" id="k-nm"></div><div class="pr" id="k-pr"></div></div>
   <div class="k-steuer"><button class="pfeil" id="vor" aria-label="Vorherige Welt">‹</button><div class="punkte" id="punkte"><i></i><i></i><i></i></div><button class="pfeil" id="nach" aria-label="Nächste Welt">›</button></div>
@@ -580,10 +658,10 @@ var q=new URLSearchParams(location.search);
 if(q.get('k')){akt=+q.get('k');mitte(akt);lage();anzeige();}
 if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(wi);lage();anzeige();oeffne(wi);if(q.get('e'))waehleEtage(+q.get('e'));if(q.get('drin'))setTimeout(function(){betreten(true);},400);}}
 
-/* ===== 10.11.2026 Runde 21 ===== */
+/* ===== 10./11.11.2026 Runde 21 ===== */
 (function(){var nb=document.getElementById('n-bild'),et=document.getElementById('etagen');
   var BILD={g:'<img src="bilder/preise/lt_echt.webp" alt=""><span class="strahl" style="--lx:50%;--ly:19.4%"><i></i><i></i></span>',
-            b:'<video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen_0.webp" src="bilder/preise/hh_ebenen.mp4"></video>'};
+            b:'<video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen_0.webp" src="bilder/preise/hh_ebenen6.mp4"></video><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="n-spitze" src="bilder/preise/hh_spitze.webp" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video>'};
   var _o=oeffne;oeffne=function(i){_o(i);nb.innerHTML=BILD[cur.w]||'';nb.parentNode.style.transform='';nb.parentNode.dataset.w=cur.w;var v=nb.querySelector('video');if(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}};
   /* Etagen im neuen Hochhaus (Bild 1920 x 1080, gemessen 10.11.): Glasfront x 878–1038, je Raum zwei Etagen à 33 px. Reihenfolge wie geo.raeume */
   /* Raumblöcke [y0,y1,x0,x1] im 1920er-Bild (Hochhaus 1080 hoch, Leuchtturm 1084), Index = geo.raeume */
@@ -609,6 +687,15 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
   var zb=document.getElementById('zur'),zo=zb.onclick;zb.onclick=function(e){var b=this;if(offen<0&&!nb.parentNode.style.transform)return zo.call(b,e);
     zu(function(){zoom(false);setTimeout(function(){offen=-1;nb.parentNode.style.transform='';zo.call(b,e);},1150);});};
   var _l=liste;liste=function(){_l();et.classList.remove('frei');et.querySelectorAll('.et').forEach(function(x){x.style.top='';});};
+})();
+
+/* ===== 10./11.11.2026 Runde 25: Licht für Börsentag und Investmenttag ===== */
+(function(){var nb=document.getElementById('n-bild'),w=nb.parentNode;
+  function licht(s){var alt=nb.querySelectorAll('.n-lampe,.n-licht');alt.forEach(function(x){x.remove();});w.classList.remove('leuchtet');
+    if(!cur||cur.w!=='g'||!s||s.o!=='t')return;var a=W[cur.w].a[s.a];
+    nb.insertAdjacentHTML('beforeend','<span class="n-lampe"></span><span class="n-licht'+(/Investment/.test(a[0])?' links':'')+'">'+a[0]+'<small>'+a[3]+'</small></span>');void w.offsetWidth;w.classList.add('leuchtet');}
+  var _w2=waehleEtage;waehleEtage=function(j){_w2(j);licht(cur&&cur.stufen[j]);};
+  var _o2=oeffne;oeffne=function(i){_o2(i);w.classList.remove('leuchtet');};
 })();
 </script>
 </body>
