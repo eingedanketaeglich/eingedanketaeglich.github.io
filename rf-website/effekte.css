@@ -381,8 +381,8 @@ html[data-welt="gold"] .leiste .burger{border-color:#143426!important}
 html[data-welt="gold"] .leiste .burger i{background:#143426!important;box-shadow:0 -6px 0 #143426,0 6px 0 #143426!important}
 /* Menü-Zeichen: Wellen wiegen am Fuß des Leuchtturms, Wolken ziehen hinter dem Hochhaus */
 .vs-bau svg{overflow:hidden}
-.vs-welle{animation:vs-welle 2.8s ease-in-out infinite alternate}.vs-welle.w2{animation-duration:3.6s;animation-direction:alternate-reverse}
-@keyframes vs-welle{from{transform:translate(-1.2px,.5px)}to{transform:translate(1.2px,-.6px)}}
+.vs-welle{animation:vs-welle 2.24s ease-in-out infinite alternate}.vs-welle.w2{animation-duration:2.88s;animation-direction:alternate-reverse}   /* Simon 10.11.: Wellen 20 % schneller, 50 % höher */
+@keyframes vs-welle{from{transform:translate(-1.2px,.75px)}to{transform:translate(1.2px,-.9px)}}
 .vs-wolke{animation:vs-wolke 16s linear infinite}.vs-wolke.w2{animation-duration:23s;animation-delay:-9s}
 @keyframes vs-wolke{from{transform:translateX(-18px)}to{transform:translateX(52px)}}
 @media (prefers-reduced-motion:reduce){.vs-welle,.vs-wolke{animation:none}}
@@ -396,3 +396,18 @@ html[data-welt="gold"] .leiste .burger i{background:#143426!important;box-shadow
 .vs-st{transform-box:fill-box;transform-origin:50% 55%;animation:vs-st 3.2s ease-in-out infinite alternate}@keyframes vs-st{from{transform:rotate(-4deg) scale(.97)}to{transform:rotate(4deg) scale(1.03)}}
 .vs-sterne circle{animation:vs-sterne 2.4s ease-in-out infinite alternate}.vs-sterne circle:nth-child(2n){animation-delay:-1.2s}.vs-sterne circle:nth-child(3n){animation-delay:-.6s}@keyframes vs-sterne{from{opacity:.25}to{opacity:1}}
 @media (prefers-reduced-motion:reduce){.vs-dreh,.vs-blitz,.vs-st,.vs-sterne circle{animation:none!important}}
+
+/* 10.11.2026 spät (Simon freigegeben, Mockup Runde 25/26): R&F im Menü in der Schrift der Wortmarke; Geschenk öffnet sich, Handy klingelt;
+   großes R&F im Fuß der Firestarter-Seite im Orange der Leiste */
+.rf{font-family:var(--wort),Georgia,serif!important;font-weight:400!important;letter-spacing:0!important;margin-right:-.12em}
+.vs-deckel{transform-box:view-box;transform-origin:8px 23px;animation:vs-deckel 4.8s ease-in-out infinite}
+@keyframes vs-deckel{0%,52%,100%{transform:none}62%,80%{transform:translate(-1px,-6px) rotate(-16deg)}}
+.vs-schleife{transform-box:fill-box;transform-origin:50% 100%;animation:vs-schleife 4.8s ease-in-out infinite}
+@keyframes vs-schleife{0%,52%,100%{transform:none}62%,80%{transform:scale(1.35,.7)}}
+.vs-glanz{opacity:0;animation:vs-glanzg 4.8s ease-in-out infinite}@keyframes vs-glanzg{0%,55%,100%{opacity:0}65%,78%{opacity:1}}
+.vs-handy{transform-box:view-box;transform-origin:24px 24px;animation:vs-handy 3.6s linear infinite}
+@keyframes vs-handy{0%,30%,100%{transform:none}2%,6%,10%,14%,18%,22%{transform:rotate(-9deg)}4%,8%,12%,16%,20%,24%{transform:rotate(9deg)}26%{transform:rotate(-4deg)}28%{transform:rotate(3deg)}}
+.vs-ring{opacity:0;animation:vs-ring 3.6s ease-out infinite}.vs-ring.r2{animation-delay:.25s}
+@keyframes vs-ring{0%{opacity:0}4%{opacity:1}26%{opacity:.9}34%,100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.vs-deckel,.vs-schleife,.vs-glanz,.vs-handy,.vs-ring{animation:none!important}}
+html[data-seite="firestarter"] .fuss .gross b{color:#E06400}
