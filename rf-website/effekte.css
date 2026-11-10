@@ -386,3 +386,13 @@ html[data-welt="gold"] .leiste .burger i{background:#143426!important;box-shadow
 .vs-wolke{animation:vs-wolke 16s linear infinite}.vs-wolke.w2{animation-duration:23s;animation-delay:-9s}
 @keyframes vs-wolke{from{transform:translateX(-18px)}to{transform:translateX(52px)}}
 @media (prefers-reduced-motion:reduce){.vs-welle,.vs-wolke{animation:none}}
+
+/* ===== 10.11.2026 (Simon „freigegeben“, Runde 6): Leuchtfeuer dreht sich (zwei schmale Strahlen, Blitz wenn einer zum Betrachter zeigt); Sternstunde mit Nachthimmel, der verblasst ===== */
+.vs-akademie svg{overflow:visible}
+.vs-dreh{transform-box:view-box;transform-origin:24px 11.6px;animation:vs-dreh 8s linear infinite}
+@keyframes vs-dreh{0%{transform:scaleX(1)}6.25%{transform:scaleX(.92)}12.5%{transform:scaleX(.71)}18.75%{transform:scaleX(.38)}25%{transform:scaleX(0)}31.25%{transform:scaleX(-.38)}37.5%{transform:scaleX(-.71)}43.75%{transform:scaleX(-.92)}50%{transform:scaleX(-1)}56.25%{transform:scaleX(-.92)}62.5%{transform:scaleX(-.71)}68.75%{transform:scaleX(-.38)}75%{transform:scaleX(0)}81.25%{transform:scaleX(.38)}87.5%{transform:scaleX(.71)}93.75%{transform:scaleX(.92)}100%{transform:scaleX(1)}}
+.vs-blitz{animation:vs-blitz 4s linear infinite;animation-delay:-2s}@keyframes vs-blitz{0%,40%,60%,100%{opacity:0}50%{opacity:.95}}
+.vs-stern{filter:none!important}.vs-stern svg{overflow:visible;animation:none!important}
+.vs-st{transform-box:fill-box;transform-origin:50% 55%;animation:vs-st 3.2s ease-in-out infinite alternate}@keyframes vs-st{from{transform:rotate(-4deg) scale(.97)}to{transform:rotate(4deg) scale(1.03)}}
+.vs-sterne circle{animation:vs-sterne 2.4s ease-in-out infinite alternate}.vs-sterne circle:nth-child(2n){animation-delay:-1.2s}.vs-sterne circle:nth-child(3n){animation-delay:-.6s}@keyframes vs-sterne{from{opacity:.25}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.vs-dreh,.vs-blitz,.vs-st,.vs-sterne circle{animation:none!important}}
