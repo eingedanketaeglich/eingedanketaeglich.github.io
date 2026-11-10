@@ -298,6 +298,22 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 @keyframes vs-welle2{from{transform:translate(-1.2px,.75px)}to{transform:translate(1.2px,-.9px)}}
 @media (prefers-reduced-motion:reduce){.n-flug,.n-glanz,.n-lampe{animation:none!important}.n-flug{display:none}}
 
+/* ===== Runde 31 ===== */
+#zur{width:42px;height:42px;padding:0!important;border-radius:50%!important;display:grid!important;place-items:center;font-size:24px!important;line-height:1}
+.welt .w-titel .kl{display:none!important}
+.n-licht{display:none!important}
+@media (max-width:899px){
+  .n-welt[data-w="g"] .n-bild{left:50%!important}
+  .etagen.kreuz{left:0!important;right:0!important;top:0!important;bottom:0!important;width:auto!important;display:block;pointer-events:none}
+  .etagen.kreuz .teuer{display:none}
+  .etagen.kreuz .et{position:absolute;width:30%;box-sizing:border-box;pointer-events:auto}
+  .etagen.kreuz .et[data-pos="lo"]{left:max(8px,env(safe-area-inset-left,0px));top:30%}
+  .etagen.kreuz .et[data-pos="ro"]{right:max(8px,env(safe-area-inset-right,0px));top:30%}
+  .etagen.kreuz .et[data-pos="lu"]{left:max(8px,env(safe-area-inset-left,0px));top:46%}
+  .etagen.kreuz .et[data-pos="ru"]{right:max(8px,env(safe-area-inset-right,0px));top:46%}
+}
+
+
 /* ===== Runde 26: ein Lichtkegel über beide Bilder, Spiegelung an der Glasfassade ===== */
 .n-bild .strahl i+i{display:none}   /* ein Kegel wie bei einem echten Leuchtturm */
 .n-bild>video.n-glanzfilm{position:absolute;inset:auto;left:43.75%;top:2.78%;width:12.5%;height:91.67%;object-fit:fill;mix-blend-mode:screen;pointer-events:none}
@@ -410,7 +426,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 </section>
 </main>
 <p class="fussklein"><a href="recht.html#impressum">Impressum</a> · <a href="recht.html#datenschutz">Datenschutz</a></p>
-<script src="seite.js?v=20261110e"></script>
+<script src="seite.js?v=20261110f"></script>
 <script>
 
 var W={
@@ -696,6 +712,17 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
     nb.insertAdjacentHTML('beforeend','<span class="n-lampe"></span><span class="n-licht'+(/Investment/.test(a[0])?' links':'')+'">'+a[0]+'<small>'+a[3]+'</small></span>');void w.offsetWidth;w.classList.add('leuchtet');}
   var _w2=waehleEtage;waehleEtage=function(j){_w2(j);licht(cur&&cur.stufen[j]);};
   var _o2=oeffne;oeffne=function(i){_o2(i);w.classList.remove('leuchtet');};
+})();
+
+/* ===== Runde 31: Felder um den Leuchtturm, Kopfleiste in der Weltfarbe, Zurück nur als Pfeil ===== */
+(function(){var et=document.getElementById('etagen'),H=document.documentElement,zur=document.getElementById('zur');
+  var POS={'Investmenttag':'lo','Börsentag':'ro','Einzelner Workshop':'lu','Dein erster Tag':'ru'},NAME={g:'Akademie für Finanzkompetenz',b:'Institut für Vermögenskompetenz'},FARBE={g:'gruen',b:'blau'};
+  function kopf(w){var m=document.querySelector('.leiste .marke');if(!m)return;var k=m.querySelector('.marke-mehr');if(k)k.remove();
+    if(w){H.dataset.welt=FARBE[w];m.insertAdjacentHTML('beforeend','<small class="marke-mehr">'+NAME[w]+'</small>');}else{delete H.dataset.welt;}}
+  var _l3=liste;liste=function(){_l3();var g=cur&&cur.w==='g';et.classList.toggle('kreuz',g);
+    et.querySelectorAll('.et').forEach(function(x){var n=x.querySelector('b').textContent;if(g&&POS[n])x.dataset.pos=POS[n];else delete x.dataset.pos;});};
+  var _o3=oeffne;oeffne=function(i){_o3(i);kopf(cur.w);zur.textContent='‹';zur.setAttribute('aria-label','Zurück zu beiden Welten');liste();};
+  var zo3=zur.onclick;zur.onclick=function(e){var r=zo3?zo3.call(this,e):0;setTimeout(function(){if(welt.hidden)kopf(null);},1300);return r;};
 })();
 </script>
 </body>

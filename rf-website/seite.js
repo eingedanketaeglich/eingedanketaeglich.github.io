@@ -33,7 +33,7 @@
     kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F, Startseite"><b>R&amp;F</b>'+(WELTNAME[hier]?'<small class="marke-mehr">'+WELTNAME[hier]+'</small>':'')+'</a>'+
       '<div class="wer-fenster" id="wer-fenster" hidden></div></div>'+
       '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+(VS[m[0]]||'')+'</a>'}).join('')+'</nav>'+
-      '<a class="knopf" href="'+link('preise.html')+'">Termine &amp; Preise</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';
+      '<a class="knopf" href="'+link('preise.html')+'">Termine</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';
   }
   var fuss=document.getElementById('fuss');
   if(fuss){
