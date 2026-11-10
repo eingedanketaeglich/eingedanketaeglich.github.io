@@ -7,7 +7,7 @@
 <title>Preise · R&amp;F</title>
 <meta name="description" content="R&F Preise: R&F Akademie für den Anfang, R&F Institut für die raue See, Sternstunde für Kinder">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=IBM+Plex+Mono:wght@500&family=Gloock&display=swap">
-<link rel="stylesheet" href="sternstunde/rahmen.css?v=3">
+<link rel="stylesheet" href="sternstunde/rahmen.css?v=4">
 <style>
 /* Preisseite v9, Vorschau (07.11.2026): Leuchtturm (Akademie), Hochhaus (Institut), Baum (Sternstunde) im Karussell,
    Video beim Oeffnen, Etagen unten guenstig, oben teuer. Quelle: Preise-Konzepte_2026-11-07/preise_neu_bauen.py */
@@ -155,6 +155,72 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 .alle .cta{display:inline-block;margin-top:12px;background:#F6CF5A;color:#0B1A38;border-radius:999px;padding:10px 16px;font:800 14px "Nunito",system-ui,sans-serif;text-decoration:none}
 .zitat{font:400 22px/1.35 "Gloock",Georgia,serif;color:#fff;text-align:center;margin:28px 0 0}
 .fussklein{text-align:center;font:600 13px "Nunito",system-ui,sans-serif;color:#B9C3D1;padding-block:10px 30px}.fussklein a{color:inherit}
+
+/* ===== 10.11.2026: Wähle deine Welt, Leuchtturm und Hochhaus neu (Quelle: Mockup_2026-11-10_Telefonat-Rene/umsetzen_gesetzte_punkte.py) ===== */
+.leiste{background:#102444!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+.wahl .lead,.wahl .karussell,.wahl .k-unter,.wahl .k-steuer,.wahl-hg{display:none!important}
+/* Runde 2 (Simon 10.11.): kein schwarzer Grund, kein Ausschnitt. Links grünlich (Akademie), rechts blau (Institut), die Bilder laufen in der Mitte ineinander */
+.wahl{padding-block:22px 30px;background:linear-gradient(90deg,#1D4F45 0%,#285F63 38%,#2C6592 62%,#2A66A8 100%)}
+.wahl h1{text-shadow:0 2px 18px rgba(0,0,0,.35)}
+.duo{position:relative;height:min(60svh,500px);margin:10px calc(-1 * max(16px,env(safe-area-inset-left,0px))) 0;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 86%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 12%,#000 86%,transparent 100%)}
+.d-teil{all:unset;cursor:pointer;position:absolute;top:0;bottom:0;width:60%;-webkit-tap-highlight-color:transparent}
+.d-teil.li{left:0;-webkit-mask-image:linear-gradient(to right,#000 66%,transparent 100%);mask-image:linear-gradient(to right,#000 66%,transparent 100%)}
+.d-teil.re{right:0;-webkit-mask-image:linear-gradient(to left,#000 66%,transparent 100%);mask-image:linear-gradient(to left,#000 66%,transparent 100%)}
+.d-bild{position:absolute;inset:0;overflow:hidden;display:block}
+.d-teil.li .d-bild::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(24,92,70,.42),rgba(30,96,92,.3));mix-blend-mode:soft-light;pointer-events:none}
+.d-innen{position:absolute;top:0;height:100%;aspect-ratio:1696/2528}
+.d-teil.li .d-innen{left:42%;transform:translateX(-50%)}.d-teil.re .d-innen{left:58%;transform:translateX(-50%)}
+.d-innen>img,.d-innen>video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.d-innen .wolken{position:absolute;inset:0;overflow:hidden}
+.d-innen .wz{position:absolute;inset:0;animation:zieh 50s linear infinite}.d-innen .wz img{position:absolute;left:0;height:auto}
+.duo-namen{display:grid;grid-template-columns:1fr 1fr;text-align:center;margin-top:-6px;position:relative}
+.d-nm{display:block;font:400 30px/1.05 "Gloock",Georgia,serif;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+.d-sub{display:block;font:700 15px "Nunito",system-ui,sans-serif;color:#E4EDF3;margin-top:3px}
+.d-teil:focus-visible{outline:3px solid var(--gold);outline-offset:-4px}
+.duo-tipp{margin:14px 0 0;text-align:center;font:700 13px "Nunito",system-ui,sans-serif;color:#E4EDF3}
+.wahl .schnupper{color:#E4EDF3}
+/* Lichtkegel kommt genau aus der Lampe (vorher saß er darunter) und ist schmal wie bei einem echten Leuchtturm */
+.strahl i{top:calc(var(--ly) - 5.5%)!important;height:11%!important;margin-top:0!important;clip-path:polygon(0 44%,100% 0,100% 100%,0 56%)!important;
+  background:linear-gradient(90deg,rgba(255,244,205,.95),rgba(255,236,180,.42) 30%,rgba(255,232,170,0) 88%)!important;filter:blur(3px)!important}
+/* Verkehr und Flugzeug (Hochhaus): winzige Formen im Raster der Szene */
+.verkehr{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.verkehr i{position:absolute;display:block}
+.verkehr.li{clip-path:inset(0 61.6% 0 0)}.verkehr.re{clip-path:inset(0 0 0 61.8%)}
+.auto{width:2.9%;height:.62%;border-radius:40% 45% 20% 20%/70% 70% 20% 20%;background:var(--c,#C8102E);box-shadow:inset 0 -1px 0 rgba(0,0,0,.35)}
+.auto::after{content:"";position:absolute;right:-8%;top:45%;width:14%;height:30%;border-radius:50%;background:#FFF3B0;box-shadow:0 0 4px 2px rgba(255,243,176,.8)}
+.auto.r{animation:fahr-r var(--t,13s) linear infinite;animation-delay:var(--d,0s)}
+.auto.l{animation:fahr-l var(--t,15s) linear infinite;animation-delay:var(--d,0s)}.auto.l::after{right:auto;left:-8%}
+@keyframes fahr-r{from{left:-5%;top:86.9%}to{left:103%;top:83.6%}}
+@keyframes fahr-l{from{left:103%;top:84.6%}to{left:-5%;top:88.1%}}
+.mensch{width:.42%;height:1.05%;border-radius:45% 45% 20% 20%;background:#2B3440;animation:geh var(--t,40s) linear infinite alternate;animation-delay:var(--d,0s);top:var(--y,90%)}
+.mensch::before{content:"";position:absolute;left:10%;top:-38%;width:80%;aspect-ratio:1;border-radius:50%;background:#E9C9A8}
+@keyframes geh{from{left:var(--a,20%)}to{left:var(--b,60%)}}
+.flieger{width:5.2%;rotate:-4deg;aspect-ratio:3.2;animation:flug 34s linear infinite;animation-delay:var(--d,-6s)}
+.flieger svg{display:block;width:100%;height:100%}
+.flieger::after{content:"";position:absolute;left:46%;top:60%;width:9%;aspect-ratio:1;border-radius:50%;background:#FF4A3D;animation:blink 1.2s steps(1) infinite}
+@keyframes flug{from{left:-8%;top:17%}to{left:108%;top:6%}}
+@keyframes blink{0%,60%{opacity:1}61%,100%{opacity:0}}
+@media (max-width:899px){
+  /* Kasten und Bauwerk tiefer: Überschrift steht frei über Lampe bzw. Hochhaus-Spitze */
+  .welt{padding-top:84px}
+  .welt::before{content:"";position:absolute;inset:0 0 auto;height:230px;background:var(--hgb,none) center top/100% auto no-repeat;-webkit-mask-image:linear-gradient(#000 45%,transparent);mask-image:linear-gradient(#000 45%,transparent)}
+  .etagen .teuer{display:none}
+  /* Leuchtturm: Angebote auf der Höhe ihres Raums, die beiden Tage oben im Lichtkegel */
+  .etagen.frei{inset:0;width:auto;display:block;pointer-events:none}
+  .etagen.frei .et{position:absolute;right:max(8px,env(safe-area-inset-right,0px));width:33%;box-sizing:border-box;transform:translateY(-50%);pointer-events:auto}
+  /* Runde 2: die beiden Tage stehen als Schrift in den Wolken, kein Schild. Im Dunkeln nur zu ahnen, im Lichtkegel klar */
+  .etagen.frei .et.licht{right:auto;left:53%;width:auto;white-space:nowrap;padding:3px 2px;background:none;border:0;border-radius:0;backdrop-filter:none;-webkit-backdrop-filter:none;animation:mk-licht 4.5s linear infinite}
+  .etagen.frei .et.licht b{display:inline;font:400 19px/1 "Gloock",Georgia,serif;color:#FFF6DC}.etagen.frei .et.licht span{display:inline;font:800 12px "Nunito",system-ui,sans-serif;color:#FFF6DC;margin-left:7px}
+  @keyframes mk-licht{0%,100%{opacity:1;filter:none;text-shadow:0 0 14px rgba(255,236,180,.95),0 0 3px rgba(255,255,255,.8)}16%,84%{opacity:0;filter:blur(1px);text-shadow:none}}
+  .etagen.frei .et.licht[aria-pressed="true"]{animation:none;opacity:1;background:none;border:0;text-shadow:0 0 14px rgba(246,207,90,.95)}
+  .etagen.frei .et.licht[aria-pressed="true"] b,.etagen.frei .et.licht[aria-pressed="true"] span{color:var(--gold)}
+  /* Hochhaus: Mentoring sitzt auch in der Liste mit Abstand über den anderen */
+  .etagen .et.abstand{margin-bottom:22px}
+  .skizze{position:absolute;z-index:3;pointer-events:none;opacity:0;transition:opacity .5s ease}.welt.drin .skizze.an{opacity:1}
+  .skizze svg{display:block;width:100%;height:100%}
+}
+@media (prefers-reduced-motion:reduce){.auto,.mensch,.flieger,.flieger::after,.et.licht,.et.licht b,.et.licht span,.d-innen .wz{animation:none!important}}
 </style>
 </head>
 <body>
@@ -165,7 +231,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 
 <section class="wahl rand" id="wahl">
   <div class="wahl-hg" aria-hidden="true"><div class="hg" style="background-image:url(bilder/preise/hg_g.webp)"></div><div class="hg" style="background-image:url(bilder/preise/hg_b.webp)"></div><div class="hg" style="background-image:url(bilder/preise/hg_s.webp)"></div><div class="wolken" id="k-wolken"></div></div>
-  <h1>Unsere Preise</h1><p class="lead">Wische und wähle deine Welt.</p>
+  <h1>Wähle deine Welt</h1><div class="duo"><button class="d-teil li" data-i="0" aria-label="Akademie fürs Geld, Leuchtturm ansehen"><span class="d-bild"><span class="d-innen"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_schleife_0.webp" src="bilder/preise/leuchtturm_wellen.mp4"></video><img src="bilder/preise/lt_raeume_zu.webp" alt=""><span class="strahl" style="--lx:50.1%;--ly:20.2%"><i></i><i></i></span></span></span></button><button class="d-teil re" data-i="1" aria-label="Institut fürs Vermögen, Hochhaus ansehen"><span class="d-bild"><span class="d-innen"><img src="bilder/preise/n_hh_stadt.webp" alt=""><span class="wolken"><div class="wz" style="animation-duration:50s;animation-delay:-6.0s"><img src="bilder/preise/wolke_1.webp" alt="" style="top:1%;width:50%;opacity:1"></div><div class="wz" style="animation-duration:41s;animation-delay:-26.2s"><img src="bilder/preise/wolke_2.webp" alt="" style="top:17%;width:36%;opacity:0.96"></div><div class="wz" style="animation-duration:60s;animation-delay:-25.8s"><img src="bilder/preise/wolke_3.webp" alt="" style="top:5%;width:42%;opacity:0.92;transform:scaleX(-1)"></div><div class="wz" style="animation-duration:70s;animation-delay:-18.9s"><img src="bilder/preise/wolke_4.webp" alt="" style="top:33%;width:28%;opacity:0.8"></div></span><div class="verkehr" aria-hidden="true"><i class="flieger" style="--d:-7s"><svg viewBox="0 0 64 20" aria-hidden="true"><path d="M2 11 Q4 7 12 7 L50 7 Q60 7 62 11 Q60 13 50 13 L12 13 Q4 13 2 11 Z" fill="#F4F6F9"/><path d="M30 8 L22 0 L27 0 L40 8 Z M30 12 L22 20 L27 20 L40 12 Z" fill="#DDE3EA"/><path d="M6 7 L2 1 L7 1 L13 7 Z" fill="#2E5AA8"/></svg></i></div><img src="bilder/preise/n_hh_vorne.webp" alt=""><img src="bilder/preise/n_hh_raeume_zu.webp" alt=""><div class="verkehr li" aria-hidden="true"><i class="auto r" style="--c:#C8102E;--t:13s;--d:-1s"></i><i class="auto r" style="--c:#F2F2F2;--t:17s;--d:-8.5s"></i><i class="auto l" style="--c:#1F3A5F;--t:15s;--d:-6s"></i><i class="auto l" style="--c:#E0B13A;--t:19s;--d:-1.5s"></i></div><div class="verkehr re" aria-hidden="true"><i class="auto r" style="--c:#C8102E;--t:13s;--d:-1s"></i><i class="auto r" style="--c:#F2F2F2;--t:17s;--d:-8.5s"></i><i class="auto l" style="--c:#1F3A5F;--t:15s;--d:-6s"></i><i class="auto l" style="--c:#E0B13A;--t:19s;--d:-1.5s"></i></div><div class="verkehr" aria-hidden="true"><i class="mensch" style="--y:94.2%;--a:22%;--b:48%;--t:46s;--d:-12s"></i><i class="mensch" style="--y:95.6%;--a:74%;--b:52%;--t:52s;--d:-20s"></i><i class="mensch" style="--y:90.6%;--a:66%;--b:88%;--t:60s;--d:-33s"></i></div></span></span></button></div><div class="duo-namen"><div><span class="d-nm">Akademie</span><span class="d-sub">fürs Geld</span></div><div><span class="d-nm">Institut</span><span class="d-sub">fürs Vermögen</span></div></div><p class="duo-tipp">Tippe auf eine Welt.</p><p class="lead">Wische und wähle deine Welt.</p>
   <div class="karussell" id="karussell"><div class="k-teil" data-i="0" aria-label="Akademie, Leuchtturm im Sturm"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_schleife_0.webp" src="bilder/preise/leuchtturm_wellen.mp4"></video><img class="kz" src="bilder/preise/lt_raeume_zu.webp" alt=""></div><div class="k-teil" data-i="1" aria-label="Institut, Hochhaus in der Stadt"><img src="bilder/preise/hh_frei.webp" alt=""></div><div class="k-teil" data-i="2" aria-label="Sternstunde, Der Geldbaum im Sonnenuntergang"><img src="bilder/preise/baum_frei.webp" alt=""></div><div class="k-wisch" id="kw" tabindex="0" role="listbox" aria-roledescription="Karussell" aria-label="Drei Welten, zum Wechseln wischen"></div></div>
   <div class="k-unter" aria-live="polite"><div class="nm" id="k-nm"></div><div class="pr" id="k-pr"></div></div>
   <div class="k-steuer"><button class="pfeil" id="vor" aria-label="Vorherige Welt">‹</button><div class="punkte" id="punkte"><i></i><i></i><i></i></div><button class="pfeil" id="nach" aria-label="Nächste Welt">›</button></div>
@@ -215,7 +281,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 </section>
 </main>
 <p class="fussklein"><a href="recht.html#impressum">Impressum</a> · <a href="recht.html#datenschutz">Datenschutz</a></p>
-<script src="seite.js?v=20261107a"></script>
+<script src="seite.js?v=20261110a"></script>
 <script>
 
 var W={
@@ -417,6 +483,44 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'){if(!raum.hi
 document.getElementById('zur').onclick=function(){phase='aus';sterne(false);drin=false;welt.classList.remove('drin');[v1,v2].forEach(function(v){v.onplaying=v.ontimeupdate=v.onended=v.onerror=null;v.pause();v.classList.remove('an');});
   if(hdAn){hdAn=false;}wolken.innerHTML='';vorne.hidden=true;cv.classList.remove('an');welt.hidden=true;wahl.hidden=false;document.getElementById('hinweis').hidden=false;if(alle())alle().hidden=false;
   window.scrollTo(0,0);mitte(akt);lage();vorladen();document.getElementById('waehlen').focus({preventScroll:true});};
+
+
+/* ===== Mockup 10.11.2026: Überschreibungen ===== */
+var MOCK_SK={};   /* Raum-Skizzen nur im Mockup; echte Raumbilder folgen */
+(function(){var g=WELT[0],b=WELT[1];
+  g.kl='R&F Akademie für Finanzkompetenz';g.h='Für den Anfang.';
+  b.h='Baue deine Zukunft.';
+  b.offen='bilder/preise/n_hh_stadt.webp';b.hd='bilder/preise/n_hh_stadt_hd.webp';b.vorne='bilder/preise/n_hh_vorne.webp';b.vorne_hd='bilder/preise/n_hh_vorne_hd.webp';b.zu_raeume='bilder/preise/n_hh_raeume_zu.webp';
+  b.geo.raeume[3]=[742,896,700,1036];b.geo.innen[3]=[742,896];b.geo.schirm[3][0]-=140;b.geo.schirm[3][1]-=140;
+  b.wolken.forEach(function(x){x[3]=Math.round(x[3]*.55);});
+  var i=new Image();i.onload=function(){if(cur===b)zeichne();};i.src=b.zu_raeume;zuBild.b=i;
+})();
+var schmal=function(){return !breit.matches;};
+liste=function(){if(cur.stufen.length<2){et.innerHTML='';return;}var h='',frei=schmal()&&cur.w==='g',n=0;et.classList.toggle('frei',frei);
+  for(var j=cur.stufen.length-1;j>=0;j--){var s=cur.stufen[j],a=W[cur.w].a[s.a],st='',kl='et';
+    if(frei){if(s.o==='t'){kl+=' licht';st='top:calc(20.2% '+(n++?'+ 12px':'- 13px')+')';}else{var r=cur.geo.raeume[s.i];st='top:'+((r[0]+r[1])/2/2528*100).toFixed(2)+'%';}}
+    else if(cur.w==='b'&&j===cur.stufen.length-1)kl+=' abstand';
+    h+='<button class="'+kl+'" data-j="'+j+'" aria-pressed="'+(j===etage)+'" style="'+st+'"><b>'+a[0]+'</b><span>'+a[3]+'</span></button>';}
+  et.innerHTML=h;et.querySelectorAll('.et').forEach(function(x){x.onclick=function(e){e.stopPropagation();waehleEtage(+x.dataset.j);};});};
+var _detail=detail;
+detail=function(){var d=W[cur.w],box=document.getElementById('detail');
+  if(etage<0){var T={g:['Lerne Geld.','Bevor es teuer wird. Tippe auf ein Angebot.','Mehr zur Akademie'],b:['Wähle deinen Einstieg','Tippe auf einen Raum im Hochhaus oder auf ein Angebot.','Mehr zum Institut']}[cur.w];
+    box.innerHTML='<p class="stock">'+cur.kurz+' · '+cur.ab+'</p><h3>'+T[0]+'</h3><p class="fw">'+T[1]+'</p><a class="mehr" href="'+d.link+'">'+T[2]+' ›</a>';return;}
+  _detail();var s=box.querySelector('.stock');if(s)s.textContent=cur.kurz;var rb=document.getElementById('rein');if(rb)rb.firstChild.textContent=drin?'‹ Raum verlassen':'Raum betreten ›';
+  skizzen();};
+var _waehle=waehleEtage;
+waehleEtage=function(j){_waehle(j);if(schmal()&&!drin&&!/still=1/.test(location.search)){var b=document.getElementById('detail').getBoundingClientRect();if(b.bottom>innerHeight)window.scrollBy({top:b.bottom-innerHeight+14,behavior:ruhig?'auto':'smooth'});}};
+/* Skizze liegt im Raster der Szene über dem geöffneten Raum, sichtbar nach „Raum betreten“ */
+function skizzen(){szene.querySelectorAll('.skizze').forEach(function(x){x.remove();});if(!cur||cur.w!=='b'||etage<0)return;var s=cur.stufen[etage];if(!MOCK_SK[s.i])return;
+  var r=cur.geo.raeume[s.i],e=document.createElement('div');e.className='skizze an';
+  e.style.cssText='left:'+(700/1696*100)+'%;top:'+(r[0]/2528*100)+'%;width:'+(336/1696*100)+'%;height:'+((r[1]-r[0])/2528*100)+'%';e.innerHTML=MOCK_SK[s.i];szene.appendChild(e);}
+var _oeffne=oeffne;
+oeffne=function(i){if(i>1)i=0;_oeffne(i);welt.style.setProperty('--hgb','url('+cur.hg+')');
+  var alt=szene.querySelectorAll('.verkehr');alt.forEach(function(x){x.remove();});
+  if(cur.w==='b'){vorne.insertAdjacentHTML('beforebegin',"<div class=\"verkehr\" aria-hidden=\"true\"><i class=\"flieger\" style=\"--d:-7s\"><svg viewBox=\"0 0 64 20\" aria-hidden=\"true\"><path d=\"M2 11 Q4 7 12 7 L50 7 Q60 7 62 11 Q60 13 50 13 L12 13 Q4 13 2 11 Z\" fill=\"#F4F6F9\"/><path d=\"M30 8 L22 0 L27 0 L40 8 Z M30 12 L22 20 L27 20 L40 12 Z\" fill=\"#DDE3EA\"/><path d=\"M6 7 L2 1 L7 1 L13 7 Z\" fill=\"#2E5AA8\"/></svg></i></div>");vorne.insertAdjacentHTML('afterend',"<div class=\"verkehr li\" aria-hidden=\"true\"><i class=\"auto r\" style=\"--c:#C8102E;--t:13s;--d:-1s\"></i><i class=\"auto r\" style=\"--c:#F2F2F2;--t:17s;--d:-8.5s\"></i><i class=\"auto l\" style=\"--c:#1F3A5F;--t:15s;--d:-6s\"></i><i class=\"auto l\" style=\"--c:#E0B13A;--t:19s;--d:-1.5s\"></i></div><div class=\"verkehr re\" aria-hidden=\"true\"><i class=\"auto r\" style=\"--c:#C8102E;--t:13s;--d:-1s\"></i><i class=\"auto r\" style=\"--c:#F2F2F2;--t:17s;--d:-8.5s\"></i><i class=\"auto l\" style=\"--c:#1F3A5F;--t:15s;--d:-6s\"></i><i class=\"auto l\" style=\"--c:#E0B13A;--t:19s;--d:-1.5s\"></i></div><div class=\"verkehr\" aria-hidden=\"true\"><i class=\"mensch\" style=\"--y:94.2%;--a:22%;--b:48%;--t:46s;--d:-12s\"></i><i class=\"mensch\" style=\"--y:95.6%;--a:74%;--b:52%;--t:52s;--d:-20s\"></i><i class=\"mensch\" style=\"--y:90.6%;--a:66%;--b:88%;--t:60s;--d:-33s\"></i></div>");}
+  document.getElementById('zur').textContent='‹ Beide Welten';raus.textContent='‹ Raum verlassen';};
+document.querySelectorAll('.d-teil').forEach(function(t){t.onclick=function(){akt=+t.dataset.i;oeffne(akt);};});
+document.querySelectorAll('.d-innen video').forEach(function(v){var p=v.play();if(p&&p.catch)p.catch(function(){});});
 
 /* Start */
 mitte(0);lage();anzeige();

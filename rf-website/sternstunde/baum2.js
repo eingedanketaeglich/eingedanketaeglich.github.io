@@ -85,7 +85,10 @@
     if(i===N-1&&META){var l=document.querySelector('.leiste'),oben=(l?l.offsetHeight:0)+12;y=Math.min(y,(META.krone.y-.17*YS)*BH-.19*SK*BW-oben);}  /* Sternmitte wie im Markup, Breite 38 % */
     return y;}
   function anker(){S=[0];for(var i=0;i<N-1;i++){S.push(S[i]+Math.max(Math.abs(camY(i+1)-camY(i)),vh*.45));}
-    var el=welt.querySelectorAll('.anker');for(var j=0;j<N;j++){el[j].style.height=(j<N-1?S[j+1]-S[j]:vh)+'px';}}
+    /* Weg 2 (Simon 10.11.2026): Der Baum folgt dem Finger. Die Seite beginnt unten an den Wurzeln, man zieht den Baum herunter und klettert so nach oben.
+       Darum liegen die Abstände der Halte in umgekehrter Reihenfolge im Dokument, und die Scrollposition wird von unten gezählt. */
+    var el=welt.querySelectorAll('.anker');for(var j=0;j<N;j++){el[j].style.height=(j<N-1?S[N-1-j]-S[N-2-j]:vh)+'px';}}
+  function vonUnten(y){return klemm(S[N-1]-y,0,S[N-1]);}
   /* Scrollposition → Haltindex mit Bruchteil (linear, damit der Baum 1:1 mitfährt) */
   function haltIndex(y){for(var i=0;i<N-1;i++){if(y<S[i+1])return i+klemm((y-S[i])/(S[i+1]-S[i]),0,1);}return N-1;}
   function groesse(){vw=buehne.clientWidth;vh=innerHeight;zoom=vw<760?ZOOM_HANDY:ZOOM_DESK;
@@ -94,7 +97,7 @@
        Das Mac-Breitbild füllt die Fensterbreite; ist das Fenster noch breiter, wird es leicht größer, nie schmaler als das Fenster */
     if(zoom===ZOOM_DESK){var r=META?META.breite/META.hoehe:1/3;BH=vh*2.6/YS;BW=BH*r;if(BW<vw){BW=vw;BH=BW/r;}baum.style.width=BW+'px';baum.style.height=BH+'px';}
     rinde();grasKante();anker();stelle(true);}
-  function lies(){zielP=haltIndex(scrollY)/(N-1);}
+  function lies(){zielP=haltIndex(vonUnten(scrollY))/(N-1);}
   /* Wie weit unter der Oberkante die Flamme sitzt: 30 % der Höhe, bei hohen Karten (Spiel, Eltern) höher, damit die
      Flamme nie hinter Blase oder Karte verschwindet; nie in den Kopf hinein. */
   function versatz(i){var el=stationen[i];if(!el)return vh*.3;var fl=flammen.filter(function(f){return +f.dataset.i===i})[0];
@@ -134,7 +137,7 @@
   addEventListener('scroll',anScroll,{passive:true});addEventListener('resize',groesse);
   /* Rasten übernimmt CSS scroll-snap (proximity) auf html; das JS-Rasten per scrollTo kämpfte auf iOS gegen die Trägheit (Simon 31.10.) */
   buehne.addEventListener('click',function(e){
-    var w=e.target.closest('.weiter');if(w){scrollTo({top:S[+w.dataset.ziel],behavior:'smooth'});return;}
+    var w=e.target.closest('.weiter');if(w){scrollTo({top:S[N-1]-S[+w.dataset.ziel],behavior:'smooth'});return;}
     var sp=e.target.closest('.sprechen');if(sp){sprich(+sp.dataset.i);return;}
     var a=e.target.closest('.spiel button');if(a){var ant={aus:'Jetzt ist es weg. Morgen ist der Baum genauso klein wie heute.',teil:'Ein Teil für heute, ein Teil wächst. So bleibt beides möglich.',alles:'Alles wächst. Aber ein kleines Eis heute wäre auch in Ordnung gewesen.'};
       a.parentNode.querySelectorAll('button').forEach(function(x){x.style.background='';x.style.color=''});a.style.background='var(--green)';a.style.color='var(--cream)';a.closest('.karte').querySelector('.antwort').textContent=ant[a.dataset.a];}
@@ -147,7 +150,8 @@
 
   fetch('baum/anker.json').then(function(r){return r.json()}).then(function(m){bauen(m);start();}).catch(function(){
     bauen({breite:1000,hoehe:3000,anker:[{x:.11,y:.715},{x:.86,y:.58},{x:.16,y:.45},{x:.81,y:.315},{x:.21,y:.19}],rinde:{x:.5,y:.545},krone:{x:.5,y:.06}});start();});
-  function start(){var p0=parseFloat(q.get('p')),h0=parseInt(q.get('halt'),10);if(!isNaN(h0))p0=h0/(N-1);if(!isNaN(p0)){scrollTo(0,S[Math.floor(p0*(N-1))]+(p0*(N-1)%1)*((S[Math.min(Math.ceil(p0*(N-1)),N-1)]||S[N-1])-S[Math.floor(p0*(N-1))]));lies();stelle(true);
+  function start(){var p0=parseFloat(q.get('p')),h0=parseInt(q.get('halt'),10);if(!isNaN(h0))p0=h0/(N-1);try{history.scrollRestoration='manual';}catch(e){}
+    if(!isNaN(p0)){scrollTo(0,S[N-1]-(S[Math.floor(p0*(N-1))]+(p0*(N-1)%1)*((S[Math.min(Math.ceil(p0*(N-1)),N-1)]||S[N-1])-S[Math.floor(p0*(N-1))])));lies();stelle(true);
       if(STILL){var nah=Math.round(p*(N-1));if(nah>=7)sternEl.classList.add('an');}}
-    else{document.documentElement.style.scrollSnapType='y proximity';lies();stelle(true);}}
+    else{scrollTo(0,S[N-1]);lies();stelle(true);requestAnimationFrame(function(){scrollTo(0,S[N-1]);lies();stelle(true);document.documentElement.style.scrollSnapType='y proximity';});}}
 })();

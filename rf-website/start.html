@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
 <link rel="stylesheet" href="stil.css">
 <link rel="stylesheet" href="start.css">
-<link rel="stylesheet" href="effekte.css?v=20261107a">
+<link rel="stylesheet" href="effekte.css?v=20261110a">
 <link rel="stylesheet" href="szene.css?v=20261105c">
 <style>/* Simon 08.11.2026: Kopfbild 11 % höher (weniger Himmel), Schrift bleibt unten, unten kein Weiß – wie Institut und Akademie */
 .einstieg picture{top:-11svh;height:calc(100% + 11svh)}
@@ -16,6 +16,22 @@
 .leiste .knopf{background:transparent;color:#F5F1EA;box-shadow:inset 0 0 0 2px #F5F1EA}
 .saeule .nr,.mehr-link{color:inherit}
 .webinar-band .knopf{background:#102444;color:#F5F1EA}</style>
+<style>
+/* Bausteine der alten Landingpage (10.11.2026): Erdbeben, Drawdown, zwei Rechner, Bibliothek */
+.sb-r{background:#102444;color:#F5F1EA;border-radius:24px;padding:22px 18px;margin:8px 0 0;display:grid;gap:14px}
+.sb-r .mono{color:#FFB066}.sb-r h3{font:800 1.5rem/1.15 "Nunito",system-ui,sans-serif;margin:0;color:#fff}.sb-r p{margin:0;font-size:.98rem;line-height:1.5;color:#D9E0EC}
+.sb-f{display:grid;grid-template-columns:1fr 1fr;gap:10px}.sb-f label{display:grid;gap:4px;font:700 .8rem "Nunito",system-ui,sans-serif;color:#C9D4E6}
+.sb-f input{font:800 1.05rem "Nunito",system-ui,sans-serif;padding:10px 12px;border-radius:12px;border:1.5px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);color:#fff;width:100%;box-sizing:border-box}
+.sb-e{background:rgba(255,255,255,.07);border-radius:16px;padding:14px;display:grid;gap:8px}.sb-e .t{font:800 .78rem "Nunito",system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#C9D4E6}
+.sb-e .z{display:flex;justify-content:space-between;gap:10px;font:700 1rem "Nunito",system-ui,sans-serif}.sb-e .z b{font-weight:800;white-space:nowrap}
+.sb-e .z.h{font-size:1.25rem;color:#FF9A3D;border-top:1px solid rgba(255,255,255,.18);padding-top:8px}.sb-e small{color:#C9D4E6;font-size:.82rem;margin-top:-6px}
+.sb-r .klein{font-size:.8rem;color:#AEBBD0}
+.sb-or{color:#E06400}.sb-chart{border-radius:18px;overflow:hidden;border:1px solid #E6E0D3;margin-top:14px}.sb-chart img{display:block;width:100%;height:auto}
+.sb-modell{background:#F7F4EE;border-radius:18px;padding:16px;margin-top:14px;display:grid;gap:8px}.sb-modell .ml{font:700 .78rem "Nunito",system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#6B6257}
+.sb-modell .z{display:flex;justify-content:space-between;gap:10px;font:700 1rem "Nunito",system-ui,sans-serif}.sb-modell .z b{font-weight:800;white-space:nowrap}.sb-modell .z.d b{color:#B3261E}.sb-modell small{font-size:.8rem;color:#6B6257;line-height:1.45}
+.sb-nacht{background:#0C182C;color:#F5F1EA;border-radius:24px;padding:26px 20px;display:grid;gap:14px}.sb-nacht .mono{color:#FFB066}.sb-nacht h2{color:#fff;margin:0}.sb-nacht p{margin:0;color:rgba(245,241,234,.86);line-height:1.6}.sb-nacht em{color:#fff}
+.sb-nacht a{justify-self:start;background:#FF7A00;color:#102444;border-radius:999px;padding:11px 18px;font:800 .95rem "Nunito",system-ui,sans-serif;text-decoration:none}
+</style>
 </head>
 <body>
 <div class="innen">
@@ -34,12 +50,28 @@
 </section>
 
 <!-- Hook aus der alten Firestarter-Landingpage, René (07.11.2026) -->
+<section class="ab" id="erdbeben"><div class="ab-kopf"><span class="mono">Die Marktlage 2026</span><h2>Abwärtsphasen sind wie <span class="sb-or">Erdbeben</span>. Vernichtung. Die ständige Bedrohung</h2>
+<p>„Leg einfach in den MSCI World, dann machst du 8 % im Jahr.“ Diesen Satz hast du schon oft gehört, von Finfluencern, jungen Bankberatern und Ratgeberportalen. Was sie dir nicht sagen: Die „sicheren 8 %“ sind ein Durchschnitt über Jahrzehnte <span class="sb-or">mit wiederkehrenden Krisen</span> (Drawdowns). Jahre, in denen zuerst Werte vernichtet wurden und es dann extrem lange dauerte, überhaupt das Anfangskapital zurückzuerhalten. Genau hier arbeitet der stille Saboteur. Er unterbricht und vernichtet deinen Zinseszins und damit dein Wachstum und unentdeckt auch deine würdige Rente.</p></div>
+<div class="sb-chart"><img src="bilder/msci-1996-2026.jpg" width="1668" height="812" alt="MSCI-World-Verlauf 1996–2026 mit zwei markierten Stillstandsphasen"></div>
+<div class="sb-modell"><span class="ml">Modellrechnung · 10.000 € · 7 % p. a. · 26 Jahre</span><div class="z"><span>Ungestörter Zinseszins</span><b>≈ 58.000 €</b></div><div class="z"><span>Mit zwei Stillstandsphasen</span><b>≈ 21.000 €</b></div><div class="z d"><span>Differenz</span><b>− 37.000 €</b></div>
+<small>Modellrechnung mit konstanter Annahme von 7 % p. a. zur Veranschaulichung des Stillstands-Effekts, keine Renditezusage, keine Prognose. Quelle Stillstandsphasen: eigene Auswertung MSCI-World-Verlauf 1996–2026.</small></div></section>
+<section class="ab" id="drawdown"><div class="ab-kopf"><span class="mono">Die harte Realität</span><h2>Ein 50-%-Drawdown verlangt <span class="sb-or">+100 %</span> zur Erholung. Das Erdbeben. Keine Meinung. Mathematische Gewissheit.</h2>
+<p>Unvorhergesehene Krisen sind für die Märkte und deine Geldanlage eine ständige Bedrohung und kommen mit Sicherheit. Niemand weiß wann. Private Investoren verlieren! Kein Naturgesetz, aber ein langfristiges Muster. Bis heute! Bereits dein Durchhalten fällt im Drawdown unglaublich schwer. Aktuell hast du drei Möglichkeiten und allen fehlt die <span class="sb-or">entscheidende Zutat</span> …</p></div></section>
 <section class="ab" id="drei-wege"><div class="ab-kopf"><span class="mono">Drei Wege, die du kennst</span><h2>Allen fehlt dieselbe Zutat.</h2><p>Dein Wille zur Vorsorge ist richtig. Dein Wunsch nach Selbstbestimmung ist mutig. Dir fehlen nur die richtige Reihenfolge und der rote Faden.</p></div><div class="anschluss">
 <article class="angebot"><span class="dauer">Weg A · Bank und Berater</span><h3>Jemand liefert dir den Durchschnitt.</h3><p>Ein Berater sagte mir einmal unter vier Augen: „Ich empfehle nicht, was für dich am besten ist. Ich empfehle, was ich empfehlen darf.“ Er ist nicht der Saboteur. Er ist Gefangener seines Systems.</p></article>
 <article class="angebot"><span class="dauer">Weg B · Selbstversuch</span><h3>Fragmente statt Fundament.</h3><p>Das Internet ist voller Meinungen, nur wenige tragen. Einzelne Videos und KI-Strategien halten, solange die Kurse steigen. Die erste Abwärtsphase trifft dich nachts im Tiefschlaf.</p></article>
 <article class="angebot"><span class="dauer">Weg C · Nichtstun</span><h3>Die Entscheidung, nicht zu entscheiden.</h3><p>… ist die teuerste deines finanziellen Lebens. Niemand schlägt Alarm. Wer wartet, entscheidet auch, nur gegen sich selbst.</p></article></div></section>
 
 <!-- Institut, kurz -->
+<section class="ab" id="rechner"><div class="sb-r" data-calc=""><span class="mono">Rechne selbst</span><h3>Verluste durch Wartezeit und Drawdowns</h3><p>Was kostet dich das Zögern (trage die Jahre, bevor du startest, in „davon gewartet“ ein)? Was kosten dich verlorene Jahre durch Abwärtsbewegungen der Märkte? Und was kostet alles zusammen? Deine eigene Vorstellung, deine Kosten, dein Ergebnis.</p>
+<div class="sb-f"><label>Startkapital (€)<input type="number" data-c="start" value="0"></label><label>Sparrate / Monat (€)<input type="number" data-c="rate" value="200"></label>
+<label>Zins-Annahme p. a. (%)<input type="number" data-c="zins" value="7"></label><label>Zeitraum (Jahre)<input type="number" data-c="jahre" value="26"></label>
+<label style="grid-column: 1 / -1; opacity: 1; transform: none;">davon gewartet (Jahre)<input type="number" data-c="warte" value="15"></label></div>
+<div class="sb-e"><span class="t">Kapital am Ende deines Zeitraums</span>
+<div class="z"><span>ohne Wartezeit</span><b data-c="un"></b></div><div class="z"><span>mit Wartezeit</span><b data-c="ge"></b></div>
+<div class="z h"><span>nie entstanden</span><b data-c="diff"></b></div><small>(Verloren an den Saboteur)</small>
+<div class="z"><span>Anteil, der fehlt</span><b data-c="quote"></b></div></div>
+<p class="klein">Modellrechnung mit deiner frei gewählten Zins-Annahme, keine Renditezusage, keine Prognose. Das Geld wird nicht weggenommen: es entsteht nie. Berechnung nur in deinem Browser, keine Datenübertragung.</p></div></section>
 <section class="ab" id="institut">
   <div class="institut">
     <div class="ab-kopf">
@@ -57,6 +89,10 @@
 </section>
 
 <!-- Drei Welten als Einblick, Details auf den Weltseiten -->
+<section class="ab" id="wissen"><div class="sb-nacht"><span class="mono">Die Bibliothek</span><h2>Das richtige Wissen wird privat, teuer und exklusiv.</h2><p><em>Nicht die Rendite wird knapp. Der Zugang zum Verstehen wird es.</em></p>
+<p>Stell dir eine Bibliothek vor. In ihren Mauern liegt alles, was wissensbasierten Vermögensaufbau ausmacht: das Verstehen, wie Kapital wirklich arbeitet.</p>
+<p>Um sie herum zieht sich ein Ring: Maschinen, die schneller rechnen als du und sich am Durchschnitt und dem Internet orientieren. Nicht an den Fachleuten und den Besten ihres Fachs. Nur wenige, die sie zu steuern wissen. Das Muster zeichnet sich ab: der stille Saboteur profitiert davon, wenn du jetzt nichts entscheidest.</p>
+<a href="firestarter.html">Geh in die Bibliothek! Jetzt! →</a></div></section>
 <section class="ab" id="angebote">
   <div class="ab-kopf"><span class="mono">Drei Welten bei R&amp;F</span><h2>Finde deinen Einstieg.</h2><p>Vom ersten Überblick über dein Geld bis zum eigenen Regelwerk an der Börse. Dazu eine eigene Welt für Familien.</p></div>
   <div class="welten3">
@@ -107,6 +143,15 @@
   </div>
 </section>
 
+<section class="ab" id="rechner-warten"><div class="sb-r" data-calc=""><span class="mono">Bevor du gehst: rechne selbst</span><h3>Was kostet dich das Warten?</h3>
+<div class="sb-f"><label>Startkapital (€)<input type="number" data-c="start" value="10000"></label>
+<label>Zins-Annahme p. a. (%)<input type="number" data-c="zins" value="7"></label><label>Zeitraum (Jahre)<input type="number" data-c="jahre" value="26"></label>
+<label>davon gewartet (Jahre)<input type="number" data-c="warte" value="15"></label></div>
+<div class="sb-e"><span class="t">Kapital am Ende deines Zeitraums</span>
+<div class="z"><span>ohne Wartezeit</span><b data-c="un"></b></div><div class="z"><span>mit Wartezeit</span><b data-c="ge"></b></div>
+<div class="z h"><span>nie entstanden</span><b data-c="diff"></b></div><small>(Verloren an den Saboteur)</small>
+<div class="z"><span>Anteil, der fehlt</span><b data-c="quote"></b></div></div>
+<p class="klein">Modellrechnung mit deiner frei gewählten Zins-Annahme, keine Renditezusage, keine Prognose. Das Geld wird nicht weggenommen: es entsteht nie. Berechnung nur in deinem Browser, keine Datenübertragung.</p></div></section>
 <section class="ab" id="kontakt">
   <div class="kontakt-teaser"><div><h2>Fragen? Schreib uns.</h2><p>Wir antworten persönlich: info@rf-institut.de. Kein Verkaufsgespräch, bis du es willst.</p><p><b>Und wenn du heute nichts tust? Dann arbeitet der stille Saboteur einfach weiter.</b></p></div><a class="knopf" href="kontakt.html">Zum Kontakt</a></div>
 </section>
@@ -114,10 +159,18 @@
 
 <div id="fuss"></div>
 </div>
-<script src="seite.js?v=20261107a"></script>
+<script src="seite.js?v=20261110a"></script>
 <script src="szene.js?v=20261106a"></script>
 <script>
 (function(){var w=document.querySelector('.welten3'),p=document.querySelectorAll('.wisch-hinweis i');if(!w||!p.length)return;w.addEventListener('scroll',function(){var k=w.children,b=0,m=1e9;for(var i=0;i<k.length;i++){var d=Math.abs(k[i].getBoundingClientRect().left-w.getBoundingClientRect().left);if(d<m){m=d;b=i}}p.forEach(function(x,i){x.classList.toggle('an',i===b)})},{passive:true});})();
+</script>
+<script>
+/* Rechner „Verluste durch Wartezeit“ (von der alten Landingpage v29): rechnet nur im Browser, keine Datenübertragung */
+document.querySelectorAll('[data-calc]').forEach(function(r){var q=function(k){return r.querySelector('[data-c="'+k+'"]');},n=function(k){return q(k)?parseFloat((q(k).value||'').replace(',','.'))||0:0;},E=function(x){return Math.round(x).toLocaleString('de-DE')+' €';};
+  function c(){var s=n('start'),ra=n('rate'),z=n('zins')/100,j=n('jahre'),w=n('warte');if(!(j>=1&&j>w)){['un','ge','diff','quote'].forEach(function(k){q(k).textContent='–';});return;}
+    var fv=function(y){return z>0?s*Math.pow(1+z,y)+ra*12*((Math.pow(1+z,y)-1)/z):s+ra*12*y;},un=fv(j),ge=fv(j-w);
+    q('un').textContent=E(un);q('ge').textContent=E(ge);q('diff').textContent=E(un-ge);q('quote').textContent=(un>0?(un-ge)/un*100:0).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+' %';}
+  r.querySelectorAll('input').forEach(function(i){i.addEventListener('input',c);});c();});
 </script>
 </body>
 </html>

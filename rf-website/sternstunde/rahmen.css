@@ -129,3 +129,23 @@
 .deckel-wer-text p{margin:0;font-size:.98rem;line-height:1.45;color:#3A4558}
 .deckel-nav .deckel-wer-text a{display:inline;padding:0;border:0;font:800 .98rem/1.45 var(--f);color:#2E5AA8;text-decoration:none}
 @media (prefers-reduced-motion:reduce){.leiste .wer-fenster{animation:none}}
+
+/* ===== 10.11.2026 (Simon, Mockup-Runden zum Telefonat mit René): Kopfleiste mit fester Farbe je Welt, nichts Durchscheinendes;
+   Knopf mit weißem Rand statt Orange; Sternstunde gelb mit grüner Schrift und ohne Knopf. Steht gleichlautend in effekte.css und sternstunde/rahmen.css ===== */
+.leiste{background:#102444!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html[data-welt="gruen"] .leiste{background:#143426!important}
+html[data-welt="blau"] .leiste{background:#102444!important}
+html[data-seite="firestarter"] .leiste{background:#FF7A00!important}
+html[data-welt="gold"] .leiste{background:#F6CF5A!important}
+.leiste>.knopf{background:transparent!important;color:#FFFFFF!important;box-shadow:inset 0 0 0 2px #FFFFFF!important}
+html[data-welt="gold"] .leiste>.knopf{display:none!important}
+html[data-welt="gold"] .leiste .marke b,html[data-welt="gold"] .leiste .marke-mehr,html[data-welt="gold"] .leiste .menue a{color:#143426!important;text-shadow:none!important}
+html[data-welt="gold"] .leiste .burger{border-color:#143426!important}
+html[data-welt="gold"] .leiste .burger i{background:#143426!important;box-shadow:0 -6px 0 #143426,0 6px 0 #143426!important}
+/* Menü-Zeichen: Wellen wiegen am Fuß des Leuchtturms, Wolken ziehen hinter dem Hochhaus */
+.vs-bau svg{overflow:hidden}
+.vs-welle{animation:vs-welle 2.8s ease-in-out infinite alternate}.vs-welle.w2{animation-duration:3.6s;animation-direction:alternate-reverse}
+@keyframes vs-welle{from{transform:translate(-1.2px,.5px)}to{transform:translate(1.2px,-.6px)}}
+.vs-wolke{animation:vs-wolke 16s linear infinite}.vs-wolke.w2{animation-duration:23s;animation-delay:-9s}
+@keyframes vs-wolke{from{transform:translateX(-18px)}to{transform:translateX(52px)}}
+@media (prefers-reduced-motion:reduce){.vs-welle,.vs-wolke{animation:none}}
