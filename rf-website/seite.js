@@ -10,7 +10,7 @@
   var hier=(location.pathname.split('/').pop()||'start.html');
   var zusatz=location.search;
   var WELT={'welt-gruen.html':'gruen','welt-blau.html':'blau','kinder.html':'gold'};if(WELT[hier])H.dataset.welt=WELT[hier];H.dataset.seite=hier.replace('.html','');   /* 10.11.2026: Kopfleiste hat je Seite eine feste Farbe */
-  var tc=document.createElement('meta');tc.name='theme-color';tc.content=H.dataset.welt==='gruen'?'#143426':H.dataset.welt==='gold'?'#F6CF5A':hier==='firestarter.html'?'#FF7A00':'#102444';document.head.appendChild(tc);
+  var tc=document.createElement('meta');tc.name='theme-color';tc.content=H.dataset.welt==='gruen'?'#143426':H.dataset.welt==='gold'?'#F6CF5A':hier==='firestarter.html'?'#E06400':'#102444';document.head.appendChild(tc);
 
   /* ---------- Kopf und Fuß ---------- */
   /* Simon 29.10. (Gesprächsrunde Punkt 3+4): Firestarter-App zuerst, Goldene Welt heißt Sternstunde,
