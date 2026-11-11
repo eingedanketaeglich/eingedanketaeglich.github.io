@@ -194,3 +194,4 @@ section.welt-ab.blau .regel-zeile{color:#C6D2E2}
 
 /* Telefonat 10.11.: Institut-Foto zeigte zu viel Decke – leicht hineingezoomt, Bezugspunkt unten (Simon freigegeben 11.11., Runde 32) */
 .weltkarte.blau img{transform:scale(1.2);transform-origin:50% 92%}
+@media (hover:hover){.weltkarte.blau:hover img{transform:scale(1.26)}}   /* Hover-Zoom auf den Ausschnitt aufsetzen, nicht zurückspringen */
