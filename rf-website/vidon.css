@@ -84,3 +84,7 @@ h1,h2,h3,h4{font-weight:500!important;letter-spacing:-.005em!important}
 .deckel-nav > a[data-ziel="firestarter"] .zt{background:#E06400;color:#FFFFFF}
 .deckel-nav > a[data-ziel="welt-gruen"] .zt{background:#143426;color:#FFFFFF}
 .deckel-nav > a[data-ziel="kinder"] .zt{background:#F6CF5A;color:#143426}
+
+/* Runde 53 (Simon 11.11.2026, freigegeben): Mac-Leiste zeigt bei „Preise & Geschenke“ das Geschenk und bei „Kontakt“ das Handy hinter der Schrift, wie Leuchtturm und Hochhaus */
+.leiste .menue a[href*="preise"] .vs,.leiste .menue a[href*="kontakt"] .vs{display:block;width:50px;height:50px}
+.leiste .menue a[href*="preise"] .vs svg,.leiste .menue a[href*="kontakt"] .vs svg{width:100%;height:100%;display:block}

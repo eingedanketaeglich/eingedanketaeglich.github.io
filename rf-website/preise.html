@@ -378,6 +378,16 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 /* Runde 50 (Simon 11.11.: „im Institut noch der alte Lichtstrahl“): auf der Institut-Bühne derselbe Schein wie in der Weltauswahl, im Takt des Leuchtturm-Films */
 .inst-band.lauf i{animation:ib-lauf 12.79s linear infinite}@keyframes ib-lauf{0%{left:-95%;opacity:1}9.4%{left:100%;opacity:1}9.41%,100%{left:100%;opacity:0}}
 @media (prefers-reduced-motion:reduce){.inst-band.lauf i{animation:none}}
+
+/* Runde 53 (Simon 11.11.2026, freigegeben): Titel in Poppins, in der Zeile des Zurück-Knopfs unter „Termine“, Kreis 52 statt 74 */
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(schrift/Poppins-500-latin.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:500;font-display:swap;src:url(schrift/Poppins-500-latin-ext.woff2) format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C4,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@media (max-width:899px){
+  html .w-oben{grid-template-columns:52px 1fr!important;justify-items:start!important;align-items:center!important}
+  html .w-oben #zur{grid-column:1!important;grid-row:1!important;width:52px!important;height:52px!important;font-size:40px!important}
+  html .w-titel{grid-column:1/-1!important;grid-row:1!important;justify-self:center!important;text-align:center}
+  html #w-h{font-family:"Poppins",system-ui,sans-serif!important;font-weight:500!important;font-size:min(30px,7vw)!important}
+}
 @keyframes hh-zieh{from{transform:translateX(-66.6667%)}to{transform:translateX(0)}}
 .n-bild>img.hh-vorne{position:absolute;inset:auto;left:0;top:3.7037%;width:100%;height:61.1111%;object-fit:fill;pointer-events:none}
 /* Flugzeug: in normaler Geschwindigkeit unter den Wolken, hinter dem Hochhaus vorbei, unterhalb des Titels, sinkt leicht wie im Anflug.
@@ -401,7 +411,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
   .etagen.stapel[data-w="b"] .et{width:37%!important;padding:8px 12px!important;font-size:14.3px!important}
 }
 </style>
-<link rel="stylesheet" href="vidon.css?v=20261111a">
+<link rel="stylesheet" href="vidon.css?v=20261111b">
 </head>
 <body>
 <div id="kopf"></div>
@@ -717,7 +727,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
   /* Etagen im neuen Hochhaus (Bild 1920 x 1080, gemessen 10.11.): Glasfront x 878–1038, je Raum zwei Etagen à 33 px. Reihenfolge wie geo.raeume */
   /* Raumblöcke [y0,y1,x0,x1] im 1920er-Bild (Hochhaus 1080 hoch, Leuchtturm 1084), Index = geo.raeume */
   var NE={b:[[686,753,920,1040],[557,631,900,1044],[362,434,900,1038],[207,277,926,1024]],g:[null,null,[661,749,888,1036],[502,593,893,1029]]},HO={b:1080,g:1084},
-      ECHT={b:{0:'bilder/preise/raum_modul1a2.webp',1:'bilder/preise/raum_investment.webp',2:'bilder/preise/raum_rainmaker.webp',3:'bilder/preise/raum_mentoring.webp'},g:{2:'bilder/preise/raum_workshop.webp',3:'bilder/preise/raum_erstertag.webp'}},offen=-1;
+      ECHT={b:{0:'bilder/preise/raum_modul1a2.webp',1:'bilder/preise/raum_investment.webp',2:'bilder/preise/raum_rainmaker.webp',3:'bilder/preise/raum_mentoring2.webp'},g:{2:'bilder/preise/raum_workshop.webp',3:'bilder/preise/raum_erstertag.webp'}},offen=-1;
   function raumDiv(){var d=nb.querySelector('.n-raum');if(!d){d=document.createElement('div');d.className='n-raum';d.innerHTML='<div class="innen"></div>';nb.appendChild(d);}return d;}
   function zu(fertig){var d=nb.querySelector('.n-raum');if(d)d.classList.remove('auf');offen=-1;setTimeout(fertig||function(){},d?700:0);}
   /* Kamera: Ursprung oben links, Verschiebung + Zoom. So gleitet sie von Etage zu Etage, ohne zurückzuspringen. Gemessen wird ohne Zoom. */
@@ -732,7 +742,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
     if(!breit.matches){var z=window.rfZiel();qx=z.x-q.left;qy=z.y-q.top;}
     var tx=qx-s*px,ty=qy-s*py;if(breit.matches){tx=Math.min(0,Math.max(q.width*(1-s),tx));ty=Math.min(0,Math.max(q.height*(1-s),ty));}   /* Mac: Bild füllt immer das Fenster (Simon 11.11.: Balken unten) */
     w.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';if(!breit.matches)window.rfStapel(true,z);}
-  var TURM={'Investmenttag':['bilder/preise/raum_lt_investmenttag.webp',117,477,641,1281]};
+  var TURM={'Investmenttag':['bilder/preise/raum_lt_investmenttag.webp',117,477,641,1281],'Börsentag':['bilder/preise/raum_lt_boersentag.webp',117,477,641,1281]};   /* Börsentag: gleiche Galerie, anderes Ambiente (Simon 11.11., Versuch 2) */
   function auf(s){var tn=s&&s.o==='t'&&cur.w==='g'&&W[cur.w].a[s.a]&&TURM[W[cur.w].a[s.a][0]];
     if(tn){zu(function(){var d=raumDiv(),i=d.querySelector('.innen');d.style.cssText='left:'+(tn[3]/19.2)+'%;width:'+((tn[4]-tn[3])/19.2)+'%;top:'+(tn[1]/10.84)+'%;height:'+((tn[2]-tn[1])/10.84)+'%';
       d.classList.add('echt');i.style.backgroundImage='url('+tn[0]+')';zoom(true,d);void d.offsetWidth;d.classList.add('auf');offen=99;});return;}
@@ -753,7 +763,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
 /* ===== 10./11.11.2026 Runde 25: Licht für Börsentag und Investmenttag ===== */
 (function(){var nb=document.getElementById('n-bild'),w=nb.parentNode;
   function licht(s){var alt=nb.querySelectorAll('.n-lampe,.n-licht');alt.forEach(function(x){x.remove();});w.classList.remove('leuchtet');
-    if(!cur||cur.w!=='g'||!s||s.o!=='t')return;var a=W[cur.w].a[s.a];if(/Investment/.test(a[0]))return;
+    if(!cur||cur.w!=='g'||!s||s.o!=='t')return;var a=W[cur.w].a[s.a];if(/Investment|Börsen/.test(a[0]))return;
     nb.insertAdjacentHTML('beforeend','<span class="n-lampe"></span><span class="n-licht'+(/Investment/.test(a[0])?' links':'')+'">'+a[0]+'<small>'+a[3]+'</small></span>');void w.offsetWidth;w.classList.add('leuchtet');}
   var _w2=waehleEtage;waehleEtage=function(j){_w2(j);licht(cur&&cur.stufen[j]);};
   var _o2=oeffne;oeffne=function(i){_o2(i);w.classList.remove('leuchtet');};
@@ -792,6 +802,14 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
   if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
   re.insertAdjacentHTML('beforeend','<span class="inst-band"><i></i></span>');var i=re.querySelector('.inst-band i');
   (function lauf(){var t=lt.currentTime,p=(t-3.3)/1.2;if(p>=0&&p<=1){i.style.left=(-95+195*p)+'%';i.style.opacity=1;}else i.style.opacity=0;requestAnimationFrame(lauf);})();
+})();
+/* Runde 53: Titel mittig unter „Termine“, nie über den Rand; im Institut etwas höher (Simon: „weiter nach oben“) */
+(function(){var t=document.querySelector('.w-titel');if(!t)return;
+  function setze(){t.style.transform='';if(breit.matches||welt.hidden)return;var k=[].slice.call(document.querySelectorAll('.leiste a,.leiste button')).filter(function(x){return /Termine/.test(x.textContent);})[0];if(!k)return;
+    var kq=k.getBoundingClientRect(),tq=t.getBoundingClientRect(),dx=Math.min(kq.left+kq.width/2-(tq.left+tq.width/2),innerWidth-10-tq.right),dy=cur&&cur.w==='b'?-10:0;
+    t.style.transform='translate('+dx+'px,'+dy+'px)';}
+  var _o5=oeffne;oeffne=function(i){_o5(i);setTimeout(setze,60);if(document.fonts&&document.fonts.ready)document.fonts.ready.then(setze);};
+  addEventListener('resize',function(){setze();});
 })();
 </script>
 </body>
