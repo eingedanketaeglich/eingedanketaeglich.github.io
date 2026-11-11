@@ -191,3 +191,6 @@ section.welt-ab.blau .regel-zeile{color:#C6D2E2}
 .rb-punkte i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.55)}.rb-punkte i.an{background:#FFFFFF}
 .raum-zahlen{margin-top:16px;color:var(--text2)}.raum-zahlen b{color:var(--navy);font-weight:900}
 @media (max-width:760px){.rb-spur{aspect-ratio:4/5}.rb-pfeil{width:36px;height:36px;font-size:1.2rem}.rb-pfeil.l{left:10px}.rb-pfeil.r{right:10px}}
+
+/* Telefonat 10.11.: Institut-Foto zeigte zu viel Decke – leicht hineingezoomt, Bezugspunkt unten (Simon freigegeben 11.11., Runde 32) */
+.weltkarte.blau img{transform:scale(1.2);transform-origin:50% 92%}
