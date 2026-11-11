@@ -375,6 +375,9 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 /* Wolken ziehen endlos hinter Hochhaus und Skyline vorbei (Band A | A gespiegelt | A, nahtlos) */
 .n-bild>.hh-wolken{position:absolute;left:0;top:0;width:100%;height:43.5185%;overflow:hidden;pointer-events:none}
 .hh-wolken i{position:absolute;top:0;bottom:0;left:0;width:300%;background:url(bilder/preise/hh_wolken8.webp?v=2) 0 0/100% 100% no-repeat;animation:hh-zieh 420s linear infinite;will-change:transform}
+/* Runde 50 (Simon 11.11.: „im Institut noch der alte Lichtstrahl“): auf der Institut-Bühne derselbe Schein wie in der Weltauswahl, im Takt des Leuchtturm-Films */
+.inst-band.lauf i{animation:ib-lauf 12.79s linear infinite}@keyframes ib-lauf{0%{left:-60%;opacity:1}7.8%{left:110%;opacity:1}7.81%,100%{left:110%;opacity:0}}
+@media (prefers-reduced-motion:reduce){.inst-band.lauf i{animation:none}}
 @keyframes hh-zieh{from{transform:translateX(-66.6667%)}to{transform:translateX(0)}}
 .n-bild>img.hh-vorne{position:absolute;inset:auto;left:0;top:3.7037%;width:100%;height:61.1111%;object-fit:fill;pointer-events:none}
 /* Flugzeug: in normaler Geschwindigkeit unter den Wolken, hinter dem Hochhaus vorbei, unterhalb des Titels, sinkt leicht wie im Anflug.
@@ -709,7 +712,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
 /* ===== 10./11.11.2026 Runde 21 ===== */
 (function(){var nb=document.getElementById('n-bild'),et=document.getElementById('etagen');
   var BILD={g:'<video class="lt-film" muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_film_0.webp?v=2" src="bilder/preise/lt_film.mp4?v=2"></video>',
-            b:'<video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen8_0.webp?v=2" src="bilder/preise/hh_ebenen8.mp4?v=2"></video><span class="hh-wolken"><i></i></span><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="hh-vorne" src="bilder/preise/hh_vorne8.webp?v=2" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video>'};
+            b:'<video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen8_0.webp?v=2" src="bilder/preise/hh_ebenen8.mp4?v=2"></video><span class="hh-wolken"><i></i></span><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="hh-vorne" src="bilder/preise/hh_vorne8.webp?v=2" alt=""><span class="inst-band lauf"><i></i></span>'};
   var _o=oeffne;oeffne=function(i){window.rfStapel(false);_o(i);nb.innerHTML=BILD[cur.w]||'';nb.parentNode.style.transform='';nb.parentNode.dataset.w=cur.w;var v=nb.querySelector('video');if(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}};
   /* Etagen im neuen Hochhaus (Bild 1920 x 1080, gemessen 10.11.): Glasfront x 878–1038, je Raum zwei Etagen à 33 px. Reihenfolge wie geo.raeume */
   /* Raumblöcke [y0,y1,x0,x1] im 1920er-Bild (Hochhaus 1080 hoch, Leuchtturm 1084), Index = geo.raeume */
@@ -727,7 +730,8 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
     var s=breit.matches?1.7:1.75,px=r.left+r.width/2-q.left,py=r.top+r.height/2-q.top,sicht=Math.min(q.height,innerHeight-52),qy=sicht*(breit.matches?.45:.36);
     w.style.transformOrigin='0 0';var qx=breit.matches?px:q.width*.335;   /* Handy: Raum mittig in der freien Fläche links der Angebotsliste */
     if(!breit.matches){var z=window.rfZiel();qx=z.x-q.left;qy=z.y-q.top;}
-    w.style.transform='translate('+(qx-s*px)+'px,'+(qy-s*py)+'px) scale('+s+')';if(!breit.matches)window.rfStapel(true,z);}
+    var tx=qx-s*px,ty=qy-s*py;if(breit.matches){tx=Math.min(0,Math.max(q.width*(1-s),tx));ty=Math.min(0,Math.max(q.height*(1-s),ty));}   /* Mac: Bild füllt immer das Fenster (Simon 11.11.: Balken unten) */
+    w.style.transform='translate('+tx+'px,'+ty+'px) scale('+s+')';if(!breit.matches)window.rfStapel(true,z);}
   var TURM={'Investmenttag':['bilder/preise/raum_lt_investmenttag.webp',117,477,641,1281]};
   function auf(s){var tn=s&&s.o==='t'&&cur.w==='g'&&W[cur.w].a[s.a]&&TURM[W[cur.w].a[s.a][0]];
     if(tn){zu(function(){var d=raumDiv(),i=d.querySelector('.innen');d.style.cssText='left:'+(tn[3]/19.2)+'%;width:'+((tn[4]-tn[3])/19.2)+'%;top:'+(tn[1]/10.84)+'%;height:'+((tn[2]-tn[1])/10.84)+'%';
@@ -763,7 +767,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
   var _l3=liste;liste=function(){_l3();var g=cur&&cur.w==='g';et.classList.toggle('kreuz',g);
     et.querySelectorAll('.et').forEach(function(x){var n=x.querySelector('b').textContent;if(g&&POS[n])x.dataset.pos=POS[n];else delete x.dataset.pos;});};
   var _o3=oeffne;oeffne=function(i){_o3(i);kopf(cur.w);zur.textContent='‹';zur.setAttribute('aria-label','Zurück zu beiden Welten');liste();};
-  var zo3=zur.onclick;zur.onclick=function(e){var r=zo3?zo3.call(this,e):0;setTimeout(function(){if(welt.hidden)kopf(null);},1300);return r;};
+  var zo3=zur.onclick;zur.onclick=function(e){kopf(null);var r=zo3?zo3.call(this,e):0;return r;};   /* Simon 11.11.: Kopfleiste wechselte erst nach Sekunden */
 })();
 /* ===== Runde 47 (Livegang 11.11.2026): Antippen-Ansicht am Handy, Hochhaus-Aufleuchten im Takt des Leuchtturm-Films ===== */
 (function(){var et=document.getElementById('etagen');
@@ -780,10 +784,8 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
     var akt=bx.filter(function(b){return b.getAttribute('aria-pressed')==='true';})[0]||bx[0],ia=bx.indexOf(akt);
     var h=Math.max.apply(null,bx.map(function(b){return b.offsetHeight;})),oben=z.oben,unten=z.unten,cy=z.y;
     var g=cur.w==='b'?Math.max(6,Math.min(14,(unten-oben-bx.length*h)/3.2)):6;
-    var ca=Math.floor((cy-h/2-oben)/(h+g)),cb=Math.floor((unten-cy-h/2)/(h+g)),re=bx.filter(function(b){return b!==akt;}),na=Math.min(ia,ca);
-    if(re.length-na>cb)na=Math.min(ca,re.length-cb);
-    var Y=[];Y[ia]=cy-h/2;re.forEach(function(b,k){Y[bx.indexOf(b)]=k<na?cy-h/2-(na-k)*(h+g):cy-h/2+(k-na+1)*(h+g);});
-    var mt=Math.min.apply(null,Y),mb=Math.max.apply(null,Y)+h;if(mb>unten&&mt>oben){var sh=Math.min(mb-unten,mt-oben);Y=Y.map(function(y){return y-sh;});}
+    var Y=bx.map(function(b,k){return cy-h/2+(k-ia)*(h+g);});   /* Reihenfolge wie im Haus (Simon 11.11.: Workshop darf nicht nach oben springen) */
+    var mt=Y[0],mb=Y[Y.length-1]+h;if(mt<oben)Y=Y.map(function(y){return y+(oben-mt);});else if(mb>unten)Y=Y.map(function(y){return y-Math.min(mb-unten,mt-oben);});
     bx.forEach(function(b,k){b.style.top=Y[k]+'px';});};
   /* Weltauswahl: Hochhaus-Glanz, solange der Strahl im Film nach rechts zeigt (Filmzeit 3,4–4,4 s, gemessen 11.11.) */
   var lt=document.querySelector('.d-teil.li video.lt-film'),re=document.querySelector('.d-teil.re .n-bild');if(!lt||!re)return;
