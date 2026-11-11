@@ -727,7 +727,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
   /* Etagen im neuen Hochhaus (Bild 1920 x 1080, gemessen 10.11.): Glasfront x 878–1038, je Raum zwei Etagen à 33 px. Reihenfolge wie geo.raeume */
   /* Raumblöcke [y0,y1,x0,x1] im 1920er-Bild (Hochhaus 1080 hoch, Leuchtturm 1084), Index = geo.raeume */
   var NE={b:[[686,753,920,1040],[557,631,900,1044],[362,434,900,1038],[207,277,926,1024]],g:[null,null,[661,749,888,1036],[502,593,893,1029]]},HO={b:1080,g:1084},
-      ECHT={b:{0:'bilder/preise/raum_modul1a2.webp',1:'bilder/preise/raum_investment.webp',2:'bilder/preise/raum_rainmaker.webp',3:'bilder/preise/raum_mentoring2.webp'},g:{2:'bilder/preise/raum_workshop.webp',3:'bilder/preise/raum_erstertag.webp'}},offen=-1;
+      ECHT={b:{0:'bilder/preise/raum_modul1a2.webp',1:'bilder/preise/raum_investment.webp',2:'bilder/preise/raum_rainmaker2.webp',3:'bilder/preise/raum_mentoring2.webp'},g:{2:'bilder/preise/raum_workshop.webp',3:'bilder/preise/raum_erstertag.webp'}},offen=-1;
   function raumDiv(){var d=nb.querySelector('.n-raum');if(!d){d=document.createElement('div');d.className='n-raum';d.innerHTML='<div class="innen"></div>';nb.appendChild(d);}return d;}
   function zu(fertig){var d=nb.querySelector('.n-raum');if(d)d.classList.remove('auf');offen=-1;setTimeout(fertig||function(){},d?700:0);}
   /* Kamera: Ursprung oben links, Verschiebung + Zoom. So gleitet sie von Etage zu Etage, ohne zurückzuspringen. Gemessen wird ohne Zoom. */
