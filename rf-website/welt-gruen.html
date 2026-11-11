@@ -34,7 +34,7 @@
   .welt-held img{top:-11svh;height:calc(100% + 11svh)}
   /* Simon 08.11.2026: keine Schilder auf den Bildern (Name steht direkt darunter bzw. im festen Unterkopf) */
 </style>
-<link rel="stylesheet" href="vidon.css">
+<link rel="stylesheet" href="vidon.css?v=20261111a">
 </head>
 <body>
 <div class="innen">
@@ -42,7 +42,7 @@
 <!-- Quelle der Angebote: Simons Vorlage „Grüne Welt · Module 01–06“ (06.11.2026) -->
 <main>
 <section class="welt-held gruen">
-  <img src="bilder/web/08_gruen_kuechentisch_4x3.jpg" alt="Notizbuch mit Einnahmen und Ausgaben, Kaffee und Pflanze auf einem Küchentisch" fetchpriority="high">
+  <img src="bilder/web/08_gruen_leuchtturm_4x3.jpg" alt="Blick aus dem Leuchtturm: Tisch mit Kaffee, Handy und Notizen, draußen Steilküste mit Brandung" fetchpriority="high">
   <div class="inhalt">
     <h1>Geld verstehen&nbsp;– selbstbestimmt entscheiden.</h1>
     <p class="lede">Von Geldfragen über gute Entscheidungen zur ersten Strategie. Drei Tage mit je zwei Modulen, in Frankfurt im Raum oder live online. Kleine Gruppe: vor Ort in der Regel höchstens 12 Teilnehmer.</p>
@@ -80,7 +80,7 @@
   <div class="zirkel-kopf"><p><b>Dein erster Tag</b><span>· 1 Tag</span></p><small>2 Module à 3 Stunden</small></div>
   <div class="ab-kopf"><span class="mono">Drei Tage · sechs Module</span><h2>Ein Tag, zwei Module. Du entscheidest, wie weit du gehst.</h2><p>Im Raum mit Getränken und Snacks oder live online. Unterricht 9:30–12:30 und 13:30–16:30 Uhr.</p></div>
   <div class="wechsler">
-    <div class="w-bilder"><img src="bilder/web/08_gruen_kuechentisch_4x3.jpg" alt="Küchentisch mit Haushaltsbuch" loading="lazy"><img src="bilder/web/09_gruen_lernecke_4x3.jpg" alt="Lernecke mit Notizbuch und Tee" loading="lazy"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm und Flipchart" loading="lazy"></div>
+    <div class="w-bilder"><img src="bilder/web/08_gruen_leuchtturm_4x3.jpg" alt="Blick aus dem Leuchtturm auf die Steilküste" loading="lazy"><img src="bilder/web/09_gruen_lernecke_4x3.jpg" alt="Lernecke mit Notizbuch und Tee" loading="lazy"><img src="app/fotos/tagungsraum.jpg" alt="Tagungsraum mit Bildschirm und Flipchart" loading="lazy"></div>
     <div class="w-schritte">
       <article class="w-schritt" id="erster-tag" data-titel="Dein erster Tag"><h3>Mehr Geldverstand. Finanzwissen zum Mitmachen.</h3><div class="module"><div class="modul-z"><span class="nr">01</span><div><b>Geld verstehen von Anfang an</b><p>Deine persönlichen Ziele, deine Vorsorge und wie du typische Geldfallen vermeidest.</p><small>3-Stunden-Workshop · einzeln buchbar · vor Ort 129&nbsp;€ inkl. Getränke und Snacks · online 79&nbsp;€</small></div></div><div class="modul-z"><span class="nr">02</span><div><b>Deine Wege zur Geldanlage</b><p>Immobilien und Wertpapiere im Praxistest. Erkenne deinen persönlichen Zeithorizont.</p><p class="betont">Wir liefern dir deine kostengünstige Strategie für den Einstieg.</p></div></div></div><div class="preise"><div class="preis haupt" style="background:#173A2B"><span style="color:#CFE0D4">Im Raum</span><strong>289&nbsp;€</strong><small style="color:#CFE0D4">inkl. Getränke und Snacks</small></div><div class="preis" style="background:#FFFFFF"><span>Live online</span><strong>159&nbsp;€</strong><small>live zuschauen, Fragen am Ende</small></div></div><p class="anrechnung">Bereits besuchter 3-Stunden-Workshop wird angerechnet, wenn du an einem anderen Tag dazukommst.</p></article>
       <article class="w-schritt" id="investmenttag" data-titel="Investmenttag"><h3>Langfristige Geldanlage verstehen und ausprobieren.</h3><div class="module"><div class="modul-z"><span class="nr">03</span><div><b>Klarheit vor der Geldanlage</b><p>Deine Geldziele, deine Zeithorizonte und Altersvorsorge für Anlageentscheidungen ordnen.</p><small>3-Stunden-Workshop · einzeln buchbar · vor Ort 149&nbsp;€ inkl. Getränke und Snacks · online 99&nbsp;€</small></div></div><div class="modul-z"><span class="nr">04</span><div><b>Investitionen üben</b><p>Triff Investitionsentscheidungen selbst und erkenne die Risiken.</p></div></div></div><div class="preise"><div class="preis haupt" style="background:#173A2B"><span style="color:#CFE0D4">Im Raum</span><strong>329&nbsp;€</strong><small style="color:#CFE0D4">inkl. Getränke und Snacks</small></div><div class="preis" style="background:#FFFFFF"><span>Live online</span><strong>179&nbsp;€</strong><small>live zuschauen, Fragen am Ende</small></div></div><p class="anrechnung">Bereits besuchter 3-Stunden-Workshop wird angerechnet, wenn du an einem anderen Tag dazukommst.</p></article>
@@ -129,7 +129,7 @@
 </main>
 <div id="fuss"></div>
 </div>
-<script src="seite.js?v=20261110f"></script>
+<script src="seite.js?v=20261111a"></script>
 <script>/* Unter-Kopf folgt dem aktiven Tag (Klasse „an“ setzt seite.js) */(function(){var k=document.querySelector('#formate .zirkel-kopf');if(!k)return;var b=k.querySelector('b'),sp=k.querySelector('span'),sm=k.querySelector('small');
 var st=[].slice.call(document.querySelectorAll('#formate .w-schritt'));function neu(){var a=st.filter(function(s){return s.classList.contains('an')})[0];if(!a)return;var tag=!!a.id;b.textContent=a.dataset.titel||'';sp.hidden=!tag;sm.textContent=tag?'2 Module à 3 Stunden':'Du entscheidest, wie du dabei bist';}
 st.forEach(function(s){new MutationObserver(neu).observe(s,{attributes:true,attributeFilter:['class']})});neu();})();</script>

@@ -365,8 +365,40 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 @keyframes vs-ring{0%{opacity:0}4%{opacity:1}26%{opacity:.9}34%,100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.duo-licht .strahl b,.n-spiegel *,.vs-deckel,.vs-schleife,.vs-glanz,.vs-handy,.vs-ring{animation:none!important}}
 
+/* ===== Runde 47 (Livegang 11.11.2026, von Simon freigegeben) ===== */
+/* Leuchtturm-Film: Strahl kommt aus dem Film, die gezeichneten Kegel und Spiegelungen entfallen */
+.n-bild>video.lt-film{object-fit:cover}
+.duo-licht,.duo-blitz,.n-spiegel,.duo-turm,.duo-glanzfilm,.d-teil.re .n-glanzfilm{display:none!important}
+/* Hochhaus leuchtet auf, wenn der Strahl im Film nach rechts zeigt (gesteuert über die Filmzeit) */
+.inst-band{position:absolute;left:43.75%;top:2.78%;width:12.5%;height:91.67%;overflow:hidden;pointer-events:none;mix-blend-mode:screen;z-index:3}
+.inst-band i{position:absolute;top:0;bottom:0;width:60%;left:-60%;opacity:0;background:linear-gradient(90deg,rgba(255,240,200,0),rgba(255,244,214,.9) 50%,rgba(255,240,200,0))}
+/* Wolken ziehen endlos hinter Hochhaus und Skyline vorbei (Band A | A gespiegelt | A, nahtlos) */
+.n-bild>.hh-wolken{position:absolute;left:0;top:0;width:100%;height:43.5185%;overflow:hidden;pointer-events:none}
+.hh-wolken i{position:absolute;top:0;bottom:0;left:0;width:300%;background:url(bilder/preise/hh_wolken8.webp) 0 0/100% 100% no-repeat;animation:hh-zieh 420s linear infinite;will-change:transform}
+@keyframes hh-zieh{from{transform:translateX(-66.6667%)}to{transform:translateX(0)}}
+.n-bild>img.hh-vorne{position:absolute;inset:auto;left:0;top:3.7037%;width:100%;height:61.1111%;object-fit:fill;pointer-events:none}
+/* Flugzeug: in normaler Geschwindigkeit unter den Wolken, hinter dem Hochhaus vorbei, unterhalb des Titels, sinkt leicht wie im Anflug.
+   Es fliegt nur die mittlere Strecke (90 % bis 10 % der Bildbreite), die am Handy zu sehen ist, und taucht aus dem Dunst auf und wieder ein */
+.n-bild>img.n-flug{width:2.6%!important;top:30%;opacity:0;animation:n-flug8 36s linear infinite!important;animation-delay:-8s!important}
+@keyframes n-flug8{0%{left:90%;top:29%;opacity:0}4%{opacity:.92}76%{opacity:.92}80.5%{left:10%;top:31.3%;opacity:0}100%{left:10%;top:31.3%;opacity:0}}
+@media (prefers-reduced-motion:reduce){.hh-wolken i{animation:none}}
+@media (max-width:899px){
+  /* Titel in eigener Zeile, mittig und größer; Zurück-Knopf 60 % größer mit Rand in der Weltfarbe */
+  html,body{overflow-x:clip}
+  .w-oben{display:grid!important;grid-template-columns:1fr;justify-items:center;align-items:center;gap:4px}
+  .w-oben #zur{justify-self:start;width:74px;height:74px;padding:0!important;display:grid!important;place-items:center;font-size:40px!important;line-height:1!important;border:2.5px solid #E9C96A!important}
+  html[data-welt="gruen"] .w-oben #zur{border-color:#3FA36B!important}html[data-welt="blau"] .w-oben #zur{border-color:#5B8DEF!important}
+  .w-titel{text-align:center;grid-column:1}
+  #w-h{font-size:min(36px,8.4vw)!important;margin:0!important;line-height:1.1;white-space:nowrap}
+  /* Antippen: Felder rechts übereinander, das gewählte neben dem offenen Raum */
+  .etagen.stapel{position:fixed!important;left:0!important;right:0!important;top:0!important;bottom:0!important;width:auto!important;height:auto!important;z-index:40;pointer-events:none;transform:none!important;display:block!important;margin:0!important}
+  .etagen.stapel .teuer{display:none!important}
+  .etagen.stapel .et{position:absolute!important;margin:0!important;transform:none!important;transition:top .5s ease;box-sizing:border-box;pointer-events:auto;left:auto!important;right:8px!important}
+  .etagen.stapel[data-w="g"] .et{width:34%!important;padding:6px 10px!important;font-size:13px!important}
+  .etagen.stapel[data-w="b"] .et{width:37%!important;padding:8px 12px!important;font-size:14.3px!important}
+}
 </style>
-<link rel="stylesheet" href="vidon.css">
+<link rel="stylesheet" href="vidon.css?v=20261111a">
 </head>
 <body>
 <div id="kopf"></div>
@@ -376,7 +408,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 
 <section class="wahl rand" id="wahl">
   <div class="wahl-hg" aria-hidden="true"><div class="hg" style="background-image:url(bilder/preise/hg_g.webp)"></div><div class="hg" style="background-image:url(bilder/preise/hg_b.webp)"></div><div class="hg" style="background-image:url(bilder/preise/hg_s.webp)"></div><div class="wolken" id="k-wolken"></div></div>
-  <h1>Wähle deine Welt</h1><div class="duo"><button class="d-teil li" data-i="0" aria-label="Akademie fürs Geld, Leuchtturm ansehen"><span class="n-bild"><img src="bilder/preise/lt_echt.webp" alt=""><span class="strahl" style="--lx:50%;--ly:19.4%"><i></i><i></i></span></span></button><button class="d-teil re" data-i="1" aria-label="Institut fürs Vermögen, Hochhaus ansehen"><span class="n-bild"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen_0.webp" src="bilder/preise/hh_ebenen7.mp4"></video><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="n-spitze" src="bilder/preise/hh_spitze7.webp" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video></span></button></div><div class="duo-unten"><div class="duo-namen"><div><span class="d-nm">Akademie</span><span class="d-sub">fürs Geld</span></div><div><span class="d-nm">Institut</span><span class="d-sub">fürs Vermögen</span></div></div><p class="duo-tipp">Tippe auf eine Welt.</p></div><p class="lead">Wische und wähle deine Welt.</p>
+  <h1>Wähle deine Welt</h1><div class="duo"><button class="d-teil li" data-i="0" aria-label="Akademie fürs Geld, Leuchtturm ansehen"><span class="n-bild"><video class="lt-film" muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_film_0.webp" src="bilder/preise/lt_film.mp4"></video></span></button><button class="d-teil re" data-i="1" aria-label="Institut fürs Vermögen, Hochhaus ansehen"><span class="n-bild"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen8_0.webp" src="bilder/preise/hh_ebenen8.mp4"></video><span class="hh-wolken"><i></i></span><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="hh-vorne" src="bilder/preise/hh_vorne8.webp" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video></span></button></div><div class="duo-unten"><div class="duo-namen"><div><span class="d-nm">Akademie</span><span class="d-sub">fürs Geld</span></div><div><span class="d-nm">Institut</span><span class="d-sub">fürs Vermögen</span></div></div><p class="duo-tipp">Tippe auf eine Welt.</p></div><p class="lead">Wische und wähle deine Welt.</p>
   <div class="karussell" id="karussell"><div class="k-teil" data-i="0" aria-label="Akademie, Leuchtturm im Sturm"><video muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_schleife_0.webp" src="bilder/preise/leuchtturm_wellen.mp4"></video><img class="kz" src="bilder/preise/lt_raeume_zu.webp" alt=""></div><div class="k-teil" data-i="1" aria-label="Institut, Hochhaus in der Stadt"><img src="bilder/preise/hh_frei.webp" alt=""></div><div class="k-teil" data-i="2" aria-label="Sternstunde, Der Geldbaum im Sonnenuntergang"><img src="bilder/preise/baum_frei.webp" alt=""></div><div class="k-wisch" id="kw" tabindex="0" role="listbox" aria-roledescription="Karussell" aria-label="Drei Welten, zum Wechseln wischen"></div></div>
   <div class="k-unter" aria-live="polite"><div class="nm" id="k-nm"></div><div class="pr" id="k-pr"></div></div>
   <div class="k-steuer"><button class="pfeil" id="vor" aria-label="Vorherige Welt">‹</button><div class="punkte" id="punkte"><i></i><i></i><i></i></div><button class="pfeil" id="nach" aria-label="Nächste Welt">›</button></div>
@@ -426,7 +458,7 @@ body{padding-top:calc(52px + env(safe-area-inset-top,0px))}
 </section>
 </main>
 <p class="fussklein"><a href="recht.html#impressum">Impressum</a> · <a href="recht.html#datenschutz">Datenschutz</a></p>
-<script src="seite.js?v=20261110f"></script>
+<script src="seite.js?v=20261111a"></script>
 <script>
 
 var W={
@@ -676,9 +708,9 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
 
 /* ===== 10./11.11.2026 Runde 21 ===== */
 (function(){var nb=document.getElementById('n-bild'),et=document.getElementById('etagen');
-  var BILD={g:'<img src="bilder/preise/lt_echt.webp" alt=""><span class="strahl" style="--lx:50%;--ly:19.4%"><i></i><i></i></span>',
-            b:'<video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen_0.webp" src="bilder/preise/hh_ebenen7.mp4"></video><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="n-spitze" src="bilder/preise/hh_spitze7.webp" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video>'};
-  var _o=oeffne;oeffne=function(i){_o(i);nb.innerHTML=BILD[cur.w]||'';nb.parentNode.style.transform='';nb.parentNode.dataset.w=cur.w;var v=nb.querySelector('video');if(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}};
+  var BILD={g:'<video class="lt-film" muted loop playsinline autoplay preload="auto" poster="bilder/preise/lt_film_0.webp" src="bilder/preise/lt_film.mp4"></video>',
+            b:'<video muted loop playsinline autoplay preload="auto" poster="bilder/preise/hh_ebenen8_0.webp" src="bilder/preise/hh_ebenen8.mp4"></video><span class="hh-wolken"><i></i></span><img class="n-flug" src="bilder/preise/flieger.webp" alt=""><img class="hh-vorne" src="bilder/preise/hh_vorne8.webp" alt=""><video class="n-glanzfilm" muted loop playsinline autoplay preload="auto" src="bilder/preise/hh_glanz.mp4"></video>'};
+  var _o=oeffne;oeffne=function(i){window.rfStapel(false);_o(i);nb.innerHTML=BILD[cur.w]||'';nb.parentNode.style.transform='';nb.parentNode.dataset.w=cur.w;var v=nb.querySelector('video');if(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}};
   /* Etagen im neuen Hochhaus (Bild 1920 x 1080, gemessen 10.11.): Glasfront x 878–1038, je Raum zwei Etagen à 33 px. Reihenfolge wie geo.raeume */
   /* Raumblöcke [y0,y1,x0,x1] im 1920er-Bild (Hochhaus 1080 hoch, Leuchtturm 1084), Index = geo.raeume */
   var NE={b:[[686,753,920,1040],[557,631,900,1044],[362,434,900,1038],[207,277,926,1024]],g:[null,null,[661,749,888,1036],[502,593,893,1029]]},HO={b:1080,g:1084},
@@ -686,12 +718,21 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
   function raumDiv(){var d=nb.querySelector('.n-raum');if(!d){d=document.createElement('div');d.className='n-raum';d.innerHTML='<div class="innen"></div>';nb.appendChild(d);}return d;}
   function zu(fertig){var d=nb.querySelector('.n-raum');if(d)d.classList.remove('auf');offen=-1;setTimeout(fertig||function(){},d?700:0);}
   /* Kamera: Ursprung oben links, Verschiebung + Zoom. So gleitet sie von Etage zu Etage, ohne zurückzuspringen. Gemessen wird ohne Zoom. */
-  function zoom(an,d){var w=nb.parentNode;if(!an){w.style.transform='';return;}var alt=w.style.transform;w.style.transition='none';w.style.transform='';
+  function zoom(an,d){var w=nb.parentNode;if(!an){w.style.transform='';window.rfStapel(false);return;}if(!breit.matches){window.rfStapel(true);   /* erst umhängen, dann messen: das Umhängen ändert die Bildhöhe */
+      var t0=performance.now(),y0=-1,ruhe=0;(function warte(){var y=scrollY;ruhe=y===y0?ruhe+1:0;y0=y;   /* am kleinen Handy scrollt die Seite zur Karte: erst danach ausrichten */
+        if(ruhe<4&&performance.now()-t0<1500){requestAnimationFrame(warte);return;}zoom2(d);})();return;}
+    zoom2(d);}
+  function zoom2(d){var w=nb.parentNode;var alt=w.style.transform;w.style.transition='none';w.style.transform='';
     var r=d.getBoundingClientRect(),q=w.getBoundingClientRect();w.style.transform=alt;void w.offsetWidth;w.style.transition='';
     var s=breit.matches?1.7:1.75,px=r.left+r.width/2-q.left,py=r.top+r.height/2-q.top,sicht=Math.min(q.height,innerHeight-52),qy=sicht*(breit.matches?.45:.36);
     w.style.transformOrigin='0 0';var qx=breit.matches?px:q.width*.335;   /* Handy: Raum mittig in der freien Fläche links der Angebotsliste */
-    w.style.transform='translate('+(qx-s*px)+'px,'+(qy-s*py)+'px) scale('+s+')';}
-  function auf(s){if(!NE[cur.w]||s.o!=='r'||!NE[cur.w][s.i]){zu(function(){zoom(false);});return;}var e=NE[cur.w][s.i],g=cur.geo.raeume[s.i];
+    if(!breit.matches){var z=window.rfZiel();qx=z.x-q.left;qy=z.y-q.top;}
+    w.style.transform='translate('+(qx-s*px)+'px,'+(qy-s*py)+'px) scale('+s+')';if(!breit.matches)window.rfStapel(true,z);}
+  var TURM={'Investmenttag':['bilder/preise/raum_lt_investmenttag.webp',117,477,641,1281]};
+  function auf(s){var tn=s&&s.o==='t'&&cur.w==='g'&&W[cur.w].a[s.a]&&TURM[W[cur.w].a[s.a][0]];
+    if(tn){zu(function(){var d=raumDiv(),i=d.querySelector('.innen');d.style.cssText='left:'+(tn[3]/19.2)+'%;width:'+((tn[4]-tn[3])/19.2)+'%;top:'+(tn[1]/10.84)+'%;height:'+((tn[2]-tn[1])/10.84)+'%';
+      d.classList.add('echt');i.style.backgroundImage='url('+tn[0]+')';zoom(true,d);void d.offsetWidth;d.classList.add('auf');offen=99;});return;}
+    if(!NE[cur.w]||s.o!=='r'||!NE[cur.w][s.i]){zu(function(){zoom(false);});return;}var e=NE[cur.w][s.i],g=cur.geo.raeume[s.i];
     zu(function(){var d=raumDiv(),i=d.querySelector('.innen');
       d.style.cssText='left:'+(e[2]/19.2)+'%;width:'+((e[3]-e[2])/19.2)+'%;top:'+(e[0]/HO[cur.w]*100)+'%;height:'+((e[1]-e[0])/HO[cur.w]*100)+'%';
       var echt=(ECHT[cur.w]||{})[s.i];d.classList.toggle('echt',!!echt);
@@ -708,7 +749,7 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
 /* ===== 10./11.11.2026 Runde 25: Licht für Börsentag und Investmenttag ===== */
 (function(){var nb=document.getElementById('n-bild'),w=nb.parentNode;
   function licht(s){var alt=nb.querySelectorAll('.n-lampe,.n-licht');alt.forEach(function(x){x.remove();});w.classList.remove('leuchtet');
-    if(!cur||cur.w!=='g'||!s||s.o!=='t')return;var a=W[cur.w].a[s.a];
+    if(!cur||cur.w!=='g'||!s||s.o!=='t')return;var a=W[cur.w].a[s.a];if(/Investment/.test(a[0]))return;
     nb.insertAdjacentHTML('beforeend','<span class="n-lampe"></span><span class="n-licht'+(/Investment/.test(a[0])?' links':'')+'">'+a[0]+'<small>'+a[3]+'</small></span>');void w.offsetWidth;w.classList.add('leuchtet');}
   var _w2=waehleEtage;waehleEtage=function(j){_w2(j);licht(cur&&cur.stufen[j]);};
   var _o2=oeffne;oeffne=function(i){_o2(i);w.classList.remove('leuchtet');};
@@ -716,13 +757,39 @@ if(q.get('w')){var wi=['g','b','s'].indexOf(q.get('w'));if(wi>=0){akt=wi;mitte(w
 
 /* ===== Runde 31: Felder um den Leuchtturm, Kopfleiste in der Weltfarbe, Zurück nur als Pfeil ===== */
 (function(){var et=document.getElementById('etagen'),H=document.documentElement,zur=document.getElementById('zur');
-  var POS={'Investmenttag':'lo','Börsentag':'ro','Einzelner Workshop':'lu','Dein erster Tag':'ru'},NAME={g:'Akademie für Finanzkompetenz',b:'Institut für Vermögenskompetenz'},FARBE={g:'gruen',b:'blau'};
+  var POS={'Investmenttag':'lo','Börsentag':'ro','Einzelner Workshop':'lu','Dein erster Tag':'ru'},NAME={g:'Akademie für<br>Finanzkompetenz',b:'Institut für<br>Vermögenskompetenz'},FARBE={g:'gruen',b:'blau'};
   function kopf(w){var m=document.querySelector('.leiste .marke');if(!m)return;var k=m.querySelector('.marke-mehr');if(k)k.remove();
-    if(w){H.dataset.welt=FARBE[w];m.insertAdjacentHTML('beforeend','<small class="marke-mehr">'+NAME[w]+'</small>');}else{delete H.dataset.welt;}}
+    if(w){H.dataset.welt=FARBE[w];m.insertAdjacentHTML('beforeend','<small class="marke-mehr">'+NAME[w]+'</small>');}else{delete H.dataset.welt;m.insertAdjacentHTML('beforeend','<small class="marke-mehr eins">Institut</small>');}}
   var _l3=liste;liste=function(){_l3();var g=cur&&cur.w==='g';et.classList.toggle('kreuz',g);
     et.querySelectorAll('.et').forEach(function(x){var n=x.querySelector('b').textContent;if(g&&POS[n])x.dataset.pos=POS[n];else delete x.dataset.pos;});};
   var _o3=oeffne;oeffne=function(i){_o3(i);kopf(cur.w);zur.textContent='‹';zur.setAttribute('aria-label','Zurück zu beiden Welten');liste();};
   var zo3=zur.onclick;zur.onclick=function(e){var r=zo3?zo3.call(this,e):0;setTimeout(function(){if(welt.hidden)kopf(null);},1300);return r;};
+})();
+/* ===== Runde 47 (Livegang 11.11.2026): Antippen-Ansicht am Handy, Hochhaus-Aufleuchten im Takt des Leuchtturm-Films ===== */
+(function(){var et=document.getElementById('etagen');
+  /* Ziel des offenen Raums: mittig zwischen Kopfleiste und Überschrift der Karte (Akademie), im Institut etwas darüber (gemessen im Mockup) */
+  window.rfZiel=function(){var box=document.getElementById('detail'),hh=box&&box.querySelector('h2,h3'),oben=56,
+      unten=hh&&hh.getBoundingClientRect().height?hh.getBoundingClientRect().top-58:innerHeight*.6,b=cur&&cur.w==='b';
+    return {x:innerWidth*(b?.29:.34),y:oben+(unten-oben)*(b?.42:.5),oben:oben,unten:unten};};
+  window.rfStapel=function(an,z){
+    if(!an){if(et._heim){et._heim.p.insertBefore(et,et._heim.n);et._heim=null;}et.classList.remove('stapel');delete et.dataset.w;
+      et.querySelectorAll('.et').forEach(function(b){b.style.top='';});return;}
+    if(!et._heim){et._heim={p:et.parentNode,n:et.nextSibling};document.body.appendChild(et);}
+    et.classList.add('stapel');et.dataset.w=cur.w;if(!z)return;
+    var bx=[].slice.call(et.querySelectorAll('.et'));if(!bx.length)return;
+    var akt=bx.filter(function(b){return b.getAttribute('aria-pressed')==='true';})[0]||bx[0],ia=bx.indexOf(akt);
+    var h=Math.max.apply(null,bx.map(function(b){return b.offsetHeight;})),oben=z.oben,unten=z.unten,cy=z.y;
+    var g=cur.w==='b'?Math.max(6,Math.min(14,(unten-oben-bx.length*h)/3.2)):6;
+    var ca=Math.floor((cy-h/2-oben)/(h+g)),cb=Math.floor((unten-cy-h/2)/(h+g)),re=bx.filter(function(b){return b!==akt;}),na=Math.min(ia,ca);
+    if(re.length-na>cb)na=Math.min(ca,re.length-cb);
+    var Y=[];Y[ia]=cy-h/2;re.forEach(function(b,k){Y[bx.indexOf(b)]=k<na?cy-h/2-(na-k)*(h+g):cy-h/2+(k-na+1)*(h+g);});
+    var mt=Math.min.apply(null,Y),mb=Math.max.apply(null,Y)+h;if(mb>unten&&mt>oben){var sh=Math.min(mb-unten,mt-oben);Y=Y.map(function(y){return y-sh;});}
+    bx.forEach(function(b,k){b.style.top=Y[k]+'px';});};
+  /* Weltauswahl: Hochhaus-Glanz, solange der Strahl im Film nach rechts zeigt (Filmzeit 3,4–4,4 s, gemessen 11.11.) */
+  var lt=document.querySelector('.d-teil.li video.lt-film'),re=document.querySelector('.d-teil.re .n-bild');if(!lt||!re)return;
+  if(matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  re.insertAdjacentHTML('beforeend','<span class="inst-band"><i></i></span>');var i=re.querySelector('.inst-band i');
+  (function lauf(){var t=lt.currentTime,p=(t-3.4)/1.0;if(p>=0&&p<=1){i.style.left=(-60+170*p)+'%';i.style.opacity=1;}else i.style.opacity=0;requestAnimationFrame(lauf);})();
 })();
 </script>
 </body>
