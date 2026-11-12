@@ -15,7 +15,7 @@
   /* ---------- Kopf und Fuß ---------- */
   /* Simon 29.10. (Gesprächsrunde Punkt 3+4): Firestarter-App zuerst, Goldene Welt heißt Sternstunde,
      „Über uns“ klappt an der Institutszeile aus und steht im Fuß */
-  var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','<span class="rf">R&amp;F</span> Akademie'],['welt-blau.html','<span class="rf">R&amp;F</span> Institut'],['preise.html','Preise &amp; Geschenke'],['kinder.html','Sternstunde'],['kontakt.html','Kontakt']];
+  var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','<span class="rf">R&amp;F</span> Akademie'],['welt-blau.html','<span class="rf">R&amp;F</span> Institut'],['preise.html','Preise &amp; Geschenke'],['kinder.html','Sternstunde'],['kontakt.html','Kontakt mit den Gründern']];
   function link(h){return h+zusatz;}
   var WER_SATZ='Wer wir sind, ist eigentlich nicht das Wichtigste. Wichtig ist, welches Problem wir für dich lösen.';
   /* Vorschau beim Überfahren der Kopfleiste (Simon 01.11.2026): Bild je Menüpunkt, Stile in effekte.css und sternstunde/rahmen.css */
@@ -40,7 +40,7 @@
     fuss.outerHTML='<footer class="fuss"><div class="gross" aria-label="R&amp;F"><b>R&amp;F</b></div><div class="fuss-spalten">'+
       '<div><b>R&amp;F Akademie</b><a href="'+link('welt-gruen.html')+'#erster-tag">Dein erster Tag</a><a href="'+link('welt-gruen.html')+'#investmenttag">Investmenttag</a><a href="'+link('welt-gruen.html')+'#boersentag">Börsentag</a></div>'+
       '<div><b>R&amp;F Institut</b><a href="'+link('welt-blau.html')+'#investment">Investment Zirkel</a><a href="'+link('welt-blau.html')+'#rainmaker">Rainmaker Zirkel</a><a href="'+link('welt-blau.html')+'#mentoring">Mentoring</a><a href="'+link('start.html')+'#webinar">Webinar</a></div>'+
-      '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Sternstunde</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('ueber-uns.html')+'">Über uns</a><a href="'+link('preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
+      '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Sternstunde</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('kontakt.html')+'">Wer wir sind</a><a href="'+link('preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
       '<div><b>Rechtliches</b><a href="'+link('recht.html')+'#impressum">Impressum</a><a href="'+link('recht.html')+'#datenschutz">Datenschutz</a><a href="'+link('recht.html')+'#agb">AGB</a></div></div>'+
       '<div class="fuss-unten"><span class="mono">R&amp;F · Frankfurt am Main</span><span>Bildung, keine Anlageberatung · info@rf-institut.de</span></div></footer>';
   }
@@ -64,7 +64,7 @@
     var MZ={'start':'Start','firestarter':'@Firestarter','welt-gruen':'@Akademie','welt-blau':'@Institut','preise':'Preise &amp; Geschenke','kinder':'@Sternstunde','kontakt':'Kontakt mit den Gründern'};
     deckel.querySelectorAll('.deckel-nav > a').forEach(function(a){var t=MZ[a.dataset.ziel],z=a.querySelector('.zt');if(!t||!z)return;z.innerHTML=t.charAt(0)==='@'?'<span class="lgo"><b>R&amp;F</b><i></i><small>'+t.slice(1)+'</small></span>':t;});
     deckel.querySelector('.deckel-nav').insertAdjacentHTML('beforeend','<div class="deckel-wer"><button class="deckel-wer-knopf" type="button" aria-expanded="false">Wer steckt dahinter? <span aria-hidden="true">▾</span></button>'+
-      '<div class="deckel-wer-text" hidden><p>'+WER_SATZ+'</p><p><b>Willst du es trotzdem wissen?</b> <a href="'+link('ueber-uns.html')+'">Hier entlang →</a></p></div></div>');
+      '<div class="deckel-wer-text" hidden><p>'+WER_SATZ+'</p><p><b>Willst du es trotzdem wissen?</b> <a href="'+link('kontakt.html')+'#wer'+'">Hier entlang →</a></p></div></div>');
     var dw=deckel.querySelector('.deckel-wer-knopf');dw.addEventListener('click',function(){var t=dw.nextElementSibling,o=t.hidden;t.hidden=!o;dw.setAttribute('aria-expanded',o?'true':'false');dw.querySelector('span').textContent=o?'▴':'▾';});
     document.body.appendChild(deckel);
     var auf=function(o){deckel.classList.toggle('offen',o);document.body.style.overflow=o?'hidden':'';burger.setAttribute('aria-expanded',o?'true':'false');if(o){deckel.querySelector('.zu').focus();}else{burger.focus();}};
@@ -82,7 +82,7 @@
     var pille=function(){if(offen)return;offen=1;fen.innerHTML='<button class="wer-pille" type="button"><img src="'+DUO+'" alt="">Wer steckt dahinter? <i aria-hidden="true">↓</i></button>';fen.hidden=false;};
     var fenster=function(){offen=2;fen.innerHTML='<div class="wer-karte" role="dialog" aria-label="Wer steckt dahinter?"><button class="zu" type="button" aria-label="Schließen">×</button>'+
       '<div class="kopf"><img src="'+DUO+'" alt="René Flé und Simon Schlerf"><b>René und Simon</b></div><p>'+WER_SATZ+'</p><p class="frage">Willst du es trotzdem wissen?</p>'+
-      '<a href="'+PFX+link('ueber-uns.html')+'">Hier entlang zu Über uns →</a></div>';fen.hidden=false;};
+      '<a href="'+PFX+link('kontakt.html')+'#wer'+'">Hier entlang zu Wer wir sind →</a></div>';fen.hidden=false;};
     if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
       wrap.addEventListener('mouseenter',function(){clearTimeout(zuT);pille();});
       wrap.addEventListener('mouseleave',function(){if(offen===2)return;zuT=setTimeout(schliessen,380);});

@@ -52,6 +52,26 @@
 .ra-balken{display:grid;gap:8px;margin:14px 0 6px}.ra-balken div{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;font-size:13.5px}
 .ra-balken i{display:block;height:14px;border-radius:8px;background:#102444}.ra-balken .mit i{background:#C9D6EE}.ra-balken b{font-variant-numeric:tabular-nums}
 </style>
+<style>/* Drei Wahrheiten mit Reitern (12.11.2026) */
+#wahrheiten .wh-reiter{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#F3F5F8;border-radius:18px;padding:6px;margin:0 0 18px;max-width:640px}
+#wahrheiten .wh-reiter[hidden]{display:none}
+#wahrheiten .wh-reiter button{all:unset;box-sizing:border-box;text-align:center;border-radius:14px;padding:12px 4px;font:600 22px/1 var(--kopf,inherit);color:#9AA3AF;cursor:pointer}
+#wahrheiten .wh-reiter button small{display:block;font:600 10.5px/1.2 var(--f,inherit);letter-spacing:.1em;text-transform:uppercase;margin-top:6px}
+#wahrheiten .wh-reiter [aria-selected="true"]{background:#fff;color:#E06400;box-shadow:0 6px 16px -10px rgba(16,36,68,.5)}
+#wahrheiten .wh-reiter [aria-selected="true"] small{color:#1C1917}
+#wahrheiten .wh-reiter button:focus-visible{outline:2px solid #E06400;outline-offset:2px}
+#wahrheiten .wh-panel+.wh-panel{margin-top:clamp(28px,4vw,48px)}
+#wahrheiten.wh-an .wh-panel+.wh-panel{margin-top:0}
+#wahrheiten .wh-panel[hidden]{display:none}
+#wahrheiten .wh-wege{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin:18px -20px 0;padding:2px 20px 12px;scrollbar-width:none}
+#wahrheiten .wh-wege::-webkit-scrollbar{display:none}
+#wahrheiten .wh-wege .angebot{flex:0 0 82%;max-width:360px;scroll-snap-align:start;border:1.5px solid #E6E0D3}
+#wahrheiten .wh-b{display:block;font:600 48px/1 var(--kopf,inherit);color:#E06400}
+#wahrheiten .wh-punkte{display:flex;gap:6px;justify-content:center;margin-top:4px}
+#wahrheiten .wh-punkte i{width:7px;height:7px;border-radius:50%;background:#C9CED6;transition:width .2s}
+#wahrheiten .wh-punkte i.an{width:20px;border-radius:4px;background:#E06400}
+@media(min-width:900px){#wahrheiten .wh-wege{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:18px 0 0;padding:0}#wahrheiten .wh-wege .angebot{max-width:none}#wahrheiten .wh-punkte{display:none}}
+</style>
 </head>
 <body>
 <div class="innen">
@@ -64,23 +84,22 @@
   <div class="einstieg-text">
     <h1>In deinem Konto arbeitet ein stiller Saboteur.</h1>
     <p class="lede">Er nimmt dir kein Geld weg. Er verhindert, dass es wächst: durch Aufschieben, Delegieren und Interessenkonflikte, ohne dass je ein Alarm losgeht. Finanzielle Bildung schützt dich. Und sie ist erlernbar.</p>
-    <div class="kopf-knoepfe"><a class="knopf" href="#angebote">Finde deinen Einstieg</a><a class="knopf leise" href="ueber-uns.html">Wer wir sind</a></div>
+    <div class="kopf-knoepfe"><a class="knopf" href="#angebote">Finde deinen Einstieg</a><a class="knopf leise" href="kontakt.html">Wer wir sind</a></div>
     <p class="vertrauen">Bildung, keine Anlageberatung · WINX-Tower direkt am Main · im Raum und live online</p>
   </div>
 </section>
 
 <!-- Hook aus der alten Firestarter-Landingpage, René (07.11.2026) -->
-<section class="ab" id="erdbeben"><div class="ab-kopf"><span class="mono">Die Marktlage 2026</span><h2>Abwärtsphasen sind wie <span class="sb-or">Erdbeben</span>. Vernichtung. Die ständige Bedrohung</h2>
+<!-- Drei Wahrheiten mit Reitern, Simons Wahl A3 (12.11.2026); Inhalte unverändert von René -->
+<section class="ab" id="wahrheiten"><div class="ab-kopf"><span class="mono">Was dir keiner sagt</span><h2>Drei Wahrheiten über dein Geld.</h2></div><div class="wh-reiter" role="tablist" aria-label="Drei Wahrheiten" hidden><button type="button" role="tab" id="wh-t0" aria-controls="erdbeben" aria-selected="true">8 %<small>Marktlage</small></button><button type="button" role="tab" id="wh-t1" aria-controls="drawdown" aria-selected="false">+100 %<small>Drawdown</small></button><button type="button" role="tab" id="wh-t2" aria-controls="drei-wege" aria-selected="false">A·B·C<small>Drei Wege</small></button></div><div class="wh-panel" id="erdbeben" role="tabpanel" aria-labelledby="wh-t0"><div class="ab-kopf"><span class="mono">Die Marktlage 2026</span><h2>Abwärtsphasen sind wie <span class="sb-or">Erdbeben</span>. Vernichtung. Die ständige Bedrohung</h2>
 <p>„Leg einfach in den MSCI World, dann machst du 8 % im Jahr.“ Diesen Satz hast du schon oft gehört, von Finfluencern, jungen Bankberatern und Ratgeberportalen. Was sie dir nicht sagen: Die „sicheren 8 %“ sind ein Durchschnitt über Jahrzehnte <span class="sb-or">mit wiederkehrenden Krisen</span> (Drawdowns). Jahre, in denen zuerst Werte vernichtet wurden und es dann extrem lange dauerte, überhaupt das Anfangskapital zurückzuerhalten. Genau hier arbeitet der stille Saboteur. Er unterbricht und vernichtet deinen Zinseszins und damit dein Wachstum und unentdeckt auch deine würdige Rente.</p></div>
 <div class="sb-chart"><img src="bilder/msci-1996-2026.jpg" width="1668" height="812" alt="MSCI-World-Verlauf 1996–2026 mit zwei markierten Stillstandsphasen"></div>
 <div class="sb-modell"><span class="ml">Modellrechnung · 10.000 € · 7 % p. a. · 26 Jahre</span><div class="z"><span>Ungestörter Zinseszins</span><b>≈ 58.000 €</b></div><div class="z"><span>Mit zwei Stillstandsphasen</span><b>≈ 21.000 €</b></div><div class="z d"><span>Differenz</span><b>− 37.000 €</b></div>
-<small>Modellrechnung mit konstanter Annahme von 7 % p. a. zur Veranschaulichung des Stillstands-Effekts, keine Renditezusage, keine Prognose. Quelle Stillstandsphasen: eigene Auswertung MSCI-World-Verlauf 1996–2026.</small></div></section>
-<section class="ab" id="drawdown"><div class="ab-kopf"><span class="mono">Die harte Realität</span><h2>Ein 50-%-Drawdown verlangt <span class="sb-or">+100 %</span> zur Erholung. Das Erdbeben. Keine Meinung. Mathematische Gewissheit.</h2>
-<p>Unvorhergesehene Krisen sind für die Märkte und deine Geldanlage eine ständige Bedrohung und kommen mit Sicherheit. Niemand weiß wann. Private Investoren verlieren! Kein Naturgesetz, aber ein langfristiges Muster. Bis heute! Bereits dein Durchhalten fällt im Drawdown unglaublich schwer. Aktuell hast du drei Möglichkeiten und allen fehlt die <span class="sb-or">entscheidende Zutat</span> …</p></div></section>
-<section class="ab" id="drei-wege"><div class="ab-kopf"><span class="mono">Drei Wege, die du kennst</span><h2>Allen fehlt dieselbe Zutat.</h2><p>Dein Wille zur Vorsorge ist richtig. Dein Wunsch nach Selbstbestimmung ist mutig. Dir fehlen nur die richtige Reihenfolge und der rote Faden.</p></div><div class="anschluss">
-<article class="angebot"><span class="dauer">Weg A · Bank und Berater</span><h3>Jemand liefert dir den Durchschnitt.</h3><p>Ein Berater sagte mir einmal unter vier Augen: „Ich empfehle nicht, was für dich am besten ist. Ich empfehle, was ich empfehlen darf.“ Er ist nicht der Saboteur. Er ist Gefangener seines Systems.</p></article>
-<article class="angebot"><span class="dauer">Weg B · Selbstversuch</span><h3>Fragmente statt Fundament.</h3><p>Das Internet ist voller Meinungen, nur wenige tragen. Einzelne Videos und KI-Strategien halten, solange die Kurse steigen. Die erste Abwärtsphase trifft dich nachts im Tiefschlaf.</p></article>
-<article class="angebot"><span class="dauer">Weg C · Nichtstun</span><h3>Die Entscheidung, nicht zu entscheiden.</h3><p>… ist die teuerste deines finanziellen Lebens. Niemand schlägt Alarm. Wer wartet, entscheidet auch, nur gegen sich selbst.</p></article></div></section>
+<small>Modellrechnung mit konstanter Annahme von 7 % p. a. zur Veranschaulichung des Stillstands-Effekts, keine Renditezusage, keine Prognose. Quelle Stillstandsphasen: eigene Auswertung MSCI-World-Verlauf 1996–2026.</small></div></div><div class="wh-panel" id="drawdown" role="tabpanel" aria-labelledby="wh-t1"><div class="ab-kopf"><span class="mono">Die harte Realität</span><h2>Ein 50-%-Drawdown verlangt <span class="sb-or">+100 %</span> zur Erholung. Das Erdbeben. Keine Meinung. Mathematische Gewissheit.</h2>
+<p>Unvorhergesehene Krisen sind für die Märkte und deine Geldanlage eine ständige Bedrohung und kommen mit Sicherheit. Niemand weiß wann. Private Investoren verlieren! Kein Naturgesetz, aber ein langfristiges Muster. Bis heute! Bereits dein Durchhalten fällt im Drawdown unglaublich schwer. Aktuell hast du drei Möglichkeiten und allen fehlt die <span class="sb-or">entscheidende Zutat</span> …</p></div></div><div class="wh-panel" id="drei-wege" role="tabpanel" aria-labelledby="wh-t2"><div class="ab-kopf"><span class="mono">Drei Wege, die du kennst</span><h2>Allen fehlt dieselbe Zutat.</h2><p>Dein Wille zur Vorsorge ist richtig. Dein Wunsch nach Selbstbestimmung ist mutig. Dir fehlen nur die richtige Reihenfolge und der rote Faden.</p></div><div class="wh-wege">
+<article class="angebot"><b class="wh-b">A</b><span class="dauer">Weg A · Bank und Berater</span><h3>Jemand liefert dir den Durchschnitt.</h3><p>Ein Berater sagte mir einmal unter vier Augen: „Ich empfehle nicht, was für dich am besten ist. Ich empfehle, was ich empfehlen darf.“ Er ist nicht der Saboteur. Er ist Gefangener seines Systems.</p></article>
+<article class="angebot"><b class="wh-b">B</b><span class="dauer">Weg B · Selbstversuch</span><h3>Fragmente statt Fundament.</h3><p>Das Internet ist voller Meinungen, nur wenige tragen. Einzelne Videos und KI-Strategien halten, solange die Kurse steigen. Die erste Abwärtsphase trifft dich nachts im Tiefschlaf.</p></article>
+<article class="angebot"><b class="wh-b">C</b><span class="dauer">Weg C · Nichtstun</span><h3>Die Entscheidung, nicht zu entscheiden.</h3><p>… ist die teuerste deines finanziellen Lebens. Niemand schlägt Alarm. Wer wartet, entscheidet auch, nur gegen sich selbst.</p></article></div><div class="wh-punkte" aria-hidden="true"><i></i><i></i><i></i></div></div></section>
 
 <!-- Institut, kurz -->
 <section class="ab" id="rechner"><div class="sb-r" data-calc=""><span class="mono">Rechne selbst</span><h3>Verluste durch Wartezeit und Drawdowns</h3><p>Was kostet dich das Zögern (trage die Jahre, bevor du startest, in „davon gewartet“ ein)? Was kosten dich verlorene Jahre durch Abwärtsbewegungen der Märkte? Und was kostet alles zusammen? Deine eigene Vorstellung, deine Kosten, dein Ergebnis.</p>
@@ -155,7 +174,7 @@
 <!-- Simon 29.10.: eine Vertrauenszeile bleibt auf der Startseite -->
 <section class="ab" id="belege">
   <div class="beleg-zeile">
-    <figure><blockquote>„René ging weit über den Lehrplan hinaus.“</blockquote><figcaption>Matteo Seth, Wirtschaftsstudent · <a class="mehr-link" href="ueber-uns.html#stimme">Ganze Stimme lesen →</a></figcaption></figure>
+    <figure><blockquote>„René ging weit über den Lehrplan hinaus.“</blockquote><figcaption>Matteo Seth, Wirtschaftsstudent · <a class="mehr-link" href="kontakt.html#stimme">Ganze Stimme lesen →</a></figcaption></figure>
     <div class="zahlen"><div><strong data-zahl="25000" data-nach="+">25.000+</strong><span>Lehrstunden</span></div><div><strong data-zahl="12000" data-nach="+">12.000+</strong><span>Kunden</span></div><div><strong data-zahl="94.7" data-nach=" %">94,7 %</strong><span>Zufriedenheit</span></div></div>
   </div>
 </section>
@@ -176,7 +195,7 @@
 
 <div id="fuss"></div>
 </div>
-<script src="seite.js?v=20261112a"></script>
+<script src="seite.js?v=20261112b"></script>
 <script src="szene.js?v=20261106a"></script>
 <script>
 (function(){var w=document.querySelector('.welten3'),p=document.querySelectorAll('.wisch-hinweis i');if(!w||!p.length)return;w.addEventListener('scroll',function(){var k=w.children,b=0,m=1e9;for(var i=0;i<k.length;i++){var d=Math.abs(k[i].getBoundingClientRect().left-w.getBoundingClientRect().left);if(d<m){m=d;b=i}}p.forEach(function(x,i){x.classList.toggle('an',i===b)})},{passive:true});})();
@@ -200,6 +219,16 @@ document.querySelectorAll('[data-calc]').forEach(function(r){var q=function(k){r
   var neu=function(){var un=zahl('un'),ge=zahl('ge'),d=bal.querySelectorAll('div');d[0].querySelector('i').style.width='100%';d[0].querySelector('b').textContent=r.querySelector('[data-c="un"]').textContent;
    d[1].querySelector('i').style.width=(un>0?Math.max(2,ge/un*100):0)+'%';d[1].querySelector('b').textContent=r.querySelector('[data-c="ge"]').textContent;};
   r.querySelectorAll('input').forEach(function(i){i.addEventListener('input',neu);});neu();});})();
+</script>
+<script>/* Drei Wahrheiten: Reiter und Wischpunkte (12.11.2026) */
+(function(){var w=document.getElementById('wahrheiten');if(!w)return;var r=w.querySelector('.wh-reiter'),b=[].slice.call(r.querySelectorAll('button')),p=[].slice.call(w.querySelectorAll('.wh-panel'));
+r.hidden=false;w.classList.add('wh-an');
+function zeig(n){b.forEach(function(x,i){x.setAttribute('aria-selected',i===n?'true':'false');x.tabIndex=i===n?0:-1});p.forEach(function(x,i){x.hidden=i!==n})}
+b.forEach(function(x,i){x.addEventListener('click',function(){zeig(i)});x.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){var k=(i+d+3)%3;zeig(k);b[k].focus()}})});
+var h=location.hash.slice(1),s=p.map(function(x){return x.id}).indexOf(h);zeig(s<0?0:s);
+var g=w.querySelector('.wh-wege'),pk=[].slice.call(w.querySelectorAll('.wh-punkte i'));
+function pt(){if(!g)return;var c=g.children,m=0,best=1e9;for(var i=0;i<c.length;i++){var d=Math.abs(c[i].offsetLeft-g.offsetLeft-g.scrollLeft-20);if(d<best){best=d;m=i}}pk.forEach(function(x,i){x.classList.toggle('an',i===m)})}
+if(g){g.addEventListener('scroll',pt,{passive:true});pt()}})();
 </script>
 </body>
 </html>
