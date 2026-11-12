@@ -33,6 +33,25 @@
 .sb-nacht a{justify-self:start;background:#FF7A00;color:#102444;border-radius:999px;padding:11px 18px;font:800 .95rem "Nunito",system-ui,sans-serif;text-decoration:none}
 </style>
 <link rel="stylesheet" href="vidon.css?v=20261111b">
+<style>
+/* Simon 12.11.2026, Rechner A (Runde 72): helle Karte mit Reglern */
+.sb-r.ra{background:#FFFFFF!important;color:#1C1917!important;border:1.5px solid #E6E0D3;border-radius:26px;box-shadow:0 18px 40px -24px rgba(16,36,68,.35)}
+.sb-r.ra h3,.sb-r.ra p,.sb-r.ra label{color:#1C1917!important}.sb-r.ra .mono{color:#6B6257!important}.sb-r.ra .klein{color:#6B6257!important}
+.sb-r.ra .sb-f{display:grid;grid-template-columns:1fr!important;gap:16px}
+.sb-r.ra .sb-f label{display:grid!important;grid-template-columns:1fr auto;align-items:center;gap:8px 10px;font-weight:600;font-size:14.5px;grid-column:auto!important}
+.sb-r.ra .sb-f input[type=number]{width:96px;text-align:right;font:600 17px var(--f);color:#102444;background:#F3F5F8!important;border:1.5px solid #E3E7ED!important;border-radius:10px;padding:6px 8px}
+.sb-r.ra .ra-regler{grid-column:1/-1;-webkit-appearance:none;appearance:none;width:100%;height:6px;border:0!important;padding:0!important;border-radius:6px;background:linear-gradient(90deg,#102444 var(--p,0%),#E8EDF4 var(--p,0%))!important;margin:4px 0 2px;cursor:pointer}
+.ra-regler::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid #102444;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+.ra-regler::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid #102444}
+.sb-r.ra .ra-regler.ra-warte{background:linear-gradient(90deg,#E06400 var(--p,0%),#E8EDF4 var(--p,0%))!important}.ra-regler.ra-warte::-webkit-slider-thumb{border-color:#E06400}.ra-regler.ra-warte::-moz-range-thumb{border-color:#E06400}
+.sb-r.ra .sb-e{background:#FFF5EC!important;color:#1C1917!important;border:0!important;border-radius:20px}
+.sb-r.ra .sb-e .t{color:#6B6257!important}.sb-r.ra .sb-e .z span,.sb-r.ra .sb-e .z b{color:#1C1917!important}
+.sb-r.ra .ra-gross{display:grid!important;gap:4px;border:0!important;padding:4px 0 2px!important}
+.sb-r.ra .ra-gross span{font:600 12px/1 var(--f)!important;letter-spacing:.16em;text-transform:uppercase;color:#6B6257!important}
+.sb-r.ra .ra-gross b{font:600 clamp(40px,11vw,58px)/1 var(--kopf)!important;color:#E06400!important;text-align:left!important}
+.ra-balken{display:grid;gap:8px;margin:14px 0 6px}.ra-balken div{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;font-size:13.5px}
+.ra-balken i{display:block;height:14px;border-radius:8px;background:#102444}.ra-balken .mit i{background:#C9D6EE}.ra-balken b{font-variant-numeric:tabular-nums}
+</style>
 </head>
 <body>
 <div class="innen">
@@ -169,6 +188,18 @@ document.querySelectorAll('[data-calc]').forEach(function(r){var q=function(k){r
     var fv=function(y){return z>0?s*Math.pow(1+z,y)+ra*12*((Math.pow(1+z,y)-1)/z):s+ra*12*y;},un=fv(j),ge=fv(j-w);
     q('un').textContent=E(un);q('ge').textContent=E(ge);q('diff').textContent=E(un-ge);q('quote').textContent=(un>0?(un-ge)/un*100:0).toLocaleString('de-DE',{minimumFractionDigits:1,maximumFractionDigits:1})+' %';}
   r.querySelectorAll('input').forEach(function(i){i.addEventListener('input',c);});c();});
+/* Simon 12.11.2026, Runde 72 Wahl „Rechner A“: helle Karte, Schieberegler zu jedem Feld, großes „nie entstanden“, Balkenvergleich. Rechnung unverändert. */
+(function(){var B={start:[0,100000,500],rate:[0,2000,25],zins:[0,12,0.5],jahre:[1,50,1],warte:[0,49,1]};
+ document.querySelectorAll('[data-calc]').forEach(function(r){r.classList.add('ra');
+  r.querySelectorAll('input[data-c]').forEach(function(i){var b=B[i.dataset.c];if(!b)return;var g=document.createElement('input');g.type='range';g.min=b[0];g.max=b[1];g.step=b[2];g.value=i.value;g.className='ra-regler'+(i.dataset.c==='warte'?' ra-warte':'');g.setAttribute('aria-label',i.parentNode.firstChild.textContent.trim());
+   i.parentNode.appendChild(g);var mal=function(){var p=(g.value-g.min)/(g.max-g.min)*100;g.style.setProperty('--p',p+'%');};mal();
+   g.addEventListener('input',function(){i.value=g.value;i.dispatchEvent(new Event('input'));mal();});i.addEventListener('input',function(){g.value=i.value;mal();});});
+  var e=r.querySelector('.sb-e');if(!e)return;var h=e.querySelector('.z.h');if(h){h.classList.add('ra-gross');e.insertBefore(h,e.firstChild);var sm=e.querySelector('small');if(sm)h.after(sm);}
+  var bal=document.createElement('div');bal.className='ra-balken';bal.innerHTML='<div><span>ohne Wartezeit</span><i></i><b></b></div><div class="mit"><span>mit Wartezeit</span><i></i><b></b></div>';e.appendChild(bal);
+  var zahl=function(k){var t=(r.querySelector('[data-c="'+k+'"]')||{}).textContent||'';return parseFloat(t.replace(/\./g,'').replace(',','.'))||0;};
+  var neu=function(){var un=zahl('un'),ge=zahl('ge'),d=bal.querySelectorAll('div');d[0].querySelector('i').style.width='100%';d[0].querySelector('b').textContent=r.querySelector('[data-c="un"]').textContent;
+   d[1].querySelector('i').style.width=(un>0?Math.max(2,ge/un*100):0)+'%';d[1].querySelector('b').textContent=r.querySelector('[data-c="ge"]').textContent;};
+  r.querySelectorAll('input').forEach(function(i){i.addEventListener('input',neu);});neu();});})();
 </script>
 </body>
 </html>
