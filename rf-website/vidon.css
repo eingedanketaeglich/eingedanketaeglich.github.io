@@ -89,17 +89,17 @@ h1,h2,h3,h4{font-weight:500!important;letter-spacing:-.005em!important}
 .leiste .menue a[href*="preise"] .vs,.leiste .menue a[href*="kontakt"] .vs{display:block;width:50px;height:50px}
 .leiste .menue a[href*="preise"] .vs svg,.leiste .menue a[href*="kontakt"] .vs svg{width:100%;height:100%;display:block}
 
-/* Simon 12.11.2026, Menü Mockup 2n (Runde 67): kompakt, Symbole 32 px, Zeilen 48 px mit feinen Linien, Welten als Wortmarke, Text in Weltfarbe, Jalousie beim Öffnen */
+/* Simon 12.11.2026, Menü Mockup 2n (Runde 67), seit Runde 70 alles 10 % größer: Symbole 35 px, Zeilen 53 px mit feinen Linien, Welten als Wortmarke, Text in Weltfarbe, Jalousie beim Öffnen */
 .deckel-wer{display:none!important}
 .deckel-nav{gap:0!important;row-gap:0!important}
 .deckel-nav > a{padding:2px 0!important;margin:0!important;gap:0!important;border-bottom:1px solid #E3E7ED!important}
 .deckel-nav > a:last-of-type{border-bottom:0!important}
-.deckel-nav > a .ic{flex:0 0 46px;width:46px;height:32px;display:grid;place-items:center;margin-right:14px}
-.deckel-nav > a .ic .vs,.deckel-nav > a .ic svg{width:32px!important;height:32px!important}
-.deckel-nav > a .zt{border-radius:0!important;margin:0!important;min-height:48px;box-sizing:border-box;display:flex!important;align-items:center;padding:0 16px 0 calc(16px + 5%)!important;flex:1;font:500 19px/1.1 Jost,sans-serif!important;background:transparent!important;color:#2E5AA8!important}
+.deckel-nav > a .ic{flex:0 0 50px;width:50px;height:35px;display:grid;place-items:center;margin-right:14px}
+.deckel-nav > a .ic .vs,.deckel-nav > a .ic svg{width:35px!important;height:35px!important}
+.deckel-nav > a .zt{border-radius:0!important;margin:0!important;min-height:53px;box-sizing:border-box;display:flex!important;align-items:center;padding:0 16px 0 calc(16px + 5%)!important;flex:1;font:500 21px/1.1 Jost,sans-serif!important;background:transparent!important;color:#2E5AA8!important}
 .deckel-nav > a[data-ziel="firestarter"] .zt{color:#E06400!important}
 .deckel-nav > a[data-ziel="welt-gruen"] .zt{color:#2F7A55!important}
 .deckel-nav > a[data-ziel="kinder"] .zt{color:#B8860B!important}
-.lgo{display:flex;align-items:center}.lgo b{font:400 26px/1 Gloock,Georgia,serif;letter-spacing:0}.lgo i{display:block;width:1.3px;height:19px;background:currentColor;margin:0 7px;opacity:.9}.lgo small{font:500 11.5px/1 Jost,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.lgo{display:flex;align-items:center}.lgo b{font:400 29px/1 Gloock,Georgia,serif;letter-spacing:0}.lgo i{display:block;width:1.3px;height:21px;background:currentColor;margin:0 8px;opacity:.9}.lgo small{font:500 12.7px/1 Jost,sans-serif;letter-spacing:.16em;text-transform:uppercase}
 .deckel.offen{animation:jal .7s cubic-bezier(.2,.7,.2,1) both}@keyframes jal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
 @media (prefers-reduced-motion:reduce){.deckel.offen{animation:none}}
