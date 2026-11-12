@@ -30,7 +30,7 @@
   var WELTNAME={'welt-gruen.html':'Akademie für<br>Finanzkompetenz','welt-blau.html':'Institut für<br>Vermögenskompetenz'};   /* 11.11.2026: Wortmarke wie das Logo, sonst „R&F | Institut“ */
   var kopf=document.getElementById('kopf');
   if(kopf){
-    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F, Startseite"><b>R&amp;F</b>'+(WELTNAME[hier]?'<small class="marke-mehr">'+WELTNAME[hier]+'</small>':'<small class="marke-mehr eins">Institut</small>')+'</a>'+
+    kopf.outerHTML='<header class="leiste"><div class="marke-wrap"><a class="marke" href="'+link('start.html')+'" aria-label="R&amp;F, Startseite"><b>R&amp;F</b>'+(WELTNAME[hier]?'<small class="marke-mehr">'+WELTNAME[hier]+'</small>':'<small class="marke-mehr eins">'+({'firestarter.html':'Firestarter','kinder.html':'Sternstunde'}[hier]||'Institut')+'</small>')+'</a>'+
       '<div class="wer-fenster" id="wer-fenster" hidden></div></div>'+
       '<nav class="menue" aria-label="Hauptmenü">'+MENUE.map(function(m){return '<a href="'+link(m[0])+'"'+(m[0]===hier?' aria-current="page"':'')+'>'+m[1]+(VS[m[0]]||'')+'</a>'}).join('')+'</nav>'+
       '<a class="knopf" href="'+link('preise.html')+'">Termine</a><button class="burger" type="button" aria-label="Menü öffnen" aria-expanded="false"><i></i></button></header>';
