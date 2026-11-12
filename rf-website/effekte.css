@@ -90,7 +90,7 @@ section.welt-ab.blau .w-schritt p{color:#C6D2E2}
 .teaser .text{display:grid;gap:14px}
 .teaser .text p{color:var(--text2)}
 @media (max-width:860px){.teaser{grid-template-columns:1fr}}
-.mehr-link{font-weight:800;color:#D96400;text-decoration:none}
+.mehr-link{font-weight:800;color:#E06400;text-decoration:none}
 .mehr-link:hover{text-decoration:underline}
 
 /* ---------- Personen-Bühne „Über uns“ ---------- */
@@ -240,7 +240,7 @@ html[data-welt="blau"] main .knopf.erst{background:#5B8DEF!important;color:#0A18
 .kopier{background:#102444!important;color:#FFFFFF!important;border:0!important;font-weight:800!important;padding:6px 16px!important}
 /* Firestarter-Preise: kein Beige-Kasten */
 .app-preis-raster div{background:#F3F5F8}
-.app-preis-raster div.hell{background:#FFFFFF!important;box-shadow:inset 0 0 0 2px #FF7A00}
+.app-preis-raster div.hell{background:#FFFFFF!important;box-shadow:inset 0 0 0 2px #E06400}
 /* Startseite Handy: drei Welten nebeneinander zum Wischen */
 .wisch-hinweis{display:none}
 @media (max-width:900px){
@@ -269,7 +269,7 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 .marke-wrap{position:relative;display:grid;justify-items:start;gap:3px}
 .marke-mehr{all:unset;box-sizing:border-box;cursor:pointer;font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);display:inline-flex;align-items:center;gap:6px;line-height:1.25;padding-block:4px;margin-block:-4px;white-space:nowrap}
 .marke-mehr:hover,.marke-mehr[aria-expanded="true"]{color:#FFFFFF}
-.marke-mehr i{flex:0 0 auto;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #FF9A3D;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.marke-mehr i{flex:0 0 auto;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #E06400;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
 .marke-mehr[aria-expanded="true"] i{transform:rotate(180deg)}
 .marke-mehr:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
 .wer-kasten{position:absolute;left:0;top:calc(100% + 16px);width:min(360px,calc(100vw - 32px));background:#FFFDF8;color:var(--text);border:2px solid var(--navy);border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 18px 40px -18px rgba(16,36,68,.5);transform-origin:top left;animation:wer-auf .42s cubic-bezier(.3,1.25,.5,1);z-index:30}
@@ -326,7 +326,7 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 .deckel-nav a .ic .vs-bau{width:28px;height:28px}
 .deckel-nav a .ic .vs-akademie{filter:drop-shadow(0 0 5px rgba(90,205,120,.7))}
 .deckel-nav a .ic .vs-institut{filter:drop-shadow(0 0 5px rgba(70,140,255,.75))}
-.vs-flamme{display:block;width:44px;height:54px;filter:drop-shadow(0 0 10px rgba(255,122,0,.75))}
+.vs-flamme{display:block;width:44px;height:54px;filter:drop-shadow(0 0 10px rgba(224,100,0,.75))}
 .vs-flamme svg,.vs-stern svg{width:100%;height:100%;display:block}
 .vs-flamme svg{transform-origin:50% 90%;animation:vs-flacker .9s ease-in-out infinite alternate}
 @keyframes vs-flacker{0%{transform:scale(1,1) skewX(0)}50%{transform:scale(.96,1.06) skewX(-3deg)}100%{transform:scale(1.03,.97) skewX(2deg)}}
@@ -349,8 +349,8 @@ html[data-welt="gruen"] .fuss .gross b{color:#173A2B}
 @keyframes wer-c{from{opacity:0;transform:translateY(-6px) scale(.96)}}
 .leiste .wer-pille{all:unset;box-sizing:border-box;position:relative;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;color:#102444;border-radius:999px;padding:6px 14px 6px 6px;font:800 .9rem/1 var(--f);white-space:nowrap;box-shadow:0 14px 30px -16px rgba(0,0,0,.7)}
 .leiste .wer-pille img{width:44px;height:30px;object-fit:cover;border-radius:999px;display:block}
-.leiste .wer-pille i{font-style:normal;color:#FF7A00}
-.leiste .wer-pille:focus-visible{outline:3px solid #FF7A00;outline-offset:3px}
+.leiste .wer-pille i{font-style:normal;color:#E06400}
+.leiste .wer-pille:focus-visible{outline:3px solid #E06400;outline-offset:3px}
 .leiste .wer-karte{position:relative;width:min(340px,calc(100vw - 32px));box-sizing:border-box;background:#FFFFFF;color:#102444;border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 18px 40px -18px rgba(0,0,0,.7);font-family:var(--f)}
 .leiste .wer-karte .kopf{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center}
 .leiste .wer-karte img{width:96px;height:64px;object-fit:cover;border-radius:10px;display:block}

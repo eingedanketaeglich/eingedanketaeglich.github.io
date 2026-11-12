@@ -25,7 +25,7 @@
 .bildwahl{position:absolute;z-index:3;top:calc(86px + env(safe-area-inset-top,0px));right:clamp(12px,3vw,40px);display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:calc(100% - 24px)}
 .bildwahl span{width:100%;text-align:right;font-family:var(--mono);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(245,241,234,.85)}
 .bildwahl button{font:700 .8rem var(--f);border-radius:999px;padding:8px 13px;border:1.5px solid rgba(245,241,234,.55);background:rgba(10,24,48,.45);color:#F5F1EA;cursor:pointer;backdrop-filter:blur(6px)}
-.bildwahl button[aria-pressed="true"]{background:#FF7A00;border-color:#FF7A00;color:#1C1917}
+.bildwahl button[aria-pressed="true"]{background:#E06400;border-color:#E06400;color:#1C1917}
 @media (max-width:700px){.einstieg{min-height:94svh}.einstieg-text{padding-top:200px}}
 
 /* ---------- Institut ---------- */
@@ -33,10 +33,10 @@
 .institut .ab-kopf{margin-bottom:0}
 .saeulen{display:grid;gap:14px}
 .saeule{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 16px;padding:20px;border-radius:var(--r-karte);background:var(--flaeche)}
-.saeule .nr{grid-row:span 2;font-family:var(--mono);font-size:.8rem;color:#D96400;padding-top:4px}
+.saeule .nr{grid-row:span 2;font-family:var(--mono);font-size:.8rem;color:#E06400;padding-top:4px}
 .saeule b{font-size:1.12rem}
 .saeule p{color:var(--text2);font-size:.98rem}
-.zitat{grid-column:1/-1;font:800 clamp(1.4rem,3.2vw,2.2rem)/1.2 var(--f);letter-spacing:-.01em;text-wrap:balance;border-left:5px solid #FF7A00;padding-left:clamp(14px,2vw,24px);max-width:34ch}
+.zitat{grid-column:1/-1;font:800 clamp(1.4rem,3.2vw,2.2rem)/1.2 var(--f);letter-spacing:-.01em;text-wrap:balance;border-left:5px solid #E06400;padding-left:clamp(14px,2vw,24px);max-width:34ch}
 .zitat small{display:block;margin-top:10px;font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--text2)}
 @media (max-width:900px){.institut{grid-template-columns:1fr}}
 
@@ -60,7 +60,7 @@
 .klein-karte svg{width:40px;height:auto}
 .klein-karte b{display:block;font-size:1.02rem}
 .klein-karte small{color:var(--text2);font-size:.88rem}
-.klein-karte .pfeil{font-weight:800;color:#D96400}
+.klein-karte .pfeil{font-weight:800;color:#E06400}
 @media (max-width:900px){.welten3{grid-template-columns:1fr}.weitere{grid-template-columns:1fr}.weltkarte{grid-template-columns:minmax(0,1fr)}}
 
 /* ---------- Welt-Abschnitte ---------- */
@@ -100,8 +100,8 @@ section.welt-ab.blau .angebot{background:#FFFFFF}
 .preis.haupt span,.preis.haupt small{color:#C6D2E2}
 section.welt-ab.gruen .preis.haupt{background:#173A2B}
 section.welt-ab.gruen .preis.haupt span,section.welt-ab.gruen .preis.haupt small{color:#CFE0D4}
-.angebot .termin{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:#D96400}
-.angebot .termin::before{content:"";width:9px;height:9px;border-radius:50%;background:#FF7A00}
+.angebot .termin{display:inline-flex;align-items:center;gap:8px;font-weight:800;color:#E06400}
+.angebot .termin::before{content:"";width:9px;height:9px;border-radius:50%;background:#E06400}
 .angebot .zusatz{font-size:.9rem;color:var(--text2);border-top:1px solid var(--linie);padding-top:12px}
 .paket{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:18px;align-items:center}
 @media (max-width:760px){.paket{grid-template-columns:1fr}}
@@ -114,7 +114,7 @@ section.welt-ab.blau .regel-zeile{color:#C6D2E2}
 .app-hinweis{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;align-items:center;margin-top:clamp(18px,3vw,28px);padding:16px 18px;border-radius:var(--r-karte);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
 .app-hinweis b{display:block}
 .app-hinweis small{opacity:.85}
-.app-hinweis .icon{width:44px;height:44px;border-radius:12px;background:#FF7A00;display:grid;place-items:center;font-weight:900;color:#1C1917}
+.app-hinweis .icon{width:44px;height:44px;border-radius:12px;background:#E06400;display:grid;place-items:center;font-weight:900;color:#1C1917}
 
 /* ---------- Raum ---------- */
 .raum-raster{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:clamp(150px,18vw,230px);gap:10px}
@@ -170,7 +170,7 @@ section.welt-ab.blau .regel-zeile{color:#C6D2E2}
 /* Desktop: Text links lesbar halten */
 @media (min-width:701px){.einstieg::after{background:linear-gradient(90deg,rgba(10,24,48,.86) 0%,rgba(10,24,48,.62) 40%,rgba(10,24,48,.05) 72%),linear-gradient(180deg,rgba(10,24,48,.35) 0%,rgba(10,24,48,0) 30%,rgba(10,24,48,.45) 100%)}}
 /* 29.10.2026: Webinar-Band und Vertrauenszeile */
-.webinar-band{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;padding:clamp(22px,4vw,40px);border-radius:var(--r-haupt);background:#FFFFFF;box-shadow:inset 0 0 0 2px #FF7A00}
+.webinar-band{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:20px;align-items:center;padding:clamp(22px,4vw,40px);border-radius:var(--r-haupt);background:#FFFFFF;box-shadow:inset 0 0 0 2px #E06400}
 .webinar-band p{color:var(--text2);margin:6px 0 0;max-width:60ch}
 .beleg-zeile{display:grid;gap:22px}
 .beleg-zeile blockquote{margin:0;font:800 clamp(1.3rem,3vw,2rem)/1.25 var(--f);letter-spacing:-.01em}

@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>R&amp;F Akademie für Finanzkompetenz</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
-<link rel="stylesheet" href="stil.css">
-<link rel="stylesheet" href="start.css">
-<link rel="stylesheet" href="effekte.css?v=20261110e">
+<link rel="stylesheet" href="stil.css?v=20261113a">
+<link rel="stylesheet" href="start.css?v=20261113a">
+<link rel="stylesheet" href="effekte.css?v=20261113a">
 <style>
   /* Module (Simon 06.11.2026, neue Weltstruktur) */
   .module{display:grid;gap:8px;margin:4px 0 2px}
@@ -110,7 +110,7 @@
 
 <section class="ab" id="spaeter">
   <div class="teaser">
-    <figure class="zoom"><img src="bilder/web/09_gruen_lernecke_4x3.jpg" alt="Ruhige Lernecke am Fenster" loading="lazy"></figure>
+    <figure class="zoom"><img src="bilder/web/09_gruen_sessel_4x3.jpg" alt="Blick aus dem Sessel oben im Leuchtturm durch die Glasfront aufs Meer" loading="lazy"></figure>
     <div class="text"><span class="mono">Später anfangen geht auch</span><h2>Die Fragen sind dieselben.</h2><p>Dein erster Tag ist auch für dich gedacht, wenn du mit 50 oder 60 zum ersten Mal Ordnung in deine Finanzen bringen willst, egal in welcher Lebenslage.</p>
       <ul style="margin:0;padding-left:20px;display:grid;gap:6px"><li>Wohin fließt mein Geld jeden Monat?</li><li>Welche Verträge kosten mich mehr, als sie bringen?</li><li>Wie schütze ich mich vor Angeboten, die zu gut klingen?</li></ul>
       <p>Online ab 79&nbsp;€ für einen Workshop, wenn die Anreise zu weit ist.</p></div>
@@ -131,7 +131,7 @@
 </main>
 <div id="fuss"></div>
 </div>
-<script src="seite.js?v=20261112b"></script>
+<script src="seite.js?v=20261113a"></script>
 <script>/* Unter-Kopf folgt dem aktiven Tag (Klasse „an“ setzt seite.js) */(function(){var k=document.querySelector('#formate .zirkel-kopf');if(!k)return;var b=k.querySelector('b'),sp=k.querySelector('span'),sm=k.querySelector('small');
 var st=[].slice.call(document.querySelectorAll('#formate .w-schritt'));function neu(){var a=st.filter(function(s){return s.classList.contains('an')})[0];if(!a)return;var tag=!!a.id;b.textContent=a.dataset.titel||'';sp.hidden=!tag;sm.textContent=tag?'2 Module à 3 Stunden':'Du entscheidest, wie du dabei bist';}
 st.forEach(function(s){new MutationObserver(neu).observe(s,{attributes:true,attributeFilter:['class']})});neu();})();</script>

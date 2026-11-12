@@ -6,17 +6,17 @@
    Fonts: Nunito (rund, W3) · Gloock nur Wortmarke · IBM Plex Mono für Labels */
 
 :root{
-  --navy:#102444; --navy-tief:#0A1830; --orange:#FF7A00; --orange-knopf:#D96400; --gold:#BBA45F;
+  --navy:#102444; --navy-tief:#0A1830; --orange:#E06400; --orange-knopf:#E06400; --gold:#BBA45F;
   --gruen:#173A2B; --goldwelt:#ECBA2E; --goldwelt-hi:#F6CF5A; --goldwelt-tief:#A98318;
   --text:#1C1917; --text2:#6B6257; --linie:#E6E0D3;
   --platz:#F1EBDF; --platz-rand:#C9BBA2; --platz-text:#6B5B46;
   --f:"Nunito","Avenir Next","Segoe UI",sans-serif; --wort:"Gloock",Georgia,serif; --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --r-klein:6px; --r-knopf:12px; --r-karte:14px; --r-haupt:20px;
-  --grund:#FFFFFF; --flaeche:#F7F4EE; --kopf-grund:#FFFFFF; --kopf-text:#1C1917; --akzent:#FF7A00; --knopf:#102444; --knopf-text:#F5F1EA;
+  --grund:#FFFFFF; --flaeche:#F7F4EE; --kopf-grund:#FFFFFF; --kopf-text:#1C1917; --akzent:#E06400; --knopf:#102444; --knopf-text:#F5F1EA;
   --h1:clamp(2.05rem,6vw,4.6rem); --h1-w:800; --schatten:0 18px 40px -18px rgba(16,36,68,.4);
 }
-html[data-r="A"]{--grund:#FFFFFF;--flaeche:#F6F5F2;--h1-w:800;--akzent:#FF7A00}
-html[data-r="B"]{--grund:#FFFFFF;--flaeche:#F5F1EA;--h1-w:900;--h1:clamp(2.2rem,7vw,5.2rem);--akzent:#FF7A00;--knopf:#FF7A00;--knopf-text:#1C1917}
+html[data-r="A"]{--grund:#FFFFFF;--flaeche:#F6F5F2;--h1-w:800;--akzent:#E06400}
+html[data-r="B"]{--grund:#FFFFFF;--flaeche:#F5F1EA;--h1-w:900;--h1:clamp(2.2rem,7vw,5.2rem);--akzent:#E06400;--knopf:#E06400;--knopf-text:#1C1917}
 h1,h2{overflow-wrap:anywhere}
 html[data-r="C"]{--grund:#F5F1EA;--flaeche:#FFFDF8;--h1-w:800;--akzent:#B39465;--knopf:#102444}
 
@@ -323,9 +323,9 @@ html[data-r="K"] .kopf-raster{display:grid;grid-template-columns:minmax(0,1fr) m
 .pbuehne .b-fuss{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 clamp(16px,4vw,48px) calc(18px + env(safe-area-inset-bottom,0px))}
 .pbuehne .punkte{display:flex;gap:8px}
 .pbuehne .punkte i{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);transition:background .3s,transform .3s}
-.pbuehne .punkte i.an{background:var(--b-akzent,#FF7A00);transform:scale(1.3)}
+.pbuehne .punkte i.an{background:var(--b-akzent,#E06400);transform:scale(1.3)}
 .pbuehne .platz{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.35);color:inherit}
-.pbuehne .platz::before{background:var(--b-akzent,#FF7A00)}
+.pbuehne .platz::before{background:var(--b-akzent,#E06400)}
 .pbuehne .weiter{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;opacity:.75}
 @media (min-width:860px){.pbuehne .b-mitte{align-items:center}.pbuehne .avatar{right:clamp(16px,4vw,48px);height:min(88%,640px);max-width:46%}.pbuehne .saetze{max-width:48ch;padding-bottom:0}}
 @media (prefers-reduced-motion:reduce){.pbuehne,.pbuehne .avatar,.pbuehne .satz{transition:none}}
