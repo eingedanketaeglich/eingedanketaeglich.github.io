@@ -699,8 +699,8 @@ liste=function(){if(cur.stufen.length<2){et.innerHTML='';return;}var h='',frei=s
   et.innerHTML=h;et.querySelectorAll('.et').forEach(function(x){x.onclick=function(e){e.stopPropagation();waehleEtage(+x.dataset.j);};});};
 var _detail=detail;
 detail=function(){var d=W[cur.w],box=document.getElementById('detail');
-  if(etage<0){var T={g:['Für den Anfang.','Lerne Geld. Bevor es teuer wird.','Mehr zur Akademie'],b:['Baue deine Zukunft.','Tippe auf ein Angebot.','Mehr zum Institut']}[cur.w];
-    box.innerHTML='<p class="stock">'+cur.kurz+' · '+cur.ab+'</p><h3>'+T[0]+'</h3><p class="fw">'+T[1]+'</p><a class="mehr" href="'+d.link+'">'+T[2]+' ›</a>';return;}
+  if(etage<0){var T={g:['Für den Anfang.','Lerne Geld. Bevor es teuer wird.','Mehr zur Akademie'],b:['Baue deine Zukunft.','','Mehr zum Institut']}[cur.w];
+    box.innerHTML='<p class="stock">'+cur.kurz+' · '+cur.ab+'</p><h3>'+T[0]+'</h3>'+(T[1]?'<p class="fw">'+T[1]+'</p>':'')+'<a class="mehr" href="'+d.link+'">'+T[2]+' ›</a>';return;}
   _detail();var s=box.querySelector('.stock');if(s)s.textContent=cur.kurz;var rb=document.getElementById('rein');if(rb)rb.firstChild.textContent=drin?'‹ Raum verlassen':'Raum betreten ›';
   skizzen();};
 var _waehle=waehleEtage;
