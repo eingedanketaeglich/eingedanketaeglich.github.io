@@ -1,10 +1,10 @@
 /* Dunkelmodus R&F, erzeugt von 10_PROJEKTE/RF-Website/Dunkelmodus_2026-11-13/dunkel_erzeugen.py – nicht von Hand ändern, sondern dunkel_hand.css */
 /* aus stil.css */
-html[data-modus="dunkel"]{--text:#F2EFE8;--text2:#B7C2D3;--linie:#26344D;--platz:#2A2217;--platz-text:#B7C2D3;--grund:#16233A;--flaeche:#1A2740;--kopf-grund:#16233A;--kopf-text:#F2EFE8}
-html[data-modus="dunkel"][data-r="A"]{--grund:#16233A;--flaeche:#16233A}
-html[data-modus="dunkel"][data-r="B"]{--grund:#16233A;--flaeche:#1A2740;--knopf-text:#F2EFE8}
+html[data-modus="dunkel"]{--text:#F2EFE8;--text2:#B7C2D3;--linie:#26344D;--platz:#2A2217;--platz-text:#B7C2D3;--grund:#0E1726;--flaeche:#1A2740;--kopf-grund:#0E1726;--kopf-text:#F2EFE8}
+html[data-modus="dunkel"][data-r="A"]{--grund:#0E1726;--flaeche:#16233A}
+html[data-modus="dunkel"][data-r="B"]{--grund:#0E1726;--flaeche:#1A2740;--knopf-text:#F2EFE8}
 html[data-modus="dunkel"][data-r="C"]{--grund:#1A2740;--flaeche:#1A2740}
-:where(html[data-modus="dunkel"]) body{background:#16233A;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) body{background:#0E1726;color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .mono{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .lede{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .platz{color:#B7C2D3;background:#2A2217}
@@ -34,10 +34,10 @@ html[data-modus="dunkel"][data-r="B"] .held .knopf.leise{border-color:rgba(38,52
 :where(html[data-modus="dunkel"]) .w-gold .bild{background:#2A2217}
 :where(html[data-modus="dunkel"]) .w-app .bild{background:#2A2217}
 :where(html[data-modus="dunkel"]) .welt-name p{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .station::before{background:#16233A}
+:where(html[data-modus="dunkel"]) .station::before{background:#0E1726}
 :where(html[data-modus="dunkel"]) .station .rechts small{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .probe{background:#1A2740}
-:where(html[data-modus="dunkel"]) .probe .spieler{background:#16233A}
+:where(html[data-modus="dunkel"]) .probe .spieler{background:#0E1726}
 :where(html[data-modus="dunkel"]) .probe .spieler .balken{background:#26344D}
 :where(html[data-modus="dunkel"]) .probe .spieler .wahl button{color:#F2EFE8}
 html[data-modus="dunkel"][data-r="B"] .probe .spieler .wahl button[aria-pressed="true"]{color:#F2EFE8}
@@ -54,22 +54,22 @@ html[data-modus="dunkel"][data-r="B"] .probe .spieler .wahl button[aria-pressed=
 :where(html[data-modus="dunkel"]) .brotkrumen{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .kasten{background:#1A2740}
 :where(html[data-modus="dunkel"]) .liste li i{background:#1A2740;color:#F2EFE8}
-:where(html[data-modus="dunkel"]) .ablauf .schritt::before{background:#16233A}
-:where(html[data-modus="dunkel"]) .feld input,:where(html[data-modus="dunkel"]) .feld textarea,:where(html[data-modus="dunkel"]) .feld select{background:#16233A;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .ablauf .schritt::before{background:#0E1726}
+:where(html[data-modus="dunkel"]) .feld input,:where(html[data-modus="dunkel"]) .feld textarea,:where(html[data-modus="dunkel"]) .feld select{background:#0E1726;color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .einwilligung{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .rueck{background:#1A2740}
-:where(html[data-modus="dunkel"]) .kontaktweg i{background:#16233A;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .kontaktweg i{background:#0E1726;color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .kontaktweg small{color:#B7C2D3}
 html[data-modus="dunkel"][data-r="K"]{--grund:#2A2217;--flaeche:#1A2740;--text:#B7C2D3;--text2:#B7C2D3}
 :where(html[data-modus="dunkel"]) .weg-karte{background:#1A2740}
 :where(html[data-modus="dunkel"]) .spiel{background:#1A2740}
-:where(html[data-modus="dunkel"]) .spiel .antworten button{background:#16233A;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .spiel .antworten button{background:#0E1726;color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .spiel .antworten button.richtig{background:#16233A}
 :where(html[data-modus="dunkel"]) .spiel .antworten button.falsch{background:#26344D}
 :where(html[data-modus="dunkel"]) .spiel .satz{color:#97B5A7}
-:where(html[data-modus="dunkel"]) .sparky-sagt p{background:#16233A}
+:where(html[data-modus="dunkel"]) .sparky-sagt p{background:#0E1726}
 :where(html[data-modus="dunkel"]) .eltern{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .deckel{background:#16233A}
+:where(html[data-modus="dunkel"]) .deckel{background:#0E1726}
 :where(html[data-modus="dunkel"]) .deckel .zu{color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .deckel-nav a{color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .rahmen{background:#1A2740}
@@ -88,13 +88,13 @@ html[data-modus="dunkel"][data-r="K"]{--grund:#2A2217;--flaeche:#1A2740;--text:#
 :where(html[data-modus="dunkel"]) .weltkarte.gruen{--wf-text:#B7C2D3;background:#16233A}
 :where(html[data-modus="dunkel"]) .weltkarte.blau{--wf-text:#F2EFE8;background:#16233A}
 :where(html[data-modus="dunkel"]) .weltkarte.gold{background:#2A2217}
-:where(html[data-modus="dunkel"]) .klein-karte{background:#16233A}
+:where(html[data-modus="dunkel"]) .klein-karte{background:#0E1726}
 :where(html[data-modus="dunkel"]) .klein-karte small{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) section.welt-ab.gruen{background:#16233A}
 :where(html[data-modus="dunkel"]) .bild-vermerk{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) section.welt-ab.blau .bild-vermerk{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .angebot{background:#16233A;color:#F2EFE8}
-:where(html[data-modus="dunkel"]) section.welt-ab.blau .angebot{background:#16233A}
+:where(html[data-modus="dunkel"]) .angebot{background:#0E1726;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) section.welt-ab.blau .angebot{background:#0E1726}
 :where(html[data-modus="dunkel"]) .angebot .dauer{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .angebot > p{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .angebot .listen b{color:#B7C2D3}
@@ -104,7 +104,7 @@ html[data-modus="dunkel"][data-r="K"]{--grund:#2A2217;--flaeche:#1A2740;--text:#
 :where(html[data-modus="dunkel"]) .preis span{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .preis small{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .angebot .zusatz{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .fehler div{background:#16233A}
+:where(html[data-modus="dunkel"]) .fehler div{background:#0E1726}
 :where(html[data-modus="dunkel"]) .fehler p{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .regel-zeile{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .app-hinweis{background:rgba(14,23,38,0.08);border:1px solid rgba(38,52,77,0.18)}
@@ -116,55 +116,55 @@ html[data-modus="dunkel"][data-r="K"]{--grund:#2A2217;--flaeche:#1A2740;--text:#
 :where(html[data-modus="dunkel"]) .stimme{background:#1A2740}
 :where(html[data-modus="dunkel"]) .stimme cite small{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .zahlen span{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .fakten-gold span{background:#16233A;color:#F2EFE8}
-:where(html[data-modus="dunkel"]) .webinar-band{background:#16233A}
+:where(html[data-modus="dunkel"]) .fakten-gold span{background:#0E1726;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .webinar-band{background:#0E1726}
 :where(html[data-modus="dunkel"]) .webinar-band p{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .beleg-zeile figure{border-left:5px solid #F2EFE8}
 :where(html[data-modus="dunkel"]) .beleg-zeile figcaption{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .rb-pfeil{background:rgba(14,23,38,0.92);color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .rb-punkte i{background:rgba(14,23,38,0.55)}
-:where(html[data-modus="dunkel"]) .rb-punkte i.an{background:#16233A}
+:where(html[data-modus="dunkel"]) .rb-punkte i.an{background:#0E1726}
 :where(html[data-modus="dunkel"]) .raum-zahlen{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .raum-zahlen b{color:#F2EFE8}
 /* aus effekte.css */
 :where(html[data-modus="dunkel"]) .welt-held .knopf.leise{border-color:#26344D}
 :where(html[data-modus="dunkel"]) .sprung a{background:rgba(14,23,38,0.14);border:1px solid rgba(38,52,77,0.35)}
 :where(html[data-modus="dunkel"]) .w-schritt p{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .stufe{background:#16233A}
+:where(html[data-modus="dunkel"]) .stufe{background:#0E1726}
 :where(html[data-modus="dunkel"]) .stufe .klein{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .stufe p{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .raeume div{background:#16233A}
+:where(html[data-modus="dunkel"]) .raeume div{background:#0E1726}
 :where(html[data-modus="dunkel"]) .raeume span{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .anschluss .angebot{background:rgba(14,23,38,0.06);border:1px solid rgba(38,52,77,0.18)}
 :where(html[data-modus="dunkel"]) .teaser .text p{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .ps-text .satz.leise{color:#B7C2D3}
-html[data-modus="dunkel"][data-v="1"] .ps-buehne{background:#16233A}
-html[data-modus="dunkel"][data-v="2"] .ps-buehne{background:#16233A}
-html[data-modus="dunkel"][data-v="2"] .ps-text{background:#16233A}
-html[data-modus="dunkel"][data-v="2"] .ps-text::after{background:#16233A}
-@media (max-width:760px){html[data-modus="dunkel"][data-v="1"] .ps-text{background:#16233A}}
+html[data-modus="dunkel"][data-v="1"] .ps-buehne{background:#0E1726}
+html[data-modus="dunkel"][data-v="2"] .ps-buehne{background:#0E1726}
+html[data-modus="dunkel"][data-v="2"] .ps-text{background:#0E1726}
+html[data-modus="dunkel"][data-v="2"] .ps-text::after{background:#0E1726}
+@media (max-width:760px){html[data-modus="dunkel"][data-v="1"] .ps-text{background:#0E1726}}
 html[data-modus="dunkel"][data-r]{--flaeche:#16233A;--linie:#26344D;--text2:#B7C2D3}
-:where(html[data-modus="dunkel"]) body{background:#16233A}
-:where(html[data-modus="dunkel"]) section.welt-ab,:where(html[data-modus="dunkel"]) section.welt-ab.gruen,:where(html[data-modus="dunkel"]) section.welt-ab.blau,:where(html[data-modus="dunkel"]) section.welt-ab.goldgrund,:where(html[data-modus="dunkel"]) section.welt-ab.blau[style]{background:#16233A!important;color:#F2EFE8!important}
+:where(html[data-modus="dunkel"]) body{background:#0E1726}
+:where(html[data-modus="dunkel"]) section.welt-ab,:where(html[data-modus="dunkel"]) section.welt-ab.gruen,:where(html[data-modus="dunkel"]) section.welt-ab.blau,:where(html[data-modus="dunkel"]) section.welt-ab.goldgrund,:where(html[data-modus="dunkel"]) section.welt-ab.blau[style]{background:#0E1726!important;color:#F2EFE8!important}
 :where(html[data-modus="dunkel"]) section.welt-ab.blau .ab-kopf p,:where(html[data-modus="dunkel"]) section.welt-ab.blau .mono,:where(html[data-modus="dunkel"]) section.welt-ab.blau .w-schritt p,:where(html[data-modus="dunkel"]) section.welt-ab.blau .regel-zeile{color:#B7C2D3!important}
-:where(html[data-modus="dunkel"]) .angebot,:where(html[data-modus="dunkel"]) section.welt-ab.blau .angebot,:where(html[data-modus="dunkel"]) .anschluss .angebot{background:#16233A!important;color:#F2EFE8!important}
+:where(html[data-modus="dunkel"]) .angebot,:where(html[data-modus="dunkel"]) section.welt-ab.blau .angebot,:where(html[data-modus="dunkel"]) .anschluss .angebot{background:#0E1726!important;color:#F2EFE8!important}
 :where(html[data-modus="dunkel"]) .anschluss .angebot > p,:where(html[data-modus="dunkel"]) .anschluss .angebot .dauer{color:#B7C2D3!important}
 :where(html[data-modus="dunkel"]) .anschluss .angebot strong.gross{color:#F2EFE8!important}
 :where(html[data-modus="dunkel"]) .preis{background:#16233A}
 :where(html[data-modus="dunkel"]) .tag{background:#16233A}
 :where(html[data-modus="dunkel"]) .app-hinweis{background:#16233A;color:#F2EFE8}
-:where(html[data-modus="dunkel"]) .weltkarte.gruen,:where(html[data-modus="dunkel"]) .weltkarte.blau,:where(html[data-modus="dunkel"]) .weltkarte.gold{background:#16233A}
-:where(html[data-modus="dunkel"]) .fehler div{background:#16233A!important}
+:where(html[data-modus="dunkel"]) .weltkarte.gruen,:where(html[data-modus="dunkel"]) .weltkarte.blau,:where(html[data-modus="dunkel"]) .weltkarte.gold{background:#0E1726}
+:where(html[data-modus="dunkel"]) .fehler div{background:#0E1726!important}
 :where(html[data-modus="dunkel"]) .raeume div,:where(html[data-modus="dunkel"]) .raum-fakten div,:where(html[data-modus="dunkel"]) .saeule{background:#16233A}
 :where(html[data-modus="dunkel"]) .stufe.heute{border-color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .kasten{background:#16233A}
-:where(html[data-modus="dunkel"]) .kontaktweg i{background:#16233A}
+:where(html[data-modus="dunkel"]) .kontaktweg i{background:#0E1726}
 html[data-modus="dunkel"][data-r="B"]{--flaeche:#16233A;--linie:#26344D}
-:where(html[data-modus="dunkel"]) .kontakt-teaser .knopf{background:#16233A!important;color:#F2EFE8!important}
+:where(html[data-modus="dunkel"]) .kontakt-teaser .knopf{background:#0E1726!important;color:#F2EFE8!important}
 html[data-modus="dunkel"][data-welt="gruen"] .kontakt-teaser .knopf{color:#B7C2D3!important}
 html[data-modus="dunkel"][data-welt="blau"] main .knopf.erst{color:#F2EFE8!important}
 :where(html[data-modus="dunkel"]) .app-preis-raster div{background:#16233A}
-:where(html[data-modus="dunkel"]) .app-preis-raster div.hell{background:#16233A!important}
+:where(html[data-modus="dunkel"]) .app-preis-raster div.hell{background:#0E1726!important}
 @media (max-width:900px){:where(html[data-modus="dunkel"]) .wisch-hinweis i{background:#26344D}}
 html[data-modus="dunkel"][data-welt="gruen"] .fuss .gross b{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .wer-kasten{background:#1A2740;color:#F2EFE8}
@@ -177,24 +177,24 @@ html[data-modus="dunkel"][data-welt="gruen"] .fuss .gross b{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .deckel-wer-text p{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .deckel-nav .deckel-wer-text a{color:#96ACD4}
 /* aus szene.css */
-:where(html[data-modus="dunkel"]) .fs-sticky{background:#16233A}
+:where(html[data-modus="dunkel"]) .fs-sticky{background:#0E1726}
 :where(html[data-modus="dunkel"]) .fs-titel{color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .fs-splash{background:#1A2740}
-:where(html[data-modus="dunkel"]) .fs-blase{background:#16233A;color:#F2EFE8;border:2.5px solid #F2EFE8}
+:where(html[data-modus="dunkel"]) .fs-blase{background:#0E1726;color:#F2EFE8;border:2.5px solid #F2EFE8}
 :where(html[data-modus="dunkel"]) .fs-blase b{color:#96ACD4}
 :where(html[data-modus="dunkel"]) .fs-hinweis{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .fs-scharf{background:#1A2740}
-:where(html[data-modus="dunkel"]) .fs-buehne video{background:#16233A}
+:where(html[data-modus="dunkel"]) .fs-buehne video{background:#0E1726}
 /* aus vidon.css */
 :where(html[data-modus="dunkel"]) .deckel-nav > a{border-bottom:1px solid #26344D!important}
 :where(html[data-modus="dunkel"]) .deckel-nav > a .zt{color:#96ACD4!important}
 :where(html[data-modus="dunkel"]) .deckel-nav > a[data-ziel="welt-gruen"] .zt{color:#97BCAA!important}
 /* aus sternstunde/rahmen.css */
-:where(html[data-modus="dunkel"]) .deckel{background:#16233A}
+:where(html[data-modus="dunkel"]) .deckel{background:#0E1726}
 :where(html[data-modus="dunkel"]) .deckel .zu{color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .deckel-nav a{color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .deckel-nav a.nebenbei{color:#B7C2D3}
-:where(html[data-modus="dunkel"]) .fuss-rahmen{background:#16233A;color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .fuss-rahmen{background:#0E1726;color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .fuss .gross b{color:#F2EFE8}
 :where(html[data-modus="dunkel"]) .fuss-spalten a{color:#B7C2D3}
 :where(html[data-modus="dunkel"]) .fuss-unten{color:#B7C2D3}
