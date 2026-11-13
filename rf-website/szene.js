@@ -51,9 +51,13 @@
     var fh=hh/K;c.drawImage(q,0,(i%K)*fh,w,fh,0,0,el.width,el.height);return true;}
 
   /* ---------- Laden: Video erst kurz vor der Szene ---------- */
-  function lade(){var m=innerWidth<=760?'hoch':'quer';if(m===modus)return;modus=m;C=CFG[m];still.src=C.still;vid.poster=C.poster;
-    if(geladen){var t=vid.currentTime;vid.src=C.video;vid.load();if(zustand==='lauf'){try{vid.currentTime=t}catch(e){}spiele();}}groesse();}
-  function starteLaden(){if(geladen)return;geladen=true;vid.preload='auto';vid.src=C.video;vid.load();kL=holeLeisten('bilder/szene/klein_leiste2/l_',KLEIN_N);}
+  /* Dunkelmodus (Simon 13.11.2026): dieselbe Szene mit nachtblauem statt weißem Hintergrund */
+  function NP(q){if(document.documentElement.getAttribute('data-modus')!=='dunkel')return q;q=q.replace('bilder/szene/','bilder/nacht/szene/');return /\.(mp4|jpg|webp)$/.test(q)?q+'?n=3':q;}
+  function lade(){var m=innerWidth<=760?'hoch':'quer';if(m===modus)return;modus=m;C=CFG[m];still.src=NP(C.still);vid.poster=NP(C.poster);
+    if(geladen){var t=vid.currentTime;vid.src=NP(C.video);vid.load();if(zustand==='lauf'){try{vid.currentTime=t}catch(e){}spiele();}}groesse();}
+  function starteLaden(){if(geladen)return;geladen=true;vid.preload='auto';vid.src=NP(C.video);vid.load();kL=holeLeisten(NP('bilder/szene/klein_leiste2/l_'),KLEIN_N);}
+  document.addEventListener('rfmodus',function(){if(!C)return;still.src=NP(C.still);vid.poster=NP(C.poster);
+    if(geladen){var t=vid.currentTime,lief=!vid.paused;vid.src=NP(C.video);vid.load();try{vid.currentTime=t}catch(e){}if(lief){var q=vid.play();if(q&&q.catch)q.catch(function(){});}kL=holeLeisten(NP('bilder/szene/klein_leiste2/l_'),KLEIN_N);kGezeigt=-1;}});
 
   var B={x:0,y:0,w:0,h:0};
   /* Simon 05.11. (Vorbild Apple): Die Bühne füllt den Bildschirm bis an beide Ränder, Sparky läuft vom Bildschirmrand herein.

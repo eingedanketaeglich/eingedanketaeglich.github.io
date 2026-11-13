@@ -247,3 +247,12 @@ html[data-modus="dunkel"] .msci-karte svg line[stroke="#E6DFD1"]{stroke:#26344D}
 html[data-modus="dunkel"] .msci-karte svg line[stroke="#102444"]{stroke:#F2EFE8}
 html[data-modus="dunkel"] .msci-karte svg rect{fill:rgba(255,255,255,.07)}
 
+/* Sparky-Szene im Dunkeln (Simon 13.11.2026, Runde 95: Live stellen) */
+/* Sparky-Szene (13.11.): die kleine sprechende Flamme liegt am Tag per „multiply“ auf Weiß. Auf Nachtblau würde sie damit fast schwarz.
+   Im Dunkeln deshalb die Nachtfassung der Bildleiste (Grund schon #0E1726) ohne Mischmodus. Telefonschatten im Dunkeln als Licht statt Schatten. */
+html[data-modus="dunkel"] .fs-klein{mix-blend-mode:normal}
+html[data-modus="dunkel"] .fs-tel .telefon{box-shadow:0 30px 70px -30px rgba(0,0,0,.8),0 0 0 1px rgba(242,239,232,.08)}
+/* 13.11. (Simons Film-Durchsicht): Sparkys Handy zeigt im Lauf-Film einen weißen Bildschirm, und die App darin bleibt hell.
+   Der Bildschirm beim Hineinzoomen (Flammen-Zeichen) bleibt deshalb auch im Dunkeln hell wie am Tag, sonst springt er von Weiß auf Dunkel. */
+html[data-modus="dunkel"] .fs-splash,html[data-modus="dunkel"] .fs-scharf{background:#F5F1EA}
+
