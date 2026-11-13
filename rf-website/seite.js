@@ -160,7 +160,7 @@
   var D=document.documentElement,KEY='rf-modus';
   if(D.dataset.seite==='kinder')return;   /* Sternstunde hat ihren eigenen Nachthimmel */
   var WEB=[['bilder/web/01_main_blaue-stunde_16x9.jpg','bilder/nacht/01_main_nacht_16x9.jpg?n=2'],['bilder/web/08_gruen_leuchtturm_4x3.jpg','bilder/nacht/08_gruen_nacht_4x3.jpg?n=2'],['bilder/web/06_blau_raum-abend_4x3.jpg','bilder/nacht/06_blau_nacht_4x3.jpg?n=2'],
-    ['bilder/web/10_gruen_investmenttag_4x3.jpg','bilder/nacht/10_gruen_nacht_4x3.jpg?n=2'],['app/fotos/tagungsraum.jpg','bilder/nacht/tagungsraum_nacht.jpg?n=2'],
+    ['bilder/web/10_gruen_investmenttag_4x3.jpg','bilder/nacht/10_gruen_nacht_4x3.jpg?n=2'],['bilder/web/09_gruen_sessel_4x3.jpg','bilder/nacht/09_gruen_sessel_nacht_4x3.jpg?n=1'],['app/fotos/tagungsraum.jpg','bilder/nacht/tagungsraum_nacht.jpg?n=2'],
     ['bilder/web/02_skyline_goldene-stunde_16x9.jpg','bilder/nacht/02_skyline_nacht_16x9.jpg?n=2'],['bilder/web/12_main_nacht_hoch_9x16.jpg','bilder/nacht/12_main_hoch_nacht_b_9x16.jpg?n=2']];   /* 13.11.: drei Probe-Nachtfotos (Runde 85, B) und Handy-Startbild B */
   var PREISE='flieger.webp,hg_b.webp,hg_g.webp,hh_ebenen8.mp4,hh_ebenen8_0.webp,hh_frei.webp,hh_raeume_zu.webp,hh_stadt.webp,hh_stadt_hd.webp,hh_vorne.webp,hh_vorne8.webp,hh_vorne_hd.webp,hh_wolken8.webp,leuchtturm_wellen.mp4,lt_film.mp4,lt_film_0.webp,lt_frei.webp,lt_laterne.webp,lt_offen.webp,lt_offen_hd.webp,lt_raeume_zu.webp,lt_schleife_0.webp,n_hh_raeume_zu.webp,n_hh_stadt.webp,n_hh_stadt_hd.webp,n_hh_vorne.webp,n_hh_vorne_hd.webp,wolke_1.webp,wolke_2.webp,wolke_3.webp,wolke_4.webp,wolke_5.webp'.split(',');
   function dunkel(){return D.getAttribute('data-modus')==='dunkel';}
