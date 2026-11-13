@@ -228,7 +228,7 @@ html[data-modus="dunkel"] .modus-mond .sonne{display:block}
 @media (min-width:1241px){.modus-mond{display:inline-grid}}
 .modus-zeile{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;margin:16px 0 0;padding:14px 16px;border-radius:16px;background:rgba(16,36,68,.06);font:600 19px/1.2 var(--f);color:inherit;cursor:pointer}
 .modus-zeile:focus-visible{outline:3px solid #E06400;outline-offset:2px}
-.modus-zeile .wahl{display:flex;align-items:center;gap:10px}
+.modus-zeile .mz-wahl{display:flex;align-items:center;gap:10px}
 .modus-zeile .schalter{position:relative;width:52px;height:30px;border-radius:15px;background:#C9CED6;flex:none;transition:background .2s}
 .modus-zeile .schalter i{position:absolute;left:3px;top:3px;width:24px;height:24px;border-radius:50%;background:#fff;transition:left .2s}
 .modus-zeile[aria-checked="true"] .schalter{background:#E06400}

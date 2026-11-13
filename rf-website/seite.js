@@ -83,7 +83,8 @@
     var fenster=function(){offen=2;fen.innerHTML='<div class="wer-karte" role="dialog" aria-label="Wer steckt dahinter?"><button class="zu" type="button" aria-label="Schließen">×</button>'+
       '<div class="kopf"><img src="'+DUO+'" alt="René Flé und Simon Schlerf"><b>René und Simon</b></div><p>'+WER_SATZ+'</p><p class="frage">Willst du es trotzdem wissen?</p>'+
       '<a href="'+PFX+link('kontakt.html')+'#wer'+'">Hier entlang zu Wer wir sind →</a></div>';fen.hidden=false;};
-    if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    /* Simon 13.11.2026, Runde 90: Pille „Wer steckt dahinter?“ beim Überfahren von R&F entfällt */
+    if(false&&window.matchMedia('(hover:hover) and (pointer:fine)').matches){
       wrap.addEventListener('mouseenter',function(){clearTimeout(zuT);pille();});
       wrap.addEventListener('mouseleave',function(){if(offen===2)return;zuT=setTimeout(schliessen,380);});
       wrap.querySelector('.marke').addEventListener('focus',pille);}
@@ -189,7 +190,7 @@
   var termine=document.querySelector('.leiste .knopf');
   if(termine){var b=document.createElement('button');b.type='button';b.className='modus-mond';b.innerHTML=MOND;b.addEventListener('click',wechsel);termine.insertAdjacentElement('afterend',b);}
   var nav=document.querySelector('.deckel-nav');
-  if(nav){var z=document.createElement('button');z.type='button';z.className='modus-zeile';z.setAttribute('role','switch');z.innerHTML='<span class="wahl">'+MOND.replace('class="mond"','class="mond" style="width:22px;height:22px"').replace(/<svg class="sonne"[\s\S]*<\/svg>$/,'')+' Dunkel</span><span class="schalter"><i></i></span>';z.addEventListener('click',wechsel);nav.appendChild(z);}
+  if(nav){var z=document.createElement('button');z.type='button';z.className='modus-zeile';z.setAttribute('role','switch');z.innerHTML='<span class="mz-wahl">'+MOND.replace('class="mond"','class="mond" style="width:22px;height:22px"').replace(/<svg class="sonne"[\s\S]*<\/svg>$/,'')+' Dunkel</span><span class="schalter"><i></i></span>';z.addEventListener('click',wechsel);nav.appendChild(z);}
   if(window.matchMedia){var mq=matchMedia('(prefers-color-scheme: dark)');var f=function(e){var g=null;try{g=localStorage.getItem(KEY)}catch(x){}if(g!=='dunkel'&&g!=='hell')setze(e.matches?'dunkel':'hell',false);};if(mq.addEventListener)mq.addEventListener('change',f);else if(mq.addListener)mq.addListener(f);}
   /* Die Seite setzt Bilder auch später (Welt öffnen, Wolken, Standbild): jede Änderung sofort auf den aktuellen Modus bringen */
   new MutationObserver(function(l){var d=dunkel();for(var i=0;i<l.length;i++){var m=l[i];
