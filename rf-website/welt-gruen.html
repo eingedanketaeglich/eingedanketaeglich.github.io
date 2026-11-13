@@ -149,7 +149,7 @@ html[data-modus="dunkel"] [style*="color:var(--text2)"]{color:#B7C2D3!important}
 </main>
 <div id="fuss"></div>
 </div>
-<script src="seite.js?v=20261113a"></script>
+<script src="seite.js?v=20261113b"></script>
 <script>/* Unter-Kopf folgt dem aktiven Tag (Klasse „an“ setzt seite.js) */(function(){var k=document.querySelector('#formate .zirkel-kopf');if(!k)return;var b=k.querySelector('b'),sp=k.querySelector('span'),sm=k.querySelector('small');
 var st=[].slice.call(document.querySelectorAll('#formate .w-schritt'));function neu(){var a=st.filter(function(s){return s.classList.contains('an')})[0];if(!a)return;var tag=!!a.id;b.textContent=a.dataset.titel||'';sp.hidden=!tag;sm.textContent=tag?'2 Module à 3 Stunden':'Du entscheidest, wie du dabei bist';}
 st.forEach(function(s){new MutationObserver(neu).observe(s,{attributes:true,attributeFilter:['class']})});neu();})();</script>
