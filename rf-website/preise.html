@@ -456,7 +456,7 @@ html[data-modus="dunkel"]{--rand:rgba(38,52,77,0.16)}
 
 
 </style>
-<link rel="stylesheet" href="dunkel.css?v=20261113a">
+<link rel="stylesheet" href="dunkel.css?v=20261113b">
 </head>
 <body>
 <div id="kopf"></div>
@@ -516,7 +516,7 @@ html[data-modus="dunkel"]{--rand:rgba(38,52,77,0.16)}
 </section>
 </main>
 <p class="fussklein"><a href="recht.html#impressum">Impressum</a> · <a href="recht.html#datenschutz">Datenschutz</a></p>
-<script src="seite.js?v=20261113b"></script>
+<script src="seite.js?v=20261113d"></script>
 <script>
 
 var W={
@@ -555,8 +555,10 @@ var LAT=[443,577,755,943],latBild={},latAuf=0,latRaf=0;
 function alle(){return document.getElementById('alle');}
 /* Bilder vorladen; geschlossene Räume als eigene Ebene */
 WELT.forEach(function(w){[w.offen,w.poster,w.vorne].concat((w.wolken||[]).map(function(x){return x[0];})).forEach(function(s){if(s){var i=new Image();i.src=s;}});
-  if(w.zu_raeume){var i=new Image();i.onload=function(){if(cur===w)zeichne();};i.src=w.zu_raeume;zuBild[w.w]=i;}
-  if(w.laterne){var l=new Image();l.onload=function(){if(cur===w)zeichne();};l.src=w.laterne;latBild[w.w]=l;}});
+  if(w.zu_raeume){var i=new Image();i.onload=function(){if(cur===w)zeichne();};i._p=w.zu_raeume;i.src=window.rfNacht?rfNacht(w.zu_raeume):w.zu_raeume;zuBild[w.w]=i;}
+  if(w.laterne){var l=new Image();l.onload=function(){if(cur===w)zeichne();};l._p=w.laterne;l.src=window.rfNacht?rfNacht(w.laterne):w.laterne;latBild[w.w]=l;}});
+/* Dunkelmodus (Simon 13.11.2026): Fassaden und Laterne der Leinwand in Nachtfarben, beim Umschalten neu laden */
+document.addEventListener('rfmodus',function(){[zuBild,latBild].forEach(function(o){Object.keys(o).forEach(function(k){var x=o[k];if(x&&x._p&&window.rfNacht)x.src=rfNacht(x._p);});});});
 
 /* ---------- Karussell: echtes Wischen (Finger, Trackpad, Maus ziehen) ---------- */
 /* endlos (Simon 08.11.): Akademie → Institut → Sternstunde → Akademie … in beide Richtungen */

@@ -211,8 +211,13 @@ html[data-modus="dunkel"] ::selection{background:#E06400;color:#fff}
 html[data-modus="dunkel"] .leiste svg [stroke="#102444"],html[data-modus="dunkel"] .deckel svg [stroke="#102444"]{stroke:#F2EFE8}
 html[data-modus="dunkel"] .leiste svg rect[fill="#102444"],html[data-modus="dunkel"] .deckel svg rect[fill="#102444"]{fill:#F2EFE8}
 html[data-modus="dunkel"] .leiste svg path[fill="#F2EFE8"],html[data-modus="dunkel"] .deckel svg path[fill="#F2EFE8"]{fill:#26344D}
-/* Hochhaus bei Nacht: das Nachtbild ersetzt Film und Ebenen (Wolken, Flieger, Vordergrund, Glanz) */
-html[data-modus="dunkel"] .n-bild.nacht-hh>:not(video){display:none!important}
+/* Hochhaus bei Nacht: dieselben Ebenen in Nachtfarben, alles bewegt sich wie am Tag (Simon 13.11.2026) */
+html[data-modus="dunkel"] .hh-wolken i{background-image:url(bilder/nacht/preise/hh_wolken8.webp?n=2)!important}
+html[data-modus="dunkel"] .n-bild>img.n-flug{filter:drop-shadow(0 0 1.5px rgba(255,70,60,.95)) drop-shadow(0 0 5px rgba(255,240,220,.55))}
+html[data-modus="dunkel"] .n-bild>video.n-glanzfilm{opacity:.35}
+/* gewählte Etage (gelber Knopf) behält dunkle Schrift */
+html[data-modus="dunkel"] .et[aria-pressed="true"] b{color:#102444!important}
+html[data-modus="dunkel"] .et[aria-pressed="true"] span{color:#3A3320!important}
 /* Schalter */
 .modus-mond{all:unset;box-sizing:border-box;display:none;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid rgba(255,255,255,.4);margin-left:10px;cursor:pointer;flex:none}
 .modus-mond:focus-visible{outline:3px solid #E06400;outline-offset:3px}
