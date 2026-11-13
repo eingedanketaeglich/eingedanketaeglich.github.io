@@ -50,7 +50,7 @@
 .sb-r.ra .ra-gross span{font:600 12px/1 var(--f)!important;letter-spacing:.16em;text-transform:uppercase;color:#6B6257!important}
 .sb-r.ra .ra-gross b{font:600 clamp(40px,11vw,58px)/1 var(--kopf)!important;color:#E06400!important;text-align:left!important}
 .ra-balken{display:grid;gap:8px;margin:14px 0 6px}.ra-balken div{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;font-size:13.5px}
-.ra-balken i{display:block;height:14px;border-radius:8px;background:#102444}.ra-balken .mit i{background:#C9D6EE}.ra-balken b{font-variant-numeric:tabular-nums}
+.ra-balken i{display:block;height:14px;border-radius:8px;background:#102444}.ra-balken .mit i{background:#E06400}.ra-balken b{font-variant-numeric:tabular-nums}
 </style>
 <style>/* Drei Wahrheiten mit Reitern (12.11.2026) */
 #wahrheiten .wh-reiter{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;background:#F3F5F8;border-radius:18px;padding:6px;margin:0 0 18px;max-width:640px}
@@ -71,6 +71,7 @@
 #wahrheiten .wh-punkte i{width:7px;height:7px;border-radius:50%;background:#C9CED6;transition:width .2s}
 #wahrheiten .wh-punkte i.an{width:20px;border-radius:4px;background:#E06400}
 @media(min-width:900px){#wahrheiten .wh-wege{display:grid;grid-template-columns:repeat(3,1fr);overflow:visible;margin:18px 0 0;padding:0}#wahrheiten .wh-wege .angebot{max-width:none}#wahrheiten .wh-punkte{display:none}}
+.sb-r small.ra-verloren{display:block;color:#E06400!important;font-weight:800;font-size:1rem;opacity:1;margin:2px 0 10px}
 </style>
 </head>
 <body>
@@ -108,7 +109,7 @@
 <label style="grid-column: 1 / -1; opacity: 1; transform: none;">davon gewartet (Jahre)<input type="number" data-c="warte" value="15"></label></div>
 <div class="sb-e"><span class="t">Kapital am Ende deines Zeitraums</span>
 <div class="z"><span>ohne Wartezeit</span><b data-c="un"></b></div><div class="z"><span>mit Wartezeit</span><b data-c="ge"></b></div>
-<div class="z h"><span>nie entstanden</span><b data-c="diff"></b></div><small>(Verloren an den Saboteur)</small>
+<div class="z h"><span>nie entstanden</span><b data-c="diff"></b></div><small class="ra-verloren">(Verloren an den Saboteur)</small>
 <div class="z"><span>Anteil, der fehlt</span><b data-c="quote"></b></div></div>
 <p class="klein">Modellrechnung mit deiner frei gewählten Zins-Annahme, keine Renditezusage, keine Prognose. Das Geld wird nicht weggenommen: es entsteht nie. Berechnung nur in deinem Browser, keine Datenübertragung.</p></div></section>
 <section class="ab" id="institut">
@@ -178,16 +179,6 @@
     <div class="zahlen"><div><strong data-zahl="25000" data-nach="+">25.000+</strong><span>Lehrstunden</span></div><div><strong data-zahl="12000" data-nach="+">12.000+</strong><span>Kunden</span></div><div><strong data-zahl="94.7" data-nach=" %">94,7 %</strong><span>Zufriedenheit</span></div></div>
   </div>
 </section>
-
-<section class="ab" id="rechner-warten"><div class="sb-r" data-calc=""><span class="mono">Bevor du gehst: rechne selbst</span><h3>Was kostet dich das Warten?</h3>
-<div class="sb-f"><label>Startkapital (€)<input type="number" data-c="start" value="10000"></label>
-<label>Zins-Annahme p. a. (%)<input type="number" data-c="zins" value="7"></label><label>Zeitraum (Jahre)<input type="number" data-c="jahre" value="26"></label>
-<label>davon gewartet (Jahre)<input type="number" data-c="warte" value="15"></label></div>
-<div class="sb-e"><span class="t">Kapital am Ende deines Zeitraums</span>
-<div class="z"><span>ohne Wartezeit</span><b data-c="un"></b></div><div class="z"><span>mit Wartezeit</span><b data-c="ge"></b></div>
-<div class="z h"><span>nie entstanden</span><b data-c="diff"></b></div><small>(Verloren an den Saboteur)</small>
-<div class="z"><span>Anteil, der fehlt</span><b data-c="quote"></b></div></div>
-<p class="klein">Modellrechnung mit deiner frei gewählten Zins-Annahme, keine Renditezusage, keine Prognose. Das Geld wird nicht weggenommen: es entsteht nie. Berechnung nur in deinem Browser, keine Datenübertragung.</p></div></section>
 <section class="ab" id="kontakt">
   <div class="kontakt-teaser"><div><h2>Fragen? Schreib uns.</h2><p>Wir antworten persönlich: info@rf-institut.de. Kein Verkaufsgespräch, bis du es willst.</p><p><b>Und wenn du heute nichts tust? Dann arbeitet der stille Saboteur einfach weiter.</b></p></div><a class="knopf" href="kontakt.html">Zum Kontakt</a></div>
 </section>
@@ -225,7 +216,9 @@ document.querySelectorAll('[data-calc]').forEach(function(r){var q=function(k){r
 r.hidden=false;w.classList.add('wh-an');
 function zeig(n){b.forEach(function(x,i){x.setAttribute('aria-selected',i===n?'true':'false');x.tabIndex=i===n?0:-1});p.forEach(function(x,i){x.hidden=i!==n})}
 b.forEach(function(x,i){x.addEventListener('click',function(){zeig(i)});x.addEventListener('keydown',function(e){var d=e.key==='ArrowRight'?1:e.key==='ArrowLeft'?-1:0;if(d){var k=(i+d+3)%3;zeig(k);b[k].focus()}})});
-var h=location.hash.slice(1),s=p.map(function(x){return x.id}).indexOf(h);zeig(s<0?0:s);
+function mitte(){var a=p.filter(function(x){return !x.hidden})[0];p.forEach(function(x){x.style.paddingTop=''});w.style.paddingBottom='';if(!a||a.id!=='drawdown')return;var oben=a.getBoundingClientRect().top-r.getBoundingClientRect().bottom,unten=w.getBoundingClientRect().bottom-a.getBoundingClientRect().bottom,d=Math.max(0,(unten-oben)/2);a.style.paddingTop=d+'px';w.style.paddingBottom=Math.max(0,parseFloat(getComputedStyle(w).paddingBottom)-d)+'px';}
+b.forEach(function(x){x.addEventListener('click',mitte)});addEventListener('resize',mitte);
+var h=location.hash.slice(1),s=p.map(function(x){return x.id}).indexOf(h);zeig(s<0?0:s);mitte();
 var g=w.querySelector('.wh-wege'),pk=[].slice.call(w.querySelectorAll('.wh-punkte i'));
 function pt(){if(!g)return;var c=g.children,m=0,best=1e9;for(var i=0;i<c.length;i++){var d=Math.abs(c[i].offsetLeft-g.offsetLeft-g.scrollLeft-20);if(d<best){best=d;m=i}}pk.forEach(function(x,i){x.classList.toggle('an',i===m)})}
 if(g){g.addEventListener('scroll',pt,{passive:true});pt()}})();
