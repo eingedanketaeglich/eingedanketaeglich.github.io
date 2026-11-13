@@ -158,7 +158,9 @@
 (function(){
   var D=document.documentElement,KEY='rf-modus';
   if(D.dataset.seite==='kinder')return;   /* Sternstunde hat ihren eigenen Nachthimmel */
-  var WEB=[['bilder/web/01_main_blaue-stunde_16x9.jpg','bilder/nacht/01_main_nacht_16x9.jpg?n=2'],['bilder/web/08_gruen_leuchtturm_4x3.jpg','bilder/nacht/08_gruen_nacht_4x3.jpg?n=2'],['bilder/web/06_blau_raum-abend_4x3.jpg','bilder/nacht/06_blau_nacht_4x3.jpg?n=2']];
+  var WEB=[['bilder/web/01_main_blaue-stunde_16x9.jpg','bilder/nacht/01_main_nacht_16x9.jpg?n=2'],['bilder/web/08_gruen_leuchtturm_4x3.jpg','bilder/nacht/08_gruen_nacht_4x3.jpg?n=2'],['bilder/web/06_blau_raum-abend_4x3.jpg','bilder/nacht/06_blau_nacht_4x3.jpg?n=2'],
+    ['bilder/web/10_gruen_investmenttag_4x3.jpg','bilder/nacht/10_gruen_nacht_4x3.jpg?n=2'],['app/fotos/tagungsraum.jpg','bilder/nacht/tagungsraum_nacht.jpg?n=2'],
+    ['bilder/web/02_skyline_goldene-stunde_16x9.jpg','bilder/nacht/02_skyline_nacht_16x9.jpg?n=2'],['bilder/web/12_main_nacht_hoch_9x16.jpg','bilder/nacht/12_main_hoch_nacht_b_9x16.jpg?n=2']];   /* 13.11.: drei Probe-Nachtfotos (Runde 85, B) und Handy-Startbild B */
   var PREISE='flieger.webp,hg_b.webp,hg_g.webp,hh_ebenen8.mp4,hh_ebenen8_0.webp,hh_frei.webp,hh_raeume_zu.webp,hh_stadt.webp,hh_stadt_hd.webp,hh_vorne.webp,hh_vorne8.webp,hh_vorne_hd.webp,hh_wolken8.webp,leuchtturm_wellen.mp4,lt_film.mp4,lt_film_0.webp,lt_frei.webp,lt_laterne.webp,lt_offen.webp,lt_offen_hd.webp,lt_raeume_zu.webp,lt_schleife_0.webp,n_hh_raeume_zu.webp,n_hh_stadt.webp,n_hh_stadt_hd.webp,n_hh_vorne.webp,n_hh_vorne_hd.webp,wolke_1.webp,wolke_2.webp,wolke_3.webp,wolke_4.webp,wolke_5.webp'.split(',');
   function dunkel(){return D.getAttribute('data-modus')==='dunkel';}
   /* Pfad für den aktuellen Modus: Tag -> Nacht oder Nacht -> Tag */
@@ -169,10 +171,10 @@
       else{var j=s.indexOf(n);if(j>=0){var q=s.slice(j+n.length).replace(/^\?n=2/,'');return s.slice(0,j)+t+q;}}}
     return s;}
   window.rfNacht=function(s){return pfad(s,dunkel());};
-  function element(el,d){var g=false;['src','poster'].forEach(function(a){var s=el.getAttribute&&el.getAttribute(a);if(!s)return;var n=pfad(s,d);if(n!==s){el.setAttribute(a,n);g=true;}});
+  function element(el,d){var g=false;['src','srcset','poster'].forEach(function(a){var s=el.getAttribute&&el.getAttribute(a);if(!s)return;var n=pfad(s,d);if(n!==s){el.setAttribute(a,n);g=true;}});
     var st=el.getAttribute&&el.getAttribute('style');if(st&&st.indexOf('bilder/')>=0){var ns=pfad(st,d);if(ns!==st)el.setAttribute('style',ns);}
     if(g&&el.tagName==='VIDEO'){var lief=!el.paused||el.autoplay,t=el.currentTime;el.load();try{el.currentTime=t}catch(e){}if(lief){var q=el.play();if(q&&q.catch)q.catch(function(){});}}}
-  function bilder(){var d=dunkel();document.querySelectorAll('img,video,[style*="bilder/"]').forEach(function(el){element(el,d);});}
+  function bilder(){var d=dunkel();document.querySelectorAll('img,video,source,[style*="bilder/"]').forEach(function(el){element(el,d);});}
   var MOND='<svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="#F2B36B"/></svg><svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="#F2B36B"/><g stroke="#F2B36B" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>';
   function anzeigen(){var d=dunkel();
     document.querySelectorAll('.modus-mond').forEach(function(b){b.setAttribute('aria-label',d?'Hellen Modus einschalten':'Dunklen Modus einschalten');b.setAttribute('aria-pressed',d?'true':'false');});
@@ -192,8 +194,8 @@
   /* Die Seite setzt Bilder auch später (Welt öffnen, Wolken, Standbild): jede Änderung sofort auf den aktuellen Modus bringen */
   new MutationObserver(function(l){var d=dunkel();for(var i=0;i<l.length;i++){var m=l[i];
     if(m.type==='attributes'){element(m.target,d);}
-    else for(var j=0;j<m.addedNodes.length;j++){var nd=m.addedNodes[j];if(nd.nodeType!==1)continue;element(nd,d);if(nd.querySelectorAll)nd.querySelectorAll('img,video,[style*="bilder/"]').forEach(function(el){element(el,d);});}}})
-    .observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['src','poster','style']});
+    else for(var j=0;j<m.addedNodes.length;j++){var nd=m.addedNodes[j];if(nd.nodeType!==1)continue;element(nd,d);if(nd.querySelectorAll)nd.querySelectorAll('img,video,source,[style*="bilder/"]').forEach(function(el){element(el,d);});}}})
+    .observe(document.body,{childList:true,subtree:true,attributes:true,attributeFilter:['src','srcset','poster','style']});
   anzeigen();bilder();
   /* Seiten, die Bilder selbst laden (Leinwand auf „Preise & Geschenke“), bekommen beim Start im Dunkeln ein Signal */
   if(dunkel())try{document.dispatchEvent(new Event('rfmodus'))}catch(e){}
