@@ -148,3 +148,40 @@
   function alles(){lies();wechsler.forEach(function(f){f()});kopfFarbe();}
   var tick=false;window.addEventListener('scroll',function(){if(tick)return;tick=true;requestAnimationFrame(function(){alles();tick=false;})},{passive:true});window.addEventListener('resize',alles);alles();
 })();
+
+/* ---------- Dunkelmodus (Simon 12./13.11.2026, Runden 72–78) ----------
+   Richtung A, folgt der Handy-Einstellung; eigene Wahl über den Schalter bleibt gespeichert (localStorage „rf-modus“).
+   Am Handy: Schalter „Dunkel“ unten im Menü. Am Mac: Mond am Ende der Menüleiste neben „Termine“.
+   Im Dunkeln zeigen Startseite, Akademie, Institut und „Wähle deine Welt“ die Nachtbilder; der Leuchtturm-Film läuft nachts eingefärbt weiter. */
+(function(){
+  var D=document.documentElement,KEY='rf-modus';
+  if(D.dataset.seite==='kinder')return;   /* Sternstunde hat ihren eigenen Nachthimmel */
+  var BILD=[['bilder/web/01_main_blaue-stunde_16x9.jpg','bilder/nacht/01_main_nacht_16x9.jpg'],['bilder/web/08_gruen_leuchtturm_4x3.jpg','bilder/nacht/08_gruen_nacht_4x3.jpg'],['bilder/web/06_blau_raum-abend_4x3.jpg','bilder/nacht/06_blau_nacht_4x3.jpg']];
+  var FILM=[['bilder/preise/lt_film.mp4','bilder/nacht/lt_film_nacht.mp4','bilder/preise/lt_film_0.webp','bilder/nacht/lt_film_nacht_0.webp'],['bilder/preise/leuchtturm_wellen.mp4','bilder/nacht/leuchtturm_wellen_nacht.mp4','bilder/preise/lt_schleife_0.webp','bilder/nacht/lt_schleife_nacht_0.webp']];
+  function dunkel(){return D.getAttribute('data-modus')==='dunkel';}
+  function tausch(el,attr,paare,d){var s=el.getAttribute(attr);if(!s)return false;for(var i=0;i<paare.length;i++){var t=paare[i][0],n=paare[i][1];if(d&&s.indexOf(t)>=0){el.setAttribute(attr,s.replace(t,n).replace(/\?v=\d+/,''));return true;}if(!d&&s.indexOf(n)>=0){el.setAttribute(attr,s.replace(n,t));return true;}}return false;}
+  function bilder(){var d=dunkel();
+    document.querySelectorAll('img').forEach(function(i){tausch(i,'src',BILD,d);});
+    document.querySelectorAll('video').forEach(function(v){
+      var neu=tausch(v,'src',FILM.map(function(f){return [f[0],f[1]]}),d);tausch(v,'poster',FILM.map(function(f){return [f[2],f[3]]}),d);
+      var s=v.getAttribute('src')||'',p=v.getAttribute('poster')||'',hh=/hh_ebenen8/.test(s+p)||v.dataset.tagSrc;
+      if(hh){var nb=v.parentNode;
+        if(d&&!v.dataset.tagSrc){v.dataset.tagSrc=s;v.dataset.tagPoster=p;v.pause();v.removeAttribute('src');v.setAttribute('poster','bilder/nacht/hh_nacht.webp');v.load();if(nb)nb.classList.add('nacht-hh');}
+        else if(!d&&v.dataset.tagSrc){v.setAttribute('src',v.dataset.tagSrc);v.setAttribute('poster',v.dataset.tagPoster);delete v.dataset.tagSrc;delete v.dataset.tagPoster;v.load();if(nb)nb.classList.remove('nacht-hh');var q=v.play();if(q&&q.catch)q.catch(function(){});}
+      }
+      if(neu){v.load();if(v.autoplay){var q2=v.play();if(q2&&q2.catch)q2.catch(function(){});}}
+    });}
+  var MOND='<svg class="mond" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="#F2B36B"/></svg><svg class="sonne" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="#F2B36B"/><g stroke="#F2B36B" stroke-width="2" stroke-linecap="round"><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8"/></g></svg>';
+  function anzeigen(){var d=dunkel();
+    document.querySelectorAll('.modus-mond').forEach(function(b){b.setAttribute('aria-label',d?'Hellen Modus einschalten':'Dunklen Modus einschalten');b.setAttribute('aria-pressed',d?'true':'false');});
+    document.querySelectorAll('.modus-zeile').forEach(function(b){b.setAttribute('aria-checked',d?'true':'false');});}
+  function setze(m,merken){D.setAttribute('data-modus',m);if(merken){try{localStorage.setItem(KEY,m)}catch(e){}}anzeigen();bilder();}
+  function wechsel(){setze(dunkel()?'hell':'dunkel',true);}
+  var termine=document.querySelector('.leiste .knopf');
+  if(termine){var b=document.createElement('button');b.type='button';b.className='modus-mond';b.innerHTML=MOND;b.addEventListener('click',wechsel);termine.insertAdjacentElement('afterend',b);}
+  var nav=document.querySelector('.deckel-nav');
+  if(nav){var z=document.createElement('button');z.type='button';z.className='modus-zeile';z.setAttribute('role','switch');z.innerHTML='<span class="wahl">'+MOND.replace('class="mond"','class="mond" style="width:22px;height:22px"').replace(/<svg class="sonne"[\s\S]*<\/svg>$/,'')+' Dunkel</span><span class="schalter"><i></i></span>';z.addEventListener('click',wechsel);nav.appendChild(z);}
+  if(window.matchMedia){var mq=matchMedia('(prefers-color-scheme: dark)');var f=function(e){var g=null;try{g=localStorage.getItem(KEY)}catch(x){}if(g!=='dunkel'&&g!=='hell')setze(e.matches?'dunkel':'hell',false);};if(mq.addEventListener)mq.addEventListener('change',f);else if(mq.addListener)mq.addListener(f);}
+  new MutationObserver(function(l){for(var i=0;i<l.length;i++)if(l[i].addedNodes.length){if(dunkel())bilder();break;}}).observe(document.body,{childList:true,subtree:true});
+  anzeigen();if(dunkel())bilder();
+})();

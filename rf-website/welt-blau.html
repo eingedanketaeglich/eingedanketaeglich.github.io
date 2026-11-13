@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de" data-r="B">
 <head>
+<script>/* Dunkelmodus: vor dem Zeichnen setzen, folgt der Handy-Einstellung, eigene Wahl bleibt gespeichert */(function(){var m=null;try{m=localStorage.getItem("rf-modus")}catch(e){}if(m!=="dunkel"&&m!=="hell")m=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dunkel":"hell";document.documentElement.setAttribute("data-modus",m)})();</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -46,6 +47,22 @@
   /* Simon 08.11.2026: keine Schilder auf den Bildern (Name steht direkt darunter bzw. im festen Unterkopf) */
 </style>
 <link rel="stylesheet" href="vidon.css?v=20261111b">
+<style id="dunkel-seite">
+:where(html[data-modus="dunkel"]) .zirkel-v1 .tag{background:#16233A}
+:where(html[data-modus="dunkel"]) .zirkel-v1 .tag b{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .zirkel-v1 .zusatz{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .modul-z{background:#16233A}
+:where(html[data-modus="dunkel"]) .modul-z b{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .modul-z p{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .modul-z small{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .modul-z .betont{color:#94AACC}
+:where(html[data-modus="dunkel"]) .anrechnung{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .zirkel-kopf{background:rgba(14,23,38,0.95)}
+:where(html[data-modus="dunkel"]) .zirkel-kopf b{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .zirkel-kopf span,:where(html[data-modus="dunkel"]) .zirkel-kopf small{color:#B7C2D3}
+html[data-modus="dunkel"] [style*="color:#102444"]{color:#F2EFE8!important}
+</style>
+<link rel="stylesheet" href="dunkel.css?v=20261113a">
 </head>
 <body>
 <div class="innen">

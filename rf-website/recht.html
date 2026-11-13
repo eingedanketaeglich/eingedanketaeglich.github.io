@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de" data-r="B">
 <head>
+<script>/* Dunkelmodus: vor dem Zeichnen setzen, folgt der Handy-Einstellung, eigene Wahl bleibt gespeichert */(function(){var m=null;try{m=localStorage.getItem("rf-modus")}catch(e){}if(m!=="dunkel"&&m!=="hell")m=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dunkel":"hell";document.documentElement.setAttribute("data-modus",m)})();</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -19,6 +20,14 @@
   .rechtstext .stand{font-size:.9rem;padding:12px 14px;border-radius:var(--r-karte);background:var(--platz);color:var(--platz-text)}
 </style>
 <link rel="stylesheet" href="vidon.css?v=20261111b">
+<style id="dunkel-seite">
+:where(html[data-modus="dunkel"]) .rechtstext{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .rechtstext p,:where(html[data-modus="dunkel"]) .rechtstext li{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .rechtstext a{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .rechtstext .stand{background:#2A2217;color:#B7C2D3}
+
+</style>
+<link rel="stylesheet" href="dunkel.css?v=20261113a">
 </head>
 <body>
 <div class="innen">

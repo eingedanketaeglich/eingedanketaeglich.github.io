@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de" data-r="B">
 <head>
+<script>/* Dunkelmodus: vor dem Zeichnen setzen, folgt der Handy-Einstellung, eigene Wahl bleibt gespeichert */(function(){var m=null;try{m=localStorage.getItem("rf-modus")}catch(e){}if(m!=="dunkel"&&m!=="hell")m=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dunkel":"hell";document.documentElement.setAttribute("data-modus",m)})();</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -83,6 +84,36 @@
   @media(min-width:900px){.kg-schreib .kg-in{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start}.kg-schreib .kg-in>h2,.kg-schreib .kg-in>.lede{grid-column:1/-1}.kg-seite .kg-wege{margin-top:0}}
 </style>
 <link rel="stylesheet" href="vidon.css?v=20261111b">
+<style id="dunkel-seite">
+:where(html[data-modus="dunkel"]) .karte{background:linear-gradient(135deg,#16233A,#16233A)}
+:where(html[data-modus="dunkel"]) .karte-platz p{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .zwischen p{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .weiter-hinweis{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .rene-zitat cite{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .zr::before{background:#16233A}
+:where(html[data-modus="dunkel"]) .zr-zeit{color:#96ACD4}
+:where(html[data-modus="dunkel"]) .zr.leise .zr-zeit{color:#97BCAA}
+:where(html[data-modus="dunkel"]) .zr p{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .zr.gross > div{background:#16233A}
+:where(html[data-modus="dunkel"]) .zr-zahlen div{background:#16233A}
+:where(html[data-modus="dunkel"]) .zr-zahlen strong{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .zr-zahlen span{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .kg-problem{background:#1A2740}
+:where(html[data-modus="dunkel"]) .kg-problem .rene-zitat{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .kg-problem p{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .kg-person{border-top:1px solid #26344D}
+:where(html[data-modus="dunkel"]) .kg-person img{background:#16233A}
+:where(html[data-modus="dunkel"]) .kg-person small{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .kg-person p{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .kg-person p:nth-of-type(2){color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .kg-schreib .lede{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .kg-wege{background:#16233A}
+:where(html[data-modus="dunkel"]) .kg-wege .mono{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .kg-mail{border-bottom:1px solid #26344D}
+:where(html[data-modus="dunkel"]) .kg-ort{color:#B7C2D3}
+
+</style>
+<link rel="stylesheet" href="dunkel.css?v=20261113a">
 </head>
 <body>
 <div class="innen">

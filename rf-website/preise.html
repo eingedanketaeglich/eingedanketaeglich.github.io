@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de">
 <head>
+<script>/* Dunkelmodus: vor dem Zeichnen setzen, folgt der Handy-Einstellung, eigene Wahl bleibt gespeichert */(function(){var m=null;try{m=localStorage.getItem("rf-modus")}catch(e){}if(m!=="dunkel"&&m!=="hell")m=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dunkel":"hell";document.documentElement.setAttribute("data-modus",m)})();</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -417,6 +418,45 @@ html .w-oben #zur,#zur{border:0!important;width:40px!important;height:40px!impor
 #zur svg{width:22px;height:22px;display:block}
 html[data-welt="blau"] .w-titel,html[data-welt="gruen"] .w-titel{display:none!important}   /* 12.11.: Akademie genauso, „Für den Anfang.“ unten */
 </style>
+<style id="dunkel-seite">
+html[data-modus="dunkel"]{--rand:rgba(38,52,77,0.16)}
+:where(html[data-modus="dunkel"]) body{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .punkte i{background:rgba(14,23,38,0.3)}
+:where(html[data-modus="dunkel"]) .punkte i.an{background:#16233A}
+:where(html[data-modus="dunkel"]) .pfeil:focus-visible,:where(html[data-modus="dunkel"]) .waehlen:focus-visible{outline:3px solid #26344D}
+:where(html[data-modus="dunkel"]) .strahl i{background:linear-gradient(90deg,rgba(14,23,38,0.75),rgba(14,23,38,0.28) 35%,rgba(14,23,38,0) 85%)}
+:where(html[data-modus="dunkel"]) .glut{background:radial-gradient(closest-side,rgba(14,23,38,0.95),rgba(255,214,120,.45) 40%,rgba(255,214,120,0) 100%)}
+:where(html[data-modus="dunkel"]) .glut.an{background:radial-gradient(closest-side,#2A2217,rgba(255,210,110,.7) 35%,rgba(255,200,90,0) 100%)}
+:where(html[data-modus="dunkel"]) .schirm:focus-visible{outline:3px solid #26344D}
+:where(html[data-modus="dunkel"]) .et[aria-pressed="true"] span{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .et:focus-visible{outline:3px solid #26344D}
+:where(html[data-modus="dunkel"]) .rein-k{border:1.5px solid #26344D}
+:where(html[data-modus="dunkel"]) .rein-k:focus-visible,:where(html[data-modus="dunkel"]) .knopf:focus-visible{outline:3px solid #26344D}
+:where(html[data-modus="dunkel"]) .tv .play i{border-left:18px solid #F2EFE8}
+:where(html[data-modus="dunkel"]) .alle .karte2{border:1px solid rgba(38,52,77,0.14)}
+:where(html[data-modus="dunkel"]) .alle .reihe{border-bottom:1px solid rgba(38,52,77,0.1)}
+:where(html[data-modus="dunkel"]) .alle .cta{color:#F2EFE8}
+:where(html[data-modus="dunkel"]) .strahl i{background:linear-gradient(90deg,rgba(14,23,38,0.95),rgba(14,23,38,0.42) 30%,rgba(14,23,38,0) 88%)!important}
+:where(html[data-modus="dunkel"]) .auto::after{background:#2A2217}
+:where(html[data-modus="dunkel"]) .n-raum .innen::after{background:linear-gradient(180deg,rgba(14,23,38,0.18),rgba(14,23,38,0) 45%),repeating-linear-gradient(90deg,rgba(40,52,70,.55) 0 1px,transparent 1px 25%)}
+:where(html[data-modus="dunkel"]) .n-raum::before{border-top:1.5px solid #26344D;border-bottom:1.5px solid #26344D}
+:where(html[data-modus="dunkel"]) .n-glanz{background:linear-gradient(100deg,rgba(14,23,38,0) 34%,rgba(14,23,38,0.7) 47%,rgba(14,23,38,0.95) 50%,rgba(14,23,38,0.7) 53%,rgba(14,23,38,0) 66%) 0 0/300% 100% no-repeat}
+:where(html[data-modus="dunkel"]) .n-lampe{background:radial-gradient(circle,rgba(14,23,38,0.95) 0,rgba(255,226,150,.55) 30%,rgba(255,220,140,0) 70%)}
+:where(html[data-modus="dunkel"]) .duo-licht .strahl i{background:linear-gradient(90deg,rgba(14,23,38,0.85) 0,rgba(14,23,38,0.38) 15%,rgba(14,23,38,0.17) 45%,rgba(14,23,38,0.06) 75%,rgba(14,23,38,0) 98%)!important}
+:where(html[data-modus="dunkel"]) .duo-blitz{background:radial-gradient(circle,#2A2217 0,rgba(14,23,38,0.6) 25%,rgba(255,226,160,0) 65%)}
+:where(html[data-modus="dunkel"]) .duo-licht .strahl b{background:linear-gradient(90deg,rgba(14,23,38,0.85),rgba(14,23,38,0.25) 45%,rgba(14,23,38,0) 100%)}
+:where(html[data-modus="dunkel"]) .n-spiegel .treff{background:radial-gradient(closest-side,#2A2217,rgba(14,23,38,0.7) 35%,rgba(255,214,140,.2) 70%,rgba(255,214,140,0))}
+:where(html[data-modus="dunkel"]) .n-spiegel .glas{background:linear-gradient(180deg,rgba(14,23,38,0) calc(var(--sy) - 22%),rgba(14,23,38,0.55) var(--sy),rgba(14,23,38,0) calc(var(--sy) + 22%)),
+             repeating-linear-gradient(90deg,rgba(14,23,38,0.32) 0 2px,transparent 2px 16.6%)}
+:where(html[data-modus="dunkel"]) .n-spiegel .zurueck{background:linear-gradient(270deg,rgba(14,23,38,0.55),rgba(14,23,38,0.12) 60%,rgba(14,23,38,0))}
+:where(html[data-modus="dunkel"]) .n-spiegel .sch{background:linear-gradient(160deg,#1A2740,rgba(14,23,38,0.85) 45%,rgba(255,220,150,.35))}
+:where(html[data-modus="dunkel"]) .n-spiegel .seite{background:linear-gradient(90deg,rgba(14,23,38,0.95),rgba(255,226,170,.55))}
+:where(html[data-modus="dunkel"]) .n-spiegel .hof{background:radial-gradient(closest-side,rgba(14,23,38,0.45),rgba(14,23,38,0))}
+:where(html[data-modus="dunkel"]) .inst-band i{background:radial-gradient(closest-side,rgba(14,23,38,0.62),rgba(14,23,38,0.3) 55%,rgba(14,23,38,0))}
+
+
+</style>
+<link rel="stylesheet" href="dunkel.css?v=20261113a">
 </head>
 <body>
 <div id="kopf"></div>

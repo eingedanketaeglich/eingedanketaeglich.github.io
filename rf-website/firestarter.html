@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="de" data-r="B">
 <head>
+<script>/* Dunkelmodus: vor dem Zeichnen setzen, folgt der Handy-Einstellung, eigene Wahl bleibt gespeichert */(function(){var m=null;try{m=localStorage.getItem("rf-modus")}catch(e){}if(m!=="dunkel"&&m!=="hell")m=(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches)?"dunkel":"hell";document.documentElement.setAttribute("data-modus",m)})();</script>
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -55,6 +56,16 @@
   .app-scroll .telefon .insel{top:1.3%;height:4.4%;width:32%;border-radius:999px}
 </style>
 <link rel="stylesheet" href="vidon.css?v=20261111b">
+<style id="dunkel-seite">
+:where(html[data-modus="dunkel"]) .app-preis-raster div{background:#1A2740}
+:where(html[data-modus="dunkel"]) .app-preis-raster div.hell{background:#2A2217}
+:where(html[data-modus="dunkel"]) .app-preis-raster span{color:#B7C2D3}
+:where(html[data-modus="dunkel"]) .app-scroll .kapitel button[aria-current="true"]{background:#16233A}
+@media (max-width:860px){:where(html[data-modus="dunkel"]) .app-scroll .kapitel button{background:#16233A!important}
+:where(html[data-modus="dunkel"]) .fortschritt i{background:#26344D}}
+html[data-modus="dunkel"] [style*="color:var(--text2)"]{color:#B7C2D3!important}
+</style>
+<link rel="stylesheet" href="dunkel.css?v=20261113a">
 </head>
 <body>
 <div class="innen">
