@@ -226,3 +226,6 @@ html[data-karte="6"] .mk2-hinweis{background:none;color:#6E6E73;font:500 11px/1.
 .mv-zp{width:36px;height:36px;border-radius:50%;border:1.5px solid #C9CDD3;background:#FFFFFF;color:#0B1A38;font-size:20px;line-height:1;cursor:pointer}
 [data-welt5="b"] .mv-opt.an i{border-color:#2E5AA8}[data-welt5="b"] .mv-sh-link:not(.mv-sh-kein){color:#2E5AA8}
 .mv-dchips{gap:5px}.mv-dchip{font-size:13px;padding:9px 9px}
+.mv-a3{cursor:pointer}
+.mv-sh .mv-oz.an{border-color:#2F7A55;background:#EEF6F1}[data-welt5="b"] .mv-sh .mv-oz.an{border-color:#2E5AA8;background:#EEF3FB}
+.mv-sh-weitere{color:#0B1A38}.mv-sh-oliste .mv-sh-kein{margin-top:6px}

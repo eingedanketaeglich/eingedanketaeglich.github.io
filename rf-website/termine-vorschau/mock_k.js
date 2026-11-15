@@ -134,27 +134,42 @@ function sheet(html){var alt=document.querySelector('.mv-sh-hg');if(alt)alt.remo
   var hg=el('div','mv-sh-hg','<div class="mv-sh" role="dialog" aria-modal="true"><div class="mv-sh-kopf"><span class="mv-sh-griff"></span><button type="button" class="mv-sh-x" aria-label="Schließen">×</button></div><div class="mv-sh-in">'+html+'</div></div>');
   hg.onclick=function(e){e.stopPropagation();if(e.target===hg)hg.remove();};hg.querySelector('.mv-sh-x').onclick=function(e){e.stopPropagation();hg.remove();};
   document.body.appendChild(hg);return hg.querySelector('.mv-sh-in');}
-function blattTermin(s,name,n){var a=(W[WW].a.filter(function(x){return x[0]===name;})[0])||[name,'','','',''],w=(W.g.a.filter(function(x){return x[0]==='Einzelner Workshop';})[0]),istWs=!!ANZEIGE[name],mitWs=WW==='g'&&['Dein erster Tag','Investmenttag','Börsentag'].indexOf(name)>=0;
-  var d=tdat(s.n,name,WW,n),opts=[];
-  if(mitWs)opts.push({art:'ws',auge:'Dein erster Schritt',t:'Nur der Vormittag',u:ZEIT_WS+' · 3 Std-Workshop',p:w[3],a:w});
-  if(istWs)opts.push({art:'ws',auge:'',t:'3 Std-Workshop',u:ZEIT_WS,p:a[3],a:a});
-  else opts.push({art:'tag',auge:'',t:'Der ganze Tag',u:ZEIT_TAG+' · inkl. 1 Std. Mittagspause',p:a[3],a:a});
-  var aktiv=opts.length-1;
-  var I=sheet('<p class="mv-sh-klein">'+(ANZEIGE[name]||name)+' · '+(WW==='g'?'R&amp;F Akademie':'R&amp;F Institut')+'</p><h3 class="mv-sh-h">'+dtext(d)+' in '+s.n+'</h3>'
-    +'<div class="mv-sh-opts">'+opts.map(function(o,i){return '<button type="button" class="mv-opt'+(i===aktiv?' an':'')+'" data-i="'+i+'"><i></i><span>'+(o.auge?'<em>'+o.auge+'</em>':'')+'<b>'+o.t+'</b><small>'+o.u+'</small></span><strong>'+o.p+'</strong></button>';}).join('')+'</div>'
-    +'<p class="mv-sh-ort">Location: '+ortName(s.n)+'</p>'
+/* Runde 178 (Simon 15.11.2026): Im Blatt drei gleichwertige Wege: Vormittag · Der ganze Tag · Online. „Lieber live online?“ entfällt.
+   „Weitere Termine“ klappt die anderen Daten der gewählten Art auf (Tipp wechselt den Termin), ganz unten „Kein Termin passt?“ → Wunschformular.
+   Klick auf eine Kachel öffnet direkt den nächsten Termin dieses Kurses (vergangene Termine werden übersprungen). */
+function kommende(stadt,kurs,welt,k){var heute=new Date();heute.setHours(0,0,0,0);var L=[];for(var n=0;n<40&&L.length<k;n++){var d=tdat(stadt,kurs,welt,n);if(d>=heute)L.push(d);}return L;}
+function blattTermin(s,name,startD,mitListe){var a=(W[WW].a.filter(function(x){return x[0]===name;})[0])||[name,'','','',''],w=(W.g.a.filter(function(x){return x[0]==='Einzelner Workshop';})[0]),istWs=!!ANZEIGE[name],mitWs=WW==='g'&&['Dein erster Tag','Investmenttag','Börsentag'].indexOf(name)>=0;
+  var onPreis=(a[4]||'').replace(' live online',''),opts=[];
+  if(mitWs)opts.push({art:'ws',auge:'Dein erster Schritt',t:'Vormittag',u:ZEIT_WS+' · 3 Std-Workshop',p:w[3]});
+  if(istWs)opts.push({art:'ws',t:'Vor Ort',u:ZEIT_WS+' · 3 Std-Workshop',p:a[3]});
+  else opts.push({art:'tag',t:'Der ganze Tag',u:ZEIT_TAG+' · inkl. 1 Std. Mittagspause',p:a[3]});
+  if(onPreis){var sp=sparText(a);opts.push({art:'online',t:'Online',u:(istWs?ZEIT_WS:ZEIT_TAG)+' · live per Video'+(/sparst/.test(sp)?' · du sparst '+sp.split('du sparst ')[1]:''),p:onPreis});}
+  var aktiv=mitWs?1:0,cur={d:startD||kommende(s.n,name,WW,1)[0],stadt:s.n},offen=!!mitListe;
+  var I=sheet('<p class="mv-sh-klein">'+(ANZEIGE[name]||name)+' · '+(WW==='g'?'R&amp;F Akademie':'R&amp;F Institut')+'</p><h3 class="mv-sh-h"></h3>'
+    +'<div class="mv-sh-opts">'+opts.map(function(o,i){return '<button type="button" class="mv-opt" data-i="'+i+'"><i></i><span>'+(o.auge?'<em>'+o.auge+'</em>':'')+'<b>'+o.t+'</b><small>'+o.u+'</small></span><strong>'+o.p+'</strong></button>';}).join('')+'</div>'
+    +'<p class="mv-sh-ort"></p>'
     +'<button type="button" class="mv-sh-knopf mv-sh-anm">Anmelden</button><p class="mv-sh-hinw" hidden>Hier öffnet sich die Anmeldung (Stripe-Link folgt)</p>'
-    +'<button type="button" class="mv-sh-link mv-sh-onl"></button><div class="mv-sh-oliste" hidden></div>'
-    +'<button type="button" class="mv-sh-link mv-sh-kein">Kein Termin passt?</button>');
-  function zeichne(){var o=opts[aktiv];I.querySelectorAll('.mv-opt').forEach(function(b){b.classList.toggle('an',+b.dataset.i===aktiv);});
-    var on=I.querySelector('.mv-sh-onl'),sp=sparText(o.a);on.hidden=!sp;on.textContent='Lieber live online? '+sp.replace('Live online: ','');
-    var L=I.querySelector('.mv-sh-oliste');L.hidden=true;L.innerHTML=naechste6(name,WW).map(function(x){var h=stripeLink(name,'online-'+o.art,x[0]);
-      return (h?'<a class="mv-oz" href="'+h+'">':'<button type="button" class="mv-oz">')+'<b>'+dtext(x[0])+'<span class="mv-ozp">Anmelden ›</span></b><small>'+(o.art==='ws'?ZEIT_WS:ZEIT_TAG)+' · live online · aus '+x[1]+'</small>'+(h?'</a>':'</button>');}).join('')+'<p class="mv-sh-hinw" hidden>Hier öffnet sich die Anmeldung (Stripe-Link folgt)</p>';
-    L.querySelectorAll('button.mv-oz').forEach(function(b){b.onclick=function(e){e.stopPropagation();L.querySelector('.mv-sh-hinw').hidden=false;};});}
-  I.querySelectorAll('.mv-opt').forEach(function(b){b.onclick=function(e){e.stopPropagation();aktiv=+b.dataset.i;zeichne();};});
-  I.querySelector('.mv-sh-anm').onclick=function(e){e.stopPropagation();var h=stripeLink(name,opts[aktiv].art,d);if(h){location.href=h;return;}I.querySelector('.mv-sh-anm').nextElementSibling.hidden=false;};
-  I.querySelector('.mv-sh-onl').onclick=function(e){e.stopPropagation();var L=I.querySelector('.mv-sh-oliste');L.hidden=!L.hidden;};
-  I.querySelector('.mv-sh-kein').onclick=function(e){e.stopPropagation();blattWunsch(s,name);};
+    +'<button type="button" class="mv-sh-link mv-sh-weitere" aria-expanded="false">Weitere Termine</button><div class="mv-sh-oliste" hidden></div>');
+  function liste(){var o=opts[aktiv];
+    if(o.art==='online')return naechste6(name,WW).map(function(x){return {d:x[0],stadt:x[1]};});
+    return kommende(s.n,name,WW,6).map(function(d){return {d:d,stadt:s.n};});}
+  function zeichne(){var o=opts[aktiv],onl=o.art==='online';
+    I.querySelectorAll('.mv-opt').forEach(function(b){b.classList.toggle('an',+b.dataset.i===aktiv);});
+    I.querySelector('.mv-sh-h').textContent=dtext(cur.d)+(onl?' · live online':' in '+cur.stadt);
+    I.querySelector('.mv-sh-ort').textContent=onl?'Du bist per Video live dabei'+(cur.stadt!==s.n?' (aus '+cur.stadt+')':'')+'. Den Link bekommst du mit der Anmeldung.':'Location: '+ortName(cur.stadt);
+    I.querySelector('.mv-sh-anm').nextElementSibling.hidden=true;
+    var L=I.querySelector('.mv-sh-oliste'),bt=I.querySelector('.mv-sh-weitere');L.hidden=!offen;bt.setAttribute('aria-expanded',offen);bt.textContent=offen?'Weitere Termine ausblenden':'Weitere Termine';
+    L.innerHTML=liste().map(function(x,i){var gleich=x.d.getTime()===cur.d.getTime()&&x.stadt===cur.stadt;
+      return '<button type="button" class="mv-oz'+(gleich?' an':'')+'" data-i="'+i+'"><b>'+dtext(x.d)+'<span class="mv-ozp">'+(gleich?'gewählt':'wählen')+'</span></b><small>'+(o.art==='ws'?ZEIT_WS:ZEIT_TAG)+(onl?' · live online aus '+x.stadt:' · '+x.stadt)+'</small></button>';}).join('')
+      +'<button type="button" class="mv-sh-link mv-sh-kein">Kein Termin passt?</button>';
+    var LL=liste();L.querySelectorAll('.mv-oz').forEach(function(b){b.onclick=function(e){e.stopPropagation();cur=LL[+b.dataset.i];offen=false;zeichne();};});
+    L.querySelector('.mv-sh-kein').onclick=function(e){e.stopPropagation();blattWunsch(s,name);};}
+  I.querySelectorAll('.mv-opt').forEach(function(b){b.onclick=function(e){e.stopPropagation();var vor=opts[aktiv].art;aktiv=+b.dataset.i;var nach=opts[aktiv].art;
+    if(nach==='online'&&vor!=='online')cur={d:cur.d,stadt:s.n};          /* online am selben Tag, live aus dieser Stadt */
+    if(nach!=='online'&&vor==='online'&&cur.stadt!==s.n)cur={d:kommende(s.n,name,WW,1)[0],stadt:s.n};
+    zeichne();};});
+  I.querySelector('.mv-sh-anm').onclick=function(e){e.stopPropagation();var h=stripeLink(name,opts[aktiv].art,cur.d);if(h){location.href=h;return;}this.nextElementSibling.hidden=false;};
+  I.querySelector('.mv-sh-weitere').onclick=function(e){e.stopPropagation();offen=!offen;zeichne();};
   zeichne();}
 function blattWunsch(s,name){var kurs=ANZEIGE[name]||name;
   var chip=function(t,g){return '<button type="button" class="mv-wchip" data-g="'+g+'" aria-pressed="false">'+t+'</button>';};
@@ -180,11 +195,16 @@ function blattWunsch(s,name){var kurs=ANZEIGE[name]||name;
     if(!WUNSCH_ZIEL){fertig(true);return;}
     fetch(WUNSCH_ZIEL,{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(inhalt)}).then(function(r){fertig(r.ok);}).catch(function(){fertig(false);});};}
 /* Codex-Hinweis (Simon-Mockup r175): Wischen allein reicht nicht → „Kurs 1 von 3“ mit Pfeilen über der Reihe */
-function zaehler(I,R){var z=I.querySelector('.mv-zaehler');if(!z){z=el('div','mv-zaehler','<button type="button" class="mv-zp" data-d="-1" aria-label="Vorheriger Kurs">‹</button><span></span><button type="button" class="mv-zp" data-d="1" aria-label="Nächster Kurs">›</button>');R.parentNode.insertBefore(z,R);
-    z.querySelectorAll('.mv-zp').forEach(function(b){b.onclick=function(e){e.stopPropagation();var k=R.querySelector('.mv-karte');if(k)R.scrollBy({left:+b.dataset.d*(k.offsetWidth+12),behavior:'smooth'});};});
-    R.addEventListener('scroll',function(){upd();},{passive:true});}
-  function upd(){var ks=R.querySelectorAll('.mv-karte'),k=ks[0];if(!k)return;var i=Math.min(ks.length,Math.round(R.scrollLeft/(k.offsetWidth+12))+1);z.querySelector('span').textContent='Kurs '+i+' von '+ks.length;
-    z.hidden=R.scrollWidth<=R.clientWidth+4;}
+function zaehler(I,R){var z=I.querySelector('.mv-zaehler');
+  /* Runde 178 (Simon: Zähler „bleibt nur kurz stehen“): Stelle aus der Lage der Karten statt aus der Rechnung, Pfeile springen gezielt auf eine Karte, Zählen auch bei scrollend */
+  function karten(){return [].slice.call(R.querySelectorAll('.mv-karte'));}
+  function stelle(){var ks=karten();if(!ks.length)return 0;if(R.scrollLeft>=R.scrollWidth-R.clientWidth-2)return ks.length-1;
+    var best=0,bd=1e9;ks.forEach(function(k,i){var d=Math.abs(k.offsetLeft-ks[0].offsetLeft-R.scrollLeft);if(d<bd){bd=d;best=i;}});return best;}
+  function upd(){var ks=karten();if(!ks.length)return;z.querySelector('span').textContent='Kurs '+(stelle()+1)+' von '+ks.length;z.hidden=R.scrollWidth<=R.clientWidth+4;}
+  if(!z){z=el('div','mv-zaehler','<button type="button" class="mv-zp" data-d="-1" aria-label="Vorheriger Kurs">‹</button><span></span><button type="button" class="mv-zp" data-d="1" aria-label="Nächster Kurs">›</button>');R.parentNode.insertBefore(z,R);}
+  z.querySelectorAll('.mv-zp').forEach(function(b){b.onclick=function(e){e.stopPropagation();var ks=karten(),i=Math.max(0,Math.min(ks.length-1,stelle()+(+b.dataset.d)));
+    R.scrollTo({left:ks[i].offsetLeft-ks[0].offsetLeft,behavior:'smooth'});setTimeout(upd,450);};});
+  if(!R._zl){R._zl=true;R.addEventListener('scroll',function(){upd();},{passive:true});R.addEventListener('scrollend',function(){upd();});}
   z._upd=upd;setTimeout(upd,60);}
 function oeffne5(s){AKT=s;F.classList.add('mk5');F.dataset.w=WW;
   F.querySelector('.mk2-lw').textContent=s.n;
@@ -203,12 +223,13 @@ function oeffne5(s){AKT=s;F.classList.add('mk5');F.dataset.w=WW;
   var daten=function(name){return (W[WW].a.filter(function(x){return x[0]===name;})[0])||[name,'','','',''];};
   ZEIG[WW].forEach(function(name,ki){var a=daten(name),istWs=!!ANZEIGE[name],mitWs=K6&&WW==='g'&&TAGE_G.indexOf(name)>=0,w=daten('Einzelner Workshop');
     var preis=mitWs?'Vormittag '+w[3]+'<br>Ganzer Tag '+a[3]:(istWs?'3 Std-Workshop · '+a[3]:'Ganzer Tag · '+a[3]);
-    var chips=[0,1,2].map(function(n){return '<button type="button" class="mv-dchip" data-n="'+n+'">'+dtext(tdat(s.n,name,WW,n)).replace(/\.\d{4}$/,'.')+'</button>';}).join('');
+    var KD=kommende(s.n,name,WW,3),chips=KD.map(function(d,n){return '<button type="button" class="mv-dchip" data-n="'+n+'">'+dtext(d).replace(/\.\d{4}$/,'.')+'</button>';}).join('');
     var k=el('div','mv-karte mv-tkarte mv-a3','<span class="mv-bild" style="background-image:url(bilder/preise/'+BILD5[name]+'?v=139)"></span><span class="mv-ktext"><b>'+(ANZEIGE[name]||name)+'</b><small class="mk5-fuer">'+a[2]+'</small>'
       +'<span class="mv-a3preis">'+preis+'</span><span class="mv-a3lab">Nächste Termine in '+s.n+'</span><span class="mv-dchips">'+chips+'</span>'
-      +'<button type="button" class="mv-kein">Kein Termin passt?</button></span>');
-    k.querySelectorAll('.mv-dchip').forEach(function(bt){bt.onclick=function(e){e.stopPropagation();blattTermin(s,name,+bt.dataset.n);};});
-    k.querySelector('.mv-kein').onclick=function(e){e.stopPropagation();blattWunsch(s,name);};
+      +'<button type="button" class="mv-kein">Weitere Termine</button></span>');
+    k.querySelectorAll('.mv-dchip').forEach(function(bt){bt.onclick=function(e){e.stopPropagation();blattTermin(s,name,KD[+bt.dataset.n]);};});
+    k.querySelector('.mv-kein').onclick=function(e){e.stopPropagation();blattTermin(s,name,KD[0],true);};
+    k.onclick=function(e){e.stopPropagation();blattTermin(s,name,KD[0]);};   /* Runde 178: Klick aufs Bild/die Kachel = nächster Termin */
     R.appendChild(k);});
   zaehler(I,R);
   MED.forEach(function(x){x[1].classList.toggle('an',x[0]===s);});
