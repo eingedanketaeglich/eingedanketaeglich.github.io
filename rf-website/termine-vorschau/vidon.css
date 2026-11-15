@@ -1,0 +1,105 @@
+/* Vidon, die Hausschrift von R&F (seit 10.11.2026). Wird als letzte Stildatei geladen und setzt nur Schrift, Stärke und Überschriftengrößen.
+   Regeln: Claude_Cowork/10_PROJEKTE/RF-Website/Schrift_2026-11-10/SCHRIFTSYSTEM_RF_Entwurf_v01.md
+   Das „R&F“ in Kopfleiste und Fuß bleibt in Gloock (var(--wort)). Vorspann und Zeilenabstände bleiben wie zuvor.
+   Schriftdateien in schrift/: geänderte Fassungen von Fraunces, Gloock und Nunito, SIL Open Font License 1.1 (Lizenztexte liegen bei). */
+@font-face{font-family:"Vidon Kopf";src:url(schrift/Vidon-Kopf-600.woff2) format("woff2");font-weight:600;font-display:swap}
+@font-face{font-family:"Vidon Kopf";src:url(schrift/Vidon-Kopf-650.woff2) format("woff2");font-weight:650;font-display:swap}
+@font-face{font-family:"Vidon Kopf";src:url(schrift/Vidon-Kopf-700.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Vidon Text";src:url(schrift/Vidon-Text.woff2) format("woff2");font-weight:400 900;font-display:swap}
+
+:root{
+  --kopf:"Vidon Kopf",Georgia,serif;
+  --f:"Vidon Text","Avenir Next","Segoe UI",sans-serif;
+  --mono:"Vidon Text","Avenir Next","Segoe UI",sans-serif;
+  --titel:clamp(2.125rem,1.04rem + 4.64vw,4.75rem);
+  --abschnitt:clamp(1.6875rem,1.27rem + 1.77vw,2.6875rem);
+  --unterabschnitt:clamp(1.3125rem,1.24rem + .33vw,1.5rem);
+  --text:clamp(1.0625rem,1.04rem + .11vw,1.125rem);
+}
+body{font-family:var(--f)!important;font-size:var(--text)}
+
+/* Titel, Abschnitt, Unterabschnitt: überall dieselbe Schrift, Stärke und Größe.
+   Stärken seit Simons Rückmeldung vom 10.11. („nicht mehr so kräftig“): Titel 700 statt 650, Abschnitt 650 statt 600. */
+h1,h2,h3,h4{font-family:var(--kopf)!important;letter-spacing:0!important}
+h1{font-size:var(--titel)!important;font-weight:700!important}
+h2{font-size:var(--abschnitt)!important;font-weight:650!important}
+h3,h4{font-size:var(--unterabschnitt)!important;font-weight:600!important}
+/* Vorspann (.lede) bleibt in Größe und Zeilenabstand wie live (Simon, 10.11.: der größere Vorspann schob im Kopfbild alles nach oben). */
+
+/* Menü: Rechner in der Leiste, Handy aufgeklappt */
+.menue a{font-family:var(--kopf)!important;font-weight:600!important;font-size:17px!important}
+.deckel-nav a{font-family:var(--kopf)!important;font-weight:600!important;font-size:27px!important;line-height:1.3!important}
+.deckel-nav a.nebenbei{font-size:21px!important}
+.deckel-nav .deckel-wer-text a{font-family:var(--f)!important;font-weight:800!important;font-size:.98rem!important}
+
+/* Etiketten */
+.mono,.platz,.welt-tag,.marke-mehr,.zirkel-kopf span,.zirkel-kopf small{font-weight:800!important}
+.mono{font-size:12px!important}
+
+/* Stellen, die bisher die Schrift der Kopfleiste nutzten und kein „R&F“ sind */
+.weg-karte .nr,.pbuehne .wer,.ps-buehne .name-gross,.fakten li b{font-family:var(--kopf)!important;font-weight:600!important}
+
+/* Preisseite: Überschriften standen in Gloock mit eigenen Größen */
+.wahl h1{font-size:var(--titel)!important}
+.w-titel h2,.raum h2,.alle h2,.anfrage h2{font-size:var(--abschnitt)!important}
+.k-unter .nm,.detail h3,.d-nm,.zitat,.etagen.frei .et.licht b{font-family:var(--kopf)!important;font-weight:600!important;letter-spacing:0!important}
+.zitat{font-size:var(--unterabschnitt)!important}
+/* Ausnahme, offen: .k-unter .nm, .detail h3 und .d-nm sind Namen auf den Bauwerken und behalten vorerst ihre Größe (28 bis 32 px) */
+.detail h3{font-size:28px!important}
+
+/* Fester Unterkopf der Weltseiten („Investment Zirkel“): stand in Gloock, zählt als Abschnitt */
+.zirkel-kopf b{font-family:var(--kopf)!important;font-weight:650!important;font-size:27px!important;letter-spacing:0!important}
+
+/* Kartentitel der Modul-Karten (Akademie, Institut): Unterabschnitt wie jede andere Unterüberschrift (Simon, 10.11.2026, Fassung B) */
+.modul-z b{font-family:var(--kopf)!important;font-weight:600!important;font-size:var(--unterabschnitt)!important;line-height:1.2!important}
+
+/* Sternstunde: Die Überschriften stehen dort in kleinen Karten auf dem Baum (live 24 bis 27 px, auch am Rechner).
+   Mit der wachsenden Abschnittsgröße (43 px am Rechner) wurde die Karte zu hoch und verdeckte die Sterne. Deshalb fest 27 px. */
+body[data-look] h2{font-size:1.6875rem!important}
+
+/* ===== 11.11.2026 (Simon, Mockup-Runden 35–46): Schrift Jost, Wortmarke wie das Logo, Menü als Karte mit vier Farben =====
+   Jost: SIL Open Font License 1.1, Lizenz schrift/OFL-Jost.txt. „R&F“ bleibt Gloock. */
+@font-face{font-family:"Jost";src:url(schrift/Jost-latin.woff2) format("woff2");font-weight:400 600;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Jost";src:url(schrift/Jost-latin-ext.woff2) format("woff2");font-weight:400 600;font-display:swap;unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+:root{--kopf:"Jost","Avenir Next",system-ui,sans-serif}
+h1,h2,h3,h4{font-weight:500!important;letter-spacing:-.005em!important}
+.menue a,.deckel-nav a{font-family:var(--kopf)!important;font-weight:500!important}
+.deckel-nav .rf,.menue .rf{font-family:var(--wort)!important;font-weight:400!important}
+.et,.et b,.zurueck,.d-nm{font-family:var(--kopf)!important}.et b{font-weight:500!important}
+
+/* Wortmarke in der Kopfleiste: Verhältnisse wie das Logo (R&F 112 → Name 30,9, Abstand 28,2 je Seite, Strich = R&F-Höhe) */
+.leiste .marke{display:flex!important;flex-direction:row!important;align-items:center!important;gap:0!important}
+.leiste .marke b{font-size:2.1rem!important;line-height:1!important}
+.leiste .marke-mehr{display:block!important;position:relative;font-family:var(--kopf)!important;font-weight:500!important;font-size:.58rem!important;line-height:1.32!important;letter-spacing:.16em!important;text-transform:uppercase!important;white-space:nowrap;margin:0 0 0 .53rem!important;padding:0 0 0 .53rem!important;border:0!important;max-width:none!important;color:inherit!important;opacity:.92}
+.leiste .marke-mehr.eins{font-size:.87rem!important;line-height:1!important}
+.leiste .marke-mehr{color:#E6E1DA!important}   /* wie im freigegebenen Logo-Mockup; auf der Startseite war es dunkelgrau auf dunklem Grund */
+.leiste .marke-mehr::before{content:"";position:absolute;left:0;top:50%;width:1.2px;height:1.47rem;background:currentColor;transform:translateY(-50%)}
+
+/* Handy-Menü als Karte: links und rechts bleibt die Seite sichtbar (Simon/René 11.11.2026) */
+.deckel{inset:calc(8px + env(safe-area-inset-top,0px)) 8px auto 8px!important;bottom:auto!important;max-height:calc(100% - 16px);border-radius:22px;box-shadow:0 0 0 100vmax rgba(8,18,36,.42),0 18px 40px rgba(0,0,0,.35)}
+.deckel-nav{margin-top:56px!important}
+.deckel-nav > a{font-size:1.3rem!important}
+.deckel-nav > a .zt{flex:1;padding:6px 12px;border-radius:12px}
+.deckel-nav > a[data-ziel="start"] .zt,.deckel-nav > a[data-ziel="welt-blau"] .zt,.deckel-nav > a[data-ziel="preise"] .zt,.deckel-nav > a[data-ziel="kontakt"] .zt{background:#102444;color:#FFFFFF}
+.deckel-nav > a[data-ziel="firestarter"] .zt{background:#E06400;color:#FFFFFF}
+.deckel-nav > a[data-ziel="welt-gruen"] .zt{background:#143426;color:#FFFFFF}
+.deckel-nav > a[data-ziel="kinder"] .zt{background:#F6CF5A;color:#143426}
+
+/* Runde 53 (Simon 11.11.2026, freigegeben): Mac-Leiste zeigt bei „Preise & Geschenke“ das Geschenk und bei „Kontakt“ das Handy hinter der Schrift, wie Leuchtturm und Hochhaus */
+.leiste .menue a[href*="preise"] .vs,.leiste .menue a[href*="kontakt"] .vs{display:block;width:50px;height:50px}
+.leiste .menue a[href*="preise"] .vs svg,.leiste .menue a[href*="kontakt"] .vs svg{width:100%;height:100%;display:block}
+
+/* Simon 12.11.2026, Menü Mockup 2n (Runde 67), seit Runde 70 alles 10 % größer: Symbole 35 px, Zeilen 53 px mit feinen Linien, Welten als Wortmarke, Text in Weltfarbe, Jalousie beim Öffnen */
+.deckel-wer{display:none!important}
+.deckel-nav{gap:0!important;row-gap:0!important}
+.deckel-nav > a{padding:2px 0!important;margin:0!important;gap:0!important;border-bottom:1px solid #E3E7ED!important}
+.deckel-nav > a:last-of-type{border-bottom:0!important}
+.deckel-nav > a .ic{flex:0 0 50px;width:50px;height:35px;display:grid;place-items:center;margin-right:14px}
+.deckel-nav > a .ic .vs,.deckel-nav > a .ic svg{width:35px!important;height:35px!important}
+.deckel-nav > a .zt{border-radius:0!important;margin:0!important;min-height:53px;box-sizing:border-box;display:flex!important;align-items:center;padding:0 16px 0 calc(16px + 5%)!important;flex:1;font:500 21px/1.1 Jost,sans-serif!important;background:transparent!important;color:#2E5AA8!important}
+.deckel-nav > a[data-ziel="firestarter"] .zt{color:#E06400!important}
+.deckel-nav > a[data-ziel="welt-gruen"] .zt{color:#2F7A55!important}
+.deckel-nav > a[data-ziel="kinder"] .zt{color:#B8860B!important}
+.lgo{display:flex;align-items:center}.lgo b{font:400 29px/1 Gloock,Georgia,serif;letter-spacing:0}.lgo i{display:block;width:1.3px;height:21px;background:currentColor;margin:0 8px;opacity:.9}.lgo small{font:500 12.7px/1 Jost,sans-serif;letter-spacing:.16em;text-transform:uppercase}
+.deckel.offen{animation:jal .7s cubic-bezier(.2,.7,.2,1) both}@keyframes jal{from{clip-path:inset(0 0 100% 0)}to{clip-path:inset(0 0 0 0)}}
+@media (prefers-reduced-motion:reduce){.deckel.offen{animation:none}}

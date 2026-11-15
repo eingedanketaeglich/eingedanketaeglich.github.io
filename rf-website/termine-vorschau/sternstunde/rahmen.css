@@ -1,0 +1,163 @@
+/* Sternstunde · Kopfleiste, Handy-Menü und Fußzeile der Website (Simon 01.11.2026: „wie die Blaue Welt“).
+   Markup kommt aus ../seite.js (eine Quelle für alle Seiten). Die Regeln sind aus ../stil.css, ../start.css und
+   ../effekte.css übernommen und auf .leiste/.deckel/.fuss-rahmen begrenzt: Die ganzen Website-Stile können hier nicht
+   geladen werden, weil sie dieselben Klassennamen wie der Baum benutzen (baum, buehne, station, blase, welt …)
+   und dieselben Variablen (--gold, --linie, --text2) anders belegen. Ändert sich die Leiste dort, hier nachziehen. */
+.leiste,.deckel,.fuss-rahmen{
+  --navy:#102444;--orange:#E06400;--text:#1C1917;--text2:#6B6257;--linie:#E3E7ED;--grund:#FFFFFF;--akzent:#E06400;
+  --knopf:#E06400;--knopf-text:#1C1917;--r-knopf:12px;
+  --f:"Nunito","Avenir Next","Segoe UI",sans-serif;--wort:"Gloock",Georgia,serif;--mono:"IBM Plex Mono",ui-monospace,Menlo,monospace}
+
+/* Kopfleiste: fest, randlos, dunkel (effekte.css) */
+.leiste{position:fixed;left:0;right:0;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:16px;
+  min-height:52px;box-sizing:border-box;padding:calc(4px + env(safe-area-inset-top,0px)) max(clamp(16px,4vw,48px),calc((100vw - 1180px) / 2 + 48px)) 4px;
+  background:rgba(12,24,44,.8);-webkit-backdrop-filter:saturate(1.8) blur(20px);backdrop-filter:saturate(1.8) blur(20px);font-family:var(--f)}
+.leiste .marke{display:grid;text-decoration:none;line-height:1}
+.leiste .marke b{font-family:var(--wort);font-weight:400;font-size:1.35rem;color:#FFFFFF}
+.leiste .marke span{font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);margin-top:2px;white-space:nowrap}
+.leiste .menue{display:flex;gap:24px;font-weight:700;font-size:.92rem}
+.leiste .menue a{text-decoration:none;color:rgba(255,255,255,.88);white-space:nowrap}
+.leiste .menue a:hover,.leiste .menue a[aria-current]{color:#FFFFFF}
+.leiste .knopf{display:inline-flex;align-items:center;gap:8px;border:0;border-radius:999px;min-height:44px;box-sizing:border-box;padding:8px 16px;
+  font:800 .88rem var(--f);text-decoration:none;white-space:nowrap;cursor:pointer;color:var(--knopf-text);background:var(--knopf);box-shadow:0 10px 24px -12px rgba(16,36,68,.5)}
+.leiste .burger{display:none;width:44px;height:44px;border-radius:12px;border:1.5px solid rgba(255,255,255,.4);background:transparent;align-items:center;justify-content:center;cursor:pointer}
+.leiste .burger i{width:18px;height:2px;background:#FFFFFF;box-shadow:0 -6px 0 #FFFFFF,0 6px 0 #FFFFFF;display:block}
+@media (max-width:1240px){.leiste .menue{display:none}.leiste .burger{display:inline-flex}}
+@media (max-width:900px){.leiste .marke span{display:none}}
+@media (max-width:420px){.leiste .knopf{padding:10px 14px;font-size:.9rem}}
+
+/* Neuere Leiste der Website (effekte.css, „Wer steckt dahinter?“-Knopf statt Untertitel) – passt zu beiden Fassungen von seite.js */
+.leiste .marke-wrap{position:relative;display:grid;justify-items:start;gap:3px}
+.leiste .marke-mehr{all:unset;box-sizing:border-box;cursor:pointer;font-family:var(--mono);font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);display:inline-flex;align-items:center;gap:6px;line-height:1.25;padding-block:4px;margin-block:-4px;white-space:nowrap}
+.leiste .marke-mehr:hover,.leiste .marke-mehr[aria-expanded="true"]{color:#FFFFFF}
+.leiste .marke-mehr i{flex:0 0 auto;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-top:5px solid #E06400;transition:transform .35s cubic-bezier(.3,1.4,.5,1)}
+.leiste .marke-mehr[aria-expanded="true"] i{transform:rotate(180deg)}
+.leiste .marke-mehr:focus-visible{outline:3px solid var(--orange);outline-offset:3px;border-radius:4px}
+.leiste .wer-kasten{position:absolute;left:0;top:calc(100% + 16px);width:min(360px,calc(100vw - 32px));box-sizing:border-box;background:#FFFDF8;color:var(--text);border:2px solid var(--navy);border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 18px 40px -18px rgba(16,36,68,.5);transform-origin:top left;animation:wer-auf .42s cubic-bezier(.3,1.25,.5,1);z-index:30}
+.leiste .wer-kasten b{font:900 1.1rem/1.2 var(--f);color:var(--navy)}
+.leiste .wer-kasten p{margin:0;font-size:.92rem;line-height:1.45;color:var(--text2)}
+.leiste .wer-kasten .klein{font-size:.8rem}
+.leiste .wer-kasten a{font:800 .95rem/1 var(--f);color:#2E5AA8;text-decoration:none;padding-block:10px 4px;justify-self:start}
+.leiste .wer-kasten[hidden]{display:none}
+@keyframes wer-auf{from{opacity:0;transform:translateY(-6px) scaleY(.85)}to{opacity:1;transform:none}}
+@media (max-width:900px){.leiste .marke-mehr{font-size:.46rem;max-width:100px;white-space:normal;padding-block:8px;margin-block:-8px}}
+@media (prefers-reduced-motion:reduce){.leiste .wer-kasten{animation:none}.leiste .marke-mehr i{transition:none}}
+
+/* Handy-Menü */
+.deckel{position:fixed;inset:0;background:var(--grund);z-index:60;display:none;box-sizing:border-box;padding:calc(18px + env(safe-area-inset-top,0px)) clamp(16px,4vw,48px) 24px;overflow:auto;font-family:var(--f)}
+.deckel.offen{display:block}
+.deckel .zu{position:absolute;top:calc(14px + env(safe-area-inset-top,0px));right:clamp(16px,4vw,48px);width:44px;height:44px;border-radius:12px;border:1.5px solid var(--linie);background:transparent;font:400 1.8rem/1 var(--f);color:var(--text);cursor:pointer}
+.deckel-nav{display:grid;gap:4px;margin-top:64px}
+.deckel-nav a{display:flex;align-items:center;gap:14px;font:800 1.6rem/1.3 var(--f);text-decoration:none;color:var(--text);padding:12px 0;border-bottom:1px solid var(--linie)}
+.deckel-nav a[aria-current]{color:var(--akzent)}
+.deckel-nav a .ic{width:28px;height:28px;flex:0 0 28px;display:grid;place-items:center}
+.deckel-nav a .ic svg{width:100%;height:100%;display:block}
+.deckel-nav a.nebenbei{font-size:1.15rem;color:var(--text2);border-bottom:0}
+
+/* Fußzeile (weißer Grund wie auf den anderen Seiten) */
+.fuss-rahmen{position:relative;z-index:5;background:#FFFFFF;color:var(--text);font:400 17px/1.6 var(--f)}
+.fuss-rahmen .innen{max-width:1180px;margin-inline:auto;padding-inline:clamp(16px,4vw,48px)}
+.fuss{border-top:1px solid var(--linie);padding-block:clamp(40px,6vw,72px) 32px;display:grid;gap:28px}
+.fuss .gross{display:flex;align-items:flex-end;gap:clamp(8px,2vw,24px);line-height:.8}
+.fuss .gross b{font-family:var(--wort);font-weight:400;font-size:clamp(5rem,22vw,17rem);color:var(--navy);letter-spacing:-.02em}
+.fuss-spalten{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:20px;font-size:.94rem}
+.fuss-spalten b{display:block;margin-bottom:8px}
+.fuss-spalten a{display:block;text-decoration:none;color:var(--text2);padding:3px 0}
+.fuss-unten{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 24px;color:var(--text2);font-size:.86rem;border-top:1px solid var(--linie);padding-top:18px}
+.fuss-unten .mono{font-family:var(--mono);font-weight:500;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--text2)}
+
+/* Vorschau beim Überfahren der Kopfleiste (Gesprächsrunde 29.10.; Simon 01.11.: „auf jeden Fall haben“, Kugeln ohne Striche und Punkte).
+   Firestarter-App: Flamme hinter der Schrift · Grüne Welt: kleine Erde, Landseite · Blaue Welt: kleine Erde, Meerseite · Sternstunde: Stern.
+   Mac: beim Überfahren. Handy: dieselben Bilder im aufgeklappten Menü. Markup aus seite.js. */
+.leiste .menue a{position:relative;isolation:isolate}
+.leiste .vs{position:absolute;left:50%;top:50%;z-index:-1;pointer-events:none;opacity:0;translate:-50% -50%;scale:.35;
+  transition:opacity .35s cubic-bezier(.2,.8,.2,1),scale .45s cubic-bezier(.2,1.3,.4,1)}
+@media (hover:hover){
+  /* Simon 13.11.2026, Runde 96: Variante C auch hier wie in effekte.css – Schrift verblasst fast ganz ins Blau, das Symbol steht vorn */
+  .leiste .menue a:hover .vs,.leiste .menue a:focus-visible .vs{opacity:1;scale:1.1;z-index:1}
+  .leiste .menue a:hover,.leiste .menue a:focus-visible{color:rgba(150,178,226,.18)!important;text-shadow:none!important}
+}
+.vs-kugel{display:block;width:48px;height:48px;border-radius:50%;overflow:hidden;background:#0B2747 url(../bilder/erde/tag_klein.jpg) 0 42%/260% 130% repeat-x}
+.vs-gruen{background-position-x:56%;filter:saturate(1.5) brightness(1.12) contrast(1.05);box-shadow:inset -12px -8px 18px rgba(0,16,8,.7),inset 5px 4px 10px rgba(255,255,255,.25),0 0 16px 3px rgba(90,205,120,.6);animation:vs-land 14s ease-in-out infinite alternate}
+@keyframes vs-land{to{background-position-x:66%}}
+.vs-blau{background-position-x:140%;filter:saturate(1.4) brightness(.92) hue-rotate(-6deg);box-shadow:inset -12px -8px 18px rgba(0,6,30,.75),inset 5px 4px 10px rgba(255,255,255,.22),0 0 16px 3px rgba(70,140,255,.65);animation:vs-meer 16s ease-in-out infinite alternate}
+@keyframes vs-meer{to{background-position-x:131%}}
+/* Simon 07.11.2026: statt R und F die Bauwerke der Preisseite, Leuchtturm (Akademie) und Hochhaus (Institut) */
+.vs-bau{display:block;width:50px;height:50px}
+.vs-bau svg{width:100%;height:100%;display:block}
+.vs-akademie{filter:drop-shadow(0 0 8px rgba(90,205,120,.7))}
+.vs-institut{filter:drop-shadow(0 0 8px rgba(70,140,255,.75))}
+.deckel-nav a .ic .vs-bau{width:28px;height:28px}
+.deckel-nav a .ic .vs-akademie{filter:drop-shadow(0 0 5px rgba(90,205,120,.7))}
+.deckel-nav a .ic .vs-institut{filter:drop-shadow(0 0 5px rgba(70,140,255,.75))}
+.vs-flamme{display:block;width:44px;height:54px;filter:drop-shadow(0 0 10px rgba(224,100,0,.75))}
+.vs-flamme svg,.vs-stern svg{width:100%;height:100%;display:block}
+.vs-flamme svg{transform-origin:50% 90%;animation:vs-flacker .9s ease-in-out infinite alternate}
+@keyframes vs-flacker{0%{transform:scale(1,1) skewX(0)}50%{transform:scale(.96,1.06) skewX(-3deg)}100%{transform:scale(1.03,.97) skewX(2deg)}}
+.vs-stern{display:block;width:46px;height:46px;filter:drop-shadow(0 0 12px rgba(246,207,90,.85))}
+.vs-stern svg{animation:vs-funkel 1.8s ease-in-out infinite}
+@keyframes vs-funkel{50%{transform:rotate(12deg) scale(1.08)}}
+.deckel-nav a .ic .vs{position:static;opacity:1;scale:1;translate:none;z-index:auto}
+.deckel-nav a .ic .vs-kugel{width:26px;height:26px}
+.deckel-nav a .ic .vs-flamme{width:22px;height:28px}
+.deckel-nav a .ic .vs-stern{width:24px;height:24px}
+@media (prefers-reduced-motion:reduce){.vs,.vs *{animation:none!important;transition:none!important}}
+
+/* „Wer steckt dahinter?“ Variante C (Simon 01.11.2026): Institutszeile ist Teil des Startseiten-Links; Fenster unter dem Logo */
+.leiste .marke .marke-mehr{display:block;margin:3px 0 0;padding:0;cursor:pointer}
+.leiste .marke:hover .marke-mehr{color:#FFFFFF}
+@media (max-width:900px){.leiste .marke .marke-mehr{padding:0;margin:3px 0 0}}
+.leiste .wer-fenster{position:absolute;left:0;top:calc(100% + 12px);z-index:40;width:max-content;animation:wer-c .28s cubic-bezier(.2,1.2,.4,1)}
+.leiste .wer-fenster[hidden]{display:none}
+.leiste .wer-fenster::before{content:"";position:absolute;left:22px;top:-6px;width:13px;height:13px;background:#FFFFFF;rotate:45deg;border-radius:3px}
+@keyframes wer-c{from{opacity:0;transform:translateY(-6px) scale(.96)}}
+.leiste .wer-pille{all:unset;box-sizing:border-box;position:relative;cursor:pointer;display:inline-flex;align-items:center;gap:8px;background:#FFFFFF;color:#102444;border-radius:999px;padding:6px 14px 6px 6px;font:800 .9rem/1 var(--f);white-space:nowrap;box-shadow:0 14px 30px -16px rgba(0,0,0,.7)}
+.leiste .wer-pille img{width:44px;height:30px;object-fit:cover;border-radius:999px;display:block}
+.leiste .wer-pille i{font-style:normal;color:#E06400}
+.leiste .wer-pille:focus-visible{outline:3px solid #E06400;outline-offset:3px}
+.leiste .wer-karte{position:relative;width:min(340px,calc(100vw - 32px));box-sizing:border-box;background:#FFFFFF;color:#102444;border-radius:16px;padding:16px 18px;display:grid;gap:8px;box-shadow:0 18px 40px -18px rgba(0,0,0,.7);font-family:var(--f)}
+.leiste .wer-karte .kopf{display:grid;grid-template-columns:96px minmax(0,1fr);gap:12px;align-items:center}
+.leiste .wer-karte img{width:96px;height:64px;object-fit:cover;border-radius:10px;display:block}
+.leiste .wer-karte b{font:900 1.05rem/1.2 var(--f);color:#102444}
+.leiste .wer-karte p{margin:0;font-size:.95rem;line-height:1.45;color:#3A4558}
+.leiste .wer-karte .frage{font-weight:800;color:#102444}
+.leiste .wer-karte a{justify-self:start;font:800 .95rem/1 var(--f);color:#2E5AA8;text-decoration:none;padding-top:4px}
+.leiste .wer-karte .zu{all:unset;cursor:pointer;position:absolute;right:10px;top:6px;font:400 1.4rem/1 var(--f);color:#8892A2}
+.deckel-wer{border-top:1px solid #E3E7ED;margin-top:6px}
+.deckel-wer-knopf{all:unset;box-sizing:border-box;cursor:pointer;width:100%;display:flex;justify-content:space-between;padding:14px 0;font:800 1.15rem/1.2 var(--f);color:#102444}
+.deckel-wer-text{display:grid;gap:8px;padding-bottom:16px;font-family:var(--f)}
+.deckel-wer-text[hidden]{display:none}
+.deckel-wer-text p{margin:0;font-size:.98rem;line-height:1.45;color:#3A4558}
+.deckel-nav .deckel-wer-text a{display:inline;padding:0;border:0;font:800 .98rem/1.45 var(--f);color:#2E5AA8;text-decoration:none}
+@media (prefers-reduced-motion:reduce){.leiste .wer-fenster{animation:none}}
+
+/* ===== 10.11.2026 (Simon, Mockup-Runden zum Telefonat mit René): Kopfleiste mit fester Farbe je Welt, nichts Durchscheinendes;
+   Knopf mit weißem Rand statt Orange; Sternstunde gelb mit grüner Schrift und ohne Knopf. Steht gleichlautend in effekte.css und sternstunde/rahmen.css ===== */
+.leiste{background:#102444!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+html[data-welt="gruen"] .leiste{background:#143426!important}
+html[data-welt="blau"] .leiste{background:#102444!important}
+html[data-seite="firestarter"] .leiste{background:#E06400!important}
+html[data-welt="gold"] .leiste{background:#F6CF5A!important}
+.leiste>.knopf{background:transparent!important;color:#FFFFFF!important;box-shadow:inset 0 0 0 2px #FFFFFF!important}
+html[data-welt="gold"] .leiste>.knopf{display:none!important}
+html[data-welt="gold"] .leiste .marke b,html[data-welt="gold"] .leiste .marke-mehr,html[data-welt="gold"] .leiste .menue a{color:#143426!important;text-shadow:none!important}
+html[data-welt="gold"] .leiste .burger{border-color:#143426!important}
+@media (hover:hover){html[data-welt="gold"] .leiste .menue a:hover,html[data-welt="gold"] .leiste .menue a:focus-visible{color:rgba(20,52,38,.18)!important}}   /* Runde 96: Variante C auf Gelb, Schrift verblasst im eigenen Grün */
+html[data-welt="gold"] .leiste .burger i{background:#143426!important;box-shadow:0 -6px 0 #143426,0 6px 0 #143426!important}
+/* Menü-Zeichen: Wellen wiegen am Fuß des Leuchtturms, Wolken ziehen hinter dem Hochhaus */
+.vs-bau svg{overflow:hidden}
+.vs-welle{animation:vs-welle 2.8s ease-in-out infinite alternate}.vs-welle.w2{animation-duration:3.6s;animation-direction:alternate-reverse}
+@keyframes vs-welle{from{transform:translate(-1.2px,.5px)}to{transform:translate(1.2px,-.6px)}}
+.vs-wolke{animation:vs-wolke 16s linear infinite}.vs-wolke.w2{animation-duration:23s;animation-delay:-9s}
+@keyframes vs-wolke{from{transform:translateX(-18px)}to{transform:translateX(52px)}}
+@media (prefers-reduced-motion:reduce){.vs-welle,.vs-wolke{animation:none}}
+
+/* ===== 10.11.2026 (Simon „freigegeben“, Runde 6): Leuchtfeuer dreht sich (zwei schmale Strahlen, Blitz wenn einer zum Betrachter zeigt); Sternstunde mit Nachthimmel, der verblasst ===== */
+.vs-akademie svg{overflow:visible}
+.vs-dreh{transform-box:view-box;transform-origin:24px 11.6px;animation:vs-dreh 8s linear infinite}
+@keyframes vs-dreh{0%{transform:scaleX(1)}6.25%{transform:scaleX(.92)}12.5%{transform:scaleX(.71)}18.75%{transform:scaleX(.38)}25%{transform:scaleX(0)}31.25%{transform:scaleX(-.38)}37.5%{transform:scaleX(-.71)}43.75%{transform:scaleX(-.92)}50%{transform:scaleX(-1)}56.25%{transform:scaleX(-.92)}62.5%{transform:scaleX(-.71)}68.75%{transform:scaleX(-.38)}75%{transform:scaleX(0)}81.25%{transform:scaleX(.38)}87.5%{transform:scaleX(.71)}93.75%{transform:scaleX(.92)}100%{transform:scaleX(1)}}
+.vs-blitz{animation:vs-blitz 4s linear infinite;animation-delay:-2s}@keyframes vs-blitz{0%,40%,60%,100%{opacity:0}50%{opacity:.95}}
+.vs-stern{filter:none!important}.vs-stern svg{overflow:visible;animation:none!important}
+.vs-st{transform-box:fill-box;transform-origin:50% 55%;animation:vs-st 3.2s ease-in-out infinite alternate}@keyframes vs-st{from{transform:rotate(-4deg) scale(.97)}to{transform:rotate(4deg) scale(1.03)}}
+.vs-sterne circle{animation:vs-sterne 2.4s ease-in-out infinite alternate}.vs-sterne circle:nth-child(2n){animation-delay:-1.2s}.vs-sterne circle:nth-child(3n){animation-delay:-.6s}@keyframes vs-sterne{from{opacity:.25}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){.vs-dreh,.vs-blitz,.vs-st,.vs-sterne circle{animation:none!important}}

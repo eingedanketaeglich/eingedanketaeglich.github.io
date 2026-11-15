@@ -1,0 +1,148 @@
+/* Runde 122 (Simon 14.11.2026): fünf Optik-Varianten. Nur Mockup, nicht live. */
+html[data-mk^="v"] .duo-namen{visibility:hidden}
+html[data-mk^="v"] .wahl h1{font-size:clamp(18px,2.4vw,34px)!important;line-height:1.15}
+html[data-mk="v2"] .wahl h1,html[data-mk="v4"] .wahl h1,html[data-mk="v5"] .wahl h1{top:calc(40% - 24px)!important}   /* Titel in der Bildmitte */
+.mv-ebene{position:absolute;left:0;top:0;width:0;height:0;z-index:40;font-family:'Vidon Text','Jost',system-ui,sans-serif}
+.mv-ebene[hidden]{display:none}
+.mv-band{position:fixed;left:8px;top:54px;z-index:60;padding:2px 6px;border-radius:999px;background:#E6007E;color:#fff;font:600 9px/1.2 system-ui,sans-serif;pointer-events:none}   /* links oben, verdeckt den Titel nicht */
+.mv-band[hidden]{display:none}
+.mv-pfeil{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;transition:transform .25s}
+
+/* ---- geteilte Kachel (v2, v3) und nur Schrift (v4) ---- */
+.mv-leiste{position:absolute;transform:translateX(-50%);width:min(460px,calc(100vw - 24px));display:flex;align-items:flex-start;filter:drop-shadow(0 8px 22px rgba(0,0,0,.18))}
+.mv-halb{flex:1 1 50%;min-width:0;overflow:hidden;background:rgba(255,255,255,.58);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);color:#0A1422}
+.mv-halb[data-w="g"]{--mk:#1E7A4A;border:1px solid rgba(255,255,255,.75);border-right:0;border-radius:16px 0 0 16px;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.mv-halb[data-w="b"]{--mk:#1F4FA8;border:1px solid rgba(255,255,255,.75);border-left:1px solid rgba(10,20,34,.12);border-radius:0 16px 16px 0;box-shadow:inset 0 1px 0 rgba(255,255,255,.9)}
+.mv-kopf{display:flex;align-items:center;gap:8px;width:100%;padding:7px 10px;border:0;background:transparent;color:var(--mk);font:inherit;cursor:pointer;text-align:left}
+.mv-halb[data-w="b"] .mv-kopf{flex-direction:row-reverse;text-align:right}
+.mv-nm{min-width:0}
+.mv-kopf b{display:block;font-family:'Vidon Kopf','Jost',sans-serif;font-weight:650;font-size:15px;color:var(--mk)}
+.mv-kopf small{display:block;font-size:11px;color:#2B3442;margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mv-halb .mv-a{display:none}.mv-halb.auf .mv-z{display:none}.mv-halb.auf .mv-a{display:block}
+.mv-halb .mv-pfeil{color:var(--mk);background:color-mix(in srgb,var(--mk) 14%,transparent)}
+.mv-halb[data-w="g"] .mv-pfeil{margin-left:auto}.mv-halb[data-w="b"] .mv-pfeil{margin-right:auto}
+.mv-halb.auf .mv-pfeil{transform:rotate(180deg)}
+.mv-liste{display:grid;gap:6px;padding:8px}
+.mv-halb:not(.auf) .mv-liste{display:none}
+.mv-halb.auf .mv-liste{animation:mv-auf .28s ease}
+@keyframes mv-auf{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.mv-kurs{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;padding:9px 10px;border-radius:10px;border:1px solid rgba(10,20,34,.08);background:rgba(255,255,255,.55);color:#0A1422;font:inherit;font-size:15px;cursor:pointer;text-align:left}
+.mv-kurs b{color:var(--mk)}.mv-kurs span{font-size:13px;color:#2B3442;white-space:nowrap}
+.mv-kurs:hover{background:rgba(255,255,255,.85);border-color:var(--mk)}
+@media (max-width:520px){.mv-kopf{padding:6px 9px}.mv-kopf b{font-size:14px}.mv-kurs{flex-direction:column;align-items:flex-start;gap:2px;font-size:14px;padding:8px 9px}.mv-liste{padding:6px;gap:5px}}
+/* v4: ohne Kachel, helles Grün und Blau mit Schatten, Kurse als Glas-Felder */
+html[data-mk="v4"] .mv-leiste{filter:none}
+html[data-mk="v4"] .mv-halb{background:transparent;border:0;box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+html[data-mk="v4"] .mv-kopf b{font-size:19px;text-shadow:0 1px 3px rgba(0,0,0,.6),0 0 12px rgba(0,0,0,.35)}
+html[data-mk="v4"] .mv-halb[data-w="g"] .mv-kopf b{color:#5FD08E}
+html[data-mk="v4"] .mv-halb[data-w="b"] .mv-kopf b{color:#8AB6FF}
+html[data-mk="v4"] .mv-kopf small{color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.65),0 0 10px rgba(0,0,0,.35)}
+html[data-mk="v4"] .mv-halb .mv-pfeil{background:rgba(255,255,255,.85)}
+html[data-mk="v4"] .mv-kurs{background:rgba(255,255,255,.62);backdrop-filter:blur(18px) saturate(170%);-webkit-backdrop-filter:blur(18px) saturate(170%);border:1px solid rgba(255,255,255,.75);box-shadow:0 6px 18px rgba(0,0,0,.12)}
+@media (max-width:520px){html[data-mk="v4"] .mv-kopf b{font-size:15.5px}}
+html[data-mk="v4"] .mv-kopf b{white-space:nowrap}   /* „Für dein Vermögen“ bleibt einzeilig */
+
+/* ---- v5: Titel grün-blau verlaufend, Pfeil, zwei Spalten ---- */
+html[data-mk="v5"] .wahl h1{font-size:clamp(24px,3.2vw,46px)!important;background:linear-gradient(90deg,#5FD08E 0%,#5FD08E 28%,#8AB6FF 72%,#8AB6FF 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent;filter:drop-shadow(0 1px 2px rgba(0,0,0,.55)) drop-shadow(0 0 10px rgba(0,0,0,.25));cursor:pointer;width:max-content;max-width:calc(100vw - 80px);left:50%!important;transform:translateX(-50%);right:auto!important}
+.mv-titelknopf{position:absolute;width:32px;height:32px;border-radius:50%;border:1px solid rgba(255,255,255,.8);background:rgba(255,255,255,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#1F4FA8;display:grid;place-items:center;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.mv-titelknopf .mv-pfeil{width:auto;height:auto}
+html.mv-offen .mv-titelknopf .mv-pfeil{transform:rotate(180deg)}
+.mv-spalten{position:absolute;transform:translateX(-50%);width:min(560px,calc(100vw - 24px));display:none;grid-template-columns:1fr 1fr;gap:0;filter:drop-shadow(0 8px 22px rgba(0,0,0,.18))}
+html.mv-offen .mv-spalten{display:grid;animation:mv-auf .3s ease}
+.mv-spalte{display:grid;gap:6px;align-content:start;padding:8px;background:rgba(255,255,255,.58);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.75)}
+.mv-spalte[data-w="g"]{--mk:#1E7A4A;border-right:0;border-radius:16px 0 0 16px}
+.mv-spalte[data-w="b"]{--mk:#1F4FA8;border-left:1px solid rgba(10,20,34,.12);border-radius:0 16px 16px 0}
+.mv-skopf{padding:2px 4px 4px}.mv-spalte[data-w="b"] .mv-skopf{text-align:right}
+.mv-skopf b{display:block;font-family:'Vidon Kopf','Jost',sans-serif;font-weight:650;font-size:15px;color:var(--mk)}
+.mv-skopf small{display:block;font-size:11px;color:#2B3442}
+@media (max-width:520px){.mv-spalte{padding:6px;gap:5px}}
+
+/* ---- v1: Apple-Weg (Umschalter + Blatt von unten mit Karten) ---- */
+.mv-umschalter{position:absolute;left:50vw;transform:translateX(-50%);display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(255,255,255,.55);backdrop-filter:blur(22px) saturate(180%);-webkit-backdrop-filter:blur(22px) saturate(180%);border:1px solid rgba(255,255,255,.75);box-shadow:0 6px 20px rgba(0,0,0,.15)}
+.mv-seg{display:flex;align-items:center;gap:7px;padding:8px 16px;border:0;border-radius:999px;background:transparent;color:#1D1D1F;font:600 15px/1 'Jost',system-ui,sans-serif;cursor:pointer;transition:background .25s,color .25s}
+.mv-seg i{width:8px;height:8px;border-radius:50%}
+.mv-seg[data-w="g"] i{background:#1E7A4A}.mv-seg[data-w="b"] i{background:#1F4FA8}
+.mv-seg.an{background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.12)}
+.mv-seg.an[data-w="g"]{color:#1E7A4A}.mv-seg.an[data-w="b"]{color:#1F4FA8}
+.mv-blatt{position:fixed;left:50%;bottom:0;z-index:45;width:min(1000px,100vw);transform:translate(-50%,110%);transition:transform .5s cubic-bezier(.32,.72,0,1);
+  background:rgba(250,250,252,.86);backdrop-filter:blur(30px) saturate(180%);-webkit-backdrop-filter:blur(30px) saturate(180%);border-radius:22px 22px 0 0;box-shadow:0 -10px 40px rgba(0,0,0,.25);padding:6px 0 18px;color:#1D1D1F}
+.mv-blatt.auf{transform:translate(-50%,0)}
+.mv-blatt[data-w="g"]{--mk:#1E7A4A}.mv-blatt[data-w="b"]{--mk:#1F4FA8}
+.mv-griff{width:38px;height:5px;border-radius:3px;background:rgba(60,60,67,.3);margin:4px auto 10px;cursor:pointer}
+.mv-bkopf{position:relative;padding:0 20px 4px}
+.mv-bkopf b{display:block;font:650 21px/1.2 'Vidon Kopf','Jost',sans-serif;color:var(--mk)}
+.mv-bkopf small{display:block;font-size:13px;color:#6E6E73;margin-top:2px}
+.mv-x{position:absolute;right:16px;top:20px;z-index:2;width:30px;height:30px;border-radius:50%;border:0;background:rgba(118,118,128,.16);color:#3C3C43;font-size:20px;line-height:1;cursor:pointer}
+.mv-reihe{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:12px 20px 6px;scroll-padding:0 20px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.mv-reihe::-webkit-scrollbar{display:none}
+.mv-karte{flex:0 0 min(70vw,232px);scroll-snap-align:start;border:0;padding:0;border-radius:18px;overflow:hidden;background:#fff;text-align:left;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.08);font:inherit;color:inherit}
+.mv-bild{display:block;aspect-ratio:4/3;background-size:cover;background-position:center}
+.mv-ktext{display:block;padding:12px 14px 14px}
+.mv-ktext b{display:block;font:650 17px/1.2 'Vidon Kopf','Jost',sans-serif;color:var(--mk)}
+.mv-ktext small{display:block;font-size:12px;color:#6E6E73;margin:3px 0 6px;min-height:2.4em}
+.mv-ktext em{display:block;font-style:normal;font-weight:600;font-size:15px}
+.mv-mehr{display:block;margin-top:8px;font-size:13px;color:var(--mk)}
+@media (min-width:900px){.mv-karte{flex:1 1 0}.mv-reihe{overflow:visible}}
+
+/* Runde 126: Blatt ziehbar (Griff-Bereich), Stufen mittel und groß */
+.mv-zieh{cursor:grab;touch-action:none;padding-bottom:2px}
+.mv-blatt.zieht{transition:none}.mv-blatt.zieht .mv-zieh{cursor:grabbing}
+.mv-blatt{transition:transform .5s cubic-bezier(.32,.72,0,1),height .45s cubic-bezier(.32,.72,0,1);display:flex;flex-direction:column;max-height:92vh}
+.mv-blatt .mv-x{top:20px;right:16px}
+.mv-blatt.gross{height:88vh}
+.mv-blatt.gross .mv-reihe{flex-wrap:wrap;overflow-x:hidden;overflow-y:auto;scroll-snap-type:none;flex:1 1 auto;align-content:flex-start;padding-bottom:24px}
+.mv-blatt.gross .mv-karte{flex:0 0 calc(50% - 6px)}
+@media (min-width:900px){.mv-blatt.gross .mv-karte{flex:1 1 calc(25% - 12px)}.mv-blatt.gross .mv-bild{aspect-ratio:4/3}}
+.mv-seg{white-space:nowrap}   /* Runde 126: „Für dein Vermögen“ bleibt einzeilig */
+@media (max-width:520px){.mv-seg{font-size:14px;padding:8px 12px;gap:6px}}
+@media (min-width:900px){.mv-blatt.gross{height:auto;width:min(1280px,100vw)}.mv-blatt.gross .mv-reihe{overflow:visible}}   /* Mac: groß = breiter mit größeren Karten statt leerer Höhe */
+
+/* Runde 127 (Simon 14.11.2026): Logo-Streifen oben im Blatt, durchgehend in der Weltfarbe, Logo weiß; „Für dein …“ im Blatt gestrichen */
+.mv-blatt{padding-top:0;overflow:hidden}
+.mv-blatt[data-w="g"]{--mk2:#1E7A4A}.mv-blatt[data-w="b"]{--mk2:#1F4FA8}.mv-blatt[data-w="n"]{--mk:#0B1A38;--mk2:#0B1A38}
+.mv-streifen{background:var(--mk2);color:#fff;padding:6px 20px 12px;border-radius:22px 22px 0 0}
+.mv-streifen .mv-griff{background:rgba(255,255,255,.55);margin:2px auto 8px}
+.mv-logo{display:flex;align-items:center;gap:0;padding-right:44px}
+.mv-logo b{font:700 28px/1 'Vidon Kopf','Jost',sans-serif;letter-spacing:.01em;color:#fff}
+.mv-lw{position:relative;margin-left:11px;padding-left:11px;font:500 13px/1 'Vidon Kopf','Jost',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#fff;white-space:nowrap}
+.mv-lw::before{content:"";position:absolute;left:0;top:50%;width:1.2px;height:22px;background:#fff;transform:translateY(-50%)}
+.mv-blatt .mv-x{top:22px;background:rgba(255,255,255,.2);color:#fff}
+.mv-blatt .mv-reihe{padding-top:14px}
+.mv-hinweis{margin:10px 20px 0;padding:6px 10px;border-radius:8px;background:#E6007E;color:#fff;font:600 12px/1.3 system-ui,sans-serif}
+/* Termine: sechs Städte als Auswahl (Handy 3 × 2, Mac eine Zeile), Karten mit drei Terminen */
+.mv-staedte{display:none}
+html.mv-termine .mv-umschalter:not(.mv-staedte){display:none}
+html.mv-termine .mv-staedte{display:grid;grid-template-columns:repeat(6,auto);border-radius:22px}
+.mv-staedte .mv-seg{justify-content:center}
+.mv-staedte .mv-seg.an{color:#0B1A38}
+@media (max-width:700px){html.mv-termine .mv-staedte{grid-template-columns:repeat(3,1fr);width:min(360px,calc(100vw - 32px))}}
+.leiste .knopf.mv-an{background:#fff!important;color:#0B1A38!important}
+.mv-welt{display:block;font-size:11px!important;font-weight:700;letter-spacing:.04em;text-transform:uppercase;margin-bottom:2px}
+.mv-welt[data-w="g"]{color:#1E7A4A!important}.mv-welt[data-w="b"]{color:#1F4FA8!important}
+.mv-termin{display:flex;align-items:center;gap:7px;font-size:13px;color:#1D1D1F;padding:5px 0;border-top:1px solid rgba(60,60,67,.12)}
+.mv-termin:first-of-type{margin-top:6px}
+.mv-termin i{width:7px;height:7px;border-radius:50%;background:#0B1A38;flex:0 0 7px}
+.mv-ktext small.mv-welt{min-height:0;margin:0 0 2px}
+
+/* Runde 130 (Simon): Termine-Karten in Mockup 1: ein Termin sichtbar, zwei aufklappbar; Knöpfe „Location“ und „Anmeldung“ nebeneinander */
+.mv-tkarte{cursor:default}
+.mv-tkarte .mv-termin{align-items:flex-start}
+.mv-tkarte .mv-termin i{margin-top:6px}
+.mv-tkarte .mv-termin span{display:flex;flex-direction:column}
+.mv-tkarte .mv-termin b{font-weight:600;font-size:13.5px;color:#1D1D1F}
+.mv-tkarte .mv-termin small{font-size:11.5px;color:#1F4FA8;margin:0;min-height:0}
+.mv-weitere{display:inline-flex;align-items:center;gap:5px;margin:2px 0 4px;padding:3px 0;border:0;background:none;color:#0B1A38;font:600 12.5px/1.2 'Jost',system-ui,sans-serif;cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.mv-weitere[aria-expanded="true"] svg{transform:rotate(180deg)}
+.mv-mehrt{display:block}.mv-mehrt[hidden]{display:none}
+.mv-zwei{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.mv-k2{padding:9px 6px;border-radius:999px;font:600 13.5px/1 'Jost',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.mv-loc{border:1.5px solid #0B1A38;background:#fff;color:#0B1A38}
+.mv-anm{border:1.5px solid #0B1A38;background:#0B1A38;color:#fff}
+.mv-ort,.mv-stripe{display:block;margin-top:8px;font-size:12px;color:#6E6E73}
+.mv-ort[hidden],.mv-stripe[hidden]{display:none}
+.mv-tkarte .mv-termin b{font:600 13.5px/1.3 'Jost',system-ui,sans-serif!important;color:#1D1D1F!important;display:block}
+@media (max-width:700px){.mv-blatt.gross .mv-tkarte{flex:0 0 100%}}   /* Termine am Handy groß: eine Karte je Zeile, damit beide Knöpfe passen */
+.mv-k2{min-width:0;overflow:hidden;text-overflow:ellipsis}
+@media (min-width:900px){.mv-tkarte .mv-zwei{gap:5px}.mv-tkarte .mv-k2{font-size:11.5px;padding:8px 1px;text-overflow:clip}.mv-tkarte .mv-ktext{padding:12px 10px 12px}}
+/* Runde 139: „R&F“ im Streifen exakt wie im Kopf (Gloock, Gewicht 400) – Simon: R&F in den Logos nie ändern */
+.mv-logo b{font-family:"Gloock",Georgia,serif!important;font-weight:400!important;letter-spacing:0!important}

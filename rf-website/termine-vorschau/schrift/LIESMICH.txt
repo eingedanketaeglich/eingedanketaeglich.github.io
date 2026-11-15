@@ -1,0 +1,2 @@
+Vidon, Hausschrift von R&F. Vidon Kopf: Grundlage Fraunces (The Fraunces Project Authors), R, & und F aus Gloock (The Gloock Project Authors). Vidon Text: Grundlage Nunito (The Nunito Project Authors).
+Geänderte Fassungen unter der SIL Open Font License 1.1, Lizenztexte in diesem Ordner. Gebaut am 10.11.2026.
