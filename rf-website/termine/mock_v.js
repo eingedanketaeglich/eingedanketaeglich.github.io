@@ -13,7 +13,7 @@ var band=document.createElement('div');band.className='mv-band';band.textContent
 var WK={0:'g',1:'b'},TXT={0:{kurz:'Akademie',lang:'R&F Akademie',fuer:'Für dein Geld'},1:{kurz:'Institut',lang:'R&F Institut',fuer:'Für dein Vermögen'}};
 /* Runde 124 (Simon): Kartenbild = Raum im Gebäude, von weiter weg, Himmel links und rechts (erzeugt mit _arbeit/r124_karten.py) */
 var BILD={'Dein erster Tag':'karte_erstertag.jpg','Investmenttag':'karte_investmenttag.jpg','Börsentag':'karte_boersentag.jpg','Einzelner Workshop':'karte_workshop.jpg',
-          'Modul 1A':'karte_modul1a.jpg','Investment Zirkel':'karte_investment.jpg','Rainmaker Zirkel':'karte_rainmaker.jpg','Mentoring':'karte_mentoring.jpg'};
+          'Modul 1A':'karte_modul1a.jpg','3 Std-Workshop':'karte_ws_institut.jpg','Investment Zirkel':'karte_investment.jpg','Rainmaker Zirkel':'karte_rainmaker.jpg','Mentoring':'karte_mentoring.jpg'};
 /* Runde 140 (Simon: Räume 20/30/50 % größer zeigen): ?g=20|30|50 nimmt die enger geschnittenen Kartenbilder karte_<kurs>_gNN.jpg */
 (function(){var g=(location.search.match(/[?&]g=(20|30|35|50)\b/)||[])[1];if(g)for(var n in BILD)BILD[n]=BILD[n].replace('.jpg','_g'+g+'.jpg');})();
 function kurse(wi){return WELT[wi].stufen.map(function(s,j){var a=W[WK[wi]].a[s.a];return {j:j,name:a[0],kurz:a[2],preis:a[3]};}).reverse();}   /* wie in der Welt: oben teuer */

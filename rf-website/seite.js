@@ -40,7 +40,7 @@
     fuss.outerHTML='<footer class="fuss"><div class="gross" aria-label="R&amp;F"><b>R&amp;F</b></div><div class="fuss-spalten">'+
       '<div><b>R&amp;F Akademie</b><a href="'+link('welt-gruen.html')+'#erster-tag">Dein erster Tag</a><a href="'+link('welt-gruen.html')+'#investmenttag">Investmenttag</a><a href="'+link('welt-gruen.html')+'#boersentag">Börsentag</a></div>'+
       '<div><b>R&amp;F Institut</b><a href="'+link('welt-blau.html')+'#investment">Investment Zirkel</a><a href="'+link('welt-blau.html')+'#rainmaker">Rainmaker Zirkel</a><a href="'+link('welt-blau.html')+'#mentoring">Mentoring</a><a href="'+link('start.html')+'#webinar">Webinar</a></div>'+
-      '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Sternstunde</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('kontakt.html')+'">Wer wir sind</a><a href="'+link('preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
+      '<div><b>Mehr</b><a href="'+link('kinder.html')+'">Sternstunde</a><a href="'+link('firestarter.html')+'">Firestarter-App</a><a href="'+link('kontakt.html')+'">Wer wir sind</a><a href="'+link('termine/preise.html')+'">Preise</a><a href="'+link('kontakt.html')+'">Kontakt</a></div>'+
       '<div><b>Rechtliches</b><a href="'+link('recht.html')+'#impressum">Impressum</a><a href="'+link('recht.html')+'#datenschutz">Datenschutz</a><a href="'+link('recht.html')+'#agb">AGB</a></div></div>'+
       '<div class="fuss-unten"><span class="mono">R&amp;F · Frankfurt am Main</span><span>Bildung, keine Anlageberatung · info@rf-institut.de</span></div></footer>';
   }
