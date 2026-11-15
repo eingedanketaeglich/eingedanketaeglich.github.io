@@ -5,7 +5,7 @@
    ?pt=3  V3: Knopf „Wann und wo?“ → sechs Stadtbilder mit nächstem Termin, darunter Online
    Alle Termine sind Beispiele (gleiche Rechnung wie auf der Terminseite). Nur Mockup. */
 (function(){
-var Q=new URLSearchParams(location.search),STD=window.RF_PT||{},PT=Q.get('pt')||STD.pt,WT=(Q.get('wt')||STD.wt||'').toLowerCase();if(!/^[abc]$/.test(WT))WT='';var ON=Q.get('on')||STD.on||'1';if(!/^[123]$/.test(ON))ON='1';
+var Q=new URLSearchParams(location.search),STD=window.RF_PT||{},PT=Q.get('pt')||STD.pt,WT=(Q.get('wt')||STD.wt||'').toLowerCase();if(!/^[abc]$/.test(WT))WT='';var ON=Q.get('on')||STD.on||'1',OK=Q.get('ok')||STD.ok||'';if(!/^[123]$/.test(OK))OK='';if(!/^[123]$/.test(ON))ON='1';
 /* Runde 182 (Simon: A gesetzt; Online-Leiste, Termine unter Städten, Monat/Jahr, „du sparst“ raus; Online deutlich machen, Ort egal): on=1 Kachel „Online“ im Städte-Raster · on=2 Umschalter Vor Ort/Online · on=3 erst fragen „Wie bist du dabei?“ */
 /* Runde 181 (Simon: V3 gesetzt, „weitere Termine muss prägnanter sein“, drei Varianten): wt=a Datums-Knöpfe in einer Reihe · wt=b Pfeile durch die Termine · wt=c Auswahlfeld „Termin ▾“ */if(!/^[123]$/.test(PT))return;
 var STAEDTE=['Hamburg','Berlin','Düsseldorf','Frankfurt','Stuttgart','München'];
@@ -89,7 +89,7 @@ function blatt(name,stadt,startOnline){var w=weltVon(name),a=kurs(name),istWs=!!
   zeichne();}
 /* Runde 183 (Simon: O2 gesetzt): Online hat ein eigenes Blatt. Kein Vormittag, kein ganzer Tag, nur alle Online-Termine, Preis und „von überall“. */
 function alleOnline(name,w){var L=[],g={};STAEDTE.forEach(function(s){kommende(s,name,w,8).forEach(function(d){if(!g[d.getTime()]){g[d.getTime()]=1;L.push(d);}});});L.sort(function(a,b){return a-b;});return L;}
-function blattOnline(name,startD){var w=weltVon(name),a=kurs(name),on=(a[4]||'').replace(' live online',''),istWs=!!WS_NAMEN[name],LL=alleOnline(name,w),d=startD||LL[0];
+function blattOnline(name,startD){if(OK)return blattKal(name,startD);var w=weltVon(name),a=kurs(name),on=(a[4]||'').replace(' live online',''),istWs=!!WS_NAMEN[name],LL=alleOnline(name,w),d=startD||LL[0];
   var I=sheet('<p class="mv-sh-klein">'+name+' · '+weltText(w)+'</p>'
     +'<div class="pt-seg" role="tablist"><button type="button" data-x="ort">Vor Ort</button><button type="button" class="an" data-x="online">Online · von überall</button></div>'
     +'<div class="pt-onl-kopf"><div><h3 class="mv-sh-h">Live online</h3><p class="mv-sh-klein">'+(istWs?ZEIT_WS:ZEIT_TAG+' · inkl. 1 Std. Mittagspause')+'</p></div><strong>'+on+'</strong></div>'
@@ -103,6 +103,53 @@ function blattOnline(name,startD){var w=weltVon(name),a=kurs(name),on=(a[4]||'')
   I.querySelector('.pt-seg [data-x="ort"]').onclick=function(e){e.stopPropagation();wannwo(name);};
   I.querySelector('.mv-sh-anm').onclick=function(e){e.stopPropagation();I.querySelector('.mv-sh-hinw').hidden=false;};
   I.querySelector('.mv-sh-kein').onclick=function(e){e.stopPropagation();wunsch(name,'',true);};
+  zeichne();}
+/* Runde 185 (Simon: Kalender mit Punkten im Online-Blatt, umschalten „nur mein Kurs | alle Kurse“, wenig Klicks): ok=1 Monatskalender · ok=2 alle Monate klein untereinander · ok=3 Kalender plus Liste */
+var MONATE=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
+function onlineEintraege(){var L=[];['g','b'].forEach(function(w){W[w].a.forEach(function(x){var n=x[0];if(!buchbar(n)||!x[4])return;alleOnline(n,w).forEach(function(d){L.push({d:d,n:n,w:w,p:x[4].replace(' live online',''),ws:!!WS_NAMEN[n]});});});});
+  L.sort(function(a,b){return a.d-b.d||a.n.localeCompare(b.n);});return L;}
+function blattKal(name,startD){var w0=weltVon(name),ALLE=onlineEintraege(),modus='kurs',sel=null,monat=null;
+  function liste(){return modus==='kurs'?ALLE.filter(function(e){return e.n===name;}):ALLE;}
+  function tagKey(d){return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();}
+  var I=sheet('<p class="mv-sh-klein">'+name+' · '+weltText(w0)+'</p>'
+    +'<div class="pt-seg" role="tablist"><button type="button" data-x="ort">Vor Ort</button><button type="button" class="an" data-x="online">Online · von überall</button></div>'
+    +'<div class="pt-onl-kopf"><div><h3 class="mv-sh-h">Live online</h3><p class="mv-sh-klein">Live per Video, egal wo du wohnst</p></div></div>'
+    +'<div class="pt-filter"><button type="button" data-f="kurs" class="an">Nur '+name+'</button><button type="button" data-f="alle">Alle Kurse</button></div>'
+    +'<p class="pt-legende"><span><i style="background:#2F7A55"></i>Akademie</span><span><i style="background:#2E5AA8"></i>Institut</span></p>'
+    +'<div class="pt-kal-box"></div>'
+    +'<div class="pt-fuss"><div class="pt-wahl"></div><button type="button" class="mv-sh-knopf mv-sh-anm">Anmelden</button><p class="mv-sh-hinw" hidden>Hier öffnet sich die Anmeldung (Stripe-Link folgt)</p>'
+    +'<button type="button" class="mv-sh-link mv-sh-kein">Kein Termin passt?</button></div>');
+  I.parentNode.parentNode.dataset.welt=w0;
+  function monatsKal(j,mo,L,klein){var erster=(new Date(j,mo,1).getDay()+6)%7,tage=new Date(j,mo+1,0).getDate(),pro={};
+    L.forEach(function(e){if(e.d.getFullYear()===j&&e.d.getMonth()===mo)(pro[e.d.getDate()]=pro[e.d.getDate()]||[]).push(e);});
+    var h='<div class="pt-kal'+(klein?' klein':'')+'">'+['Mo','Di','Mi','Do','Fr','Sa','So'].map(function(t){return '<span class="wt">'+t+'</span>';}).join('');
+    for(var i=0;i<erster;i++)h+='<span></span>';
+    for(var t=1;t<=tage;t++){var P=pro[t],farben={};(P||[]).forEach(function(e){farben[e.w]=1;});var an=sel&&P&&sel.d.getFullYear()===j&&sel.d.getMonth()===mo&&sel.d.getDate()===t;
+      h+=P?'<button type="button" class="hat'+(an?' an':'')+'" data-k="'+j+'-'+mo+'-'+t+'">'+t+'<span class="pk">'+(farben.g?'<i style="background:#2F7A55"></i>':'')+(farben.b?'<i style="background:#2E5AA8"></i>':'')+'</span></button>':'<span class="leer">'+t+'</span>';}
+    return h+'</div>';}
+  function zeile(e,an){return '<button type="button" class="pt-tz'+(an?' an':'')+'" data-i="'+ALLE.indexOf(e)+'"><i class="pt-p" style="background:'+(e.w==='g'?'#2F7A55':'#2E5AA8')+'"></i><span><b>'+kurz(e.d)+' · '+e.n+'</b><small>'+(e.ws?ZEIT_WS:ZEIT_TAG)+' · live per Video</small></span><strong>'+e.p+'</strong></button>';}
+  function amTag(k){return liste().filter(function(e){return tagKey(e.d)===k;});}
+  function waehleTag(k){var T=amTag(k);sel=T.filter(function(e){return e.n===name;})[0]||T[0];zeichne();}
+  function zeichne(){var L=liste();if(!sel||L.indexOf(sel)<0)sel=(startD&&L.filter(function(e){return e.d.getTime()===startD.getTime()&&e.n===name;})[0])||L.filter(function(e){return e.n===name;})[0]||L[0];
+    if(!monat&&sel)monat=new Date(sel.d.getFullYear(),sel.d.getMonth(),1);
+    I.querySelectorAll('.pt-filter button').forEach(function(b){b.classList.toggle('an',b.dataset.f===modus);});
+    var B=I.querySelector('.pt-kal-box'),h='';
+    if(OK==='1'||OK==='3'){var j=monat.getFullYear(),mo=monat.getMonth();
+      h+='<div class="pt-kal-kopf"><button type="button" data-m="-1" aria-label="Voriger Monat">‹</button><b>'+MONATE[mo]+' '+j+'</b><button type="button" data-m="1" aria-label="Nächster Monat">›</button></div>'+monatsKal(j,mo,L,OK==='3');
+      if(OK==='1'&&sel){var T=amTag(tagKey(sel.d));h+='<p class="pt-wt-lab">Am '+kurz(sel.d)+'</p>'+T.map(function(e){return zeile(e,e===sel);}).join('');}
+      if(OK==='3'){var M=L.filter(function(e){return e.d.getFullYear()===j&&e.d.getMonth()===mo;});h+='<p class="pt-wt-lab">Alle Online-Termine im '+MONATE[mo]+'</p>'+(M.length?M.map(function(e){return zeile(e,e===sel);}).join(''):'<p class="mv-sh-klein">Keine Termine in diesem Monat.</p>');}}
+    else{var mon={};L.forEach(function(e){var k=e.d.getFullYear()*12+e.d.getMonth();mon[k]=1;});Object.keys(mon).map(Number).sort(function(a,b){return a-b;}).slice(0,8).forEach(function(k){var jj=Math.floor(k/12),mm=k%12;h+='<p class="pt-wt-lab">'+MONATE[mm]+' '+jj+'</p>'+monatsKal(jj,mm,L,true);});}
+    B.innerHTML=h;
+    B.querySelectorAll('.pt-kal button.hat').forEach(function(b){b.onclick=function(e){e.stopPropagation();waehleTag(b.dataset.k);};});
+    B.querySelectorAll('.pt-kal-kopf button').forEach(function(b){b.onclick=function(e){e.stopPropagation();monat=new Date(monat.getFullYear(),monat.getMonth()+(+b.dataset.m),1);zeichne();};});
+    B.querySelectorAll('.pt-tz').forEach(function(b){b.onclick=function(e){e.stopPropagation();sel=ALLE[+b.dataset.i];zeichne();};});
+    var Wz=I.querySelector('.pt-wahl');Wz.innerHTML=sel?'<b>'+sel.n+'</b> · '+kurz(sel.d)+' · '+(sel.ws?ZEIT_WS:ZEIT_TAG)+'<strong>'+sel.p+'</strong>':'';
+    if(OK==='2'&&sel){var TT=amTag(tagKey(sel.d));if(TT.length>1){Wz.insertAdjacentHTML('beforeend','<div class="pt-wahl-k">'+TT.map(function(e){return '<button type="button" data-i="'+ALLE.indexOf(e)+'" class="'+(e===sel?'an':'')+'"><i style="background:'+(e.w==='g'?'#2F7A55':'#2E5AA8')+'"></i>'+e.n+'</button>';}).join('')+'</div>');Wz.querySelectorAll('.pt-wahl-k button').forEach(function(b){b.onclick=function(ev){ev.stopPropagation();sel=ALLE[+b.dataset.i];zeichne();};});}}
+    I.querySelector('.mv-sh-anm').textContent=sel?'Anmelden für '+kurz(sel.d):'Anmelden';I.querySelector('.mv-sh-hinw').hidden=true;}
+  I.querySelectorAll('.pt-filter button').forEach(function(b){b.onclick=function(e){e.stopPropagation();modus=b.dataset.f;zeichne();};});
+  I.querySelector('.pt-seg [data-x="ort"]').onclick=function(e){e.stopPropagation();wannwo(name);};
+  I.querySelector('.mv-sh-anm').onclick=function(e){e.stopPropagation();I.querySelector('.mv-sh-hinw').hidden=false;};
+  I.querySelector('.mv-sh-kein').onclick=function(e){e.stopPropagation();wunsch(sel?sel.n:name,'',true);};
   zeichne();}
 var WUNSCH_AN='info@rf-institut.de',WUNSCH_ZIEL='';   /* Empfänger-Skript auf rf-institut.de, leer = noch nicht angeschlossen */
 function wunsch(name,stadt,online){var w=weltVon(name);

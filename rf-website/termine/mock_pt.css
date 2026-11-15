@@ -59,3 +59,23 @@
 .pt-onl-raster{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
 .pt-onl-raster .pt-wt-chip{min-width:0;text-align:center}
 .pt-fuss{position:sticky;bottom:calc(-18px - env(safe-area-inset-bottom,0px));margin:4px -18px calc(-18px - env(safe-area-inset-bottom,0px));padding:12px 18px calc(14px + env(safe-area-inset-bottom,0px));background:#FFFFFF;box-shadow:0 -6px 14px rgba(0,0,0,.08);display:flex;flex-direction:column;gap:6px}
+
+/* Runde 185: Kalender im Online-Blatt */
+.pt-filter{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.pt-filter button{border:1.5px solid #C9CDD3;border-radius:12px;padding:9px 6px;background:#FFFFFF;font:600 13px/1.15 'Jost',system-ui,sans-serif;color:#1D1D1F;cursor:pointer}
+.pt-filter button.an{border-color:#0B1A38;background:#0B1A38;color:#FFFFFF}
+.pt-legende{display:flex;gap:14px;margin:0;font-size:12px;color:#6E6E73}.pt-legende span{display:inline-flex;align-items:center;gap:5px}.pt-legende i{width:8px;height:8px;border-radius:50%;display:inline-block}
+.pt-kal-kopf{display:flex;justify-content:space-between;align-items:center;margin-top:2px}
+.pt-kal-kopf b{font:600 16px/1 'Jost',system-ui,sans-serif}.pt-kal-kopf button{width:36px;height:36px;border-radius:50%;border:1.5px solid #C9CDD3;background:#FFFFFF;font-size:19px;cursor:pointer;color:#0B1A38}
+.pt-kal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.pt-kal .wt{font:600 11px/1 'Jost',system-ui,sans-serif;color:#6E6E73;padding:4px 0}
+.pt-kal .leer{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font:500 13px/1 'Jost',system-ui,sans-serif;color:#B4B8BF}
+.pt-kal button{aspect-ratio:1;position:relative;border:1.5px solid #D5D8DD;border-radius:10px;background:#FFFFFF;font:700 14px/1 'Jost',system-ui,sans-serif;color:#1D1D1F;cursor:pointer;padding:0}
+.pt-kal button.an{background:#0B1A38;border-color:#0B1A38;color:#FFFFFF}
+.pt-kal button .pk{position:absolute;left:0;right:0;bottom:5px;display:flex;justify-content:center;gap:3px}.pt-kal button .pk i{width:6px;height:6px;border-radius:50%}
+.pt-kal.klein{gap:3px}.pt-kal.klein .leer,.pt-kal.klein button{font-size:12px;border-radius:8px}.pt-kal.klein button .pk{bottom:3px}.pt-kal.klein button .pk i{width:5px;height:5px}
+.pt-tz{display:grid;grid-template-columns:10px 1fr auto;gap:10px;align-items:center;width:100%;text-align:left;padding:10px 12px;border:1.5px solid #D5D8DD;border-radius:12px;background:#FFFFFF;cursor:pointer;font-family:'Jost',system-ui,sans-serif;color:#1D1D1F;margin-top:6px}
+.pt-tz.an{border-color:#0B1A38;box-shadow:inset 0 0 0 1px #0B1A38}
+.pt-tz .pt-p{width:10px;height:10px;border-radius:50%}.pt-tz b{display:block;font-size:14px}.pt-tz small{display:block;font-size:12px;color:#6E6E73}.pt-tz strong{font-size:14px}
+.pt-wahl{font-size:13.5px;color:#1D1D1F;display:flex;flex-wrap:wrap;gap:4px;align-items:baseline}.pt-wahl strong{margin-left:auto;font-size:16px}
+.pt-wahl-k{flex-basis:100%;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:4px}.pt-wahl-k button{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;border:1.5px solid #C9CDD3;border-radius:999px;padding:6px 10px;background:#FFFFFF;font:600 12px/1 'Jost',system-ui,sans-serif;cursor:pointer;color:#1D1D1F}.pt-wahl-k button.an{border-color:#0B1A38;background:#0B1A38;color:#FFFFFF}.pt-wahl-k i{width:7px;height:7px;border-radius:50%}
