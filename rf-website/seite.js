@@ -16,7 +16,7 @@
   /* Simon 29.10. (Gesprächsrunde Punkt 3+4): Firestarter-App zuerst, Goldene Welt heißt Sternstunde,
      „Über uns“ klappt an der Institutszeile aus und steht im Fuß */
   var MENUE=[['firestarter.html','Firestarter-App'],['welt-gruen.html','<span class="rf">R&amp;F</span> Akademie'],['welt-blau.html','<span class="rf">R&amp;F</span> Institut'],['preise.html','Preise &amp; Geschenke'],['kinder.html','Sternstunde'],['kontakt.html','Kontakt mit den Gründern']];
-  function link(h){return h+zusatz;}
+  function link(h){/* Simon 16.11.2026: „Preise & Geschenke“ führt immer auf die neue Seite „Deine Finanzbildung“ */if(h==='preise.html'||h.indexOf('preise.html#')===0)return 'termine/preise.html?m=v1&k=6&g=35&f=2'+h.slice(11);return h+zusatz;}
   var WER_SATZ='Wer wir sind, ist eigentlich nicht das Wichtigste. Wichtig ist, welches Problem wir für dich lösen.';
   /* Vorschau beim Überfahren der Kopfleiste (Simon 01.11.2026): Bild je Menüpunkt, Stile in effekte.css und sternstunde/rahmen.css */
   var FL='<svg viewBox="0 0 62 76" aria-hidden="true"><path d="M31 4 C40 16 50 24 50 42 C50 56 41 66 31 66 C21 66 12 56 12 42 C12 30 19 25 22 18 C23 26 27 28 29 25 C27 18 28 10 31 4 Z" fill="#E06400"/><path d="M31 30 C36 36 40 40 40 49 C40 56 36 60 31 60 C26 60 22 56 22 49 C22 43 26 40 27 36 C28 40 30 41 31 39 C30 36 30 33 31 30 Z" fill="#FFD9A8"/></svg>';
