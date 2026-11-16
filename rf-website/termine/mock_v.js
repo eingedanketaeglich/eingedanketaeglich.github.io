@@ -92,7 +92,7 @@ if(M==='v1'){
     B.dataset.w=WK[wi];B.querySelector('.mv-lw').textContent=TXT[wi].kurz;B.querySelector('.mv-hinweis').hidden=true;
     var R=B.querySelector('.mv-reihe');R.innerHTML='';R.scrollLeft=0;R.scrollTop=0;
     /* Runde 190 (Simon 16.11.2026: „die günstigen Preise fangen immer links an … Mentoring ganz rechts, 3-Stunden-Workshop links“): Institut-Kacheln aufsteigend */
-    (WK[wi]==='b'?kurse(wi).slice().reverse():kurse(wi)).forEach(function(c){var k=el('button','mv-karte','<span class="mv-bild" style="background-image:url(bilder/preise/'+BILD[c.name]+'?v=139)"></span><span class="mv-ktext"><b>'+c.name+'</b><small>'+(c.kurz||'')+'</small><em>'+c.preis+'</em><span class="mv-mehr">Raum ansehen ›</span></span>');
+    kurse(wi).slice().reverse().forEach(/* Simon 16.11.2026: beide Welten aufsteigend, links günstig, rechts teuer */function(c){var k=el('button','mv-karte','<span class="mv-bild" style="background-image:url(bilder/preise/'+BILD[c.name]+'?v=139)"></span><span class="mv-ktext"><b>'+c.name+'</b><small>'+(c.kurz||'')+'</small><em>'+c.preis+'</em><span class="mv-mehr">Raum ansehen ›</span></span>');
       k.onclick=function(e){e.stopPropagation();geheZu(wi,c.j);};R.appendChild(k);});
     B.classList.add('auf');}
   SEG.forEach(function(s,i){s.onclick=function(e){e.stopPropagation();zeige(aktiv===i?-1:i);};});

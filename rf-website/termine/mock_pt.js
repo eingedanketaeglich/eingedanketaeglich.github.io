@@ -108,13 +108,13 @@ function blattOnline(name,startD){if(OK)return blattKal(name,startD);var w=weltV
 var MONATE=['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'];
 function onlineEintraege(){var L=[];['g','b'].forEach(function(w){W[w].a.forEach(function(x){var n=x[0];if(!buchbar(n)||!x[4])return;alleOnline(n,w).forEach(function(d){L.push({d:d,n:n,w:w,p:x[4].replace(' live online',''),ws:!!WS_NAMEN[n]});});});});
   L.sort(function(a,b){return a.d-b.d||a.n.localeCompare(b.n);});return L;}
-function blattKal(name,startD){var w0=weltVon(name),ALLE=onlineEintraege(),modus='kurs',sel=null,monat=null;
+function blattKal(name,startD,allg){/* allg: Terminseite → Online (Simon 16.11.2026): ohne Kursnamen und ohne Umschalter, immer alle Kurse */var w0=weltVon(name),ALLE=onlineEintraege(),modus=allg?'alle':'kurs',sel=null,monat=null;
   function liste(){return modus==='kurs'?ALLE.filter(function(e){return e.n===name;}):ALLE;}
   function tagKey(d){return d.getFullYear()+'-'+d.getMonth()+'-'+d.getDate();}
-  var I=sheet('<p class="mv-sh-klein">'+name+' · '+weltText(w0)+'</p>'
+  var I=sheet((allg?'':'<p class="mv-sh-klein">'+name+' · '+weltText(w0)+'</p>')
     +'<div class="pt-seg" role="tablist"><button type="button" data-x="ort">Vor Ort</button><button type="button" class="an" data-x="online">Online · von überall</button></div>'
     +'<div class="pt-onl-kopf"><div><h3 class="mv-sh-h">Live online</h3><p class="mv-sh-klein">Live per Video, egal wo du wohnst</p></div></div>'
-    +'<div class="pt-filter"><button type="button" data-f="kurs" class="an">Nur '+name+'</button><button type="button" data-f="alle">Alle Kurse</button></div>'
+    +(allg?'':'<div class="pt-filter"><button type="button" data-f="kurs" class="an">Nur '+name+'</button><button type="button" data-f="alle">Alle Kurse</button></div>')
     +'<p class="pt-legende"><span><i style="background:#2F7A55"></i>Akademie</span><span><i style="background:#2E5AA8"></i>Institut</span></p>'
     +'<div class="pt-kal-box"></div>'
     +'<div class="pt-fuss"><div class="pt-wahl"></div><button type="button" class="mv-sh-knopf mv-sh-anm">Anmelden</button><p class="mv-sh-hinw" hidden>Hier öffnet sich die Anmeldung (Stripe-Link folgt)</p>'
@@ -226,5 +226,5 @@ function beschrifte(){document.querySelectorAll('#detail a.knopf, .raum a.knopf'
   var ziel=PT==='2'?'Termine & Anmeldung':KNOPF;if(h&&buchbar(h.textContent.trim())&&a.textContent!==ziel)a.textContent=ziel;});}
 new MutationObserver(beschrifte).observe(document.documentElement,{childList:true,subtree:true});
 /* Runde 193 (Simon 16.11.2026): Termine-Karussell öffnet über „Online“ direkt dieses Online-Fenster */
-window.rfOnlineKal=function(n){blattKal(n||'Dein erster Tag');};
+window.rfOnlineKal=function(n,allg){blattKal(allg?null:(n||'Dein erster Tag'),null,allg);};
 })();

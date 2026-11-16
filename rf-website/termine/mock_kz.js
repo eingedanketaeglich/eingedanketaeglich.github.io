@@ -47,7 +47,7 @@ function baue(RS){if(RS.dataset.kz)return;RS.dataset.kz='1';var U=document.query
       k.style.filter=a>.05?'brightness('+(1-.4*Math.min(a,1))+') blur('+Math.min(1.6,a*.6)+'px)':'none';k.style.pointerEvents=a<=2.2?'auto':'none';});
     var ci=((Math.round(pos)%n)+n)%n;[].slice.call(P.children).forEach(function(p,i){p.classList.toggle('an',i===ci);});var c=K[ci];LOS.textContent=c===on?'Online-Termine ›':'Termine in '+c.querySelector('b').textContent+' ›';}
   function geh(s){cur=((cur+s)%n+n)%n;lage();}
-  function oeffne(k){if(k===on||!k){if(window.rfOnlineKal){window.rfOnlineKal('Dein erster Tag');setTimeout(function(){var f=document.querySelector('.pt-filter [data-f="alle"]');if(f)f.click();},60);}else online();return;}else if(k._o)k._o.click();}
+  function oeffne(k){if(k===on||!k){if(window.rfOnlineKal){window.rfOnlineKal(null,true);setTimeout(function(){var f=document.querySelector('.pt-filter [data-f="alle"]');if(f)f.click();},60);}else online();return;}else if(k._o)k._o.click();}
   /* Ziehen mit Finger und Maus: Karten folgen stufenlos, beim Loslassen einrasten; kurzer Tipp = Antippen */
   var x0=null,t0=0,bewegt=false;
   R.addEventListener('pointerdown',function(e){if(e.button>0)return;x0=e.clientX;t0=Date.now();bewegt=false;zug=0;R.classList.add('zieht');try{R.setPointerCapture(e.pointerId);}catch(x){}});
@@ -71,7 +71,7 @@ function baue(RS){if(RS.dataset.kz)return;RS.dataset.kz='1';var U=document.query
      (alle Kurse); das Karussell bleibt dahinter stehen. Schließen oder „Vor Ort“ im Blatt schaltet zurück auf „Vor Ort“. */
   var S=box.querySelectorAll('.kz-seg button');
   function seg(i){S.forEach(function(c,j){c.classList.toggle('an',j===i);});}
-  function onlineAuf(){seg(1);if(!window.rfOnlineKal){online();return;}window.rfOnlineKal('Dein erster Tag');
+  function onlineAuf(){seg(1);if(!window.rfOnlineKal){online();return;}window.rfOnlineKal(null,true);
     setTimeout(function(){var f=document.querySelector('.pt-filter [data-f="alle"]');if(f)f.click();
       var o=document.querySelector('.pt-seg [data-x="ort"]');if(o)o.addEventListener('click',function(e){e.stopPropagation();e.preventDefault();var x=[].filter.call(document.querySelectorAll('button'),function(q){return q.textContent.trim()==='×'&&q.offsetParent&&q.closest('[class*="sh"]');})[0];if(x)x.click();seg(0);},true);
       var uhr=setInterval(function(){var offen=[].some.call(document.querySelectorAll('.pt-kal-box'),function(k){return k.offsetParent!==null;});if(!offen){clearInterval(uhr);seg(0);}},300);},60);}
