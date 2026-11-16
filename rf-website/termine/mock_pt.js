@@ -225,4 +225,6 @@ document.addEventListener('click',function(e){var a=e.target.closest&&e.target.c
 function beschrifte(){document.querySelectorAll('#detail a.knopf, .raum a.knopf').forEach(function(a){var box=a.closest('#detail')||a.closest('.raum');var h=box&&box.querySelector('h2,h3');
   var ziel=PT==='2'?'Termine & Anmeldung':KNOPF;if(h&&buchbar(h.textContent.trim())&&a.textContent!==ziel)a.textContent=ziel;});}
 new MutationObserver(beschrifte).observe(document.documentElement,{childList:true,subtree:true});
+/* Runde 193 (Simon 16.11.2026): Termine-Karussell öffnet über „Online“ direkt dieses Online-Fenster */
+window.rfOnlineKal=function(n){blattKal(n||'Dein erster Tag');};
 })();
