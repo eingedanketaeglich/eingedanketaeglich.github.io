@@ -9,7 +9,7 @@
 <!-- Baumseite (abgenommen von Simon am 31.10.2026), ersetzt die bisherige Kinderseite (Sicherung: kinder_2026-10-31_vor-baum.html).
      Alle Bilder, Skripte und Stile liegen in sternstunde/; Links zu anderen Seiten der Website deshalb mit ../ -->
 <base href="sternstunde/">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&amp;family=Gloock&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap">
+<link rel="stylesheet" href="../schrift/google/schriften.css">
 <link rel="stylesheet" href="baum2.css?v=25">
 <link rel="stylesheet" href="anfrage.css?v=3">
 <link rel="stylesheet" href="rahmen.css?v=20261113c">
@@ -74,7 +74,7 @@
 </div>
 
 <script>if(new URLSearchParams(location.search).get('still')==='1')document.body.classList.add('still');</script>
-<script src="../seite.js?v=20261113g"></script>
+<script src="../seite.js?v=20261117a"></script>
 <script>/* base href zeigt auf sternstunde/: Links aus seite.js auf die Website-Ebene heben */
 document.querySelectorAll('.leiste a[href],.deckel a[href],.fuss a[href]').forEach(function(a){var h=a.getAttribute('href');if(!/^(https?:|mailto:|#|\.\.\/|\/)/.test(h))a.setAttribute('href','../'+h);});</script>
 <script>/* Grundfarbe unter der Seite (Simon 01.11.: kein heller Streifen am Rand): Erde, solange der Baum zu sehen ist, weiß an der Fußzeile */
