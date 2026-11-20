@@ -24,28 +24,33 @@ a{display:block;text-align:center;background:#FF7A00;color:#102444;font-weight:7
    Die neue App fuehrt ihn beim Anmelden mit dem Konto zusammen (rf-konto.js, fs_umzug). */
 (function(){
   var ziel = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:8095/' : 'https://app.rf-institut.de/';
-  var stand = null;
+  /* Alle Konten dieses Geraets mitnehmen (v2): fs13_<mail> gehoert zum Konto <mail>; der allererste Schluessel fs13 gehoert simon@. */
+  var konten = {}, anzahl = 0;
+  function nimm(mail, v) {
+    if (!v || !Array.isArray(v.done)) return;
+    var n = v.done.length; for (var s in (v.steps || {})) n += (v.steps[s] || []).length;
+    if (!n) return;
+    var a = konten[mail];
+    if (a) {   /* zwei Staende fuer dieselbe Adresse: zusammenlegen */
+      v.done.forEach(function (x) { if (a.done.indexOf(x) < 0) a.done.push(x); });
+      for (var k in (v.steps || {})) { var t = a.steps[k] || []; (v.steps[k] || []).forEach(function (x) { if (t.indexOf(x) < 0) t.push(x); }); a.steps[k] = t; }
+      return;
+    }
+    konten[mail] = { done: v.done.slice(), steps: v.steps || {}, pos: v.pos || {}, zuletzt: v.zuletzt || [] }; anzahl++;
+  }
   try {
-    var mail = (localStorage.getItem('fs_mail') || '').toLowerCase(), kand = [];
     for (var i = 0; i < localStorage.length; i++) {
-      var k = localStorage.key(i);
-      if (k !== 'fs13' && k.indexOf('fs13_') !== 0) continue;
-      try { var v = JSON.parse(localStorage.getItem(k)); if (v && Array.isArray(v.done)) kand.push({ k: k, v: v }); } catch (e) {}
+      var k = localStorage.key(i), mail = k.indexOf('fs13_') === 0 ? k.slice(5).toLowerCase() : '';
+      if (!mail || mail === 'gast' || mail.indexOf('@') < 0) continue;
+      try { nimm(mail, JSON.parse(localStorage.getItem(k))); } catch (e) {}
     }
-    function groesse(v) { var n = v.done.length * 100; for (var s in (v.steps || {})) n += (v.steps[s] || []).length; return n; }
-    kand.sort(function (a, b) {
-      var am = a.k === 'fs13_' + mail ? 1 : 0, bm = b.k === 'fs13_' + mail ? 1 : 0;
-      return (bm - am) || (groesse(b.v) - groesse(a.v));
-    });
-    if (kand.length && groesse(kand[0].v) > 0) {
-      var v = kand[0].v;
-      stand = { done: v.done, steps: v.steps || {}, pos: v.pos || {}, zuletzt: v.zuletzt || [] };
-    }
+    /* der allererste Schluessel zuletzt: ergaenzt simon@ nur um erledigte Lektionen und Schritte */
+    try { nimm('simon@rf-institut.de', JSON.parse(localStorage.getItem('fs13'))); } catch (e) {}
   } catch (e) {}
   var url = ziel;
-  if (stand) {
+  if (anzahl) {
     try {
-      var b = btoa(unescape(encodeURIComponent(JSON.stringify(stand)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      var b = btoa(unescape(encodeURIComponent(JSON.stringify({ v: 2, konten: konten })))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
       if (b.length < 60000) url = ziel + '#umzug=' + b;
     } catch (e) {}
   }
