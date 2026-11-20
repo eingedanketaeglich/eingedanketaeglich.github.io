@@ -1,1 +1,57 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Firestarter</title><meta http-equiv="refresh" content="0;url=/firestarter-gesamt/"><script>location.replace('/firestarter-gesamt/'+location.hash)</script><style>body{margin:0;background:#F5F1EA;color:#102444;font:16px/1.5 -apple-system,system-ui,sans-serif;padding:40px 20px}</style></head><body><p>Diese Fassung ist veraltet. Weiter zur aktuellen Firestarter-App: <a href="/firestarter-gesamt/">eingedanketaeglich.github.io/firestarter-gesamt</a></p></body></html>
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Firestarter ist umgezogen</title>
+<style>
+html,body{margin:0;height:100%;background:#102444;color:#FFFFFF;font:500 17px/1.5 -apple-system,system-ui,sans-serif}
+main{min-height:100%;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:24px max(24px,env(safe-area-inset-left)) 24px max(24px,env(safe-area-inset-right));box-sizing:border-box;max-width:520px;margin:0 auto}
+h1{font-size:26px;line-height:1.2;margin:0}
+p{margin:0;color:#D8DEE9}
+a{display:block;text-align:center;background:#FF7A00;color:#102444;font-weight:700;text-decoration:none;padding:15px;border-radius:999px;margin-top:8px}
+</style>
+</head>
+<body>
+<main>
+<h1>Firestarter ist umgezogen.</h1>
+<p>Die App findest du jetzt unter app.rf-institut.de. Dein Lernstand von diesem Gerät kommt mit, du meldest dich dort einmal mit deinem Konto an.</p>
+<a id="weiter" href="https://app.rf-institut.de/">Zur neuen App</a>
+</main>
+<script>
+/* Umleitung der alten GitHub-App (Simon 20.11.2026): Lernstand dieses Geraets (localStorage fs13_*) mitnehmen.
+   Die neue App fuehrt ihn beim Anmelden mit dem Konto zusammen (rf-konto.js, fs_umzug). */
+(function(){
+  var ziel = /^(localhost|127\.0\.0\.1)$/.test(location.hostname) ? 'http://localhost:8095/' : 'https://app.rf-institut.de/';
+  var stand = null;
+  try {
+    var mail = (localStorage.getItem('fs_mail') || '').toLowerCase(), kand = [];
+    for (var i = 0; i < localStorage.length; i++) {
+      var k = localStorage.key(i);
+      if (k !== 'fs13' && k.indexOf('fs13_') !== 0) continue;
+      try { var v = JSON.parse(localStorage.getItem(k)); if (v && Array.isArray(v.done)) kand.push({ k: k, v: v }); } catch (e) {}
+    }
+    function groesse(v) { var n = v.done.length * 100; for (var s in (v.steps || {})) n += (v.steps[s] || []).length; return n; }
+    kand.sort(function (a, b) {
+      var am = a.k === 'fs13_' + mail ? 1 : 0, bm = b.k === 'fs13_' + mail ? 1 : 0;
+      return (bm - am) || (groesse(b.v) - groesse(a.v));
+    });
+    if (kand.length && groesse(kand[0].v) > 0) {
+      var v = kand[0].v;
+      stand = { done: v.done, steps: v.steps || {}, pos: v.pos || {}, zuletzt: v.zuletzt || [] };
+    }
+  } catch (e) {}
+  var url = ziel;
+  if (stand) {
+    try {
+      var b = btoa(unescape(encodeURIComponent(JSON.stringify(stand)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+      if (b.length < 60000) url = ziel + '#umzug=' + b;
+    } catch (e) {}
+  }
+  document.getElementById('weiter').href = url;
+  location.replace(url);
+})();
+</script>
+</body>
+</html>
