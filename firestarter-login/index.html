@@ -17,6 +17,7 @@ a{display:block;text-align:center;background:#FF7A00;color:#102444;font-weight:7
 <main>
 <h1>Firestarter ist umgezogen.</h1>
 <p>Die App findest du jetzt unter app.rf-institut.de. Dein Lernstand von diesem Gerät kommt mit, du meldest dich dort einmal mit deinem Konto an.</p>
+<p id="fund" style="color:#FFFFFF;font-weight:700">Ich schaue nach deinem Lernstand …</p>
 <a id="weiter" href="https://app.rf-institut.de/">Zur neuen App</a>
 </main>
 <script>
@@ -55,7 +56,10 @@ a{display:block;text-align:center;background:#FF7A00;color:#102444;font-weight:7
     } catch (e) {}
   }
   document.getElementById('weiter').href = url;
-  location.replace(url);
+  /* 20.11.2026: kurz zeigen, was hier gefunden wurde, damit klar ist, ob dieses Geraet alte Staende hat */
+  var fund = document.getElementById('fund'), namen = Object.keys(konten).map(function (m) { return m.split('@')[0] + ' (' + konten[m].done.length + ' Lektionen fertig)'; });
+  fund.textContent = anzahl ? 'Gefunden und wird mitgenommen: ' + namen.join(', ') + '. Melde dich gleich mit s.schlerf@ an.' : 'Hier liegen keine alten Lernstände. Du kommst direkt zur neuen App.';
+  setTimeout(function () { location.replace(url); }, anzahl ? 4000 : 2500);
 })();
 </script>
 </body>
